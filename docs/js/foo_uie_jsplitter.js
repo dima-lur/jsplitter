@@ -811,6 +811,11 @@ let fb = {
     ShowPictureViewer(image_path) { }, // (void)
 
     /**
+     * Opens the "Playlist Search" window
+     */
+    ShowPlaylistSearchUI: function () { }, // (void)
+
+    /**
      * @param {string} message
      * @param {string=} [title='JSplitter']
      */
@@ -2568,6 +2573,13 @@ let window = {
     EditScript: function () { },
 
     /**
+     * Exports all current panel properties set by {@link window.SetProperty} to file
+     * @param {string} fileName
+     * @return {boolean} If false, then an error occurred during export
+     */
+    ExportProperties: function (fileName) { },
+
+    /**
      * @return {MenuObject}
      *
      * @sourceFile ../../component/samples/basic/MainMenuManager All-In-One.js
@@ -2635,6 +2647,13 @@ let window = {
     GetFontDUI: function (type) { }, // (GdiFont)
 
     /**
+     * Get all current panel properties set by {@link window.SetProperty} calls<br>
+     *
+     * @return {Map} Map of panel properties
+     */
+    GetProperties: function () { },
+
+    /**
      * Get value of property.<br>
      * If property does not exist and default_val is not undefined and not null,
      * it will be created with the value of default_val.<br>
@@ -2646,6 +2665,13 @@ let window = {
      * @return {*}
      */
     GetProperty: function (name, default_val) { }, // (VARIANT) [, default_val]
+
+    /**
+     * Imports panel properties from file and reloads the script
+     * @param {string} fileName
+     * @return {boolean} If false, then an error occurred during import
+     */
+    ImportProperties: function (fileName) { },
 
     /**
      * This will trigger {@link module:Callbacks.on_notify_data on_notify_data}(name, info) in other panels.<br>
@@ -2666,10 +2692,10 @@ let window = {
     NotifyOthers: function (name, info) { }, // (void)
 
     /**
-     * Reload panel.
-     * @method
+     * Reloads panel.
+     * @param {boolean=} [clearProperties=false] If true, all panel properties will be cleared before reload
      */
-    Reload: function () { }, // (void)
+    Reload: function (clearProperties) { }, // (void)
 
     /**
      * Performance note: don't force the repaint unless it's really necessary -
