@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Class: FbPlaybackQueueItem | JSplitter</title>
+    <title>Class: RunResult | JSplitter</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -48,7 +48,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>FbPlaybackQueueItem</h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>RunResult</h2>
         
     
 </header>
@@ -61,14 +61,14 @@
 
 <dt>
     
-        <h4 class="name" id="FbPlaybackQueueItem">
+        <h4 class="name" id="RunResult">
             
-                FbPlaybackQueueItem
+                RunResult
                 
             
             <div class="container-source members">
                 <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
-                <code><a href="js_foo_uie_jsplitter.js.html#line3762">line 3762</a></code>
+                <code><a href="js_foo_uie_jsplitter.js.html#line5024">line 5024</a></code>
             </div>
             
         </h4>
@@ -164,87 +164,12 @@
             
 
 <dt>
-<h4 class="name" id="Handle">
-    <span class="type-signature"><span class="icon green">readonly</span> </span>Handle<span class="type-signature"> :<a href="FbMetadbHandle.html">FbMetadbHandle</a></span>
+<h4 class="name" id="ExitCode">
+    <span class="type-signature"><span class="icon green">readonly</span> </span>ExitCode<span class="type-signature"> :number</span>
     
     <div class="container-source members">
         <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
-        <code><a href="js_foo_uie_jsplitter.js.html#line3768">line 3768</a></code>
-    </div>
-    
-</h4>
-
-
-</dt>
-<dd>
-    
-
-    <!--
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type"><a href="FbMetadbHandle.html">FbMetadbHandle</a></span>
-
-
-            </li>
-        </ul>
-    
-    -->
-
-    
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-</dd>
-
-        
-            
-
-<dt>
-<h4 class="name" id="PlaylistIndex">
-    <span class="type-signature"><span class="icon green">readonly</span> </span>PlaylistIndex<span class="type-signature"> :number</span>
-    
-    <div class="container-source members">
-        <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
-        <code><a href="js_foo_uie_jsplitter.js.html#line3776">line 3776</a></code>
+        <code><a href="js_foo_uie_jsplitter.js.html#line5042">line 5042</a></code>
     </div>
     
 </h4>
@@ -254,7 +179,7 @@
 <dd>
     
     <div class="description">
-        -1 if item is not in a playlist
+        Process exit code.<br>This value is meaningful only when <b>wait</b> arg of <a href="utils.html#.Run">utils.Run</a> is true and the launched process handle was available. If <b>wait</b> is false, this value is usually 0.
     </div>
     
 
@@ -318,12 +243,12 @@
             
 
 <dt>
-<h4 class="name" id="PlaylistItemIndex">
-    <span class="type-signature"><span class="icon green">readonly</span> </span>PlaylistItemIndex<span class="type-signature"> :number</span>
+<h4 class="name" id="OK">
+    <span class="type-signature"><span class="icon green">readonly</span> </span>OK<span class="type-signature"> :boolean</span>
     
     <div class="container-source members">
         <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
-        <code><a href="js_foo_uie_jsplitter.js.html#line3784">line 3784</a></code>
+        <code><a href="js_foo_uie_jsplitter.js.html#line5033">line 5033</a></code>
     </div>
     
 </h4>
@@ -333,7 +258,165 @@
 <dd>
     
     <div class="description">
-        -1 if item is not in a playlist
+        true if <b>ShellExecuteEx</b> WinAPI function successfully accepted the request.<br>This means that Windows was able to start/open the target or pass it to the associated application. It does not necessarily mean that the target application completed successfully, unless <b>wait</b> arg of <a href="utils.html#.Run">utils.Run</a> was set to true and <b>ExitCode</b> was checked.
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">boolean</span>
+
+
+            </li>
+        </ul>
+    
+    -->
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+</dd>
+
+        
+            
+
+<dt>
+<h4 class="name" id="ShellCode">
+    <span class="type-signature"><span class="icon green">readonly</span> </span>ShellCode<span class="type-signature"> :number</span>
+    
+    <div class="container-source members">
+        <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+        <code><a href="js_foo_uie_jsplitter.js.html#line5060">line 5060</a></code>
+    </div>
+    
+</h4>
+
+
+</dt>
+<dd>
+    
+    <div class="description">
+        Native <b>ShellExecute/ShellExecuteEx</b> result code.<br>Values greater than 32 usually indicate success. Values less than or equal to 32 indicate a shell-level error, such as file not found, access denied, no association, or invalid executable format.
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">number</span>
+
+
+            </li>
+        </ul>
+    
+    -->
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+</dd>
+
+        
+            
+
+<dt>
+<h4 class="name" id="Win32Error">
+    <span class="type-signature"><span class="icon green">readonly</span> </span>Win32Error<span class="type-signature"> :number</span>
+    
+    <div class="container-source members">
+        <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+        <code><a href="js_foo_uie_jsplitter.js.html#line5051">line 5051</a></code>
+    </div>
+    
+</h4>
+
+
+</dt>
+<dd>
+    
+    <div class="description">
+        Win32 error code returned by <b>GetLastError</b> WinAPI function.<br>This is 0 on success. When <b>OK</b> is false, it usually contains the reason why <b>ShellExecuteEx</b> failed. It may also be set if retrieving the process exit code failed.
     </div>
     
 
@@ -420,7 +503,7 @@
 <script src="scripts/linenumber.js"></script>
 
     <script>
-        var id = 'FbPlaybackQueueItem_sub'.replace(/"/g, '_');
+        var id = 'RunResult_sub'.replace(/"/g, '_');
         var selectedApi = document.getElementById(id); // do not use jquery selector
         var $selectedApi = $(selectedApi);
 

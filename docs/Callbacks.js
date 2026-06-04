@@ -125,7 +125,7 @@ function on_font_changed() { }
  * @memberof module:Callbacks
  * @param {FbMetadbHandle} handle
  * @param {number} art_id See {@link module:Flags.AlbumArtId AlbumArtId} flags
- * @param {?GdiBitmap} image null on failure
+ * @param {?GdiBitmap} image (or {@link D2DBitmap} if {@link window.DrawMode} == 1). Null on failure
  * @param {string} image_path path to image file (or music file if image is embedded)
  */
 function on_get_album_art_done(handle, art_id, image, image_path) { }
@@ -193,7 +193,7 @@ function on_library_items_removed(handle_list) { }
  *
  * @memberof module:Callbacks
  * @param {number} cookie the return value from the {@link gdi.LoadImageAsync} call
- * @param {?GdiBitmap} image null on failure (invalid path/not an image)
+ * @param {?GdiBitmap} image (or {@link D2DBitmap} if {@link window.DrawMode} == 1). Null on failure (invalid path/not an image)
  * @param {string} image_path the path that was originally supplied to {@link gdi.LoadImageAsync}
  */
 function on_load_image_done(cookie, image, image_path) { }

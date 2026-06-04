@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Class: FbPlaybackQueueItem | JSplitter</title>
+    <title>Class: HtmlNode | JSplitter</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -48,7 +48,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>FbPlaybackQueueItem</h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>HtmlNode</h2>
+        
+            <div class="class-description">Lightweight DOM-like HTML node.<br><br>HtmlNode can represent an element node, text node, comment node, or another parsed DOM node type. Some operations, such as attributes and class checks, only make sense for element nodes.<br><b>NOTE</b>: HtmlNode objects keep the underlying native document alive while they exist.</div>
         
     
 </header>
@@ -61,14 +63,14 @@
 
 <dt>
     
-        <h4 class="name" id="FbPlaybackQueueItem">
+        <h4 class="name" id="HtmlNode">
             
-                FbPlaybackQueueItem
+                HtmlNode
                 
             
             <div class="container-source members">
                 <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
-                <code><a href="js_foo_uie_jsplitter.js.html#line3762">line 3762</a></code>
+                <code><a href="js_foo_uie_jsplitter.js.html#line5226">line 5226</a></code>
             </div>
             
         </h4>
@@ -164,12 +166,12 @@
             
 
 <dt>
-<h4 class="name" id="Handle">
-    <span class="type-signature"><span class="icon green">readonly</span> </span>Handle<span class="type-signature"> :<a href="FbMetadbHandle.html">FbMetadbHandle</a></span>
+<h4 class="name" id="childNodes">
+    <span class="type-signature"><span class="icon green">readonly</span> </span>childNodes<span class="type-signature"> :Array.&lt;<a href="HtmlNode.html">HtmlNode</a>></span>
     
     <div class="container-source members">
         <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
-        <code><a href="js_foo_uie_jsplitter.js.html#line3768">line 3768</a></code>
+        <code><a href="js_foo_uie_jsplitter.js.html#line5358">line 5358</a></code>
     </div>
     
 </h4>
@@ -178,6 +180,10 @@
 </dt>
 <dd>
     
+    <div class="description">
+        All child nodes, including element nodes, text nodes and comments.
+    </div>
+    
 
     <!--
     
@@ -185,7 +191,427 @@
         <ul>
             <li>
                 
-<span class="param-type"><a href="FbMetadbHandle.html">FbMetadbHandle</a></span>
+<span class="param-type">Array.&lt;<a href="HtmlNode.html">HtmlNode</a>></span>
+
+
+            </li>
+        </ul>
+    
+    -->
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const doc = utils.ParseHtml("&lt;p>Hello &lt;b>world&lt;/b>&lt;/p>");const p = doc.querySelector("p");console.log(p.childNodes.length); // 2</code></pre>
+
+    
+</dd>
+
+        
+            
+
+<dt>
+<h4 class="name" id="children">
+    <span class="type-signature"><span class="icon green">readonly</span> </span>children<span class="type-signature"> :Array.&lt;<a href="HtmlNode.html">HtmlNode</a>></span>
+    
+    <div class="container-source members">
+        <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+        <code><a href="js_foo_uie_jsplitter.js.html#line5373">line 5373</a></code>
+    </div>
+    
+</h4>
+
+
+</dt>
+<dd>
+    
+    <div class="description">
+        Child element nodes only.<br>Text nodes and comments are skipped.
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Array.&lt;<a href="HtmlNode.html">HtmlNode</a>></span>
+
+
+            </li>
+        </ul>
+    
+    -->
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const doc = utils.ParseHtml("&lt;p>Hello &lt;b>world&lt;/b>&lt;/p>");const p = doc.querySelector("p");console.log(p.children.length); // 1console.log(p.children[0].tagName); // "b"</code></pre>
+
+    
+</dd>
+
+        
+            
+
+<dt>
+<h4 class="name" id="className">
+    <span class="type-signature"><span class="icon green">readonly</span> </span>className<span class="type-signature"> :string</span>
+    
+    <div class="container-source members">
+        <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+        <code><a href="js_foo_uie_jsplitter.js.html#line5272">line 5272</a></code>
+    </div>
+    
+</h4>
+
+
+</dt>
+<dd>
+    
+    <div class="description">
+        Value of the <b>class</b> attribute.<br>For non-element nodes, or elements without a class attribute, this is an empty string.
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
+
+
+            </li>
+        </ul>
+    
+    -->
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const doc = utils.ParseHtml("&lt;p class='album featured'>Title&lt;/p>");if (doc) {    const p = doc.querySelector("p");    console.log(p.className); // "album featured"}</code></pre>
+
+    
+</dd>
+
+        
+            
+
+<dt>
+<h4 class="name" id="firstChild">
+    <span class="type-signature"><span class="icon green">readonly</span>, <span class="icon green">nullable</span> </span>firstChild<span class="type-signature"> :<a href="HtmlNode.html">HtmlNode</a></span>
+    
+    <div class="container-source members">
+        <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+        <code><a href="js_foo_uie_jsplitter.js.html#line5345">line 5345</a></code>
+    </div>
+    
+</h4>
+
+
+</dt>
+<dd>
+    
+    <div class="description">
+        First child node.<br><b>Important</b>: this can be a text node or comment, not necessarily an element.<br>Whitespace-only text nodes are preserved. Use JSON.stringify(node.textContent) while debugging if you need to see line breaks, tabs, and spaces explicitly.Use <a href="HtmlNode.html#children">children</a>[0] or <a href="HtmlNode.html#querySelector">querySelector</a>when you need an element.
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type"><a href="HtmlNode.html">HtmlNode</a></span>
+
+
+            </li>
+        </ul>
+    
+    -->
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const doc = utils.ParseHtml("&lt;li>text before link &lt;a href='https://example.com'>Link&lt;/a>&lt;/li>");const li = doc.querySelector("li");console.log(JSON.stringify(li.firstChild.textContent)); // "text before link "const a = li.querySelector("a");console.log(a.getAttribute("href")); // "https://example.com"</code></pre>
+
+    
+</dd>
+
+        
+            
+
+<dt>
+<h4 class="name" id="innerHTML">
+    <span class="type-signature"><span class="icon green">readonly</span> </span>innerHTML<span class="type-signature"> :string</span>
+    
+    <div class="container-source members">
+        <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+        <code><a href="js_foo_uie_jsplitter.js.html#line5310">line 5310</a></code>
+    </div>
+    
+</h4>
+
+
+</dt>
+<dd>
+    
+    <div class="description">
+        Serialized HTML markup inside this node.
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
+
+
+            </li>
+        </ul>
+    
+    -->
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const doc = utils.ParseHtml("&lt;p>Hello &lt;b>world&lt;/b>&lt;/p>");const p = doc.querySelector("p");console.log(p.innerHTML); // "Hello &lt;b>world&lt;/b>"</code></pre>
+
+    
+</dd>
+
+        
+            
+
+<dt>
+<h4 class="name" id="innerText">
+    <span class="type-signature"><span class="icon green">readonly</span> </span>innerText<span class="type-signature"> :string</span>
+    
+    <div class="container-source members">
+        <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+        <code><a href="js_foo_uie_jsplitter.js.html#line5297">line 5297</a></code>
+    </div>
+    
+</h4>
+
+
+</dt>
+<dd>
+    
+    <div class="description">
+        Alias of <a href="HtmlNode.html#textContent">textContent</a>.<br>Since this parser has no browser layout engine, <b>innerText</b> does not emulate CSS visibility, rendered line wrapping, or layout-dependent text extraction.
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
 
 
             </li>
@@ -239,12 +665,12 @@
             
 
 <dt>
-<h4 class="name" id="PlaylistIndex">
-    <span class="type-signature"><span class="icon green">readonly</span> </span>PlaylistIndex<span class="type-signature"> :number</span>
+<h4 class="name" id="isElement">
+    <span class="type-signature"><span class="icon green">readonly</span> </span>isElement<span class="type-signature"> :boolean</span>
     
     <div class="container-source members">
         <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
-        <code><a href="js_foo_uie_jsplitter.js.html#line3776">line 3776</a></code>
+        <code><a href="js_foo_uie_jsplitter.js.html#line5243">line 5243</a></code>
     </div>
     
 </h4>
@@ -254,7 +680,7 @@
 <dd>
     
     <div class="description">
-        -1 if item is not in a playlist
+        Whether this node is an element node.<br>Element nodes are tags such as &lt;div&gt;, &lt;a&gt;, &lt;p&gt;, &lt;body&gt;.<br>Text nodes and comments are not element nodes.
     </div>
     
 
@@ -264,7 +690,7 @@
         <ul>
             <li>
                 
-<span class="param-type">number</span>
+<span class="param-type">boolean</span>
 
 
             </li>
@@ -310,6 +736,11 @@
 
 
     
+
+    
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const doc = utils.ParseHtml("&lt;p>Hello &lt;b>world&lt;/b>&lt;/p>");const p = doc ? doc.querySelector("p") : null;if (p) {    console.log(p.isElement); // true    console.log(p.firstChild ? p.firstChild.isElement : null); // false}</code></pre>
 
     
 </dd>
@@ -318,12 +749,12 @@
             
 
 <dt>
-<h4 class="name" id="PlaylistItemIndex">
-    <span class="type-signature"><span class="icon green">readonly</span> </span>PlaylistItemIndex<span class="type-signature"> :number</span>
+<h4 class="name" id="outerHTML">
+    <span class="type-signature"><span class="icon green">readonly</span> </span>outerHTML<span class="type-signature"> :string</span>
     
     <div class="container-source members">
         <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
-        <code><a href="js_foo_uie_jsplitter.js.html#line3784">line 3784</a></code>
+        <code><a href="js_foo_uie_jsplitter.js.html#line5323">line 5323</a></code>
     </div>
     
 </h4>
@@ -333,7 +764,7 @@
 <dd>
     
     <div class="description">
-        -1 if item is not in a playlist
+        Serialized HTML markup of this node itself.
     </div>
     
 
@@ -343,7 +774,7 @@
         <ul>
             <li>
                 
-<span class="param-type">number</span>
+<span class="param-type">string</span>
 
 
             </li>
@@ -389,6 +820,179 @@
 
 
     
+
+    
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const doc = utils.ParseHtml("&lt;p>Hello &lt;b>world&lt;/b>&lt;/p>");const p = doc.querySelector("p");console.log(p.outerHTML); // "&lt;p>Hello &lt;b>world&lt;/b>&lt;/p>"</code></pre>
+
+    
+</dd>
+
+        
+            
+
+<dt>
+<h4 class="name" id="tagName">
+    <span class="type-signature"><span class="icon green">readonly</span> </span>tagName<span class="type-signature"> :string</span>
+    
+    <div class="container-source members">
+        <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+        <code><a href="js_foo_uie_jsplitter.js.html#line5256">line 5256</a></code>
+    </div>
+    
+</h4>
+
+
+</dt>
+<dd>
+    
+    <div class="description">
+        Lowercase tag name for element nodes.<br>For non-element nodes, this is an empty string.
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
+
+
+            </li>
+        </ul>
+    
+    -->
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const doc = utils.ParseHtml("&lt;BODY>&lt;P>Hello&lt;/P>&lt;/BODY>");if (doc) console.log(doc.body.tagName); // "body"</code></pre>
+
+    
+</dd>
+
+        
+            
+
+<dt>
+<h4 class="name" id="textContent">
+    <span class="type-signature"><span class="icon green">readonly</span> </span>textContent<span class="type-signature"> :string</span>
+    
+    <div class="container-source members">
+        <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+        <code><a href="js_foo_uie_jsplitter.js.html#line5288">line 5288</a></code>
+    </div>
+    
+</h4>
+
+
+</dt>
+<dd>
+    
+    <div class="description">
+        Text content of this node and its descendants.<br>Whitespace is returned as it exists in parsed text nodes.
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
+
+
+            </li>
+        </ul>
+    
+    -->
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const doc = utils.ParseHtml("&lt;p>Hello &lt;b>world&lt;/b>&lt;/p>");if (doc) {    const p = doc.querySelector("p");    console.log(p ? p.textContent : null); // "Hello world"}</code></pre>
 
     
 </dd>
@@ -396,6 +1000,996 @@
         </dl>
     
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+                
+
+<dt>
+    
+        <h4 class="name" id="getAttribute">
+            
+                <span class="type-signature"></span>getAttribute<span class="signature">(name)</span><span class="type-signature"> &rarr; {string}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+                <code><a href="js_foo_uie_jsplitter.js.html#line5388">line 5388</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Returns an attribute value.<br>For missing attributes or non-element nodes, returns an empty string.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Attribute name.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type">string</span>
+
+
+
+
+
+- Attribute value, or empty string.
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>const doc = utils.ParseHtml("&lt;a href='https://example.com'>Link&lt;/a>");const a = doc.querySelector("a");console.log(a.getAttribute("href")); // "https://example.com"</code></pre>
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="getElementsByTagName">
+            
+                <span class="type-signature"></span>getElementsByTagName<span class="signature">(tagName)</span><span class="type-signature"> &rarr; {Array.&lt;<a href="HtmlNode.html">HtmlNode</a>>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+                <code><a href="js_foo_uie_jsplitter.js.html#line5476">line 5476</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Returns all descendant elements with the specified tag name.<br>Use "*" to return all descendant elements.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tagName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Tag name, for example "a", "div", "section" or "*".</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type">Array.&lt;<a href="HtmlNode.html">HtmlNode</a>></span>
+
+
+
+
+
+- Array of matching nodes. Empty array if nothing matches.
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>const doc = utils.ParseHtml("&lt;p>&lt;a href='https://example.com'>One&lt;/a>&lt;a href='/two'>Two&lt;/a>&lt;/p>");const p = doc.querySelector("p");const links = p.getElementsByTagName("a");console.log(links.length); // 2</code></pre>
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="hasAttribute">
+            
+                <span class="type-signature"></span>hasAttribute<span class="signature">(name)</span><span class="type-signature"> &rarr; {boolean}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+                <code><a href="js_foo_uie_jsplitter.js.html#line5404">line 5404</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Checks whether an element has an attribute.<br>For non-element nodes, returns false.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Attribute name.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type">boolean</span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>const doc = utils.ParseHtml("&lt;a href='https://example.com'>Link&lt;/a>");const a = doc.querySelector("a");console.log(a.hasAttribute("href")); // trueconsole.log(a.hasAttribute("title")); // false</code></pre>
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="hasClass">
+            
+                <span class="type-signature"></span>hasClass<span class="signature">(className)</span><span class="type-signature"> &rarr; {boolean}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+                <code><a href="js_foo_uie_jsplitter.js.html#line5424">line 5424</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Checks whether the element has a CSS class token.<br>This checks class tokens, not arbitrary substrings.<br>For example, <b>hasClass("album")</b> matches <b>class="album featured"</b>, but not <b>class="album-list"</b>.<br>For non-element nodes, returns false.<br>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>className</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Class token to check.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type">boolean</span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>const doc = utils.ParseHtml("&lt;li class='album featured'>Title&lt;/li>");const li = doc.querySelector("li");console.log(li.hasClass("album")); // trueconsole.log(li.hasClass("featured")); // trueconsole.log(li.hasClass("album-list")); // false</code></pre>
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="querySelector">
+            
+                <span class="type-signature"></span>querySelector<span class="signature">(selector)</span><span class="type-signature"> &rarr; <span class="icon green">nullable</span> {<a href="HtmlNode.html">HtmlNode</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+                <code><a href="js_foo_uie_jsplitter.js.html#line5442">line 5442</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Returns the first descendant element matching a CSS selector.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">CSS selector.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="HtmlNode.html">HtmlNode</a></span>
+
+
+
+
+
+- First matching node, or `null` if nothing matches.
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>const doc = utils.ParseHtml("&lt;li>text &lt;a href='https://example.com'>Link&lt;/a>&lt;/li>");const li = doc.querySelector("li");const a = li.querySelector("a[href]");if (a) {    console.log(a.getAttribute("href")); // "https://example.com"}</code></pre>
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="querySelectorAll">
+            
+                <span class="type-signature"></span>querySelectorAll<span class="signature">(selector)</span><span class="type-signature"> &rarr; {Array.&lt;<a href="HtmlNode.html">HtmlNode</a>>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+                <code><a href="js_foo_uie_jsplitter.js.html#line5459">line 5459</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Returns all descendant elements matching a CSS selector.<br>The returned value is a regular JavaScript array.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">CSS selector.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type">Array.&lt;<a href="HtmlNode.html">HtmlNode</a>></span>
+
+
+
+
+
+- Array of matching nodes. Empty array if nothing matches.
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>const doc = utils.ParseHtml("&lt;ul>&lt;li class='album'>A&lt;/li>&lt;li class='album featured'>B&lt;/li>&lt;/ul>");const list = doc.querySelector("ul");const albums = list.querySelectorAll(".album");console.log(albums.length); // 2</code></pre>
+
+    
+
+</dd>
+
+            </dl>
     
 
     
@@ -420,7 +2014,7 @@
 <script src="scripts/linenumber.js"></script>
 
     <script>
-        var id = 'FbPlaybackQueueItem_sub'.replace(/"/g, '_');
+        var id = 'HtmlNode_sub'.replace(/"/g, '_');
         var selectedApi = document.getElementById(id); // do not use jquery selector
         var $selectedApi = $(selectedApi);
 
