@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Class: FbPlaybackQueueItem | JSplitter</title>
+    <title>Class: HtmlDocument | JSplitter</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -48,7 +48,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>FbPlaybackQueueItem</h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>HtmlDocument</h2>
+        
+            <div class="class-description">Object returned by <a href="utils.html#.ParseHtml">utils.ParseHtml</a><br><br>Lightweight DOM-like HTML document backed by the native HTML parser.<br><br>Notes:<br>- This is not a full browser DOM.<br>- Scripts, CSS, layout, external resources and browser events are not processed.<br>- <b>innerText</b> is currently an alias of <b>textContent</b>.<br></div>
         
     
 </header>
@@ -61,14 +63,14 @@
 
 <dt>
     
-        <h4 class="name" id="FbPlaybackQueueItem">
+        <h4 class="name" id="HtmlDocument">
             
-                FbPlaybackQueueItem
+                HtmlDocument
                 
             
             <div class="container-source members">
                 <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
-                <code><a href="js_foo_uie_jsplitter.js.html#line3762">line 3762</a></code>
+                <code><a href="js_foo_uie_jsplitter.js.html#line5075">line 5075</a></code>
             </div>
             
         </h4>
@@ -164,12 +166,12 @@
             
 
 <dt>
-<h4 class="name" id="Handle">
-    <span class="type-signature"><span class="icon green">readonly</span> </span>Handle<span class="type-signature"> :<a href="FbMetadbHandle.html">FbMetadbHandle</a></span>
+<h4 class="name" id="body">
+    <span class="type-signature"><span class="icon green">readonly</span>, <span class="icon green">nullable</span> </span>body<span class="type-signature"> :<a href="HtmlNode.html">HtmlNode</a></span>
     
     <div class="container-source members">
         <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
-        <code><a href="js_foo_uie_jsplitter.js.html#line3768">line 3768</a></code>
+        <code><a href="js_foo_uie_jsplitter.js.html#line5123">line 5123</a></code>
     </div>
     
 </h4>
@@ -178,6 +180,10 @@
 </dt>
 <dd>
     
+    <div class="description">
+        The document &lt;body&gt; element.
+    </div>
+    
 
     <!--
     
@@ -185,7 +191,343 @@
         <ul>
             <li>
                 
-<span class="param-type"><a href="FbMetadbHandle.html">FbMetadbHandle</a></span>
+<span class="param-type"><a href="HtmlNode.html">HtmlNode</a></span>
+
+
+            </li>
+        </ul>
+    
+    -->
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let doc = utils.ParseHtml("&lt;html>&lt;body>&lt;p>Hello&lt;/p>&lt;/body>&lt;/html>");if (doc &amp;&amp; doc.body) console.log(doc.body.innerHTML); // "&lt;p>Hello&lt;/p>"</code></pre>
+
+    
+</dd>
+
+        
+            
+
+<dt>
+<h4 class="name" id="documentElement">
+    <span class="type-signature"><span class="icon green">readonly</span>, <span class="icon green">nullable</span> </span>documentElement<span class="type-signature"> :<a href="HtmlNode.html">HtmlNode</a></span>
+    
+    <div class="container-source members">
+        <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+        <code><a href="js_foo_uie_jsplitter.js.html#line5099">line 5099</a></code>
+    </div>
+    
+</h4>
+
+
+</dt>
+<dd>
+    
+    <div class="description">
+        Root document element, usually the &lt;html&gt; element.
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type"><a href="HtmlNode.html">HtmlNode</a></span>
+
+
+            </li>
+        </ul>
+    
+    -->
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let doc = utils.ParseHtml("&lt;html>&lt;body>Hello&lt;/body>&lt;/html>");if (doc) console.log(doc.documentElement.tagName); // "html"</code></pre>
+
+    
+</dd>
+
+        
+            
+
+<dt>
+<h4 class="name" id="head">
+    <span class="type-signature"><span class="icon green">readonly</span>, <span class="icon green">nullable</span> </span>head<span class="type-signature"> :<a href="HtmlNode.html">HtmlNode</a></span>
+    
+    <div class="container-source members">
+        <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+        <code><a href="js_foo_uie_jsplitter.js.html#line5111">line 5111</a></code>
+    </div>
+    
+</h4>
+
+
+</dt>
+<dd>
+    
+    <div class="description">
+        The document &lt;head&gt; element.
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type"><a href="HtmlNode.html">HtmlNode</a></span>
+
+
+            </li>
+        </ul>
+    
+    -->
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let doc = utils.ParseHtml("&lt;html>&lt;head>&lt;title>Test&lt;/title>&lt;/head>&lt;/html>");if (doc &amp;&amp; doc.head) console.log(doc.head.innerHTML); // "&lt;title>Test&lt;/title>"</code></pre>
+
+    
+</dd>
+
+        
+            
+
+<dt>
+<h4 class="name" id="innerHTML">
+    <span class="type-signature"><span class="icon green">readonly</span> </span>innerHTML<span class="type-signature"> :string</span>
+    
+    <div class="container-source members">
+        <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+        <code><a href="js_foo_uie_jsplitter.js.html#line5159">line 5159</a></code>
+    </div>
+    
+</h4>
+
+
+</dt>
+<dd>
+    
+    <div class="description">
+        Serialized HTML markup inside the document body.<br>If the document has no body, this falls back to the root element.
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
+
+
+            </li>
+        </ul>
+    
+    -->
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let doc = utils.ParseHtml("&lt;html>&lt;body>&lt;p>Hello &lt;b>world&lt;/b>&lt;/p>&lt;/body>&lt;/html>");if (doc) console.log(doc.innerHTML); // "&lt;p>Hello &lt;b>world&lt;/b>&lt;/p>"</code></pre>
+
+    
+</dd>
+
+        
+            
+
+<dt>
+<h4 class="name" id="innerText">
+    <span class="type-signature"><span class="icon green">readonly</span> </span>innerText<span class="type-signature"> :string</span>
+    
+    <div class="container-source members">
+        <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+        <code><a href="js_foo_uie_jsplitter.js.html#line5146">line 5146</a></code>
+    </div>
+    
+</h4>
+
+
+</dt>
+<dd>
+    
+    <div class="description">
+        Alias of <a href="HtmlDocument.html#textContent">textContent</a>.<br>Since this parser has no browser layout engine, <b>innerText</b> does not emulate CSS visibility, rendered line wrapping, or layout-dependent text extraction.
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
 
 
             </li>
@@ -239,12 +581,12 @@
             
 
 <dt>
-<h4 class="name" id="PlaylistIndex">
-    <span class="type-signature"><span class="icon green">readonly</span> </span>PlaylistIndex<span class="type-signature"> :number</span>
+<h4 class="name" id="outerHTML">
+    <span class="type-signature"><span class="icon green">readonly</span> </span>outerHTML<span class="type-signature"> :string</span>
     
     <div class="container-source members">
         <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
-        <code><a href="js_foo_uie_jsplitter.js.html#line3776">line 3776</a></code>
+        <code><a href="js_foo_uie_jsplitter.js.html#line5171">line 5171</a></code>
     </div>
     
 </h4>
@@ -254,7 +596,7 @@
 <dd>
     
     <div class="description">
-        -1 if item is not in a playlist
+        Serialized outer HTML of the root element.
     </div>
     
 
@@ -264,7 +606,7 @@
         <ul>
             <li>
                 
-<span class="param-type">number</span>
+<span class="param-type">string</span>
 
 
             </li>
@@ -310,6 +652,11 @@
 
 
     
+
+    
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let doc = utils.ParseHtml("&lt;html>&lt;body>&lt;p>Hello&lt;/p>&lt;/body>&lt;/html>");if (doc) console.log(doc.outerHTML); // "&lt;html>&lt;head>&lt;/head>&lt;body>&lt;p>Hello&lt;/p>&lt;/body>&lt;/html>"</code></pre>
 
     
 </dd>
@@ -318,12 +665,12 @@
             
 
 <dt>
-<h4 class="name" id="PlaylistItemIndex">
-    <span class="type-signature"><span class="icon green">readonly</span> </span>PlaylistItemIndex<span class="type-signature"> :number</span>
+<h4 class="name" id="root">
+    <span class="type-signature"><span class="icon green">readonly</span>, <span class="icon green">nullable</span> </span>root<span class="type-signature"> :<a href="HtmlNode.html">HtmlNode</a></span>
     
     <div class="container-source members">
         <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
-        <code><a href="js_foo_uie_jsplitter.js.html#line3784">line 3784</a></code>
+        <code><a href="js_foo_uie_jsplitter.js.html#line5087">line 5087</a></code>
     </div>
     
 </h4>
@@ -333,7 +680,7 @@
 <dd>
     
     <div class="description">
-        -1 if item is not in a playlist
+        Root document element, usually the &lt;html&gt; element.<br>Alias of <a href="HtmlDocument.html#documentElement">documentElement</a>.
     </div>
     
 
@@ -343,7 +690,7 @@
         <ul>
             <li>
                 
-<span class="param-type">number</span>
+<span class="param-type"><a href="HtmlNode.html">HtmlNode</a></span>
 
 
             </li>
@@ -389,6 +736,95 @@
 
 
     
+
+    
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let doc = utils.ParseHtml("&lt;html>&lt;body>Hello&lt;/body>&lt;/html>");if (doc) console.log(doc.root.tagName); // "html"</code></pre>
+
+    
+</dd>
+
+        
+            
+
+<dt>
+<h4 class="name" id="textContent">
+    <span class="type-signature"><span class="icon green">readonly</span> </span>textContent<span class="type-signature"> :string</span>
+    
+    <div class="container-source members">
+        <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+        <code><a href="js_foo_uie_jsplitter.js.html#line5137">line 5137</a></code>
+    </div>
+    
+</h4>
+
+
+</dt>
+<dd>
+    
+    <div class="description">
+        Text content of the document body.<br>If the document has no body, this falls back to the root element text.<br>Whitespace is returned as it exists in the parsed text nodes.
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
+
+
+            </li>
+        </ul>
+    
+    -->
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let doc = utils.ParseHtml("&lt;html>&lt;body>&lt;p>Hello &lt;b>world&lt;/b>&lt;/p>&lt;/body>&lt;/html>");if (doc) console.log(doc.textContent); // "Hello world"</code></pre>
 
     
 </dd>
@@ -396,6 +832,505 @@
         </dl>
     
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+                
+
+<dt>
+    
+        <h4 class="name" id="getElementsByTagName">
+            
+                <span class="type-signature"></span>getElementsByTagName<span class="signature">(tagName)</span><span class="type-signature"> &rarr; {Array.&lt;<a href="HtmlNode.html">HtmlNode</a>>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+                <code><a href="js_foo_uie_jsplitter.js.html#line5215">line 5215</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Returns all descendant elements with the specified tag name.<br>Use "*" to return all descendant elements.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tagName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Tag name, for example "a", "div", "section" or "*".</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type">Array.&lt;<a href="HtmlNode.html">HtmlNode</a>></span>
+
+
+
+
+
+- Array of matching nodes. Empty array if nothing matches.
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>const doc = utils.ParseHtml("&lt;p>&lt;a href='https://example.com'>Link&lt;/a>&lt;/p>");const links = doc ? doc.getElementsByTagName("a") : [];console.log(links.length); // 1</code></pre>
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="querySelector">
+            
+                <span class="type-signature"></span>querySelector<span class="signature">(selector)</span><span class="type-signature"> &rarr; <span class="icon green">nullable</span> {<a href="HtmlNode.html">HtmlNode</a>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+                <code><a href="js_foo_uie_jsplitter.js.html#line5185">line 5185</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Returns the first element matching a CSS selector.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">CSS selector.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type"><a href="HtmlNode.html">HtmlNode</a></span>
+
+
+
+
+
+- First matching node, or `null` if nothing matches.
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>let doc = utils.ParseHtml("&lt;html>&lt;body>&lt;p class='name'>Test Artist&lt;/p>&lt;/body>&lt;/html>");let node = doc ? doc.querySelector(".name") : null;if (node) console.log(node.textContent); // "Test Artist"</code></pre>
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="querySelectorAll">
+            
+                <span class="type-signature"></span>querySelectorAll<span class="signature">(selector)</span><span class="type-signature"> &rarr; {Array.&lt;<a href="HtmlNode.html">HtmlNode</a>>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="js_foo_uie_jsplitter.js.html">js/foo_uie_jsplitter.js</a></code>,
+                <code><a href="js_foo_uie_jsplitter.js.html#line5200">line 5200</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Returns all elements matching a CSS selector.<br>The returned value is a regular JavaScript array.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">CSS selector.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type">Array.&lt;<a href="HtmlNode.html">HtmlNode</a>></span>
+
+
+
+
+
+- Array of matching nodes. Empty array if nothing matches.
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>let doc = utils.ParseHtml("&lt;ul>&lt;li class='album'>A&lt;/li>&lt;li class='album'>B&lt;/li>&lt;/ul>");let albums = doc ? doc.querySelectorAll(".album") : [];console.log(albums.length); // 2</code></pre>
+
+    
+
+</dd>
+
+            </dl>
     
 
     
@@ -420,7 +1355,7 @@
 <script src="scripts/linenumber.js"></script>
 
     <script>
-        var id = 'FbPlaybackQueueItem_sub'.replace(/"/g, '_');
+        var id = 'HtmlDocument_sub'.replace(/"/g, '_');
         var selectedApi = document.getElementById(id); // do not use jquery selector
         var $selectedApi = $(selectedApi);
 

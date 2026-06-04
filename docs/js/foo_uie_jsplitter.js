@@ -444,7 +444,7 @@ let fb = {
      * @param {boolean=} [options.show_text=true] If true, will add track count text.
      * @param {boolean=} [options.use_album_art=true] If true, will use album art of the focused item from dragged tracks (if available)
      * @param {boolean=} [options.use_theming=true] If true, will use Windows drag window style. Album art and custom image are resized to fit when Windows style is active.
-     * @param {GdiBitmap=} [options.custom_image=undefined] Custom dragging image. Will be also displayed if use_album_art is true, but there is no album art available.
+     * @param {GdiBitmap=} [options.custom_image=undefined] (or {@link D2DBitmap} if {@link window.DrawMode} == 1). Custom dragging image. Will be also displayed if use_album_art is true, but there is no album art available.
      * @return {number} Effect that was returned in {@link module:Callbacks.on_drag_drop on_drag_drop}.
      *
      * @sourceFile ../../component/samples/basic/DragnDrop.js
@@ -1017,7 +1017,7 @@ let gdi = {
      *
      * @param {string} path_or_xml string containing SVG file path or raw XML
      * @param {number=} [max_width=0] If specified rasterizes with width = max_width and height according to the proportions, otherwise uses "width" and "height" attributes in SVG header if exist
-     * @return {GdiBitmap?} Rasterized bitmap, null in case of error
+     * @return {?GdiBitmap} Rasterized bitmap, null in case of error
      * 
      * @example
      * const svg_file = fb.ComponentPath + 'samples\\svg\\android.svg';
@@ -1266,6 +1266,15 @@ let plman = {
 
     /**
      * @param {number} playlistIndex
+     * @return {Array<number>}
+     *
+     * @example
+     * let selected_indexes = plman.GetPlaylistSelectedIndexes(plman.ActivePlaylist);
+     */
+    GetPlaylistSelectedIndexes: function (playlistIndex) { }, // (FbMetadbHandleList)
+
+    /**
+     * @param {number} playlistIndex
      * @return {FbMetadbHandleList}
      *
      * @example
@@ -1299,6 +1308,11 @@ let plman = {
      */
     InsertPlaylistItemsFilter: function (playlistIndex, base, handle_list, select) { }, // (void) select = false
 
+    /**
+     * @param {number} playlistIndex
+     */
+    InvertSelection: function (playlistIndex) { },
+    
     /**
      * @param {number} playlistIndex
      * @return {boolean}
@@ -1364,6 +1378,14 @@ let plman = {
     MovePlaylistSelection: function (playlistIndex, delta) { }, // (boolean)
 
     /**
+     * Unlike {@link plman.MovePlaylistSelection}, this has full support for non-contiguous selections and all you have to do is supply the new position index.
+     * 
+     * @param {number} playlistIndex
+     * @param {number} new_pos
+     */
+    MovePlaylistSelectionV2: function (playlistIndex, new_pos) { }, 
+
+    /**
      * @param {number} playlistIndex
      * @return {number}
      *
@@ -1420,6 +1442,22 @@ let plman = {
      * @return {boolean}
      */
     RenamePlaylist: function (playlistIndex, name) { }, // (boolean)
+
+    /**
+     * @param {number} playlistIndex
+     * @param {number} playlistItemIndex
+     * @param {FbMetadbHandle|FbMetadbHandleList} handle_or_handles
+     */
+    ReplacePlaylistItem: function (playlistIndex, playlistItemIndex, handle_or_handles) { },
+
+    /**
+     * This selects playlist items in a similar manner to the foobar2000 native playlist search.
+     * 
+     * @param {number} playlistIndex
+     * @param {string} query
+     * @return {Array<number>} Array of selected indexes
+     */
+    SelectQueryItems: function (playlistIndex, query) { }, 
 
     /**
      * Workaround so you can use the Edit menu or run {@link fb.RunMainMenuCommand}("Edit/Something...")
@@ -1511,6 +1549,16 @@ let plman = {
      * fb.ShowAutoPlaylistUI(plman.ActivePlaylist);
      */
     ShowAutoPlaylistUI: function (playlistIndex) { }, // (boolean)
+
+    /**
+     * Shows popup window letting you set various locks on playlist with specified index
+     *
+     * @param {number} playlistIndex
+     *
+     * @example
+     * fb.ShowPlaylistLockUI(plman.ActivePlaylist);
+     */
+    ShowPlaylistLockUI: function (playlistIndex) { },
 
     /**
      * @param {number} playlistIndex Index of playlist to alter.
@@ -1897,11 +1945,11 @@ let utils = {
      *
      * @sourceFile ../../component/samples/basic/GetAlbumArtAsync.js
      */
-    GetAlbumArtAsync: function (window_id, handle, art_id, need_stub, only_embed, no_load) { }, // (void) [, art_id][, need_stub][, only_embed][, no_load]
+    GetAlbumArtAsync: function (window_id, handle, art_id, need_stub, only_embed, no_load) { },
 
     /**
      * @typedef {Object} ArtPromiseResult
-     * @property {?GdiBitmap} image null on failure
+     * @property {?GdiBitmap} image (or {@link D2DBitmap} if {@link window.DrawMode} == 1). Null on failure
      * @property {string} path path to image file (or track file if image is embedded)
      */
 
@@ -1928,12 +1976,12 @@ let utils = {
      *
      * @param {string} rawpath Path to track file
      * @param {number=} [art_id=0] See {@link module:Flags.AlbumArtId AlbumArtId} enum
-     * @return {GdiBitmap}
+     * @return {GdiBitmap} (or {@link D2DBitmap} if {@link window.DrawMode} == 1) 
      *
      * @example
      * let img = utils.GetAlbumArtEmbedded(fb.GetNowPlaying().RawPath, 0);
      */
-    GetAlbumArtEmbedded: function (rawpath, art_id) { }, // (GdiBitmap) [, art_id]
+    GetAlbumArtEmbedded: function (rawpath, art_id) { },
 
     /**
      * Load art image for the track.<br>
@@ -1943,11 +1991,11 @@ let utils = {
      * @param {FbMetadbHandle} handle
      * @param {number=} [art_id=0] See {@link module:Flags.AlbumArtId AlbumArtId} enum
      * @param {boolean=} [need_stub=true]
-     * @return {GdiBitmap}
+     * @return {GdiBitmap} (or {@link D2DBitmap} if {@link window.DrawMode} == 1)
      *
      * @sourceFile ../../component/samples/basic/GetAlbumArtV2.js
      */
-    GetAlbumArtV2: function (handle, art_id, need_stub) { }, // (GdiBitmap) [, art_id][, need_stub]
+    GetAlbumArtV2: function (handle, art_id, need_stub) { },
 
     /**
      * @return {string} Returns an empty string if clipboard contents are not text.
@@ -2138,6 +2186,29 @@ let utils = {
     MessageBox: function (msg, title, buttons, icon, default_button, help_text) { }, // (string)
 
     /**
+     * Parses an HTML string and returns a lightweight DOM-like document.<br>
+     *<br>
+     * This parser is backed by the native HTML parser. It does not use ActiveX, MSHTML, a browser engine, or external resource loading.<br>
+     *<br>
+     * Notes:<br>
+     * - The input must be HTML text, not a file path.<br>
+     * - The returned API is DOM-like, but it is not a full browser DOM.<br>
+     * - CSS, layout, visibility, scripts, network loading, and browser events are not processed.<br>
+     * - <b>innerText</b> is currently an alias of <b>textContent</b>.<br>
+     * - The method returns null if the document could not be created.<br>
+     *
+     * @param {string} html HTML source text.
+     * @return {?HtmlDocument} Parsed document, or null on failure.
+     *
+     * @example
+     * const doc = utils.ParseHtml("<html><body><p>Hello <b>world</b></p></body></html>");
+     * if (doc) console.log(doc.body.textContent); // "Hello world"
+     * 
+     * @sourceFile ../../component/samples/basic/ParseHtml.js
+     */
+    ParseHtml: function (html) { },
+
+    /**
      * Check if the supplied string matches the pattern.<br>
      * Using Microsoft MS-DOS wildcards match type. eg "*.txt", "abc?.tx?"
      *
@@ -2217,6 +2288,22 @@ let utils = {
     ReadINI: function (filename, section, key, default_val) { }, // (string) [, default_val]
     
     /**
+     * Opens URL, file, folder, document association, or starts external program.
+     *
+     * @param {string} target URL, file path, folder path, executable name/path, or command line.
+     * @param {Array<string>=} [args=[]] Program arguments
+     * @param {string=} [working_dir=""] Working directory path. Current directory if empty.
+     * @param {string=} [verb=RunVerb.Open] See {@link module:Flags.RunVerb RunVerb}
+     * @param {ShowWindow=} [show=ShowWindow.Normal] How the window is to be shown. See {@link module:Flags.ShowWindow ShowWindow}
+     * @param {boolean=} [wait=false] Wait for process execution end and return ExitCode if possible.
+     * @return {RunResult} See {@link RunResult}
+     * @example
+	 * utils.Run("https://www.wikipedia.org");
+	 * utils.Run("notepad.exe", ["C:\\Users\\LUR\\Desktop\\notes.txt"]);
+     */
+    Run(target, args, working_dir, verb, show, wait) { },
+
+    /**
      * @param {string} text
      */
     SetClipboardText: function (text) { },
@@ -2245,7 +2332,7 @@ let utils = {
      * Html code must be IE compatible, meaning:<br>
      * - JavaScript features are limited by IE (see {@link https://www.w3schools.com/js/js_versions.asp}).<br>
      * - Objects passed to `data` are limited to standard JavaScript objects:<br>
-     *   - No extensions from Spider Monkey Panel (e.g. no FbMetadbHandle or GdiBitmap).<br>
+     *   - No extensions from Spider Monkey Panel (e.g. no FbMetadbHandle or GdiBitmap/D2DBitmap etc.).<br>
      *<br>
      * There are also additional limitations:<br>
      * - options.data may contain only the following types:<br>
@@ -2597,11 +2684,11 @@ let window = {
     Width: undefined, // (uint) (read)
 
     /**
-     * Clears all current panel properties set by {@link window.SetProperty}
+     * Clears all current panel properties set by {@link window.SetProperty}, {@link window.SetProperties} or {@link window.ImportProperties}
      *
-     * @param {boolean=} [reloadPanel=false] If true, reloads panel after clearing
+     * @param {boolean=} [reload_panel=false] If true, reloads panel script after clearing
      */
-    ClearProperties: function (reloadPanel) { }, // (void)
+    ClearProperties: function (reload_panel) { }, // (void)
 
     /**
      * See {@link clearTimeout}.
@@ -2731,9 +2818,12 @@ let window = {
     GetFontDUI: function (type) { }, // (GdiFont)
 
     /**
-     * Get all current panel properties set by {@link window.SetProperty} calls<br>
+     * Get all current panel properties set by {@link window.SetProperty}, {@link window.SetProperties} or {@link window.ImportProperties}
      *
      * @return {Map} Map of panel properties
+     * @example
+     * const props = window.GetProperties();
+     * for(const [key, value] of props) console.log(`Key = ${key}, Value = ${value}`);
      */
     GetProperties: function () { },
 
@@ -2751,11 +2841,13 @@ let window = {
     GetProperty: function (name, default_val) { }, // (VARIANT) [, default_val]
 
     /**
-     * Imports panel properties from file and reloads the script
+     * Imports panel properties from file and (optionally) reloads the panel script<br>
+     * DOES clear all existing panel properties.
      * @param {string} fileName
-     * @return {boolean} If false, then an error occurred during import
+     * @param {boolean=} [reload_panel=false] If true, reloads panel script
+     * @return {boolean} If false, then an error occurred during import. Also, if an error occurs during import, the panel does not reload.
      */
-    ImportProperties: function (fileName) { },
+    ImportProperties: function (fileName, reload_panel) { },
 
     /**
      * This will trigger {@link module:Callbacks.on_notify_data on_notify_data}(name, info) in other panels.<br>
@@ -2777,9 +2869,9 @@ let window = {
 
     /**
      * Reloads panel.
-     * @param {boolean=} [clearProperties=false] If true, all panel properties will be cleared before reload
+     * @param {boolean=} [clear_properties=false] If true, all panel properties will be cleared before reload
      */
-    Reload: function (clearProperties) { }, // (void)
+    Reload: function (clear_properties) { }, // (void)
 
     /**
      * Performance note: don't force the repaint unless it's really necessary -
@@ -2822,6 +2914,19 @@ let window = {
      * @return {number}
      */
     SetInterval: function (func, delay) { }, // (uint)
+
+    /**
+     * Set panel properties from input map and (optionally) reloads the panel script<br>
+     * Does NOT clear existing properties before setting.
+     *
+     * @param {Map} values Map of values to set
+     * @param {reload_panel=} [reload_panel=false] If true, reloads panel script after setting
+     * 
+     * @example
+     * const values = new Map([["First value", 1], ["Second value", 2], ["Third value", 3]]);
+     * window.SetProperties(values);
+     */
+    SetProperties: function (values, reload_panel) { }, // (void)
 
     /**
      * Set property value.<br>
@@ -3292,7 +3397,7 @@ function FbMetadbHandleList(arg) {
      * Any existing artwork of the specified type will be overwritten!<br>
      * Embedding covers is an asynchronous operation, so its result is not controlled here in any way. However, all the work of the method up to this point (encoding, creating art data) will return false in case of an error.
      * 
-     * @param {GdiBitmap} image image to attach (or D2DBitmap in Direct2D drawing mode)
+     * @param {GdiBitmap} image (or {@link D2DBitmap} if {@link window.DrawMode} == 1). Image to attach
      * @param {AlbumArtId=} [art_id=AlbumArtId.front] See {@link module:Flags.AlbumArtId AlbumArtId}
      * @param {AttachImage2Codec=} [codec=AttachImage2Codec.Jpeg] See {@link module:Flags.AttachImage2Codec AttachImage2Codec}
      * @param {float=} [quality=70.0] <b>NOTE</b>: For WebP quality 100 means lossless WebP; values below 100 use lossy WebP. For PNG quality is ignored because PNG codec is always lossless. 
@@ -4908,4 +5013,465 @@ function ThemeManager() {
      * @param {number=} [stateid=0]
      */
     this.SetPartAndStateID = function (partid, stateid) { }; // (void)
+}
+
+/**
+ * Object returned by {@link utils.Run}
+ * 
+ * @constructor
+ * @hideconstructor
+ */
+function RunResult() {
+
+    /**
+     * true if <b>ShellExecuteEx</b> WinAPI function successfully accepted the request.<br>
+     * This means that Windows was able to start/open the target or pass it to the associated application. It does not necessarily mean that the target application completed successfully, unless <b>wait</b> arg of {@link utils.Run} was set to true and <b>ExitCode</b> was checked.
+     * 
+     * @type {boolean}
+     * @readonly
+     */
+    this.OK = false; // (bool) (read)
+
+    /**
+     * Process exit code.<br>
+     * This value is meaningful only when <b>wait</b> arg of {@link utils.Run} is true and the launched process handle was available. If <b>wait</b> is false, this value is usually 0.
+     * 
+     * @type {number}
+     * @readonly
+     */
+    this.ExitCode = 0; // (uint) (read)
+
+    /**
+     * Win32 error code returned by <b>GetLastError</b> WinAPI function.<br>
+     * This is 0 on success. When <b>OK</b> is false, it usually contains the reason why <b>ShellExecuteEx</b> failed. It may also be set if retrieving the process exit code failed.
+     * 
+     * @type {number}
+     * @readonly
+     */
+    this.Win32Error = 0; // (uint) (read)
+
+    /**
+     * Native <b>ShellExecute/ShellExecuteEx</b> result code.<br>
+     * Values greater than 32 usually indicate success. Values less than or equal to 32 indicate a shell-level error, such as file not found, access denied, no association, or invalid executable format.
+     * 
+     * @type {number}
+     * @readonly
+     */
+    this.ShellCode = 0; // (long) (read)
+}
+
+/**
+ * Object returned by {@link utils.ParseHtml}<br>
+ *<br>
+ * Lightweight DOM-like HTML document backed by the native HTML parser.<br>
+ *<br>
+ * Notes:<br>
+ * - This is not a full browser DOM.<br>
+ * - Scripts, CSS, layout, external resources and browser events are not processed.<br>
+ * - <b>innerText</b> is currently an alias of <b>textContent</b>.<br>
+ *
+ * @hideconstructor
+ */
+class HtmlDocument {
+    /**
+     * Root document element, usually the &lt;html&gt; element.<br>
+     * Alias of {@link HtmlDocument#documentElement documentElement}.
+     *
+     * @type {?HtmlNode}
+     * @readonly
+     *
+     * @example
+     * let doc = utils.ParseHtml("<html><body>Hello</body></html>");
+     * if (doc) console.log(doc.root.tagName); // "html"
+     */
+    root = undefined; // (read)
+
+    /**
+     * Root document element, usually the &lt;html&gt; element.
+     *
+     * @type {?HtmlNode}
+     * @readonly
+     *
+     * @example
+     * let doc = utils.ParseHtml("<html><body>Hello</body></html>");
+     * if (doc) console.log(doc.documentElement.tagName); // "html"
+     */
+    documentElement = undefined; // (read)
+
+    /**
+     * The document &lt;head&gt; element.
+     *
+     * @type {?HtmlNode}
+     * @readonly
+     *
+     * @example
+     * let doc = utils.ParseHtml("<html><head><title>Test</title></head></html>");
+     * if (doc && doc.head) console.log(doc.head.innerHTML); // "<title>Test</title>"
+     */
+    head = undefined; // (read)
+
+    /**
+     * The document &lt;body&gt; element.
+     *
+     * @type {?HtmlNode}
+     * @readonly
+     *
+     * @example
+     * let doc = utils.ParseHtml("<html><body><p>Hello</p></body></html>");
+     * if (doc && doc.body) console.log(doc.body.innerHTML); // "<p>Hello</p>"
+     */
+    body = undefined; // (read)
+
+    /**
+     * Text content of the document body.<br>
+     * If the document has no body, this falls back to the root element text.<br>
+     * Whitespace is returned as it exists in the parsed text nodes.
+     *
+     * @type {string}
+     * @readonly
+     *
+     * @example
+     * let doc = utils.ParseHtml("<html><body><p>Hello <b>world</b></p></body></html>");
+     * if (doc) console.log(doc.textContent); // "Hello world"
+     */
+    textContent = undefined; // (read)
+
+    /**
+     * Alias of {@link HtmlDocument#textContent textContent}.<br>
+     * Since this parser has no browser layout engine, <b>innerText</b> does not emulate CSS visibility, rendered line wrapping, or layout-dependent text extraction.
+     *
+     * @type {string}
+     * @readonly
+     */
+    innerText = undefined; // (read)
+
+    /**
+     * Serialized HTML markup inside the document body.<br>
+     * If the document has no body, this falls back to the root element.
+     *
+     * @type {string}
+     * @readonly
+     *
+     * @example
+     * let doc = utils.ParseHtml("<html><body><p>Hello <b>world</b></p></body></html>");
+     * if (doc) console.log(doc.innerHTML); // "<p>Hello <b>world</b></p>"
+     */
+    innerHTML = undefined; // (read)
+
+    /**
+     * Serialized outer HTML of the root element.
+     *
+     * @type {string}
+     * @readonly
+     *
+     * @example
+     * let doc = utils.ParseHtml("<html><body><p>Hello</p></body></html>");
+     * if (doc) console.log(doc.outerHTML); // "<html><head></head><body><p>Hello</p></body></html>"
+     */
+    outerHTML = undefined; // (read)
+
+    /**
+     * Returns the first element matching a CSS selector.
+     * 
+     * @method
+     * @param {string} selector CSS selector.
+     * @return {?HtmlNode} First matching node, or `null` if nothing matches.
+     *
+     * @example
+     * let doc = utils.ParseHtml("<html><body><p class='name'>Test Artist</p></body></html>");
+     * let node = doc ? doc.querySelector(".name") : null;
+     * if (node) console.log(node.textContent); // "Test Artist"
+     */
+    querySelector = function (selector) { }; //
+
+    /**
+     * Returns all elements matching a CSS selector.<br>
+     * The returned value is a regular JavaScript array.
+     *
+     * @method
+     * @param {string} selector CSS selector.
+     * @return {Array<HtmlNode>} Array of matching nodes. Empty array if nothing matches.
+     *
+     * @example
+     * let doc = utils.ParseHtml("<ul><li class='album'>A</li><li class='album'>B</li></ul>");
+     * let albums = doc ? doc.querySelectorAll(".album") : [];
+     * console.log(albums.length); // 2
+     */
+    querySelectorAll = function (selector) { }; //
+
+    /**
+     * Returns all descendant elements with the specified tag name.<br>
+     * Use "*" to return all descendant elements.
+     * 
+     * @method
+     * @param {string} tagName Tag name, for example "a", "div", "section" or "*".
+     * @return {Array<HtmlNode>} Array of matching nodes. Empty array if nothing matches.
+     *
+     * @example
+     * const doc = utils.ParseHtml("<p><a href='https://example.com'>Link</a></p>");
+     * const links = doc ? doc.getElementsByTagName("a") : [];
+     * console.log(links.length); // 1
+     */
+    getElementsByTagName = function (tagName) { }; //
+}
+
+/**
+ * Lightweight DOM-like HTML node.<br>
+ *<br>
+ * HtmlNode can represent an element node, text node, comment node, or another parsed DOM node type. Some operations, such as attributes and class checks, only make sense for element nodes.<br>
+ * <b>NOTE</b>: HtmlNode objects keep the underlying native document alive while they exist.
+ *
+ * @hideconstructor
+ */
+class HtmlNode {
+    /**
+     * Whether this node is an element node.<br>
+     * Element nodes are tags such as &lt;div&gt;, &lt;a&gt;, &lt;p&gt;, &lt;body&gt;.<br>
+     * Text nodes and comments are not element nodes.
+     *
+     * @type {boolean}
+     * @readonly
+     *
+     * @example
+     * const doc = utils.ParseHtml("<p>Hello <b>world</b></p>");
+     * const p = doc ? doc.querySelector("p") : null;
+     * if (p) {
+     *     console.log(p.isElement); // true
+     *     console.log(p.firstChild ? p.firstChild.isElement : null); // false
+     * }
+     */
+    isElement = undefined; // (read)
+
+    /**
+     * Lowercase tag name for element nodes.<br>
+     * For non-element nodes, this is an empty string.
+     *
+     * @type {string}
+     * @readonly
+     *
+     * @example
+     * const doc = utils.ParseHtml("<BODY><P>Hello</P></BODY>");
+     * if (doc) console.log(doc.body.tagName); // "body"
+     */
+    tagName = undefined; // (read)
+
+    /**
+     * Value of the <b>class</b> attribute.<br>
+     * For non-element nodes, or elements without a class attribute, this is an empty string.
+     *
+     * @type {string}
+     * @readonly
+     *
+     * @example
+     * const doc = utils.ParseHtml("<p class='album featured'>Title</p>");
+     * if (doc) {
+     *     const p = doc.querySelector("p");
+     *     console.log(p.className); // "album featured"
+     * }
+     */
+    className = undefined; // (read)
+
+    /**
+     * Text content of this node and its descendants.<br>
+     * Whitespace is returned as it exists in parsed text nodes.
+     *
+     * @type {string}
+     * @readonly
+     *
+     * @example
+     * const doc = utils.ParseHtml("<p>Hello <b>world</b></p>");
+     * if (doc) {
+     *     const p = doc.querySelector("p");
+     *     console.log(p ? p.textContent : null); // "Hello world"
+     * }
+     */
+    textContent = undefined; // (read)
+
+    /**
+     * Alias of {@link HtmlNode#textContent textContent}.<br>
+     * Since this parser has no browser layout engine, <b>innerText</b> does not emulate CSS visibility, rendered line wrapping, or layout-dependent text extraction.
+     *
+     * @type {string}
+     * @readonly
+     */
+    innerText = undefined; // (read)
+
+    /**
+     * Serialized HTML markup inside this node.
+     *
+     * @type {string}
+     * @readonly
+     *
+     * @example
+     * const doc = utils.ParseHtml("<p>Hello <b>world</b></p>");
+     * const p = doc.querySelector("p");
+     * console.log(p.innerHTML); // "Hello <b>world</b>"
+     */
+    innerHTML = undefined; // (read)
+
+    /**
+     * Serialized HTML markup of this node itself.
+     *
+     * @type {string}
+     * @readonly
+     *
+     * @example
+     * const doc = utils.ParseHtml("<p>Hello <b>world</b></p>");
+     * const p = doc.querySelector("p");
+     * console.log(p.outerHTML); // "<p>Hello <b>world</b></p>"
+     */
+    outerHTML = undefined; // (read)
+
+    /**
+     * First child node.<br>
+     * <b>Important</b>: this can be a text node or comment, not necessarily an element.<br>
+     * Whitespace-only text nodes are preserved. Use JSON.stringify(node.textContent) while debugging if you need to see line breaks, tabs, and spaces explicitly.
+     *
+     * Use {@link HtmlNode#children children}[0] or {@link HtmlNode#querySelector querySelector}
+     * when you need an element.
+     *
+     * @type {?HtmlNode}
+     * @readonly
+     *
+     * @example
+     * const doc = utils.ParseHtml("<li>text before link <a href='https://example.com'>Link</a></li>");
+     * const li = doc.querySelector("li");
+     *
+     * console.log(JSON.stringify(li.firstChild.textContent)); // "text before link "
+     *
+     * const a = li.querySelector("a");
+     * console.log(a.getAttribute("href")); // "https://example.com"
+     */
+    firstChild = undefined; // (read)
+
+    /**
+     * All child nodes, including element nodes, text nodes and comments.
+     *
+     * @type {Array<HtmlNode>}
+     * @readonly
+     *
+     * @example
+     * const doc = utils.ParseHtml("<p>Hello <b>world</b></p>");
+     * const p = doc.querySelector("p");
+     * console.log(p.childNodes.length); // 2
+     */
+    childNodes = undefined; // (read)
+
+    /**
+     * Child element nodes only.<br>
+     * Text nodes and comments are skipped.
+     *
+     * @type {Array<HtmlNode>}
+     * @readonly
+     *
+     * @example
+     * const doc = utils.ParseHtml("<p>Hello <b>world</b></p>");
+     * const p = doc.querySelector("p");
+     * console.log(p.children.length); // 1
+     * console.log(p.children[0].tagName); // "b"
+     */
+    children = undefined; // (read)
+
+    /**
+     * Returns an attribute value.<br>
+     * For missing attributes or non-element nodes, returns an empty string.
+     * 
+     * @method
+     * @param {string} name Attribute name.
+     * @return {string} Attribute value, or empty string.
+     *
+     * @example
+     * const doc = utils.ParseHtml("<a href='https://example.com'>Link</a>");
+     * const a = doc.querySelector("a");
+     * console.log(a.getAttribute("href")); // "https://example.com"
+     */
+    getAttribute = function (name) { }; //
+
+    /**
+     * Checks whether an element has an attribute.<br>
+     * For non-element nodes, returns false.
+     * 
+     * @method
+     * @param {string} name Attribute name.
+     * @return {boolean}
+     *
+     * @example
+     * const doc = utils.ParseHtml("<a href='https://example.com'>Link</a>");
+     * const a = doc.querySelector("a");
+     * console.log(a.hasAttribute("href")); // true
+     * console.log(a.hasAttribute("title")); // false
+     */
+    hasAttribute = function (name) { }; //
+
+    /**
+     * Checks whether the element has a CSS class token.<br>
+     * This checks class tokens, not arbitrary substrings.<br>
+     * For example, <b>hasClass("album")</b> matches <b>class="album featured"</b>, but not <b>class="album-list"</b>.<br>
+     * For non-element nodes, returns false.<br>
+     * 
+     * @method
+     * @param {string} className Class token to check.
+     * @return {boolean}
+     *
+     * @example
+     * const doc = utils.ParseHtml("<li class='album featured'>Title</li>");
+     * const li = doc.querySelector("li");
+     *
+     * console.log(li.hasClass("album")); // true
+     * console.log(li.hasClass("featured")); // true
+     * console.log(li.hasClass("album-list")); // false
+     */
+    hasClass = function (className) { }; //
+
+    /**
+     * Returns the first descendant element matching a CSS selector.
+     * 
+     * @method
+     * @param {string} selector CSS selector.
+     * @return {?HtmlNode} First matching node, or `null` if nothing matches.
+     *
+     * @example
+     * const doc = utils.ParseHtml("<li>text <a href='https://example.com'>Link</a></li>");
+     * const li = doc.querySelector("li");
+     * const a = li.querySelector("a[href]");
+     *
+     * if (a) {
+     *     console.log(a.getAttribute("href")); // "https://example.com"
+     * }
+     */
+    querySelector = function (selector) { }; //
+
+    /**
+     * Returns all descendant elements matching a CSS selector.<br>
+     * The returned value is a regular JavaScript array.
+     * 
+     * @method
+     * @param {string} selector CSS selector.
+     * @return {Array<HtmlNode>} Array of matching nodes. Empty array if nothing matches.
+     *
+     * @example
+     * const doc = utils.ParseHtml("<ul><li class='album'>A</li><li class='album featured'>B</li></ul>");
+     * const list = doc.querySelector("ul");
+     * const albums = list.querySelectorAll(".album");
+     *
+     * console.log(albums.length); // 2
+     */
+    querySelectorAll = function (selector) { }; //
+
+    /**
+     * Returns all descendant elements with the specified tag name.<br>
+     * Use "*" to return all descendant elements.
+     * 
+     * @method
+     * @param {string} tagName Tag name, for example "a", "div", "section" or "*".
+     * @return {Array<HtmlNode>} Array of matching nodes. Empty array if nothing matches.
+     *
+     * @example
+     * const doc = utils.ParseHtml("<p><a href='https://example.com'>One</a><a href='/two'>Two</a></p>");
+     * const p = doc.querySelector("p");
+     * const links = p.getElementsByTagName("a");
+     *
+     * console.log(links.length); // 2
+     */
+    getElementsByTagName = function (tagName) { }; //
 }
