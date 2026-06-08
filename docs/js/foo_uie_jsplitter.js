@@ -2288,20 +2288,128 @@ let utils = {
     ReadINI: function (filename, section, key, default_val) { }, // (string) [, default_val]
     
     /**
-     * Opens URL, file, folder, document association, or starts external program.
+     * Runs a file, executable, URL, or document through the Windows shell.<br>
+     * This method uses ShellExecuteEx, so it supports shell verbs, file associations, URLs, and elevation through "runas".<br>
+     * Unlike {@link utils.RunCmdAsync RunCmdAsync}, this method does not capture stdout or stderr.<br>
+     * If wait is true, the call blocks until the launched process exits.<br>
      *
-     * @param {string} target URL, file path, folder path, executable name/path, or command line.
-     * @param {Array<string>=} [args=[]] Program arguments
-     * @param {string=} [working_dir=""] Working directory path. Current directory if empty.
-     * @param {string=} [verb=RunVerb.Open] See {@link module:Flags.RunVerb RunVerb}
-     * @param {ShowWindow=} [show=ShowWindow.Normal] How the window is to be shown. See {@link module:Flags.ShowWindow ShowWindow}
-     * @param {boolean=} [wait=false] Wait for process execution end and return ExitCode if possible.
-     * @return {RunResult} See {@link RunResult}
+     * @param {string} target
+     * File, executable, URL, or document to run/open.<br>
+     * This value must not be empty.<br>
+     *
+     * @param {string|string[]} [args]
+     * Command line arguments.<br>
+     * If a string is passed, it is appended as-is.<br>
+     * If an array is passed, each item is quoted automatically when needed.<br>
+     * For documents, URLs, or shell verbs that do not use parameters, this can be omitted.<br>
+     *
+     * @param {string} [workingDir=""]
+     * Working directory for the process.<br>
+     * Pass an empty string to use the default working directory.<br>
+     *
+     * @param {string} [verb=""]
+     * Shell verb to use.<br>
+     * Pass an empty string to use the default verb.<br>
+     * Common values are "open", "edit", "print", and "runas".<br>
+     * Use "runas" to request elevation through UAC.<br>
+     *
+     * @param {number} [show=ShowWindow.Hide]
+     * Window display mode.<br>
+     * Use one of the ShowWindow values, for example ShowWindow.Hide or ShowWindow.Show.<br>
+     *
+     * @param {boolean} [wait=false]
+     * Whether to wait for the launched process to exit.<br>
+     * If false, success only means that ShellExecuteEx accepted the request.<br>
+     * If true, success is true only when the process handle is available, the process exits normally, and its exit code is 0.<br>
+     * Be careful: wait=true blocks the current script until the process exits.<br>
+     *
+     * @returns {RunResult}
+     * Result object.<br>
+     *
      * @example
-	 * utils.Run("https://www.wikipedia.org");
-	 * utils.Run("notepad.exe", ["C:\\Users\\LUR\\Desktop\\notes.txt"]);
+     * // Open a URL with the default browser.
+     * const result = utils.Run("https://www.foobar2000.org");
+     *
+     * @example
+     * // Run a command and wait for its exit code.
+     * const result = utils.Run(
+     *     "cmd.exe",
+     *     '/c "exit /b 7"',
+     *     "",
+     *     "",
+     *     ShowWindow.Hide,
+     *     true
+     * );
+     *
+     * console.log(result.success);    // false
+     * console.log(result.exit_code);  // 7
+     *
+     * @example
+     * // Run elevated.
+     * const result = utils.Run(
+     *     "notepad.exe",
+     *     undefined,
+     *     "",
+     *     "runas",
+     *     ShowWindow.Show,
+     *     false
+     * );
      */
     Run(target, args, working_dir, verb, show, wait) { },
+
+    /**
+     * Runs an external process asynchronously.<br>
+     * Standard output and standard error are captured separately.<br>
+     * The method returns a task id immediately, and the result is delivered later through the async command callback/event.<br>
+     * If the process does not finish before timeoutMs, the whole process tree is terminated.<br>
+     * Pass 0 as timeoutMs to wait indefinitely.<br>
+     *
+     * @param {string} app
+     * Full path or executable name to run.<br>
+     * If only an executable name is specified, it is resolved by the system search rules.<br>
+     *
+     * @param {string|string[]} [args]
+     * Command line arguments.<br>
+     * If a string is passed, it is appended to the command line as-is.<br>
+     * If an array is passed, each item is quoted automatically when needed.<br>
+     *
+     * @param {string} [workingDir=""]
+     * Working directory for the process.<br>
+     * Pass an empty string to use the current working directory.<br>
+     *
+     * @param {number} [show=ShowWindow.Hide]
+     * Window display mode.<br>
+     * Use one of the ShowWindow values.<br>
+     * The default value is ShowWindow.Hide.<br>
+     *
+     * @param {number} [timeoutMs=0]
+     * Maximum time to wait for the process, in milliseconds.<br>
+     * Pass 0 to wait indefinitely.<br>
+     * On timeout, success is false, exit_code is 0xFFFFFFFF, and stderr contains a timeout message.<br>
+     *
+     * @returns {number}
+     * Task id of the asynchronous operation.<br>
+     * The task id can be used to match the returned result with the original RunCmdAsync call.<br>
+     *
+     * @example
+     * const taskId = utils.RunCmdAsync("cmd.exe", ["/c", "echo", "hello"]);
+     *
+     * @example
+     * const taskId = utils.RunCmdAsync(
+     *     "cmd.exe",
+     *     '/c "exit /b 7"'
+     * );
+     *
+     * @example
+     * const taskId = utils.RunCmdAsync(
+     *     "cmd.exe",
+     *     '/c "ping 127.0.0.1 -n 11 >nul"',
+     *     "",
+     *     ShowWindow.Hide,
+     *     5000
+     * );
+     */
+    RunCmdAsync(app, args, working_dir, show, timeout_ms) { },
 
     /**
      * @param {string} text
@@ -5016,17 +5124,18 @@ function ThemeManager() {
 }
 
 /**
- * Object returned by {@link utils.Run}
- * 
+ * Object returned by {@link utils.Run}.<br>
+ *
  * @constructor
  * @hideconstructor
  */
 function RunResult() {
 
     /**
-     * true if <b>ShellExecuteEx</b> WinAPI function successfully accepted the request.<br>
-     * This means that Windows was able to start/open the target or pass it to the associated application. It does not necessarily mean that the target application completed successfully, unless <b>wait</b> arg of {@link utils.Run} was set to true and <b>ExitCode</b> was checked.
-     * 
+     * true if the operation completed successfully.<br>
+     * If <b>wait</b> argument of {@link utils.Run} is false, this means that <b>ShellExecuteEx</b> successfully accepted the request.<br>
+     * If <b>wait</b> is true, this means that <b>ShellExecuteEx</b> accepted the request, a process handle was available, and the process exited with code 0.<br>
+     *
      * @type {boolean}
      * @readonly
      */
@@ -5034,8 +5143,10 @@ function RunResult() {
 
     /**
      * Process exit code.<br>
-     * This value is meaningful only when <b>wait</b> arg of {@link utils.Run} is true and the launched process handle was available. If <b>wait</b> is false, this value is usually 0.
-     * 
+     * This value is meaningful only when <b>wait</b> argument of {@link utils.Run} is true and the launched process handle was available.<br>
+     * If <b>wait</b> is false, this value is usually 0.<br>
+     * A non-zero value usually means that the launched process reported an error.<br>
+     *
      * @type {number}
      * @readonly
      */
@@ -5043,8 +5154,10 @@ function RunResult() {
 
     /**
      * Win32 error code returned by <b>GetLastError</b> WinAPI function.<br>
-     * This is 0 on success. When <b>OK</b> is false, it usually contains the reason why <b>ShellExecuteEx</b> failed. It may also be set if retrieving the process exit code failed.
-     * 
+     * This is 0 on success.<br>
+     * When <b>OK</b> is false, it may contain the reason why <b>ShellExecuteEx</b>, waiting for the process, or retrieving the process exit code failed.<br>
+     * Note that a launched process returning a non-zero exit code does not necessarily set this value.<br>
+     *
      * @type {number}
      * @readonly
      */
@@ -5052,8 +5165,10 @@ function RunResult() {
 
     /**
      * Native <b>ShellExecute/ShellExecuteEx</b> result code.<br>
-     * Values greater than 32 usually indicate success. Values less than or equal to 32 indicate a shell-level error, such as file not found, access denied, no association, or invalid executable format.
-     * 
+     * Values greater than 32 usually indicate a successful shell-level operation.<br>
+     * Values less than or equal to 32 indicate a shell-level error, such as file not found, access denied, no association, or invalid executable format.<br>
+     * This value describes the shell operation itself, not the launched process exit code.<br>
+     *
      * @type {number}
      * @readonly
      */
