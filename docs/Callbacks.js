@@ -686,3 +686,20 @@ function on_http_request_done(task_id, success, response_text, status, response_
  * @param {PerformanceObserver} observer The observer object that is receiving the above entries.
  */
 function PerformanceObserverCallback (entries, observer) { }
+
+/**
+ * Called when a process started by {@link utils.RunCmdAsync} finishes.<br>
+ * <br>
+ * The success argument means that the process was started successfully and its exit code was obtained.<br>
+ * A non-zero exit_code does not make success false; it is the process result.<br>
+ * <br>
+ * If the process times out, success is false, exit_code is 0xFFFFFFFF, and stderr contains the timeout message.
+ *
+ * @memberof module:Callbacks
+ * @param {number} task_id Task ID returned by {@link utils.RunCmdAsync}.
+ * @param {boolean} success True if the process was started and its exit code was obtained.
+ * @param {number} exit_code Process exit code.
+ * @param {string} stdout Standard output captured from the process.
+ * @param {string} stderr Standard error captured from the process, or an error message if the process could not be started.
+ */
+function on_run_cmd_async_done(task_id, success, exit_code, stdout, stderr) { }
