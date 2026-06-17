@@ -1799,9 +1799,9 @@ let utils = {
     /**
      * Downloads file from specified URL to save file path.
      * Result of asyncronous operation can be found in callback {@link module:Callbacks.on_download_file_done on_download_file_done}
-     *
-     * @param {number} url File URL
-     * @param {number} path Save file path
+     * 
+     * @param {string} url File URL
+     * @param {string} path Save file path
      * 
      * @example
      * utils.DownloadFileAsync("https://lastfm.freetls.fastly.net/i/u/770x0/0be145cbf80930684d41ad524fe53768.jpg", "z:\\blah.jpg");
@@ -2038,7 +2038,7 @@ let utils = {
      */
 
     /**
-     * Return value of {@link window.GetPackageInfo}.<br>
+     * Return value of {@link utils.GetPackageInfo}.<br>
      *
      * @typedef {Object} JsPackageInfo
      * @property {string} Version Package version
@@ -2048,7 +2048,7 @@ let utils = {
     /**
      * Get information about a package with the specified id.<br>
      * 
-     * @param {string} package_id
+     * @param {string} package_id Can be obtained by {@link window.ScriptInfo}
      * @return {?JsPackageInfo} null if not found, package information otherwise
      */
     GetPackageInfo: function (package_id) { },
@@ -2057,11 +2057,11 @@ let utils = {
      * Get path to a package directory with the specified id.<br>
      * Throws exception if package is not found. <br>
      * <br>
-     * Deprecated: use {@link window.GetPackageInfo} instead.
+     * Deprecated: use {@link utils.GetPackageInfo} instead.
      * 
      * @deprecated
      * 
-     * @param {string} package_id
+     * @param {string} package_id Can be obtained by {@link window.ScriptInfo}
      * @return {string}
      */
     GetPackagePath: function (package_id) { },
@@ -2290,20 +2290,21 @@ let utils = {
     /**
      * Runs a file, executable, URL, or document through the Windows shell.<br>
      * This method uses ShellExecuteEx, so it supports shell verbs, file associations, URLs, and elevation through "runas".<br>
-     * Unlike {@link utils.RunCmdAsync RunCmdAsync}, this method does not capture stdout or stderr.<br>
-     * If wait is true, the call blocks until the launched process exits.<br>
+     * Unlike {@link utils.RunCmdAsync RunCmdAsync}, this method does not capture stdout or stderr and does not provide timeout handling.<br>
+     * If wait is true, the call blocks until the launched process exits, when a process handle is available.<br>
      *
      * @param {string} target
      * File, executable, URL, or document to run/open.<br>
-     * This value must not be empty.<br>
+     * If this value is empty, the method returns a RunResult with OK=false and Win32Error=ERROR_INVALID_PARAMETER.<br>
      *
      * @param {string|string[]} [args]
      * Command line arguments.<br>
      * If a string is passed, it is appended as-is.<br>
      * If an array is passed, each item is quoted automatically when needed.<br>
      * For documents, URLs, or shell verbs that do not use parameters, this can be omitted.<br>
+     * For complex cmd.exe commands using shell syntax such as redirection, pipes, &, or &&, a string is usually more appropriate.<br>
      *
-     * @param {string} [workingDir=""]
+     * @param {string} [working_dir=""]
      * Working directory for the process.<br>
      * Pass an empty string to use the default working directory.<br>
      *
@@ -2314,14 +2315,19 @@ let utils = {
      * Use "runas" to request elevation through UAC.<br>
      *
      * @param {number} [show=ShowWindow.Hide]
-     * Window display mode.<br>
+     * Requested window display mode.<br>
      * Use one of the ShowWindow values, for example ShowWindow.Hide or ShowWindow.Show.<br>
+     * The target application or shell handler may ignore this value.<br>
      *
      * @param {boolean} [wait=false]
      * Whether to wait for the launched process to exit.<br>
-     * If false, success only means that ShellExecuteEx accepted the request.<br>
-     * If true, success is true only when the process handle is available, the process exits normally, and its exit code is 0.<br>
-     * Be careful: wait=true blocks the current script until the process exits.<br>
+     * If false, OK means that ShellExecuteEx accepted the request.<br>
+     * If true, the method waits for the launched process to exit when a process handle is available, and then fills ExitCode.<br>
+     * When wait=true and a process exit code is available, OK is true only if the process exits with code 0.<br>
+     * A non-zero process exit code is reported as OK=false, with Win32Error usually remaining 0.<br>
+     * If wait=true but no process handle is available, OK=false and Win32Error=ERROR_INVALID_HANDLE.<br>
+     * Be careful: wait=true blocks the current script until the process exits and has no timeout.<br>
+     * Use RunCmdAsync if you need asynchronous completion, stdout/stderr capture, or timeout handling.<br>
      *
      * @returns {RunResult}
      * Result object.<br>
@@ -2329,6 +2335,10 @@ let utils = {
      * @example
      * // Open a URL with the default browser.
      * const result = utils.Run("https://www.foobar2000.org");
+     *
+     * console.log(result.OK);
+     * console.log(result.Win32Error);
+     * console.log(result.ShellCode);
      *
      * @example
      * // Run a command and wait for its exit code.
@@ -2341,8 +2351,9 @@ let utils = {
      *     true
      * );
      *
-     * console.log(result.success);    // false
-     * console.log(result.exit_code);  // 7
+     * console.log(result.OK);        // false: process exited with a non-zero code
+     * console.log(result.ExitCode);  // 7: process exit code
+     * console.log(result.Win32Error); // 0: process was started successfully
      *
      * @example
      * // Run elevated.
@@ -2357,57 +2368,40 @@ let utils = {
      */
     Run(target, args, working_dir, verb, show, wait) { },
 
-    /**
+     /**
      * Runs an external process asynchronously.<br>
      * Standard output and standard error are captured separately.<br>
-     * The method returns a task id immediately, and the result is delivered later through the async command callback/event.<br>
-     * If the process does not finish before timeoutMs, the whole process tree is terminated.<br>
-     * Pass 0 as timeoutMs to wait indefinitely.<br>
+     * The method returns a task id immediately, and the result is delivered later to on_run_cmd_async_done.<br>
+     * Completion callbacks may arrive in a different order than the RunCmdAsync calls were made.<br>
+     * Use the returned task id to match the result with the original RunCmdAsync call.<br>
+     * If the process does not finish before timeout_ms, the whole process tree is terminated.<br>
+     * Pass 0 as timeout_ms to wait indefinitely.<br>
      *
      * @param {string} app
      * Full path or executable name to run.<br>
-     * If only an executable name is specified, it is resolved by the system search rules.<br>
+     * If this value is empty, the callback receives success=false and stderr contains an error message.<br>
      *
      * @param {string|string[]} [args]
      * Command line arguments.<br>
      * If a string is passed, it is appended to the command line as-is.<br>
      * If an array is passed, each item is quoted automatically when needed.<br>
      *
-     * @param {string} [workingDir=""]
+     * @param {string} [working_dir=""]
      * Working directory for the process.<br>
-     * Pass an empty string to use the current working directory.<br>
      *
      * @param {number} [show=ShowWindow.Hide]
      * Window display mode.<br>
-     * Use one of the ShowWindow values.<br>
-     * The default value is ShowWindow.Hide.<br>
      *
-     * @param {number} [timeoutMs=0]
+     * @param {number} [timeout_ms=0]
      * Maximum time to wait for the process, in milliseconds.<br>
      * Pass 0 to wait indefinitely.<br>
-     * On timeout, success is false, exit_code is 0xFFFFFFFF, and stderr contains a timeout message.<br>
+     * On timeout, the callback receives success=false, exit_code=0xFFFFFFFF, and stderr contains a timeout message.<br>
      *
      * @returns {number}
      * Task id of the asynchronous operation.<br>
-     * The task id can be used to match the returned result with the original RunCmdAsync call.<br>
      *
-     * @example
-     * const taskId = utils.RunCmdAsync("cmd.exe", ["/c", "echo", "hello"]);
-     *
-     * @example
-     * const taskId = utils.RunCmdAsync(
-     *     "cmd.exe",
-     *     '/c "exit /b 7"'
-     * );
-     *
-     * @example
-     * const taskId = utils.RunCmdAsync(
-     *     "cmd.exe",
-     *     '/c "ping 127.0.0.1 -n 11 >nul"',
-     *     "",
-     *     ShowWindow.Hide,
-     *     5000
-     * );
+     * @throws
+     * Throws if called before foobar2000 is fully initialized, if args is invalid, or if the worker thread could not be started.<br>
      */
     RunCmdAsync(app, args, working_dir, show, timeout_ms) { },
 
@@ -5132,39 +5126,38 @@ function ThemeManager() {
 function RunResult() {
 
     /**
-     * true if the operation completed successfully.<br>
-     * If <b>wait</b> argument of {@link utils.Run} is false, this means that <b>ShellExecuteEx</b> successfully accepted the request.<br>
-     * If <b>wait</b> is true, this means that <b>ShellExecuteEx</b> accepted the request, a process handle was available, and the process exited with code 0.<br>
+     * High-level operation result.<br>
+     * If wait=false, true means that ShellExecuteEx accepted the shell request.<br>
+     * If wait=true and a process exit code is available, true means that the process exited with code 0.<br>
+     * A non-zero process exit code is reported as OK=false, while Win32Error usually remains 0.<br>
      *
      * @type {boolean}
      * @readonly
      */
-    this.OK = false; // (bool) (read)
+    this.OK = false;
 
     /**
      * Process exit code.<br>
-     * This value is meaningful only when <b>wait</b> argument of {@link utils.Run} is true and the launched process handle was available.<br>
-     * If <b>wait</b> is false, this value is usually 0.<br>
-     * A non-zero value usually means that the launched process reported an error.<br>
+     * This value is meaningful when wait=true and the launched process handle was available.<br>
+     * If wait=false, this value is usually 0.<br>
      *
      * @type {number}
      * @readonly
      */
-    this.ExitCode = 0; // (uint) (read)
+    this.ExitCode = 0;
 
     /**
-     * Win32 error code returned by <b>GetLastError</b> WinAPI function.<br>
+     * Win32 error code returned by GetLastError, or an internally assigned Win32 error code.<br>
      * This is 0 on success.<br>
-     * When <b>OK</b> is false, it may contain the reason why <b>ShellExecuteEx</b>, waiting for the process, or retrieving the process exit code failed.<br>
-     * Note that a launched process returning a non-zero exit code does not necessarily set this value.<br>
+     * If OK=false and Win32Error is 0, the process was usually started successfully but returned a non-zero ExitCode.<br>
      *
      * @type {number}
      * @readonly
      */
-    this.Win32Error = 0; // (uint) (read)
+    this.Win32Error = 0;
 
     /**
-     * Native <b>ShellExecute/ShellExecuteEx</b> result code.<br>
+     * Native ShellExecuteEx result code.<br>
      * Values greater than 32 usually indicate a successful shell-level operation.<br>
      * Values less than or equal to 32 indicate a shell-level error, such as file not found, access denied, no association, or invalid executable format.<br>
      * This value describes the shell operation itself, not the launched process exit code.<br>
@@ -5172,7 +5165,7 @@ function RunResult() {
      * @type {number}
      * @readonly
      */
-    this.ShellCode = 0; // (long) (read)
+    this.ShellCode = 0;
 }
 
 /**
