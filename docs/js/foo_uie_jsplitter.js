@@ -2003,9 +2003,9 @@ let utils = {
     GetClipboardText: function () { },
 
     /**
-     * Gets string code for display country flag with "Twemoji Mozilla" font<br>
-     * <b>ATTENTION!</b> Country flags are displayed correctly only in Direct2D draw mode; GDI+ does not render "Twemoji Mozilla" color glyphs.
-     * @param {string} country_or_code Case is not important. You can supply the code or full name. A few examples (full list see in file below):<br>
+     * Returns string code for display country flag with {@link https://github.com/mozilla/twemoji-colr "Twemoji Mozilla"} font<br>
+     * <b>ATTENTION!</b> Country flags are displayed correctly only in Direct2D draw mode ({@link window.DrawMode} == 1); GDI+ does not render "Twemoji Mozilla" color glyphs.
+     * @param {string} country_or_code Case is not important. You can supply the code or full name. A few examples (full list see in the EXAMPLE file):<br>
      * "by" "Belarus"<br>
      * "gb" "United Kingdom"<br>
      * "cn" "China"<br>
