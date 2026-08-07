@@ -1511,7 +1511,7 @@ const RunVerb = {
  * Artwork View: "{E32DCBA9-A2BF-4901-AB43-228628071410}" Support Bits: 0x00000008
  * Playlist Switcher: "{EB38A997-3B5F-4126-8746-262AA9C1F94B}" Support Bits: 0x000001ff
  * Item Properties: "{862F8A37-16E0-4A74-B27E-2B73DB567D0F}" Support Bits: 0x000001ff
- * JSplitter: "{E1F81EB4-63D0-4ADE-99C2-E653A8C9858F}""
+ * JSplitter: "{E1F81EB4-63D0-4ADE-99C2-E653A8C9858F}"
  * 
  * === Fonts ===
  * Used in GetFontCUI() as client_guid

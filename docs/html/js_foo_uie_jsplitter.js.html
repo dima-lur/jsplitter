@@ -2134,13 +2134,14 @@ let utils = {
     /**
      * Retrieves filepaths that match the supplied pattern.
      *
-     * @param {string} pattern
+     * @param {string} pattern For the path, you can use the * and ? wildcards for any intermediate directory and for the file name.
      * @param {number=} [exc_mask=0x10] Mask to exclude files. Default is {@link module:Flags.FILE_ATTRIBUTE_DIRECTORY FILE_ATTRIBUTE_DIRECTORY}. See flags like {@link module:Flags.FILE_ATTRIBUTE_NORMAL FILE_ATTRIBUTE_NORMAL} etc.
      * @param {number=} [inc_mask=0xffffffff] Mask to include files
      * @return {Array&lt;string>}
      *
      * @example
      * let arr = utils.Glob("C:\\*.*");
+     * let arr2 = utils.Glob(fb.ProfilePath + 'image*\\album?\\*.jpg');
      */
     Glob: function (pattern, exc_mask, inc_mask) { }, // (Array) [, exc_mask][, inc_mask]
 
