@@ -37,7 +37,7 @@ function drawImage(gr, img, src_x, src_y, src_w, src_h, auto_fill, border, alpha
 	}
 }
 
-var CACHE_FOLDER = fb.ProfilePath + "smp_smooth_cache\\";
+var CACHE_FOLDER = fb.ProfilePath + "jsplitter_smooth_cache\\";
 
 // *****************************************************************************************************************************************
 // Common functions & flags by Br3tt aka Falstaff (c)2013-2015

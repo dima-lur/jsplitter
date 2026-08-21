@@ -142,7 +142,7 @@ function pos2vol(pos) {
  * @return {float}
  */
 function vol2pos(volume) {
-	return (Math.pow(10, v / 50) - 0.01) / 0.99;
+	return (Math.pow(10, volume / 50) - 0.01) / 0.99;
 }
 
 /**

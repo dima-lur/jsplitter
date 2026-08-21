@@ -1572,7 +1572,7 @@ oBrowser = function (name) {
 		case (idx == 250):
 			var total = plman.PlaylistCount;
 			//p.playlistManager.inputboxID = -1;
-			plman.CreateAutoPlaylist(total, "Loved Tracks", "%FEEDBACK% IS 1 OR %2003_LOVED% IS 1 OR %LFM_LOVED% IS 1 OR %SMP_LOVED% IS 1", "%album artist% | $if(%album%,%date%,'9999') | %album% | %discnumber% | %tracknumber% | %title%", 0);
+			plman.CreateAutoPlaylist(total, "Loved Tracks", "%FEEDBACK% IS 1 OR %2003_LOVED% IS 1 OR %LFM_LOVED% IS 1 OR %JSPLITTER_LOVED% IS 1", "%album artist% | $if(%album%,%date%,'9999') | %album% | %discnumber% | %tracknumber% | %title%", 0);
 			plman.MovePlaylist(total, pl_idx);
 			plman.ActivePlaylist = pl_idx;
 			break;

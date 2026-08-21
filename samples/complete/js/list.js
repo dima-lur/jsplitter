@@ -1108,7 +1108,7 @@ function _list(mode, x, y, w, h) {
 				}
 
 				this.add_stats = () => {
-					this.add(['SMP_PLAYCOUNT', 'SMP_LOVED', 'SMP_FIRST_PLAYED', 'SMP_LAST_PLAYED', 'SMP_RATING']);
+					this.add(['JSPLITTER_PLAYCOUNT', 'JSPLITTER_LOVED', 'JSPLITTER_FIRST_PLAYED', 'JSPLITTER_LAST_PLAYED', 'JSPLITTER_RATING']);
 					this.add();
 				}
 

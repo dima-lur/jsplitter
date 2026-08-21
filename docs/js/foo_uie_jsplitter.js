@@ -634,9 +634,10 @@ let fb = {
      * //         "output_id": "{D41D2423-FBB0-4635-B233-7054F79814AB}"
      * //     }
      * // ]
-     * // As you can see, only one of the items in the array has "active"
-     * // set to true so that is the device you'd want to display the name of
-     * // or mark as selected in a menu.
+     * // Normally, one item in the array has "active" set to true,
+     * // indicating the currently configured output device.
+     * // If the configured output device is unavailable, the array
+     * // may contain no active item.
      */
     GetOutputDevices: function () { }, // (string)
 
