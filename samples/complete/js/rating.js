@@ -98,7 +98,7 @@ function _rating(x, y, size, colour) {
 			const ret = idx > -1 ? f.MetaValue(idx, 0) : 0;
 			return ret;
 		case 3: // JSplitter DB
-			return panel.tf('$if2(%smp_rating%,0)');
+			return panel.tf('$if2(%jsplitter_rating%,0)');
 		default:
 			return 0;
 		}
@@ -148,7 +148,7 @@ function _rating(x, y, size, colour) {
 			this.properties.mode.value = 0;
 		}
 		if (this.properties.mode.value == 0) {
-			fb.ShowPopupMessage('This script has now been updated and supports 3 different modes.\n\nAs before, you can use foo_playcount which is limited to 5 stars.\n\nThe 2nd option is writing to your file tags. You can choose the tag name and a max value via the right click menu.\n\nLastly, a new "Playback Stats" database has been built into JSplitter. It is bound to just "%artist% - %title%". This uses %smp_rating% which can be accessed via title formatting in all other components/search dialogs. This also supports a custom max value.\n\nAll options are available on the right click menu. If you do not see the new options when right clicking, make sure you have the latest "rating.txt" imported from the "samples\\complete" folder.', window.ScriptInfo.Name);
+			fb.ShowPopupMessage('This script has now been updated and supports 3 different modes.\n\nAs before, you can use foo_playcount which is limited to 5 stars.\n\nThe 2nd option is writing to your file tags. You can choose the tag name and a max value via the right click menu.\n\nLastly, a new "Playback Stats" database has been built into JSplitter. It is bound to just "%artist% - %title%". This uses %jsplitter_rating% which can be accessed via title formatting in all other components/search dialogs. This also supports a custom max value.\n\nAll options are available on the right click menu. If you do not see the new options when right clicking, make sure you have the latest "rating.txt" imported from the "samples\\complete" folder.', window.ScriptInfo.Name);
 		}
 	}, 500);
 }

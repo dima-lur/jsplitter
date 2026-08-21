@@ -49,9 +49,9 @@ function _lastfm() {
 		artist : fb.TitleFormat('%artist%'),
 		title : fb.TitleFormat('%title%'),
 		album : fb.TitleFormat('[%album%]'),
-		loved : fb.TitleFormat('$if2(%SMP_LOVED%,0)'),
-		playcount : fb.TitleFormat('$if2(%SMP_PLAYCOUNT%,0)'),
-		first_played : fb.TitleFormat('%SMP_FIRST_PLAYED%')
+		loved : fb.TitleFormat('$if2(%JSPLITTER_LOVED%,0)'),
+		playcount : fb.TitleFormat('$if2(%JSPLITTER_PLAYCOUNT%,0)'),
+		first_played : fb.TitleFormat('%JSPLITTER_FIRST_PLAYED%')
 	};
 
 	_createFolder(folders.data);

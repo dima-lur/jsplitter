@@ -10,7 +10,7 @@ include(fb.ComponentPath + 'samples\\complete\\js\\rating.js');
 Now supports 3 modes:
 1) foo_playcount, limited to 5 stars, access via %rating%
 2) file tags, configurable max limit, access via custom tag. Use right click menu to set.
-3) JSplitter 'Playback stats' database, configurable max limit, access via %smp_rating%. Bound to '%artist% - %title%' so common tracks across different albums will share the rating.
+3) JSplitter 'Playback stats' database, configurable max limit, access via %jsplitter_rating%. Bound to '%artist% - %title%' so common tracks across different albums will share the rating.
 */
 
 let panel = new _panel(true);
