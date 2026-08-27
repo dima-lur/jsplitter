@@ -833,7 +833,7 @@ const TTDT_INITIAL = 3;
  * Used in {@link gdi.Font}, can be combined.<br>
  * For more information, see: {@link http://msdn.microsoft.com/en-us/library/ms534124(VS.85).aspx}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const FontStyle = {
     Regular: 0,
@@ -848,7 +848,7 @@ const FontStyle = {
  * Used in {@link GdiGraphics#SetTextRenderingHint SetTextRenderingHint}<br>
  * For more information, see: {@link http://msdn.microsoft.com/en-us/library/ms534404(VS.85).aspx}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const TextRenderingHint = {
     SystemDefault: 0,
@@ -863,7 +863,7 @@ const TextRenderingHint = {
  * Used in {@link GdiGraphics#SetSmoothingMode SetSmoothingMode}<br>
  * For more information, see: {@link http://msdn.microsoft.com/en-us/library/ms534173(VS.85).aspx}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const SmoothingMode = {
     Invalid: -1,
@@ -878,7 +878,7 @@ const SmoothingMode = {
  * Used in {@link GdiGraphics#SetInterpolationMode SetInterpolationMode}<br>
  * For more information, see: {@link http://msdn.microsoft.com/en-us/library/ms534141(VS.85).aspx}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const InterpolationMode = {
     Invalid: -1,
@@ -896,7 +896,7 @@ const InterpolationMode = {
  * Used in {@link GdiBitmap#RotateFlip RotateFlip}<br>
  * For more information, see: {@link http://msdn.microsoft.com/en-us/library/ms534171(VS.85).aspx}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const RotateFlipType = {
     RotateNoneFlipNone: 0,
@@ -924,7 +924,7 @@ const RotateFlipType = {
  * h_align/v_align:<br>
  * For more information, see: {@link http://msdn.microsoft.com/en-us/library/ms534177(VS.85).aspx}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const StringAlignment = {
     Near: 0,
@@ -936,7 +936,7 @@ const StringAlignment = {
  * trimming:<br>
  * For more information, see: {@link http://msdn.microsoft.com/en-us/library/ms534403(VS.85).aspx}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const StringTrimming = {
     None: 0,
@@ -951,7 +951,7 @@ const StringTrimming = {
  * flags for StringFormat (helpers) can be combined of:<br>
  * For more information, see: {@link http://msdn.microsoft.com/en-us/library/ms534181(VS.85).aspx}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const StringFormatFlags = {
     DirectionRightToLeft: 0x00000001,
@@ -968,7 +968,7 @@ const StringFormatFlags = {
 /**
  * Used in {@link utils.GetAlbumArtV2}, {@link utils.GetAlbumArtEmbedded}, {@link utils.GetAlbumArtAsync}, {@link utils.GetAlbumArtAsyncV2}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const AlbumArtId = {
     front: 0,
@@ -981,7 +981,7 @@ const AlbumArtId = {
 /**
  * Used in {@link window.GetColourCUI}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const ColourTypeCUI = {
     text: 0,
@@ -996,7 +996,7 @@ const ColourTypeCUI = {
 /**
  * Used in {@link window.GetFontCUI}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const FontTypeCUI = {
     items: 0,
@@ -1006,7 +1006,7 @@ const FontTypeCUI = {
 /**
  * Used in {@link window.GetColourDUI}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const ColourTypeDUI = {
     text: 0,
@@ -1018,7 +1018,7 @@ const ColourTypeDUI = {
 /**
  * Used in {@link window.GetFontDUI}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const FontTypeDUI = {
     defaults: 0,
@@ -1032,7 +1032,7 @@ const FontTypeDUI = {
 /**
  * Used as a result of {@link plman.PlaybackOrder} and in {@link module:Callbacks.on_playback_order_changed on_playback_order_changed}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const PlaybackOrder = {
     Default: 0,
@@ -1047,7 +1047,7 @@ const PlaybackOrder = {
 /**
  * Used in {@link module:Callbacks.on_playback_queue_changed on_playback_queue_changed}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const QueueChangeOrigin = {
     UserAdded: 0,
@@ -1058,7 +1058,7 @@ const QueueChangeOrigin = {
 /**
  * Used in {@link module:Callbacks.on_playback_starting on_playback_starting}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const PlaybackStartCmd = {
     Default: 0,
@@ -1073,7 +1073,7 @@ const PlaybackStartCmd = {
 /**
  * Used in {@link module:Callbacks.on_playback_stop on_playback_stop}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const PlaybackStopReason = {
     InvokedByUser: 0,
@@ -1085,7 +1085,7 @@ const PlaybackStopReason = {
 /**
  * Used in {@link module:Callbacks.on_playback_stop on_playback_stop}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const ReplayGainMode = {
     None: 0,
@@ -1097,7 +1097,7 @@ const ReplayGainMode = {
 /**
  * Used as a result of {@link fb.GetSelectionType}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const SelectionType = {
     Undefined: 0,
@@ -1209,7 +1209,7 @@ const LCMAP_TRADITIONAL_CHINESE = 0x04000000; // map simplified chinese to tradi
 /**
  * Used as a result of {@link window.InstanceType}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const UIInstanceType = {
     ColumnsUI: 0,
@@ -1225,7 +1225,7 @@ const UIInstanceType = {
  *    {@link D2DGraphics#DrawPolygon DrawPolygon}<br>
  *    {@link D2DGraphics#DrawLines DrawLines}<br>
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const DashStyle = {
     Solid: 0,
@@ -1238,7 +1238,7 @@ const DashStyle = {
 /**
  * Used as a line drawing <b>startCap</b> and <b>endCap</b> parameter value in {@link D2DGraphics#DrawLine DrawLine}<br>
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const CapStyle = {
     Flat: 0,
@@ -1250,7 +1250,7 @@ const CapStyle = {
 /**
  * Compilation flags for {@link d2d.Compile}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const D2DCompileFlags = {
     D3DCOMPILE_DEBUG:                              1, // (1 << 0)
@@ -1284,7 +1284,7 @@ const D2DCompileFlags = {
 /**
  * Composition mode flags for {@link D2DGraphics#DrawEffect DrawEffect}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const CompositeMode = {
     SourceOver: 0,
@@ -1305,7 +1305,7 @@ const CompositeMode = {
 /**
  * Brush types used in {@link gdi.Brush}, {@link d2d.Brush} and {@link GdiBrush#Type GdiBrush.Type}, {@link D2DBrush#Type D2DBrush.Type}
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const BrushType = {
     Solid: 0,
@@ -1317,14 +1317,14 @@ const BrushType = {
 /**
  * Brush wrap modes used in {@link GdiBrush#WrapMode GdiBrush.WrapMode} and {@link D2DBrush#WrapMode D2DBrush.WrapMode}<br>
  * Behavior of the modes may differ between GDI+ and Direct2D<br>
- * <b>Tile</b>: Specifies tiling without flipping.<br>
- * <b>TileFlipX</b>: Specifies that tiles are flipped horizontally as you move from one tile to the next in a row.<br>
- * <b>TileFlipY</b>: Specifies that tiles are flipped vertically as you move from one tile to the next in a column.<br>
- * <b>TileFlipXY</b>: Specifies that tiles are flipped horizontally as you move along a row and flipped vertically as you move along a column.<br>
- * <b>Clamp</b>: Specifies that no tiling takes place. In D2D mode extends the edges of the source out by clamping sample points outside the source to the edges. In GDI: simply stops the output and for linear gradient brushes is not valid parameter.
  * 
  * @memberof module:Flags
- * @default
+ * @enum {number}
+ * @property Tile Specifies tiling without flipping.
+ * @property TileFlipX Specifies that tiles are flipped horizontally as you move from one tile to the next in a row.
+ * @property TileFlipY Specifies that tiles are flipped vertically as you move from one tile to the next in a column.
+ * @property TileFlipXY Specifies that tiles are flipped horizontally as you move along a row and flipped vertically as you move along a column.
+ * @property Clamp Specifies that no tiling takes place. In D2D mode extends the edges of the source out by clamping sample points outside the source to the edges. In GDI: simply stops the output and for linear gradient brushes is not valid parameter.
  */
 const BrushWrapMode = {
     Tile: 0,
@@ -1336,16 +1336,16 @@ const BrushWrapMode = {
 
 /**
  * Message box buttons used in {@link utils.MessageBox utils.MessageBox}<br>
- * <b>OK</b>: The message box contains an OK button.<br>
- * <b>OKCancel</b>: The message box contains OK and Cancel buttons.<br>
- * <b>AbortRetryIgnore</b>: The message box contains Abort, Retry, and Ignore buttons.<br>
- * <b>YesNoCancel</b>: The message box contains Yes, No, and Cancel buttons.<br>
- * <b>YesNo</b>: The message box contains Yes and No buttons.<br>
- * <b>RetryCancel</b>: The message box contains Retry and Cancel buttons.<br>
- * <b>CancelTryContinue</b>: Specifies that the message box contains Cancel, Try Again, and Continue buttons.<br>
  * 
  * @memberof module:Flags
- * @default
+ * @enum {number}
+ * @property OK The message box contains an OK button.
+ * @property OKCancel The message box contains OK and Cancel buttons.
+ * @property AbortRetryIgnore The message box contains Abort, Retry, and Ignore buttons.
+ * @property YesNoCancel The message box contains Yes, No, and Cancel buttons.
+ * @property YesNo The message box contains Yes and No buttons.
+ * @property RetryCancel The message box contains Retry and Cancel buttons.
+ * @property CancelTryContinue Specifies that the message box contains Cancel, Try Again, and Continue buttons.
  */
 const MessageBoxButtons = {
     OK: 0,
@@ -1359,15 +1359,15 @@ const MessageBoxButtons = {
 
 /**
  * Message box icons used in {@link utils.MessageBox utils.MessageBox}<br>
- * <b>None</b>: The message box contains no symbols.<br>
- * <b>Error</b>: The message box contains a symbol consisting of white X in a circle with a red background.<br>
- * <b>Stop</b>: The same as <b>Error</b>.<br>
  * <b>Exclamation</b>: The message box contains a symbol consisting of an exclamation point in a triangle with a yellow background.<br>
- * <b>Warning</b>: The same as <b>Exclamation</b>.<br>
- * <b>Information</b>: The message box contains a symbol consisting of a lowercase letter i in a circle.<br>
  * 
  * @memberof module:Flags
- * @default
+ * @enum {number}
+ * @property None The message box contains no symbols.
+ * @property Error The message box contains a symbol consisting of white X in a circle with a red background.
+ * @property Stop The same as <b>Error</b>.
+ * @property Warning The same as <b>Exclamation</b>.
+ * @property Information The message box contains a symbol consisting of a lowercase letter i in a circle.
  */
 const MessageBoxIcon = {
     None: 0	,
@@ -1382,7 +1382,7 @@ const MessageBoxIcon = {
  * Message box default button flags used in {@link utils.MessageBox utils.MessageBox}<br>
  * 
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const MessageBoxDefaultButton = {
     Button1: 0,
@@ -1395,7 +1395,7 @@ const MessageBoxDefaultButton = {
  * Dialog result codes used in {@link utils.MessageBox utils.MessageBox}<br>
  * 
  * @memberof module:Flags
- * @default
+ * @enum {number}
  */
 const DialogResult = {
     None: 0,
@@ -1412,11 +1412,11 @@ const DialogResult = {
 
 /**
  * Image codecs used in {@link FbMetadbHandleList#AttachImage2 AttachImage2}<br>
- * <b>Jpeg</b>: lossy, maximum compatibility<br>
- * <b>WebP</b>: WebP lossless if quality = 100, otherwise WebP lossy<br>
- * <b>Png</b>: always lossless, compatibility-first<br>
  * @memberof module:Flags
- * @default
+ * @enum {number}
+ * @property Jpeg lossy, maximum compatibility
+ * @property WebP WebP lossless if quality = 100, otherwise WebP lossy
+ * @property Png always lossless, compatibility-first
  */
 const AttachImage2Codec = {
     Jpeg: 0,
@@ -1426,20 +1426,20 @@ const AttachImage2Codec = {
 
 /**
  * Controls how the window is to be shown. Used in {@link utils.Run}<br>
- * <b>Hide</b>: Hides the window and activates another window.<br>
- * <b>Normal</b>: Activates and displays a window. If the window is minimized, maximized, or arranged, the system restores it to its original size and position. An application should specify this flag when displaying the window for the first time.<br>
- * <b>Minimized</b>: Activates the window and displays it as a minimized window.<br>
- * <b>Maximized</b>: Activates the window and displays it as a maximized window.<br>
- * <b>NoActivate</b>: Displays a window in its most recent size and position. This value is similar to <b>Normal</b>, except that the window is not activated.<br>
- * <b>Show</b>: Activates the window and displays it in its current size and position.<br>
- * <b>Minimize</b>: Minimizes the specified window and activates the next top-level window in the Z order.<br>
- * <b>MinNoActive</b>: Displays the window as a minimized window. This value is similar to <b>Minimized</b>, except the window is not activated.<br>
- * <b>NA</b>: Displays the window in its current size and position. This value is similar to <b>Show</b>, except that the window is not activated.<br>
- * <b>Restore</b>: Activates and displays the window. If the window is minimized, maximized, or arranged, the system restores it to its original size and position. An application should specify this flag when restoring a minimized window.<br>
- * <b>Default</b>: Sets the show state based on the <b>ShowWindow</b> value specified in the <b>STARTUPINFO</b> structure passed to the <b>CreateProcess</b> function by the program that started the application.<br>
- * <b>ForceMinimize</b>: Minimizes a window, even if the thread that owns the window is not responding. This flag should only be used when minimizing windows from a different thread.<br>
  * @memberof module:Flags
- * @default
+ * @enum {number}
+ * @property Hide Hides the window and activates another window.
+ * @property Normal Activates and displays a window. If the window is minimized, maximized, or arranged, the system restores it to its original size and position. An application should specify this flag when displaying the window for the first time.
+ * @property Minimized Activates the window and displays it as a minimized window.
+ * @property Maximized Activates the window and displays it as a maximized window.
+ * @property NoActivate Displays a window in its most recent size and position. This value is similar to <b>Normal</b>, except that the window is not activated.
+ * @property Show Activates the window and displays it in its current size and position.
+ * @property Minimize Minimizes the specified window and activates the next top-level window in the Z order.
+ * @property MinNoActive Displays the window as a minimized window. This value is similar to <b>Minimized</b>, except the window is not activated.
+ * @property NA Displays the window in its current size and position. This value is similar to <b>Show</b>, except that the window is not activated.
+ * @property Restore Activates and displays the window. If the window is minimized, maximized, or arranged, the system restores it to its original size and position. An application should specify this flag when restoring a minimized window.
+ * @property Default Sets the show state based on the <b>ShowWindow</b> value specified in the <b>STARTUPINFO</b> structure passed to the <b>CreateProcess</b> function by the program that started the application.
+ * @property ForceMinimize Minimizes a window, even if the thread that owns the window is not responding. This flag should only be used when minimizing windows from a different thread.
  */
 const ShowWindow = {
     Hide: 0,
@@ -1463,16 +1463,16 @@ const ShowWindow = {
  * This parameter can be empty, in which case the default verb is used if available. If not, the ":::no-loc text="open"::" verb is used.<br>
  * If neither verb is available, the system uses the first verb listed in the registry.<br>
  * The following verbs are commonly used:<br>
- * <b>Open</b>: Opens the file specified by the lpFile parameter. The file can be an executable file, a document file, or a folder.<br>
- * <b>Edit</b>: Launches an editor and opens the document for editing. If <b>target</b> is not a document file, the function will fail.<br>
- * <b>Explore</b>: Explores the folder specified by lpFile.<br>
- * <b>Find</b>: Initiates a search starting from the specified directory.<br>
- * <b>Openas</b>: Launches a picker UI allowing the user to select an app with which to open the file specified by the <b>target</b> parameter.<br>
- * <b>Print</b>: Prints the document file specified by lpFile. If lpFile is not a document file, the function will fail.<br>
- * <b>Properties</b>: Displays the file or folder's properties.<br>
- * <b>RunAs</b>: Launches an application as Administrator. User Account Control (UAC) will prompt the user for consent to run the application elevated or enter the credentials of an administrator account used to run the application.<br>
  * @memberof module:Flags
- * @default
+ * @enum {string}
+ * @property Open Opens the file specified by the lpFile parameter. The file can be an executable file, a document file, or a folder.
+ * @property Edit Launches an editor and opens the document for editing. If <b>target</b> is not a document file, the function will fail.
+ * @property Explore Explores the folder specified by lpFile.
+ * @property Find Initiates a search starting from the specified directory.
+ * @property OpenAs Launches a picker UI allowing the user to select an app with which to open the file specified by the <b>target</b> parameter.
+ * @property Print Prints the document file specified by lpFile. If lpFile is not a document file, the function will fail.
+ * @property Properties Displays the file or folder's properties.
+ * @property RunAs Launches an application as Administrator. User Account Control (UAC) will prompt the user for consent to run the application elevated or enter the credentials of an administrator account used to run the application.
  */
 const RunVerb = {
     Default: "",

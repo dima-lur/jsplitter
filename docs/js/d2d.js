@@ -564,6 +564,14 @@ function D2DGraphics() {
      * @param {Array<Array<number>>} points
      * @param {DashStyle=} [style=DashStyle.Solid] See {@link module:Flags.DashStyle DashStyle}
      */
+    this.DrawLines = function (colour_or_brush, line_width, points, style) { }; // (void)
+
+    /**
+     * @param {*} colour_or_brush colour ARGB or {@link D2DBrush} object
+     * @param {number} line_width
+     * @param {Array<Array<number>>} points
+     * @param {DashStyle=} [style=DashStyle.Solid] See {@link module:Flags.DashStyle DashStyle}
+     */
     this.DrawPolygon = function (colour_or_brush, line_width, points, style) { }; // (void)
 
     /**
@@ -750,6 +758,26 @@ function D2DGraphics() {
      */
     this.MeasureString = function (str, font, x, y, w, h, flags) { }; // (MeasureStringInfo) [, flags]
 
+     /**
+     * Pushes a rectangular clipping region onto the clip stack.<br>
+     * The new clipping region is intersected with the current clipping region.<br>
+     * Calls may be nested and should be paired with {@link D2DGraphics#PopClip PopClip}.<br>
+     * The current transform and other graphics state are not affected.
+     *
+     * @param {number} x left coordinate of the clipping rectangle
+     * @param {number} y top coordinate of the clipping rectangle
+     * @param {number} width width of the clipping rectangle
+     * @param {number} height height of the clipping rectangle
+     */
+    this.PushClip = function(x, y, width, height) { };
+
+    /**
+     * Restores the clipping region that was active before the matching {@link D2DGraphics#PushClip PushClip} call.<br>
+     * Does nothing if the clip stack is empty.<br>
+     * The current transform and other graphics state are not affected.
+     */
+    this.PopClip = function() { };
+
     /**
      * Applies translation matrix to the current D2DGraphics matrix.<br>
      * For more information see {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-translation(d2d1_size_f)}
@@ -757,7 +785,7 @@ function D2DGraphics() {
      * @param {number} dx
      * @param {number} dy
      */
-    this.Translate = function(dx, dy) {}
+    this.Translate = function(dx, dy) { }
 
     /**
      * Applies rotation matrix to the current D2DGraphics matrix.<br>
@@ -767,7 +795,7 @@ function D2DGraphics() {
      * @param {number=} [cx=0] Rotation center point x coord
      * @param {number=} [cy=0] Rotation center point y coord
      */
-    this.Rotate = function(angle, cx, cy) {}
+    this.Rotate = function(angle, cx, cy) { };
 
     /**
      * Applies scale matrix to the current D2DGraphics matrix.<br>
@@ -778,7 +806,7 @@ function D2DGraphics() {
      * @param {number=} [cx=0] Scale center point x coord
      * @param {number=} [cy=0] Scale center point y coord
      */
-    this.Scale = function(sz, sy, cx, cy) {}
+    this.Scale = function(sz, sy, cx, cy) { }
     
     /**
      * Applies skew matrix to the current D2DGraphics matrix.<br>

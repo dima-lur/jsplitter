@@ -1,0 +1,1041 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>FbMetadbHandleList — JSplitter API</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <a class="nav-link " href="globals.html">Globals</a>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><a class="nav-link " href="console-2e329b2a.html">console</a><a class="nav-link " href="d2d-e9c3ac95.html">d2d</a><a class="nav-link " href="fb-6722f021.html">fb</a><a class="nav-link " href="gdi-430a4dfd.html">gdi</a><a class="nav-link " href="performance-aece8ca5.html">performance</a><a class="nav-link " href="plman-ff97d52b.html">plman</a><a class="nav-link " href="utils-ae9d59ce.html">utils</a><a class="nav-link " href="window-a172b7dd.html">window</a></div><div class="nav-group"><div class="nav-title">Classes</div><a class="nav-link " href="ActiveXObject-28dae3aa.html">ActiveXObject</a><a class="nav-link " href="ButtonObject-1debaece.html">ButtonObject</a><a class="nav-link " href="ContextMenuManager-dea00d42.html">ContextMenuManager</a><a class="nav-link " href="D2DBitmap-6ce237d6.html">D2DBitmap</a><a class="nav-link " href="D2DBrush-3ea48163.html">D2DBrush</a><a class="nav-link " href="D2DCompileInfo-9fc679ee.html">D2DCompileInfo</a><a class="nav-link " href="D2DEffect-fb3cb264.html">D2DEffect</a><a class="nav-link " href="D2DFont-303de060.html">D2DFont</a><a class="nav-link " href="D2DGraphics-140c7c58.html">D2DGraphics</a><a class="nav-link " href="DropTargetAction-30eb028f.html">DropTargetAction</a><a class="nav-link " href="Enumerator-fbd761ff.html">Enumerator</a><a class="nav-link " href="FbAudioChunk-d27f9222.html">FbAudioChunk</a><a class="nav-link " href="FbFileInfo-e3e80363.html">FbFileInfo</a><a class="nav-link " href="FbMetadbHandle-b8dee4d8.html">FbMetadbHandle</a><a class="nav-link active" href="FbMetadbHandleList-96b9a840.html">FbMetadbHandleList</a><a class="nav-link " href="FbPlaybackQueueItem-64c88ea8.html">FbPlaybackQueueItem</a><a class="nav-link " href="FbPlayingItemLocation-42048429.html">FbPlayingItemLocation</a><a class="nav-link " href="FbPlaylistRecycler-447bca5e.html">FbPlaylistRecycler</a><a class="nav-link " href="FbProfiler-7dd51f80.html">FbProfiler</a><a class="nav-link " href="FbTitleFormat-0597af5a.html">FbTitleFormat</a><a class="nav-link " href="FbTooltip-84b590ec.html">FbTooltip</a><a class="nav-link " href="FbUiSelectionHolder-d2ce89ed.html">FbUiSelectionHolder</a><a class="nav-link " href="GdiBitmap-d3bf0fbe.html">GdiBitmap</a><a class="nav-link " href="GdiBrush-e59ebdab.html">GdiBrush</a><a class="nav-link " href="GdiFont-b0fbf4a8.html">GdiFont</a><a class="nav-link " href="GdiGraphics-ad9f20a0.html">GdiGraphics</a><a class="nav-link " href="GdiRawBitmap-594f53ea.html">GdiRawBitmap</a><a class="nav-link " href="HtmlDocument-73083c39.html">HtmlDocument</a><a class="nav-link " href="HtmlNode-d8acac9c.html">HtmlNode</a><a class="nav-link " href="IUIHacks-b5106744.html">IUIHacks</a><a class="nav-link " href="MainMenuManager-c314a746.html">MainMenuManager</a><a class="nav-link " href="MenuObject-4a0b6d51.html">MenuObject</a><a class="nav-link " href="PanelObject-dd97d6ba.html">PanelObject</a><a class="nav-link " href="PerformanceObserver-f1192ef7.html">PerformanceObserver</a><a class="nav-link " href="PerformanceObserverEntryList-91fbd61d.html">PerformanceObserverEntryList</a><a class="nav-link " href="RunResult-1de62053.html">RunResult</a><a class="nav-link " href="ThemeManager-ed5a3909.html">ThemeManager</a></div><div class="nav-group"><div class="nav-title">Modules</div><a class="nav-link " href="module-Callbacks-98afe9cf.html">Callbacks</a><a class="nav-link " href="module-Codepages-1528fbf4.html">Codepages</a><a class="nav-link " href="module-Effects-592fdd05.html">Effects</a><a class="nav-link " href="module-Flags-4222ebcc.html">Flags</a><a class="nav-link " href="module-Helpers-b5c6de9a.html">Helpers</a><a class="nav-link " href="module-Matrix-e9d1810c.html">Matrix</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>FbMetadbHandleList</b></div>
+        
+    <article class="api-item" id="symbol-FbMetadbHandleList-96b9a840" data-kind="class" data-name="fbmetadbhandlelist">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-class">class</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-96b9a840">FbMetadbHandleList</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3488</div>
+        </header>
+        <pre class="signature"><code>FbMetadbHandleList(arg)</code></pre>
+        
+        <div class="description"><p>Handle list elements can be accessed with array accessor, e.g. handle_list[i]</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>arg</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-96b9a840">FbMetadbHandleList</a> | <a class="type-link" href="FbMetadbHandle-b8dee4d8.html#symbol-FbMetadbHandle-b8dee4d8">FbMetadbHandle</a> | Array&lt;<a class="type-link" href="FbMetadbHandle-b8dee4d8.html#symbol-FbMetadbHandle-b8dee4d8">FbMetadbHandle</a>&gt; | null | undefined</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+        
+    <article class="api-item" id="symbol-FbMetadbHandleList-Count-c0bcadc0" data-kind="property" data-name="count">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-Count-c0bcadc0">Count</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3495</div>
+        </header>
+        <pre class="signature"><code>Count: number</code></pre>
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code> <span class="tok-keyword">let</span> handle_list = plman.GetPlaylistItems(plman.ActivePlaylist);
+console.log(handle_list.Count);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-Add-4eef6960" data-kind="method" data-name="add">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-Add-4eef6960">Add</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3505</div>
+        </header>
+        <pre class="signature"><code>Add(handle)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>handle</code></td><td><code><a class="type-link" href="FbMetadbHandle-b8dee4d8.html#symbol-FbMetadbHandle-b8dee4d8">FbMetadbHandle</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>number</code></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code>handle_list.Add(fb.GetNowPlaying());</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-AddRange-6ebc0255" data-kind="method" data-name="addrange">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-AddRange-6ebc0255">AddRange</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3514</div>
+        </header>
+        <pre class="signature"><code>AddRange(handle_list)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>handle_list</code></td><td><code><a class="type-link" href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-96b9a840">FbMetadbHandleList</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code>handle_list.AddRange(fb.GetLibraryItems());</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-AttachImage-f461d4b5" data-kind="method" data-name="attachimage">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-AttachImage-f461d4b5">AttachImage</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3522</div>
+        </header>
+        <pre class="signature"><code>AttachImage(image_path, art_id)</code></pre>
+        
+        <div class="description"><p>Embeds covers of the specified type, loaded from the specified file, into media files<br> Any existing artwork of the specified type will be overwritten!<br> Embedding covers is an asynchronous operation, so its result is not controlled here in any way. However, all the work of the method up to this point (reading file, creating art data) will return false in case of an error.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>image_path</code></td><td><code>string</code></td><td><p>path to an existing image</p></td></tr><tr><td><code>art_id = AlbumArtId.front</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags-4222ebcc.html#symbol-module-Flags.AlbumArtId-35d89bd7">AlbumArtId</a></code></td><td><p>See <a href="module-Flags-4222ebcc.html#symbol-module-Flags.AlbumArtId-35d89bd7">AlbumArtId</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>boolean</code> — <p>Returns false if any error occurred before the embedding started, otherwise true</p></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Examples</h3>
+            <pre class="example"><code>include(<span class="tok-string">`${fb.ComponentPath}docs\\Flags.js`</span>);
+
+<span class="tok-keyword">const</span> handle_list = plman.GetPlaylistItems(plman.ActivePlaylist);
+<span class="tok-keyword">if</span> (handle_list.Count &gt; <span class="tok-number">0</span>) {
+   <span class="tok-keyword">const</span> img_path = <span class="tok-string">&#39;C:\\path\\to\\image.jpg&#39;</span>;
+   handle_list.AttachImage(img_path, AlbumArtId.front);
+}</code></pre><pre class="example"><code>include(<span class="tok-string">`${fb.ComponentPath}docs\\Flags.js`</span>);
+
+<span class="tok-comment">// since there is no handle method, do this for a single item</span>
+<span class="tok-keyword">const</span> handle_list = <span class="tok-keyword">new</span> FbMetadbHandleList(fb.GetFocusItem());
+<span class="tok-keyword">const</span> img_path = <span class="tok-string">&quot;C:\\path\\to\\image.jpg&quot;</span>;
+handle_list.AttachImage(img_path, AlbumArtId.front);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-AttachImage2-3d019085" data-kind="method" data-name="attachimage2">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-AttachImage2-3d019085">AttachImage2</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3550</div>
+        </header>
+        <pre class="signature"><code>AttachImage2(image, art_id, codec, quality)</code></pre>
+        
+        <div class="description"><p>Embeds covers of the specified type from exisiting GdiBitmap or D2DBitmap object. Supports JPEG, WEBP and PNG codecs for encoding image before embedding.<br> Any existing artwork of the specified type will be overwritten!<br> Embedding covers is an asynchronous operation, so its result is not controlled here in any way. However, all the work of the method up to this point (encoding, creating art data) will return false in case of an error.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>image</code></td><td><code><a class="type-link" href="GdiBitmap-d3bf0fbe.html#symbol-GdiBitmap-d3bf0fbe">GdiBitmap</a></code></td><td><p>(or <a href="D2DBitmap-6ce237d6.html#symbol-D2DBitmap-6ce237d6">D2DBitmap</a> if <a href="window-a172b7dd.html#symbol-window.DrawMode-0d6cd710">window.DrawMode</a> == 1). Image to attach</p></td></tr><tr><td><code>art_id = AlbumArtId.front</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags-4222ebcc.html#symbol-module-Flags.AlbumArtId-35d89bd7">AlbumArtId</a></code></td><td><p>See <a href="module-Flags-4222ebcc.html#symbol-module-Flags.AlbumArtId-35d89bd7">AlbumArtId</a></p></td></tr><tr><td><code>codec = AttachImage2Codec.Jpeg</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags-4222ebcc.html#symbol-module-Flags.AttachImage2Codec-d67f42a4">AttachImage2Codec</a></code></td><td><p>See <a href="module-Flags-4222ebcc.html#symbol-module-Flags.AttachImage2Codec-d67f42a4">AttachImage2Codec</a></p></td></tr><tr><td><code>quality = 70.0</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="globals.html#symbol-float-a6c45d85">float</a></code></td><td><p><b>NOTE</b>: For WebP quality 100 means lossless WebP; values below 100 use lossy WebP. For PNG quality is ignored because PNG codec is always lossless.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>boolean</code> — <p>Returns false if any error occurred before the embedding started, otherwise true</p></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Examples</h3>
+            <pre class="example"><code>include(<span class="tok-string">`${fb.ComponentPath}docs\\Flags.js`</span>);
+
+<span class="tok-keyword">const</span> handle_list = plman.GetPlaylistItems(plman.ActivePlaylist);
+<span class="tok-keyword">if</span> (handle_list.Count &gt; <span class="tok-number">0</span>) {
+   <span class="tok-keyword">const</span> img = gdi.Image(<span class="tok-string">&quot;C:\\path\\to\\image.jpg&quot;</span>);
+   handle_list.AttachImage2(img, AlbumArtId.front, AttachImage2Codec.WebP, <span class="tok-number">60</span>);
+}</code></pre><pre class="example"><code>* include(<span class="tok-string">`${fb.ComponentPath}docs\\Flags.js`</span>);
+
+<span class="tok-comment">// since there is no handle method, do this for a single item</span>
+<span class="tok-keyword">const</span> handle_list = <span class="tok-keyword">new</span> FbMetadbHandleList(fb.GetFocusItem());
+<span class="tok-keyword">const</span> img = gdi.Image(<span class="tok-string">&quot;C:\\path\\to\\image.jpg&quot;</span>);
+handle_list.AttachImage2(img, AlbumArtId.front, AttachImage2Codec.WebP, <span class="tok-number">60</span>);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-BSearch-daee545d" data-kind="method" data-name="bsearch">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-BSearch-daee545d">BSearch</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3580</div>
+        </header>
+        <pre class="signature"><code>BSearch(handle)</code></pre>
+        
+        <div class="description"><p>Faster than <a href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-Find-daf09f26">Find</a>.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>handle</code></td><td><code><a class="type-link" href="FbMetadbHandle-b8dee4d8.html#symbol-FbMetadbHandle-b8dee4d8">FbMetadbHandle</a></code></td><td><p>Must be sorted with <a href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-Sort-2e3bb235">Sort</a>.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>number</code> — <p>-1 on failure.</p></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-CalcTotalDuration-af487fa6" data-kind="method" data-name="calctotalduration">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-CalcTotalDuration-af487fa6">CalcTotalDuration</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3588</div>
+        </header>
+        <pre class="signature"><code>CalcTotalDuration()</code></pre>
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code><a class="type-link" href="globals.html#symbol-float-a6c45d85">float</a></code> — <p>total duration in seconds. For display purposes, consider using <a href="utils-ae9d59ce.html#symbol-utils.FormatDuration-f81da657">utils.FormatDuration</a> on the result.</p></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-CalcTotalSize-e39fcf83" data-kind="method" data-name="calctotalsize">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-CalcTotalSize-e39fcf83">CalcTotalSize</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3593</div>
+        </header>
+        <pre class="signature"><code>CalcTotalSize()</code></pre>
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>number</code> — <p>total size in bytes. For display purposes, consider using utils.FormatFileSize() on the result.</p></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-Clone-32a38c4e" data-kind="method" data-name="clone">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-Clone-32a38c4e">Clone</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3598</div>
+        </header>
+        <pre class="signature"><code>Clone()</code></pre>
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code><a class="type-link" href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-96b9a840">FbMetadbHandleList</a></code></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> handle_list2 = handle_list.Clone();</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-Convert-c575685c" data-kind="method" data-name="convert">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-Convert-c575685c">Convert</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3606</div>
+        </header>
+        <pre class="signature"><code>Convert()</code></pre>
+        
+        <div class="description"><p>Converts <a href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-96b9a840">FbMetadbHandleList</a> to an array of <a href="FbMetadbHandle-b8dee4d8.html#symbol-FbMetadbHandle-b8dee4d8">FbMetadbHandle</a>.<br> Use this instead of looping through <a href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-96b9a840">FbMetadbHandleList</a>, if the playlist is big or if you need to loop multiple times.<br></p></div>
+        
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Array&lt;<a class="type-link" href="FbMetadbHandle-b8dee4d8.html#symbol-FbMetadbHandle-b8dee4d8">FbMetadbHandle</a>&gt;</code></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> playlist_items_array = plman.GetPlaylistItems(plman.ActivePlaylist).Convert();
+<span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; playlist_items_array.length; ++i) {
+   <span class="tok-comment">// do something with playlist_items_array[i] which is your handle</span>
+}</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-Find-daf09f26" data-kind="method" data-name="find">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-Find-daf09f26">Find</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3621</div>
+        </header>
+        <pre class="signature"><code>Find(handle)</code></pre>
+        
+        <div class="description"><p>Performance note: if sorted with <a href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-Sort-2e3bb235">Sort</a>, use <a href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-BSearch-daee545d">BSearch</a> instead.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>handle</code></td><td><code><a class="type-link" href="FbMetadbHandle-b8dee4d8.html#symbol-FbMetadbHandle-b8dee4d8">FbMetadbHandle</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>number</code> — <p>index in the handle list on success, -1 if not found</p></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-GetLibraryRelativePaths-5f3fbe7a" data-kind="method" data-name="getlibraryrelativepaths">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-GetLibraryRelativePaths-5f3fbe7a">GetLibraryRelativePaths</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3629</div>
+        </header>
+        <pre class="signature"><code>GetLibraryRelativePaths()</code></pre>
+        
+        <div class="description"><p>See <a href="fb-6722f021.html#symbol-fb.GetLibraryRelativePath-71f912b1">fb.GetLibraryRelativePath</a>.<br> <br> This should be faster than looping a handle list manually and using the aforementioned method.</p></div>
+        
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Array&lt;string&gt;</code></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> handle_list = fb.GetLibraryItems();
+handle_list.OrderByRelativePath();
+<span class="tok-keyword">let</span> relative_paths = handle_list.GetLibraryRelativePaths();</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-GetOtherInfo-cc33ed43" data-kind="method" data-name="getotherinfo">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-GetOtherInfo-cc33ed43">GetOtherInfo</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3643</div>
+        </header>
+        <pre class="signature"><code>GetOtherInfo()</code></pre>
+        
+        <div class="description"><p>Provides all the information viewable on the Details tab in the main Properties dialog. This can be technical/location info as well as database fields from 3rd party components if present.<br> This returns a JSON object in string form so you need to use JSON.parse on the result.<br></p></div>
+        
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>string</code></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">const</span> handle_list = plman.GetPlaylistItems(plman.ActivePlaylist);
+<span class="tok-keyword">const</span> str = handle_list.GetOtherInfo();
+console.log(str);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-Insert-00cc3f54" data-kind="method" data-name="insert">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-Insert-00cc3f54">Insert</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3656</div>
+        </header>
+        <pre class="signature"><code>Insert(index, handle)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>index</code></td><td><code>number</code></td><td></td></tr><tr><td><code>handle</code></td><td><code><a class="type-link" href="FbMetadbHandle-b8dee4d8.html#symbol-FbMetadbHandle-b8dee4d8">FbMetadbHandle</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-comment">// This inserts at the end of the handle list.</span>
+handle_list.Insert(handle_list.Count, fb.GetNowPlaying());</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-InsertRange-d922e299" data-kind="method" data-name="insertrange">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-InsertRange-d922e299">InsertRange</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3666</div>
+        </header>
+        <pre class="signature"><code>InsertRange(index, handle_list)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>index</code></td><td><code>number</code></td><td></td></tr><tr><td><code>handle_list</code></td><td><code><a class="type-link" href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-96b9a840">FbMetadbHandleList</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-MakeDifference-ef98d92c" data-kind="method" data-name="makedifference">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-MakeDifference-ef98d92c">MakeDifference</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3672</div>
+        </header>
+        <pre class="signature"><code>MakeDifference(handle_list)</code></pre>
+        
+        <div class="description"><p>Note: sort with <a href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-Sort-2e3bb235">FbMetadbHandleList#Sort</a> before using.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>handle_list</code></td><td><code><a class="type-link" href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-96b9a840">FbMetadbHandleList</a></code></td><td><p>Sorted handle list.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> one = plman.GetPlaylistItems(<span class="tok-number">0</span>);
+one.Sort();
+
+<span class="tok-keyword">let</span> two = plman.GetPlaylistItems(<span class="tok-number">1</span>);
+two.Sort();
+
+one.MakeDifference(two);
+<span class="tok-comment">// &quot;one&quot; now only contains handles that were unique to &quot;one&quot;.</span>
+<span class="tok-comment">// Anything that also existed in &quot;two&quot; will have been removed.</span></code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-MakeIntersection-3330b5de" data-kind="method" data-name="makeintersection">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-MakeIntersection-3330b5de">MakeIntersection</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3690</div>
+        </header>
+        <pre class="signature"><code>MakeIntersection(handle_list)</code></pre>
+        
+        <div class="description"><p>Note: sort with <a href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-Sort-2e3bb235">Sort</a> before using.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>handle_list</code></td><td><code><a class="type-link" href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-96b9a840">FbMetadbHandleList</a></code></td><td><p>Sorted handle list.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> one = plman.GetPlaylistItems(<span class="tok-number">0</span>);
+one.Sort();
+
+<span class="tok-keyword">let</span> two = plman.GetPlaylistItems(<span class="tok-number">1</span>);
+two.Sort();
+
+one.MakeIntersection(two);
+<span class="tok-comment">// &quot;one&quot; now only contains handles that were in BOTH &quot;one&quot; AND &quot;two&quot;</span></code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-MakeUnion-70032722" data-kind="method" data-name="makeunion">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-MakeUnion-70032722">MakeUnion</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3707</div>
+        </header>
+        <pre class="signature"><code>MakeUnion(handle_list)</code></pre>
+        
+        <div class="description"><p>Note: sort with <a href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-Sort-2e3bb235">Sort</a> before using.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>handle_list</code></td><td><code><a class="type-link" href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-96b9a840">FbMetadbHandleList</a></code></td><td><p>Sorted handle list.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> one = plman.GetPlaylistItems(<span class="tok-number">0</span>);
+one.Sort();
+
+<span class="tok-keyword">let</span> two = plman.GetPlaylistItems(<span class="tok-number">1</span>);
+two.Sort();
+
+one.MakeUnion(two);
+<span class="tok-comment">// &quot;one&quot; now contains all handles from &quot;one&quot; AND &quot;two&quot; with any duplicates removed</span></code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-OptimiseFileLayout-69288803" data-kind="method" data-name="optimisefilelayout">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-OptimiseFileLayout-69288803">OptimiseFileLayout</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3724</div>
+        </header>
+        <pre class="signature"><code>OptimiseFileLayout(minimise)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>minimise</code></td><td><code>boolean</code></td><td><p>This provides the same functionality as the native context menu items under <code>Utilities</code> except there are no prompts.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-OrderByFormat-d080f1c5" data-kind="method" data-name="orderbyformat">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-OrderByFormat-d080f1c5">OrderByFormat</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3732</div>
+        </header>
+        <pre class="signature"><code>OrderByFormat(tfo, direction)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>tfo</code></td><td><code><a class="type-link" href="FbTitleFormat-0597af5a.html#symbol-FbTitleFormat-0597af5a">FbTitleFormat</a></code></td><td><p>An instance of FbTitleFormat.</p></td></tr><tr><td><code>direction</code></td><td><code>number</code></td><td><p>> 0 - ascending.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> handle_list = fb.GetLibraryItems();
+<span class="tok-keyword">let</span> tfo = fb.TitleFormat(<span class="tok-string">&quot;%album artist%|%date%|%album%|%discnumber%|%tracknumber%&quot;</span>);
+handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-OrderByPath-057202dd" data-kind="method" data-name="orderbypath">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-OrderByPath-057202dd">OrderByPath</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3743</div>
+        </header>
+        <pre class="signature"><code>OrderByPath()</code></pre>
+        
+        <div class="description"><p>Note: this method should only be used on a handle list containing items that are monitored as part of the Media Library.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-OrderByRelativePath-6149f7e5" data-kind="method" data-name="orderbyrelativepath">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-OrderByRelativePath-6149f7e5">OrderByRelativePath</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3750</div>
+        </header>
+        <pre class="signature"><code>OrderByRelativePath()</code></pre>
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-RefreshStats-1ee9b8ab" data-kind="method" data-name="refreshstats">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-RefreshStats-1ee9b8ab">RefreshStats</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3753</div>
+        </header>
+        <pre class="signature"><code>RefreshStats()</code></pre>
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-Remove-6f3cae89" data-kind="method" data-name="remove">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-Remove-6f3cae89">Remove</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3758</div>
+        </header>
+        <pre class="signature"><code>Remove(handle)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>handle</code></td><td><code><a class="type-link" href="FbMetadbHandle-b8dee4d8.html#symbol-FbMetadbHandle-b8dee4d8">FbMetadbHandle</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-RemoveAll-f8539090" data-kind="method" data-name="removeall">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-RemoveAll-f8539090">RemoveAll</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3763</div>
+        </header>
+        <pre class="signature"><code>RemoveAll()</code></pre>
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-RemoveAttachedImage-a4fcf67e" data-kind="method" data-name="removeattachedimage">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-RemoveAttachedImage-a4fcf67e">RemoveAttachedImage</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3766</div>
+        </header>
+        <pre class="signature"><code>RemoveAttachedImage(art_id)</code></pre>
+        
+        <div class="description"><p>Note: a progress dialog will be shown for larger file selections.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>art_id = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>See <a href="module-Flags-4222ebcc.html#symbol-module-Flags.AlbumArtId-35d89bd7">AlbumArtId</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-RemoveAttachedImages-c7375677" data-kind="method" data-name="removeattachedimages">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-RemoveAttachedImages-c7375677">RemoveAttachedImages</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3773</div>
+        </header>
+        <pre class="signature"><code>RemoveAttachedImages()</code></pre>
+        
+        <div class="description"><p>Removes all attached images.</p>
+<p>Note: a progress dialog will be shown for larger file selections.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-RemoveById-47e32f85" data-kind="method" data-name="removebyid">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-RemoveById-47e32f85">RemoveById</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3780</div>
+        </header>
+        <pre class="signature"><code>RemoveById(idx)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>idx</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code>handle_list.RemoveById(<span class="tok-number">0</span>);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-RemoveRange-14f14476" data-kind="method" data-name="removerange">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-RemoveRange-14f14476">RemoveRange</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3788</div>
+        </header>
+        <pre class="signature"><code>RemoveRange(from, num)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>from</code></td><td><code>number</code></td><td></td></tr><tr><td><code>num</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code>handle_list.RemoveRange(<span class="tok-number">10</span>, <span class="tok-number">20</span>);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-SaveAs-82a22d0c" data-kind="method" data-name="saveas">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-SaveAs-82a22d0c">SaveAs</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3797</div>
+        </header>
+        <pre class="signature"><code>SaveAs(path)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>path</code></td><td><code>string</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-Sort-2e3bb235" data-kind="method" data-name="sort">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-Sort-2e3bb235">Sort</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3803</div>
+        </header>
+        <pre class="signature"><code>Sort()</code></pre>
+        
+        <div class="description"><p>Remove duplicates and optimise for other handle list operations</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-FbMetadbHandleList-UpdateFileInfoFromJSON-deba2f74" data-kind="method" data-name="updatefileinfofromjson">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-FbMetadbHandleList-UpdateFileInfoFromJSON-deba2f74">UpdateFileInfoFromJSON</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3810</div>
+        </header>
+        <pre class="signature"><code>UpdateFileInfoFromJSON(str)</code></pre>
+        
+        <div class="description"><p>Updated metadb tags with new values.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>str</code></td><td><code>string</code></td><td><p>JSON string, which contains an object (applies same values to every track)                     or an array of objects (one object per track).</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-comment">// assume we&#39;ve selected one album</span>
+<span class="tok-keyword">let</span> handles = plman.GetPlaylistSelectedItems(plman.ActivePlaylist);
+
+<span class="tok-keyword">let</span> arr = [];
+<span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; handles.Count; ++i) {
+    <span class="tok-comment">// each element of the array must be an object of key names/values, indicated by the curly braces</span>
+    arr.push({
+        <span class="tok-string">&#39;tracknumber&#39;</span> : i + <span class="tok-number">1</span>, <span class="tok-comment">// independent values per track</span>
+        <span class="tok-string">&#39;totaltracks&#39;</span> : handles.Count,
+        <span class="tok-string">&#39;album&#39;</span> : <span class="tok-string">&#39;Greatest Hits&#39;</span>, <span class="tok-comment">// a simple string for a single value</span>
+        <span class="tok-string">&#39;genre&#39;</span> : [<span class="tok-string">&#39;Rock&#39;</span>, <span class="tok-string">&#39;Hard Rock&#39;</span>], <span class="tok-comment">// we can use an array here for multiple value tags</span>
+        <span class="tok-string">&#39;bad_tag&#39;</span> : <span class="tok-string">&#39;&#39;</span> <span class="tok-comment">// blank values will clear any existing tags.</span>
+    });
+}
+
+handles.UpdateFileInfoFromJSON(JSON.stringify(arr));</code></pre>
+        </section>
+        
+    </article></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

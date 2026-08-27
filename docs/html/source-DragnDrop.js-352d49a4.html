@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>DragnDrop.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <a class="nav-link " href="globals.html">Globals</a>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><a class="nav-link " href="console-2e329b2a.html">console</a><a class="nav-link " href="d2d-e9c3ac95.html">d2d</a><a class="nav-link " href="fb-6722f021.html">fb</a><a class="nav-link " href="gdi-430a4dfd.html">gdi</a><a class="nav-link " href="performance-aece8ca5.html">performance</a><a class="nav-link " href="plman-ff97d52b.html">plman</a><a class="nav-link " href="utils-ae9d59ce.html">utils</a><a class="nav-link " href="window-a172b7dd.html">window</a></div><div class="nav-group"><div class="nav-title">Classes</div><a class="nav-link " href="ActiveXObject-28dae3aa.html">ActiveXObject</a><a class="nav-link " href="ButtonObject-1debaece.html">ButtonObject</a><a class="nav-link " href="ContextMenuManager-dea00d42.html">ContextMenuManager</a><a class="nav-link " href="D2DBitmap-6ce237d6.html">D2DBitmap</a><a class="nav-link " href="D2DBrush-3ea48163.html">D2DBrush</a><a class="nav-link " href="D2DCompileInfo-9fc679ee.html">D2DCompileInfo</a><a class="nav-link " href="D2DEffect-fb3cb264.html">D2DEffect</a><a class="nav-link " href="D2DFont-303de060.html">D2DFont</a><a class="nav-link " href="D2DGraphics-140c7c58.html">D2DGraphics</a><a class="nav-link " href="DropTargetAction-30eb028f.html">DropTargetAction</a><a class="nav-link " href="Enumerator-fbd761ff.html">Enumerator</a><a class="nav-link " href="FbAudioChunk-d27f9222.html">FbAudioChunk</a><a class="nav-link " href="FbFileInfo-e3e80363.html">FbFileInfo</a><a class="nav-link " href="FbMetadbHandle-b8dee4d8.html">FbMetadbHandle</a><a class="nav-link " href="FbMetadbHandleList-96b9a840.html">FbMetadbHandleList</a><a class="nav-link " href="FbPlaybackQueueItem-64c88ea8.html">FbPlaybackQueueItem</a><a class="nav-link " href="FbPlayingItemLocation-42048429.html">FbPlayingItemLocation</a><a class="nav-link " href="FbPlaylistRecycler-447bca5e.html">FbPlaylistRecycler</a><a class="nav-link " href="FbProfiler-7dd51f80.html">FbProfiler</a><a class="nav-link " href="FbTitleFormat-0597af5a.html">FbTitleFormat</a><a class="nav-link " href="FbTooltip-84b590ec.html">FbTooltip</a><a class="nav-link " href="FbUiSelectionHolder-d2ce89ed.html">FbUiSelectionHolder</a><a class="nav-link " href="GdiBitmap-d3bf0fbe.html">GdiBitmap</a><a class="nav-link " href="GdiBrush-e59ebdab.html">GdiBrush</a><a class="nav-link " href="GdiFont-b0fbf4a8.html">GdiFont</a><a class="nav-link " href="GdiGraphics-ad9f20a0.html">GdiGraphics</a><a class="nav-link " href="GdiRawBitmap-594f53ea.html">GdiRawBitmap</a><a class="nav-link " href="HtmlDocument-73083c39.html">HtmlDocument</a><a class="nav-link " href="HtmlNode-d8acac9c.html">HtmlNode</a><a class="nav-link " href="IUIHacks-b5106744.html">IUIHacks</a><a class="nav-link " href="MainMenuManager-c314a746.html">MainMenuManager</a><a class="nav-link " href="MenuObject-4a0b6d51.html">MenuObject</a><a class="nav-link " href="PanelObject-dd97d6ba.html">PanelObject</a><a class="nav-link " href="PerformanceObserver-f1192ef7.html">PerformanceObserver</a><a class="nav-link " href="PerformanceObserverEntryList-91fbd61d.html">PerformanceObserverEntryList</a><a class="nav-link " href="RunResult-1de62053.html">RunResult</a><a class="nav-link " href="ThemeManager-ed5a3909.html">ThemeManager</a></div><div class="nav-group"><div class="nav-title">Modules</div><a class="nav-link " href="module-Callbacks-98afe9cf.html">Callbacks</a><a class="nav-link " href="module-Codepages-1528fbf4.html">Codepages</a><a class="nav-link " href="module-Effects-592fdd05.html">Effects</a><a class="nav-link " href="module-Flags-4222ebcc.html">Flags</a><a class="nav-link " href="module-Helpers-b5c6de9a.html">Helpers</a><a class="nav-link " href="module-Matrix-e9d1810c.html">Matrix</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/basic/DragnDrop.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="module-Callbacks-98afe9cf.html#symbol-module-Callbacks.on_drag_drop-8c24c31f">module:Callbacks.on_drag_drop</a><a href="module-Callbacks-98afe9cf.html#symbol-module-Callbacks.on_drag_enter-2964546c">module:Callbacks.on_drag_enter</a><a href="module-Callbacks-98afe9cf.html#symbol-module-Callbacks.on_drag_leave-8c4a1d31">module:Callbacks.on_drag_leave</a><a href="module-Callbacks-98afe9cf.html#symbol-module-Callbacks.on_drag_over-2d644af8">module:Callbacks.on_drag_over</a><a href="fb-6722f021.html#symbol-fb.DoDragDrop-482de7d3">fb.DoDragDrop</a></div>
+        </header>
+        <pre class="source-code"><code><span class="tok-comment">// This sample demonstrates a basic drag-n-drop implementation.</span>
+<span class="tok-comment">// Don&#39;t forget to open some playlist viewer to see all the performed actions.</span>
+<span class="tok-comment">//</span>
+<span class="tok-comment">// CTRL, SHIFT, ALT and their combination will modify the action</span>
+<span class="tok-comment">// that will be performed on item (you can try that by moving file in Windows Explorer).</span>
+<span class="tok-comment">//</span>
+<span class="tok-comment">// Warning: drag-n-drop is an advanced technique, so beware!</span>
+<span class="tok-comment">//</span>
+
+window.DefineScript(<span class="tok-string">&#39;Drag n drop&#39;</span>, { author: <span class="tok-string">&#39;TheQwertiest&#39;</span>, features: { drag_n_drop: <span class="tok-literal">true</span> } });
+
+include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
+
+<span class="tok-keyword">const</span> fso = <span class="tok-keyword">new</span> ActiveXObject(<span class="tok-string">&#39;Scripting.FileSystemObject&#39;</span>);
+<span class="tok-keyword">const</span> font = gdi.Font(<span class="tok-string">&#39;Segoe Ui&#39;</span>, <span class="tok-number">12</span>);
+<span class="tok-keyword">const</span> g_drop_effect = {
+    none:   <span class="tok-number">0</span>,
+    copy:   <span class="tok-number">1</span>,
+    move:   <span class="tok-number">2</span>,
+    link:   <span class="tok-number">4</span>,
+    scroll: <span class="tok-number">0x80000000</span>
+};
+
+<span class="tok-keyword">let</span> ww, wh;
+
+<span class="tok-keyword">let</span> mouse_in = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> mouse_down = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> mouse_on_item = <span class="tok-literal">false</span>;
+
+<span class="tok-keyword">let</span> last_pressed_coord = {};
+
+<span class="tok-keyword">let</span> is_dragging = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> is_internal_drag_n_drop_active = <span class="tok-literal">false</span>;
+
+<span class="tok-keyword">let</span> status_text = <span class="tok-string">&#39;Start dragging to or from the panel&#39;</span>;
+<span class="tok-keyword">let</span> status_text_2 = <span class="tok-string">&#39;&#39;</span>;
+
+
+<span class="tok-comment">////////////////////////////</span>
+<span class="tok-comment">// Callbacks</span>
+<span class="tok-comment">////////////////////////////</span>
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    gr.SetTextRenderingHint(TextRenderingHint.ClearTypeGridFit);
+    
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">60</span>, ww/<span class="tok-number">2</span>, wh - <span class="tok-number">60</span>, <span class="tok-number">0xFF83FFFF</span>);
+    gr.FillSolidRect(ww/<span class="tok-number">2</span>, <span class="tok-number">60</span>, ww/<span class="tok-number">2</span>, wh - <span class="tok-number">60</span>, <span class="tok-number">0xFFFF83FF</span>);
+    
+    gr.DrawString(status_text, font, <span class="tok-number">0xFF000000</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>, ww, <span class="tok-number">30</span>, <span class="tok-number">0x11000000</span>);
+    gr.DrawString(status_text_2, font, <span class="tok-number">0xFF000000</span>, <span class="tok-number">0</span>, <span class="tok-number">30</span>, ww, <span class="tok-number">30</span>, <span class="tok-number">0x11000000</span>);
+    
+    gr.DrawString(<span class="tok-string">&#39;Drag from here or from outside&#39;</span>, font, <span class="tok-number">0xFF000000</span>, <span class="tok-number">0</span>, <span class="tok-number">60</span>, ww/<span class="tok-number">2</span>, wh - <span class="tok-number">60</span>, <span class="tok-number">0x11000000</span>);
+    gr.DrawString(<span class="tok-string">&#39;Drop here or outside&#39;</span>, font, <span class="tok-number">0xFF000000</span>, ww/<span class="tok-number">2</span>, <span class="tok-number">60</span>, ww/<span class="tok-number">2</span>, wh - <span class="tok-number">60</span>, <span class="tok-number">0x11000000</span>);
+}
+
+<span class="tok-keyword">function</span> on_size(w,h) {
+    ww = w;
+    wh = h;
+}
+
+<span class="tok-keyword">function</span> on_mouse_move(x,y,m){
+    <span class="tok-keyword">if</span> (!mouse_down) {
+        <span class="tok-keyword">return</span> <span class="tok-literal">true</span>;
+    }
+
+    <span class="tok-keyword">if</span> (!is_dragging &amp;&amp; mouse_on_item) {
+        <span class="tok-keyword">let</span> drag_diff = Math.sqrt((Math.pow(last_pressed_coord.x - x, <span class="tok-number">2</span>) + Math.pow(last_pressed_coord.y - y, <span class="tok-number">2</span>)));
+        <span class="tok-keyword">if</span> (drag_diff &gt;= <span class="tok-number">7</span>) {
+            last_pressed_coord = {
+                x: <span class="tok-literal">undefined</span>,
+                y: <span class="tok-literal">undefined</span>
+            };
+
+            perform_internal_drag_n_drop();
+        }
+    }
+
+    <span class="tok-keyword">return</span> <span class="tok-literal">true</span>;
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_down(x, y, m) {
+    mouse_down = <span class="tok-literal">true</span>;
+    
+    last_pressed_coord.x = x;
+    last_pressed_coord.y = y;
+
+    mouse_on_item = trace_start_zone(x,y);
+
+    <span class="tok-keyword">return</span> <span class="tok-literal">true</span>;
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_up(x, y, m) {   
+    mouse_down = <span class="tok-literal">false</span>;
+    
+    last_pressed_coord = {
+        x: <span class="tok-literal">undefined</span>,
+        y: <span class="tok-literal">undefined</span>
+    };
+
+    mouse_on_item = <span class="tok-literal">false</span>;
+
+    <span class="tok-keyword">return</span> <span class="tok-literal">true</span>;
+}
+
+<span class="tok-keyword">function</span> on_drag_enter(action, x, y, mask) {
+    mouse_in = <span class="tok-literal">true</span>;
+    mouse_down = <span class="tok-literal">true</span>;
+
+    <span class="tok-keyword">if</span> (!is_dragging) {
+        is_dragging = <span class="tok-literal">true</span>;
+    }
+
+    <span class="tok-keyword">if</span> (trace_end_zone(x, y)) {
+        action.Effect = (action.Effect &amp; g_drop_effect.move)
+                || (action.Effect &amp; g_drop_effect.copy)
+                || (action.Effect &amp; g_drop_effect.link);
+        action.Text = get_text_from_effect(action.Effect, action.IsInternal);
+    }
+    <span class="tok-keyword">else</span> {        
+        action.Effect = g_drop_effect.none;
+    }
+}
+
+<span class="tok-keyword">function</span> on_drag_leave() {
+    <span class="tok-keyword">if</span> (is_dragging) {
+        is_dragging = <span class="tok-literal">false</span>;
+    }
+
+    mouse_in = <span class="tok-literal">false</span>;
+    mouse_down = <span class="tok-literal">false</span>;
+
+    status_text_2 = <span class="tok-string">&#39;Item was dragged outside or dropped on no-drop zone&#39;</span>;
+    window.Repaint(); 
+}
+
+<span class="tok-keyword">function</span> on_drag_over(action, x, y, mask) {
+    <span class="tok-keyword">if</span> (trace_end_zone(x, y)) {
+        action.Effect = filter_effect_by_modifiers(action.Effect);
+        action.Text = get_text_from_effect(action.Effect, action.IsInternal);
+    }
+    <span class="tok-keyword">else</span> {
+        action.Effect = g_drop_effect.none;
+    }
+    
+    <span class="tok-keyword">if</span> (status_text_2 !== <span class="tok-string">&#39;Item is being dragged&#39;</span>) {
+        status_text_2 = <span class="tok-string">&#39;Item is being dragged&#39;</span>;
+        window.Repaint(); 
+    }
+}
+
+<span class="tok-keyword">function</span> on_drag_drop(action, x, y, m) {
+    <span class="tok-keyword">this</span>.mouse_down = <span class="tok-literal">false</span>; <span class="tok-comment">///&lt; because on_drag_drop suppresses on_mouse_lbtn_up call</span>
+
+    <span class="tok-keyword">if</span> (!is_dragging || !trace_end_zone(x, y)) {
+        is_dragging = <span class="tok-literal">false</span>;
+        action.Effect = g_drop_effect.none;
+        
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">let</span> ctrl_pressed = utils.IsKeyPressed(VK_CONTROL);
+
+    <span class="tok-keyword">if</span> (action.IsInternal) {        
+        <span class="tok-keyword">let</span> copy_drop = ctrl_pressed &amp;&amp; ((action.Effect &amp; <span class="tok-number">1</span>) || (action.Effect &amp; <span class="tok-number">4</span>));
+        drop(copy_drop);
+
+        <span class="tok-comment">// Suppress native drop, since we&#39;ve handled it ourselves</span>
+        action.Effect = g_drop_effect.none;
+                
+        status_text_2 = <span class="tok-string">&#39;Item from playlist was dropped and &#39;</span>;
+        status_text_2 += copy_drop ? <span class="tok-string">&#39;copied&#39;</span> : <span class="tok-string">&#39;moved&#39;</span>;            
+        window.Repaint();        
+    }
+    <span class="tok-keyword">else</span> {
+        action.Effect = filter_effect_by_modifiers(action.Effect);
+        <span class="tok-keyword">if</span> (g_drop_effect.none !== action.Effect) {
+            external_drop(action);
+            status_text_2 = <span class="tok-string">&#39;Item from outside was dropped and &#39;</span>;
+            status_text_2 += g_drop_effect.move &amp; action.Effect ? <span class="tok-string">&#39;moved&#39;</span> : <span class="tok-string">&#39;copied&#39;</span>;
+            window.Repaint();    
+        }
+        <span class="tok-keyword">else</span> {
+            is_dragging = <span class="tok-literal">false</span>;
+            
+            status_text_2 = <span class="tok-string">&#39;Item from outside was dropped but the action was forbidden&#39;</span>;            
+            window.Repaint(); 
+        }
+    }
+}
+
+<span class="tok-comment">////////////////////////////</span>
+<span class="tok-comment">// Methods</span>
+<span class="tok-comment">////////////////////////////</span>
+
+<span class="tok-keyword">function</span> trace_start_zone(x,y) {
+    <span class="tok-keyword">return</span> x &gt;= <span class="tok-number">0</span> &amp;&amp; x &lt; ww/<span class="tok-number">2</span> &amp;&amp; y &gt;= <span class="tok-number">60</span> &amp;&amp; y &lt; wh;
+}
+
+<span class="tok-keyword">function</span> trace_end_zone(x,y) {
+    <span class="tok-keyword">return</span> x &gt;= ww/<span class="tok-number">2</span> &amp;&amp; x &lt; ww &amp;&amp; y &gt;= <span class="tok-number">60</span> &amp;&amp; y &lt; wh;
+}
+
+<span class="tok-keyword">function</span> perform_internal_drag_n_drop() {
+    <span class="tok-keyword">let</span> cur_selected_index = <span class="tok-number">0</span>;
+    <span class="tok-keyword">let</span> cur_playlist_idx = plman.ActivePlaylist;
+    
+    is_dragging = <span class="tok-literal">true</span>;
+    
+    plman.ClearPlaylistSelection(cur_playlist_idx);
+    plman.SetPlaylistSelectionSingle(cur_playlist_idx, cur_selected_index, <span class="tok-literal">true</span>);
+    plman.SetPlaylistFocusItem(cur_playlist_idx, cur_selected_index);
+    
+    <span class="tok-keyword">let</span> cur_playlist_size = plman.PlaylistItemCount(cur_playlist_idx);
+    <span class="tok-keyword">let</span> cur_playlist_selection = plman.GetPlaylistSelectedItems(cur_playlist_idx);
+    
+    <span class="tok-keyword">let</span> effect = fb.DoDragDrop(<span class="tok-number">0</span>, cur_playlist_selection, g_drop_effect.copy | g_drop_effect.move | g_drop_effect.link);
+
+    <span class="tok-keyword">if</span> (is_dragging) {
+        <span class="tok-comment">// If drag operation was not cancelled, then it means that nor on_drag_drop, nor on_drag_leave event handlers</span>
+        <span class="tok-comment">// were triggered, which means that the items were most likely dropped inside the panel</span>
+        <span class="tok-comment">// (and relevant methods were not called because of async event processing)        </span>
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">function</span> can_handle_move_drop() {
+        <span class="tok-comment">// We can handle the &#39;move drop&#39; properly only when playlist is still in the same state</span>
+        <span class="tok-keyword">return</span> cur_playlist_size === plman.PlaylistItemCount(cur_playlist_idx)
+            &amp;&amp; plman.IsPlaylistItemSelected(cur_playlist_idx, cur_selected_index);
+    }
+
+    <span class="tok-keyword">if</span> (g_drop_effect.none === effect &amp;&amp; can_handle_move_drop()) {
+        <span class="tok-comment">// DROPEFFECT_NONE needs special handling, because on NT it</span>
+        <span class="tok-comment">// is returned for some move operations, instead of DROPEFFECT_MOVE.</span>
+        <span class="tok-comment">// See Q182219 for the details.</span>
+
+        <span class="tok-keyword">let</span> items_to_remove = [];
+        <span class="tok-keyword">let</span> playlist_items = plman.GetPlaylistItems(cur_playlist_idx);
+        [cur_selected_index].forEach(<span class="tok-keyword">function</span> (idx) {
+            <span class="tok-keyword">let</span> cur_item = playlist_items[idx];
+            <span class="tok-keyword">if</span> (cur_item.RawPath.startsWith(<span class="tok-string">&#39;file://&#39;</span>) &amp;&amp; !fso.FileExists(cur_item.Path)) {
+                items_to_remove.push(idx);
+            }
+        });
+
+        <span class="tok-keyword">if</span> (items_to_remove.length) {
+            plman.ClearPlaylistSelection(cur_playlist_idx);
+            plman.SetPlaylistSelection(cur_playlist_idx, items_to_remove, <span class="tok-literal">true</span>);
+            plman.RemovePlaylistSelection(cur_playlist_idx);
+        }
+    }
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (g_drop_effect.move === effect &amp;&amp; can_handle_move_drop()) {
+        plman.RemovePlaylistSelection(cur_playlist_idx);
+    }
+}
+
+<span class="tok-keyword">function</span> drop(copy_selection) {
+    <span class="tok-keyword">let</span> cur_playlist_idx = plman.ActivePlaylist;
+    
+    <span class="tok-keyword">if</span> (!is_dragging) {
+        <span class="tok-keyword">return</span>;
+    }
+
+    is_dragging = <span class="tok-literal">false</span>;
+
+    <span class="tok-keyword">let</span> drop_idx = plman.PlaylistItemCount(cur_playlist_idx);
+    <span class="tok-keyword">if</span> (!copy_selection) {
+        plman.MovePlaylistSelection(cur_playlist_idx, drop_idx);
+        plman.SetPlaylistFocusItem(cur_playlist_idx, drop_idx + <span class="tok-number">1</span>);
+    }
+    <span class="tok-keyword">else</span> {
+        plman.UndoBackup(cur_playlist_idx);
+
+        <span class="tok-keyword">let</span> cur_selection = plman.GetPlaylistSelectedItems(cur_playlist_idx);        
+        plman.ClearPlaylistSelection(cur_playlist_idx);
+        plman.InsertPlaylistItems(cur_playlist_idx, drop_idx, cur_selection, <span class="tok-literal">true</span>);
+        plman.SetPlaylistFocusItem(cur_playlist_idx, drop_idx);
+    }
+}
+
+<span class="tok-keyword">function</span> external_drop(action) {
+    <span class="tok-keyword">let</span> cur_playlist_idx = plman.ActivePlaylist;
+    
+    plman.ClearPlaylistSelection(cur_playlist_idx);
+
+    <span class="tok-keyword">let</span> playlist_idx;
+    <span class="tok-keyword">if</span> (!plman.PlaylistCount) {
+        playlist_idx = plman.CreatePlaylist(<span class="tok-number">0</span>, <span class="tok-string">&#39;Default&#39;</span>);
+        plman.ActivePlaylist = playlist_idx;
+    }
+    <span class="tok-keyword">else</span> {
+        playlist_idx = cur_playlist_idx;
+        plman.UndoBackup(cur_playlist_idx);
+    }
+
+    action.Playlist = playlist_idx;
+    action.ToSelect = <span class="tok-literal">true</span>;
+    action.Base = plman.PlaylistItemCount(cur_playlist_idx);
+
+    is_dragging = <span class="tok-literal">false</span>;
+}
+
+<span class="tok-keyword">function</span> filter_effect_by_modifiers(effect) {
+    <span class="tok-keyword">let</span> ctrl_pressed = utils.IsKeyPressed(VK_CONTROL);
+    <span class="tok-keyword">let</span> shift_pressed = utils.IsKeyPressed(VK_SHIFT);
+    <span class="tok-keyword">let</span> alt_pressed = utils.IsKeyPressed(VK_ALT);
+
+    <span class="tok-keyword">if</span> (ctrl_pressed &amp;&amp; shift_pressed &amp;&amp; !alt_pressed
+        || alt_pressed &amp;&amp; !ctrl_pressed &amp;&amp; !shift_pressed) {
+        <span class="tok-comment">// Link only</span>
+        <span class="tok-keyword">return</span> (effect &amp; g_drop_effect.link);
+    }
+
+    <span class="tok-keyword">if</span> (ctrl_pressed &amp;&amp; !shift_pressed &amp;&amp; !alt_pressed) {
+        <span class="tok-comment">// Copy (also via link)        </span>
+        <span class="tok-keyword">return</span> (effect &amp; g_drop_effect.copy) || (effect &amp; g_drop_effect.link);
+    }
+
+    <span class="tok-keyword">if</span> (shift_pressed) {
+        <span class="tok-comment">// Move only</span>
+        <span class="tok-keyword">return</span> (effect &amp; g_drop_effect.move);
+    }
+
+    <span class="tok-comment">// Move &gt; Copy &gt; Link    </span>
+    <span class="tok-keyword">return</span> (effect &amp; g_drop_effect.move) || (effect &amp; g_drop_effect.copy) || (effect &amp; g_drop_effect.link);
+}
+
+<span class="tok-keyword">function</span> get_text_from_effect(effect, is_internal) {
+    <span class="tok-keyword">switch</span> (effect) {
+        <span class="tok-keyword">case</span> g_drop_effect.move:
+        {
+            <span class="tok-keyword">if</span> (is_internal) {
+                <span class="tok-keyword">return</span> <span class="tok-string">&#39;Moving from inside&#39;</span>;
+            }
+            <span class="tok-keyword">return</span> <span class="tok-string">&#39;Moving from outside&#39;</span>;
+        }
+        <span class="tok-keyword">case</span> g_drop_effect.copy:
+        {
+            <span class="tok-keyword">if</span> (is_internal) {
+                <span class="tok-keyword">return</span> <span class="tok-string">&#39;Copying from inside&#39;</span>;
+            }
+            <span class="tok-keyword">return</span> <span class="tok-string">&#39;Copying from outside&#39;</span>;
+        }
+        <span class="tok-keyword">case</span> g_drop_effect.link:
+        {
+            <span class="tok-keyword">return</span> <span class="tok-string">&#39;Linking from outside&#39;</span>;
+        }
+        <span class="tok-keyword">default</span>:
+            <span class="tok-keyword">return</span> <span class="tok-string">&#39;&#39;</span>;
+    }
+}</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

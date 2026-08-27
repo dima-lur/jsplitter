@@ -1,0 +1,853 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>IUIHacks — JSplitter API</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <a class="nav-link " href="globals.html">Globals</a>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><a class="nav-link " href="console-2e329b2a.html">console</a><a class="nav-link " href="d2d-e9c3ac95.html">d2d</a><a class="nav-link " href="fb-6722f021.html">fb</a><a class="nav-link " href="gdi-430a4dfd.html">gdi</a><a class="nav-link " href="performance-aece8ca5.html">performance</a><a class="nav-link " href="plman-ff97d52b.html">plman</a><a class="nav-link " href="utils-ae9d59ce.html">utils</a><a class="nav-link " href="window-a172b7dd.html">window</a></div><div class="nav-group"><div class="nav-title">Classes</div><a class="nav-link " href="ActiveXObject-28dae3aa.html">ActiveXObject</a><a class="nav-link " href="ButtonObject-1debaece.html">ButtonObject</a><a class="nav-link " href="ContextMenuManager-dea00d42.html">ContextMenuManager</a><a class="nav-link " href="D2DBitmap-6ce237d6.html">D2DBitmap</a><a class="nav-link " href="D2DBrush-3ea48163.html">D2DBrush</a><a class="nav-link " href="D2DCompileInfo-9fc679ee.html">D2DCompileInfo</a><a class="nav-link " href="D2DEffect-fb3cb264.html">D2DEffect</a><a class="nav-link " href="D2DFont-303de060.html">D2DFont</a><a class="nav-link " href="D2DGraphics-140c7c58.html">D2DGraphics</a><a class="nav-link " href="DropTargetAction-30eb028f.html">DropTargetAction</a><a class="nav-link " href="Enumerator-fbd761ff.html">Enumerator</a><a class="nav-link " href="FbAudioChunk-d27f9222.html">FbAudioChunk</a><a class="nav-link " href="FbFileInfo-e3e80363.html">FbFileInfo</a><a class="nav-link " href="FbMetadbHandle-b8dee4d8.html">FbMetadbHandle</a><a class="nav-link " href="FbMetadbHandleList-96b9a840.html">FbMetadbHandleList</a><a class="nav-link " href="FbPlaybackQueueItem-64c88ea8.html">FbPlaybackQueueItem</a><a class="nav-link " href="FbPlayingItemLocation-42048429.html">FbPlayingItemLocation</a><a class="nav-link " href="FbPlaylistRecycler-447bca5e.html">FbPlaylistRecycler</a><a class="nav-link " href="FbProfiler-7dd51f80.html">FbProfiler</a><a class="nav-link " href="FbTitleFormat-0597af5a.html">FbTitleFormat</a><a class="nav-link " href="FbTooltip-84b590ec.html">FbTooltip</a><a class="nav-link " href="FbUiSelectionHolder-d2ce89ed.html">FbUiSelectionHolder</a><a class="nav-link " href="GdiBitmap-d3bf0fbe.html">GdiBitmap</a><a class="nav-link " href="GdiBrush-e59ebdab.html">GdiBrush</a><a class="nav-link " href="GdiFont-b0fbf4a8.html">GdiFont</a><a class="nav-link " href="GdiGraphics-ad9f20a0.html">GdiGraphics</a><a class="nav-link " href="GdiRawBitmap-594f53ea.html">GdiRawBitmap</a><a class="nav-link " href="HtmlDocument-73083c39.html">HtmlDocument</a><a class="nav-link " href="HtmlNode-d8acac9c.html">HtmlNode</a><a class="nav-link active" href="IUIHacks-b5106744.html">IUIHacks</a><a class="nav-link " href="MainMenuManager-c314a746.html">MainMenuManager</a><a class="nav-link " href="MenuObject-4a0b6d51.html">MenuObject</a><a class="nav-link " href="PanelObject-dd97d6ba.html">PanelObject</a><a class="nav-link " href="PerformanceObserver-f1192ef7.html">PerformanceObserver</a><a class="nav-link " href="PerformanceObserverEntryList-91fbd61d.html">PerformanceObserverEntryList</a><a class="nav-link " href="RunResult-1de62053.html">RunResult</a><a class="nav-link " href="ThemeManager-ed5a3909.html">ThemeManager</a></div><div class="nav-group"><div class="nav-title">Modules</div><a class="nav-link " href="module-Callbacks-98afe9cf.html">Callbacks</a><a class="nav-link " href="module-Codepages-1528fbf4.html">Codepages</a><a class="nav-link " href="module-Effects-592fdd05.html">Effects</a><a class="nav-link " href="module-Flags-4222ebcc.html">Flags</a><a class="nav-link " href="module-Helpers-b5c6de9a.html">Helpers</a><a class="nav-link " href="module-Matrix-e9d1810c.html">Matrix</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>IUIHacks</b></div>
+        
+    <article class="api-item" id="symbol-IUIHacks-b5106744" data-kind="class" data-name="iuihacks">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-class">class</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks-b5106744">IUIHacks</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:1</div>
+        </header>
+        
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+        
+    <article class="api-item" id="symbol-IUIHacks.IAero-c721410c" data-kind="class" data-name="iaero">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-class">class</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks.IAero-c721410c">IAero</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:89</div>
+        </header>
+        
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks.IConstraints-76d5085b" data-kind="class" data-name="iconstraints">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-class">class</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks.IConstraints-76d5085b">IConstraints</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:124</div>
+        </header>
+        
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks.IMasterVolume-313305bd" data-kind="class" data-name="imastervolume">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-class">class</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks.IMasterVolume-313305bd">IMasterVolume</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:139</div>
+        </header>
+        
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks.IAero-Active-235eecb7" data-kind="property" data-name="active">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks.IAero-Active-235eecb7">Active</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:95</div>
+        </header>
+        <pre class="signature"><code>Active</code></pre>
+        
+        <div class="description"><p>@type{boolean}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks-Aero-ab7c0e9c" data-kind="property" data-name="aero">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks-Aero-ab7c0e9c">Aero</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:7</div>
+        </header>
+        <pre class="signature"><code>Aero</code></pre>
+        
+        <div class="description"><p>@type{IAero}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks-BlockMaximize-38634778" data-kind="property" data-name="blockmaximize">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks-BlockMaximize-38634778">BlockMaximize</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:10</div>
+        </header>
+        <pre class="signature"><code>BlockMaximize</code></pre>
+        
+        <div class="description"><p>@type{boolean}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks.IAero-Bottom-891da152" data-kind="property" data-name="bottom">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks.IAero-Bottom-891da152">Bottom</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:117</div>
+        </header>
+        <pre class="signature"><code>Bottom</code></pre>
+        
+        <div class="description"><p>@type{number}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks.IMasterVolume-ChannelCount-0ec541cc" data-kind="property" data-name="channelcount">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks.IMasterVolume-ChannelCount-0ec541cc">ChannelCount</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:144</div>
+        </header>
+        <pre class="signature"><code>ChannelCount</code></pre>
+        
+        <div class="description"><p>@type{number}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks-DisableSizing-45385a05" data-kind="property" data-name="disablesizing">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks-DisableSizing-45385a05">DisableSizing</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:13</div>
+        </header>
+        <pre class="signature"><code>DisableSizing</code></pre>
+        
+        <div class="description"><p>@type{boolean}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks.IAero-Effect-3d9c7f8c" data-kind="property" data-name="effect">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks.IAero-Effect-3d9c7f8c">Effect</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:98</div>
+        </header>
+        <pre class="signature"><code>Effect</code></pre>
+        
+        <div class="description"><p>0 - Default;<br>  1 - Disabled;<br>  2 - GlassFrame;<br>  3 - SheetOfGlass: aero effect applied on whole window</p>
+<p>@type{number}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks.IConstraints-Enabled-b0f31559" data-kind="property" data-name="enabled">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks.IConstraints-Enabled-b0f31559">Enabled</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:129</div>
+        </header>
+        <pre class="signature"><code>Enabled</code></pre>
+        
+        <div class="description"><p>@type{boolean}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks-EnableSizing-0d9c61f8" data-kind="property" data-name="enablesizing">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks-EnableSizing-0d9c61f8">EnableSizing</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:16</div>
+        </header>
+        <pre class="signature"><code>EnableSizing</code></pre>
+        
+        <div class="description"><p>@type{boolean}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks-FoobarCPUUsage-8af4f62d" data-kind="property" data-name="foobarcpuusage">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks-FoobarCPUUsage-8af4f62d">FoobarCPUUsage</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:19</div>
+        </header>
+        <pre class="signature"><code>FoobarCPUUsage</code></pre>
+        
+        <div class="description"><p>@type{float}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks-FrameStyle-dad4eb0b" data-kind="property" data-name="framestyle">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks-FrameStyle-dad4eb0b">FrameStyle</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:22</div>
+        </header>
+        <pre class="signature"><code>FrameStyle</code></pre>
+        
+        <div class="description"><p>0 - Default;<br> 1 - SmallCaption;<br> 2 - NoCaption;<br> 3 - NoBorder</p>
+<p>@type{number}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks-FullScreen-fa3d3078" data-kind="property" data-name="fullscreen">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks-FullScreen-fa3d3078">FullScreen</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:32</div>
+        </header>
+        <pre class="signature"><code>FullScreen</code></pre>
+        
+        <div class="description"><p>@type{boolean}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks.IConstraints-Height-433dc1d3" data-kind="property" data-name="height">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks.IConstraints-Height-433dc1d3">Height</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:135</div>
+        </header>
+        <pre class="signature"><code>Height</code></pre>
+        
+        <div class="description"><p>@type{number}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks.IAero-Left-2bcdced8" data-kind="property" data-name="left">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks.IAero-Left-2bcdced8">Left</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:114</div>
+        </header>
+        <pre class="signature"><code>Left</code></pre>
+        
+        <div class="description"><p>@type{number}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks-MainMenuState-4d84a440" data-kind="property" data-name="mainmenustate">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks-MainMenuState-4d84a440">MainMenuState</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:35</div>
+        </header>
+        <pre class="signature"><code>MainMenuState</code></pre>
+        
+        <div class="description"><p>0 - Show;<br> 1 - Hide;<br> 2 - Auto</p>
+<p>@type{number}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks-MainWindowID-dd06a819" data-kind="property" data-name="mainwindowid">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks-MainWindowID-dd06a819">MainWindowID</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:44</div>
+        </header>
+        <pre class="signature"><code>MainWindowID</code></pre>
+        
+        <div class="description"><p>@type{number}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks-MainWindowState-74fdb749" data-kind="property" data-name="mainwindowstate">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks-MainWindowState-74fdb749">MainWindowState</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:47</div>
+        </header>
+        <pre class="signature"><code>MainWindowState</code></pre>
+        
+        <div class="description"><p>0 - Normal;<br> 1 - Minimized;<br> 2 - Maximized</p>
+<p>@type{number}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks-MasterVolume-2957444d" data-kind="property" data-name="mastervolume">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks-MasterVolume-2957444d">MasterVolume</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:56</div>
+        </header>
+        <pre class="signature"><code>MasterVolume</code></pre>
+        
+        <div class="description"><p>@type{IMasterVolume}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks-MaxSize-bbdfde68" data-kind="property" data-name="maxsize">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks-MaxSize-bbdfde68">MaxSize</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:59</div>
+        </header>
+        <pre class="signature"><code>MaxSize</code></pre>
+        
+        <div class="description"><p>@type{IConstraints}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks-MinSize-5250abce" data-kind="property" data-name="minsize">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks-MinSize-5250abce">MinSize</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:62</div>
+        </header>
+        <pre class="signature"><code>MinSize</code></pre>
+        
+        <div class="description"><p>@type{IConstraints}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks-MoveStyle-eeeeba79" data-kind="property" data-name="movestyle">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks-MoveStyle-eeeeba79">MoveStyle</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:65</div>
+        </header>
+        <pre class="signature"><code>MoveStyle</code></pre>
+        
+        <div class="description"><p>0 - Default; 1 - Middle mouse button only; 2 - Left mouse button only; 3 - Left or middle mouse button;</p>
+<p>@type{number}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks.IMasterVolume-Mute-e7890edb" data-kind="property" data-name="mute">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks.IMasterVolume-Mute-e7890edb">Mute</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:150</div>
+        </header>
+        <pre class="signature"><code>Mute</code></pre>
+        
+        <div class="description"><p>@type{boolean}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks.IAero-Right-d451bcad" data-kind="property" data-name="right">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks.IAero-Right-d451bcad">Right</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:111</div>
+        </header>
+        <pre class="signature"><code>Right</code></pre>
+        
+        <div class="description"><p>@type{number}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks-StatusBarState-9611cc05" data-kind="property" data-name="statusbarstate">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks-StatusBarState-9611cc05">StatusBarState</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:75</div>
+        </header>
+        <pre class="signature"><code>StatusBarState</code></pre>
+        
+        <div class="description"><p>@type{boolean}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks-SystemCPUUsage-cedee981" data-kind="property" data-name="systemcpuusage">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks-SystemCPUUsage-cedee981">SystemCPUUsage</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:78</div>
+        </header>
+        <pre class="signature"><code>SystemCPUUsage</code></pre>
+        
+        <div class="description"><p>@type{float}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks.IAero-Top-8f7d2114" data-kind="property" data-name="top">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks.IAero-Top-8f7d2114">Top</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:108</div>
+        </header>
+        <pre class="signature"><code>Top</code></pre>
+        
+        <div class="description"><p>@type{number}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks.IAero-Transparency-1afdbd5f" data-kind="property" data-name="transparency">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks.IAero-Transparency-1afdbd5f">Transparency</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:120</div>
+        </header>
+        <pre class="signature"><code>Transparency</code></pre>
+        
+        <div class="description"><p>@type{boolean}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks.IMasterVolume-Volume-a2cf868c" data-kind="property" data-name="volume">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks.IMasterVolume-Volume-a2cf868c">Volume</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:153</div>
+        </header>
+        <pre class="signature"><code>Volume</code></pre>
+        
+        <div class="description"><p>@type{float}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks.IConstraints-Width-ae826f24" data-kind="property" data-name="width">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks.IConstraints-Width-ae826f24">Width</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:132</div>
+        </header>
+        <pre class="signature"><code>Width</code></pre>
+        
+        <div class="description"><p>@type{number}</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks.IMasterVolume-GetChannelVolume-f5702dbb" data-kind="method" data-name="getchannelvolume">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks.IMasterVolume-GetChannelVolume-f5702dbb">GetChannelVolume</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:156</div>
+        </header>
+        <pre class="signature"><code>GetChannelVolume(channelIdx)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>channelIdx</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code><a class="type-link" href="globals.html#symbol-float-a6c45d85">float</a></code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks.IMasterVolume-SetChannelVolume-715b1e27" data-kind="method" data-name="setchannelvolume">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks.IMasterVolume-SetChannelVolume-715b1e27">SetChannelVolume</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:162</div>
+        </header>
+        <pre class="signature"><code>SetChannelVolume(channelIdx, volume)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>channelIdx</code></td><td><code>number</code></td><td></td></tr><tr><td><code>volume</code></td><td><code><a class="type-link" href="globals.html#symbol-float-a6c45d85">float</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks-SetPseudoCaption-149a0235" data-kind="method" data-name="setpseudocaption">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks-SetPseudoCaption-149a0235">SetPseudoCaption</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:81</div>
+        </header>
+        <pre class="signature"><code>SetPseudoCaption(x, y, w, h)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>w</code></td><td><code>number</code></td><td></td></tr><tr><td><code>h</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks.IMasterVolume-VolumeStepDown-f1272a06" data-kind="method" data-name="volumestepdown">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks.IMasterVolume-VolumeStepDown-f1272a06">VolumeStepDown</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:168</div>
+        </header>
+        <pre class="signature"><code>VolumeStepDown()</code></pre>
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-IUIHacks.IMasterVolume-VolumeStepUp-3d2352d3" data-kind="method" data-name="volumestepup">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-IUIHacks.IMasterVolume-VolumeStepUp-3d2352d3">VolumeStepUp</a></h2>
+            </div>
+            <div class="source-location">js/foo_ui_hacks.js:171</div>
+        </header>
+        <pre class="signature"><code>VolumeStepUp()</code></pre>
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

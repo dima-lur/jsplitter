@@ -211,6 +211,10 @@ let performance = {
     /**
      * Read-only property of the Performance interface returns the high resolution timestamp that is used as the baseline for performance-related timestamps.<br>
      * In JSplitter context this value represents the "UNIX-time" (milliseconds since 1 January 1970) when script was loaded.
+     *
+     * @type {number}
+     * @readonly
+     * @default 
      */
     timeOrigin: 0.0
 };

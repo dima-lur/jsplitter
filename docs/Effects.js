@@ -94,10 +94,10 @@
  * @property {Object} ColorMatrix
  * Use the color matrix effect to alter the RGBA values of a bitmap.<br>
  * You can use this effect to: <br>
- * ● Remove a color channel from an image.<br>
- * ● Reduce the color in an image.<br>
- * ● Swap color channels.<br>
- * ● Combine color channels.<br>
+ * - Remove a color channel from an image.<br>
+ * - Reduce the color in an image.<br>
+ * - Swap color channels.<br>
+ * - Combine color channels.<br>
  * Many built-in effects are specializations of color matrix that are optimized for the intended use of the effects. Examples include saturation, hue rotate, sepia, and temperature and tint.<br>
  * For more information, see: {@link https://learn.microsoft.com/en-us/windows/win32/direct2d/color-matrix}
  * @property {string} ColorMatrix.ID
@@ -168,9 +168,9 @@
  * @property {string} Blend.ID
  * CLSID of effect.
  * @property {string} Blend.Mode
- * Value type: <b>{@link module:Effects.Blend Blend}</b><br>
+ * Value type: <b>{@link module:Effects.BlendMode BlendMode}</b><br>
  * The interpolation mode the effect uses to scale the image to the corresponding kernel unit length. There are six scale modes that range in quality and speed.<br>
- * The default value is {@link module:Effects.Blend Blend.Multiply}
+ * The default value is {@link module:Effects.BlendMode BlendMode.Multiply}
  * 
  * @property {Object} Composite
  * Use the composite effect to combine 2 or more images. This effect has 13 different composite modes. The composite effect accepts 2 or more inputs. When you specify 2 images, destination is the first input (index 0) and the source is the second input (index 1). If you specify more than 2 inputs the images are composited starting with the first input and the second and so on. This effect implements all of the modes using the blending unit of the graphics processing unit (GPU).<br>
@@ -671,7 +671,7 @@
  * 
  * @property {Object} D3DPerspectiveTransform
  * Use the 3D perspective transform effect to rotate the image in 3 dimensions as if viewed from a distance.<br>
- * The 3D perspective transform is more convenient than the {@link module:Effects.D3DTransform 3D transform effect}, but only exposes a subset of the functionality. You can compute a full 3D transformation matrix and apply a more arbitrary transform matrix to an image using the {@link module:Effects.D3DTransform 3D transform effect}<br>
+ * The 3D perspective transform is more convenient than the {@link module:Effects.Effects.D3DTransform 3D transform effect}, but only exposes a subset of the functionality. You can compute a full 3D transformation matrix and apply a more arbitrary transform matrix to an image using the {@link module:Effects.Effects.D3DTransform 3D transform effect}<br>
  * For more information, see: {@link https://learn.microsoft.com/en-us/windows/win32/direct2d/3d-perspective-transform}
  * @property {string} D3DPerspectiveTransform.ID
  * CLSID of effect.
@@ -1198,7 +1198,7 @@ const Effects = {
  * Specifies the types of properties supported by the Direct2D property interface.<br>
  * Used as return type of {@link D2DEffect#GetPropertyType GetPropertyType}<br>
  * @memberof module:Effects
- * @default
+ * @enum {number}
  */
 const D2DEffectPropertyType = {
     Unknown: 0,
@@ -1224,14 +1224,14 @@ const D2DEffectPropertyType = {
 
 /**
  * Used in {@link module:Effects.Effects Effects.Scale}<br>
- * <b>NearestNeighbor</b>: Samples the nearest single point and uses that. This mode uses less processing time, but outputs the lowest quality image.<br>
- * <b>Linear</b>: Uses a four point sample and linear interpolation. This mode uses more processing time than the nearest neighbor mode, but outputs a higher quality image.<br>
- * <b>Cubic</b>: Uses a 16 sample cubic kernel for interpolation. This mode uses the most processing time, but outputs a higher quality image.<br>
- * <b>MultiSampleLinear</b>: Uses 4 linear samples within a single pixel for good edge anti-aliasing. This mode is good for scaling down by small amounts on images with few pixels.<br>
- * <b>Anisotropic</b>: Uses anisotropic filtering to sample a pattern according to the transformed shape of the bitmap.<br>
- * <b>HighQualityCubic</b>: Uses a variable size high quality cubic kernel to perform a pre-downscale the image if downscaling is involved in the transform matrix. Then uses the cubic interpolation mode for the final output.<br>
  * @memberof module:Effects
- * @default
+ * @enum {number}
+ * @property NearestNeighbor Samples the nearest single point and uses that. This mode uses less processing time, but outputs the lowest quality image.
+ * @property Linear Uses a four point sample and linear interpolation. This mode uses more processing time than the nearest neighbor mode, but outputs a higher quality image.
+ * @property Cubic Uses a 16 sample cubic kernel for interpolation. This mode uses the most processing time, but outputs a higher quality image.
+ * @property MultiSampleLinear Uses 4 linear samples within a single pixel for good edge anti-aliasing. This mode is good for scaling down by small amounts on images with few pixels.
+ * @property Anisotropic Uses anisotropic filtering to sample a pattern according to the transformed shape of the bitmap.
+ * @property HighQualityCubic Uses a variable size high quality cubic kernel to perform a pre-downscale the image if downscaling is involved in the transform matrix. Then uses the cubic interpolation mode for the final output.
  */
 const ScaleInterpolationMode = {
     NearestNeighbor: 0,
@@ -1244,10 +1244,10 @@ const ScaleInterpolationMode = {
 
 /**
  * Used in {@link module:Effects.Effects Effects.Scale}, {@link module:Effects.Effects Effects.DirectionalBlur}, {@link module:Effects.Effects Effects.GaussianBlur}, {@link module:Effects.Effects Effects.ConvolveMatrix}<br>
- * <b>Soft</b>: The effect pads the input image with transparent black pixels for samples outside of the input bounds when it applies the convolution kernel. This creates a soft edge for the image, and in the process expands the output bitmap by the size of the kernel.<br>
- * <b>Hard</b>: The effect extends the input image with a mirror-type border transform for samples outside of the input bounds. The size of the output bitmap is equal to the size of the input bitmap.
  * @memberof module:Effects
- * @default
+ * @enum {number}
+ * @property Soft The effect pads the input image with transparent black pixels for samples outside of the input bounds when it applies the convolution kernel. This creates a soft edge for the image, and in the process expands the output bitmap by the size of the kernel.
+ * @property Hard The effect extends the input image with a mirror-type border transform for samples outside of the input bounds. The size of the output bitmap is equal to the size of the input bitmap.
  */
 const BorderMode = {
     Soft: 0,
@@ -1256,11 +1256,11 @@ const BorderMode = {
 
 /**
  * Used in {@link module:Effects.Effects Effects.DirectionalBlur}<br>
- * <b>Speed</b>: Applies internal optimizations such as pre-scaling at relatively small radii. Uses linear filtering.<br>
- * <b>Balanced</b>: Uses the same optimization thresholds as Speed mode, but uses trilinear filtering.<br>
- * <b>Quality</b>: Only uses internal optimizations with large blur radii, where approximations are less likely to be visible. Uses trilinear filtering.
  * @memberof module:Effects
- * @default
+ * @enum {number}
+ * @property Speed Applies internal optimizations such as pre-scaling at relatively small radii. Uses linear filtering.
+ * @property Balanced Uses the same optimization thresholds as Speed mode, but uses trilinear filtering.
+ * @property Quality Only uses internal optimizations with large blur radii, where approximations are less likely to be visible. Uses trilinear filtering.
  */
 const DirectionalBlurOptimization = {
     Speed: 0,
@@ -1270,11 +1270,11 @@ const DirectionalBlurOptimization = {
 
 /**
  * Used in {@link module:Effects.Effects Effects.GaussianBlur}<br>
- * <b>Speed</b>: Applies internal optimizations such as pre-scaling at relatively small radii. Uses linear filtering.<br>
- * <b>Balanced</b>: Uses the same optimization thresholds as Speed mode, but uses trilinear filtering.<br>
- * <b>Quality</b>: Only uses internal optimizations with large blur radii, where approximations are less likely to be visible. Uses trilinear filtering.
  * @memberof module:Effects
- * @default
+ * @enum {number}
+ * @property Speed Applies internal optimizations such as pre-scaling at relatively small radii. Uses linear filtering.
+ * @property Balanced Uses the same optimization thresholds as Speed mode, but uses trilinear filtering.
+ * @property Quality Only uses internal optimizations with large blur radii, where approximations are less likely to be visible. Uses trilinear filtering.
  */
 const GaussianBlurOptimization = {
     Speed: 0,
@@ -1284,12 +1284,12 @@ const GaussianBlurOptimization = {
 
 /**
  * Used in {@link module:Effects Effects.Sepia} and {@link module:Effects Effects.EdgeDetection}<br>
- * <b>Unknown</b>: The alpha value might not be meaningful.<br>
- * <b>Premultiplied</b>: The alpha value has been premultiplied. Each color is first scaled by the alpha value. The alpha value itself is the same in both straight and premultiplied alpha. Typically, no color channel value is greater than the alpha channel value. If a color channel value in a premultiplied format is greater than the alpha channel, the standard source-over blending math results in an additive blend.<br>
- * <b>Straight</b>: The alpha value has not been premultiplied. The alpha channel indicates the transparency of the color.<br>
- * <b>Ignore</b>: The alpha value is ignored.
  * @memberof module:Effects
- * @default
+ * @enum {number}
+ * @property Unknown The alpha value might not be meaningful.
+ * @property Premultiplied The alpha value has been premultiplied. Each color is first scaled by the alpha value. The alpha value itself is the same in both straight and premultiplied alpha. Typically, no color channel value is greater than the alpha channel value. If a color channel value in a premultiplied format is greater than the alpha channel, the standard source-over blending math results in an additive blend.
+ * @property Straight The alpha value has not been premultiplied. The alpha channel indicates the transparency of the color.
+ * @property Ignore The alpha value is ignored.
  */
 const AlphaMode = {
     Unknown: 0,
@@ -1300,10 +1300,10 @@ const AlphaMode = {
 
 /**
  * Used in {@link module:Effects Effects.HighlightsShadows}<br>
- * <b>Linear</b>: Indicates the input image is in linear gamma space.<br>
- * <b>SRGB</b>: Indicates the input image is sRGB gamma space.<br>
  * @memberof module:Effects
- * @default
+ * @enum {number}
+ * @property Linear Indicates the input image is in linear gamma space.
+ * @property SRGB Indicates the input image is sRGB gamma space.
  */
 const InputGamma = {
     Linear: 0,
@@ -1312,12 +1312,12 @@ const InputGamma = {
 
 /**
  * Used in {@link module:Effects Effects.Histogram}<br>
- * <b>R</b>: The effect generates the histogram output based on the red channel.<br>
- * <b>G</b>: The effect generates the histogram output based on the green channel.<br>
- * <b>B</b>: The effect generates the histogram output based on the blue channel.<br>
- * <b>A</b>: The effect generates the histogram output based on the alpha channel.<br>
  * @memberof module:Effects
- * @default
+ * @enum {number}
+ * @property R The effect generates the histogram output based on the red channel.
+ * @property G The effect generates the histogram output based on the green channel.
+ * @property B The effect generates the histogram output based on the blue channel.
+ * @property A The effect generates the histogram output based on the alpha channel.
  */
 const ChannelSelector = {
     R: 0,
@@ -1328,13 +1328,13 @@ const ChannelSelector = {
 
 /**
  * Used in {@link module:Effects Effects.Straighten}<br>
- * <b>NearestNeighbor</b>: Indicates nearest neighbor interpolation should be used.<br>
- * <b>Linear</b>: Indicates linear interpolation should be used.<br>
- * <b>Cubic</b>: Indicates cubic interpolation should be used.<br>
- * <b>MultisampleLinear</b>: Indicates multi-sample linear interpolation should be used.<br>
- * <b>Anisotropic</b>: Indicates anisotropic filtering should be used.<br>
  * @memberof module:Effects
- * @default
+ * @enum {number}
+ * @property NearestNeighbor Indicates nearest neighbor interpolation should be used.
+ * @property Linear Indicates linear interpolation should be used.
+ * @property Cubic Indicates cubic interpolation should be used.
+ * @property MultisampleLinear Indicates multi-sample linear interpolation should be used.
+ * @property Anisotropic Indicates anisotropic filtering should be used.
  */
 const StraightenScaleMode = {
     NearestNeighbor: 0,
@@ -1346,14 +1346,14 @@ const StraightenScaleMode = {
 
 /**
  * Used in {@link module:Effects.Effects Effects.Scale}<br>
- * <b>NearestNeighbor</b>: Samples the nearest single point and uses that. This mode uses less processing time, but outputs the lowest quality image.<br>
- * <b>Linear</b>: Uses a four point sample and linear interpolation. This mode uses more processing time than the nearest neighbor mode, but outputs a higher quality image.<br>
- * <b>Cubic</b>: Uses a 16 sample cubic kernel for interpolation. This mode uses the most processing time, but outputs a higher quality image.<br>
- * <b>MultiSampleLinear</b>: Uses 4 linear samples within a single pixel for good edge anti-aliasing. This mode is good for scaling down by small amounts on images with few pixels.<br>
- * <b>Anisotropic</b>: Uses anisotropic filtering to sample a pattern according to the transformed shape of the bitmap.<br>
- * <b>HighQualityCubic</b>: Uses a variable size high quality cubic kernel to perform a pre-downscale the image if downscaling is involved in the transform matrix. Then uses the cubic interpolation mode for the final output.<br>
  * @memberof module:Effects
- * @default
+ * @enum {number}
+ * @property NearestNeighbor Samples the nearest single point and uses that. This mode uses less processing time, but outputs the lowest quality image.
+ * @property Linear Uses a four point sample and linear interpolation. This mode uses more processing time than the nearest neighbor mode, but outputs a higher quality image.
+ * @property Cubic Uses a 16 sample cubic kernel for interpolation. This mode uses the most processing time, but outputs a higher quality image.
+ * @property MultiSampleLinear Uses 4 linear samples within a single pixel for good edge anti-aliasing. This mode is good for scaling down by small amounts on images with few pixels.
+ * @property Anisotropic Uses anisotropic filtering to sample a pattern according to the transformed shape of the bitmap.
+ * @property HighQualityCubic Uses a variable size high quality cubic kernel to perform a pre-downscale the image if downscaling is involved in the transform matrix. Then uses the cubic interpolation mode for the final output.
  */
 const ConvolveMatrixScaleMode = {
     NearestNeighbor: 0,
@@ -1366,10 +1366,10 @@ const ConvolveMatrixScaleMode = {
 
 /**
  * Used in {@link module:Effects Effects.EdgeDetection}<br>
- * <b>Sobel</b>: Indicates the Sobel operator should be used for edge detection.<br>
- * <b>Prewitt</b>: Indicates the Prewitt operator should be used for edge detection.<br>
  * @memberof module:Effects
- * @default
+ * @enum {number}
+ * @property Sobel Indicates the Sobel operator should be used for edge detection.
+ * @property Prewitt Indicates the Prewitt operator should be used for edge detection.
  */
 const EdgeDetectionMode = {
     Sobel: 0,
@@ -1378,10 +1378,10 @@ const EdgeDetectionMode = {
 
 /**
  * Used in {@link module:Effects Effects.Morphology}<br>
- * <b>Erode</b>: The minimum value from each RGB channel in the kernel is used.<br>
- * <b>Dilate</b>: The maximum value from each RGB channel in the kernel is used.<br>
  * @memberof module:Effects
- * @default
+ * @enum {number}
+ * @property Erode The minimum value from each RGB channel in the kernel is used.
+ * @property Dilate The maximum value from each RGB channel in the kernel is used.
  */
 const MorphologyMode = {
     Erode: 0,
@@ -1390,14 +1390,14 @@ const MorphologyMode = {
 
 /**
  * Used in {@link module:Effects.Effects Effects.AffineTransform}<br>
- * <b>NearestNeighbor</b>: Samples the nearest single point and uses that. This mode uses less processing time, but outputs the lowest quality image.<br>
- * <b>Linear</b>: Uses a four point sample and linear interpolation. This mode uses more processing time than the nearest neighbor mode, but outputs a higher quality image.<br>
- * <b>Cubic</b>: Uses a 16 sample cubic kernel for interpolation. This mode uses the most processing time, but outputs a higher quality image.<br>
- * <b>MultiSampleLinear</b>: Uses 4 linear samples within a single pixel for good edge anti-aliasing. This mode is good for scaling down by small amounts on images with few pixels.<br>
- * <b>Anisotropic</b>: Uses anisotropic filtering to sample a pattern according to the transformed shape of the bitmap.<br>
- * <b>HighQualityCubic</b>: Uses a variable size high quality cubic kernel to perform a pre-downscale the image if downscaling is involved in the transform matrix. Then uses the cubic interpolation mode for the final output.<br>
  * @memberof module:Effects
- * @default
+ * @enum {number}
+ * @property NearestNeighbor Samples the nearest single point and uses that. This mode uses less processing time, but outputs the lowest quality image.
+ * @property Linear Uses a four point sample and linear interpolation. This mode uses more processing time than the nearest neighbor mode, but outputs a higher quality image.
+ * @property Cubic Uses a 16 sample cubic kernel for interpolation. This mode uses the most processing time, but outputs a higher quality image.
+ * @property MultiSampleLinear Uses 4 linear samples within a single pixel for good edge anti-aliasing. This mode is good for scaling down by small amounts on images with few pixels.
+ * @property Anisotropic Uses anisotropic filtering to sample a pattern according to the transformed shape of the bitmap.
+ * @property HighQualityCubic Uses a variable size high quality cubic kernel to perform a pre-downscale the image if downscaling is involved in the transform matrix. Then uses the cubic interpolation mode for the final output.
  */
 const D2DAffinetransformInterpolationMode = {
     NearestNeighbor: 0,
@@ -1410,13 +1410,13 @@ const D2DAffinetransformInterpolationMode = {
 
 /**
  * Used in {@link module:Effects.Effects Effects.D3DTransform}<br>
- * <b>NearestNeighbor</b>: Samples the nearest single point and uses that. This mode uses less processing time, but outputs the lowest quality image.<br>
- * <b>Linear</b>: Uses a four point sample and linear interpolation. This mode uses more processing time than the nearest neighbor mode, but outputs a higher quality image.<br>
- * <b>Cubic</b>: Uses a 16 sample cubic kernel for interpolation. This mode uses the most processing time, but outputs a higher quality image.<br>
- * <b>MultiSampleLinear</b>: Uses 4 linear samples within a single pixel for good edge anti-aliasing. This mode is good for scaling down by small amounts on images with few pixels.<br>
- * <b>Anisotropic</b>: Uses anisotropic filtering to sample a pattern according to the transformed shape of the bitmap.<br>
  * @memberof module:Effects
- * @default
+ * @enum {number}
+ * @property NearestNeighbor Samples the nearest single point and uses that. This mode uses less processing time, but outputs the lowest quality image.
+ * @property Linear Uses a four point sample and linear interpolation. This mode uses more processing time than the nearest neighbor mode, but outputs a higher quality image.
+ * @property Cubic Uses a 16 sample cubic kernel for interpolation. This mode uses the most processing time, but outputs a higher quality image.
+ * @property MultiSampleLinear Uses 4 linear samples within a single pixel for good edge anti-aliasing. This mode is good for scaling down by small amounts on images with few pixels.
+ * @property Anisotropic Uses anisotropic filtering to sample a pattern according to the transformed shape of the bitmap.
  */
 const D3DTransformInterpolationMode = {
     NearestNeighbor: 0,
@@ -1428,13 +1428,13 @@ const D3DTransformInterpolationMode = {
 
 /**
  * Used in {@link module:Effects.Effects Effects.D3DPerspectiveTransform}<br>
- * <b>NearestNeighbor</b>: Samples the nearest single point and uses that. This mode uses less processing time, but outputs the lowest quality image.<br>
- * <b>Linear</b>: Uses a four point sample and linear interpolation. This mode uses more processing time than the nearest neighbor mode, but outputs a higher quality image.<br>
- * <b>Cubic</b>: Uses a 16 sample cubic kernel for interpolation. This mode uses the most processing time, but outputs a higher quality image.<br>
- * <b>MultiSampleLinear</b>: Uses 4 linear samples within a single pixel for good edge anti-aliasing. This mode is good for scaling down by small amounts on images with few pixels.<br>
- * <b>Anisotropic</b>: Uses anisotropic filtering to sample a pattern according to the transformed shape of the bitmap.<br>
  * @memberof module:Effects
- * @default
+ * @enum {number}
+ * @property NearestNeighbor Samples the nearest single point and uses that. This mode uses less processing time, but outputs the lowest quality image.
+ * @property Linear Uses a four point sample and linear interpolation. This mode uses more processing time than the nearest neighbor mode, but outputs a higher quality image.
+ * @property Cubic Uses a 16 sample cubic kernel for interpolation. This mode uses the most processing time, but outputs a higher quality image.
+ * @property MultiSampleLinear Uses 4 linear samples within a single pixel for good edge anti-aliasing. This mode is good for scaling down by small amounts on images with few pixels.
+ * @property Anisotropic Uses anisotropic filtering to sample a pattern according to the transformed shape of the bitmap.
  */
 const D3DPerspectiveTransformInterpolationMode = {
     NearestNeighbor: 0,
@@ -1446,11 +1446,11 @@ const D3DPerspectiveTransformInterpolationMode = {
 
 /**
  * Used in {@link module:Effects.Effects Effects.Border}<br>
- * <b>Clamp</b>: Repeats the pixels from the edges of the image.<br>
- * <b>Wrap</b>: Uses pixels from the opposite end edge of the image.<br>
- * <b>Mirror</b>: Reflects pixels about the edge of the image.<br>
  * @memberof module:Effects
- * @default
+ * @enum {number}
+ * @property Clamp Repeats the pixels from the edges of the image.
+ * @property Wrap Uses pixels from the opposite end edge of the image.
+ * @property Mirror Reflects pixels about the edge of the image.
  */
 const BorderEdgeMode = {
     Clamp: 0,
@@ -1462,7 +1462,7 @@ const BorderEdgeMode = {
  * Used in {@link module:Effects.Effects Effects.Blend}<br>
  * For blend modes description see: {@link https://learn.microsoft.com/en-us/windows/win32/direct2d/blend#blend-modes}
  * @memberof module:Effects
- * @default
+ * @enum {number}
  */
 const BlendMode = {
     Multiply: 0,
@@ -1495,11 +1495,11 @@ const BlendMode = {
 
 /**
  * Used in {@link module:Effects.Effects Effects.Shadow}<br>
- * <b>Speed</b>: Applies internal optimizations such as pre-scaling at relatively small radii. Uses linear filtering.<br>
- * <b>Balanced</b>: Uses the same optimization thresholds as Speed mode, but uses trilinear filtering.<br>
- * <b>Quality</b>: Only uses internal optimizations with large blur radii, where approximations are less likely to be visible. Uses trilinear filtering.
  * @memberof module:Effects
- * @default
+ * @enum {number}
+ * @property Speed Applies internal optimizations such as pre-scaling at relatively small radii. Uses linear filtering.
+ * @property Balanced Uses the same optimization thresholds as Speed mode, but uses trilinear filtering.
+ * @property Quality Only uses internal optimizations with large blur radii, where approximations are less likely to be visible. Uses trilinear filtering.
  */
 const ShadowOptimization = {
     Speed: 0,
@@ -1509,12 +1509,12 @@ const ShadowOptimization = {
 
 /**
  * Used in {@link module:Effects Effects.ColorMatrix}<br>
- * <b>Unknown</b>: The alpha value might not be meaningful.<br>
- * <b>Premultiplied</b>: The alpha value has been premultiplied. Each color is first scaled by the alpha value. The alpha value itself is the same in both straight and premultiplied alpha. Typically, no color channel value is greater than the alpha channel value. If a color channel value in a premultiplied format is greater than the alpha channel, the standard source-over blending math results in an additive blend.<br>
- * <b>Straight</b>: The alpha value has not been premultiplied. The alpha channel indicates the transparency of the color.<br>
- * <b>Ignore</b>: The alpha value is ignored.
  * @memberof module:Effects
- * @default
+ * @enum {number}
+ * @property Unknown The alpha value might not be meaningful.
+ * @property Premultiplied The alpha value has been premultiplied. Each color is first scaled by the alpha value. The alpha value itself is the same in both straight and premultiplied alpha. Typically, no color channel value is greater than the alpha channel value. If a color channel value in a premultiplied format is greater than the alpha channel, the standard source-over blending math results in an additive blend.
+ * @property Straight The alpha value has not been premultiplied. The alpha channel indicates the transparency of the color.
+ * @property Ignore The alpha value is ignored.
  */
 const ColorMatrixAlphaMode = {
     Unknown: 0,
@@ -1525,10 +1525,10 @@ const ColorMatrixAlphaMode = {
 
 /**
  * Used in {@link module:Effects Effects.HdrToneMap}<br>
- * <b>SDR</b>: Specifies that the tone mapper algorithm be optimized for best appearance on a standard dynamic range (SDR) display.<br>
- * <b>HDR</b>: Specifies that the tone mapper algorithm be optimized for best appearance on a high dynamic range (HDR) display.<br>
  * @memberof module:Effects
- * @default
+ * @enum {number}
+ * @property SDR Specifies that the tone mapper algorithm be optimized for best appearance on a standard dynamic range (SDR) display.
+ * @property HDR Specifies that the tone mapper algorithm be optimized for best appearance on a high dynamic range (HDR) display.
  */
 const HdrToneMapDisplayMode = {
     SDR: 0,
@@ -1537,10 +1537,10 @@ const HdrToneMapDisplayMode = {
 
 /**
  * Used in {@link module:Effects Effects.TurbulenceNoise}<br>
- * <b>FractalSum</b>: Computes a sum of the octaves, shifting the output range from [-1, 1], to [0, 1].<br>
- * <b>Turbulence</b>: Computes a sum of the absolute value of each octave.<br>
  * @memberof module:Effects
- * @default
+ * @enum {number}
+ * @property FractalSum Computes a sum of the octaves, shifting the output range from [-1, 1], to [0, 1].
+ * @property Turbulence Computes a sum of the absolute value of each octave.
  */
 const TurbulenceNoise = {
     FractalSum: 0,

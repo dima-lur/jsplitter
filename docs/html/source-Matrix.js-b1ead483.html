@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Matrix.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <a class="nav-link " href="globals.html">Globals</a>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><a class="nav-link " href="console-2e329b2a.html">console</a><a class="nav-link " href="d2d-e9c3ac95.html">d2d</a><a class="nav-link " href="fb-6722f021.html">fb</a><a class="nav-link " href="gdi-430a4dfd.html">gdi</a><a class="nav-link " href="performance-aece8ca5.html">performance</a><a class="nav-link " href="plman-ff97d52b.html">plman</a><a class="nav-link " href="utils-ae9d59ce.html">utils</a><a class="nav-link " href="window-a172b7dd.html">window</a></div><div class="nav-group"><div class="nav-title">Classes</div><a class="nav-link " href="ActiveXObject-28dae3aa.html">ActiveXObject</a><a class="nav-link " href="ButtonObject-1debaece.html">ButtonObject</a><a class="nav-link " href="ContextMenuManager-dea00d42.html">ContextMenuManager</a><a class="nav-link " href="D2DBitmap-6ce237d6.html">D2DBitmap</a><a class="nav-link " href="D2DBrush-3ea48163.html">D2DBrush</a><a class="nav-link " href="D2DCompileInfo-9fc679ee.html">D2DCompileInfo</a><a class="nav-link " href="D2DEffect-fb3cb264.html">D2DEffect</a><a class="nav-link " href="D2DFont-303de060.html">D2DFont</a><a class="nav-link " href="D2DGraphics-140c7c58.html">D2DGraphics</a><a class="nav-link " href="DropTargetAction-30eb028f.html">DropTargetAction</a><a class="nav-link " href="Enumerator-fbd761ff.html">Enumerator</a><a class="nav-link " href="FbAudioChunk-d27f9222.html">FbAudioChunk</a><a class="nav-link " href="FbFileInfo-e3e80363.html">FbFileInfo</a><a class="nav-link " href="FbMetadbHandle-b8dee4d8.html">FbMetadbHandle</a><a class="nav-link " href="FbMetadbHandleList-96b9a840.html">FbMetadbHandleList</a><a class="nav-link " href="FbPlaybackQueueItem-64c88ea8.html">FbPlaybackQueueItem</a><a class="nav-link " href="FbPlayingItemLocation-42048429.html">FbPlayingItemLocation</a><a class="nav-link " href="FbPlaylistRecycler-447bca5e.html">FbPlaylistRecycler</a><a class="nav-link " href="FbProfiler-7dd51f80.html">FbProfiler</a><a class="nav-link " href="FbTitleFormat-0597af5a.html">FbTitleFormat</a><a class="nav-link " href="FbTooltip-84b590ec.html">FbTooltip</a><a class="nav-link " href="FbUiSelectionHolder-d2ce89ed.html">FbUiSelectionHolder</a><a class="nav-link " href="GdiBitmap-d3bf0fbe.html">GdiBitmap</a><a class="nav-link " href="GdiBrush-e59ebdab.html">GdiBrush</a><a class="nav-link " href="GdiFont-b0fbf4a8.html">GdiFont</a><a class="nav-link " href="GdiGraphics-ad9f20a0.html">GdiGraphics</a><a class="nav-link " href="GdiRawBitmap-594f53ea.html">GdiRawBitmap</a><a class="nav-link " href="HtmlDocument-73083c39.html">HtmlDocument</a><a class="nav-link " href="HtmlNode-d8acac9c.html">HtmlNode</a><a class="nav-link " href="IUIHacks-b5106744.html">IUIHacks</a><a class="nav-link " href="MainMenuManager-c314a746.html">MainMenuManager</a><a class="nav-link " href="MenuObject-4a0b6d51.html">MenuObject</a><a class="nav-link " href="PanelObject-dd97d6ba.html">PanelObject</a><a class="nav-link " href="PerformanceObserver-f1192ef7.html">PerformanceObserver</a><a class="nav-link " href="PerformanceObserverEntryList-91fbd61d.html">PerformanceObserverEntryList</a><a class="nav-link " href="RunResult-1de62053.html">RunResult</a><a class="nav-link " href="ThemeManager-ed5a3909.html">ThemeManager</a></div><div class="nav-group"><div class="nav-title">Modules</div><a class="nav-link " href="module-Callbacks-98afe9cf.html">Callbacks</a><a class="nav-link " href="module-Codepages-1528fbf4.html">Codepages</a><a class="nav-link " href="module-Effects-592fdd05.html">Effects</a><a class="nav-link " href="module-Flags-4222ebcc.html">Flags</a><a class="nav-link " href="module-Helpers-b5c6de9a.html">Helpers</a><a class="nav-link " href="module-Matrix-e9d1810c.html">Matrix</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>docs/Matrix.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="D2DBrush-3ea48163.html#symbol-D2DBrush-GetTransform-07b12ee8">D2DBrush#GetTransform</a><a href="D2DBrush-3ea48163.html#symbol-D2DBrush-SetTransform-b57b60bc">D2DBrush#SetTransform</a><a href="D2DBrush-3ea48163.html#symbol-D2DBrush-ApplyTransform-3cfe23c0">D2DBrush#ApplyTransform</a><a href="D2DGraphics-140c7c58.html#symbol-D2DGraphics-GetTransform-599abc85">D2DGraphics#GetTransform</a><a href="D2DGraphics-140c7c58.html#symbol-D2DGraphics-SetTransform-63172ee9">D2DGraphics#SetTransform</a><a href="D2DGraphics-140c7c58.html#symbol-D2DGraphics-ApplyTransform-472b8ec9">D2DGraphics#ApplyTransform</a><a href="GdiBrush-e59ebdab.html#symbol-GdiBrush-GetTransform-8d6264f0">GdiBrush#GetTransform</a><a href="GdiBrush-e59ebdab.html#symbol-GdiBrush-SetTransform-38a78ae4">GdiBrush#SetTransform</a><a href="GdiBrush-e59ebdab.html#symbol-GdiBrush-ApplyTransform-d5b806a8">GdiBrush#ApplyTransform</a><a href="GdiGraphics-ad9f20a0.html#symbol-GdiGraphics-GetTransform-90ffa7ed">GdiGraphics#GetTransform</a><a href="GdiGraphics-ad9f20a0.html#symbol-GdiGraphics-SetTransform-d17871d1">GdiGraphics#SetTransform</a><a href="GdiGraphics-ad9f20a0.html#symbol-GdiGraphics-ApplyTransform-b68e5631">GdiGraphics#ApplyTransform</a></div>
+        </header>
+        <pre class="source-code"><code><span class="tok-comment">/**
+ * Matrix helpers&lt;br&gt;
+ * @module Matrix
+*/</span>
+
+<span class="tok-comment">/**
+ * Matrix class to provide helper functions for transforming the image in 3 dimensions.&lt;br&gt;
+ * For more information, see: {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nl-d2d1helper-matrix3x2f}&lt;br&gt;
+ * May be used for {@link D2DGraphics#SetTransform SetTransform}, {@link D2DGraphics#ApplyTransform ApplyTransform} or {@link module:Effects.Effects Effects.AffineTransform}&lt;br&gt;
+ * @memberof module:Matrix
+ * @class
+ * @hideconstructor
+ */</span>
+<span class="tok-keyword">class</span> Matrix3x2 {
+
+    <span class="tok-comment">/**
+     * Generates identity matrix.
+     * @method
+     * @return {Float32Array}
+     */</span>
+    <span class="tok-keyword">static</span> Identity() {
+        <span class="tok-keyword">return</span> <span class="tok-keyword">new</span> Float32Array([
+            <span class="tok-number">1</span>, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">1</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">0</span>
+        ]);
+    }
+
+    <span class="tok-comment">/**
+     * Creates a translation transformation that has the specified x and y displacements.
+     * @method
+     * @param {float} dx
+     * @param {float} dy
+     * @return {Float32Array}
+     */</span>
+    <span class="tok-keyword">static</span> Translation(dx, dy) {
+        <span class="tok-keyword">return</span> <span class="tok-keyword">new</span> Float32Array([
+            <span class="tok-number">1</span>, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">1</span>,
+            dx, dy
+        ]);
+    }
+
+    <span class="tok-comment">/**
+     * Creates a scale transformation that has the specified scale factors and center point.
+     * @method
+     * @param {float} sx
+     * @param {float} sy
+     * @param {float} centerX
+     * @param {float} centerY
+     * @return {Float32Array}
+     */</span>
+    <span class="tok-keyword">static</span> Scale(sx, sy, centerX, centerY) {
+        <span class="tok-keyword">return</span> <span class="tok-keyword">new</span> Float32Array([
+            sx, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, sy,
+            centerX - sx * centerX, centerY - sy * centerY
+        ]);
+    }
+
+    <span class="tok-comment">/**
+     * Creates a rotation transformation that has the specified angle and center point.
+     * @method
+     * @param {float} angle
+     * @param {float} centerX
+     * @param {float} centerY
+     * @return {Float32Array}
+     */</span>
+    <span class="tok-keyword">static</span> Rotation(angle, centerX, centerY) {
+        <span class="tok-keyword">const</span> angleInRadian = angle * (Math.PI / <span class="tok-number">180</span>);
+        <span class="tok-keyword">const</span> sinAngle = Math.sin(angleInRadian);
+        <span class="tok-keyword">const</span> cosAngle = Math.cos(angleInRadian);
+        <span class="tok-keyword">return</span> <span class="tok-keyword">new</span> Float32Array([
+            cosAngle, sinAngle,
+            -sinAngle, cosAngle,
+            centerX - centerX * cosAngle + centerY * sinAngle, centerY - centerX * sinAngle - centerY * cosAngle
+        ]);
+    }
+
+    <span class="tok-comment">/**
+     * Creates a skew transformation that has the specified x-axis and y-axis values and center point.
+     * @method
+     * @param {float} degreeX
+     * @return {Float32Array}
+     */</span>
+    <span class="tok-keyword">static</span> Skew(angleX, angleY, centerX, centerY) {
+        <span class="tok-keyword">const</span> angleXInRadian = angleX * (Math.PI / <span class="tok-number">180</span>);
+        <span class="tok-keyword">const</span> angleYInRadian = angleY * (Math.PI / <span class="tok-number">180</span>);
+        <span class="tok-keyword">const</span> tanAngleX = Math.tan(angleXInRadian);
+        <span class="tok-keyword">const</span> tanAngleY = Math.tan(angleYInRadian);
+        <span class="tok-keyword">return</span> <span class="tok-keyword">new</span> Float32Array([
+            <span class="tok-number">1</span>, tanAngleY,
+            tanAngleX, <span class="tok-number">1</span>,
+            -centerY * tanAngleX, -centerX * tanAngleY
+        ]);
+    }
+
+    <span class="tok-comment">/**
+     * Returns determinant for specified matrix.
+     * @method
+     * @param {Float32Array} m
+     * @return {float}
+     */</span>
+    <span class="tok-keyword">static</span> Determinant(m) {
+        <span class="tok-keyword">return</span> m[<span class="tok-number">0</span>] * m[<span class="tok-number">3</span>] - m[<span class="tok-number">1</span>] * m[<span class="tok-number">2</span>];
+    }
+
+    <span class="tok-comment">/**
+     * Returns product of two or more matrices.
+     * @method
+     * @param {Array&lt;Float32Array&gt;} matrices
+     * @return {Float32Array}
+     */</span>
+    <span class="tok-keyword">static</span> Multiply(...matrices) {
+        <span class="tok-keyword">if</span> (matrices.length &lt; <span class="tok-number">2</span>) {
+            <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;At least two matrices are required for multiplication&#39;</span>);
+        }
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> m <span class="tok-keyword">of</span> matrices) {
+            <span class="tok-keyword">if</span> (!(m <span class="tok-keyword">instanceof</span> Float32Array) || m.length !== <span class="tok-number">6</span>) {
+                <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;Each matrix must be a Float32Array of 6 numbers&#39;</span>);
+            }
+        }
+
+        <span class="tok-keyword">function</span> mul(a, b) {
+            <span class="tok-keyword">return</span> <span class="tok-keyword">new</span> Float32Array([
+                a[<span class="tok-number">0</span>] * b[<span class="tok-number">0</span>] + a[<span class="tok-number">1</span>] * b[<span class="tok-number">2</span>],
+                a[<span class="tok-number">0</span>] * b[<span class="tok-number">1</span>] + a[<span class="tok-number">1</span>] * b[<span class="tok-number">3</span>],
+
+                a[<span class="tok-number">2</span>] * b[<span class="tok-number">0</span>] + a[<span class="tok-number">3</span>] * b[<span class="tok-number">2</span>],
+                a[<span class="tok-number">2</span>] * b[<span class="tok-number">1</span>] + a[<span class="tok-number">3</span>] * b[<span class="tok-number">3</span>],
+
+                a[<span class="tok-number">4</span>] * b[<span class="tok-number">0</span>] + a[<span class="tok-number">5</span>] * b[<span class="tok-number">2</span>] + b[<span class="tok-number">4</span>],
+                a[<span class="tok-number">4</span>] * b[<span class="tok-number">1</span>] + a[<span class="tok-number">5</span>] * b[<span class="tok-number">3</span>] + b[<span class="tok-number">5</span>]
+            ]);
+        }
+
+        <span class="tok-keyword">let</span> result = matrices[<span class="tok-number">0</span>];
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">1</span>; i &lt; matrices.length; i++) {
+            result = mul(result, matrices[i]);
+        }
+        <span class="tok-keyword">return</span> result;
+    }
+
+    <span class="tok-comment">/**
+     * Uses this matrix m to transform the specified point and returns the result.
+     * @method
+     * @param {Array&lt;Float32Array&gt;} matrices
+     * @return {Object(x, y)}
+     */</span>
+    <span class="tok-keyword">static</span> TransformPoint(pointX, pointY, m) {
+        <span class="tok-keyword">return</span> { 
+            x: pointX * m[<span class="tok-number">0</span>] + pointY * m[<span class="tok-number">2</span>] + m[<span class="tok-number">4</span>],
+            y: pointX * m[<span class="tok-number">1</span>] + pointY * m[<span class="tok-number">3</span>] + m[<span class="tok-number">5</span>]
+        };
+    }
+}
+
+<span class="tok-comment">/**
+ * Matrix class to provide helper functions for transforming the image in 3 dimensions.&lt;br&gt;
+ * For more information, see: {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1_1helper/nl-d2d1_1helper-matrix4x4f}&lt;br&gt;
+ * May be used for {@link module:Effects.Effects Effects.D3DTransform}&lt;br&gt;
+ * @memberof module:Matrix
+ * @class
+ * @hideconstructor
+ */</span>
+<span class="tok-keyword">class</span> Matrix4x4 {
+
+    <span class="tok-comment">/**
+     * Generates identity matrix.
+     * @method
+     * @return {Float32Array}
+     */</span>
+    <span class="tok-keyword">static</span> Identity() {
+        <span class="tok-keyword">return</span> <span class="tok-keyword">new</span> Float32Array([
+            <span class="tok-number">1</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">1</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>
+        ]);
+    }
+
+    <span class="tok-comment">/**
+     * Generates a transform matrix that translates the projection plane in the X, Y, or Z direction.
+     * @method
+     * @param {float} x
+     * @param {float} y
+     * @param {float} z
+     * @return {Float32Array}
+     */</span>
+    <span class="tok-keyword">static</span> Translation(x, y, z) {
+        <span class="tok-keyword">return</span> <span class="tok-keyword">new</span> Float32Array([
+            <span class="tok-number">1</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">1</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>, <span class="tok-number">0</span>,
+            x, y, z, <span class="tok-number">1</span>
+        ]);
+    }
+
+    <span class="tok-comment">/**
+     * Generates a transform matrix that scales the projection plane in the X, Y, and/or Z direction.
+     * @method
+     * @param {float} x
+     * @param {float} y
+     * @param {float} z
+     * @return {Float32Array}
+     */</span>
+    <span class="tok-keyword">static</span> Scale(sx, sy, sz) {
+        <span class="tok-keyword">return</span> <span class="tok-keyword">new</span> Float32Array([
+            sx, <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, sy, <span class="tok-number">0</span>, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">0</span>, sz, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>
+        ]);
+    }
+
+    <span class="tok-comment">/**
+     * Generates a transform matrix that rotates the projection plane about the X axis.
+     * @method
+     * @param {float} degreeX
+     * @return {Float32Array}
+     */</span>
+    <span class="tok-keyword">static</span> RotationX(degreeX) {
+        <span class="tok-keyword">const</span> angleInRadian = degreeX * (Math.PI / <span class="tok-number">180</span>);
+        <span class="tok-keyword">const</span> sinAngle = Math.sin(angleInRadian);
+        <span class="tok-keyword">const</span> cosAngle = Math.cos(angleInRadian);
+        <span class="tok-keyword">return</span> <span class="tok-keyword">new</span> Float32Array([
+            <span class="tok-number">1</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, cosAngle, sinAngle, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, -sinAngle, cosAngle, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>
+        ]);
+    }
+
+    <span class="tok-comment">/**
+     * Generates a transform matrix that rotates the projection plane about the Y axis.
+     * @method
+     * @param {float} degreeY
+     * @return {Float32Array}
+     */</span>
+    <span class="tok-keyword">static</span> RotationY(degreeY) {
+        <span class="tok-keyword">const</span> angleInRadian = degreeY * (Math.PI / <span class="tok-number">180</span>);
+        <span class="tok-keyword">const</span> sinAngle = Math.sin(angleInRadian);
+        <span class="tok-keyword">const</span> cosAngle = Math.cos(angleInRadian);
+        <span class="tok-keyword">return</span> <span class="tok-keyword">new</span> Float32Array([
+            cosAngle, <span class="tok-number">0</span>, -sinAngle, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">1</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>,
+            sinAngle, <span class="tok-number">0</span>, cosAngle, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>
+        ]);
+    }
+
+    <span class="tok-comment">/**
+     * Generates a transform matrix that rotates the projection plane about the Z axis.
+     * @method
+     * @param {float} degreeZ
+     * @return {Float32Array}
+     */</span>
+    <span class="tok-keyword">static</span> RotationZ(degreeZ) {
+        <span class="tok-keyword">const</span> angleInRadian = degreeZ * (Math.PI / <span class="tok-number">180</span>);
+        <span class="tok-keyword">const</span> sinAngle = Math.sin(angleInRadian);
+        <span class="tok-keyword">const</span> cosAngle = Math.cos(angleInRadian);
+        <span class="tok-keyword">return</span> <span class="tok-keyword">new</span> Float32Array([
+            cosAngle, sinAngle, <span class="tok-number">0</span>, <span class="tok-number">0</span>,
+            -sinAngle, cosAngle, <span class="tok-number">0</span>, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>
+        ]);
+    }
+
+    <span class="tok-comment">/**
+     * Generates a transform matrix that skews the projection plane in the X direction.
+     * @method
+     * @param {float} degreeX
+     * @return {Float32Array}
+     */</span>
+    <span class="tok-keyword">static</span> SkewX(degreeX) {
+        <span class="tok-keyword">const</span> angleInRadian = degreeX * (Math.PI / <span class="tok-number">180</span>);
+        <span class="tok-keyword">const</span> tanAngle = Math.tan(angleInRadian);
+        <span class="tok-keyword">return</span> <span class="tok-keyword">new</span> Float32Array([
+            <span class="tok-number">1</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>,
+            tanAngle, <span class="tok-number">1</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>
+        ]);
+    }
+
+    <span class="tok-comment">/**
+     * Generates a transform matrix that skews the projection plane in the Y direction.
+     * @method
+     * @param {float} degreeY
+     * @return {Float32Array}
+     */</span>
+    <span class="tok-keyword">static</span> SkewY(degreeY) {
+        <span class="tok-keyword">const</span> angleInRadian = degreeY * (Math.PI / <span class="tok-number">180</span>);
+        <span class="tok-keyword">const</span> tanAngle = Math.tan(angleInRadian);
+        <span class="tok-keyword">return</span> <span class="tok-keyword">new</span> Float32Array([
+            <span class="tok-number">1</span>, tanAngle, <span class="tok-number">0</span>, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">1</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>
+        ]);
+    }
+
+    <span class="tok-comment">/**
+     * A perspective transformation with a depth value.
+     * @method
+     * @param {float} depth
+     * @return {Float32Array}
+     */</span>
+    <span class="tok-keyword">static</span> PerspectiveProjection(depth)
+    {
+        <span class="tok-keyword">let</span> proj = <span class="tok-number">0</span>;
+
+        <span class="tok-keyword">if</span> (depth &gt; <span class="tok-number">0</span>)
+        {
+            proj = -<span class="tok-number">1</span>/depth;
+        }
+
+        <span class="tok-keyword">return</span> <span class="tok-keyword">new</span> Float32Array([
+            <span class="tok-number">1</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">1</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>, proj,
+            <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>
+        ]);
+    }
+
+    <span class="tok-comment">/**
+     * Rotates the projection plane about the axis you specify.
+     * @method
+     * @param {float} x
+     * @param {float} y
+     * @param {float} z
+     * @param {float} degree
+     * @return {Float32Array}
+     */</span>
+    <span class="tok-keyword">static</span> RotationArbitraryAxis(x, y, z, degree)
+    {
+        <span class="tok-comment">// Normalize the vector represented by x, y, and z</span>
+        <span class="tok-keyword">const</span> magnitude = Math.sqrt(x*x + y*y + z*z);
+        x /= magnitude;
+        y /= magnitude;
+        z /= magnitude;
+
+        <span class="tok-keyword">const</span> angleInRadian = degree * (Math.PI / <span class="tok-number">180</span>);
+        <span class="tok-keyword">const</span> sinAngle = Math.sin(angleInRadian);
+        <span class="tok-keyword">const</span> cosAngle = Math.cos(angleInRadian);
+
+        <span class="tok-keyword">const</span> oneMinusCosAngle = <span class="tok-number">1</span> - cosAngle;
+
+        <span class="tok-keyword">return</span> <span class="tok-keyword">new</span> Float32Array([
+            <span class="tok-number">1</span>             + oneMinusCosAngle * (x * x - <span class="tok-number">1</span>),
+            z  * sinAngle + oneMinusCosAngle *  x * y,
+            -y * sinAngle + oneMinusCosAngle *  x * z,
+            <span class="tok-number">0</span>,
+
+            -z * sinAngle + oneMinusCosAngle *  y * x,
+            <span class="tok-number">1</span>             + oneMinusCosAngle * (y * y - <span class="tok-number">1</span>),
+            x  * sinAngle + oneMinusCosAngle *  y * z,
+            <span class="tok-number">0</span>,
+
+            y  * sinAngle + oneMinusCosAngle *  z * x,
+            -x * sinAngle + oneMinusCosAngle *  z * y,
+            <span class="tok-number">1</span>             + oneMinusCosAngle * (z * z - <span class="tok-number">1</span>),
+            <span class="tok-number">0</span>,
+
+            <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>
+        ]);
+    }
+
+    <span class="tok-comment">/**
+     * Returns product of two or more matrices.
+     * @method
+     * @param {Array&lt;Float32Array&gt;} matrices
+     * @return {Float32Array}
+     */</span>
+    <span class="tok-keyword">static</span> Multiply(...matrices) {
+        <span class="tok-keyword">if</span> (matrices.length &lt; <span class="tok-number">2</span>) {
+            <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;At least two matrices are required for multiplication&#39;</span>);
+        }
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> m <span class="tok-keyword">of</span> matrices) {
+            <span class="tok-keyword">if</span> (!(m <span class="tok-keyword">instanceof</span> Float32Array) || m.length !== <span class="tok-number">16</span>) {
+                <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;Each matrix must be a Float32Array of 16 numbers&#39;</span>);
+            }
+        }
+
+        <span class="tok-keyword">function</span> mul(a, b) {
+            <span class="tok-keyword">return</span> <span class="tok-keyword">new</span> Float32Array([
+                a[<span class="tok-number">0</span>] * b[<span class="tok-number">0</span>] + a[<span class="tok-number">1</span>] * b[<span class="tok-number">4</span>] + a[<span class="tok-number">2</span>] * b[<span class="tok-number">8</span>] + a[<span class="tok-number">3</span>] * b[<span class="tok-number">12</span>], 
+                a[<span class="tok-number">0</span>] * b[<span class="tok-number">1</span>] + a[<span class="tok-number">1</span>] * b[<span class="tok-number">5</span>] + a[<span class="tok-number">2</span>] * b[<span class="tok-number">9</span>] + a[<span class="tok-number">3</span>] * b[<span class="tok-number">13</span>], 
+                a[<span class="tok-number">0</span>] * b[<span class="tok-number">2</span>] + a[<span class="tok-number">1</span>] * b[<span class="tok-number">6</span>] + a[<span class="tok-number">2</span>] * b[<span class="tok-number">10</span>] + a[<span class="tok-number">3</span>] * b[<span class="tok-number">14</span>], 
+                a[<span class="tok-number">0</span>] * b[<span class="tok-number">3</span>] + a[<span class="tok-number">1</span>] * b[<span class="tok-number">7</span>] + a[<span class="tok-number">2</span>] * b[<span class="tok-number">11</span>] + a[<span class="tok-number">3</span>] * b[<span class="tok-number">15</span>],
+
+                a[<span class="tok-number">4</span>] * b[<span class="tok-number">0</span>] + a[<span class="tok-number">5</span>] * b[<span class="tok-number">4</span>] + a[<span class="tok-number">6</span>] * b[<span class="tok-number">8</span>] + a[<span class="tok-number">7</span>] * b[<span class="tok-number">12</span>], 
+                a[<span class="tok-number">4</span>] * b[<span class="tok-number">1</span>] + a[<span class="tok-number">5</span>] * b[<span class="tok-number">5</span>] + a[<span class="tok-number">6</span>] * b[<span class="tok-number">9</span>] + a[<span class="tok-number">7</span>] * b[<span class="tok-number">13</span>], 
+                a[<span class="tok-number">4</span>] * b[<span class="tok-number">2</span>] + a[<span class="tok-number">5</span>] * b[<span class="tok-number">6</span>] + a[<span class="tok-number">6</span>] * b[<span class="tok-number">10</span>] + a[<span class="tok-number">7</span>] * b[<span class="tok-number">14</span>], 
+                a[<span class="tok-number">4</span>] * b[<span class="tok-number">3</span>] + a[<span class="tok-number">5</span>] * b[<span class="tok-number">7</span>] + a[<span class="tok-number">6</span>] * b[<span class="tok-number">11</span>] + a[<span class="tok-number">7</span>] * b[<span class="tok-number">15</span>],
+
+                a[<span class="tok-number">8</span>] * b[<span class="tok-number">0</span>] + a[<span class="tok-number">9</span>] * b[<span class="tok-number">4</span>] + a[<span class="tok-number">10</span>] * b[<span class="tok-number">8</span>] + a[<span class="tok-number">11</span>] * b[<span class="tok-number">12</span>], 
+                a[<span class="tok-number">8</span>] * b[<span class="tok-number">1</span>] + a[<span class="tok-number">9</span>] * b[<span class="tok-number">5</span>] + a[<span class="tok-number">10</span>] * b[<span class="tok-number">9</span>] + a[<span class="tok-number">11</span>] * b[<span class="tok-number">13</span>], 
+                a[<span class="tok-number">8</span>] * b[<span class="tok-number">2</span>] + a[<span class="tok-number">9</span>] * b[<span class="tok-number">6</span>] + a[<span class="tok-number">10</span>] * b[<span class="tok-number">10</span>] + a[<span class="tok-number">11</span>] * b[<span class="tok-number">14</span>],
+                a[<span class="tok-number">8</span>] * b[<span class="tok-number">3</span>] + a[<span class="tok-number">9</span>] * b[<span class="tok-number">7</span>] + a[<span class="tok-number">10</span>] * b[<span class="tok-number">11</span>] + a[<span class="tok-number">11</span>] * b[<span class="tok-number">15</span>],
+
+                a[<span class="tok-number">12</span>] * b[<span class="tok-number">0</span>] + a[<span class="tok-number">13</span>] * b[<span class="tok-number">4</span>] + a[<span class="tok-number">14</span>] * b[<span class="tok-number">8</span>] + a[<span class="tok-number">15</span>] * b[<span class="tok-number">12</span>], 
+                a[<span class="tok-number">12</span>] * b[<span class="tok-number">1</span>] + a[<span class="tok-number">13</span>] * b[<span class="tok-number">5</span>] + a[<span class="tok-number">14</span>] * b[<span class="tok-number">9</span>] + a[<span class="tok-number">15</span>] * b[<span class="tok-number">13</span>], 
+                a[<span class="tok-number">12</span>] * b[<span class="tok-number">2</span>] + a[<span class="tok-number">13</span>] * b[<span class="tok-number">6</span>] + a[<span class="tok-number">14</span>] * b[<span class="tok-number">10</span>] + a[<span class="tok-number">15</span>] * b[<span class="tok-number">14</span>],
+                a[<span class="tok-number">12</span>] * b[<span class="tok-number">3</span>] + a[<span class="tok-number">13</span>] * b[<span class="tok-number">7</span>] + a[<span class="tok-number">14</span>] * b[<span class="tok-number">11</span>] + a[<span class="tok-number">15</span>] * b[<span class="tok-number">15</span>]
+            ]);            
+            <span class="tok-comment">// const result = new Float32Array(16);</span>
+            <span class="tok-comment">// for (let i = 0; i &lt; 4; i++) {</span>
+            <span class="tok-comment">//     for (let j = 0; j &lt; 4; j++) {</span>
+            <span class="tok-comment">//         let sum = 0;</span>
+            <span class="tok-comment">//         for (let k = 0; k &lt; 4; k++) {</span>
+            <span class="tok-comment">//             sum += a[i * 4 + k] * b[k * 4 + j];</span>
+            <span class="tok-comment">//         }</span>
+            <span class="tok-comment">//         result[i * 4 + j] = sum;</span>
+            <span class="tok-comment">//     }</span>
+            <span class="tok-comment">// }</span>
+            <span class="tok-comment">// return result;</span>
+        }
+
+        <span class="tok-keyword">let</span> result = matrices[<span class="tok-number">0</span>];
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">1</span>; i &lt; matrices.length; i++) {
+            result = mul(result, matrices[i]);
+        }
+        <span class="tok-keyword">return</span> result;
+    }
+
+    <span class="tok-comment">/**
+     * Returns determinant for specified matrix.
+     * @method
+     * @param {Float32Array} m
+     * @return {float}
+     */</span>
+    <span class="tok-keyword">static</span> Determinant(m)
+    {
+        <span class="tok-keyword">const</span> minor1 = m[<span class="tok-number">12</span>] * (m[<span class="tok-number">1</span>] * (m[<span class="tok-number">6</span>] * m[<span class="tok-number">11</span>] - m[<span class="tok-number">10</span>] * m[<span class="tok-number">7</span>]) - m[<span class="tok-number">2</span>] * (m[<span class="tok-number">5</span>] * m[<span class="tok-number">11</span>] - m[<span class="tok-number">7</span>] * m[<span class="tok-number">9</span>]) + m[<span class="tok-number">3</span>] * (m[<span class="tok-number">5</span>] * m[<span class="tok-number">10</span>] - m[<span class="tok-number">6</span>] * m[<span class="tok-number">9</span>]));
+        <span class="tok-keyword">const</span> minor2 = m[<span class="tok-number">13</span>] * (m[<span class="tok-number">0</span>] * (m[<span class="tok-number">4</span>] * m[<span class="tok-number">11</span>] - m[<span class="tok-number">8</span>] * m[<span class="tok-number">7</span>]) - m[<span class="tok-number">2</span>] * (m[<span class="tok-number">4</span>] * m[<span class="tok-number">11</span>] - m[<span class="tok-number">7</span>] * m[<span class="tok-number">8</span>]) + m[<span class="tok-number">3</span>] * (m[<span class="tok-number">4</span>] * m[<span class="tok-number">10</span>] - m[<span class="tok-number">6</span>] * m[<span class="tok-number">8</span>]));
+        <span class="tok-keyword">const</span> minor3 = m[<span class="tok-number">14</span>] * (m[<span class="tok-number">0</span>] * (m[<span class="tok-number">5</span>] * m[<span class="tok-number">11</span>] - m[<span class="tok-number">9</span>] * m[<span class="tok-number">7</span>]) - m[<span class="tok-number">1</span>] * (m[<span class="tok-number">4</span>] * m[<span class="tok-number">11</span>] - m[<span class="tok-number">7</span>] * m[<span class="tok-number">8</span>]) + m[<span class="tok-number">3</span>] * (m[<span class="tok-number">4</span>] * m[<span class="tok-number">9</span>] - m[<span class="tok-number">5</span>] * m[<span class="tok-number">8</span>]));
+        <span class="tok-keyword">const</span> minor4 = m[<span class="tok-number">15</span>] * (m[<span class="tok-number">0</span>] * (m[<span class="tok-number">5</span>] * m[<span class="tok-number">10</span>] - m[<span class="tok-number">9</span>] * m[<span class="tok-number">6</span>]) - m[<span class="tok-number">1</span>] * (m[<span class="tok-number">4</span>] * m[<span class="tok-number">10</span>] - m[<span class="tok-number">6</span>] * m[<span class="tok-number">8</span>]) + m[<span class="tok-number">2</span>] * (m[<span class="tok-number">4</span>] * m[<span class="tok-number">9</span>] - m[<span class="tok-number">5</span>] * m[<span class="tok-number">8</span>]));
+
+        <span class="tok-keyword">return</span> minor1 - minor2 + minor3 - minor4;
+    }
+}
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

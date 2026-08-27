@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>GdiBitmap — JSplitter API</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <a class="nav-link " href="globals.html">Globals</a>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><a class="nav-link " href="console-2e329b2a.html">console</a><a class="nav-link " href="d2d-e9c3ac95.html">d2d</a><a class="nav-link " href="fb-6722f021.html">fb</a><a class="nav-link " href="gdi-430a4dfd.html">gdi</a><a class="nav-link " href="performance-aece8ca5.html">performance</a><a class="nav-link " href="plman-ff97d52b.html">plman</a><a class="nav-link " href="utils-ae9d59ce.html">utils</a><a class="nav-link " href="window-a172b7dd.html">window</a></div><div class="nav-group"><div class="nav-title">Classes</div><a class="nav-link " href="ActiveXObject-28dae3aa.html">ActiveXObject</a><a class="nav-link " href="ButtonObject-1debaece.html">ButtonObject</a><a class="nav-link " href="ContextMenuManager-dea00d42.html">ContextMenuManager</a><a class="nav-link " href="D2DBitmap-6ce237d6.html">D2DBitmap</a><a class="nav-link " href="D2DBrush-3ea48163.html">D2DBrush</a><a class="nav-link " href="D2DCompileInfo-9fc679ee.html">D2DCompileInfo</a><a class="nav-link " href="D2DEffect-fb3cb264.html">D2DEffect</a><a class="nav-link " href="D2DFont-303de060.html">D2DFont</a><a class="nav-link " href="D2DGraphics-140c7c58.html">D2DGraphics</a><a class="nav-link " href="DropTargetAction-30eb028f.html">DropTargetAction</a><a class="nav-link " href="Enumerator-fbd761ff.html">Enumerator</a><a class="nav-link " href="FbAudioChunk-d27f9222.html">FbAudioChunk</a><a class="nav-link " href="FbFileInfo-e3e80363.html">FbFileInfo</a><a class="nav-link " href="FbMetadbHandle-b8dee4d8.html">FbMetadbHandle</a><a class="nav-link " href="FbMetadbHandleList-96b9a840.html">FbMetadbHandleList</a><a class="nav-link " href="FbPlaybackQueueItem-64c88ea8.html">FbPlaybackQueueItem</a><a class="nav-link " href="FbPlayingItemLocation-42048429.html">FbPlayingItemLocation</a><a class="nav-link " href="FbPlaylistRecycler-447bca5e.html">FbPlaylistRecycler</a><a class="nav-link " href="FbProfiler-7dd51f80.html">FbProfiler</a><a class="nav-link " href="FbTitleFormat-0597af5a.html">FbTitleFormat</a><a class="nav-link " href="FbTooltip-84b590ec.html">FbTooltip</a><a class="nav-link " href="FbUiSelectionHolder-d2ce89ed.html">FbUiSelectionHolder</a><a class="nav-link active" href="GdiBitmap-d3bf0fbe.html">GdiBitmap</a><a class="nav-link " href="GdiBrush-e59ebdab.html">GdiBrush</a><a class="nav-link " href="GdiFont-b0fbf4a8.html">GdiFont</a><a class="nav-link " href="GdiGraphics-ad9f20a0.html">GdiGraphics</a><a class="nav-link " href="GdiRawBitmap-594f53ea.html">GdiRawBitmap</a><a class="nav-link " href="HtmlDocument-73083c39.html">HtmlDocument</a><a class="nav-link " href="HtmlNode-d8acac9c.html">HtmlNode</a><a class="nav-link " href="IUIHacks-b5106744.html">IUIHacks</a><a class="nav-link " href="MainMenuManager-c314a746.html">MainMenuManager</a><a class="nav-link " href="MenuObject-4a0b6d51.html">MenuObject</a><a class="nav-link " href="PanelObject-dd97d6ba.html">PanelObject</a><a class="nav-link " href="PerformanceObserver-f1192ef7.html">PerformanceObserver</a><a class="nav-link " href="PerformanceObserverEntryList-91fbd61d.html">PerformanceObserverEntryList</a><a class="nav-link " href="RunResult-1de62053.html">RunResult</a><a class="nav-link " href="ThemeManager-ed5a3909.html">ThemeManager</a></div><div class="nav-group"><div class="nav-title">Modules</div><a class="nav-link " href="module-Callbacks-98afe9cf.html">Callbacks</a><a class="nav-link " href="module-Codepages-1528fbf4.html">Codepages</a><a class="nav-link " href="module-Effects-592fdd05.html">Effects</a><a class="nav-link " href="module-Flags-4222ebcc.html">Flags</a><a class="nav-link " href="module-Helpers-b5c6de9a.html">Helpers</a><a class="nav-link " href="module-Matrix-e9d1810c.html">Matrix</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>GdiBitmap</b></div>
+        
+    <article class="api-item" id="symbol-GdiBitmap-d3bf0fbe" data-kind="class" data-name="gdibitmap">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-class">class</span></div>
+                <h2><a class="anchor" href="#symbol-GdiBitmap-d3bf0fbe">GdiBitmap</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4183</div>
+        </header>
+        <pre class="signature"><code>GdiBitmap(arg)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>arg</code></td><td><code><a class="type-link" href="GdiBitmap-d3bf0fbe.html#symbol-GdiBitmap-d3bf0fbe">GdiBitmap</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+        
+    <article class="api-item" id="symbol-GdiBitmap-Height-5c3ea0d8" data-kind="property" data-name="height">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#symbol-GdiBitmap-Height-5c3ea0d8">Height</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4189</div>
+        </header>
+        <pre class="signature"><code>Height: number</code></pre>
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-GdiBitmap-Width-733dade9" data-kind="property" data-name="width">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#symbol-GdiBitmap-Width-733dade9">Width</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4195</div>
+        </header>
+        <pre class="signature"><code>Width: number</code></pre>
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-GdiBitmap-ApplyAlpha-17e8811f" data-kind="method" data-name="applyalpha">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-GdiBitmap-ApplyAlpha-17e8811f">ApplyAlpha</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4201</div>
+        </header>
+        <pre class="signature"><code>ApplyAlpha(alpha)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>alpha</code></td><td><code>number</code></td><td><p>Valid values 0-255.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code><a class="type-link" href="GdiBitmap-d3bf0fbe.html#symbol-GdiBitmap-d3bf0fbe">GdiBitmap</a></code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-GdiBitmap-ApplyMask-1c282b65" data-kind="method" data-name="applymask">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-GdiBitmap-ApplyMask-1c282b65">ApplyMask</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4207</div>
+        </header>
+        <pre class="signature"><code>ApplyMask(img)</code></pre>
+        
+        <div class="description"><p>Changes will be saved in the current bitmap.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>img</code></td><td><code><a class="type-link" href="GdiBitmap-d3bf0fbe.html#symbol-GdiBitmap-d3bf0fbe">GdiBitmap</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example source</h3>
+            <div class="source-links"><a class="source-link" href="source-ApplyMask.js-f91e5f7b.html"><span>samples/basic/ApplyMask.js</span><small>open source</small></a></div>
+        </section>
+    </article>
+
+    <article class="api-item" id="symbol-GdiBitmap-Clone-b877a2a4" data-kind="method" data-name="clone">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-GdiBitmap-Clone-b877a2a4">Clone</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4216</div>
+        </header>
+        <pre class="signature"><code>Clone(x, y, w, h)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>w</code></td><td><code>number</code></td><td></td></tr><tr><td><code>h</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code><a class="type-link" href="GdiBitmap-d3bf0fbe.html#symbol-GdiBitmap-d3bf0fbe">GdiBitmap</a></code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-GdiBitmap-CreateRawBitmap-fbc745a4" data-kind="method" data-name="createrawbitmap">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-GdiBitmap-CreateRawBitmap-fbc745a4">CreateRawBitmap</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4225</div>
+        </header>
+        <pre class="signature"><code>CreateRawBitmap()</code></pre>
+        
+        <div class="description"><p>Create a DDB bitmap from GdiBitmap, which is used in <a href="GdiGraphics-ad9f20a0.html#symbol-GdiGraphics-GdiDrawBitmap-8cb11cfc">GdiDrawBitmap</a></p></div>
+        
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code><a class="type-link" href="GdiRawBitmap-594f53ea.html#symbol-GdiRawBitmap-594f53ea">GdiRawBitmap</a></code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-GdiBitmap-GetColourScheme-a607653e" data-kind="method" data-name="getcolourscheme">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-GdiBitmap-GetColourScheme-a607653e">GetColourScheme</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4232</div>
+        </header>
+        <pre class="signature"><code>GetColourScheme(max_count)</code></pre>
+        
+        <div class="description"><p>Takes the top of colors found in the image</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>max_count</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Array&lt;number&gt;</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-GdiBitmap-GetColourSchemeJSON-afa0c248" data-kind="method" data-name="getcolourschemejson">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-GdiBitmap-GetColourSchemeJSON-afa0c248">GetColourSchemeJSON</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4239</div>
+        </header>
+        <pre class="signature"><code>GetColourSchemeJSON(max_count)</code></pre>
+        
+        <div class="description"><p>Returns a JSON array in string form so you need to use JSON.parse() on the result.<br> Each entry in the array is an object which contains colour and frequency values.<br> Uses a different method for calculating colours than <a href="GdiBitmap-d3bf0fbe.html#symbol-GdiBitmap-GetColourScheme-a607653e">GetColourScheme</a>.<br> Image is automatically resized during processing for performance reasons so there's no need to resize before calling the method.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>max_count</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>string</code></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-comment">// See docs\Helpers.js for &quot;toRGB&quot; function.</span>
+img = ... <span class="tok-comment">// use utils.GetAlbumArtV2 / gdi.Image / etc</span>
+colours = JSON.parse(img.GetColourSchemeJSON(<span class="tok-number">5</span>));
+console.log(colours[<span class="tok-number">0</span>].col); <span class="tok-comment">// -4194304</span>
+console.log(colours[<span class="tok-number">0</span>].freq); <span class="tok-comment">// 0.34</span>
+console.log(toRGB(colours[<span class="tok-number">0</span>].col)); <span class="tok-comment">// [192, 0, 0]</span></code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-GdiBitmap-GetColourSchemeJSONV2-6bad9b98" data-kind="method" data-name="getcolourschemejsonv2">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-GdiBitmap-GetColourSchemeJSONV2-6bad9b98">GetColourSchemeJSONV2</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4259</div>
+        </header>
+        <pre class="signature"><code>GetColourSchemeJSONV2(max_count, min_chroma)</code></pre>
+        
+        <div class="description"><p>Returns a JSON array in string form so you need to use JSON.parse() on the result.<br> Each entry in the array is an object which contains colour and frequency values.<br> Uses a different method than <a href="GdiBitmap-d3bf0fbe.html#symbol-GdiBitmap-GetColourSchemeJSON-afa0c248">GetColourSchemeJSON</a> for calculating colours (K-means++ with Oklab).<br></p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>max_count</code></td><td><code>number</code></td><td></td></tr><tr><td><code>min_chroma = 0.0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>minimal chroma value for choosing start cluster pixel</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>string</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-GdiBitmap-GetGraphics-085e122c" data-kind="method" data-name="getgraphics">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-GdiBitmap-GetGraphics-085e122c">GetGraphics</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4270</div>
+        </header>
+        <pre class="signature"><code>GetGraphics()</code></pre>
+        
+        <div class="description"><p>Note: don't forget to use <a href="GdiBitmap-d3bf0fbe.html#symbol-GdiBitmap-ReleaseGraphics-41f208e1">ReleaseGraphics</a> after work on GdiGraphics is done!</p></div>
+        
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code><a class="type-link" href="GdiGraphics-ad9f20a0.html#symbol-GdiGraphics-ad9f20a0">GdiGraphics</a></code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-GdiBitmap-GetPixelData-083252b3" data-kind="method" data-name="getpixeldata">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-GdiBitmap-GetPixelData-083252b3">GetPixelData</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4277</div>
+        </header>
+        <pre class="signature"><code>GetPixelData(format)</code></pre>
+        
+        <div class="description"><p>Extract raw pixels from bitmap as a byte array in specified pixel format</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>format = &quot;bgra32&quot;</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>Pixel format string (default: "bgra32") Supported formats:<br>   "bgra32"  32bpp BGRA<br>   "rgba32"  32bpp RGBA<br>   "bgr24"   24bpp BGR<br>   "rgb24"   24bpp RGB<br></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Uint8Array</code> — <p>null if was an error (for example, bitmap in unsupported format or unsupported format specified)</p></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">const</span> img = gdi.Image(<span class="tok-string">`${fb.ComponentPath}\\samples\\d2d\\images\\Field.jpg`</span>);
+
+<span class="tok-keyword">let</span> imgPixelData = img.GetPixelData();
+
+utils.WriteBinaryFile(<span class="tok-string">&quot;D:\\Field.bin&quot;</span>, imgPixelData);
+
+<span class="tok-keyword">let</span> rData = utils.ReadBinaryFile(<span class="tok-string">&quot;D:\\Field.bin&quot;</span>);
+
+<span class="tok-keyword">let</span> rImg = gdi.CreateImageFromPixelData(rData, <span class="tok-number">2208</span>, <span class="tok-number">1242</span>);
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    gr.DrawImage(rImg, <span class="tok-number">0</span>, <span class="tok-number">0</span>, img.Width, img.Height, <span class="tok-number">0</span>, <span class="tok-number">0</span>, img.Width, img.Height);
+}</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-GdiBitmap-InvertColours-40c214ec" data-kind="method" data-name="invertcolours">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-GdiBitmap-InvertColours-40c214ec">InvertColours</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4304</div>
+        </header>
+        <pre class="signature"><code>InvertColours()</code></pre>
+        
+        <div class="description"><p>Inverts the colours in a bitmap, to create a negative image. i.e. White becomes black, black becomes white, etc.</p></div>
+        
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code><a class="type-link" href="GdiBitmap-d3bf0fbe.html#symbol-GdiBitmap-d3bf0fbe">GdiBitmap</a></code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-GdiBitmap-ReleaseGraphics-41f208e1" data-kind="method" data-name="releasegraphics">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-GdiBitmap-ReleaseGraphics-41f208e1">ReleaseGraphics</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4311</div>
+        </header>
+        <pre class="signature"><code>ReleaseGraphics(gr)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>gr</code></td><td><code><a class="type-link" href="GdiGraphics-ad9f20a0.html#symbol-GdiGraphics-ad9f20a0">GdiGraphics</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-GdiBitmap-Resize-363a62bf" data-kind="method" data-name="resize">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-GdiBitmap-Resize-363a62bf">Resize</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4316</div>
+        </header>
+        <pre class="signature"><code>Resize(w, h, mode)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>w</code></td><td><code>number</code></td><td></td></tr><tr><td><code>h</code></td><td><code>number</code></td><td></td></tr><tr><td><code>mode = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>See <a href="module-Flags-4222ebcc.html#symbol-module-Flags.AlbumArtId-35d89bd7">InterpolationMode</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code><a class="type-link" href="GdiBitmap-d3bf0fbe.html#symbol-GdiBitmap-d3bf0fbe">GdiBitmap</a></code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-GdiBitmap-RotateFlip-6d8dd95f" data-kind="method" data-name="rotateflip">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-GdiBitmap-RotateFlip-6d8dd95f">RotateFlip</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4324</div>
+        </header>
+        <pre class="signature"><code>RotateFlip(mode)</code></pre>
+        
+        <div class="description"><p>Changes will be saved in the current bitmap.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>mode</code></td><td><code>number</code></td><td><p>See <a href="module-Flags-4222ebcc.html#symbol-module-Flags.AlbumArtId-35d89bd7">RotateFlipType</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-GdiBitmap-SaveAs-d1ae600e" data-kind="method" data-name="saveas">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-GdiBitmap-SaveAs-d1ae600e">SaveAs</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4331</div>
+        </header>
+        <pre class="signature"><code>SaveAs(path, format)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>path</code></td><td><code>string</code></td><td><p>Full path including file extension. The parent folder must already exist.</p></td></tr><tr><td><code>format = &#39;image/png&#39;</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>"image/png"<br>      "image/bmp"<br>      "image/jpeg"<br>      "image/gif"<br>      "image/tiff"</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>boolean</code></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> img = utils.GetAlbumArtEmbedded(fb.GetFocusItem().RawPath, <span class="tok-number">0</span>);
+<span class="tok-keyword">if</span> (img) {
+    img.SaveAs(<span class="tok-string">&quot;D:\\export.jpg&quot;</span>, <span class="tok-string">&quot;image/jpeg&quot;</span>);
+}</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-GdiBitmap-StackBlur-63d1be7c" data-kind="method" data-name="stackblur">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#symbol-GdiBitmap-StackBlur-63d1be7c">StackBlur</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4349</div>
+        </header>
+        <pre class="signature"><code>StackBlur(radius)</code></pre>
+        
+        <div class="description"><p>Changes will be saved in the current bitmap.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>radius</code></td><td><code>number</code></td><td><p>Valid values 2-254.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Examples</h3>
+            <pre class="example"><code>&lt;caption&gt;Blur image&lt;caption&gt;
+<span class="tok-comment">// `samples/basic/StackBlur (image).js`</span></code></pre><pre class="example"><code>&lt;caption&gt;Blur text&lt;caption&gt;
+<span class="tok-comment">// `samples/basic/StackBlur (text).js`</span></code></pre>
+        </section>
+        
+    </article></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>
