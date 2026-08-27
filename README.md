@@ -1,6 +1,8 @@
 # JSplitter
 
-This is a plugin for the **foobar2000** audio player. It provides a panel that combines the functionality of a splitter — a container for panels from other plugins — and a JavaScript host.
+This is a plugin for the **foobar2000** audio player. It provides a panel that combines the functionality of a splitter â€” a container for panels from other plugins â€” and a JavaScript host.
+
+**Documentation:** https://dima-lur.github.io/jsplitter/
 
 ## Features
 
@@ -14,7 +16,7 @@ Panels can be added to the splitter in any order and manipulated like regular Wi
 - maximize
 - close
 
-This means that when working with the plugin, **foobar2000** becomes an application with an **MDI** — Multi Document Interface — style interface.
+This means that when working with the plugin, **foobar2000** becomes an application with an **MDI** â€” Multi Document Interface â€” style interface.
 
 For precise panel positioning, coordinates are displayed and can be edited on the fly directly in the panel window title. This is useful when designing the assembly interface.
 
@@ -55,7 +57,7 @@ window.DrawMode = 1; // 0 - GDI+ by default
 ````
 ## Note about versions
 
-Since the latest **ESR** — Extended Support Release — version of the SpiderMonkey JavaScript engine that supports **Windows 7** is **102.15.1esr**, I decided to fork the main version of JSplitter and create a separate **3.x** branch from it.
+Since the latest **ESR** â€” Extended Support Release â€” version of the SpiderMonkey JavaScript engine that supports **Windows 7** is **102.15.1esr**, I decided to fork the main version of JSplitter and create a separate **3.x** branch from it.
 
 All changes made to the latest version of JSplitter, except for the JavaScript engine, will also be added to the **3.x** branch.
 
