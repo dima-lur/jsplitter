@@ -745,11 +745,11 @@ let fb = {
     Random: function () { }, // (void)
 
     /**
-     * Registers a main menu item that will be displayed under `main menu`>`File`>`Spider Monkey Panel`>`Script commands`>`{Current panel name}`.<br>
+     * Registers a main menu item that will be displayed under <b>main menu</b> > <b>File</b> > <b>JSplitter</b> > <b>Script commands</b> > <b>{Current panel name}</b>.<br>
      * Being main menu item means you can bind it to global keyboard shortcuts, standard toolbar buttons, panel stack splitter buttons and etc.<br>
      * Execution of the correspoding menu item will trigger {@link module:Callbacks.on_main_menu_dynamic on_main_menu_dynamic} callback.<br>
      * <br>
-     * Note: SMP uses a combination of panel name and command id to identify and bind the command. Hence all corresponding binds will fail
+     * Note: JSplitter uses a combination of panel name and command id to identify and bind the command. Hence all corresponding binds will fail
      * if the id or the panel name is changed. This also means that collision WILL occur if there are two panels with the same name.<br>
      * <br>
      * Related methods: {@link fb.UnregisterMainMenuCommand}<br>
@@ -1445,6 +1445,25 @@ let plman = {
     RenamePlaylist: function (playlistIndex, name) { }, // (boolean)
 
     /**
+     * Reorders all items in the specified playlist according to the supplied permutation.<br>
+     * The <b>order</b> array must contain exactly one entry for each playlist item. Each value specifies the old item index that should appear at the corresponding new position.<br>
+     * The array must:<br>
+     * - have the same length as the playlist item count<br>
+     * - contain only valid item indices<br>
+     * - contain each item index exactly once<br>
+
+     * @param {number} playlistIndex zero-based playlist index
+     * @param {Array<number>} order permutation describing the new playlist item order
+     * @returns {boolean} <b>true</b> if the playlist was reordered successfully
+     * @throws {Error} If playlistIndex is invalid or order is not a valid permutation
+     * 
+     * @example
+     * // Changes the order from [A, B, C] to [C, A, B]
+     * const success = ReorderPlaylistItems(0, [2, 0, 1])
+     */
+    ReorderPlaylistItems: function(playlistIndex, order) { }, // (boolean)
+
+    /**
      * @param {number} playlistIndex
      * @param {number} playlistItemIndex
      * @param {FbMetadbHandle|FbMetadbHandleList} handle_or_handles
@@ -1723,9 +1742,14 @@ let utils = {
     CheckFont: function (name) { }, // (boolean)
 
     /**
-     * Opens system colour picker dialog window.
+     * Opens system colour picker dialog window (with some additional controls).
+     * <ul>
+     * <li><b>HEX</b>: RRGGBB color value
+     * <li><b>Alpha</b>: alpha component
+     * <li><b>Copy ARGB</b>: button for copying the current color value in 0xAARRGGBB format
+     * </ul>
      *
-     * @param {number} window_id unused
+     * @param {number} window_id Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window.
      * @param {number} default_colour Color in ARGB format
      * @return {number} Chosen color in ARGB format or default_colour if cancelled
      */
@@ -1907,11 +1931,12 @@ let utils = {
      * Opens system font picker dialog window (with pixel size field extension).
      *
      * @param {GdiFont=} [default_font=undefined] (or D2DFont if window.DrawMode=1) If specified, it will be selected in the dialog, otherwise the default system message font will be selected
+     * @param {number=} [window_id=0] Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window.
      * @return {?GdiFont} (or D2DFont if window.DrawMode=1) Chosen font or default_font if cancelled (if default_font is undefined returns null)
      *
      * @sourceFile ../../component/samples/basic/FontPicker.js
      */
-    FontPicker: function (default_font) { },
+    FontPicker: function (default_font, window_id) { },
 
     /**
      * @param {number} seconds
@@ -1933,9 +1958,6 @@ let utils = {
 
     /**
      * Load art image for the track asynchronously.<br>
-     * <br>
-     * Performance note: consider using {@link gdi.LoadImageAsync} or {@link gdi.LoadImageAsyncV2} if there are a lot of images to load
-     * or if the image is big.
      *
      * @param {number} window_id unused
      * @param {FbMetadbHandle} handle
@@ -1973,7 +1995,7 @@ let utils = {
     /**
      * Load embedded art image for the track.<br>
      * <br>
-     * Performance note: consider using {@link fb.GetAlbumArtAsync} or {@link fb.GetAlbumArtAsyncV2} if there are a lot of images to load.
+     * Performance note: consider using {@link utils.GetAlbumArtAsync} or {@link utils.GetAlbumArtAsyncV2} if there are a lot of images to load.
      *
      * @param {string} rawpath Path to track file
      * @param {number=} [art_id=0] See {@link module:Flags.AlbumArtId AlbumArtId} enum
@@ -1987,7 +2009,7 @@ let utils = {
     /**
      * Load art image for the track.<br>
      * <br>
-     * Performance note: consider using {@link fb.GetAlbumArtAsync} or {@link fb.GetAlbumArtAsyncV2} if there are a lot of images to load.
+     * Performance note: consider using {@link utils.GetAlbumArtAsync} or {@link utils.GetAlbumArtAsyncV2} if there are a lot of images to load.
      *
      * @param {FbMetadbHandle} handle
      * @param {number=} [art_id=0] See {@link module:Flags.AlbumArtId AlbumArtId} enum
@@ -2097,7 +2119,7 @@ let utils = {
     Glob: function (pattern, exc_mask, inc_mask) { }, // (Array) [, exc_mask][, inc_mask]
 
     /**
-     * @param {number} window_id
+     * @param {number} window_id Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window.
      * @param {string} prompt
      * @param {string} caption
      * @param {string=} [default_val='']
@@ -2239,6 +2261,14 @@ let utils = {
      * @return {string}
      */
     ReadUTF8: function(path) { },
+
+    /**
+     * Moves a file or directory to the Recycle Bin.
+     *
+     * @param {string} path path to a file or directory
+     * @returns {boolean} true on success, false otherwise
+     */
+    RecyclePath: function(path) { }, // (boolean)
 
     /**
      * Returns a number to indicate how many files/folders were removed.<br>
@@ -2432,21 +2462,42 @@ let utils = {
      * Displays an html dialog, rendered by IE engine.<br>
      * Utilizes the latest non-Edge IE that you have on your system.<br>
      * Dialog is modal (blocks input to the parent window while open).<br>
-     *<br>
+     * <br>
      * Html code must be IE compatible, meaning:<br>
-     * - JavaScript features are limited by IE (see {@link https://www.w3schools.com/js/js_versions.asp}).<br>
-     * - Objects passed to `data` are limited to standard JavaScript objects:<br>
-     *   - No extensions from Spider Monkey Panel (e.g. no FbMetadbHandle or GdiBitmap/D2DBitmap etc.).<br>
-     *<br>
+     * <ul>
+     *   <li>JavaScript features are limited by IE (see {@link https://www.w3schools.com/js/js_versions.asp})</li>
+     *   <li>
+     *     Objects passed to <code>data</code> are limited to standard JavaScript objects:
+     *     <ul>
+     *       <li>No extensions from Spider Monkey Panel (e.g. no FbMetadbHandle or GdiBitmap/D2DBitmap etc.)</li>
+     *     </ul>
+     *   </li>
+     * </ul>
      * There are also additional limitations:<br>
-     * - options.data may contain only the following types:<br>
-     *   - Basic types: number, string, boolean, null, undefined.<br>
-     *   - Objects as string: the only way to pass objects is to convert them to string and back with `JSON.stringify()` and `JSON.parse()`.<br>
-     *   - Arrays: must be cast via `.toArray()` inside html. Each element has same type limitations as options.data.<br>
-     *   - Functions: has maximum of 7 arguments. Each argument has same type limitations as options.data.
+     * <ul>
+     *   <li>
+     *     <code>options.data</code> may contain only the following types:
+     *     <ul>
+     *       <li>Basic types: number, string, boolean, null, undefined</li>
+     *       <li>Objects as string: the only way to pass objects is to convert them to string and back with <code>JSON.stringify()</code> and <code>JSON.parse()</code></li>
+     *       <li>Arrays: must be cast via <code>.toArray()</code> inside html. Each element has same type limitations as <code>options.data</code></li>
+     *       <li>Functions: may have a maximum of 7 arguments. Each argument has same type limitations as <code>options.data</code></li>
+     *     </ul>
+     *   </li>
+     * </ul>
+     * The following properties are available through <code>window.external</code> inside the html dialog:<br>
+     * <ul>
+     *   <li><code>dialogArguments</code> - read-only value containing <code>options.data</code></li>
+     *   <li>
+     *     <code>dialogWindow</code> - read-only native window handle (HWND) of the html dialog, represented as a number.<br>
+     *     It can be passed as <code>window_id</code> to JSplitter modal dialog functions to make the html dialog their owner,
+     *     e.g. {@link utils.ColourPicker}, {@link utils.FontPicker}, {@link utils.InputBox} or {@link utils.ShowHtmlDialog}.<br>
+     *     The handle is valid only while the html dialog exists.
+     *   </li>
+     * </ul>
      *
-     * @param {number} window_id unused
-     * @param {string} code_or_path Html code or file path. File path must begin with `file://` prefix.
+     * @param {number} window_id native window handle (HWND) to use as the dialog owner; pass 0 to use the default foobar2000 window
+     * @param {string} code_or_path Html code or file path. File path must begin with <code>file://</code> prefix.
      * @param {object=} [options=undefined]
      * @param {number=} [options.width=250] Window width
      * @param {number=} [options.height=100] Window height
@@ -2457,7 +2508,7 @@ let utils = {
      * @param {boolean=} [options.resizable=false] If true, will allow to resize the window.
      * @param {boolean=} [options.selection=false] If true, will allow to select everything (label texts, buttons and etc).
      * @param {boolean=} [options.scroll=false] If true, will display scrollbars.
-     * @param {*=} [options.data=undefined] Will be saved in `window.external.dialogArguments` and can be accessed from JavaScript executed inside HTML window.
+     * @param {*=} [options.data=undefined] Will be saved in <code>window.external.dialogArguments</code> and can be accessed from JavaScript executed inside HTML window.
      *                                      This data is read-only and should not be modified. Has type limitations (see above).
      *
      * @sourceFile ../../component/samples/basic/HtmlDialogWithCheckbox.js
@@ -2536,7 +2587,7 @@ let utils = {
 };
 
 /**
- * Functions for working with the current SMP panel and accessing it's properties.
+ * Functions for working with the current JSplitter panel and accessing it's properties.
  *
  * @namespace
  */
@@ -2873,7 +2924,7 @@ let window = {
      * Note: a single panel can have only a single tooltip object.
      * Creating a new tooltip will replace the previous one.<br>
      * <br>
-     * Deprecated: use {@link fb.Tooltip} and {@link FbTooltip#SetFont SetFont} instead.
+     * Deprecated: use {@link window.Tooltip} and {@link FbTooltip#SetFont SetFont} instead.
      *
      * @deprecated
      * 
@@ -4732,6 +4783,26 @@ function GdiGraphics() {
      * @return {MeasureStringInfo}
      */
     this.MeasureString = function (str, font, x, y, w, h, flags) { }; // (MeasureStringInfo) [, flags]
+
+     /**
+     * Pushes a rectangular clipping region onto the clip stack.<br>
+     * The new clipping region is intersected with the current clipping region.<br>
+     * Calls may be nested and should be paired with {@link GdiGraphics#PopClip PopClip}.<br>
+     * The current transform and other graphics state are not affected.
+     *
+     * @param {number} x left coordinate of the clipping rectangle
+     * @param {number} y top coordinate of the clipping rectangle
+     * @param {number} width width of the clipping rectangle
+     * @param {number} height height of the clipping rectangle
+     */
+    this.PushClip = function(x, y, width, height) { };
+
+    /**
+     * Restores the clipping region that was active before the matching {@link GdiGraphics#PushClip PushClip} call.<br>
+     * Does nothing if the clip stack is empty.<br>
+     * The current transform and other graphics state are not affected.
+     */
+    this.PopClip = function() { };
 
     /**
      * Applies translation matrix to the current GdiGraphics matrix.<br>

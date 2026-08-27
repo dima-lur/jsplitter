@@ -1,0 +1,2039 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Callbacks — JSplitter API</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <a class="nav-link " href="globals.html">Globals</a>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><a class="nav-link " href="console-2e329b2a.html">console</a><a class="nav-link " href="d2d-e9c3ac95.html">d2d</a><a class="nav-link " href="fb-6722f021.html">fb</a><a class="nav-link " href="gdi-430a4dfd.html">gdi</a><a class="nav-link " href="performance-aece8ca5.html">performance</a><a class="nav-link " href="plman-ff97d52b.html">plman</a><a class="nav-link " href="utils-ae9d59ce.html">utils</a><a class="nav-link " href="window-a172b7dd.html">window</a></div><div class="nav-group"><div class="nav-title">Classes</div><a class="nav-link " href="ActiveXObject-28dae3aa.html">ActiveXObject</a><a class="nav-link " href="ButtonObject-1debaece.html">ButtonObject</a><a class="nav-link " href="ContextMenuManager-dea00d42.html">ContextMenuManager</a><a class="nav-link " href="D2DBitmap-6ce237d6.html">D2DBitmap</a><a class="nav-link " href="D2DBrush-3ea48163.html">D2DBrush</a><a class="nav-link " href="D2DCompileInfo-9fc679ee.html">D2DCompileInfo</a><a class="nav-link " href="D2DEffect-fb3cb264.html">D2DEffect</a><a class="nav-link " href="D2DFont-303de060.html">D2DFont</a><a class="nav-link " href="D2DGraphics-140c7c58.html">D2DGraphics</a><a class="nav-link " href="DropTargetAction-30eb028f.html">DropTargetAction</a><a class="nav-link " href="Enumerator-fbd761ff.html">Enumerator</a><a class="nav-link " href="FbAudioChunk-d27f9222.html">FbAudioChunk</a><a class="nav-link " href="FbFileInfo-e3e80363.html">FbFileInfo</a><a class="nav-link " href="FbMetadbHandle-b8dee4d8.html">FbMetadbHandle</a><a class="nav-link " href="FbMetadbHandleList-96b9a840.html">FbMetadbHandleList</a><a class="nav-link " href="FbPlaybackQueueItem-64c88ea8.html">FbPlaybackQueueItem</a><a class="nav-link " href="FbPlayingItemLocation-42048429.html">FbPlayingItemLocation</a><a class="nav-link " href="FbPlaylistRecycler-447bca5e.html">FbPlaylistRecycler</a><a class="nav-link " href="FbProfiler-7dd51f80.html">FbProfiler</a><a class="nav-link " href="FbTitleFormat-0597af5a.html">FbTitleFormat</a><a class="nav-link " href="FbTooltip-84b590ec.html">FbTooltip</a><a class="nav-link " href="FbUiSelectionHolder-d2ce89ed.html">FbUiSelectionHolder</a><a class="nav-link " href="GdiBitmap-d3bf0fbe.html">GdiBitmap</a><a class="nav-link " href="GdiBrush-e59ebdab.html">GdiBrush</a><a class="nav-link " href="GdiFont-b0fbf4a8.html">GdiFont</a><a class="nav-link " href="GdiGraphics-ad9f20a0.html">GdiGraphics</a><a class="nav-link " href="GdiRawBitmap-594f53ea.html">GdiRawBitmap</a><a class="nav-link " href="HtmlDocument-73083c39.html">HtmlDocument</a><a class="nav-link " href="HtmlNode-d8acac9c.html">HtmlNode</a><a class="nav-link " href="IUIHacks-b5106744.html">IUIHacks</a><a class="nav-link " href="MainMenuManager-c314a746.html">MainMenuManager</a><a class="nav-link " href="MenuObject-4a0b6d51.html">MenuObject</a><a class="nav-link " href="PanelObject-dd97d6ba.html">PanelObject</a><a class="nav-link " href="PerformanceObserver-f1192ef7.html">PerformanceObserver</a><a class="nav-link " href="PerformanceObserverEntryList-91fbd61d.html">PerformanceObserverEntryList</a><a class="nav-link " href="RunResult-1de62053.html">RunResult</a><a class="nav-link " href="ThemeManager-ed5a3909.html">ThemeManager</a></div><div class="nav-group"><div class="nav-title">Modules</div><a class="nav-link active" href="module-Callbacks-98afe9cf.html">Callbacks</a><a class="nav-link " href="module-Codepages-1528fbf4.html">Codepages</a><a class="nav-link " href="module-Effects-592fdd05.html">Effects</a><a class="nav-link " href="module-Flags-4222ebcc.html">Flags</a><a class="nav-link " href="module-Helpers-b5c6de9a.html">Helpers</a><a class="nav-link " href="module-Matrix-e9d1810c.html">Matrix</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Callbacks</b></div>
+        
+    <article class="api-item" id="symbol-module-Callbacks-03f64f2f" data-kind="module" data-name="callbacks">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-module">module</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks-03f64f2f">Callbacks</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:1</div>
+        </header>
+        
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+        
+    <article class="api-item" id="symbol-module-Callbacks.on_always_on_top_changed-318532e1" data-kind="function" data-name="on_always_on_top_changed">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_always_on_top_changed-318532e1">on_always_on_top_changed</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:11</div>
+        </header>
+        <pre class="signature"><code>on_always_on_top_changed(state)</code></pre>
+        
+        <div class="description"><p>Called when "Always On Top" state changes: from using the menu, Alt + A, <a href="fb-6722f021.html#symbol-fb.AlwaysOnTop-6f36f61c">fb.AlwaysOnTop</a> and etc.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>state</code></td><td><code>boolean</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_button_click-df0c05d4" data-kind="function" data-name="on_button_click">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_button_click-df0c05d4">on_button_click</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:606</div>
+        </header>
+        <pre class="signature"><code>on_button_click(id)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>id</code></td><td><code>number</code></td><td><p>of button created with <a href="window-a172b7dd.html#symbol-window.CreateButton-a3e7c04d">window.CreateButton</a> and accessed by <a href="ButtonObject-1debaece.html#symbol-ButtonObject-ID-6cf98b1a">ButtonObject.ID</a> property.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_char-60eefd4b" data-kind="function" data-name="on_char">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_char-60eefd4b">on_char</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:19</div>
+        </header>
+        <pre class="signature"><code>on_char(code)</code></pre>
+        
+        <div class="description"><p>Note: in order to use this callback, use <a href="window-a172b7dd.html#symbol-window.DlgCode-95eefe5f">window.DlgCode</a>(DLGC_WANTCHARS).<br> See <a href="module-Flags-4222ebcc.html#symbol-module-Flags.DLGC_WANTCHARS-f6f3ea7c">DLGC_WANTCHARS</a></p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>code</code></td><td><code>number</code></td><td><p>UTF16 encoded char</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_colours_changed-de1ba363" data-kind="function" data-name="on_colours_changed">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_colours_changed-de1ba363">on_colours_changed</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:28</div>
+        </header>
+        <pre class="signature"><code>on_colours_changed()</code></pre>
+        
+        <div class="description"><p>Called when colours are changed via default UI/columns UI preferences.<br> Note: use <a href="window-a172b7dd.html#symbol-window.GetColourCUI-e0a5110a">window.GetColourCUI</a> / <a href="window-a172b7dd.html#symbol-window.GetColourDUI-0edb19f3">window.GetColourDUI</a> to get new colours.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_console_refresh-c3fc0a74" data-kind="function" data-name="on_console_refresh">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_console_refresh-c3fc0a74">on_console_refresh</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:36</div>
+        </header>
+        <pre class="signature"><code>on_console_refresh()</code></pre>
+        
+        <div class="description"><p>Called when new records are appended to foobar2000 console log.<br> Note: Can used with <a href="console-2e329b2a.html#symbol-console.GetLines-a6389ca3">console.GetLines</a> or <a href="console-2e329b2a.html#symbol-console.ClearBacklog-989c21a4">console.ClearBacklog</a><br> CAUTION: Don't call <a href="console-2e329b2a.html#symbol-console.log-f0c34d8e">console.log</a> in this callback</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_cursor_follow_playback_changed-d50c29c6" data-kind="function" data-name="on_cursor_follow_playback_changed">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_cursor_follow_playback_changed-d50c29c6">on_cursor_follow_playback_changed</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:45</div>
+        </header>
+        <pre class="signature"><code>on_cursor_follow_playback_changed(state)</code></pre>
+        
+        <div class="description"><p>Called when "cursor follow playback" state is changed.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>state</code></td><td><code>boolean</code></td><td><p>current "cursor follow playback" value</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_download_file_done-303bbacf" data-kind="function" data-name="on_download_file_done">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_download_file_done-303bbacf">on_download_file_done</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:639</div>
+        </header>
+        <pre class="signature"><code>on_download_file_done(path, success, error_text)</code></pre>
+        
+        <div class="description"><p>Called when <a href="utils-ae9d59ce.html#symbol-utils.DownloadFileAsync-7b1ce91a">utils.DownloadFileAsync</a> thread is finished</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>path</code></td><td><code>string</code></td><td><p>of downloaded file</p></td></tr><tr><td><code>success</code></td><td><code>boolean</code></td><td></td></tr><tr><td><code>error_text</code></td><td><code>string</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_drag_drop-8c24c31f" data-kind="function" data-name="on_drag_drop">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_drag_drop-8c24c31f">on_drag_drop</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:53</div>
+        </header>
+        <pre class="signature"><code>on_drag_drop(action, x, y, mask)</code></pre>
+        
+        <div class="description"><p>See <a href="fb-6722f021.html#symbol-fb.DoDragDrop-482de7d3">fb.DoDragDrop</a> documentation and</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>action</code></td><td><code><a class="type-link" href="DropTargetAction-30eb028f.html#symbol-DropTargetAction-30eb028f">DropTargetAction</a></code></td><td></td></tr><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>mask</code></td><td><code>number</code></td><td><p>Mask for mouse callbacks, see flags like <a href="module-Flags-4222ebcc.html#symbol-module-Flags.MK_LBUTTON-74523669">MK_LBUTTON</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example source</h3>
+            <div class="source-links"><a class="source-link" href="source-DragnDrop.js-352d49a4.html"><span>samples/basic/DragnDrop.js</span><small>open source</small></a></div>
+        </section>
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_drag_enter-2964546c" data-kind="function" data-name="on_drag_enter">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_drag_enter-2964546c">on_drag_enter</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:65</div>
+        </header>
+        <pre class="signature"><code>on_drag_enter(action, x, y, mask)</code></pre>
+        
+        <div class="description"><p>See <a href="fb-6722f021.html#symbol-fb.DoDragDrop-482de7d3">fb.DoDragDrop</a> documentation and</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>action</code></td><td><code><a class="type-link" href="DropTargetAction-30eb028f.html#symbol-DropTargetAction-30eb028f">DropTargetAction</a></code></td><td></td></tr><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>mask</code></td><td><code>number</code></td><td><p>Mask for mouse callbacks, see flags like <a href="module-Flags-4222ebcc.html#symbol-module-Flags.MK_LBUTTON-74523669">MK_LBUTTON</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example source</h3>
+            <div class="source-links"><a class="source-link" href="source-DragnDrop.js-352d49a4.html"><span>samples/basic/DragnDrop.js</span><small>open source</small></a></div>
+        </section>
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_drag_leave-8c4a1d31" data-kind="function" data-name="on_drag_leave">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_drag_leave-8c4a1d31">on_drag_leave</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:77</div>
+        </header>
+        <pre class="signature"><code>on_drag_leave()</code></pre>
+        
+        <div class="description"><p>See <a href="fb-6722f021.html#symbol-fb.DoDragDrop-482de7d3">fb.DoDragDrop</a> documentation and</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example source</h3>
+            <div class="source-links"><a class="source-link" href="source-DragnDrop.js-352d49a4.html"><span>samples/basic/DragnDrop.js</span><small>open source</small></a></div>
+        </section>
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_drag_over-2d644af8" data-kind="function" data-name="on_drag_over">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_drag_over-2d644af8">on_drag_over</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:85</div>
+        </header>
+        <pre class="signature"><code>on_drag_over(action, x, y, mask)</code></pre>
+        
+        <div class="description"><p>See <a href="fb-6722f021.html#symbol-fb.DoDragDrop-482de7d3">fb.DoDragDrop</a> documentation and</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>action</code></td><td><code><a class="type-link" href="DropTargetAction-30eb028f.html#symbol-DropTargetAction-30eb028f">DropTargetAction</a></code></td><td></td></tr><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>mask</code></td><td><code>number</code></td><td><p>Mask for mouse callbacks, see flags like <a href="module-Flags-4222ebcc.html#symbol-module-Flags.MK_LBUTTON-74523669">MK_LBUTTON</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example source</h3>
+            <div class="source-links"><a class="source-link" href="source-DragnDrop.js-352d49a4.html"><span>samples/basic/DragnDrop.js</span><small>open source</small></a></div>
+        </section>
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_dsp_preset_changed-b364a257" data-kind="function" data-name="on_dsp_preset_changed">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_dsp_preset_changed-b364a257">on_dsp_preset_changed</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:97</div>
+        </header>
+        <pre class="signature"><code>on_dsp_preset_changed()</code></pre>
+        
+        <div class="description"><p>Called when DSP preset changes.<br> Note: this callback is only available in foobar2000 v1.4 and later.<br> Note2: does not get called when presets are added or removed.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_focus-c339f945" data-kind="function" data-name="on_focus">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_focus-c339f945">on_focus</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:106</div>
+        </header>
+        <pre class="signature"><code>on_focus(is_focused)</code></pre>
+        
+        <div class="description"><p>Called when the panel gets or loses focus.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>is_focused</code></td><td><code>boolean</code></td><td><p>New focus state</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_font_changed-19a409fd" data-kind="function" data-name="on_font_changed">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_font_changed-19a409fd">on_font_changed</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:114</div>
+        </header>
+        <pre class="signature"><code>on_font_changed()</code></pre>
+        
+        <div class="description"><p>Called when fonts are changed via DUI or CUI preferences. Note: you can retrieve fonts using <a href="window-a172b7dd.html#symbol-window.GetFontDUI-8d48a874">window.GetFontDUI</a> / <a href="window-a172b7dd.html#symbol-window.GetFontCUI-08c23651">window.GetFontCUI</a>.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_get_album_art_done-ebd491dc" data-kind="function" data-name="on_get_album_art_done">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_get_album_art_done-ebd491dc">on_get_album_art_done</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:122</div>
+        </header>
+        <pre class="signature"><code>on_get_album_art_done(handle, art_id, image, image_path)</code></pre>
+        
+        <div class="description"><p>Called when thread created by <a href="utils-ae9d59ce.html#symbol-utils.GetAlbumArtAsync-0cc84584">utils.GetAlbumArtAsync</a> or <a href="utils-ae9d59ce.html#symbol-utils.GetAlbumArtAsyncV2-750ecd2c">utils.GetAlbumArtAsyncV2</a> is done.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>handle</code></td><td><code><a class="type-link" href="FbMetadbHandle-b8dee4d8.html#symbol-FbMetadbHandle-b8dee4d8">FbMetadbHandle</a></code></td><td></td></tr><tr><td><code>art_id</code></td><td><code>number</code></td><td><p>See <a href="module-Flags-4222ebcc.html#symbol-module-Flags.AlbumArtId-35d89bd7">AlbumArtId</a> flags</p></td></tr><tr><td><code>image</code></td><td><code>?<a class="type-link" href="GdiBitmap-d3bf0fbe.html#symbol-GdiBitmap-d3bf0fbe">GdiBitmap</a></code></td><td><p>(or <a href="D2DBitmap-6ce237d6.html#symbol-D2DBitmap-6ce237d6">D2DBitmap</a> if <a href="window-a172b7dd.html#symbol-window.DrawMode-0d6cd710">window.DrawMode</a> == 1). Null on failure</p></td></tr><tr><td><code>image_path</code></td><td><code>string</code></td><td><p>path to image file (or music file if image is embedded)</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_http_request_done-2c99cc8e" data-kind="function" data-name="on_http_request_done">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_http_request_done-2c99cc8e">on_http_request_done</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:670</div>
+        </header>
+        <pre class="signature"><code>on_http_request_done(task_id, success, response_text, status, response_headers)</code></pre>
+        
+        <div class="description"><p>Called when <a href="utils-ae9d59ce.html#symbol-utils.HTTPRequestAsync-e0b0abfb">utils.HTTPRequestAsync</a> request is finished</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>task_id</code></td><td><code>number</code></td><td><p>task id returned by <a href="utils-ae9d59ce.html#symbol-utils.HTTPRequestAsync-e0b0abfb">utils.HTTPRequestAsync</a></p></td></tr><tr><td><code>success</code></td><td><code>boolean</code></td><td></td></tr><tr><td><code>response_text</code></td><td><code>string</code></td><td></td></tr><tr><td><code>status</code></td><td><code>number</code></td><td><p>HTTP response code</p></td></tr><tr><td><code>response_headers</code></td><td><code>string</code></td><td><p>stringified JSON containing response headers</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_item_focus_change-fbdd1bb8" data-kind="function" data-name="on_item_focus_change">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_item_focus_change-fbdd1bb8">on_item_focus_change</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:133</div>
+        </header>
+        <pre class="signature"><code>on_item_focus_change(playlistIndex, from, to)</code></pre>
+        
+        <div class="description"><p>Called when focused item in playlist has been changed.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>from</code></td><td><code>number</code></td><td><p>index of the previous focused item or -1 if there was no focused item.</p></td></tr><tr><td><code>to</code></td><td><code>number</code></td><td><p>index of the new focued item</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_item_played-40c83436" data-kind="function" data-name="on_item_played">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_item_played-40c83436">on_item_played</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:143</div>
+        </header>
+        <pre class="signature"><code>on_item_played(handle)</code></pre>
+        
+        <div class="description"><p>Called when at least one minute of the track has been played or the track has reached its end after at least 1/3 of it has been played through.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>handle</code></td><td><code><a class="type-link" href="FbMetadbHandle-b8dee4d8.html#symbol-FbMetadbHandle-b8dee4d8">FbMetadbHandle</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_key_down-ca7e3bcb" data-kind="function" data-name="on_key_down">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_key_down-ca7e3bcb">on_key_down</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:152</div>
+        </header>
+        <pre class="signature"><code>on_key_down(vkey)</code></pre>
+        
+        <div class="description"><p>Requires "Grab focus" enabled in the Configuration window.<br> In order to use arrow keys, use <a href="window-a172b7dd.html#symbol-window.DlgCode-95eefe5f">window.DlgCode</a>(DLGC_WANTARROWS) (see <a href="module-Flags-4222ebcc.html#symbol-module-Flags.DLGC_WANTARROWS-ba0613dd">DLGC_WANTARROWS</a>).<br> <br> Note: keyboard shortcuts defined in the main preferences are always executed first and are not passed to the callback.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>vkey</code></td><td><code>number</code></td><td><p>Virtual Key Code (for example <a href="module-Flags-4222ebcc.html#symbol-module-Flags.VK_LEFT-ede3d497">VK_LEFT</a>), refer to <a href="http://msdn.microsoft.com/en-us/library/ms927178.aspx" target="_blank" rel="noreferrer">http://msdn.microsoft.com/en-us/library/ms927178.aspx</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_key_up-03f83f6a" data-kind="function" data-name="on_key_up">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_key_up-03f83f6a">on_key_up</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:164</div>
+        </header>
+        <pre class="signature"><code>on_key_up(vkey)</code></pre>
+        
+        <div class="description"><p>Requires "Grab focus" enabled in the Configuration window.<br> In order to use arrow keys, use <a href="window-a172b7dd.html#symbol-window.DlgCode-95eefe5f">window.DlgCode</a>(DLGC_WANTARROWS) (see <a href="module-Flags-4222ebcc.html#symbol-module-Flags.DLGC_WANTARROWS-ba0613dd">DLGC_WANTARROWS</a>).</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>vkey</code></td><td><code>number</code></td><td><p>Virtual Key Code (for example <a href="module-Flags-4222ebcc.html#symbol-module-Flags.VK_LEFT-ede3d497">VK_LEFT</a>), refer to <a href="http://msdn.microsoft.com/en-us/library/ms927178.aspx" target="_blank" rel="noreferrer">http://msdn.microsoft.com/en-us/library/ms927178.aspx</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_library_items_added-0a91d56c" data-kind="function" data-name="on_library_items_added">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_library_items_added-0a91d56c">on_library_items_added</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:173</div>
+        </header>
+        <pre class="signature"><code>on_library_items_added(handle_list)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>handle_list</code></td><td><code><a class="type-link" href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-96b9a840">FbMetadbHandleList</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_library_items_changed-532f74f2" data-kind="function" data-name="on_library_items_changed">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_library_items_changed-532f74f2">on_library_items_changed</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:179</div>
+        </header>
+        <pre class="signature"><code>on_library_items_changed(handle_list)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>handle_list</code></td><td><code><a class="type-link" href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-96b9a840">FbMetadbHandleList</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_library_items_removed-c34b67a2" data-kind="function" data-name="on_library_items_removed">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_library_items_removed-c34b67a2">on_library_items_removed</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:185</div>
+        </header>
+        <pre class="signature"><code>on_library_items_removed(handle_list)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>handle_list</code></td><td><code><a class="type-link" href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-96b9a840">FbMetadbHandleList</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_load_image_done-5c66ab22" data-kind="function" data-name="on_load_image_done">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_load_image_done-5c66ab22">on_load_image_done</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:191</div>
+        </header>
+        <pre class="signature"><code>on_load_image_done(cookie, image, image_path)</code></pre>
+        
+        <div class="description"><p>Called when thread created by <a href="gdi-430a4dfd.html#symbol-gdi.LoadImageAsync-a1b1aafe">gdi.LoadImageAsync</a> is done.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>cookie</code></td><td><code>number</code></td><td><p>the return value from the <a href="gdi-430a4dfd.html#symbol-gdi.LoadImageAsync-a1b1aafe">gdi.LoadImageAsync</a> call</p></td></tr><tr><td><code>image</code></td><td><code>?<a class="type-link" href="GdiBitmap-d3bf0fbe.html#symbol-GdiBitmap-d3bf0fbe">GdiBitmap</a></code></td><td><p>(or <a href="D2DBitmap-6ce237d6.html#symbol-D2DBitmap-6ce237d6">D2DBitmap</a> if <a href="window-a172b7dd.html#symbol-window.DrawMode-0d6cd710">window.DrawMode</a> == 1). Null on failure (invalid path/not an image)</p></td></tr><tr><td><code>image_path</code></td><td><code>string</code></td><td><p>the path that was originally supplied to <a href="gdi-430a4dfd.html#symbol-gdi.LoadImageAsync-a1b1aafe">gdi.LoadImageAsync</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_locations_added-193833b4" data-kind="function" data-name="on_locations_added">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_locations_added-193833b4">on_locations_added</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:649</div>
+        </header>
+        <pre class="signature"><code>on_locations_added(task_id, handles)</code></pre>
+        
+        <div class="description"><p>Called when <a href="fb-6722f021.html#symbol-fb.AddLocationsAsync-9eb5dd0c">fb.AddLocationsAsync</a> thread is finished</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>task_id</code></td><td><code>number</code></td><td></td></tr><tr><td><code>handles</code></td><td><code><a class="type-link" href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-96b9a840">FbMetadbHandleList</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">function</span> on_mouse_lbtn_dblclk() {
+    <span class="tok-keyword">var</span> files = [<span class="tok-string">&quot;z:\\1.mp3&quot;</span>, <span class="tok-string">&quot;z:\\2.flac&quot;</span>];
+    <span class="tok-keyword">var</span> task_id = fb.AddLocationsAsync(files);
+    console.log(<span class="tok-string">&quot;got task_id&quot;</span>, task_id);
+}
+
+<span class="tok-keyword">function</span> on_locations_added(task_id, handle_list) {
+    console.log(<span class="tok-string">&quot;callback task_id&quot;</span>, task_id);
+    console.log(handle_list.Count);
+}</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_main_menu-cab0f588" data-kind="function" data-name="on_main_menu">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span><span class="flag deprecated">deprecated</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_main_menu-cab0f588">on_main_menu</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:201</div>
+        </header>
+        <pre class="signature"><code>on_main_menu(index)</code></pre>
+        <div class="notice notice-deprecated"><b>Deprecated.</b></div>
+        <div class="description"><p>On the main menu>File>Spider Monkey Panel, there are 10 menu items and whichever number is selected is sent as the "index" to this callback. <br> Being main menu items now means you can bind them to global keyboard shortcuts, standard toolbar buttons, panel stack splitter buttons, etc.<br> Remember to think carefully about where you use this code as you probably only want it to run once and so don't include it in common files and scripts where you might have multiple instances.<br> Important: you should avoid sharing scripts containing this code so as not to conflict with what other users may already be using.</p>
+<p>Deprecated: use <a href="module-Callbacks-98afe9cf.html#symbol-module-Callbacks.on_main_menu_dynamic-abb53d1e">on_main_menu_dynamic</a> instead.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>index</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">function</span> on_main_menu(index) {
+    <span class="tok-keyword">switch</span> (index) {
+    <span class="tok-keyword">case</span> <span class="tok-number">1</span>: <span class="tok-comment">// triggered when File&gt;Spider Monkey Panel&gt;1 is run</span>
+        do_something();
+        <span class="tok-keyword">break</span>;
+    <span class="tok-keyword">case</span> <span class="tok-number">2</span>: <span class="tok-comment">// triggered when File&gt;Spider Monkey Panel&gt;2 is run</span>
+        do_something_else();
+        <span class="tok-keyword">break</span>;
+    }
+}</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_main_menu_dynamic-abb53d1e" data-kind="function" data-name="on_main_menu_dynamic">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_main_menu_dynamic-abb53d1e">on_main_menu_dynamic</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:232</div>
+        </header>
+        <pre class="signature"><code>on_main_menu_dynamic(command_id)</code></pre>
+        
+        <div class="description"><p>Called when one of the commands corresponding to this panel from <code>main menu</code>><code>File</code>><code>Spider Monkey Panel</code>><code>Script commands</code> is executed.<br> <br> Related methods: <a href="fb-6722f021.html#symbol-fb.RegisterMainMenuCommand-09e7234b">fb.RegisterMainMenuCommand</a>, <a href="fb-6722f021.html#symbol-fb.UnregisterMainMenuCommand-71e059fa">fb.UnregisterMainMenuCommand</a></p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>command_id</code></td><td><code>number</code></td><td><p>Id of the associated command</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_metadb_changed-8183ce9f" data-kind="function" data-name="on_metadb_changed">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_metadb_changed-8183ce9f">on_metadb_changed</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:242</div>
+        </header>
+        <pre class="signature"><code>on_metadb_changed(handle_list, fromhook)</code></pre>
+        
+        <div class="description"><p>Called when metadb contents change.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>handle_list</code></td><td><code><a class="type-link" href="FbMetadbHandleList-96b9a840.html#symbol-FbMetadbHandleList-96b9a840">FbMetadbHandleList</a></code></td><td><p>affected items</p></td></tr><tr><td><code>fromhook</code></td><td><code>boolean</code></td><td><p>true if notification is not from tag update, but a component that provides                           tag-like data from a database. E.g. foo_playcount and <a href="FbMetadbHandle-b8dee4d8.html#symbol-FbMetadbHandle-RefreshStats-36fd1ec3">FbMetadbHandle.RefreshStats</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_mouse_lbtn_dblclk-97a04b4a" data-kind="function" data-name="on_mouse_lbtn_dblclk">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_mouse_lbtn_dblclk-97a04b4a">on_mouse_lbtn_dblclk</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:252</div>
+        </header>
+        <pre class="signature"><code>on_mouse_lbtn_dblclk(x, y, mask)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>mask</code></td><td><code>number</code></td><td><p>Mask for mouse callbacks, see flags like <a href="module-Flags-4222ebcc.html#symbol-module-Flags.MK_LBUTTON-74523669">MK_LBUTTON</a> <br>Refer to <a href="https://learn.microsoft.com/ru-ru/windows/win32/inputdev/wm-lbuttondblclk" target="_blank" rel="noreferrer">https://learn.microsoft.com/ru-ru/windows/win32/inputdev/wm-lbuttondblclk</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_mouse_lbtn_down-07aea044" data-kind="function" data-name="on_mouse_lbtn_down">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_mouse_lbtn_down-07aea044">on_mouse_lbtn_down</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:261</div>
+        </header>
+        <pre class="signature"><code>on_mouse_lbtn_down(x, y, mask)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>mask</code></td><td><code>number</code></td><td><p>Mask for mouse callbacks, see flags like <a href="module-Flags-4222ebcc.html#symbol-module-Flags.MK_LBUTTON-74523669">MK_LBUTTON</a> <br>Refer to <a href="https://learn.microsoft.com/ru-ru/windows/win32/inputdev/wm-lbuttondown" target="_blank" rel="noreferrer">https://learn.microsoft.com/ru-ru/windows/win32/inputdev/wm-lbuttondown</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_mouse_lbtn_up-8c46e6e5" data-kind="function" data-name="on_mouse_lbtn_up">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_mouse_lbtn_up-8c46e6e5">on_mouse_lbtn_up</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:270</div>
+        </header>
+        <pre class="signature"><code>on_mouse_lbtn_up(x, y, mask)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>mask</code></td><td><code>number</code></td><td><p>Mask for mouse callbacks, see flags like <a href="module-Flags-4222ebcc.html#symbol-module-Flags.MK_LBUTTON-74523669">MK_LBUTTON</a> <br>Refer to <a href="https://learn.microsoft.com/ru-ru/windows/win32/inputdev/wm-lbuttonup" target="_blank" rel="noreferrer">https://learn.microsoft.com/ru-ru/windows/win32/inputdev/wm-lbuttonup</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_mouse_leave-f9403fae" data-kind="function" data-name="on_mouse_leave">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_mouse_leave-f9403fae">on_mouse_leave</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:279</div>
+        </header>
+        <pre class="signature"><code>on_mouse_leave()</code></pre>
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_mouse_mbtn_dblclk-68737f7d" data-kind="function" data-name="on_mouse_mbtn_dblclk">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_mouse_mbtn_dblclk-68737f7d">on_mouse_mbtn_dblclk</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:284</div>
+        </header>
+        <pre class="signature"><code>on_mouse_mbtn_dblclk(x, y, mask)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>mask</code></td><td><code>number</code></td><td><p>Mask for mouse callbacks, see flags like <a href="module-Flags-4222ebcc.html#symbol-module-Flags.MK_LBUTTON-74523669">MK_LBUTTON</a> <br>Refer to <a href="https://learn.microsoft.com/ru-ru/windows/win32/inputdev/wm-mbuttondblclk" target="_blank" rel="noreferrer">https://learn.microsoft.com/ru-ru/windows/win32/inputdev/wm-mbuttondblclk</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_mouse_mbtn_down-e0e10cd7" data-kind="function" data-name="on_mouse_mbtn_down">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_mouse_mbtn_down-e0e10cd7">on_mouse_mbtn_down</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:293</div>
+        </header>
+        <pre class="signature"><code>on_mouse_mbtn_down(x, y, mask)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>mask</code></td><td><code>number</code></td><td><p>Mask for mouse callbacks, see flags like <a href="module-Flags-4222ebcc.html#symbol-module-Flags.MK_LBUTTON-74523669">MK_LBUTTON</a> <br>Refer to <a href="https://learn.microsoft.com/ru-ru/windows/win32/inputdev/wm-mbuttondown" target="_blank" rel="noreferrer">https://learn.microsoft.com/ru-ru/windows/win32/inputdev/wm-mbuttondown</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_mouse_mbtn_up-be410aee" data-kind="function" data-name="on_mouse_mbtn_up">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_mouse_mbtn_up-be410aee">on_mouse_mbtn_up</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:302</div>
+        </header>
+        <pre class="signature"><code>on_mouse_mbtn_up(x, y, mask)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>mask</code></td><td><code>number</code></td><td><p>Mask for mouse callbacks, see flags like <a href="module-Flags-4222ebcc.html#symbol-module-Flags.MK_LBUTTON-74523669">MK_LBUTTON</a> <br>Refer to <a href="https://learn.microsoft.com/ru-ru/windows/win32/inputdev/wm-mbuttonup" target="_blank" rel="noreferrer">https://learn.microsoft.com/ru-ru/windows/win32/inputdev/wm-mbuttonup</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_mouse_move-27287592" data-kind="function" data-name="on_mouse_move">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_mouse_move-27287592">on_mouse_move</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:311</div>
+        </header>
+        <pre class="signature"><code>on_mouse_move(x, y, mask)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>mask</code></td><td><code>number</code></td><td><p>Mask for mouse callbacks, see flags like <a href="module-Flags-4222ebcc.html#symbol-module-Flags.MK_LBUTTON-74523669">MK_LBUTTON</a> <br>Refer to <a href="https://learn.microsoft.com/ru-ru/windows/win32/inputdev/wm-mousemove" target="_blank" rel="noreferrer">https://learn.microsoft.com/ru-ru/windows/win32/inputdev/wm-mousemove</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_mouse_rbtn_dblclk-5fcdccf0" data-kind="function" data-name="on_mouse_rbtn_dblclk">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_mouse_rbtn_dblclk-5fcdccf0">on_mouse_rbtn_dblclk</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:320</div>
+        </header>
+        <pre class="signature"><code>on_mouse_rbtn_dblclk(x, y, mask)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>mask</code></td><td><code>number</code></td><td><p>Mask for mouse callbacks, see flags like <a href="module-Flags-4222ebcc.html#symbol-module-Flags.MK_LBUTTON-74523669">MK_LBUTTON</a> <br>Refer to <a href="https://learn.microsoft.com/ru-ru/windows/win32/inputdev/wm-rbuttondblclk" target="_blank" rel="noreferrer">https://learn.microsoft.com/ru-ru/windows/win32/inputdev/wm-rbuttondblclk</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_mouse_rbtn_down-49961efa" data-kind="function" data-name="on_mouse_rbtn_down">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_mouse_rbtn_down-49961efa">on_mouse_rbtn_down</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:329</div>
+        </header>
+        <pre class="signature"><code>on_mouse_rbtn_down(x, y, mask)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>mask</code></td><td><code>number</code></td><td><p>Mask for mouse callbacks, see flags like <a href="module-Flags-4222ebcc.html#symbol-module-Flags.MK_LBUTTON-74523669">MK_LBUTTON</a> <br>Refer to <a href="https://learn.microsoft.com/ru-ru/windows/win32/inputdev/wm-rbuttondown" target="_blank" rel="noreferrer">https://learn.microsoft.com/ru-ru/windows/win32/inputdev/wm-rbuttondown</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_mouse_rbtn_up-937fdd5f" data-kind="function" data-name="on_mouse_rbtn_up">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_mouse_rbtn_up-937fdd5f">on_mouse_rbtn_up</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:338</div>
+        </header>
+        <pre class="signature"><code>on_mouse_rbtn_up(x, y, mask)</code></pre>
+        
+        <div class="description"><p>You must return true, if you want to suppress the default context menu.<br> Note: left shift + left windows key will bypass this callback and will open default context menu.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>mask</code></td><td><code>number</code></td><td><p>Mask for mouse callbacks, see flags like <a href="module-Flags-4222ebcc.html#symbol-module-Flags.MK_LBUTTON-74523669">MK_LBUTTON</a> <br>Refer to <a href="https://learn.microsoft.com/ru-ru/windows/win32/inputdev/wm-rbuttonup" target="_blank" rel="noreferrer">https://learn.microsoft.com/ru-ru/windows/win32/inputdev/wm-rbuttonup</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>boolean</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_mouse_wheel-b4055e5a" data-kind="function" data-name="on_mouse_wheel">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_mouse_wheel-b4055e5a">on_mouse_wheel</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:352</div>
+        </header>
+        <pre class="signature"><code>on_mouse_wheel(step)</code></pre>
+        
+        <div class="description"><p>Scroll up/down</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>step</code></td><td><code>number</code></td><td><p>scroll direction: -1 or 1</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_mouse_wheel_h-b70bb315" data-kind="function" data-name="on_mouse_wheel_h">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_mouse_wheel_h-b70bb315">on_mouse_wheel_h</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:361</div>
+        </header>
+        <pre class="signature"><code>on_mouse_wheel_h(step)</code></pre>
+        
+        <div class="description"><p>Scroll left/right</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>step</code></td><td><code>number</code></td><td><p>scroll direction: -1 or 1</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_notify_data-ab72f31b" data-kind="function" data-name="on_notify_data">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_notify_data-ab72f31b">on_notify_data</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:369</div>
+        </header>
+        <pre class="signature"><code>on_notify_data(name, info)</code></pre>
+        
+        <div class="description"><p>Called in other panels after <a href="window-a172b7dd.html#symbol-window.NotifyOthers-decb22c3">window.NotifyOthers</a> is executed.<br> <br> <b>!!! Beware !!!</b><br> 1. Data from <code>info</code> argument is only accessible inside <code>on_notify_data</code> callback:    if stored and accessed outside of the callback it will throw JS error.<br>    This also applies to the data produced from that <code>info</code>: e.g. storing <code>info.Path</code> directly (if <code>info</code> is FbMetadbHandle).<br> 2. If you want to store the data from <code>info</code> you have to perform a deep copy:<br>    - <code>String(info)</code> for strings.<br>    - <code>JSON.parse(JSON.stringify(info))</code> for serializable objects.<br>    - <code>new ObjectType(info)</code> for objects that have an approppriate constructor available, e.g. <code>new GdiBitmap(info)</code> or <code>new FbMetadbHandleList(info)</code>.<br> 3. <code>info</code> argument is shared between panels, so it should NOT be modified in any way.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>name</code></td><td><code>string</code></td><td></td></tr><tr><td><code>info</code></td><td><code>*</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_output_device_changed-79158ca6" data-kind="function" data-name="on_output_device_changed">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_output_device_changed-79158ca6">on_output_device_changed</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:388</div>
+        </header>
+        <pre class="signature"><code>on_output_device_changed()</code></pre>
+        
+        <div class="description"><p>Called when output device changes. Use <a href="fb-6722f021.html#symbol-fb.GetOutputDevices-883636c5">fb.GetOutputDevices</a> to retrieve settings.<br> Note: available only in foobar2000 v1.4 and later.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_paint-23c5a2b9" data-kind="function" data-name="on_paint">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_paint-23c5a2b9">on_paint</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:396</div>
+        </header>
+        <pre class="signature"><code>on_paint(gr)</code></pre>
+        
+        <div class="description"><p>Called when window is ready to draw.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>gr</code></td><td><code><a class="type-link" href="GdiGraphics-ad9f20a0.html#symbol-GdiGraphics-ad9f20a0">GdiGraphics</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_panel_mouse_enter-8b71a636" data-kind="function" data-name="on_panel_mouse_enter">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_panel_mouse_enter-8b71a636">on_panel_mouse_enter</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:612</div>
+        </header>
+        <pre class="signature"><code>on_panel_mouse_enter(name)</code></pre>
+        
+        <div class="description"><p>Raises when mouse pointer entering JSplitter child panel area<br> Works only if <a href="window-a172b7dd.html#symbol-window.TrackMouseEnterLeaveOnPanels-7e1efbb8">window.TrackMouseEnterLeaveOnPanels</a> is true</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>name</code></td><td><code>string</code></td><td><p>of panel mouse pointer enters</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_panel_mouse_leave-da3f12ef" data-kind="function" data-name="on_panel_mouse_leave">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_panel_mouse_leave-da3f12ef">on_panel_mouse_leave</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:631</div>
+        </header>
+        <pre class="signature"><code>on_panel_mouse_leave(name)</code></pre>
+        
+        <div class="description"><p>Raises when mouse pointer leaving JSplitter child panel area<br> Works only if <a href="window-a172b7dd.html#symbol-window.TrackMouseEnterLeaveOnPanels-7e1efbb8">window.TrackMouseEnterLeaveOnPanels</a> is true</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>name</code></td><td><code>string</code></td><td><p>of panel mouse pointer leaves</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_panel_mouse_move-0830f27d" data-kind="function" data-name="on_panel_mouse_move">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_panel_mouse_move-0830f27d">on_panel_mouse_move</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:620</div>
+        </header>
+        <pre class="signature"><code>on_panel_mouse_move(name, x, y, mask)</code></pre>
+        
+        <div class="description"><p>Raises when mouse pointer moving over JSplitter child panel area<br> Works only if <a href="window-a172b7dd.html#symbol-window.TrackMouseMoveOnPanels-26d2a840">window.TrackMouseMoveOnPanels</a> is true</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>name</code></td><td><code>string</code></td><td><p>of panel mouse pointer moves over</p></td></tr><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>mask</code></td><td><code>number</code></td><td><p>Mask for mouse callbacks, see flags like <a href="module-Flags-4222ebcc.html#symbol-module-Flags.MK_LBUTTON-74523669">MK_LBUTTON</a></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_playback_dynamic_info-5434a0bd" data-kind="function" data-name="on_playback_dynamic_info">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_playback_dynamic_info-5434a0bd">on_playback_dynamic_info</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:412</div>
+        </header>
+        <pre class="signature"><code>on_playback_dynamic_info()</code></pre>
+        
+        <div class="description"><p>Called when dynamic info (VBR bitrate etc) changes.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_playback_dynamic_info_track-6e1f5855" data-kind="function" data-name="on_playback_dynamic_info_track">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_playback_dynamic_info_track-6e1f5855">on_playback_dynamic_info_track</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:419</div>
+        </header>
+        <pre class="signature"><code>on_playback_dynamic_info_track()</code></pre>
+        
+        <div class="description"><p>Called when Per-track dynamic info (stream track titles etc) changes.<br> Happens less often than <a href="module-Callbacks-98afe9cf.html#symbol-module-Callbacks.on_playback_dynamic_info-5434a0bd">on_playback_dynamic_info</a>.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_playback_edited-8ffa6d96" data-kind="function" data-name="on_playback_edited">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_playback_edited-8ffa6d96">on_playback_edited</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:427</div>
+        </header>
+        <pre class="signature"><code>on_playback_edited(handle)</code></pre>
+        
+        <div class="description"><p>Called when currently playing file gets edited.<br> It's also called by components that provide tag-like data such as foo_playcount.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>handle</code></td><td><code><a class="type-link" href="FbMetadbHandle-b8dee4d8.html#symbol-FbMetadbHandle-b8dee4d8">FbMetadbHandle</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_playback_follow_cursor_changed-512130ae" data-kind="function" data-name="on_playback_follow_cursor_changed">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_playback_follow_cursor_changed-512130ae">on_playback_follow_cursor_changed</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:404</div>
+        </header>
+        <pre class="signature"><code>on_playback_follow_cursor_changed(state)</code></pre>
+        
+        <div class="description"><p>Called when "playback follow cursor" state is changed.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>state</code></td><td><code>boolean</code></td><td><p>current "playback follow cursor" value</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_playback_new_track-686c2e23" data-kind="function" data-name="on_playback_new_track">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_playback_new_track-686c2e23">on_playback_new_track</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:436</div>
+        </header>
+        <pre class="signature"><code>on_playback_new_track(handle)</code></pre>
+        
+        <div class="description"><p>Playback advanced to the new track.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>handle</code></td><td><code><a class="type-link" href="FbMetadbHandle-b8dee4d8.html#symbol-FbMetadbHandle-b8dee4d8">FbMetadbHandle</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_playback_order_changed-32173972" data-kind="function" data-name="on_playback_order_changed">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_playback_order_changed-32173972">on_playback_order_changed</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:444</div>
+        </header>
+        <pre class="signature"><code>on_playback_order_changed(new_order_index)</code></pre>
+        
+        <div class="description"><p>Called when playback order is changed.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>new_order_index</code></td><td><code>any</code></td><td><p>see <a href="module-Flags-4222ebcc.html#symbol-module-Flags.PlaybackOrder-369bc3a5">PlaybackOrder</a> enum</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_playback_pauseQueueChangeType-a0cabb66" data-kind="function" data-name="on_playback_pausequeuechangetype">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_playback_pauseQueueChangeType-a0cabb66">on_playback_pauseQueueChangeType</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:452</div>
+        </header>
+        <pre class="signature"><code>on_playback_pauseQueueChangeType(state)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>state</code></td><td><code>boolean</code></td><td><p>true when paused, false when unpaused.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_playback_queue_changed-3e683b6d" data-kind="function" data-name="on_playback_queue_changed">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_playback_queue_changed-3e683b6d">on_playback_queue_changed</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:458</div>
+        </header>
+        <pre class="signature"><code>on_playback_queue_changed(origin)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>origin</code></td><td><code>number</code></td><td><p>see <a href="module-Flags-4222ebcc.html#symbol-module-Flags.QueueChangeOrigin-93705213">QueueChangeOrigin</a> enum</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_playback_seek-9b6882c7" data-kind="function" data-name="on_playback_seek">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_playback_seek-9b6882c7">on_playback_seek</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:464</div>
+        </header>
+        <pre class="signature"><code>on_playback_seek(time)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>time</code></td><td><code><a class="type-link" href="globals.html#symbol-float-a6c45d85">float</a></code></td><td><p>new position in seconds</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_playback_starting-f01ed577" data-kind="function" data-name="on_playback_starting">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_playback_starting-f01ed577">on_playback_starting</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:470</div>
+        </header>
+        <pre class="signature"><code>on_playback_starting(cmd, is_paused)</code></pre>
+        
+        <div class="description"><p>Playback process is being initialized.<br> <a href="module-Callbacks-98afe9cf.html#symbol-module-Callbacks.on_playback_new_track-686c2e23">on_playback_new_track</a> should be called soon after this when first file is successfully opened for decoding.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>cmd</code></td><td><code>number</code></td><td><p>see <a href="module-Flags-4222ebcc.html#symbol-module-Flags.PlaybackStartCmd-465549bf">PlaybackStartCmd</a> enum<br>     - 0 Default<br>     - 1 Play<br>     - 2 Plays the next track from the current playlist according to the current playback order<br>     - 3 Plays the previous track from the current playlist according to the current playback order<br>     - 4 settrack (internal fb2k value)<br>     - 5 Plays a random track from the current playlist<br>     - 6 resume (internal fb2k value)</p></td></tr><tr><td><code>is_paused</code></td><td><code>boolean</code></td><td><p>Current paused state</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_playback_stop-db6b06c3" data-kind="function" data-name="on_playback_stop">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_playback_stop-db6b06c3">on_playback_stop</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:488</div>
+        </header>
+        <pre class="signature"><code>on_playback_stop(reason)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>reason</code></td><td><code>number</code></td><td><p>see <a href="module-Flags-4222ebcc.html#symbol-module-Flags.PlaybackStopReason-323bba2f">PlaybackStopReason</a> enum</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_playback_time-b48fbee2" data-kind="function" data-name="on_playback_time">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_playback_time-b48fbee2">on_playback_time</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:494</div>
+        </header>
+        <pre class="signature"><code>on_playback_time(time)</code></pre>
+        
+        <div class="description"><p>Called every second, for time display.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>time</code></td><td><code><a class="type-link" href="globals.html#symbol-float-a6c45d85">float</a></code></td><td><p>current playback time in seconds</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_playlist_item_ensure_visible-2f03a7a9" data-kind="function" data-name="on_playlist_item_ensure_visible">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_playlist_item_ensure_visible-2f03a7a9">on_playlist_item_ensure_visible</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:502</div>
+        </header>
+        <pre class="signature"><code>on_playlist_item_ensure_visible(playlistIndex, playlistItemIndex)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>playlistItemIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_playlist_items_added-6eff3d4b" data-kind="function" data-name="on_playlist_items_added">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_playlist_items_added-6eff3d4b">on_playlist_items_added</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:509</div>
+        </header>
+        <pre class="signature"><code>on_playlist_items_added(playlistIndex)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_playlist_items_removed-b8a68d25" data-kind="function" data-name="on_playlist_items_removed">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_playlist_items_removed-b8a68d25">on_playlist_items_removed</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:515</div>
+        </header>
+        <pre class="signature"><code>on_playlist_items_removed(playlistIndex, new_count)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>new_count</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_playlist_items_reordered-ec831bef" data-kind="function" data-name="on_playlist_items_reordered">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_playlist_items_reordered-ec831bef">on_playlist_items_reordered</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:522</div>
+        </header>
+        <pre class="signature"><code>on_playlist_items_reordered(playlistIndex)</code></pre>
+        
+        <div class="description"><p>Changes selection too. Doesn't actually change the set of items that are selected or item having focus, just changes their order.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_playlist_items_selection_change-a99efd6c" data-kind="function" data-name="on_playlist_items_selection_change">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_playlist_items_selection_change-a99efd6c">on_playlist_items_selection_change</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:530</div>
+        </header>
+        <pre class="signature"><code>on_playlist_items_selection_change()</code></pre>
+        
+        <div class="description"><p>Workaround for some 3rd party playlist viewers not working with <a href="module-Callbacks-98afe9cf.html#symbol-module-Callbacks.on_selection_changed-33bae02c">on_selection_changed</a>.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_playlist_stop_after_current_changed-a2dc3cde" data-kind="function" data-name="on_playlist_stop_after_current_changed">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_playlist_stop_after_current_changed-a2dc3cde">on_playlist_stop_after_current_changed</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:537</div>
+        </header>
+        <pre class="signature"><code>on_playlist_stop_after_current_changed(state)</code></pre>
+        
+        <div class="description"><p>Called when "stop after current" is enabled/disabled.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>state</code></td><td><code>boolean</code></td><td><p>"stop after current" value</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_playlist_switch-98f2ce36" data-kind="function" data-name="on_playlist_switch">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_playlist_switch-98f2ce36">on_playlist_switch</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:545</div>
+        </header>
+        <pre class="signature"><code>on_playlist_switch()</code></pre>
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_playlists_changed-7810c745" data-kind="function" data-name="on_playlists_changed">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_playlists_changed-7810c745">on_playlists_changed</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:550</div>
+        </header>
+        <pre class="signature"><code>on_playlists_changed()</code></pre>
+        
+        <div class="description"><p>Called when:<br> - Playlists are added/removed/reordered/renamed.<br> - A playlist's lock status changes through the use of <a href="plman-ff97d52b.html#symbol-plman.SetPlaylistLockedActions-cb451374">plman.SetPlaylistLockedActions</a> or   components such as <code>foo_utils</code> or <code>foo_playlist_attributes</code>.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_replaygain_mode_changed-460036f0" data-kind="function" data-name="on_replaygain_mode_changed">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_replaygain_mode_changed-460036f0">on_replaygain_mode_changed</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:560</div>
+        </header>
+        <pre class="signature"><code>on_replaygain_mode_changed(new_mode)</code></pre>
+        
+        <div class="description"><p>Note: available only in foobar2000 v1.4 and later.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>new_mode</code></td><td><code>number</code></td><td><p>see <a href="module-Flags-4222ebcc.html#symbol-module-Flags.ReplayGainMode-554bbb01">ReplayGainMode</a> enum</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_script_unload-e4d54016" data-kind="function" data-name="on_script_unload">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_script_unload-e4d54016">on_script_unload</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:568</div>
+        </header>
+        <pre class="signature"><code>on_script_unload()</code></pre>
+        
+        <div class="description"><p>Called when:<br> - Panel script is reloaded via context menu > Reload.<br> - Panel script is changed via panel menu > Configure.<br> - fb2k is exiting normally.<br> Not called when:<br> - Script fails with error.<br> - fb2k closed externally (e.g. killed with process manager).<br> - fb2k fails with exception.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_selection_changed-33bae02c" data-kind="function" data-name="on_selection_changed">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_selection_changed-33bae02c">on_selection_changed</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:582</div>
+        </header>
+        <pre class="signature"><code>on_selection_changed()</code></pre>
+        
+        <div class="description"><p>Called when selection changes based on "File>Preferences>Display>Selection viewers".</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_size-3c483c62" data-kind="function" data-name="on_size">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_size-3c483c62">on_size</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:589</div>
+        </header>
+        <pre class="signature"><code>on_size(width, height)</code></pre>
+        
+        <div class="description"><p>Called when panel is resized.<br> Note: width and height arguments have the same values as <a href="window-a172b7dd.html#symbol-window.Width-77751383">window.Width</a> and <a href="window-a172b7dd.html#symbol-window.Height-29a658be">window.Height</a>.<br> <b>IMPORTANT</b>: do NOT call <a href="window-a172b7dd.html#symbol-window.Repaint-ce4834a0">window.Repaint</a> from this callback!</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>width</code></td><td><code>number</code></td><td></td></tr><tr><td><code>height</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.on_volume_change-8fdb5412" data-kind="function" data-name="on_volume_change">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.on_volume_change-8fdb5412">on_volume_change</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:600</div>
+        </header>
+        <pre class="signature"><code>on_volume_change(val)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>val</code></td><td><code><a class="type-link" href="globals.html#symbol-float-a6c45d85">float</a></code></td><td><p>volume level in dB. Minimum is -100. Maximum is 0.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="symbol-module-Callbacks.PerformanceObserverCallback-ce1e8d52" data-kind="function" data-name="performanceobservercallback">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#symbol-module-Callbacks.PerformanceObserverCallback-ce1e8d52">PerformanceObserverCallback</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:682</div>
+        </header>
+        <pre class="signature"><code>PerformanceObserverCallback(entries, observer)</code></pre>
+        
+        <div class="description"><p>Callback that will be invoked when observed performance events are recorded. Specified in <a href="PerformanceObserver-f1192ef7.html#symbol-PerformanceObserver-f1192ef7">PerformanceObserver</a> constructor<br></p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>entries</code></td><td><code><a class="type-link" href="PerformanceObserverEntryList-91fbd61d.html#symbol-PerformanceObserverEntryList-91fbd61d">PerformanceObserverEntryList</a></code></td><td><p>The list of performance observer entries.</p></td></tr><tr><td><code>observer</code></td><td><code><a class="type-link" href="PerformanceObserver-f1192ef7.html#symbol-PerformanceObserver-f1192ef7">PerformanceObserver</a></code></td><td><p>The observer object that is receiving the above entries.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>
