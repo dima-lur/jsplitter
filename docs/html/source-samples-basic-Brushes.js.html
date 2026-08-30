@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Brushes.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <a class="nav-link " href="globals.html">Globals</a>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><a class="nav-link " href="console.html">console</a><a class="nav-link " href="d2d.html">d2d</a><a class="nav-link " href="fb.html">fb</a><a class="nav-link " href="gdi.html">gdi</a><a class="nav-link " href="performance.html">performance</a><a class="nav-link " href="plman.html">plman</a><a class="nav-link " href="utils.html">utils</a><a class="nav-link " href="window.html">window</a></div><div class="nav-group"><div class="nav-title">Classes</div><a class="nav-link " href="ActiveXObject.html">ActiveXObject</a><a class="nav-link " href="ButtonObject.html">ButtonObject</a><a class="nav-link " href="ContextMenuManager.html">ContextMenuManager</a><a class="nav-link " href="D2DBitmap.html">D2DBitmap</a><a class="nav-link " href="D2DBrush.html">D2DBrush</a><a class="nav-link " href="D2DCompileInfo.html">D2DCompileInfo</a><a class="nav-link " href="D2DEffect.html">D2DEffect</a><a class="nav-link " href="D2DFont.html">D2DFont</a><a class="nav-link " href="D2DGraphics.html">D2DGraphics</a><a class="nav-link " href="DropTargetAction.html">DropTargetAction</a><a class="nav-link " href="Enumerator.html">Enumerator</a><a class="nav-link " href="FbAudioChunk.html">FbAudioChunk</a><a class="nav-link " href="FbFileInfo.html">FbFileInfo</a><a class="nav-link " href="FbMetadbHandle.html">FbMetadbHandle</a><a class="nav-link " href="FbMetadbHandleList.html">FbMetadbHandleList</a><a class="nav-link " href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a><a class="nav-link " href="FbPlayingItemLocation.html">FbPlayingItemLocation</a><a class="nav-link " href="FbPlaylistRecycler.html">FbPlaylistRecycler</a><a class="nav-link " href="FbProfiler.html">FbProfiler</a><a class="nav-link " href="FbTitleFormat.html">FbTitleFormat</a><a class="nav-link " href="FbTooltip.html">FbTooltip</a><a class="nav-link " href="FbUiSelectionHolder.html">FbUiSelectionHolder</a><a class="nav-link " href="GdiBitmap.html">GdiBitmap</a><a class="nav-link " href="GdiBrush.html">GdiBrush</a><a class="nav-link " href="GdiFont.html">GdiFont</a><a class="nav-link " href="GdiGraphics.html">GdiGraphics</a><a class="nav-link " href="GdiRawBitmap.html">GdiRawBitmap</a><a class="nav-link " href="HtmlDocument.html">HtmlDocument</a><a class="nav-link " href="HtmlNode.html">HtmlNode</a><a class="nav-link " href="IUIHacks.html">IUIHacks</a><a class="nav-link " href="MainMenuManager.html">MainMenuManager</a><a class="nav-link " href="MenuObject.html">MenuObject</a><a class="nav-link " href="PanelObject.html">PanelObject</a><a class="nav-link " href="PerformanceObserver.html">PerformanceObserver</a><a class="nav-link " href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a><a class="nav-link " href="RunResult.html">RunResult</a><a class="nav-link " href="ThemeManager.html">ThemeManager</a></div><div class="nav-group"><div class="nav-title">Modules</div><a class="nav-link " href="module-Callbacks.html">Callbacks</a><a class="nav-link " href="module-Codepages.html">Codepages</a><a class="nav-link " href="module-Effects.html">Effects</a><a class="nav-link " href="module-Flags.html">Flags</a><a class="nav-link " href="module-Helpers.html">Helpers</a><a class="nav-link " href="module-Matrix.html">Matrix</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/basic/Brushes.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="D2DBrush.html#D2DBrush">D2DBrush</a><a href="d2d.html#Brush">d2d.Brush</a><a href="gdi.html#Brush">gdi.Brush</a><a href="GdiBrush.html#GdiBrush">GdiBrush</a></div>
+        </header>
+        <pre class="source-code"><code><span class="tok-string">&quot;use strict&quot;</span>;
+
+<span class="tok-comment">// window.DrawMode = 1;</span>
+
+include(<span class="tok-string">`${fb.ComponentPath}\\docs\\Helpers.js`</span>);
+include(<span class="tok-string">`${fb.ComponentPath}\\docs\\Flags.js`</span>);
+
+<span class="tok-keyword">let</span> ww = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> wh = <span class="tok-number">0</span>;
+<span class="tok-keyword">function</span> on_size(width, height) {
+    ww = width;
+    wh = height;
+}
+
+<span class="tok-keyword">const</span> solidBrush = gdi.Brush(BrushType.Solid, <span class="tok-number">0xFF000000</span>);
+
+<span class="tok-keyword">const</span> img = gdi.Image(<span class="tok-string">`${fb.ComponentPath}\\samples\\d2d\\images\\Flowers.jpg`</span>);
+<span class="tok-keyword">const</span> bitmapBrush = gdi.Brush(BrushType.Bitmap, img, BrushWrapMode.TileFlipXY);
+
+<span class="tok-keyword">const</span> font = gdi.Font(<span class="tok-string">&quot;Segoe UI&quot;</span>, <span class="tok-number">96</span>, <span class="tok-number">1</span>);
+<span class="tok-keyword">const</span> text = <span class="tok-string">&quot;TEST FOR TEXT BRUSH&quot;</span>;
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, ww, wh, solidBrush);
+	
+    gr.SetSmoothingMode(SmoothingMode.HighQuality);
+    gr.SetTextRenderingHint(TextRenderingHint.AntiAlias);
+
+	<span class="tok-keyword">const</span> ms = gr.MeasureString(text, font, <span class="tok-number">0</span>, <span class="tok-number">0</span>, ww, wh, StringFormat(<span class="tok-number">1</span>));
+	<span class="tok-keyword">const</span> linearGradientBrush = gdi.Brush(
+		BrushType.LinearGradient, 
+		[ms.X, ms.Y], 
+		[ms.X, ms.Y + ms.Height], 
+		[<span class="tok-number">0.0</span>, <span class="tok-number">0xFFFFFFFF</span>, <span class="tok-number">0.5</span>, <span class="tok-number">0xFFFF0000</span>, <span class="tok-number">1.0</span>, <span class="tok-number">0xFF000000</span>]
+	);
+	gr.DrawString(text, font, linearGradientBrush, <span class="tok-number">0</span>, <span class="tok-number">0</span>, ww, wh, StringFormat(<span class="tok-number">1</span>));
+	
+	bitmapBrush.Scale(ww / img.Width / <span class="tok-number">2</span>, (wh - ms.Height) / img.Height / <span class="tok-number">2</span>);
+	bitmapBrush.Translate(<span class="tok-number">0</span>, ms.Height);
+	gr.FillEllipse(<span class="tok-number">0</span>, ms.Height, ww, wh - ms.Height, bitmapBrush);
+	bitmapBrush.ResetTransform();
+
+	<span class="tok-keyword">const</span> lightRadius = Math.min(ww, wh) / <span class="tok-number">2</span>;
+	<span class="tok-keyword">const</span> radialGradientBrush = gdi.Brush(
+		BrushType.RadialGradient, 
+		[lastX, lastY],
+		[lightRadius, lightRadius],
+		[<span class="tok-number">0.0</span>, <span class="tok-number">0x00FFFFFF</span>, <span class="tok-number">1.0</span>, <span class="tok-number">0xFFFFFFFF</span>],
+		BrushWrapMode.Clamp
+	);	
+	gr.FillEllipse(lastX - lightRadius, lastY - lightRadius, lightRadius * <span class="tok-number">2</span>, lightRadius * <span class="tok-number">2</span>, radialGradientBrush);
+}
+
+<span class="tok-keyword">let</span> lastX = <span class="tok-number">0</span>, lastY = <span class="tok-number">0</span>;
+<span class="tok-keyword">function</span> on_mouse_move(x, y) {
+	lastX = x;
+	lastY = y;
+	window.Repaint();
+}
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

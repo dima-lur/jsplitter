@@ -56,42 +56,59 @@ function D2DBitmap(arg) {
     this.CreateRawBitmap = function () { }; // (D2DBitmap)
 
     /**
-     * Takes the top of colors found in the image
-     * @param {number} max_count
+     * Returns up to max_count representative colours found in the image.<br>
+     * This is a legacy colour extraction method. For colour frequency information and
+     * more advanced clustering, use {@link D2DBitmap#GetColourSchemeJSON GetColourSchemeJSON}
+     * or {@link D2DBitmap#GetColourSchemeJSONV2 GetColourSchemeJSONV2}.
+     *
+     * @param {number} max_count maximum number of colours to return
      * @return {Array<number>}
      */
     this.GetColourScheme = function (max_count) { }; // (Array)
 
     /**
+     * Extracts representative colours from the image using K-means clustering in the RGB colour space.<br>
      * Returns a JSON array in string form so you need to use JSON.parse() on the result.<br>
-     * Each entry in the array is an object which contains colour and frequency values.<br>
+     * Each entry contains a colour and its relative frequency in the clustered image.<br>
      * Uses a different method for calculating colours than {@link D2DBitmap#GetColourScheme GetColourScheme}.<br>
      * Image is automatically resized during processing for performance reasons so there's no
      * need to resize before calling the method.
      *
-     * @param {number} max_count
+     * @param {number} max_count maximum number of colours to return
      * @return {string}
      *
      * @example
      * // See docs\Helpers.js for "toRGB" function.
-     * img = ... // use utils.GetAlbumArtV2 / d2d.Image / etc
+     * img = ... // use utils.GetAlbumArtV2 / gdi.Image / etc
      * colours = JSON.parse(img.GetColourSchemeJSON(5));
-     * console.log(colours[0].col); // -4194304
+     * console.log(colours[0].col); // 4290772992
      * console.log(colours[0].freq); // 0.34
      * console.log(toRGB(colours[0].col)); // [192, 0, 0]
      */
     this.GetColourSchemeJSON = function (max_count) { }; // (string)
 
     /**
+     * Extracts representative colours from the image using K-means++ clustering in the Oklab colour space.<br>
      * Returns a JSON array in string form so you need to use JSON.parse() on the result.<br>
-     * Each entry in the array is an object which contains colour and frequency values.<br>
-     * Uses a different method than {@link D2DBitmap#GetColourSchemeJSON GetColourSchemeJSON} for calculating colours (K-means++ with Oklab).<br>
+     * Each entry contains a colour and its relative frequency in the clustered image.<br>
+     * K-means++ initialization improves the distribution of the initial cluster centres, while Oklab
+     * provides a perceptually more uniform distance metric than RGB.<br>
+     * The optional <b>min_chroma</b> parameter limits the initial cluster centre selection to pixels with at
+     * least the specified Oklab chroma. It does not filter pixels or colours from the clustering result.
      *
-     * @param {number} max_count
-     * @param {number} [min_chroma=0.0] minimal chroma value for choosing start cluster pixel
+     * @param {number} max_count maximum number of colours to return
+     * @param {number} [min_chroma=0.0] minimum Oklab chroma for pixels used as initial cluster centres
      * @return {string}
+     *
+     * @example
+     * // See docs\Helpers.js for "toRGB" function.
+     * img = ... // use utils.GetAlbumArtV2 / gdi.Image / etc
+     * colours = JSON.parse(img.GetColourSchemeJSONV2(10, 0.02));
+     * console.log(colours[0].col); // 4290772992
+     * console.log(colours[0].freq); // 0.34
+     * console.log(toRGB(colours[0].col)); // [192, 0, 0]
      */
-    this.GetColourSchemeJSONV2 = function (max_count) { }; // (string)
+    this.GetColourSchemeJSONV2 = function (max_count, min_chroma) { }; // (string)
 
     /**
      * <b>IMPORTANT</b>: You MUST call {@link D2DBitmap#ReleaseGraphics ReleaseGraphics} after work on D2DGraphics is done!<br>

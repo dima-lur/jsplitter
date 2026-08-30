@@ -1,0 +1,2103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>plman — JSplitter API</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <a class="nav-link " href="globals.html">Globals</a>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><a class="nav-link " href="console.html">console</a><a class="nav-link " href="d2d.html">d2d</a><a class="nav-link " href="fb.html">fb</a><a class="nav-link " href="gdi.html">gdi</a><a class="nav-link " href="performance.html">performance</a><a class="nav-link active" href="plman.html">plman</a><a class="nav-link " href="utils.html">utils</a><a class="nav-link " href="window.html">window</a></div><div class="nav-group"><div class="nav-title">Classes</div><a class="nav-link " href="ActiveXObject.html">ActiveXObject</a><a class="nav-link " href="ButtonObject.html">ButtonObject</a><a class="nav-link " href="ContextMenuManager.html">ContextMenuManager</a><a class="nav-link " href="D2DBitmap.html">D2DBitmap</a><a class="nav-link " href="D2DBrush.html">D2DBrush</a><a class="nav-link " href="D2DCompileInfo.html">D2DCompileInfo</a><a class="nav-link " href="D2DEffect.html">D2DEffect</a><a class="nav-link " href="D2DFont.html">D2DFont</a><a class="nav-link " href="D2DGraphics.html">D2DGraphics</a><a class="nav-link " href="DropTargetAction.html">DropTargetAction</a><a class="nav-link " href="Enumerator.html">Enumerator</a><a class="nav-link " href="FbAudioChunk.html">FbAudioChunk</a><a class="nav-link " href="FbFileInfo.html">FbFileInfo</a><a class="nav-link " href="FbMetadbHandle.html">FbMetadbHandle</a><a class="nav-link " href="FbMetadbHandleList.html">FbMetadbHandleList</a><a class="nav-link " href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a><a class="nav-link " href="FbPlayingItemLocation.html">FbPlayingItemLocation</a><a class="nav-link " href="FbPlaylistRecycler.html">FbPlaylistRecycler</a><a class="nav-link " href="FbProfiler.html">FbProfiler</a><a class="nav-link " href="FbTitleFormat.html">FbTitleFormat</a><a class="nav-link " href="FbTooltip.html">FbTooltip</a><a class="nav-link " href="FbUiSelectionHolder.html">FbUiSelectionHolder</a><a class="nav-link " href="GdiBitmap.html">GdiBitmap</a><a class="nav-link " href="GdiBrush.html">GdiBrush</a><a class="nav-link " href="GdiFont.html">GdiFont</a><a class="nav-link " href="GdiGraphics.html">GdiGraphics</a><a class="nav-link " href="GdiRawBitmap.html">GdiRawBitmap</a><a class="nav-link " href="HtmlDocument.html">HtmlDocument</a><a class="nav-link " href="HtmlNode.html">HtmlNode</a><a class="nav-link " href="IUIHacks.html">IUIHacks</a><a class="nav-link " href="MainMenuManager.html">MainMenuManager</a><a class="nav-link " href="MenuObject.html">MenuObject</a><a class="nav-link " href="PanelObject.html">PanelObject</a><a class="nav-link " href="PerformanceObserver.html">PerformanceObserver</a><a class="nav-link " href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a><a class="nav-link " href="RunResult.html">RunResult</a><a class="nav-link " href="ThemeManager.html">ThemeManager</a></div><div class="nav-group"><div class="nav-title">Modules</div><a class="nav-link " href="module-Callbacks.html">Callbacks</a><a class="nav-link " href="module-Codepages.html">Codepages</a><a class="nav-link " href="module-Effects.html">Effects</a><a class="nav-link " href="module-Flags.html">Flags</a><a class="nav-link " href="module-Helpers.html">Helpers</a><a class="nav-link " href="module-Matrix.html">Matrix</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>plman</b></div>
+        
+    <article class="api-item" id="plman" data-kind="namespace" data-name="plman">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-namespace">namespace</span></div>
+                <h2><a class="anchor" href="#plman">plman</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1037</div>
+        </header>
+        
+        
+        <div class="description"><p>Functions for managing foobar2000 playlists.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+        
+    <article class="api-item" id="ActivePlaylist" data-kind="property" data-name="activeplaylist">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#ActivePlaylist">ActivePlaylist</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1044</div>
+        </header>
+        <pre class="signature"><code>ActivePlaylist: number</code></pre>
+        
+        <div class="description"><p>-1 if there is no active playlist.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Examples</h3>
+            <pre class="example"><code>console.log(plman.ActivePlaylist);</code></pre><pre class="example"><code>plman.ActivePlaylist = <span class="tok-number">1</span>; <span class="tok-comment">// Switches to 2nd playlist.</span></code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="PlaybackOrder" data-kind="property" data-name="playbackorder">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#PlaybackOrder">PlaybackOrder</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1057</div>
+        </header>
+        <pre class="signature"><code>PlaybackOrder: number</code></pre>
+        
+        <div class="description"><p>See <a href="module-Flags.html#PlaybackOrder">PlaybackOrder</a> enum 0 - Default<br> 1 - Repeat (Playlist)<br> 2 - Repeat (Track)<br> 3 - Random<br> 4 - Shuffle (tracks)<br> 5 - Shuffle (albums)<br> 6 - Shuffle (folders)</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="PlayingPlaylist" data-kind="property" data-name="playingplaylist">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#PlayingPlaylist">PlayingPlaylist</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1072</div>
+        </header>
+        <pre class="signature"><code>PlayingPlaylist: number</code></pre>
+        
+        <div class="description"><p>-1 if there is no playing playlist.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code>console.log(plman.PlayingPlaylist);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="PlaylistCount" data-kind="property" data-name="playlistcount">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#PlaylistCount">PlaylistCount</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1082</div>
+        </header>
+        <pre class="signature"><code>PlaylistCount: number</code></pre>
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="PlaylistRecycler" data-kind="property" data-name="playlistrecycler">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#PlaylistRecycler">PlaylistRecycler</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1088</div>
+        </header>
+        <pre class="signature"><code>PlaylistRecycler: FbPlaylistRecycler</code></pre>
+        
+        <div class="description"><p>A Recycle Bin for playlists.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="AddItemToPlaybackQueue" data-kind="method" data-name="additemtoplaybackqueue">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#AddItemToPlaybackQueue">AddItemToPlaybackQueue</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1630</div>
+        </header>
+        <pre class="signature"><code>AddItemToPlaybackQueue(handle)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>handle</code></td><td><code><a class="type-link" href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="AddLocations" data-kind="method" data-name="addlocations">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#AddLocations">AddLocations</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1096</div>
+        </header>
+        <pre class="signature"><code>AddLocations(playlistIndex, paths, select)</code></pre>
+        
+        <div class="description"><p>This operation is asynchronous and may take some time to complete if it's a large array.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>paths</code></td><td><code>Array&lt;string&gt;</code></td><td><p>An array of files/URLs</p></td></tr><tr><td><code>select = false</code><span class="mini-flag">optional</span></td><td><code>boolean</code></td><td><p>If true, the active playlist will be set to the playlistIndex, the items will        be selected and focus will be set to the first new item.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code>plman.AddLocations(plman.ActivePlaylist, [<span class="tok-string">&quot;e:\\1.mp3&quot;</span>]);
+<span class="tok-comment">// This operation is asynchronous, so any code in your script directly</span>
+<span class="tok-comment">// after this line will run immediately without waiting for the job to finish.</span></code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="AddPlaylistItemToPlaybackQueue" data-kind="method" data-name="addplaylistitemtoplaybackqueue">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#AddPlaylistItemToPlaybackQueue">AddPlaylistItemToPlaybackQueue</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1635</div>
+        </header>
+        <pre class="signature"><code>AddPlaylistItemToPlaybackQueue(playlistIndex, playlistItemIndex)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>playlistItemIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="ClearPlaylist" data-kind="method" data-name="clearplaylist">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#ClearPlaylist">ClearPlaylist</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1112</div>
+        </header>
+        <pre class="signature"><code>ClearPlaylist(playlistIndex)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code>plman.ClearPlaylist(plman.PlayingPlaylist);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="ClearPlaylistSelection" data-kind="method" data-name="clearplaylistselection">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#ClearPlaylistSelection">ClearPlaylistSelection</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1120</div>
+        </header>
+        <pre class="signature"><code>ClearPlaylistSelection(playlistIndex)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code>plman.ClearPlaylistSelection(plman.ActivePlaylist);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="CreateAutoPlaylist" data-kind="method" data-name="createautoplaylist">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#CreateAutoPlaylist">CreateAutoPlaylist</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1128</div>
+        </header>
+        <pre class="signature"><code>CreateAutoPlaylist(playlistIndex, name, query, sort, flags)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>name</code></td><td><code>string</code></td><td><p>Name for the new autoplaylist.</p></td></tr><tr><td><code>query</code></td><td><code>string</code></td><td><p>Title formatting pattern for forming the playlist content.</p></td></tr><tr><td><code>sort = &#39;&#39;</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>Title formatting pattern for sorting.</p></td></tr><tr><td><code>flags = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>1 - when set, will keep the autoplaylist sorted and prevent user from reordering it.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>number</code> — <p>Index of the created playlist.</p></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="CreatePlaylist" data-kind="method" data-name="createplaylist">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#CreatePlaylist">CreatePlaylist</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1138</div>
+        </header>
+        <pre class="signature"><code>CreatePlaylist(playlistIndex, name)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>name</code></td><td><code>string</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>number</code> — <p>Index of the created playlist.</p></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Examples</h3>
+            <pre class="example"><code><span class="tok-comment">// Creates a new playlist named &quot;New playlist&quot;, which is put at the beginning of the current playlists.</span>
+plman.CreatePlaylist(<span class="tok-number">0</span>, <span class="tok-string">&#39;&#39;</span>);</code></pre><pre class="example"><code><span class="tok-comment">// Create a new playlist named &quot;my favourites&quot;, which is put at the end.</span>
+plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favourites&#39;</span>);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="DuplicatePlaylist" data-kind="method" data-name="duplicateplaylist">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#DuplicatePlaylist">DuplicatePlaylist</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1153</div>
+        </header>
+        <pre class="signature"><code>DuplicatePlaylist(playlistIndex, name)</code></pre>
+        
+        <div class="description"><p>Note: the duplicated playlist gets inserted directly after the source playlistIndex.<br> It only duplicates playlist content, not the properties of the playlist (e.g. Autoplaylist).</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>name</code><span class="mini-flag">optional</span></td><td><code>?string</code></td><td><p>A name for the new playlist. If the name is "" or undefined, the name of the source playlist will be used.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>number</code> — <p>Index of the created playlist.</p></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="EnsurePlaylistItemVisible" data-kind="method" data-name="ensureplaylistitemvisible">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#EnsurePlaylistItemVisible">EnsurePlaylistItemVisible</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1163</div>
+        </header>
+        <pre class="signature"><code>EnsurePlaylistItemVisible(playlistIndex, playlistItemIndex)</code></pre>
+        
+        <div class="description"><p>Signals playlist viewers to display the track (e.g. by scrolling to it's position).</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>playlistItemIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="ExecutePlaylistDefaultAction" data-kind="method" data-name="executeplaylistdefaultaction">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#ExecutePlaylistDefaultAction">ExecutePlaylistDefaultAction</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1171</div>
+        </header>
+        <pre class="signature"><code>ExecutePlaylistDefaultAction(playlistIndex, playlistItemIndex)</code></pre>
+        
+        <div class="description"><p>Starts playback by executing default doubleclick/enter action unless overridden by a lock to do something else.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>playlistItemIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>boolean</code> — <p>-1 on failure.</p></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="FindByGUID" data-kind="method" data-name="findbyguid">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#FindByGUID">FindByGUID</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1206</div>
+        </header>
+        <pre class="signature"><code>FindByGUID(guid)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>guid</code></td><td><code>string</code></td><td><p>String representing GUID.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>number</code> — <p>Index of the found playlist on success, -1 on failure.</p></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="FindOrCreatePlaylist" data-kind="method" data-name="findorcreateplaylist">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#FindOrCreatePlaylist">FindOrCreatePlaylist</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1180</div>
+        </header>
+        <pre class="signature"><code>FindOrCreatePlaylist(name, unlocked)</code></pre>
+        
+        <div class="description"><p>Returns playlist index of the named playlist or creates a new one, if not found.<br> If a new playlist is created, the playlist index of that will be returned.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>name</code></td><td><code>string</code></td><td></td></tr><tr><td><code>unlocked</code></td><td><code>boolean</code></td><td><p>If true, locked playlists are ignored when looking for existing playlists.                           If false, the playlistIndex of any playlist with the matching name will be returned.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>number</code> — <p>Index of the found or created playlist.</p></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="FindPlaybackQueueItemIndex" data-kind="method" data-name="findplaybackqueueitemindex">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#FindPlaybackQueueItemIndex">FindPlaybackQueueItemIndex</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1641</div>
+        </header>
+        <pre class="signature"><code>FindPlaybackQueueItemIndex(handle, playlistIndex, playlistItemIndex)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>handle</code></td><td><code><a class="type-link" href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a></code></td><td></td></tr><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>playlistItemIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>number</code> — <p>Returns position in queue on success, -1 if track is not in queue.</p></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="FindPlaylist" data-kind="method" data-name="findplaylist">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#FindPlaylist">FindPlaylist</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1191</div>
+        </header>
+        <pre class="signature"><code>FindPlaylist(name)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>name</code></td><td><code>string</code></td><td><p>Case insensitive.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>number</code> — <p>Index of the found playlist on success, -1 on failure.</p></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="FlushPlaybackQueue" data-kind="method" data-name="flushplaybackqueue">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#FlushPlaybackQueue">FlushPlaybackQueue</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1649</div>
+        </header>
+        <pre class="signature"><code>FlushPlaybackQueue()</code></pre>
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="GetGUID" data-kind="method" data-name="getguid">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#GetGUID">GetGUID</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1197</div>
+        </header>
+        <pre class="signature"><code>GetGUID(playlistIndex)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>string</code></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code>console.log(plman.GetGUID(plman.ActivePlaylist));</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="GetPlaybackQueueContents" data-kind="method" data-name="getplaybackqueuecontents">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#GetPlaybackQueueContents">GetPlaybackQueueContents</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1652</div>
+        </header>
+        <pre class="signature"><code>GetPlaybackQueueContents()</code></pre>
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Array&lt;<a class="type-link" href="FbPlaybackQueueItem.html#FbPlaybackQueueItem">FbPlaybackQueueItem</a>&gt;</code></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> contents = plman.GetPlaybackQueueContents();
+<span class="tok-keyword">if</span> (contents.length) {
+    <span class="tok-comment">// access properties of first item</span>
+    console.log(contents[<span class="tok-number">0</span>].PlaylistIndex, contents[<span class="tok-number">0</span>].PlaylistItemIndex);
+}</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="GetPlaybackQueueHandles" data-kind="method" data-name="getplaybackqueuehandles">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#GetPlaybackQueueHandles">GetPlaybackQueueHandles</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1664</div>
+        </header>
+        <pre class="signature"><code>GetPlaybackQueueHandles()</code></pre>
+        
+        <div class="description"></div>
+        
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code><a class="type-link" href="FbMetadbHandleList.html#FbMetadbHandleList">FbMetadbHandleList</a></code></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> handles = plman.GetPlaybackQueueHandles();
+<span class="tok-keyword">if</span> (handles.Count &gt; <span class="tok-number">0</span>) {
+   <span class="tok-comment">// use &quot;Count&quot; to determine if Playback Queue is active.</span>
+}</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="GetPlayingItemLocation" data-kind="method" data-name="getplayingitemlocation">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#GetPlayingItemLocation">GetPlayingItemLocation</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1212</div>
+        </header>
+        <pre class="signature"><code>GetPlayingItemLocation()</code></pre>
+        
+        <div class="description"><p>Retrieves playlist position of currently playing item.<br> On failure, the property <a href="FbPlayingItemLocation.html#IsValid">FbPlayingItemLocation.IsValid</a> will be set to false.</p></div>
+        
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code><a class="type-link" href="FbPlayingItemLocation.html#FbPlayingItemLocation">FbPlayingItemLocation</a></code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="GetPlaylistFocusItemIndex" data-kind="method" data-name="getplaylistfocusitemindex">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#GetPlaylistFocusItemIndex">GetPlaylistFocusItemIndex</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1220</div>
+        </header>
+        <pre class="signature"><code>GetPlaylistFocusItemIndex(playlistIndex)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>number</code> — <p>Returns -1 if nothing is selected</p></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> focus_item_index = plman.GetPlaylistFocusItemIndex(plman.ActivePlaylist); <span class="tok-comment">// 0 would be the first item</span></code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="GetPlaylistItems" data-kind="method" data-name="getplaylistitems">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#GetPlaylistItems">GetPlaylistItems</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1229</div>
+        </header>
+        <pre class="signature"><code>GetPlaylistItems(playlistIndex)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code><a class="type-link" href="FbMetadbHandleList.html#FbMetadbHandleList">FbMetadbHandleList</a></code></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> handle_list = plman.GetPlaylistItems(plman.PlayingPlaylist);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="GetPlaylistLockedActions" data-kind="method" data-name="getplaylistlockedactions">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#GetPlaylistLockedActions">GetPlaylistLockedActions</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1238</div>
+        </header>
+        <pre class="signature"><code>GetPlaylistLockedActions(playlistIndex)</code></pre>
+        
+        <div class="description"><p>Returns the list of blocked actions</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Array&lt;string&gt;</code> — <p>May contain the following:<br>   - 'AddItems'<br>   - 'RemoveItems'<br>   - 'ReorderItems'<br>   - 'ReplaceItems'<br>   - 'RenamePlaylist'<br>   - 'RemovePlaylist'<br>   - 'ExecuteDefaultAction'</p></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="GetPlaylistLockName" data-kind="method" data-name="getplaylistlockname">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#GetPlaylistLockName">GetPlaylistLockName</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1253</div>
+        </header>
+        <pre class="signature"><code>GetPlaylistLockName(playlistIndex)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>?string</code> — <p>name of lock owner if there is a lock, null otherwise</p></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="GetPlaylistName" data-kind="method" data-name="getplaylistname">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#GetPlaylistName">GetPlaylistName</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1259</div>
+        </header>
+        <pre class="signature"><code>GetPlaylistName(playlistIndex)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>string</code></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code>console.log(plman.GetPlaylistName(plman.ActivePlaylist));</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="GetPlaylistSelectedIndexes" data-kind="method" data-name="getplaylistselectedindexes">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#GetPlaylistSelectedIndexes">GetPlaylistSelectedIndexes</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1268</div>
+        </header>
+        <pre class="signature"><code>GetPlaylistSelectedIndexes(playlistIndex)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Array&lt;number&gt;</code></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> selected_indexes = plman.GetPlaylistSelectedIndexes(plman.ActivePlaylist);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="GetPlaylistSelectedItems" data-kind="method" data-name="getplaylistselecteditems">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#GetPlaylistSelectedItems">GetPlaylistSelectedItems</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1277</div>
+        </header>
+        <pre class="signature"><code>GetPlaylistSelectedItems(playlistIndex)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code><a class="type-link" href="FbMetadbHandleList.html#FbMetadbHandleList">FbMetadbHandleList</a></code></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> selected_items = plman.GetPlaylistSelectedItems(plman.ActivePlaylist);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="InsertPlaylistItems" data-kind="method" data-name="insertplaylistitems">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#InsertPlaylistItems">InsertPlaylistItems</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1286</div>
+        </header>
+        <pre class="signature"><code>InsertPlaylistItems(playlistIndex, base, handle_list, select)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>base</code></td><td><code>number</code></td><td><p>Position in playlist</p></td></tr><tr><td><code>handle_list</code></td><td><code><a class="type-link" href="FbMetadbHandleList.html#FbMetadbHandleList">FbMetadbHandleList</a></code></td><td><p>Items to insert</p></td></tr><tr><td><code>select = false</code><span class="mini-flag">optional</span></td><td><code>boolean</code></td><td><p>If true then inserted items will be selected</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Examples</h3>
+            <pre class="example"><code>&lt;caption&gt;Add all library tracks to the beginning <span class="tok-keyword">of</span> playlist.&lt;/caption&gt;
+<span class="tok-keyword">let</span> ap = plman.ActivePlaylist;
+plman.InsertPlaylistItems(ap, <span class="tok-number">0</span>, fb.GetLibraryItems());</code></pre><pre class="example"><code>&lt;caption&gt;Add all library tracks to end <span class="tok-keyword">of</span> playlist.&lt;/caption&gt;
+<span class="tok-keyword">let</span> ap = plman.ActivePlaylist;
+plman.InsertPlaylistItems(ap, plman.PlaylistItemCount(ap), fb.GetLibraryItems());</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="InsertPlaylistItemsFilter" data-kind="method" data-name="insertplaylistitemsfilter">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#InsertPlaylistItemsFilter">InsertPlaylistItemsFilter</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1302</div>
+        </header>
+        <pre class="signature"><code>InsertPlaylistItemsFilter(playlistIndex, base, handle_list, select)</code></pre>
+        
+        <div class="description"><p>Same as <a href="plman.html#InsertPlaylistItems">plman.InsertPlaylistItems</a> except any duplicates contained in handle_list are removed.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>base</code></td><td><code>number</code></td><td><p>Position in playlist</p></td></tr><tr><td><code>handle_list</code></td><td><code><a class="type-link" href="FbMetadbHandleList.html#FbMetadbHandleList">FbMetadbHandleList</a></code></td><td><p>Items to insert</p></td></tr><tr><td><code>select = false</code><span class="mini-flag">optional</span></td><td><code>boolean</code></td><td><p>If true then inserted items will be selected</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="InvertSelection" data-kind="method" data-name="invertselection">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#InvertSelection">InvertSelection</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1312</div>
+        </header>
+        <pre class="signature"><code>InvertSelection(playlistIndex)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="IsAutoPlaylist" data-kind="method" data-name="isautoplaylist">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#IsAutoPlaylist">IsAutoPlaylist</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1317</div>
+        </header>
+        <pre class="signature"><code>IsAutoPlaylist(playlistIndex)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>boolean</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="IsPlaylistItemSelected" data-kind="method" data-name="isplaylistitemselected">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#IsPlaylistItemSelected">IsPlaylistItemSelected</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1323</div>
+        </header>
+        <pre class="signature"><code>IsPlaylistItemSelected(playlistIndex, playlistItemIndex)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>playlistItemIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>boolean</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="IsPlaylistLocked" data-kind="method" data-name="isplaylistlocked">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag deprecated">deprecated</span></div>
+                <h2><a class="anchor" href="#IsPlaylistLocked">IsPlaylistLocked</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1330</div>
+        </header>
+        <pre class="signature"><code>IsPlaylistLocked(playlistIndex)</code></pre>
+        <div class="notice notice-deprecated"><b>Deprecated.</b></div>
+        <div class="description"><p>Note: returns true, if the playlist is an autoplaylist. To determine if a playlist is not an autoplaylist, but locked with something like <code>foo_utils</code> or <code>foo_playlist_attributes</code>, use with conjunction of <a href="plman.html#IsAutoPlaylist">plman.IsAutoPlaylist</a>. <br> Deprecated: use <a href="plman.html#GetPlaylistLockedActions">plman.GetPlaylistLockedActions</a>.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>boolean</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="IsRedoAvailable" data-kind="method" data-name="isredoavailable">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#IsRedoAvailable">IsRedoAvailable</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1343</div>
+        </header>
+        <pre class="signature"><code>IsRedoAvailable(playlistIndex)</code></pre>
+        
+        <div class="description"><p>Returns whether a redo restore point is available for specified playlist. <br> Related methods: <a href="plman.html#IsUndoAvailable">plman.IsUndoAvailable</a>, <a href="plman.html#Redo">plman.Redo</a>, <a href="plman.html#Undo">plman.Undo</a>, <a href="plman.html#UndoBackup">plman.UndoBackup</a></p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>boolean</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="IsUndoAvailable" data-kind="method" data-name="isundoavailable">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#IsUndoAvailable">IsUndoAvailable</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1353</div>
+        </header>
+        <pre class="signature"><code>IsUndoAvailable(playlistIndex)</code></pre>
+        
+        <div class="description"><p>Returns whether an undo restore point is available for specified playlist. <br> Related methods: <a href="plman.html#IsRedoAvailable">plman.IsRedoAvailable</a>, <a href="plman.html#Redo">plman.Redo</a>, <a href="plman.html#Undo">plman.Undo</a>, <a href="plman.html#UndoBackup">plman.UndoBackup</a></p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>boolean</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="MovePlaylist" data-kind="method" data-name="moveplaylist">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#MovePlaylist">MovePlaylist</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1363</div>
+        </header>
+        <pre class="signature"><code>MovePlaylist(from, to)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>from</code></td><td><code>number</code></td><td></td></tr><tr><td><code>to</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>boolean</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="MovePlaylistSelection" data-kind="method" data-name="moveplaylistselection">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#MovePlaylistSelection">MovePlaylistSelection</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1370</div>
+        </header>
+        <pre class="signature"><code>MovePlaylistSelection(playlistIndex, delta)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>delta</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>boolean</code></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-comment">// Moves selected items to end of playlist.</span>
+plman.MovePlaylistSelection(plman.ActivePlaylist, plman.PlaylistItemCount(plman.ActivePlaylist));</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="MovePlaylistSelectionV2" data-kind="method" data-name="moveplaylistselectionv2">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#MovePlaylistSelectionV2">MovePlaylistSelectionV2</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1381</div>
+        </header>
+        <pre class="signature"><code>MovePlaylistSelectionV2(playlistIndex, new_pos)</code></pre>
+        
+        <div class="description"><p>Unlike <a href="plman.html#MovePlaylistSelection">plman.MovePlaylistSelection</a>, this has full support for non-contiguous selections and all you have to do is supply the new position index.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>new_pos</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="PlaylistItemCount" data-kind="method" data-name="playlistitemcount">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#PlaylistItemCount">PlaylistItemCount</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1389</div>
+        </header>
+        <pre class="signature"><code>PlaylistItemCount(playlistIndex)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>number</code></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code>console.log(plman.PlaylistItemCount(plman.PlayingPlaylist)); <span class="tok-comment">// 12</span></code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="Redo" data-kind="method" data-name="redo">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#Redo">Redo</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1398</div>
+        </header>
+        <pre class="signature"><code>Redo(playlistIndex)</code></pre>
+        
+        <div class="description"><p>Reverts specified playlist to the next redo restore point and generates an undo restore point.<br> Note: revert operation may be not applied if the corresponding action is locked. Use <a href="plman.html#GetPlaylistLockedActions">plman.GetPlaylistLockedActions</a> to check if there are any locks present.<br> <br> Related methods: <a href="plman.html#IsRedoAvailable">plman.IsRedoAvailable</a>, <a href="plman.html#IsUndoAvailable">plman.IsUndoAvailable</a>, <a href="plman.html#Undo">plman.Undo</a>, <a href="plman.html#UndoBackup">plman.UndoBackup</a></p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="RemoveItemFromPlaybackQueue" data-kind="method" data-name="removeitemfromplaybackqueue">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#RemoveItemFromPlaybackQueue">RemoveItemFromPlaybackQueue</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1675</div>
+        </header>
+        <pre class="signature"><code>RemoveItemFromPlaybackQueue(index)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>index</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="RemoveItemsFromPlaybackQueue" data-kind="method" data-name="removeitemsfromplaybackqueue">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#RemoveItemsFromPlaybackQueue">RemoveItemsFromPlaybackQueue</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1680</div>
+        </header>
+        <pre class="signature"><code>RemoveItemsFromPlaybackQueue(affectedItems)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>affectedItems</code></td><td><code>Array&lt;number&gt;</code></td><td><p>Array like [1, 3, 5]</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="RemovePlaylist" data-kind="method" data-name="removeplaylist">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#RemovePlaylist">RemovePlaylist</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1409</div>
+        </header>
+        <pre class="signature"><code>RemovePlaylist(playlistIndex)</code></pre>
+        
+        <div class="description"><p>Removes the specified playlist.<br> Note: if removing the active playlist, no playlist will be active after using this. You'll need to set it manually or use <a href="plman.html#RemovePlaylistSwitch">plman.RemovePlaylistSwitch</a> instead.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>boolean</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="RemovePlaylistSelection" data-kind="method" data-name="removeplaylistselection">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#RemovePlaylistSelection">RemovePlaylistSelection</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1419</div>
+        </header>
+        <pre class="signature"><code>RemovePlaylistSelection(playlistIndex, crop)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>crop = false</code><span class="mini-flag">optional</span></td><td><code>boolean</code></td><td><p>If true, then removes items that are NOT selected.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Examples</h3>
+            <pre class="example"><code>&lt;Remove selected items from playlist&gt;
+plman.RemovePlaylistSelection(plman.ActivePlaylist);</code></pre><pre class="example"><code>&lt;Remove items that are NOT selected&gt;
+plman.RemovePlaylistSelection(plman.ActivePlaylist, <span class="tok-literal">true</span>);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="RemovePlaylistSwitch" data-kind="method" data-name="removeplaylistswitch">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#RemovePlaylistSwitch">RemovePlaylistSwitch</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1431</div>
+        </header>
+        <pre class="signature"><code>RemovePlaylistSwitch(playlistIndex)</code></pre>
+        
+        <div class="description"><p>Removes the specified playlist.<br> This automatically sets another playlist as active if removing the active playlist.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>boolean</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="RenamePlaylist" data-kind="method" data-name="renameplaylist">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#RenamePlaylist">RenamePlaylist</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1440</div>
+        </header>
+        <pre class="signature"><code>RenamePlaylist(playlistIndex, name)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>name</code></td><td><code>string</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>boolean</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="ReorderPlaylistItems" data-kind="method" data-name="reorderplaylistitems">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#ReorderPlaylistItems">ReorderPlaylistItems</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1447</div>
+        </header>
+        <pre class="signature"><code>ReorderPlaylistItems(playlistIndex, order)</code></pre>
+        
+        <div class="description"><p>Reorders all items in the specified playlist according to the supplied permutation.<br> The <b>order</b> array must contain exactly one entry for each playlist item. Each value specifies the old item index that should appear at the corresponding new position.<br> The array must:<br> - have the same length as the playlist item count<br> - contain only valid item indices<br> - contain each item index exactly once<br></p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td><p>zero-based playlist index</p></td></tr><tr><td><code>order</code></td><td><code>Array&lt;number&gt;</code></td><td><p>permutation describing the new playlist item order</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>boolean</code> — <p><b>true</b> if the playlist was reordered successfully</p></div>
+        </section>
+        
+        <section class="member-section compact-section">
+            <h3>Throws</h3>
+            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If playlistIndex is invalid or order is not a valid permutation</p></div>
+        </section>
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-comment">// Changes the order from [A, B, C] to [C, A, B]</span>
+<span class="tok-keyword">const</span> success = ReorderPlaylistItems(<span class="tok-number">0</span>, [<span class="tok-number">2</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>])</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="ReplacePlaylistItem" data-kind="method" data-name="replaceplaylistitem">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#ReplacePlaylistItem">ReplacePlaylistItem</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1466</div>
+        </header>
+        <pre class="signature"><code>ReplacePlaylistItem(playlistIndex, playlistItemIndex, handle_or_handles)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>playlistItemIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>handle_or_handles</code></td><td><code><a class="type-link" href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a>|<a class="type-link" href="FbMetadbHandleList.html#FbMetadbHandleList">FbMetadbHandleList</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="SelectQueryItems" data-kind="method" data-name="selectqueryitems">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#SelectQueryItems">SelectQueryItems</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1473</div>
+        </header>
+        <pre class="signature"><code>SelectQueryItems(playlistIndex, query)</code></pre>
+        
+        <div class="description"><p>This selects playlist items in a similar manner to the foobar2000 native playlist search.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>query</code></td><td><code>string</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Array&lt;number&gt;</code> — <p>Array of selected indexes</p></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="SetActivePlaylistContext" data-kind="method" data-name="setactiveplaylistcontext">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#SetActivePlaylistContext">SetActivePlaylistContext</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1482</div>
+        </header>
+        <pre class="signature"><code>SetActivePlaylistContext()</code></pre>
+        
+        <div class="description"><p>Workaround so you can use the Edit menu or run <a href="fb.html#RunMainMenuCommand">fb.RunMainMenuCommand</a>("Edit/Something...") when your panel has focus and a dedicated playlist viewer doesn't.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code>plman.SetActivePlaylistContext(); <span class="tok-comment">// once on startup</span>
+
+<span class="tok-keyword">function</span> on_focus(is_focused) {
+   <span class="tok-keyword">if</span> (is_focused) {
+       plman.SetActivePlaylistContext(); <span class="tok-comment">// When the panel gets focus but not on every click</span>
+   }
+}</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="SetPlaylistFocusItem" data-kind="method" data-name="setplaylistfocusitem">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#SetPlaylistFocusItem">SetPlaylistFocusItem</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1497</div>
+        </header>
+        <pre class="signature"><code>SetPlaylistFocusItem(playlistIndex, playlistItemIndex)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>playlistItemIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code>plman.SetPlaylistFocusItem(plman.ActivePlaylist, <span class="tok-number">0</span>);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="SetPlaylistFocusItemByHandle" data-kind="method" data-name="setplaylistfocusitembyhandle">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#SetPlaylistFocusItemByHandle">SetPlaylistFocusItemByHandle</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1506</div>
+        </header>
+        <pre class="signature"><code>SetPlaylistFocusItemByHandle(playlistIndex, handle)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>handle</code></td><td><code><a class="type-link" href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> ap = plman.ActivePlaylist;
+<span class="tok-keyword">let</span> handle = plman.GetPlaylistItems(ap)[<span class="tok-number">1</span>]; <span class="tok-comment">// 2nd item in playlist</span>
+plman.SetPlaylistFocusItemByHandle(ap, handle);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="SetPlaylistLockedActions" data-kind="method" data-name="setplaylistlockedactions">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#SetPlaylistLockedActions">SetPlaylistLockedActions</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1517</div>
+        </header>
+        <pre class="signature"><code>SetPlaylistLockedActions(playlistIndex, lockedActions)</code></pre>
+        
+        <div class="description"><p>Blocks requested actions.<br> Note: the lock can be changed only if there is no lock or if it's owned by <code>foo_uie_jsplitter</code>. The owner of the lock can be checked via <a href="plman.html#GetPlaylistLockName">plman.GetPlaylistLockName</a>.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>lockedActions</code></td><td><code>Array&lt;string&gt;</code></td><td><p>May contain the following:<br>   - 'AddItems'<br>   - 'RemoveItems'<br>   - 'ReorderItems'<br>   - 'ReplaceItems'<br>   - 'RenamePlaylist'<br>   - 'RemovePlaylist'<br>   - 'ExecuteDefaultAction'</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="SetPlaylistSelection" data-kind="method" data-name="setplaylistselection">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#SetPlaylistSelection">SetPlaylistSelection</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1534</div>
+        </header>
+        <pre class="signature"><code>SetPlaylistSelection(playlistIndex, affectedItems, state)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>affectedItems</code></td><td><code>Array&lt;number&gt;</code></td><td><p>An array of item indexes.</p></td></tr><tr><td><code>state</code></td><td><code>boolean</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-comment">// Selects first, third and fifth tracks in playlist. This does not affect other selected items.</span>
+plman.SetPlaylistSelection(plman.ActivePlaylist, [<span class="tok-number">0</span>, <span class="tok-number">2</span>, <span class="tok-number">4</span>], <span class="tok-literal">true</span>);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="SetPlaylistSelectionSingle" data-kind="method" data-name="setplaylistselectionsingle">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#SetPlaylistSelectionSingle">SetPlaylistSelectionSingle</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1545</div>
+        </header>
+        <pre class="signature"><code>SetPlaylistSelectionSingle(playlistIndex, playlistItemIndex, state)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>playlistItemIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>state</code></td><td><code>boolean</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Examples</h3>
+            <pre class="example"><code><span class="tok-comment">// Deselects first playlist item. Only works when it is already selected!</span>
+plman.SetPlaylistSelectionSingle(plman.ActivePlaylist, <span class="tok-number">0</span>, <span class="tok-literal">false</span>);</code></pre><pre class="example"><code><span class="tok-keyword">let</span> ap = plman.ActivePlaylist;
+<span class="tok-comment">// Selects last item in playlist. This does not affect other selected items.</span>
+plman.SetPlaylistSelectionSingle(ap, plman.PlaylistItemCount(ap) - <span class="tok-number">1</span>, <span class="tok-literal">true</span>);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="ShowAutoPlaylistUI" data-kind="method" data-name="showautoplaylistui">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#ShowAutoPlaylistUI">ShowAutoPlaylistUI</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1561</div>
+        </header>
+        <pre class="signature"><code>ShowAutoPlaylistUI(playlistIndex)</code></pre>
+        
+        <div class="description"><p>Shows popup window letting you edit certain autoplaylist properties.<br> Before using, check if your playlist is an autoplaylist by using <a href="plman.html#IsAutoPlaylist">plman.IsAutoPlaylist</a>;</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>boolean</code></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code>fb.ShowAutoPlaylistUI(plman.ActivePlaylist);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="ShowPlaylistLockUI" data-kind="method" data-name="showplaylistlockui">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#ShowPlaylistLockUI">ShowPlaylistLockUI</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1573</div>
+        </header>
+        <pre class="signature"><code>ShowPlaylistLockUI(playlistIndex, window_id)</code></pre>
+        
+        <div class="description"><p>Shows popup window letting you set various locks on playlist with specified index</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>window_id = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code>fb.ShowPlaylistLockUI(plman.ActivePlaylist);</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="SortByFormat" data-kind="method" data-name="sortbyformat">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#SortByFormat">SortByFormat</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1584</div>
+        </header>
+        <pre class="signature"><code>SortByFormat(playlistIndex, pattern, selected_items_only)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td><p>Index of playlist to alter.</p></td></tr><tr><td><code>pattern</code></td><td><code>string</code></td><td><p>Title formatting pattern to sort by. Set to "" to randomise the order of items.</p></td></tr><tr><td><code>selected_items_only = false</code><span class="mini-flag">optional</span></td><td><code>boolean</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>boolean</code> — <p>true on success, false on failure (playlist locked etc).</p></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="SortByFormatV2" data-kind="method" data-name="sortbyformatv2">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#SortByFormatV2">SortByFormatV2</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1592</div>
+        </header>
+        <pre class="signature"><code>SortByFormatV2(playlistIndex, pattern, direction)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td><p>Index of playlist to alter.</p></td></tr><tr><td><code>pattern</code></td><td><code>string</code></td><td><p>Title formatting pattern to sort by.</p></td></tr><tr><td><code>direction = 1</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>1 - ascending<br>     -1 - descending<br></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>boolean</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="SortPlaylistsByName" data-kind="method" data-name="sortplaylistsbyname">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#SortPlaylistsByName">SortPlaylistsByName</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1602</div>
+        </header>
+        <pre class="signature"><code>SortPlaylistsByName(direction)</code></pre>
+        
+        <div class="description"></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>direction = 1</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>1 - ascending<br>     -1 - descending<br></p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Undo" data-kind="method" data-name="undo">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#Undo">Undo</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1609</div>
+        </header>
+        <pre class="signature"><code>Undo(playlistIndex)</code></pre>
+        
+        <div class="description"><p>Reverts specified playlist to the last undo restore point and generates a redo restore point.<br> Note: revert operation may be not applied if the corresponding action is locked. Use <a href="plman.html#GetPlaylistLockedActions">plman.GetPlaylistLockedActions</a> to check if there are any locks present.<br> <br> Related methods: <a href="plman.html#IsRedoAvailable">plman.IsRedoAvailable</a>, <a href="plman.html#IsUndoAvailable">plman.IsUndoAvailable</a>, <a href="plman.html#Redo">plman.Redo</a>, <a href="plman.html#UndoBackup">plman.UndoBackup</a></p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="UndoBackup" data-kind="method" data-name="undobackup">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#UndoBackup">UndoBackup</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1620</div>
+        </header>
+        <pre class="signature"><code>UndoBackup(playlistIndex)</code></pre>
+        
+        <div class="description"><p>Creates an undo restore point for the specified playlist. This will enable <code>Edit</code>><code>Undo</code> menu item after calling other <a href="plman.html#plman">plman</a> methods that change playlist content.<br> Note: this method should be called before performing modification to the playlist.<br> <br> Related methods: <a href="plman.html#IsRedoAvailable">plman.IsRedoAvailable</a>, <a href="plman.html#IsUndoAvailable">plman.IsUndoAvailable</a>, <a href="plman.html#Redo">plman.Redo</a>, <a href="plman.html#Undo">plman.Undo</a></p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

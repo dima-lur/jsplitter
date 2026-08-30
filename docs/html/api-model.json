@@ -13200,7 +13200,7 @@
     "signature": "GetColourScheme(max_count)",
     "type": null,
     "value": null,
-    "description": "Takes the top of colors found in the image",
+    "description": "Returns up to max_count representative colours found in the image.<br>\nThis is a legacy colour extraction method. For colour frequency information and\nmore advanced clustering, use {@link D2DBitmap#GetColourSchemeJSON GetColourSchemeJSON}\nor {@link D2DBitmap#GetColourSchemeJSONV2 GetColourSchemeJSONV2}.",
     "params": [
       {
         "type": "number",
@@ -13208,7 +13208,7 @@
         "rawName": "max_count",
         "optional": false,
         "variadic": false,
-        "description": ""
+        "description": "maximum number of colours to return"
       }
     ],
     "properties": [],
@@ -13238,7 +13238,7 @@
     "signature": "GetColourSchemeJSON(max_count)",
     "type": null,
     "value": null,
-    "description": "Returns a JSON array in string form so you need to use JSON.parse() on the result.<br>\nEach entry in the array is an object which contains colour and frequency values.<br>\nUses a different method for calculating colours than {@link D2DBitmap#GetColourScheme GetColourScheme}.<br>\nImage is automatically resized during processing for performance reasons so there's no\nneed to resize before calling the method.",
+    "description": "Extracts representative colours from the image using K-means clustering in the RGB colour space.<br>\nReturns a JSON array in string form so you need to use JSON.parse() on the result.<br>\nEach entry contains a colour and its relative frequency in the clustered image.<br>\nUses a different method for calculating colours than {@link D2DBitmap#GetColourScheme GetColourScheme}.<br>\nImage is automatically resized during processing for performance reasons so there's no\nneed to resize before calling the method.",
     "params": [
       {
         "type": "number",
@@ -13246,7 +13246,7 @@
         "rawName": "max_count",
         "optional": false,
         "variadic": false,
-        "description": ""
+        "description": "maximum number of colours to return"
       }
     ],
     "properties": [],
@@ -13256,7 +13256,7 @@
     },
     "throws": [],
     "examples": [
-      "// See docs\\Helpers.js for \"toRGB\" function.\nimg = ... // use utils.GetAlbumArtV2 / d2d.Image / etc\ncolours = JSON.parse(img.GetColourSchemeJSON(5));\nconsole.log(colours[0].col); // -4194304\nconsole.log(colours[0].freq); // 0.34\nconsole.log(toRGB(colours[0].col)); // [192, 0, 0]"
+      "// See docs\\Helpers.js for \"toRGB\" function.\nimg = ... // use utils.GetAlbumArtV2 / gdi.Image / etc\ncolours = JSON.parse(img.GetColourSchemeJSON(5));\nconsole.log(colours[0].col); // 4290772992\nconsole.log(colours[0].freq); // 0.34\nconsole.log(toRGB(colours[0].col)); // [192, 0, 0]"
     ],
     "sourceFiles": [],
     "readonly": false,
@@ -13267,7 +13267,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 65
+      "line": 69
     }
   },
   {
@@ -13275,10 +13275,10 @@
     "name": "GetColourSchemeJSONV2",
     "kind": "method",
     "parent": "D2DBitmap",
-    "signature": "GetColourSchemeJSONV2(max_count)",
+    "signature": "GetColourSchemeJSONV2(max_count, min_chroma)",
     "type": null,
     "value": null,
-    "description": "Returns a JSON array in string form so you need to use JSON.parse() on the result.<br>\nEach entry in the array is an object which contains colour and frequency values.<br>\nUses a different method than {@link D2DBitmap#GetColourSchemeJSON GetColourSchemeJSON} for calculating colours (K-means++ with Oklab).<br>",
+    "description": "Extracts representative colours from the image using K-means++ clustering in the Oklab colour space.<br>\nReturns a JSON array in string form so you need to use JSON.parse() on the result.<br>\nEach entry contains a colour and its relative frequency in the clustered image.<br>\nK-means++ initialization improves the distribution of the initial cluster centres, while Oklab\nprovides a perceptually more uniform distance metric than RGB.<br>\nThe optional <b>min_chroma</b> parameter limits the initial cluster centre selection to pixels with at\nleast the specified Oklab chroma. It does not filter pixels or colours from the clustering result.",
     "params": [
       {
         "type": "number",
@@ -13286,7 +13286,7 @@
         "rawName": "max_count",
         "optional": false,
         "variadic": false,
-        "description": ""
+        "description": "maximum number of colours to return"
       },
       {
         "type": "number",
@@ -13295,7 +13295,7 @@
         "optional": true,
         "variadic": false,
         "default": "0.0",
-        "description": "minimal chroma value for choosing start cluster pixel"
+        "description": "minimum Oklab chroma for pixels used as initial cluster centres"
       }
     ],
     "properties": [],
@@ -13304,7 +13304,9 @@
       "description": ""
     },
     "throws": [],
-    "examples": [],
+    "examples": [
+      "// See docs\\Helpers.js for \"toRGB\" function.\nimg = ... // use utils.GetAlbumArtV2 / gdi.Image / etc\ncolours = JSON.parse(img.GetColourSchemeJSONV2(10, 0.02));\nconsole.log(colours[0].col); // 4290772992\nconsole.log(colours[0].freq); // 0.34\nconsole.log(toRGB(colours[0].col)); // [192, 0, 0]"
+    ],
     "sourceFiles": [],
     "readonly": false,
     "static": false,
@@ -13314,7 +13316,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 85
+      "line": 90
     }
   },
   {
@@ -13343,7 +13345,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 96
+      "line": 113
     }
   },
   {
@@ -13384,7 +13386,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 104
+      "line": 121
     }
   },
   {
@@ -13413,7 +13415,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 119
+      "line": 136
     }
   },
   {
@@ -13451,7 +13453,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 126
+      "line": 143
     }
   },
   {
@@ -13506,7 +13508,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 132
+      "line": 149
     }
   },
   {
@@ -13594,7 +13596,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 140
+      "line": 157
     }
   },
   {
@@ -13629,7 +13631,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 152
+      "line": 169
     }
   },
   {
@@ -13678,7 +13680,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 159
+      "line": 176
     }
   },
   {
@@ -13716,7 +13718,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 177
+      "line": 194
     }
   },
   {
@@ -13768,7 +13770,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 191
+      "line": 208
     }
   },
   {
@@ -13796,7 +13798,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 204
+      "line": 221
     }
   },
   {
@@ -13824,7 +13826,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 213
+      "line": 230
     }
   },
   {
@@ -13852,7 +13854,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 222
+      "line": 239
     }
   },
   {
@@ -13880,7 +13882,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 231
+      "line": 248
     }
   },
   {
@@ -13915,7 +13917,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 243
+      "line": 260
     }
   },
   {
@@ -13941,7 +13943,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 250
+      "line": 267
     }
   },
   {
@@ -13967,7 +13969,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 257
+      "line": 274
     }
   },
   {
@@ -13993,7 +13995,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 264
+      "line": 281
     }
   },
   {
@@ -14019,7 +14021,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 271
+      "line": 288
     }
   },
   {
@@ -14073,7 +14075,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 278
+      "line": 295
     }
   },
   {
@@ -14127,7 +14129,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 299
+      "line": 316
     }
   },
   {
@@ -14165,7 +14167,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 328
+      "line": 345
     }
   },
   {
@@ -14208,7 +14210,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 334
+      "line": 351
     }
   },
   {
@@ -14251,7 +14253,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 341
+      "line": 358
     }
   },
   {
@@ -14289,7 +14291,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 348
+      "line": 365
     }
   },
   {
@@ -14327,7 +14329,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 355
+      "line": 372
     }
   },
   {
@@ -14364,7 +14366,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 363
+      "line": 380
     }
   },
   {
@@ -14390,7 +14392,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 374
+      "line": 391
     }
   },
   {
@@ -14416,7 +14418,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 382
+      "line": 399
     }
   },
   {
@@ -14459,7 +14461,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 390
+      "line": 407
     }
   },
   {
@@ -14512,7 +14514,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 399
+      "line": 416
     }
   },
   {
@@ -14574,7 +14576,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 409
+      "line": 426
     }
   },
   {
@@ -14635,7 +14637,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 420
+      "line": 437
     }
   },
   {
@@ -14661,7 +14663,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 431
+      "line": 448
     }
   },
   {
@@ -14687,7 +14689,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 436
+      "line": 453
     }
   },
   {
@@ -14718,7 +14720,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 441
+      "line": 458
     }
   },
   {
@@ -14755,7 +14757,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 450
+      "line": 467
     }
   },
   {
@@ -14781,7 +14783,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 459
+      "line": 476
     }
   },
   {
@@ -14818,7 +14820,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 464
+      "line": 481
     }
   },
   {
@@ -14844,7 +14846,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 474
+      "line": 491
     }
   },
   {
@@ -14890,7 +14892,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 486
+      "line": 503
     }
   },
   {
@@ -14945,7 +14947,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 496
+      "line": 513
     }
   },
   {
@@ -15037,7 +15039,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 510
+      "line": 527
     }
   },
   {
@@ -15121,7 +15123,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 522
+      "line": 539
     }
   },
   {
@@ -15238,7 +15240,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 533
+      "line": 550
     }
   },
   {
@@ -15340,7 +15342,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 548
+      "line": 565
     }
   },
   {
@@ -15400,7 +15402,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 561
+      "line": 578
     }
   },
   {
@@ -15460,7 +15462,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 569
+      "line": 586
     }
   },
   {
@@ -15552,7 +15554,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 577
+      "line": 594
     }
   },
   {
@@ -15636,7 +15638,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 591
+      "line": 608
     }
   },
   {
@@ -15736,7 +15738,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 602
+      "line": 619
     }
   },
   {
@@ -15790,7 +15792,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 615
+      "line": 632
     }
   },
   {
@@ -15857,7 +15859,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 631
+      "line": 648
     }
   },
   {
@@ -15949,7 +15951,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 640
+      "line": 657
     }
   },
   {
@@ -16026,7 +16028,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 655
+      "line": 672
     }
   },
   {
@@ -16077,7 +16079,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 669
+      "line": 686
     }
   },
   {
@@ -16160,7 +16162,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 676
+      "line": 693
     }
   },
   {
@@ -16227,7 +16229,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 687
+      "line": 704
     }
   },
   {
@@ -16335,7 +16337,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 696
+      "line": 713
     }
   },
   {
@@ -16427,7 +16429,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 710
+      "line": 727
     }
   },
   {
@@ -16518,7 +16520,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 734
+      "line": 751
     }
   },
   {
@@ -16605,7 +16607,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 747
+      "line": 764
     }
   },
   {
@@ -16664,7 +16666,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 761
+      "line": 778
     }
   },
   {
@@ -16690,7 +16692,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 774
+      "line": 791
     }
   },
   {
@@ -16733,7 +16735,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 781
+      "line": 798
     }
   },
   {
@@ -16786,7 +16788,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 790
+      "line": 807
     }
   },
   {
@@ -16848,7 +16850,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 800
+      "line": 817
     }
   },
   {
@@ -16909,7 +16911,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 811
+      "line": 828
     }
   },
   {
@@ -16935,7 +16937,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 822
+      "line": 839
     }
   },
   {
@@ -16961,7 +16963,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 827
+      "line": 844
     }
   },
   {
@@ -16992,7 +16994,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 832
+      "line": 849
     }
   },
   {
@@ -17029,7 +17031,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 841
+      "line": 858
     }
   },
   {
@@ -17055,7 +17057,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 850
+      "line": 867
     }
   },
   {
@@ -17092,7 +17094,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 855
+      "line": 872
     }
   },
   {
@@ -17120,7 +17122,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 864
+      "line": 881
     }
   },
   {
@@ -17146,7 +17148,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 888
+      "line": 905
     }
   },
   {
@@ -17172,7 +17174,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 894
+      "line": 911
     }
   },
   {
@@ -17198,7 +17200,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 900
+      "line": 917
     }
   },
   {
@@ -17224,7 +17226,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 906
+      "line": 923
     }
   },
   {
@@ -17250,7 +17252,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 912
+      "line": 929
     }
   },
   {
@@ -17276,7 +17278,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 918
+      "line": 935
     }
   },
   {
@@ -17312,7 +17314,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 925
+      "line": 942
     }
   },
   {
@@ -17348,7 +17350,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 930
+      "line": 947
     }
   },
   {
@@ -17384,7 +17386,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 935
+      "line": 952
     }
   },
   {
@@ -17410,7 +17412,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 940
+      "line": 957
     }
   },
   {
@@ -17436,7 +17438,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 946
+      "line": 963
     }
   },
   {
@@ -17462,7 +17464,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 954
+      "line": 971
     }
   },
   {
@@ -17537,7 +17539,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 961
+      "line": 978
     }
   },
   {
@@ -17583,7 +17585,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 990
+      "line": 1007
     }
   },
   {
@@ -17648,7 +17650,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 997
+      "line": 1014
     }
   },
   {
@@ -17703,7 +17705,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 1015
+      "line": 1032
     }
   },
   {
@@ -17743,7 +17745,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 1028
+      "line": 1045
     }
   },
   {
@@ -17791,7 +17793,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 1042
+      "line": 1059
     }
   },
   {
@@ -17839,7 +17841,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 1053
+      "line": 1070
     }
   },
   {
@@ -17888,7 +17890,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 1065
+      "line": 1082
     }
   },
   {
@@ -17926,7 +17928,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 1085
+      "line": 1102
     }
   },
   {
@@ -17993,7 +17995,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 1093
+      "line": 1110
     }
   },
   {
@@ -18019,7 +18021,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 1152
+      "line": 1169
     }
   },
   {
@@ -18045,7 +18047,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 1159
+      "line": 1176
     }
   },
   {
@@ -18071,7 +18073,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/d2d.js",
-      "line": 1166
+      "line": 1183
     }
   },
   {
@@ -18140,7 +18142,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1973
+      "line": 1976
     }
   },
   {
@@ -18199,7 +18201,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2053
+      "line": 2056
     }
   },
   {
@@ -18242,7 +18244,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2063
+      "line": 2066
     }
   },
   {
@@ -18293,7 +18295,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2709
+      "line": 2713
     }
   },
   {
@@ -18352,7 +18354,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2796
+      "line": 2800
     }
   },
   {
@@ -24143,7 +24145,7 @@
     "name": "ShowPlaylistLockUI",
     "kind": "method",
     "parent": "plman",
-    "signature": "ShowPlaylistLockUI(playlistIndex)",
+    "signature": "ShowPlaylistLockUI(playlistIndex, window_id)",
     "type": null,
     "value": null,
     "description": "Shows popup window letting you set various locks on playlist with specified index",
@@ -24155,6 +24157,15 @@
         "optional": false,
         "variadic": false,
         "description": ""
+      },
+      {
+        "type": "number",
+        "name": "window_id",
+        "rawName": "[window_id=0]",
+        "optional": true,
+        "variadic": false,
+        "default": "0",
+        "description": "Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window."
       }
     ],
     "properties": [],
@@ -24227,7 +24238,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1583
+      "line": 1584
     }
   },
   {
@@ -24282,7 +24293,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1591
+      "line": 1592
     }
   },
   {
@@ -24318,7 +24329,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1601
+      "line": 1602
     }
   },
   {
@@ -24353,7 +24364,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1608
+      "line": 1609
     }
   },
   {
@@ -24388,7 +24399,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1619
+      "line": 1620
     }
   },
   {
@@ -24423,7 +24434,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1629
+      "line": 1630
     }
   },
   {
@@ -24466,7 +24477,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1634
+      "line": 1635
     }
   },
   {
@@ -24520,7 +24531,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1640
+      "line": 1641
     }
   },
   {
@@ -24546,7 +24557,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1648
+      "line": 1649
     }
   },
   {
@@ -24577,7 +24588,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1651
+      "line": 1652
     }
   },
   {
@@ -24608,7 +24619,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1663
+      "line": 1664
     }
   },
   {
@@ -24643,7 +24654,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1674
+      "line": 1675
     }
   },
   {
@@ -24678,7 +24689,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1679
+      "line": 1680
     }
   },
   {
@@ -24704,7 +24715,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1685
+      "line": 1686
     }
   },
   {
@@ -24732,7 +24743,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1692
+      "line": 1693
     }
   },
   {
@@ -24781,7 +24792,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1723
+      "line": 1724
     }
   },
   {
@@ -24819,7 +24830,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1735
+      "line": 1736
     }
   },
   {
@@ -24865,7 +24876,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1744
+      "line": 1745
     }
   },
   {
@@ -24903,7 +24914,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1758
+      "line": 1759
     }
   },
   {
@@ -24958,7 +24969,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1766
+      "line": 1767
     }
   },
   {
@@ -25022,7 +25033,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1776
+      "line": 1777
     }
   },
   {
@@ -25060,7 +25071,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1787
+      "line": 1788
     }
   },
   {
@@ -25098,7 +25109,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1795
+      "line": 1796
     }
   },
   {
@@ -25136,7 +25147,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1803
+      "line": 1804
     }
   },
   {
@@ -25174,7 +25185,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1811
+      "line": 1812
     }
   },
   {
@@ -25219,7 +25230,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1824
+      "line": 1825
     }
   },
   {
@@ -25288,7 +25299,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1841
+      "line": 1842
     }
   },
   {
@@ -25323,7 +25334,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1871
+      "line": 1872
     }
   },
   {
@@ -25361,7 +25372,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1879
+      "line": 1880
     }
   },
   {
@@ -25369,7 +25380,7 @@
     "name": "FilePicker",
     "kind": "method",
     "parent": "utils",
-    "signature": "FilePicker(title, default_path, filter, mode)",
+    "signature": "FilePicker(title, default_path, filter, mode, window_id)",
     "type": null,
     "value": null,
     "description": "Opens system file picker dialog window",
@@ -25409,6 +25420,15 @@
         "variadic": false,
         "default": "0",
         "description": "File dialog mode. 0 - open, 1 - save"
+      },
+      {
+        "type": "number",
+        "name": "window_id",
+        "rawName": "[window_id=0]",
+        "optional": true,
+        "variadic": false,
+        "default": "0",
+        "description": "Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window."
       }
     ],
     "properties": [],
@@ -25427,7 +25447,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1885
+      "line": 1886
     }
   },
   {
@@ -25475,7 +25495,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1896
+      "line": 1898
     }
   },
   {
@@ -25483,7 +25503,7 @@
     "name": "FolderPicker",
     "kind": "method",
     "parent": "utils",
-    "signature": "FolderPicker(title, default_path)",
+    "signature": "FolderPicker(title, default_path, window_id)",
     "type": null,
     "value": null,
     "description": "Opens system folder picker dialog window",
@@ -25505,6 +25525,15 @@
         "variadic": false,
         "default": "undefined",
         "description": "Default folder path to choose"
+      },
+      {
+        "type": "number",
+        "name": "window_id",
+        "rawName": "[window_id=0]",
+        "optional": true,
+        "variadic": false,
+        "default": "0",
+        "description": "Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window."
       }
     ],
     "properties": [],
@@ -25523,7 +25552,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1921
+      "line": 1923
     }
   },
   {
@@ -25573,7 +25602,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1930
+      "line": 1933
     }
   },
   {
@@ -25613,7 +25642,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1941
+      "line": 1944
     }
   },
   {
@@ -25653,7 +25682,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1950
+      "line": 1953
     }
   },
   {
@@ -25734,7 +25763,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1959
+      "line": 1962
     }
   },
   {
@@ -25818,7 +25847,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1979
+      "line": 1982
     }
   },
   {
@@ -25867,7 +25896,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1995
+      "line": 1998
     }
   },
   {
@@ -25925,7 +25954,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2009
+      "line": 2012
     }
   },
   {
@@ -25954,7 +25983,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2023
+      "line": 2026
     }
   },
   {
@@ -25994,7 +26023,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2028
+      "line": 2031
     }
   },
   {
@@ -26032,7 +26061,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2040
+      "line": 2043
     }
   },
   {
@@ -26070,7 +26099,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2047
+      "line": 2050
     }
   },
   {
@@ -26108,7 +26137,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2071
+      "line": 2074
     }
   },
   {
@@ -26146,7 +26175,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2079
+      "line": 2082
     }
   },
   {
@@ -26186,7 +26215,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2092
+      "line": 2095
     }
   },
   {
@@ -26224,7 +26253,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2101
+      "line": 2104
     }
   },
   {
@@ -26282,7 +26311,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2107
+      "line": 2110
     }
   },
   {
@@ -26366,7 +26395,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2121
+      "line": 2124
     }
   },
   {
@@ -26404,7 +26433,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2148
+      "line": 2151
     }
   },
   {
@@ -26442,7 +26471,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2154
+      "line": 2157
     }
   },
   {
@@ -26480,7 +26509,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2160
+      "line": 2163
     }
   },
   {
@@ -26519,7 +26548,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2167
+      "line": 2170
     }
   },
   {
@@ -26573,7 +26602,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2174
+      "line": 2177
     }
   },
   {
@@ -26611,7 +26640,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2183
+      "line": 2186
     }
   },
   {
@@ -26649,7 +26678,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2191
+      "line": 2194
     }
   },
   {
@@ -26657,7 +26686,7 @@
     "name": "MessageBox",
     "kind": "method",
     "parent": "utils",
-    "signature": "MessageBox(msg, title, buttons, icon, default_button, help_text)",
+    "signature": "MessageBox(msg, title, buttons, icon, default_button, help_text, window_id)",
     "type": null,
     "value": null,
     "description": "Shows system message box with specified parameters<br>",
@@ -26714,6 +26743,15 @@
         "variadic": false,
         "default": "\"\"",
         "description": "If not empty, a Help button will show in the dialog. If <b>help_text</b> begins with \"http://\" or \"https://\", it will launch a web browser otherwise it will open a popup window containing the text"
+      },
+      {
+        "type": "number",
+        "name": "window_id",
+        "rawName": "[window_id=0]",
+        "optional": true,
+        "variadic": false,
+        "default": "0",
+        "description": "Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window."
       }
     ],
     "properties": [],
@@ -26732,7 +26770,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2199
+      "line": 2202
     }
   },
   {
@@ -26774,7 +26812,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2212
+      "line": 2216
     }
   },
   {
@@ -26820,7 +26858,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2235
+      "line": 2239
     }
   },
   {
@@ -26869,7 +26907,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2245
+      "line": 2249
     }
   },
   {
@@ -26907,7 +26945,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2257
+      "line": 2261
     }
   },
   {
@@ -26945,7 +26983,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2265
+      "line": 2269
     }
   },
   {
@@ -26983,7 +27021,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2273
+      "line": 2277
     }
   },
   {
@@ -27029,7 +27067,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2281
+      "line": 2285
     }
   },
   {
@@ -27076,7 +27114,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2290
+      "line": 2294
     }
   },
   {
@@ -27116,7 +27154,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2299
+      "line": 2303
     }
   },
   {
@@ -27180,7 +27218,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2308
+      "line": 2312
     }
   },
   {
@@ -27266,7 +27304,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2322
+      "line": 2326
     }
   },
   {
@@ -27344,7 +27382,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2403
+      "line": 2407
     }
   },
   {
@@ -27379,7 +27417,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2440
+      "line": 2444
     }
   },
   {
@@ -27417,7 +27455,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2445
+      "line": 2449
     }
   },
   {
@@ -27455,7 +27493,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2453
+      "line": 2457
     }
   },
   {
@@ -27601,7 +27639,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2461
+      "line": 2465
     }
   },
   {
@@ -27641,7 +27679,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2521
+      "line": 2525
     }
   },
   {
@@ -27689,7 +27727,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2533
+      "line": 2537
     }
   },
   {
@@ -27753,7 +27791,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2555
+      "line": 2559
     }
   },
   {
@@ -27812,7 +27850,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2567
+      "line": 2571
     }
   },
   {
@@ -27838,7 +27876,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2589
+      "line": 2593
     }
   },
   {
@@ -27869,7 +27907,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2595
+      "line": 2599
     }
   },
   {
@@ -27895,7 +27933,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2606
+      "line": 2610
     }
   },
   {
@@ -27923,7 +27961,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2614
+      "line": 2618
     }
   },
   {
@@ -27949,7 +27987,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2662
+      "line": 2666
     }
   },
   {
@@ -27975,7 +28013,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2674
+      "line": 2678
     }
   },
   {
@@ -28001,7 +28039,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2682
+      "line": 2686
     }
   },
   {
@@ -28027,7 +28065,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2693
+      "line": 2697
     }
   },
   {
@@ -28053,7 +28091,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2703
+      "line": 2707
     }
   },
   {
@@ -28079,7 +28117,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2720
+      "line": 2724
     }
   },
   {
@@ -28105,7 +28143,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2728
+      "line": 2732
     }
   },
   {
@@ -28131,7 +28169,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2734
+      "line": 2738
     }
   },
   {
@@ -28157,7 +28195,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2742
+      "line": 2746
     }
   },
   {
@@ -28183,7 +28221,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2749
+      "line": 2753
     }
   },
   {
@@ -28209,7 +28247,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2762
+      "line": 2766
     }
   },
   {
@@ -28235,7 +28273,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2769
+      "line": 2773
     }
   },
   {
@@ -28261,7 +28299,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2776
+      "line": 2780
     }
   },
   {
@@ -28287,7 +28325,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2784
+      "line": 2788
     }
   },
   {
@@ -28313,7 +28351,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2807
+      "line": 2811
     }
   },
   {
@@ -28339,7 +28377,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2815
+      "line": 2819
     }
   },
   {
@@ -28365,7 +28403,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2823
+      "line": 2827
     }
   },
   {
@@ -28391,7 +28429,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2835
+      "line": 2839
     }
   },
   {
@@ -28427,7 +28465,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2841
+      "line": 2845
     }
   },
   {
@@ -28462,7 +28500,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2848
+      "line": 2852
     }
   },
   {
@@ -28497,7 +28535,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2855
+      "line": 2859
     }
   },
   {
@@ -28577,7 +28615,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2862
+      "line": 2866
     }
   },
   {
@@ -28666,7 +28704,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2881
+      "line": 2885
     }
   },
   {
@@ -28692,7 +28730,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2895
+      "line": 2899
     }
   },
   {
@@ -28730,7 +28768,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2901
+      "line": 2905
     }
   },
   {
@@ -28761,7 +28799,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2908
+      "line": 2912
     }
   },
   {
@@ -28801,7 +28839,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2915
+      "line": 2919
     }
   },
   {
@@ -28857,7 +28895,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2923
+      "line": 2927
     }
   },
   {
@@ -28903,7 +28941,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2938
+      "line": 2942
     }
   },
   {
@@ -28941,7 +28979,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2945
+      "line": 2949
     }
   },
   {
@@ -28987,7 +29025,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2951
+      "line": 2955
     }
   },
   {
@@ -29027,7 +29065,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2960
+      "line": 2964
     }
   },
   {
@@ -29058,7 +29096,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2975
+      "line": 2979
     }
   },
   {
@@ -29104,7 +29142,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2985
+      "line": 2989
     }
   },
   {
@@ -29151,7 +29189,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2998
+      "line": 3002
     }
   },
   {
@@ -29196,7 +29234,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3007
+      "line": 3011
     }
   },
   {
@@ -29232,7 +29270,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3025
+      "line": 3029
     }
   },
   {
@@ -29268,7 +29306,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3031
+      "line": 3035
     }
   },
   {
@@ -29336,7 +29374,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3040
+      "line": 3044
     }
   },
   {
@@ -29371,7 +29409,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3055
+      "line": 3059
     }
   },
   {
@@ -29417,7 +29455,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3063
+      "line": 3067
     }
   },
   {
@@ -29463,7 +29501,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3073
+      "line": 3077
     }
   },
   {
@@ -29506,7 +29544,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3086
+      "line": 3090
     }
   },
   {
@@ -29560,7 +29598,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3099
+      "line": 3103
     }
   },
   {
@@ -29606,7 +29644,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3108
+      "line": 3112
     }
   },
   {
@@ -29632,7 +29670,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3118
+      "line": 3122
     }
   },
   {
@@ -29658,7 +29696,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3129
+      "line": 3133
     }
   },
   {
@@ -29684,7 +29722,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3135
+      "line": 3139
     }
   },
   {
@@ -29722,7 +29760,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3143
+      "line": 3147
     }
   },
   {
@@ -29751,7 +29789,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3150
+      "line": 3154
     }
   },
   {
@@ -29789,7 +29827,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3156
+      "line": 3160
     }
   },
   {
@@ -29854,7 +29892,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3163
+      "line": 3167
     }
   },
   {
@@ -29892,7 +29930,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3190
+      "line": 3194
     }
   },
   {
@@ -29929,7 +29967,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3197
+      "line": 3201
     }
   },
   {
@@ -29964,7 +30002,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3210
+      "line": 3214
     }
   },
   {
@@ -29990,7 +30028,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3216
+      "line": 3220
     }
   },
   {
@@ -30016,7 +30054,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3225
+      "line": 3229
     }
   },
   {
@@ -30042,7 +30080,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3235
+      "line": 3239
     }
   },
   {
@@ -30068,7 +30106,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3244
+      "line": 3248
     }
   },
   {
@@ -30094,7 +30132,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3251
+      "line": 3255
     }
   },
   {
@@ -30120,7 +30158,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3258
+      "line": 3262
     }
   },
   {
@@ -30146,7 +30184,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3265
+      "line": 3269
     }
   },
   {
@@ -30172,7 +30210,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3273
+      "line": 3277
     }
   },
   {
@@ -30198,7 +30236,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3278
+      "line": 3282
     }
   },
   {
@@ -30224,7 +30262,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3284
+      "line": 3288
     }
   },
   {
@@ -30250,7 +30288,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3290
+      "line": 3294
     }
   },
   {
@@ -30276,7 +30314,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3296
+      "line": 3300
     }
   },
   {
@@ -30302,7 +30340,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3302
+      "line": 3306
     }
   },
   {
@@ -30328,7 +30366,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3309
+      "line": 3313
     }
   },
   {
@@ -30356,7 +30394,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3314
+      "line": 3318
     }
   },
   {
@@ -30384,7 +30422,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3324
+      "line": 3328
     }
   },
   {
@@ -30410,7 +30448,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3333
+      "line": 3337
     }
   },
   {
@@ -30436,7 +30474,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3339
+      "line": 3343
     }
   },
   {
@@ -30462,7 +30500,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3347
+      "line": 3351
     }
   },
   {
@@ -30497,7 +30535,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3353
+      "line": 3357
     }
   },
   {
@@ -30532,7 +30570,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3358
+      "line": 3362
     }
   },
   {
@@ -30567,7 +30605,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3363
+      "line": 3367
     }
   },
   {
@@ -30602,7 +30640,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3368
+      "line": 3372
     }
   },
   {
@@ -30637,7 +30675,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3373
+      "line": 3377
     }
   },
   {
@@ -30663,7 +30701,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3378
+      "line": 3382
     }
   },
   {
@@ -30689,7 +30727,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3383
+      "line": 3387
     }
   },
   {
@@ -30729,7 +30767,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3388
+      "line": 3392
     }
   },
   {
@@ -30768,7 +30806,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3400
+      "line": 3404
     }
   },
   {
@@ -30794,7 +30832,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3407
+      "line": 3411
     }
   },
   {
@@ -30822,7 +30860,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3412
+      "line": 3416
     }
   },
   {
@@ -30850,7 +30888,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3425
+      "line": 3429
     }
   },
   {
@@ -30888,7 +30926,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3434
+      "line": 3438
     }
   },
   {
@@ -30926,7 +30964,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3440
+      "line": 3444
     }
   },
   {
@@ -30964,7 +31002,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3446
+      "line": 3450
     }
   },
   {
@@ -31002,7 +31040,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3452
+      "line": 3456
     }
   },
   {
@@ -31042,7 +31080,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3458
+      "line": 3462
     }
   },
   {
@@ -31088,7 +31126,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3472
+      "line": 3476
     }
   },
   {
@@ -31126,7 +31164,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3479
+      "line": 3483
     }
   },
   {
@@ -31161,7 +31199,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3488
+      "line": 3492
     }
   },
   {
@@ -31189,7 +31227,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3495
+      "line": 3499
     }
   },
   {
@@ -31229,7 +31267,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3505
+      "line": 3509
     }
   },
   {
@@ -31266,7 +31304,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3514
+      "line": 3518
     }
   },
   {
@@ -31316,7 +31354,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3522
+      "line": 3526
     }
   },
   {
@@ -31384,7 +31422,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3550
+      "line": 3554
     }
   },
   {
@@ -31422,7 +31460,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3580
+      "line": 3584
     }
   },
   {
@@ -31451,7 +31489,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3588
+      "line": 3592
     }
   },
   {
@@ -31480,7 +31518,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3593
+      "line": 3597
     }
   },
   {
@@ -31511,7 +31549,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3598
+      "line": 3602
     }
   },
   {
@@ -31542,7 +31580,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3606
+      "line": 3610
     }
   },
   {
@@ -31580,7 +31618,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3621
+      "line": 3625
     }
   },
   {
@@ -31611,7 +31649,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3629
+      "line": 3633
     }
   },
   {
@@ -31642,7 +31680,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3643
+      "line": 3647
     }
   },
   {
@@ -31687,7 +31725,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3656
+      "line": 3660
     }
   },
   {
@@ -31730,7 +31768,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3666
+      "line": 3670
     }
   },
   {
@@ -31767,7 +31805,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3672
+      "line": 3676
     }
   },
   {
@@ -31804,7 +31842,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3690
+      "line": 3694
     }
   },
   {
@@ -31841,7 +31879,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3707
+      "line": 3711
     }
   },
   {
@@ -31876,7 +31914,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3724
+      "line": 3728
     }
   },
   {
@@ -31921,7 +31959,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3732
+      "line": 3736
     }
   },
   {
@@ -31947,7 +31985,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3743
+      "line": 3747
     }
   },
   {
@@ -31973,7 +32011,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3750
+      "line": 3754
     }
   },
   {
@@ -31999,7 +32037,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3753
+      "line": 3757
     }
   },
   {
@@ -32034,7 +32072,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3758
+      "line": 3762
     }
   },
   {
@@ -32060,7 +32098,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3763
+      "line": 3767
     }
   },
   {
@@ -32096,7 +32134,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3766
+      "line": 3770
     }
   },
   {
@@ -32122,7 +32160,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3773
+      "line": 3777
     }
   },
   {
@@ -32159,7 +32197,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3780
+      "line": 3784
     }
   },
   {
@@ -32204,7 +32242,59 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3788
+      "line": 3792
+    }
+  },
+  {
+    "canonical": "FbMetadbHandleList#Reverse",
+    "name": "Reverse",
+    "kind": "method",
+    "parent": "FbMetadbHandleList",
+    "signature": "Reverse()",
+    "type": null,
+    "value": null,
+    "description": "Reverses the order of the items in the handle list.",
+    "params": [],
+    "properties": [],
+    "returns": null,
+    "throws": [],
+    "examples": [],
+    "sourceFiles": [],
+    "readonly": false,
+    "static": false,
+    "deprecated": false,
+    "enumType": null,
+    "enumMembers": null,
+    "legacyEnumMarkup": false,
+    "source": {
+      "file": "js/foo_uie_jsplitter.js",
+      "line": 3801
+    }
+  },
+  {
+    "canonical": "FbMetadbHandleList#Shuffle",
+    "name": "Shuffle",
+    "kind": "method",
+    "parent": "FbMetadbHandleList",
+    "signature": "Shuffle()",
+    "type": null,
+    "value": null,
+    "description": "Randomly shuffles the items in the handle list.",
+    "params": [],
+    "properties": [],
+    "returns": null,
+    "throws": [],
+    "examples": [],
+    "sourceFiles": [],
+    "readonly": false,
+    "static": false,
+    "deprecated": false,
+    "enumType": null,
+    "enumMembers": null,
+    "legacyEnumMarkup": false,
+    "source": {
+      "file": "js/foo_uie_jsplitter.js",
+      "line": 3806
     }
   },
   {
@@ -32239,7 +32329,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3797
+      "line": 3811
     }
   },
   {
@@ -32265,7 +32355,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3803
+      "line": 3817
     }
   },
   {
@@ -32302,7 +32392,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3810
+      "line": 3824
     }
   },
   {
@@ -32328,7 +32418,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3837
+      "line": 3851
     }
   },
   {
@@ -32354,7 +32444,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3845
+      "line": 3859
     }
   },
   {
@@ -32392,7 +32482,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3851
+      "line": 3865
     }
   },
   {
@@ -32430,7 +32520,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3857
+      "line": 3871
     }
   },
   {
@@ -32465,7 +32555,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3863
+      "line": 3877
     }
   },
   {
@@ -32500,7 +32590,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3868
+      "line": 3882
     }
   },
   {
@@ -32528,7 +32618,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3874
+      "line": 3888
     }
   },
   {
@@ -32554,7 +32644,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3887
+      "line": 3901
     }
   },
   {
@@ -32580,7 +32670,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3896
+      "line": 3910
     }
   },
   {
@@ -32606,7 +32696,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3904
+      "line": 3918
     }
   },
   {
@@ -32632,7 +32722,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3913
+      "line": 3927
     }
   },
   {
@@ -32658,7 +32748,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3919
+      "line": 3933
     }
   },
   {
@@ -32684,7 +32774,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3925
+      "line": 3939
     }
   },
   {
@@ -32710,7 +32800,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3933
+      "line": 3947
     }
   },
   {
@@ -32747,7 +32837,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3942
+      "line": 3956
     }
   },
   {
@@ -32773,7 +32863,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3954
+      "line": 3968
     }
   },
   {
@@ -32799,7 +32889,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3960
+      "line": 3974
     }
   },
   {
@@ -32846,7 +32936,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3963
+      "line": 3977
     }
   },
   {
@@ -32881,7 +32971,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3985
+      "line": 3999
     }
   },
   {
@@ -32922,7 +33012,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3994
+      "line": 4008
     }
   },
   {
@@ -32971,7 +33061,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4009
+      "line": 4023
     }
   },
   {
@@ -33011,7 +33101,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4020
+      "line": 4034
     }
   },
   {
@@ -33037,7 +33127,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4033
+      "line": 4047
     }
   },
   {
@@ -33065,7 +33155,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4038
+      "line": 4052
     }
   },
   {
@@ -33091,7 +33181,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4051
+      "line": 4065
     }
   },
   {
@@ -33119,7 +33209,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4054
+      "line": 4068
     }
   },
   {
@@ -33145,7 +33235,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4068
+      "line": 4082
     }
   },
   {
@@ -33183,7 +33273,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4071
+      "line": 4085
     }
   },
   {
@@ -33226,7 +33316,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4077
+      "line": 4091
     }
   },
   {
@@ -33279,7 +33369,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4083
+      "line": 4097
     }
   },
   {
@@ -33316,7 +33406,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4090
+      "line": 4104
     }
   },
   {
@@ -33359,7 +33449,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4102
+      "line": 4116
     }
   },
   {
@@ -33388,7 +33478,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4112
+      "line": 4126
     }
   },
   {
@@ -33432,7 +33522,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4149
+      "line": 4163
     }
   },
   {
@@ -33458,7 +33548,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4166
+      "line": 4180
     }
   },
   {
@@ -33484,7 +33574,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4174
+      "line": 4188
     }
   },
   {
@@ -33519,7 +33609,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4183
+      "line": 4197
     }
   },
   {
@@ -33545,7 +33635,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4189
+      "line": 4203
     }
   },
   {
@@ -33571,7 +33661,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4195
+      "line": 4209
     }
   },
   {
@@ -33609,7 +33699,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4201
+      "line": 4215
     }
   },
   {
@@ -33646,7 +33736,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4207
+      "line": 4221
     }
   },
   {
@@ -33708,7 +33798,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4216
+      "line": 4230
     }
   },
   {
@@ -33737,7 +33827,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4225
+      "line": 4239
     }
   },
   {
@@ -33748,7 +33838,7 @@
     "signature": "GetColourScheme(max_count)",
     "type": null,
     "value": null,
-    "description": "Takes the top of colors found in the image",
+    "description": "Returns up to max_count representative colours found in the image.<br>\nThis is a legacy colour extraction method. For colour frequency information and\nmore advanced clustering, use {@link GdiBitmap#GetColourSchemeJSON GetColourSchemeJSON}\nor {@link GdiBitmap#GetColourSchemeJSONV2 GetColourSchemeJSONV2}.",
     "params": [
       {
         "type": "number",
@@ -33756,7 +33846,7 @@
         "rawName": "max_count",
         "optional": false,
         "variadic": false,
-        "description": ""
+        "description": "maximum number of colours to return"
       }
     ],
     "properties": [],
@@ -33775,7 +33865,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4232
+      "line": 4246
     }
   },
   {
@@ -33786,7 +33876,7 @@
     "signature": "GetColourSchemeJSON(max_count)",
     "type": null,
     "value": null,
-    "description": "Returns a JSON array in string form so you need to use JSON.parse() on the result.<br>\nEach entry in the array is an object which contains colour and frequency values.<br>\nUses a different method for calculating colours than {@link GdiBitmap#GetColourScheme GetColourScheme}.<br>\nImage is automatically resized during processing for performance reasons so there's no\nneed to resize before calling the method.",
+    "description": "Extracts representative colours from the image using K-means clustering in the RGB colour space.<br>\nReturns a JSON array in string form so you need to use JSON.parse() on the result.<br>\nEach entry contains a colour and its relative frequency in the clustered image.<br>\nUses a different method for calculating colours than {@link GdiBitmap#GetColourScheme GetColourScheme}.<br>\nImage is automatically resized during processing for performance reasons so there's no\nneed to resize before calling the method.",
     "params": [
       {
         "type": "number",
@@ -33794,7 +33884,7 @@
         "rawName": "max_count",
         "optional": false,
         "variadic": false,
-        "description": ""
+        "description": "maximum number of colours to return"
       }
     ],
     "properties": [],
@@ -33804,7 +33894,7 @@
     },
     "throws": [],
     "examples": [
-      "// See docs\\Helpers.js for \"toRGB\" function.\nimg = ... // use utils.GetAlbumArtV2 / gdi.Image / etc\ncolours = JSON.parse(img.GetColourSchemeJSON(5));\nconsole.log(colours[0].col); // -4194304\nconsole.log(colours[0].freq); // 0.34\nconsole.log(toRGB(colours[0].col)); // [192, 0, 0]"
+      "// See docs\\Helpers.js for \"toRGB\" function.\nimg = ... // use utils.GetAlbumArtV2 / gdi.Image / etc\ncolours = JSON.parse(img.GetColourSchemeJSON(5));\nconsole.log(colours[0].col); // 4290772992\nconsole.log(colours[0].freq); // 0.34\nconsole.log(toRGB(colours[0].col)); // [192, 0, 0]"
     ],
     "sourceFiles": [],
     "readonly": false,
@@ -33815,7 +33905,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4239
+      "line": 4257
     }
   },
   {
@@ -33826,7 +33916,7 @@
     "signature": "GetColourSchemeJSONV2(max_count, min_chroma)",
     "type": null,
     "value": null,
-    "description": "Returns a JSON array in string form so you need to use JSON.parse() on the result.<br>\nEach entry in the array is an object which contains colour and frequency values.<br>\nUses a different method than {@link GdiBitmap#GetColourSchemeJSON GetColourSchemeJSON} for calculating colours (K-means++ with Oklab).<br>",
+    "description": "Extracts representative colours from the image using K-means++ clustering in the Oklab colour space.<br>\nReturns a JSON array in string form so you need to use JSON.parse() on the result.<br>\nEach entry contains a colour and its relative frequency in the clustered image.<br>\nK-means++ initialization improves the distribution of the initial cluster centres, while Oklab\nprovides a perceptually more uniform distance metric than RGB.<br>\nThe optional min_chroma parameter limits the initial cluster centre selection to pixels with at\nleast the specified Oklab chroma. It does not filter pixels or colours from the clustering result.",
     "params": [
       {
         "type": "number",
@@ -33834,7 +33924,7 @@
         "rawName": "max_count",
         "optional": false,
         "variadic": false,
-        "description": ""
+        "description": "maximum number of colours to return"
       },
       {
         "type": "number",
@@ -33843,7 +33933,7 @@
         "optional": true,
         "variadic": false,
         "default": "0.0",
-        "description": "minimal chroma value for choosing start cluster pixel"
+        "description": "minimum Oklab chroma for pixels used as initial cluster centres"
       }
     ],
     "properties": [],
@@ -33852,7 +33942,9 @@
       "description": ""
     },
     "throws": [],
-    "examples": [],
+    "examples": [
+      "// See docs\\Helpers.js for \"toRGB\" function.\nimg = ... // use utils.GetAlbumArtV2 / gdi.Image / etc\ncolours = JSON.parse(img.GetColourSchemeJSONV2(10, 0.02));\nconsole.log(colours[0].col); // 4290772992\nconsole.log(colours[0].freq); // 0.34\nconsole.log(toRGB(colours[0].col)); // [192, 0, 0]"
+    ],
     "sourceFiles": [],
     "readonly": false,
     "static": false,
@@ -33862,7 +33954,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4259
+      "line": 4278
     }
   },
   {
@@ -33891,7 +33983,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4270
+      "line": 4301
     }
   },
   {
@@ -33932,7 +34024,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4277
+      "line": 4308
     }
   },
   {
@@ -33961,7 +34053,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4304
+      "line": 4335
     }
   },
   {
@@ -33996,7 +34088,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4311
+      "line": 4342
     }
   },
   {
@@ -34051,7 +34143,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4316
+      "line": 4347
     }
   },
   {
@@ -34086,7 +34178,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4324
+      "line": 4355
     }
   },
   {
@@ -34135,7 +34227,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4331
+      "line": 4362
     }
   },
   {
@@ -34173,7 +34265,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4349
+      "line": 4380
     }
   },
   {
@@ -34225,7 +34317,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4363
+      "line": 4394
     }
   },
   {
@@ -34253,7 +34345,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4376
+      "line": 4407
     }
   },
   {
@@ -34281,7 +34373,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4385
+      "line": 4416
     }
   },
   {
@@ -34309,7 +34401,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4394
+      "line": 4425
     }
   },
   {
@@ -34337,7 +34429,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4403
+      "line": 4434
     }
   },
   {
@@ -34374,7 +34466,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4415
+      "line": 4446
     }
   },
   {
@@ -34400,7 +34492,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4426
+      "line": 4457
     }
   },
   {
@@ -34426,7 +34518,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4434
+      "line": 4465
     }
   },
   {
@@ -34469,7 +34561,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4442
+      "line": 4473
     }
   },
   {
@@ -34522,7 +34614,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4451
+      "line": 4482
     }
   },
   {
@@ -34584,7 +34676,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4461
+      "line": 4492
     }
   },
   {
@@ -34645,7 +34737,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4472
+      "line": 4503
     }
   },
   {
@@ -34671,7 +34763,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4483
+      "line": 4514
     }
   },
   {
@@ -34697,7 +34789,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4488
+      "line": 4519
     }
   },
   {
@@ -34728,7 +34820,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4493
+      "line": 4524
     }
   },
   {
@@ -34765,7 +34857,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4502
+      "line": 4533
     }
   },
   {
@@ -34791,7 +34883,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4511
+      "line": 4542
     }
   },
   {
@@ -34828,7 +34920,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4516
+      "line": 4547
     }
   },
   {
@@ -34854,7 +34946,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4526
+      "line": 4557
     }
   },
   {
@@ -34900,7 +34992,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4538
+      "line": 4569
     }
   },
   {
@@ -34955,7 +35047,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4548
+      "line": 4579
     }
   },
   {
@@ -35030,7 +35122,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4562
+      "line": 4593
     }
   },
   {
@@ -35147,7 +35239,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4572
+      "line": 4603
     }
   },
   {
@@ -35222,7 +35314,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4587
+      "line": 4618
     }
   },
   {
@@ -35273,7 +35365,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4597
+      "line": 4628
     }
   },
   {
@@ -35365,7 +35457,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4604
+      "line": 4635
     }
   },
   {
@@ -35440,7 +35532,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4618
+      "line": 4649
     }
   },
   {
@@ -35531,7 +35623,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4628
+      "line": 4659
     }
   },
   {
@@ -35585,7 +35677,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4640
+      "line": 4671
     }
   },
   {
@@ -35652,7 +35744,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4656
+      "line": 4687
     }
   },
   {
@@ -35744,7 +35836,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4665
+      "line": 4696
     }
   },
   {
@@ -35821,7 +35913,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4680
+      "line": 4711
     }
   },
   {
@@ -35872,7 +35964,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4693
+      "line": 4724
     }
   },
   {
@@ -35955,7 +36047,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4700
+      "line": 4731
     }
   },
   {
@@ -36022,7 +36114,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4711
+      "line": 4742
     }
   },
   {
@@ -36130,7 +36222,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4720
+      "line": 4751
     }
   },
   {
@@ -36229,7 +36321,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4734
+      "line": 4765
     }
   },
   {
@@ -36321,7 +36413,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4749
+      "line": 4780
     }
   },
   {
@@ -36408,7 +36500,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4773
+      "line": 4804
     }
   },
   {
@@ -36467,7 +36559,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4787
+      "line": 4818
     }
   },
   {
@@ -36493,7 +36585,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4800
+      "line": 4831
     }
   },
   {
@@ -36536,7 +36628,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4807
+      "line": 4838
     }
   },
   {
@@ -36589,7 +36681,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4816
+      "line": 4847
     }
   },
   {
@@ -36651,7 +36743,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4826
+      "line": 4857
     }
   },
   {
@@ -36712,7 +36804,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4837
+      "line": 4868
     }
   },
   {
@@ -36738,7 +36830,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4848
+      "line": 4879
     }
   },
   {
@@ -36764,7 +36856,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4853
+      "line": 4884
     }
   },
   {
@@ -36795,7 +36887,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4858
+      "line": 4889
     }
   },
   {
@@ -36832,7 +36924,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4867
+      "line": 4898
     }
   },
   {
@@ -36858,7 +36950,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4876
+      "line": 4907
     }
   },
   {
@@ -36895,7 +36987,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4881
+      "line": 4912
     }
   },
   {
@@ -36923,7 +37015,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4890
+      "line": 4921
     }
   },
   {
@@ -36949,7 +37041,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4914
+      "line": 4945
     }
   },
   {
@@ -36975,7 +37067,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4920
+      "line": 4951
     }
   },
   {
@@ -37001,7 +37093,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4926
+      "line": 4957
     }
   },
   {
@@ -37027,7 +37119,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4932
+      "line": 4963
     }
   },
   {
@@ -37053,7 +37145,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4938
+      "line": 4969
     }
   },
   {
@@ -37079,7 +37171,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4944
+      "line": 4975
     }
   },
   {
@@ -37115,7 +37207,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4951
+      "line": 4982
     }
   },
   {
@@ -37151,7 +37243,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4956
+      "line": 4987
     }
   },
   {
@@ -37187,7 +37279,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4961
+      "line": 4992
     }
   },
   {
@@ -37213,7 +37305,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4966
+      "line": 4997
     }
   },
   {
@@ -37239,7 +37331,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4972
+      "line": 5003
     }
   },
   {
@@ -37265,7 +37357,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4980
+      "line": 5011
     }
   },
   {
@@ -37291,7 +37383,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4986
+      "line": 5017
     }
   },
   {
@@ -37317,7 +37409,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4992
+      "line": 5023
     }
   },
   {
@@ -37343,7 +37435,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4999
+      "line": 5030
     }
   },
   {
@@ -37369,7 +37461,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5005
+      "line": 5036
     }
   },
   {
@@ -37395,7 +37487,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5008
+      "line": 5039
     }
   },
   {
@@ -37421,7 +37513,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5015
+      "line": 5046
     }
   },
   {
@@ -37447,7 +37539,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5025
+      "line": 5056
     }
   },
   {
@@ -37473,7 +37565,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5035
+      "line": 5066
     }
   },
   {
@@ -37499,7 +37591,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5042
+      "line": 5073
     }
   },
   {
@@ -37525,7 +37617,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5052
+      "line": 5083
     }
   },
   {
@@ -37577,7 +37669,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5057
+      "line": 5088
     }
   },
   {
@@ -37615,7 +37707,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5064
+      "line": 5095
     }
   },
   {
@@ -37650,7 +37742,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5070
+      "line": 5101
     }
   },
   {
@@ -37676,7 +37768,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5077
+      "line": 5108
     }
   },
   {
@@ -37702,7 +37794,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5083
+      "line": 5114
     }
   },
   {
@@ -37728,7 +37820,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5091
+      "line": 5122
     }
   },
   {
@@ -37779,7 +37871,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5096
+      "line": 5127
     }
   },
   {
@@ -37817,7 +37909,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5103
+      "line": 5134
     }
   },
   {
@@ -37852,7 +37944,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5109
+      "line": 5140
     }
   },
   {
@@ -37878,7 +37970,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5115
+      "line": 5146
     }
   },
   {
@@ -37929,7 +38021,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5121
+      "line": 5152
     }
   },
   {
@@ -37955,7 +38047,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5128
+      "line": 5159
     }
   },
   {
@@ -38006,7 +38098,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5131
+      "line": 5162
     }
   },
   {
@@ -38049,7 +38141,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5138
+      "line": 5169
     }
   },
   {
@@ -38100,7 +38192,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5144
+      "line": 5175
     }
   },
   {
@@ -38155,7 +38247,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5151
+      "line": 5182
     }
   },
   {
@@ -38181,7 +38273,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5160
+      "line": 5191
     }
   },
   {
@@ -38284,7 +38376,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5165
+      "line": 5196
     }
   },
   {
@@ -38322,7 +38414,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5178
+      "line": 5209
     }
   },
   {
@@ -38366,7 +38458,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5184
+      "line": 5215
     }
   },
   {
@@ -38392,7 +38484,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5193
+      "line": 5224
     }
   },
   {
@@ -38418,7 +38510,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5201
+      "line": 5232
     }
   },
   {
@@ -38444,7 +38536,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5212
+      "line": 5243
     }
   },
   {
@@ -38470,7 +38562,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5222
+      "line": 5253
     }
   },
   {
@@ -38496,7 +38588,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5232
+      "line": 5263
     }
   },
   {
@@ -38522,7 +38614,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5244
+      "line": 5275
     }
   },
   {
@@ -38550,7 +38642,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5257
+      "line": 5288
     }
   },
   {
@@ -38578,7 +38670,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5270
+      "line": 5301
     }
   },
   {
@@ -38606,7 +38698,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5282
+      "line": 5313
     }
   },
   {
@@ -38634,7 +38726,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5294
+      "line": 5325
     }
   },
   {
@@ -38662,7 +38754,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5306
+      "line": 5337
     }
   },
   {
@@ -38688,7 +38780,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5320
+      "line": 5351
     }
   },
   {
@@ -38716,7 +38808,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5329
+      "line": 5360
     }
   },
   {
@@ -38744,7 +38836,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5342
+      "line": 5373
     }
   },
   {
@@ -38784,7 +38876,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5354
+      "line": 5385
     }
   },
   {
@@ -38824,7 +38916,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5368
+      "line": 5399
     }
   },
   {
@@ -38864,7 +38956,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5383
+      "line": 5414
     }
   },
   {
@@ -38890,7 +38982,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5399
+      "line": 5430
     }
   },
   {
@@ -38918,7 +39010,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5408
+      "line": 5439
     }
   },
   {
@@ -38946,7 +39038,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5426
+      "line": 5457
     }
   },
   {
@@ -38974,7 +39066,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5439
+      "line": 5470
     }
   },
   {
@@ -39002,7 +39094,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5455
+      "line": 5486
     }
   },
   {
@@ -39028,7 +39120,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5471
+      "line": 5502
     }
   },
   {
@@ -39056,7 +39148,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5480
+      "line": 5511
     }
   },
   {
@@ -39084,7 +39176,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5493
+      "line": 5524
     }
   },
   {
@@ -39112,7 +39204,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5506
+      "line": 5537
     }
   },
   {
@@ -39140,7 +39232,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5528
+      "line": 5559
     }
   },
   {
@@ -39168,7 +39260,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5541
+      "line": 5572
     }
   },
   {
@@ -39208,7 +39300,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5556
+      "line": 5587
     }
   },
   {
@@ -39248,7 +39340,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5571
+      "line": 5602
     }
   },
   {
@@ -39288,7 +39380,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5587
+      "line": 5618
     }
   },
   {
@@ -39328,7 +39420,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5607
+      "line": 5638
     }
   },
   {
@@ -39368,7 +39460,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5625
+      "line": 5656
     }
   },
   {
@@ -39408,7 +39500,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5642
+      "line": 5673
     }
   },
   {

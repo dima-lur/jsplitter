@@ -1,0 +1,1203 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>list.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <a class="nav-link " href="globals.html">Globals</a>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><a class="nav-link " href="console.html">console</a><a class="nav-link " href="d2d.html">d2d</a><a class="nav-link " href="fb.html">fb</a><a class="nav-link " href="gdi.html">gdi</a><a class="nav-link " href="performance.html">performance</a><a class="nav-link " href="plman.html">plman</a><a class="nav-link " href="utils.html">utils</a><a class="nav-link " href="window.html">window</a></div><div class="nav-group"><div class="nav-title">Classes</div><a class="nav-link " href="ActiveXObject.html">ActiveXObject</a><a class="nav-link " href="ButtonObject.html">ButtonObject</a><a class="nav-link " href="ContextMenuManager.html">ContextMenuManager</a><a class="nav-link " href="D2DBitmap.html">D2DBitmap</a><a class="nav-link " href="D2DBrush.html">D2DBrush</a><a class="nav-link " href="D2DCompileInfo.html">D2DCompileInfo</a><a class="nav-link " href="D2DEffect.html">D2DEffect</a><a class="nav-link " href="D2DFont.html">D2DFont</a><a class="nav-link " href="D2DGraphics.html">D2DGraphics</a><a class="nav-link " href="DropTargetAction.html">DropTargetAction</a><a class="nav-link " href="Enumerator.html">Enumerator</a><a class="nav-link " href="FbAudioChunk.html">FbAudioChunk</a><a class="nav-link " href="FbFileInfo.html">FbFileInfo</a><a class="nav-link " href="FbMetadbHandle.html">FbMetadbHandle</a><a class="nav-link " href="FbMetadbHandleList.html">FbMetadbHandleList</a><a class="nav-link " href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a><a class="nav-link " href="FbPlayingItemLocation.html">FbPlayingItemLocation</a><a class="nav-link " href="FbPlaylistRecycler.html">FbPlaylistRecycler</a><a class="nav-link " href="FbProfiler.html">FbProfiler</a><a class="nav-link " href="FbTitleFormat.html">FbTitleFormat</a><a class="nav-link " href="FbTooltip.html">FbTooltip</a><a class="nav-link " href="FbUiSelectionHolder.html">FbUiSelectionHolder</a><a class="nav-link " href="GdiBitmap.html">GdiBitmap</a><a class="nav-link " href="GdiBrush.html">GdiBrush</a><a class="nav-link " href="GdiFont.html">GdiFont</a><a class="nav-link " href="GdiGraphics.html">GdiGraphics</a><a class="nav-link " href="GdiRawBitmap.html">GdiRawBitmap</a><a class="nav-link " href="HtmlDocument.html">HtmlDocument</a><a class="nav-link " href="HtmlNode.html">HtmlNode</a><a class="nav-link " href="IUIHacks.html">IUIHacks</a><a class="nav-link " href="MainMenuManager.html">MainMenuManager</a><a class="nav-link " href="MenuObject.html">MenuObject</a><a class="nav-link " href="PanelObject.html">PanelObject</a><a class="nav-link " href="PerformanceObserver.html">PerformanceObserver</a><a class="nav-link " href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a><a class="nav-link " href="RunResult.html">RunResult</a><a class="nav-link " href="ThemeManager.html">ThemeManager</a></div><div class="nav-group"><div class="nav-title">Modules</div><a class="nav-link " href="module-Callbacks.html">Callbacks</a><a class="nav-link " href="module-Codepages.html">Codepages</a><a class="nav-link " href="module-Effects.html">Effects</a><a class="nav-link " href="module-Flags.html">Flags</a><a class="nav-link " href="module-Helpers.html">Helpers</a><a class="nav-link " href="module-Matrix.html">Matrix</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/complete/js/list.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="utils.html#HTTPRequestAsync">utils.HTTPRequestAsync</a></div>
+        </header>
+        <pre class="source-code"><code><span class="tok-string">&#39;use strict&#39;</span>;
+<span class="tok-comment">//14/05/26</span>
+
+_.mixin({
+	nest(collection, keys) {
+		<span class="tok-keyword">if</span> (keys.length) {
+			<span class="tok-keyword">return</span> _(collection)
+				.groupBy(keys[<span class="tok-number">0</span>])
+				.mapValues((values) =&gt; _.nest(values, keys.slice(<span class="tok-number">1</span>)))
+				.value();
+		} <span class="tok-keyword">else</span> {
+			<span class="tok-keyword">return</span> collection;
+		}
+	}
+});
+
+<span class="tok-keyword">function</span> _list(mode, x, y, w, h) {
+	<span class="tok-keyword">this</span>.playback_queue_changed = () =&gt; {
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.mode == <span class="tok-string">&#39;queue_viewer&#39;</span>) {
+			<span class="tok-keyword">this</span>.update();
+		}
+	}
+
+	<span class="tok-keyword">this</span>.size = () =&gt; {
+		<span class="tok-keyword">this</span>.index = <span class="tok-number">0</span>;
+		<span class="tok-keyword">this</span>.offset = <span class="tok-number">0</span>;
+		<span class="tok-keyword">this</span>.rows = Math.floor((<span class="tok-keyword">this</span>.h - _scale(<span class="tok-number">24</span>)) / (panel.row_height || <span class="tok-number">1</span>)); <span class="tok-comment">// Regorxxx &lt;- Fix overflow -&gt;</span>
+		<span class="tok-keyword">this</span>.up_btn.x = <span class="tok-keyword">this</span>.x + Math.round((<span class="tok-keyword">this</span>.w - _scale(<span class="tok-number">12</span>)) / <span class="tok-number">2</span>);
+		<span class="tok-keyword">this</span>.down_btn.x = <span class="tok-keyword">this</span>.up_btn.x;
+		<span class="tok-keyword">this</span>.up_btn.y = <span class="tok-keyword">this</span>.y;
+		<span class="tok-keyword">this</span>.down_btn.y = <span class="tok-keyword">this</span>.y + <span class="tok-keyword">this</span>.h - _scale(<span class="tok-number">12</span>);
+	}
+
+	<span class="tok-keyword">this</span>.paint = (gr) =&gt; {
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.mode === <span class="tok-string">&#39;lastfm_info&#39;</span> &amp;&amp; !lastfm.api_key.value.length) {
+			gr.GdiDrawText(<span class="tok-string">&#39;No API key found. Add it using R. Click.&#39;</span>, panel.fonts.normal, panel.colours.text, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y + _scale(<span class="tok-number">12</span>), <span class="tok-keyword">this</span>.w, panel.row_height, LEFT);
+			<span class="tok-keyword">return</span>;
+		}
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.items == <span class="tok-number">0</span>) {
+			<span class="tok-keyword">return</span>;
+		}
+		<span class="tok-keyword">switch</span> (<span class="tok-literal">true</span>) {
+			<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.mode == <span class="tok-string">&#39;lastfm_info&#39;</span> &amp;&amp; <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">1</span>: { <span class="tok-comment">// charts</span>
+				<span class="tok-keyword">this</span>.text_x = <span class="tok-keyword">this</span>.spacer_w + <span class="tok-number">5</span>;
+				<span class="tok-keyword">this</span>.text_width = Math.round(<span class="tok-keyword">this</span>.w / <span class="tok-number">2</span>) + <span class="tok-number">30</span>;
+				<span class="tok-keyword">const</span> lastfm_charts_bar_x = <span class="tok-keyword">this</span>.x + <span class="tok-keyword">this</span>.text_x + <span class="tok-keyword">this</span>.text_width + <span class="tok-number">10</span>;
+				<span class="tok-keyword">const</span> unit_width = (<span class="tok-keyword">this</span>.w - lastfm_charts_bar_x - _scale(<span class="tok-number">50</span>)) / (<span class="tok-keyword">this</span>.data[<span class="tok-number">0</span>].playcount || <span class="tok-number">1</span>); <span class="tok-comment">// Regorxxx &lt;- Fix overflow -&gt;</span>
+				<span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; Math.min(<span class="tok-keyword">this</span>.items, <span class="tok-keyword">this</span>.rows); i++) {
+					<span class="tok-keyword">let</span> bar_width = Math.ceil(unit_width * <span class="tok-keyword">this</span>.data[i + <span class="tok-keyword">this</span>.offset].playcount);
+					gr.GdiDrawText(<span class="tok-keyword">this</span>.data[i + <span class="tok-keyword">this</span>.offset].rank + <span class="tok-string">&#39;.&#39;</span>, panel.fonts.normal, panel.colours.highlight, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y + _scale(<span class="tok-number">12</span>) + (i * panel.row_height), <span class="tok-keyword">this</span>.text_x - <span class="tok-number">5</span>, panel.row_height, RIGHT);
+					gr.GdiDrawText(<span class="tok-keyword">this</span>.data[i + <span class="tok-keyword">this</span>.offset].name, panel.fonts.normal, panel.colours.text, <span class="tok-keyword">this</span>.x + <span class="tok-keyword">this</span>.text_x, <span class="tok-keyword">this</span>.y + _scale(<span class="tok-number">12</span>) + (i * panel.row_height), <span class="tok-keyword">this</span>.text_width, panel.row_height, LEFT);
+					gr.FillSolidRect(lastfm_charts_bar_x, <span class="tok-keyword">this</span>.y + _scale(<span class="tok-number">13</span>) + (i * panel.row_height), bar_width, panel.row_height - <span class="tok-number">3</span>, <span class="tok-keyword">this</span>.properties.colour.value);
+					gr.GdiDrawText(_formatNumber(<span class="tok-keyword">this</span>.data[i + <span class="tok-keyword">this</span>.offset].playcount, <span class="tok-string">&#39;,&#39;</span>), panel.fonts.normal, panel.colours.text, lastfm_charts_bar_x + bar_width + <span class="tok-number">5</span>, <span class="tok-keyword">this</span>.y + _scale(<span class="tok-number">12</span>) + (i * panel.row_height), _scale(<span class="tok-number">60</span>), panel.row_height, LEFT);
+				}
+				<span class="tok-keyword">break</span>;
+			}
+			<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.mode == <span class="tok-string">&#39;musicbrainz&#39;</span> &amp;&amp; <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">0</span>: {<span class="tok-comment">// releases</span>
+				<span class="tok-keyword">this</span>.text_width = <span class="tok-keyword">this</span>.w - <span class="tok-keyword">this</span>.spacer_w - <span class="tok-number">10</span>;
+				<span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; Math.min(<span class="tok-keyword">this</span>.items, <span class="tok-keyword">this</span>.rows); i++) {
+					gr.GdiDrawText(<span class="tok-keyword">this</span>.data[i + <span class="tok-keyword">this</span>.offset].name, panel.fonts.normal, <span class="tok-keyword">this</span>.data[i + <span class="tok-keyword">this</span>.offset].width == <span class="tok-number">0</span> ? panel.colours.highlight : panel.colours.text, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y + _scale(<span class="tok-number">12</span>) + (i * panel.row_height), <span class="tok-keyword">this</span>.text_width, panel.row_height, LEFT);
+					gr.GdiDrawText(<span class="tok-keyword">this</span>.data[i + <span class="tok-keyword">this</span>.offset].date, panel.fonts.normal, panel.colours.highlight, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y + _scale(<span class="tok-number">12</span>) + (i * panel.row_height), <span class="tok-keyword">this</span>.w, panel.row_height, RIGHT);
+				}
+				<span class="tok-keyword">break</span>;
+			}
+			<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.mode == <span class="tok-string">&#39;properties&#39;</span>: {
+				<span class="tok-keyword">this</span>.text_width = <span class="tok-keyword">this</span>.w - <span class="tok-keyword">this</span>.text_x;
+				<span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; Math.min(<span class="tok-keyword">this</span>.items, <span class="tok-keyword">this</span>.rows); i++) {
+					gr.GdiDrawText(<span class="tok-keyword">this</span>.data[i + <span class="tok-keyword">this</span>.offset].name, panel.fonts.normal, panel.colours.highlight, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y + _scale(<span class="tok-number">12</span>) + (i * panel.row_height), <span class="tok-keyword">this</span>.text_x - <span class="tok-number">10</span>, panel.row_height, LEFT);
+					gr.GdiDrawText(<span class="tok-keyword">this</span>.data[i + <span class="tok-keyword">this</span>.offset].value, panel.fonts.normal, panel.colours.text, <span class="tok-keyword">this</span>.x + <span class="tok-keyword">this</span>.text_x, <span class="tok-keyword">this</span>.y + _scale(<span class="tok-number">12</span>) + (i * panel.row_height), <span class="tok-keyword">this</span>.text_width, panel.row_height, LEFT ^ DT_CALCRECT | DT_WORD_ELLIPSIS ); <span class="tok-comment">// Regorxxx &lt;- Properly display non-compliant multi-line text -&gt;</span>
+				}
+				<span class="tok-keyword">break</span>;
+			}
+			<span class="tok-keyword">default</span>: {<span class="tok-comment">// autoplaylists / last.fm similar artists / last.fm recent tracks / musicbrainz links / queue viewer</span>
+				<span class="tok-keyword">this</span>.text_x = <span class="tok-number">0</span>;
+				<span class="tok-keyword">this</span>.text_width = <span class="tok-keyword">this</span>.w;
+				<span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; Math.min(<span class="tok-keyword">this</span>.items, <span class="tok-keyword">this</span>.rows); i++) {
+					gr.GdiDrawText(<span class="tok-keyword">this</span>.data[i + <span class="tok-keyword">this</span>.offset].name, panel.fonts.normal, panel.colours.text, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y + _scale(<span class="tok-number">12</span>) + (i * panel.row_height), <span class="tok-keyword">this</span>.text_width, panel.row_height, LEFT);
+				}
+				<span class="tok-keyword">break</span>;
+			}
+		}
+		<span class="tok-keyword">this</span>.up_btn.paint(gr, panel.colours.text);
+		<span class="tok-keyword">this</span>.down_btn.paint(gr, panel.colours.text);
+	}
+
+	<span class="tok-keyword">this</span>.metadb_changed = () =&gt; {
+		<span class="tok-keyword">let</span> temp_artist;
+		<span class="tok-keyword">switch</span> (<span class="tok-literal">true</span>) {
+			<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.mode == <span class="tok-string">&#39;autoplaylists&#39;</span>:
+			<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.mode == <span class="tok-string">&#39;lastfm_info&#39;</span> &amp;&amp; <span class="tok-keyword">this</span>.properties.mode.value &gt; <span class="tok-number">0</span>:
+			<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.mode == <span class="tok-string">&#39;queue_viewer&#39;</span>:
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> !panel.metadb:
+				<span class="tok-keyword">this</span>.artist = <span class="tok-string">&#39;&#39;</span>;
+				<span class="tok-keyword">this</span>.data = [];
+				<span class="tok-keyword">this</span>.items = <span class="tok-number">0</span>;
+				window.Repaint();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.mode == <span class="tok-string">&#39;properties&#39;</span>:
+				<span class="tok-keyword">this</span>.update();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.mode == <span class="tok-string">&#39;musicbrainz&#39;</span>: {
+				temp_artist = panel.tf(DEFAULT_ARTIST);
+				<span class="tok-keyword">const</span> temp_id = panel.tf(<span class="tok-string">&#39;$if3($meta(musicbrainz_artistid,0),$meta(musicbrainz artist id,0),)&#39;</span>);
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.artist == temp_artist &amp;&amp; <span class="tok-keyword">this</span>.mb_id == temp_id) {
+					<span class="tok-keyword">return</span>;
+				}
+				<span class="tok-keyword">this</span>.artist = temp_artist;
+				<span class="tok-keyword">this</span>.mb_id = temp_id;
+				<span class="tok-keyword">this</span>.update();
+				<span class="tok-keyword">break</span>;
+			}
+			<span class="tok-keyword">default</span>:
+				temp_artist = panel.tf(DEFAULT_ARTIST);
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.artist == temp_artist) {
+					<span class="tok-keyword">return</span>;
+				}
+				<span class="tok-keyword">this</span>.artist = temp_artist;
+				<span class="tok-keyword">this</span>.update();
+				<span class="tok-keyword">break</span>;
+		}
+	}
+
+	<span class="tok-keyword">this</span>.playback_new_track = () =&gt; {
+		panel.item_focus_change();
+		<span class="tok-keyword">this</span>.time_elapsed = <span class="tok-number">0</span>;
+	}
+
+	<span class="tok-keyword">this</span>.playback_time = () =&gt; {
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.mode == <span class="tok-string">&#39;lastfm_info&#39;</span>) {
+			<span class="tok-keyword">this</span>.time_elapsed++;
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.time_elapsed == <span class="tok-number">3</span> &amp;&amp; <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">2</span> &amp;&amp; lastfm.username.length) {
+				<span class="tok-keyword">this</span>.get();
+			}
+		}
+	}
+
+	<span class="tok-keyword">this</span>.trace = (x, y) =&gt; {
+		<span class="tok-keyword">return</span> x &gt; <span class="tok-keyword">this</span>.x &amp;&amp; x &lt; <span class="tok-keyword">this</span>.x + <span class="tok-keyword">this</span>.w &amp;&amp; y &gt; <span class="tok-keyword">this</span>.y &amp;&amp; y &lt; <span class="tok-keyword">this</span>.y + <span class="tok-keyword">this</span>.h;
+	}
+
+	<span class="tok-keyword">this</span>.wheel = (s) =&gt; {
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.trace(<span class="tok-keyword">this</span>.mx, <span class="tok-keyword">this</span>.my)) {
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.items &gt; <span class="tok-keyword">this</span>.rows) {
+				<span class="tok-keyword">let</span> offset = <span class="tok-keyword">this</span>.offset - (s * <span class="tok-number">3</span>);
+				<span class="tok-keyword">if</span> (offset &lt; <span class="tok-number">0</span>) {
+					offset = <span class="tok-number">0</span>;
+				}
+				<span class="tok-keyword">if</span> (offset + <span class="tok-keyword">this</span>.rows &gt; <span class="tok-keyword">this</span>.items) {
+					offset = <span class="tok-keyword">this</span>.items - <span class="tok-keyword">this</span>.rows;
+				}
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.offset != offset) {
+					<span class="tok-keyword">this</span>.offset = offset;
+					window.RepaintRect(<span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y, <span class="tok-keyword">this</span>.w, <span class="tok-keyword">this</span>.h);
+				}
+			}
+			<span class="tok-keyword">return</span> <span class="tok-literal">true</span>;
+		} <span class="tok-keyword">else</span> {
+			<span class="tok-keyword">return</span> <span class="tok-literal">false</span>;
+		}
+	}
+
+	<span class="tok-keyword">this</span>.move = (x, y) =&gt; {
+		<span class="tok-keyword">this</span>.mx = x;
+		<span class="tok-keyword">this</span>.my = y;
+		window.SetCursor(IDC_ARROW);
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.trace(x, y)) {
+			<span class="tok-keyword">this</span>.index = Math.floor((y - <span class="tok-keyword">this</span>.y - _scale(<span class="tok-number">12</span>)) / (panel.row_height || <span class="tok-number">1</span>)) + <span class="tok-keyword">this</span>.offset; <span class="tok-comment">// Regorxxx &lt;- Fix overflow -&gt;</span>
+			<span class="tok-keyword">this</span>.in_range = <span class="tok-keyword">this</span>.index &gt;= <span class="tok-keyword">this</span>.offset &amp;&amp; <span class="tok-keyword">this</span>.index &lt; <span class="tok-keyword">this</span>.offset + Math.min(<span class="tok-keyword">this</span>.rows, <span class="tok-keyword">this</span>.items);
+			<span class="tok-keyword">switch</span> (<span class="tok-literal">true</span>) {
+				<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.up_btn.move(x, y):
+				<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.down_btn.move(x, y):
+					<span class="tok-keyword">break</span>;
+				<span class="tok-keyword">case</span> !<span class="tok-keyword">this</span>.in_range:
+					<span class="tok-keyword">break</span>;
+				<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.mode == <span class="tok-string">&#39;autoplaylists&#39;</span>:
+					<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.index !== -<span class="tok-number">1</span> &amp;&amp; x &gt; <span class="tok-keyword">this</span>.x &amp;&amp; x &lt; <span class="tok-keyword">this</span>.x + Math.min(<span class="tok-keyword">this</span>.data[<span class="tok-keyword">this</span>.index].width, <span class="tok-keyword">this</span>.text_width)) { <span class="tok-comment">// Regorxxx &lt;- Fix overflow -&gt;</span>
+						window.SetCursor(IDC_HAND);
+						_tt(<span class="tok-string">&#39;Autoplaylist: &#39;</span> + <span class="tok-keyword">this</span>.data[<span class="tok-keyword">this</span>.index].name);
+					} <span class="tok-keyword">else</span> { _tt(<span class="tok-string">&#39;&#39;</span>); }
+					<span class="tok-keyword">break</span>;
+				<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.index !== -<span class="tok-number">1</span> &amp;&amp; x &gt; <span class="tok-keyword">this</span>.x + <span class="tok-keyword">this</span>.text_x &amp;&amp; x &lt; <span class="tok-keyword">this</span>.x + <span class="tok-keyword">this</span>.text_x + Math.min(<span class="tok-keyword">this</span>.data[<span class="tok-keyword">this</span>.index].width, <span class="tok-keyword">this</span>.text_width): <span class="tok-comment">// Regorxxx &lt;- Fix overflow -&gt;</span>
+					window.SetCursor(IDC_HAND);
+					<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.data[<span class="tok-keyword">this</span>.index].url.startsWith(<span class="tok-string">&#39;http&#39;</span>)) {
+						_tt(<span class="tok-keyword">this</span>.data[<span class="tok-keyword">this</span>.index].url);
+					} <span class="tok-keyword">else</span> {
+						_tt(<span class="tok-string">&#39;Autoplaylist: &#39;</span> + <span class="tok-keyword">this</span>.data[<span class="tok-keyword">this</span>.index].url);
+					}
+					<span class="tok-keyword">break</span>;
+				<span class="tok-keyword">default</span>:
+					_tt(<span class="tok-string">&#39;&#39;</span>);
+					<span class="tok-keyword">break</span>;
+			}
+			<span class="tok-keyword">return</span> <span class="tok-literal">true</span>;
+		} <span class="tok-keyword">else</span> {
+			<span class="tok-keyword">return</span> <span class="tok-literal">false</span>;
+		}
+	}
+
+	<span class="tok-keyword">this</span>.lbtn_up = (x, y) =&gt; {
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.trace(x, y)) {
+			<span class="tok-keyword">switch</span> (<span class="tok-literal">true</span>) {
+				<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.up_btn.lbtn_up(x, y):
+				<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.down_btn.lbtn_up(x, y):
+				<span class="tok-keyword">case</span> !<span class="tok-keyword">this</span>.in_range:
+					<span class="tok-keyword">break</span>;
+				<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.mode == <span class="tok-string">&#39;autoplaylists&#39;</span>:
+					<span class="tok-keyword">if</span> (x &gt; <span class="tok-keyword">this</span>.x &amp;&amp; x &lt; <span class="tok-keyword">this</span>.x + Math.min(<span class="tok-keyword">this</span>.data[<span class="tok-keyword">this</span>.index].width, <span class="tok-keyword">this</span>.text_width)) {
+						<span class="tok-keyword">this</span>.edit(x, y);
+					}
+					<span class="tok-keyword">break</span>;
+				<span class="tok-keyword">case</span> x &gt; <span class="tok-keyword">this</span>.x + <span class="tok-keyword">this</span>.text_x &amp;&amp; x &lt; <span class="tok-keyword">this</span>.x + <span class="tok-keyword">this</span>.text_x + Math.min(<span class="tok-keyword">this</span>.data[<span class="tok-keyword">this</span>.index].width, <span class="tok-keyword">this</span>.text_width):
+					<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.data[<span class="tok-keyword">this</span>.index].url.startsWith(<span class="tok-string">&#39;http&#39;</span>)) {
+						_run(<span class="tok-keyword">this</span>.data[<span class="tok-keyword">this</span>.index].url);
+					} <span class="tok-keyword">else</span> {
+						plman.CreateAutoPlaylist(plman.PlaylistCount, <span class="tok-keyword">this</span>.data[<span class="tok-keyword">this</span>.index].name, <span class="tok-keyword">this</span>.data[<span class="tok-keyword">this</span>.index].url);
+						plman.ActivePlaylist = plman.PlaylistCount - <span class="tok-number">1</span>;
+					}
+					<span class="tok-keyword">break</span>;
+			}
+			<span class="tok-keyword">return</span> <span class="tok-literal">true</span>;
+		} <span class="tok-keyword">else</span> {
+			<span class="tok-keyword">return</span> <span class="tok-literal">false</span>;
+		}
+	}
+
+	<span class="tok-keyword">this</span>.rbtn_up = (x, y) =&gt; {
+		<span class="tok-keyword">switch</span> (<span class="tok-keyword">this</span>.mode) {
+			<span class="tok-keyword">case</span> <span class="tok-string">&#39;autoplaylists&#39;</span>:
+				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1000</span>, <span class="tok-string">&#39;Add new autoplaylist...&#39;</span>);
+				panel.m.AppendMenuSeparator();
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.deleted_items.length) {
+					_(<span class="tok-keyword">this</span>.deleted_items)
+						.take(<span class="tok-number">8</span>)
+						.forEach((item, i) =&gt; {
+							panel.s10.AppendMenuItem(MF_STRING, i + <span class="tok-number">1010</span>, item.name);
+						})
+					panel.s10.AppendTo(panel.m, MF_STRING, <span class="tok-string">&#39;Restore&#39;</span>);
+					panel.m.AppendMenuSeparator();
+				}
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-string">&#39;lastfm_info&#39;</span>:
+				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1100</span>, <span class="tok-string">&#39;Artist Info&#39;</span>);
+				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1101</span>, <span class="tok-string">&#39;User Charts&#39;</span>);
+				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1102</span>, <span class="tok-string">&#39;Recent Tracks&#39;</span>);
+				panel.m.CheckMenuRadioItem(<span class="tok-number">1100</span>, <span class="tok-number">1102</span>, <span class="tok-keyword">this</span>.properties.mode.value + <span class="tok-number">1100</span>);
+				panel.m.AppendMenuSeparator();
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">0</span>) {
+					panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1105</span>, <span class="tok-string">&#39;Similar Artists&#39;</span>);
+					panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1106</span>, <span class="tok-string">&#39;Top Tracks&#39;</span>);
+					panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1107</span>, <span class="tok-string">&#39;Top Tags&#39;</span>);
+					panel.m.CheckMenuRadioItem(<span class="tok-number">1105</span>, <span class="tok-number">1107</span>, <span class="tok-keyword">this</span>.properties.artist_method.value + <span class="tok-number">1105</span>);
+					panel.m.AppendMenuSeparator();
+					<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.artist_method.value == <span class="tok-number">0</span>) {
+						panel.s10.AppendMenuItem(MF_STRING, <span class="tok-number">1110</span>, <span class="tok-string">&#39;Open Last.fm website&#39;</span>);
+						panel.s10.AppendMenuItem(MF_STRING, <span class="tok-number">1111</span>, <span class="tok-string">&#39;Autoplaylist&#39;</span>);
+						panel.s10.CheckMenuRadioItem(<span class="tok-number">1110</span>, <span class="tok-number">1111</span>, <span class="tok-keyword">this</span>.properties.link.value + <span class="tok-number">1110</span>);
+						panel.s10.AppendTo(panel.m, MF_STRING, <span class="tok-string">&#39;Links&#39;</span>);
+						panel.m.AppendMenuSeparator();
+					}
+				} <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.mode.value &lt; <span class="tok-number">2</span>) {
+					panel.s10.AppendMenuItem(MF_STRING, <span class="tok-number">1110</span>, <span class="tok-string">&#39;Open Last.fm website&#39;</span>);
+					panel.s10.AppendMenuItem(MF_STRING, <span class="tok-number">1111</span>, <span class="tok-string">&#39;Autoplaylist&#39;</span>);
+					panel.s10.CheckMenuRadioItem(<span class="tok-number">1110</span>, <span class="tok-number">1111</span>, <span class="tok-keyword">this</span>.properties.link.value + <span class="tok-number">1110</span>);
+					panel.s10.AppendTo(panel.m, <span class="tok-keyword">this</span>.properties.method.value == <span class="tok-number">0</span> ? MF_STRING : MF_GRAYED, <span class="tok-string">&#39;Links&#39;</span>);
+					panel.m.AppendMenuSeparator();
+				}
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">1</span>) {
+					_.forEach(<span class="tok-keyword">this</span>.methods, (item, i) =&gt; {
+						panel.m.AppendMenuItem(MF_STRING, i + <span class="tok-number">1120</span>, _.capitalize(item.display));
+					});
+					panel.m.CheckMenuRadioItem(<span class="tok-number">1120</span>, <span class="tok-number">1122</span>, <span class="tok-keyword">this</span>.properties.method.value + <span class="tok-number">1120</span>);
+					panel.m.AppendMenuSeparator();
+					_.forEach(<span class="tok-keyword">this</span>.periods, (item, i) =&gt; {
+						panel.m.AppendMenuItem(MF_STRING, i + <span class="tok-number">1130</span>, _.capitalize(item.display));
+					});
+					panel.m.CheckMenuRadioItem(<span class="tok-number">1130</span>, <span class="tok-number">1135</span>, <span class="tok-keyword">this</span>.properties.period.value + <span class="tok-number">1130</span>);
+					panel.m.AppendMenuSeparator();
+					panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1140</span>, <span class="tok-string">&#39;Bar colour...&#39;</span>);
+					panel.m.AppendMenuSeparator();
+				}
+				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1150</span>, <span class="tok-string">&#39;Last.fm username...&#39;</span>);
+				panel.m.AppendMenuSeparator();
+				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1199</span>, <span class="tok-string">&#39;Last.fm API key&#39;</span>);
+				panel.m.AppendMenuSeparator();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-string">&#39;musicbrainz&#39;</span>:
+				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1200</span>, <span class="tok-string">&#39;Releases&#39;</span>);
+				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1201</span>, <span class="tok-string">&#39;Links&#39;</span>);
+				panel.m.CheckMenuRadioItem(<span class="tok-number">1200</span>, <span class="tok-number">1201</span>, <span class="tok-keyword">this</span>.properties.mode.value + <span class="tok-number">1200</span>);
+				panel.m.AppendMenuSeparator();
+				<span class="tok-keyword">if</span> (!_isUUID(<span class="tok-keyword">this</span>.mb_id)) {
+					panel.m.AppendMenuItem(MF_GRAYED, <span class="tok-number">1203</span>, <span class="tok-string">&#39;Artist MBID missing. Use Musicbrainz Picard or foo_musicbrainz to tag your files.&#39;</span>);
+					panel.m.AppendMenuSeparator();
+				}
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-string">&#39;properties&#39;</span>: {
+				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1300</span>, <span class="tok-string">&#39;Metadata&#39;</span>);
+				panel.m.CheckMenuItem(<span class="tok-number">1300</span>, <span class="tok-keyword">this</span>.properties.meta.enabled);
+				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1301</span>, <span class="tok-string">&#39;Location&#39;</span>);
+				panel.m.CheckMenuItem(<span class="tok-number">1301</span>, <span class="tok-keyword">this</span>.properties.location.enabled);
+				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1302</span>, <span class="tok-string">&#39;Tech Info&#39;</span>);
+				panel.m.CheckMenuItem(<span class="tok-number">1302</span>, <span class="tok-keyword">this</span>.properties.tech.enabled);
+				panel.m.AppendMenuItem(<span class="tok-keyword">this</span>.foo_playcount ? MF_STRING : MF_GRAYED, <span class="tok-number">1303</span>, <span class="tok-string">&#39;Playback Statistics (foo_playcount)&#39;</span>);
+				panel.m.CheckMenuItem(<span class="tok-number">1303</span>, <span class="tok-keyword">this</span>.foo_playcount &amp;&amp; <span class="tok-keyword">this</span>.properties.playcount.enabled);
+				<span class="tok-comment">// Regorxxx &lt;- Support both JS hosts</span>
+				<span class="tok-keyword">const</span> jsHost = fb.ComponentPath.includes(<span class="tok-string">&#39;foo_uie_jsplitter&#39;</span>)
+					? <span class="tok-string">&#39;JSplitter&#39;</span>
+					: <span class="tok-string">&#39;SMP&#39;</span>;
+				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1304</span>, jsHost + <span class="tok-string">&#39; Stats&#39;</span>);
+				<span class="tok-comment">// Regorxxx -&gt;</span>
+				panel.m.CheckMenuItem(<span class="tok-number">1304</span>, <span class="tok-keyword">this</span>.properties.stats.enabled);
+				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1305</span>, <span class="tok-string">&#39;Replaygain&#39;</span>);
+				panel.m.CheckMenuItem(<span class="tok-number">1305</span>, <span class="tok-keyword">this</span>.properties.rg.enabled);
+				panel.m.AppendMenuSeparator();
+				<span class="tok-comment">// Regorxxx &lt;- Full properties</span>
+				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1306</span>, <span class="tok-string">&#39;Retrieve full metadata&#39;</span>);
+				panel.m.CheckMenuItem(<span class="tok-number">1306</span>, <span class="tok-keyword">this</span>.properties.fullV2.enabled);
+				<span class="tok-comment">// Regorxxx -&gt;</span>
+				panel.m.AppendMenuSeparator();
+				<span class="tok-keyword">break</span>;
+			}
+			<span class="tok-keyword">case</span> <span class="tok-string">&#39;queue_viewer&#39;</span>:
+				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1400</span>, <span class="tok-string">&#39;Item display title formatting...&#39;</span>);
+				panel.m.AppendMenuItem(<span class="tok-keyword">this</span>.data.length ? MF_STRING : MF_GRAYED, <span class="tok-number">1401</span>, <span class="tok-string">&#39;Flush playback queue&#39;</span>);
+				panel.m.AppendMenuSeparator();
+				<span class="tok-keyword">break</span>;
+		}
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.mode != <span class="tok-string">&#39;queue_viewer&#39;</span>) {
+			panel.m.AppendMenuItem(_isFile(<span class="tok-keyword">this</span>.filename) ? MF_STRING : MF_GRAYED, <span class="tok-number">1999</span>, <span class="tok-string">&#39;Open containing folder&#39;</span>);
+			panel.m.AppendMenuSeparator();
+		}
+	}
+
+	<span class="tok-keyword">this</span>.rbtn_up_done = (idx) =&gt; {
+		<span class="tok-keyword">switch</span> (idx) {
+			<span class="tok-keyword">case</span> <span class="tok-number">1000</span>:
+				<span class="tok-keyword">this</span>.add();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-number">1010</span>:
+			<span class="tok-keyword">case</span> <span class="tok-number">1011</span>:
+			<span class="tok-keyword">case</span> <span class="tok-number">1012</span>:
+			<span class="tok-keyword">case</span> <span class="tok-number">1013</span>:
+			<span class="tok-keyword">case</span> <span class="tok-number">1014</span>:
+			<span class="tok-keyword">case</span> <span class="tok-number">1015</span>:
+			<span class="tok-keyword">case</span> <span class="tok-number">1016</span>:
+			<span class="tok-keyword">case</span> <span class="tok-number">1017</span>: {
+				<span class="tok-keyword">const</span> item = idx - <span class="tok-number">1010</span>;
+				<span class="tok-keyword">this</span>.data.push(<span class="tok-keyword">this</span>.deleted_items[item]);
+				<span class="tok-keyword">this</span>.deleted_items.splice(item, <span class="tok-number">1</span>);
+				<span class="tok-keyword">this</span>.save();
+				<span class="tok-keyword">break</span>;
+			}
+			<span class="tok-keyword">case</span> <span class="tok-number">1100</span>:
+				<span class="tok-keyword">this</span>.properties.mode.value = <span class="tok-number">0</span>;
+				<span class="tok-keyword">this</span>.reset();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-number">1101</span>:
+			<span class="tok-keyword">case</span> <span class="tok-number">1102</span>:
+				<span class="tok-keyword">this</span>.properties.mode.value = idx - <span class="tok-number">1100</span>;
+				<span class="tok-keyword">this</span>.update();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-number">1105</span>:
+			<span class="tok-keyword">case</span> <span class="tok-number">1106</span>:
+			<span class="tok-keyword">case</span> <span class="tok-number">1107</span>:
+				<span class="tok-keyword">this</span>.properties.artist_method.value = idx - <span class="tok-number">1105</span>;
+				<span class="tok-keyword">this</span>.reset();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-number">1110</span>:
+			<span class="tok-keyword">case</span> <span class="tok-number">1111</span>:
+				<span class="tok-keyword">this</span>.properties.link.value = idx - <span class="tok-number">1110</span>;
+				<span class="tok-keyword">this</span>.update();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-number">1120</span>:
+			<span class="tok-keyword">case</span> <span class="tok-number">1121</span>:
+			<span class="tok-keyword">case</span> <span class="tok-number">1122</span>:
+				<span class="tok-keyword">this</span>.properties.method.value = idx - <span class="tok-number">1120</span>;
+				<span class="tok-keyword">this</span>.update();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-number">1130</span>:
+			<span class="tok-keyword">case</span> <span class="tok-number">1131</span>:
+			<span class="tok-keyword">case</span> <span class="tok-number">1132</span>:
+			<span class="tok-keyword">case</span> <span class="tok-number">1133</span>:
+			<span class="tok-keyword">case</span> <span class="tok-number">1134</span>:
+			<span class="tok-keyword">case</span> <span class="tok-number">1135</span>:
+				<span class="tok-keyword">this</span>.properties.period.value = idx - <span class="tok-number">1130</span>;
+				<span class="tok-keyword">this</span>.update();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-number">1140</span>:
+				<span class="tok-keyword">this</span>.properties.colour.value = utils.ColourPicker(window.ID, <span class="tok-keyword">this</span>.properties.colour.value);
+				window.Repaint();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-number">1150</span>:
+				lastfm.update_username();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-number">1199</span>:
+				lastfm.api_key.value = utils.InputBox(window.ID, <span class="tok-string">&#39;On the 31st August 2024, it was noticed that the Last.fm API key supplied for many years has been blocked for excessive usage.\nYou can get one from this link:\n\nhttps://www.last.fm/api/account/create\n\nInput your own API key:&#39;</span>, <span class="tok-string">&#39;Last.fm API key&#39;</span>, lastfm.api_key.value, <span class="tok-literal">false</span>);
+				window.Reload();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-number">1200</span>:
+			<span class="tok-keyword">case</span> <span class="tok-number">1201</span>:
+				<span class="tok-keyword">this</span>.properties.mode.value = idx - <span class="tok-number">1200</span>;
+				<span class="tok-keyword">this</span>.reset();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-number">1300</span>:
+				<span class="tok-keyword">this</span>.properties.meta.toggle();
+				panel.item_focus_change();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-number">1301</span>:
+				<span class="tok-keyword">this</span>.properties.location.toggle();
+				panel.item_focus_change();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-number">1302</span>:
+				<span class="tok-keyword">this</span>.properties.tech.toggle();
+				panel.item_focus_change();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-number">1303</span>:
+				<span class="tok-keyword">this</span>.properties.playcount.toggle();
+				panel.item_focus_change();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-number">1304</span>:
+				<span class="tok-keyword">this</span>.properties.stats.toggle();
+				panel.item_focus_change();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-number">1305</span>:
+				<span class="tok-keyword">this</span>.properties.rg.toggle();
+				panel.item_focus_change();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-comment">// Regorxxx &lt;- Full properties</span>
+			<span class="tok-keyword">case</span> <span class="tok-number">1306</span>:
+				<span class="tok-keyword">this</span>.properties.fullV2.toggle();
+				panel.item_focus_change();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-comment">// Regorxxx -&gt;</span>
+			<span class="tok-keyword">case</span> <span class="tok-number">1400</span>: {
+				<span class="tok-keyword">let</span> tmp = utils.InputBox(window.ID, <span class="tok-string">&#39;Enter title formatting&#39;</span>, window.ScriptInfo.Name, <span class="tok-keyword">this</span>.properties.tf.value);
+				<span class="tok-keyword">this</span>.properties.tf.value = tmp || <span class="tok-keyword">this</span>.properties.tf.default_;
+				<span class="tok-keyword">this</span>.tfo = fb.TitleFormat(<span class="tok-keyword">this</span>.properties.tf.value);
+				<span class="tok-keyword">this</span>.update();
+				<span class="tok-keyword">break</span>;
+			}
+			<span class="tok-keyword">case</span> <span class="tok-number">1401</span>:
+				plman.FlushPlaybackQueue();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-number">1999</span>:
+				_explorer(<span class="tok-keyword">this</span>.filename);
+				<span class="tok-keyword">break</span>;
+		}
+	}
+
+	<span class="tok-keyword">this</span>.key_down = (k) =&gt; {
+		<span class="tok-keyword">switch</span> (k) {
+			<span class="tok-keyword">case</span> VK_UP:
+				<span class="tok-keyword">this</span>.wheel(<span class="tok-number">1</span>);
+				<span class="tok-keyword">return</span> <span class="tok-literal">true</span>;
+			<span class="tok-keyword">case</span> VK_DOWN:
+				<span class="tok-keyword">this</span>.wheel(-<span class="tok-number">1</span>);
+				<span class="tok-keyword">return</span> <span class="tok-literal">true</span>;
+			<span class="tok-keyword">default</span>:
+				<span class="tok-keyword">return</span> <span class="tok-literal">false</span>;
+		}
+	}
+
+	<span class="tok-keyword">this</span>.update = () =&gt; {
+		<span class="tok-keyword">this</span>.data = [];
+		<span class="tok-keyword">this</span>.spacer_w = _textWidth(<span class="tok-string">&#39;0000&#39;</span>, panel.fonts.normal);
+		<span class="tok-keyword">switch</span> (<span class="tok-keyword">this</span>.mode) {
+			<span class="tok-keyword">case</span> <span class="tok-string">&#39;autoplaylists&#39;</span>:
+				<span class="tok-keyword">if</span> (_isFile(<span class="tok-keyword">this</span>.filename)) {
+					<span class="tok-keyword">this</span>.data = _(_jsonParseFile(<span class="tok-keyword">this</span>.filename))
+						.forEach((item) =&gt; {
+							item.width = _textWidth(item.name, panel.fonts.normal);
+						})
+				}
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-string">&#39;lastfm_info&#39;</span>:
+				<span class="tok-keyword">this</span>.filename = <span class="tok-string">&#39;&#39;</span>;
+				<span class="tok-keyword">switch</span> (<span class="tok-keyword">this</span>.properties.mode.value) {
+					<span class="tok-keyword">case</span> <span class="tok-number">0</span>:
+						<span class="tok-keyword">this</span>.filename = _artistFolder(<span class="tok-keyword">this</span>.artist) + <span class="tok-string">&#39;lastfm.&#39;</span> + <span class="tok-keyword">this</span>.artist_methods[<span class="tok-keyword">this</span>.properties.artist_method.value].method + <span class="tok-string">&#39;.json&#39;</span>;
+						<span class="tok-keyword">if</span> (_isFile(<span class="tok-keyword">this</span>.filename)) {
+							<span class="tok-keyword">this</span>.data = _(_.get(_jsonParseFile(<span class="tok-keyword">this</span>.filename), <span class="tok-keyword">this</span>.artist_methods[<span class="tok-keyword">this</span>.properties.artist_method.value].json, []))
+								.map((item) =&gt; {
+									<span class="tok-keyword">let</span> name, url;
+									<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.artist_method.value == <span class="tok-number">1</span>) {
+										name = item.name;
+										url = item.url;
+									} <span class="tok-keyword">else</span> {
+										name = item.name;
+										url = <span class="tok-keyword">this</span>.properties.artist_method.value == <span class="tok-number">0</span>
+											? (<span class="tok-keyword">this</span>.properties.link.value == <span class="tok-number">0</span> ? item.url : <span class="tok-string">&#39;artist HAS &#39;</span> + item.name)
+											: item.url;
+									}
+									<span class="tok-keyword">return</span> {
+										name: name,
+										width: _textWidth(name, panel.fonts.normal),
+										url: url
+									};
+								})
+								.value();
+							<span class="tok-keyword">if</span> (_fileExpired(<span class="tok-keyword">this</span>.filename, ONE_DAY)) {
+								<span class="tok-keyword">this</span>.get();
+							}
+						} <span class="tok-keyword">else</span> {
+							<span class="tok-keyword">this</span>.get();
+						}
+						<span class="tok-keyword">break</span>;
+					<span class="tok-keyword">case</span> <span class="tok-number">1</span>:
+						<span class="tok-keyword">if</span> (!lastfm.username.length) {
+							console.log(N, <span class="tok-string">&#39;Last.fm username not set.&#39;</span>);
+							<span class="tok-keyword">break</span>;
+						}
+						<span class="tok-keyword">this</span>.filename = folders.lastfm + lastfm.username + <span class="tok-string">&#39;.&#39;</span> + <span class="tok-keyword">this</span>.methods[<span class="tok-keyword">this</span>.properties.method.value].method + <span class="tok-string">&#39;.&#39;</span> + <span class="tok-keyword">this</span>.periods[<span class="tok-keyword">this</span>.properties.period.value].period + <span class="tok-string">&#39;.json&#39;</span>;
+						<span class="tok-keyword">if</span> (_isFile(<span class="tok-keyword">this</span>.filename)) {
+							<span class="tok-keyword">let</span> data = _.get(_jsonParseFile(<span class="tok-keyword">this</span>.filename), <span class="tok-keyword">this</span>.methods[<span class="tok-keyword">this</span>.properties.method.value].json, []);
+							<span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; data.length; i++) {
+								<span class="tok-keyword">let</span> name, url;
+								<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.method.value == <span class="tok-number">0</span>) {
+									name = data[i].name;
+									url = <span class="tok-keyword">this</span>.properties.link.value == <span class="tok-number">0</span> ? data[i].url : <span class="tok-string">&#39;artist HAS &#39;</span> + name;
+								} <span class="tok-keyword">else</span> {
+									name = data[i].artist.name + <span class="tok-string">&#39; - &#39;</span> + data[i].name;
+									url = data[i].url;
+								}
+								<span class="tok-keyword">this</span>.data[i] = {
+									name: name,
+									width: _textWidth(name, panel.fonts.normal),
+									url: url,
+									playcount: data[i].playcount,
+									rank: i &gt; <span class="tok-number">0</span> &amp;&amp; data[i].playcount == data[i - <span class="tok-number">1</span>].playcount ? <span class="tok-keyword">this</span>.data[i - <span class="tok-number">1</span>].rank : i + <span class="tok-number">1</span>
+								};
+							}
+							<span class="tok-keyword">if</span> (_fileExpired(<span class="tok-keyword">this</span>.filename, ONE_DAY)) {
+								<span class="tok-keyword">this</span>.get();
+							}
+						} <span class="tok-keyword">else</span> {
+							<span class="tok-keyword">this</span>.get();
+						}
+						<span class="tok-keyword">break</span>;
+					<span class="tok-keyword">case</span> <span class="tok-number">2</span>:
+						<span class="tok-keyword">if</span> (!lastfm.username.length) {
+							console.log(N, <span class="tok-string">&#39;Last.fm username not set.&#39;</span>);
+							<span class="tok-keyword">break</span>;
+						}
+						<span class="tok-keyword">this</span>.filename = folders.lastfm + lastfm.username + <span class="tok-string">&#39;.user.getRecentTracks.json&#39;</span>;
+						<span class="tok-keyword">if</span> (_isFile(<span class="tok-keyword">this</span>.filename)) {
+							<span class="tok-keyword">this</span>.data = _(_.get(_jsonParseFile(<span class="tok-keyword">this</span>.filename), <span class="tok-string">&#39;recenttracks.track&#39;</span>, []))
+								.filter(<span class="tok-string">&#39;date&#39;</span>)
+								.map((item) =&gt; {
+									<span class="tok-keyword">const</span> name = item.artist[<span class="tok-string">&#39;#text&#39;</span>] + <span class="tok-string">&#39; - &#39;</span> + item.name;
+									<span class="tok-keyword">return</span> {
+										name: name,
+										width: _textWidth(name, panel.fonts.normal),
+										url: item.url
+									};
+								})
+								.value();
+						} <span class="tok-keyword">else</span> {
+							<span class="tok-keyword">this</span>.get();
+						}
+				}
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-string">&#39;musicbrainz&#39;</span>:
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">0</span>) {
+					<span class="tok-keyword">this</span>.mb_data = [];
+					<span class="tok-keyword">this</span>.mb_offset = <span class="tok-number">0</span>;
+					<span class="tok-keyword">this</span>.filename = _artistFolder(<span class="tok-keyword">this</span>.artist) + <span class="tok-string">&#39;musicbrainz.releases.&#39;</span> + <span class="tok-keyword">this</span>.mb_id + <span class="tok-string">&#39;.json&#39;</span>;
+					<span class="tok-keyword">if</span> (_isFile(<span class="tok-keyword">this</span>.filename)) {
+						<span class="tok-keyword">let</span> data = _(_jsonParseFile(<span class="tok-keyword">this</span>.filename))
+							.orderBy([<span class="tok-string">&#39;first-release-date&#39;</span>, <span class="tok-string">&#39;title&#39;</span>], [<span class="tok-string">&#39;desc&#39;</span>, <span class="tok-string">&#39;asc&#39;</span>])
+							.map((item) =&gt; ({
+								name: item.title,
+								width: _textWidth(item.title, panel.fonts.normal),
+								url: <span class="tok-string">&#39;https://musicbrainz.org/release-group/&#39;</span> + item.id,
+								date: item[<span class="tok-string">&#39;first-release-date&#39;</span>].substring(<span class="tok-number">0</span>, <span class="tok-number">4</span>),
+								primary: item[<span class="tok-string">&#39;primary-type&#39;</span>],
+								secondary: item[<span class="tok-string">&#39;secondary-types&#39;</span>].sort()[<span class="tok-number">0</span>] || <span class="tok-literal">null</span>
+							}))
+							.nest([<span class="tok-string">&#39;primary&#39;</span>, <span class="tok-string">&#39;secondary&#39;</span>])
+							.value()
+						_.forEach([<span class="tok-string">&#39;Album&#39;</span>, <span class="tok-string">&#39;Single&#39;</span>, <span class="tok-string">&#39;EP&#39;</span>, <span class="tok-string">&#39;Other&#39;</span>, <span class="tok-string">&#39;Broadcast&#39;</span>, <span class="tok-string">&#39;null&#39;</span>], (primary) =&gt; {
+							_.forEach([<span class="tok-string">&#39;null&#39;</span>, <span class="tok-string">&#39;Audiobook&#39;</span>, <span class="tok-string">&#39;Compilation&#39;</span>, <span class="tok-string">&#39;Demo&#39;</span>, <span class="tok-string">&#39;DJ-mix&#39;</span>, <span class="tok-string">&#39;Interview&#39;</span>, <span class="tok-string">&#39;Live&#39;</span>, <span class="tok-string">&#39;Mixtape/Street&#39;</span>, <span class="tok-string">&#39;Remix&#39;</span>, <span class="tok-string">&#39;Spokenword&#39;</span>, <span class="tok-string">&#39;Soundtrack&#39;</span>], (secondary) =&gt; {
+								<span class="tok-keyword">let</span> group = _.get(data, primary + <span class="tok-string">&#39;.&#39;</span> + secondary);
+								<span class="tok-keyword">if</span> (group) {
+									<span class="tok-keyword">const</span> name = (primary + <span class="tok-string">&#39; + &#39;</span> + secondary).replace(<span class="tok-string">&#39;null + null&#39;</span>, <span class="tok-string">&#39;Unspecified type&#39;</span>).replace(<span class="tok-string">&#39;null + &#39;</span>, <span class="tok-string">&#39;&#39;</span>).replace(<span class="tok-string">&#39; + null&#39;</span>, <span class="tok-string">&#39;&#39;</span>);
+									<span class="tok-keyword">this</span>.data.push({ name: name, width: <span class="tok-number">0</span>, url: <span class="tok-string">&#39;&#39;</span>, date: <span class="tok-string">&#39;&#39;</span> });
+									<span class="tok-keyword">this</span>.data = [...<span class="tok-keyword">this</span>.data, ...group];
+									<span class="tok-keyword">this</span>.data.push({ name: <span class="tok-string">&#39;&#39;</span>, width: <span class="tok-number">0</span>, url: <span class="tok-string">&#39;&#39;</span>, date: <span class="tok-string">&#39;&#39;</span> });
+								}
+							});
+						});
+						<span class="tok-keyword">this</span>.data.pop();
+						<span class="tok-keyword">if</span> (_fileExpired(<span class="tok-keyword">this</span>.filename, ONE_DAY)) {
+							<span class="tok-keyword">this</span>.get();
+						}
+					} <span class="tok-keyword">else</span> {
+						<span class="tok-keyword">this</span>.get();
+					}
+				} <span class="tok-keyword">else</span> {
+					<span class="tok-keyword">this</span>.filename = _artistFolder(<span class="tok-keyword">this</span>.artist) + <span class="tok-string">&#39;musicbrainz.links.&#39;</span> + <span class="tok-keyword">this</span>.mb_id + <span class="tok-string">&#39;.json&#39;</span>;
+					<span class="tok-keyword">if</span> (_isFile(<span class="tok-keyword">this</span>.filename)) {
+						<span class="tok-keyword">this</span>.data = _(_.get(_jsonParseFile(<span class="tok-keyword">this</span>.filename), <span class="tok-string">&#39;relations&#39;</span>, []))
+							.map((item) =&gt; {
+								<span class="tok-keyword">const</span> url = decodeURIComponent(item.url.resource);
+								<span class="tok-keyword">return</span> {
+									name: url,
+									url: url,
+									width: _textWidth(url, panel.fonts.normal)
+								};
+							})
+							.sortBy((item) =&gt; {
+								<span class="tok-keyword">return</span> item.name.split(<span class="tok-string">&#39;//&#39;</span>)[<span class="tok-number">1</span>].replace(<span class="tok-string">&#39;www.&#39;</span>, <span class="tok-string">&#39;&#39;</span>);
+							})
+							.value();
+						<span class="tok-keyword">const</span> url = <span class="tok-string">&#39;https://musicbrainz.org/artist/&#39;</span> + <span class="tok-keyword">this</span>.mb_id;
+						<span class="tok-keyword">this</span>.data.unshift({
+							name: url,
+							url: url,
+							width: _textWidth(url, panel.fonts.normal)
+						});
+						<span class="tok-keyword">if</span> (_fileExpired(<span class="tok-keyword">this</span>.filename, ONE_DAY)) {
+							<span class="tok-keyword">this</span>.get();
+						}
+					} <span class="tok-keyword">else</span> {
+						<span class="tok-keyword">this</span>.get();
+					}
+				}
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-string">&#39;properties&#39;</span>: {
+				<span class="tok-keyword">this</span>.text_x = <span class="tok-number">0</span>;
+				<span class="tok-keyword">this</span>.filename = panel.metadb.Path;
+				<span class="tok-keyword">let</span> fileinfo = panel.metadb.GetFileInfo(<span class="tok-keyword">this</span>.properties.fullV2.enabled); <span class="tok-comment">// Regorxxx &lt;- Full properties -&gt;</span>
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.meta.enabled) {
+					<span class="tok-keyword">this</span>.add_meta(fileinfo);
+				}
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.location.enabled) {
+					<span class="tok-keyword">this</span>.add_location();
+				}
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.tech.enabled) {
+					<span class="tok-keyword">this</span>.add_tech(fileinfo);
+				}
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.custom_fields) {
+					<span class="tok-keyword">this</span>.add_custom();
+				}
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.foo_playcount &amp;&amp; <span class="tok-keyword">this</span>.properties.playcount.enabled) {
+					<span class="tok-keyword">this</span>.add_playcount();
+				}
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.stats.enabled) {
+					<span class="tok-keyword">this</span>.add_stats();
+				}
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.rg.enabled) {
+					<span class="tok-keyword">this</span>.add_rg();
+				}
+				<span class="tok-keyword">this</span>.data.pop();
+				_.forEach(<span class="tok-keyword">this</span>.data, (item) =&gt; {
+					item.width = _textWidth(item.value, panel.fonts.normal);
+					<span class="tok-keyword">this</span>.text_x = Math.max(<span class="tok-keyword">this</span>.text_x, _textWidth(item.name, panel.fonts.normal) + <span class="tok-number">20</span>);
+				});
+				<span class="tok-keyword">break</span>;
+			}
+			<span class="tok-keyword">case</span> <span class="tok-string">&#39;queue_viewer&#39;</span>: {
+				<span class="tok-keyword">let</span> items = plman.GetPlaybackQueueHandles();
+				<span class="tok-keyword">this</span>.data = _.map(<span class="tok-keyword">this</span>.tfo.EvalWithMetadbs(items), (item) =&gt; ({ name: item }));
+				<span class="tok-keyword">break</span>;
+			}
+		}
+		<span class="tok-keyword">this</span>.items = <span class="tok-keyword">this</span>.data.length;
+		<span class="tok-keyword">this</span>.offset = <span class="tok-number">0</span>;
+		<span class="tok-keyword">this</span>.index = <span class="tok-number">0</span>;
+		window.Repaint();
+	}
+
+	<span class="tok-keyword">this</span>.header_text = () =&gt; {
+		<span class="tok-keyword">switch</span> (<span class="tok-keyword">this</span>.mode) {
+			<span class="tok-keyword">case</span> <span class="tok-string">&#39;autoplaylists&#39;</span>:
+				<span class="tok-keyword">return</span> <span class="tok-string">&#39;Autoplaylists&#39;</span>;
+			<span class="tok-keyword">case</span> <span class="tok-string">&#39;lastfm_info&#39;</span>:
+				<span class="tok-keyword">switch</span> (<span class="tok-keyword">this</span>.properties.mode.value) {
+					<span class="tok-keyword">case</span> <span class="tok-number">0</span>:
+						<span class="tok-keyword">return</span> <span class="tok-keyword">this</span>.artist + <span class="tok-string">&#39;: &#39;</span> + <span class="tok-keyword">this</span>.artist_methods[<span class="tok-keyword">this</span>.properties.artist_method.value].display;
+					<span class="tok-keyword">case</span> <span class="tok-number">1</span>:
+						<span class="tok-keyword">return</span> lastfm.username + <span class="tok-string">&#39;: &#39;</span> + <span class="tok-keyword">this</span>.periods[<span class="tok-keyword">this</span>.properties.period.value].display + <span class="tok-string">&#39; &#39;</span> + <span class="tok-keyword">this</span>.methods[<span class="tok-keyword">this</span>.properties.method.value].display + <span class="tok-string">&#39; charts&#39;</span>;
+					<span class="tok-keyword">case</span> <span class="tok-number">2</span>:
+						<span class="tok-keyword">return</span> lastfm.username + <span class="tok-string">&#39;: recent tracks&#39;</span>;
+				}
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-string">&#39;musicbrainz&#39;</span>:
+				<span class="tok-keyword">return</span> <span class="tok-keyword">this</span>.artist + <span class="tok-string">&#39;: &#39;</span> + (<span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">0</span> ? <span class="tok-string">&#39;releases&#39;</span> : <span class="tok-string">&#39;links&#39;</span>);
+			<span class="tok-keyword">case</span> <span class="tok-string">&#39;properties&#39;</span>:
+				<span class="tok-keyword">return</span> panel.tf(<span class="tok-string">&#39;%artist% - %title%&#39;</span>);
+			<span class="tok-keyword">case</span> <span class="tok-string">&#39;queue_viewer&#39;</span>:
+				<span class="tok-keyword">return</span> <span class="tok-string">&#39;Queue Viewer&#39;</span>;
+		}
+	}
+
+	<span class="tok-keyword">this</span>.reset = () =&gt; {
+		<span class="tok-keyword">this</span>.items = <span class="tok-number">0</span>;
+		<span class="tok-keyword">this</span>.data = [];
+		<span class="tok-keyword">this</span>.artist = <span class="tok-string">&#39;&#39;</span>;
+
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.mode == <span class="tok-string">&#39;lastfm_info&#39;</span> &amp;&amp; <span class="tok-keyword">this</span>.properties.mode.value &gt; <span class="tok-number">0</span>) {
+			<span class="tok-keyword">this</span>.update();
+		} <span class="tok-keyword">else</span> {
+			panel.item_focus_change();
+		}
+	}
+
+	<span class="tok-keyword">this</span>.init = () =&gt; {
+		<span class="tok-keyword">switch</span> (<span class="tok-keyword">this</span>.mode) {
+			<span class="tok-keyword">case</span> <span class="tok-string">&#39;autoplaylists&#39;</span>:
+				<span class="tok-keyword">this</span>.save = () =&gt; {
+					_save(<span class="tok-keyword">this</span>.filename, JSON.stringify(<span class="tok-keyword">this</span>.data, <span class="tok-keyword">this</span>.replacer));
+					<span class="tok-keyword">this</span>.update();
+				}
+
+				<span class="tok-keyword">this</span>.replacer = (key, value) =&gt; {
+					<span class="tok-keyword">return</span> key == <span class="tok-string">&#39;width&#39;</span> ? <span class="tok-literal">undefined</span> : value;
+				}
+
+				<span class="tok-keyword">this</span>.add = () =&gt; {
+					<span class="tok-keyword">const</span> new_name = utils.InputBox(window.ID, <span class="tok-string">&#39;Enter autoplaylist name&#39;</span>, window.ScriptInfo.Name);
+					<span class="tok-keyword">if</span> (!new_name.length) {
+						<span class="tok-keyword">return</span>;
+					}
+					<span class="tok-keyword">const</span> new_query = utils.InputBox(window.ID, <span class="tok-string">&#39;Enter autoplaylist query&#39;</span>, window.ScriptInfo.Name);
+					<span class="tok-keyword">if</span> (!new_query.length) {
+						<span class="tok-keyword">return</span>;
+					}
+					<span class="tok-keyword">const</span> new_sort = utils.InputBox(window.ID, <span class="tok-string">&#39;Enter sort pattern\n\n(optional)&#39;</span>, window.ScriptInfo.Name);
+					<span class="tok-keyword">const</span> new_forced = (new_sort.length ? WshShell.Popup(<span class="tok-string">&#39;Force sort?&#39;</span>, <span class="tok-number">0</span>, window.ScriptInfo.Name, popup.question + popup.yes_no) : popup.no) == popup.yes;
+					<span class="tok-keyword">this</span>.data.push({
+						name: new_name,
+						query: new_query,
+						sort: new_sort,
+						forced: new_forced
+					});
+					<span class="tok-keyword">this</span>.edit_done(<span class="tok-keyword">this</span>.data.length - <span class="tok-number">1</span>);
+				}
+
+				<span class="tok-keyword">this</span>.edit = (x, y) =&gt; {
+					<span class="tok-keyword">const</span> z = <span class="tok-keyword">this</span>.index;
+					_tt(<span class="tok-string">&#39;&#39;</span>);
+					<span class="tok-keyword">let</span> m = window.CreatePopupMenu();
+					m.AppendMenuItem(MF_STRING, <span class="tok-number">1</span>, <span class="tok-string">&#39;Run query&#39;</span>);
+					m.AppendMenuSeparator();
+					m.AppendMenuItem(MF_STRING, <span class="tok-number">2</span>, <span class="tok-string">&#39;Rename...&#39;</span>);
+					m.AppendMenuItem(MF_STRING, <span class="tok-number">3</span>, <span class="tok-string">&#39;Edit query...&#39;</span>);
+					m.AppendMenuItem(MF_STRING, <span class="tok-number">4</span>, <span class="tok-string">&#39;Edit sort pattern...&#39;</span>);
+					m.AppendMenuItem(MF_STRING, <span class="tok-number">5</span>, <span class="tok-string">&#39;Force Sort&#39;</span>);
+					m.CheckMenuItem(<span class="tok-number">5</span>, <span class="tok-keyword">this</span>.data[z].forced);
+					m.AppendMenuSeparator();
+					m.AppendMenuItem(z &gt; <span class="tok-number">0</span> ? MF_STRING : MF_GRAYED, <span class="tok-number">6</span>, <span class="tok-string">&#39;Move up&#39;</span>);
+					m.AppendMenuItem(z &lt; <span class="tok-keyword">this</span>.data.length - <span class="tok-number">1</span> ? MF_STRING : MF_GRAYED, <span class="tok-number">7</span>, <span class="tok-string">&#39;Move down&#39;</span>);
+					m.AppendMenuSeparator();
+					m.AppendMenuItem(MF_STRING, <span class="tok-number">8</span>, <span class="tok-string">&#39;Delete&#39;</span>);
+					<span class="tok-keyword">const</span> idx = m.TrackPopupMenu(x, y);
+					<span class="tok-keyword">switch</span> (idx) {
+						<span class="tok-keyword">case</span> <span class="tok-number">1</span>:
+							<span class="tok-keyword">this</span>.run_query(<span class="tok-keyword">this</span>.data[z].name, <span class="tok-keyword">this</span>.data[z].query, <span class="tok-keyword">this</span>.data[z].sort, <span class="tok-keyword">this</span>.data[z].forced);
+							<span class="tok-keyword">break</span>;
+						<span class="tok-keyword">case</span> <span class="tok-number">2</span>: {
+							<span class="tok-keyword">const</span> new_name = utils.InputBox(window.ID, <span class="tok-string">&#39;Rename autoplaylist&#39;</span>, window.ScriptInfo.Name, <span class="tok-keyword">this</span>.data[z].name);
+							<span class="tok-keyword">if</span> (new_name.length &amp;&amp; new_name != <span class="tok-keyword">this</span>.data[z].name) {
+								<span class="tok-keyword">this</span>.data[z].name = new_name;
+								<span class="tok-keyword">this</span>.edit_done(z);
+							}
+							<span class="tok-keyword">break</span>;
+						}
+						<span class="tok-keyword">case</span> <span class="tok-number">3</span>: {
+							<span class="tok-keyword">const</span> new_query = utils.InputBox(window.ID, <span class="tok-string">&#39;Enter autoplaylist query&#39;</span>, window.ScriptInfo.Name, <span class="tok-keyword">this</span>.data[z].query);
+							<span class="tok-keyword">if</span> (new_query.length &amp;&amp; new_query != <span class="tok-keyword">this</span>.data[z].query) {
+								<span class="tok-keyword">this</span>.data[z].query = new_query;
+								<span class="tok-keyword">this</span>.edit_done(z);
+							}
+							<span class="tok-keyword">break</span>;
+						}
+						<span class="tok-keyword">case</span> <span class="tok-number">4</span>: {
+							<span class="tok-keyword">const</span> new_sort = utils.InputBox(window.ID, <span class="tok-string">&#39;Enter sort pattern\n\n(optional)&#39;</span>, window.ScriptInfo.Name, <span class="tok-keyword">this</span>.data[z].sort);
+							<span class="tok-keyword">if</span> (new_sort != <span class="tok-keyword">this</span>.data[z].sort) {
+								<span class="tok-keyword">this</span>.data[z].sort = new_sort;
+								<span class="tok-keyword">if</span> (new_sort.length) {
+									<span class="tok-keyword">this</span>.data[z].forced = WshShell.Popup(<span class="tok-string">&#39;Force sort?&#39;</span>, <span class="tok-number">0</span>, window.ScriptInfo.Name, popup.question + popup.yes_no) == popup.yes;
+								}
+								<span class="tok-keyword">this</span>.edit_done(z);
+							}
+							<span class="tok-keyword">break</span>;
+						}
+						<span class="tok-keyword">case</span> <span class="tok-number">5</span>:
+							<span class="tok-keyword">this</span>.data[z].forced = !<span class="tok-keyword">this</span>.data[z].forced;
+							<span class="tok-keyword">this</span>.edit_done(z);
+							<span class="tok-keyword">break</span>;
+						<span class="tok-keyword">case</span> <span class="tok-number">6</span>:
+						<span class="tok-keyword">case</span> <span class="tok-number">7</span>: {
+							<span class="tok-keyword">let</span> tmp = <span class="tok-keyword">this</span>.data[z];
+							<span class="tok-keyword">this</span>.data.splice(z, <span class="tok-number">1</span>);
+							<span class="tok-keyword">this</span>.data.splice(idx == <span class="tok-number">6</span> ? z - <span class="tok-number">1</span> : z + <span class="tok-number">1</span>, <span class="tok-number">0</span>, tmp);
+							<span class="tok-keyword">this</span>.save();
+							<span class="tok-keyword">break</span>;
+						}
+						<span class="tok-keyword">case</span> <span class="tok-number">8</span>:
+							<span class="tok-keyword">this</span>.deleted_items.unshift(<span class="tok-keyword">this</span>.data[z]);
+							<span class="tok-keyword">this</span>.data.splice(z, <span class="tok-number">1</span>);
+							<span class="tok-keyword">this</span>.save();
+							<span class="tok-keyword">break</span>;
+					}
+				}
+
+				<span class="tok-keyword">this</span>.edit_done = (z) =&gt; {
+					<span class="tok-keyword">this</span>.run_query(<span class="tok-keyword">this</span>.data[z].name, <span class="tok-keyword">this</span>.data[z].query, <span class="tok-keyword">this</span>.data[z].sort, <span class="tok-keyword">this</span>.data[z].forced);
+					<span class="tok-keyword">this</span>.save();
+				}
+
+				<span class="tok-keyword">this</span>.run_query = (n, q, s, f) =&gt; {
+					<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>;
+					<span class="tok-keyword">while</span> (i &lt; plman.PlaylistCount) {
+						<span class="tok-keyword">if</span> (plman.GetPlaylistName(i) == n) {
+							plman.RemovePlaylist(i);
+						} <span class="tok-keyword">else</span> {
+							i++;
+						}
+					}
+					<span class="tok-keyword">try</span> {
+						plman.CreateAutoPlaylist(plman.PlaylistCount, n, q, s, f ? <span class="tok-number">1</span> : <span class="tok-number">0</span>);
+						plman.ActivePlaylist = plman.PlaylistCount - <span class="tok-number">1</span>;
+					} <span class="tok-keyword">catch</span> (e) {
+						fb.ShowPopupMessage(<span class="tok-string">`${e}`</span>);
+					}
+				}
+
+				_createFolder(folders.data);
+				<span class="tok-keyword">this</span>.deleted_items = [];
+				<span class="tok-keyword">this</span>.filename = folders.data + <span class="tok-string">&#39;autoplaylists.json&#39;</span>;
+				<span class="tok-keyword">this</span>.update();
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-string">&#39;lastfm_info&#39;</span>:
+				<span class="tok-keyword">this</span>.get = <span class="tok-keyword">function</span> () {
+					<span class="tok-keyword">if</span> (lastfm.api_key.value.length == <span class="tok-number">0</span>)
+						<span class="tok-keyword">return</span>;
+
+					<span class="tok-keyword">let</span> url;
+
+					<span class="tok-keyword">switch</span> (<span class="tok-keyword">this</span>.properties.mode.value) {
+						<span class="tok-keyword">case</span> <span class="tok-number">0</span>:
+							<span class="tok-keyword">if</span> (!_tagged(<span class="tok-keyword">this</span>.artist)) {
+								<span class="tok-keyword">return</span>;
+							}
+							url = lastfm.get_base_url() + <span class="tok-string">&#39;&amp;limit=100&amp;method=&#39;</span> + <span class="tok-keyword">this</span>.artist_methods[<span class="tok-keyword">this</span>.properties.artist_method.value].method + <span class="tok-string">&#39;&amp;artist=&#39;</span> + encodeURIComponent(<span class="tok-keyword">this</span>.artist);
+							<span class="tok-keyword">break</span>;
+						<span class="tok-keyword">case</span> <span class="tok-number">1</span>:
+							url = lastfm.get_base_url() + <span class="tok-string">&#39;&amp;limit=100&amp;method=&#39;</span> + <span class="tok-keyword">this</span>.methods[<span class="tok-keyword">this</span>.properties.method.value].method + <span class="tok-string">&#39;&amp;period=&#39;</span> + <span class="tok-keyword">this</span>.periods[<span class="tok-keyword">this</span>.properties.period.value].period + <span class="tok-string">&#39;&amp;user=&#39;</span> + lastfm.username;
+							<span class="tok-keyword">break</span>;
+						<span class="tok-keyword">case</span> <span class="tok-number">2</span>:
+							url = lastfm.get_base_url() + <span class="tok-string">&#39;&amp;limit=100&amp;method=user.getRecentTracks&amp;user=&#39;</span> + lastfm.username;
+							<span class="tok-keyword">break</span>;
+					}
+
+					<span class="tok-keyword">const</span> task_id = utils.HTTPRequestAsync(<span class="tok-number">0</span>, url, lastfm.ua);
+					<span class="tok-keyword">this</span>.filenames[task_id] = <span class="tok-keyword">this</span>.filename;
+				}
+
+				<span class="tok-keyword">this</span>.http_request_done = <span class="tok-keyword">function</span> (task_id, success, response_text) {
+					<span class="tok-keyword">const</span> f = <span class="tok-keyword">this</span>.filenames[task_id];
+
+					<span class="tok-keyword">if</span> (!f)
+						<span class="tok-keyword">return</span>;
+
+					<span class="tok-keyword">if</span> (!success) {
+						console.log(N, response_text);
+						<span class="tok-keyword">return</span>;
+					}
+
+					<span class="tok-keyword">const</span> data = _jsonParse(response_text);
+
+					<span class="tok-keyword">if</span> (data.error) {
+						console.log(N, data.message);
+						<span class="tok-keyword">return</span>;
+					}
+
+					<span class="tok-keyword">if</span> (_save(f, response_text)) {
+						<span class="tok-keyword">this</span>.reset();
+					}
+				}
+
+				_createFolder(folders.data);
+				_createFolder(folders.artists);
+				_createFolder(folders.lastfm);
+
+				<span class="tok-keyword">this</span>.artist_methods = [{
+					method: <span class="tok-string">&#39;artist.getSimilar&#39;</span>,
+					json: <span class="tok-string">&#39;similarartists.artist&#39;</span>,
+					display: <span class="tok-string">&#39;similar artists&#39;</span>
+				}, {
+					method: <span class="tok-string">&#39;artist.getTopTracks&#39;</span>,
+					json: <span class="tok-string">&#39;toptracks.track&#39;</span>,
+					display: <span class="tok-string">&#39;top tracks&#39;</span>
+				}, {
+					method: <span class="tok-string">&#39;artist.getTopTags&#39;</span>,
+					json: <span class="tok-string">&#39;toptags.tag&#39;</span>,
+					display: <span class="tok-string">&#39;top tags&#39;</span>
+				}
+				];
+
+				<span class="tok-keyword">this</span>.methods = [{
+					method: <span class="tok-string">&#39;user.getTopArtists&#39;</span>,
+					json: <span class="tok-string">&#39;topartists.artist&#39;</span>,
+					display: <span class="tok-string">&#39;artist&#39;</span>
+				}, {
+					method: <span class="tok-string">&#39;user.getTopAlbums&#39;</span>,
+					json: <span class="tok-string">&#39;topalbums.album&#39;</span>,
+					display: <span class="tok-string">&#39;album&#39;</span>
+				}, {
+					method: <span class="tok-string">&#39;user.getTopTracks&#39;</span>,
+					json: <span class="tok-string">&#39;toptracks.track&#39;</span>,
+					display: <span class="tok-string">&#39;track&#39;</span>
+				}
+				];
+
+				<span class="tok-keyword">this</span>.periods = [{
+					period: <span class="tok-string">&#39;overall&#39;</span>,
+					display: <span class="tok-string">&#39;overall&#39;</span>
+				}, {
+					period: <span class="tok-string">&#39;7day&#39;</span>,
+					display: <span class="tok-string">&#39;last 7 days&#39;</span>
+				}, {
+					period: <span class="tok-string">&#39;1month&#39;</span>,
+					display: <span class="tok-string">&#39;1 month&#39;</span>
+				}, {
+					period: <span class="tok-string">&#39;3month&#39;</span>,
+					display: <span class="tok-string">&#39;3 month&#39;</span>
+				}, {
+					period: <span class="tok-string">&#39;6month&#39;</span>,
+					display: <span class="tok-string">&#39;6 month&#39;</span>
+				}, {
+					period: <span class="tok-string">&#39;12month&#39;</span>,
+					display: <span class="tok-string">&#39;12 month&#39;</span>
+				}
+				];
+
+				<span class="tok-keyword">this</span>.time_elapsed = <span class="tok-number">0</span>;
+				<span class="tok-keyword">this</span>.filenames = {};
+
+				<span class="tok-keyword">this</span>.properties = {
+					mode: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.LASTFM.MODE&#39;</span>, <span class="tok-number">0</span>), <span class="tok-comment">// 0 artist 1 charts 2 recent tracks</span>
+					artist_method: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.LASTFM.ARTIST.METHOD&#39;</span>, <span class="tok-number">0</span>), <span class="tok-comment">// 0 similar artists 1 top tracks 2 top tags</span>
+					method: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.LASTFM.CHARTS.METHOD&#39;</span>, <span class="tok-number">0</span>),
+					period: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.LASTFM.CHARTS.PERIOD&#39;</span>, <span class="tok-number">0</span>),
+					colour: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.LASTFM.CHARTS.BAR.COLOUR&#39;</span>, _RGB(<span class="tok-number">60</span>, <span class="tok-number">60</span>, <span class="tok-number">60</span>)),
+					link: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.LASTFM.LINK&#39;</span>, <span class="tok-number">0</span>) <span class="tok-comment">// 0 last.fm website 1 autoplaylist</span>
+				};
+
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.mode.value &gt; <span class="tok-number">0</span>) {
+					<span class="tok-keyword">this</span>.update();
+				}
+
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-string">&#39;musicbrainz&#39;</span>:
+				<span class="tok-keyword">this</span>.get = <span class="tok-keyword">function</span> () {
+					<span class="tok-keyword">const</span> url = <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">0</span>
+						? <span class="tok-string">&#39;https://musicbrainz.org/ws/2/release-group?fmt=json&amp;limit=100&amp;offset=&#39;</span> + <span class="tok-keyword">this</span>.mb_offset + <span class="tok-string">&#39;&amp;artist=&#39;</span> + <span class="tok-keyword">this</span>.mb_id
+						: <span class="tok-string">&#39;https://musicbrainz.org/ws/2/artist/&#39;</span> + <span class="tok-keyword">this</span>.mb_id + <span class="tok-string">&#39;?fmt=json&amp;inc=url-rels&#39;</span>;
+					<span class="tok-keyword">const</span> task_id = utils.HTTPRequestAsync(<span class="tok-number">0</span>, url, <span class="tok-string">&#39;jsplitter_musicbrainz&#39;</span>);
+					<span class="tok-keyword">this</span>.filenames[task_id] = <span class="tok-keyword">this</span>.filename;
+				}
+
+				<span class="tok-keyword">this</span>.http_request_done = <span class="tok-keyword">function</span> (id, success, response_text) {
+					<span class="tok-keyword">const</span> f = <span class="tok-keyword">this</span>.filenames[id];
+
+					<span class="tok-keyword">if</span> (!f)
+						<span class="tok-keyword">return</span>;
+
+					<span class="tok-keyword">if</span> (!success) {
+						console.log(N, response_text);
+						<span class="tok-keyword">return</span>;
+					}
+
+					<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">0</span>) {
+						<span class="tok-keyword">const</span> data = _jsonParse(response_text);
+						<span class="tok-keyword">const</span> max_offset = Math.min(<span class="tok-number">500</span>, data[<span class="tok-string">&#39;release-group-count&#39;</span>] || <span class="tok-number">0</span>) - <span class="tok-number">100</span>;
+						<span class="tok-keyword">const</span> rg = data[<span class="tok-string">&#39;release-groups&#39;</span>] || [];
+
+						<span class="tok-keyword">if</span> (rg.length) {
+							Array.prototype.push.apply(<span class="tok-keyword">this</span>.mb_data, rg);
+						}
+
+						<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.mb_offset &lt; max_offset) {
+							<span class="tok-keyword">this</span>.mb_offset += <span class="tok-number">100</span>;
+							<span class="tok-keyword">this</span>.get();
+						} <span class="tok-keyword">else</span> {
+							<span class="tok-keyword">if</span> (_save(f, JSON.stringify(<span class="tok-keyword">this</span>.mb_data))) {
+								<span class="tok-keyword">this</span>.reset();
+							}
+						}
+					} <span class="tok-keyword">else</span> {
+						<span class="tok-keyword">if</span> (_save(f, response_text)) {
+							<span class="tok-keyword">this</span>.reset();
+						}
+					}
+				}
+
+				<span class="tok-keyword">this</span>.filenames = {};
+				<span class="tok-keyword">this</span>.mb_id = <span class="tok-string">&#39;&#39;</span>;
+				<span class="tok-keyword">this</span>.properties = {
+					mode: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.MUSICBRAINZ.MODE&#39;</span>, <span class="tok-number">0</span>) <span class="tok-comment">// 0 releases 1 links</span>
+				};
+
+				_createFolder(folders.data);
+				_createFolder(folders.artists);
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-string">&#39;properties&#39;</span>:
+				<span class="tok-keyword">this</span>.add_meta = (f) =&gt; {
+					<span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; f.MetaCount; i++) {
+						<span class="tok-keyword">let</span> name = f.MetaName(i);
+						<span class="tok-keyword">let</span> num = f.MetaValueCount(i);
+						<span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> j = <span class="tok-number">0</span>; j &lt; num; j++) {
+							<span class="tok-keyword">let</span> url;
+							<span class="tok-keyword">let</span> value = f.MetaValue(i, j).replace(/\s{<span class="tok-number">2</span>,}/g, <span class="tok-string">&#39; &#39;</span>);
+							<span class="tok-keyword">if</span> (_isUUID(value)) {
+								<span class="tok-keyword">switch</span> (name.toUpperCase()) {
+									<span class="tok-keyword">case</span> <span class="tok-string">&#39;MUSICBRAINZ_ARTISTID&#39;</span>:
+									<span class="tok-keyword">case</span> <span class="tok-string">&#39;MUSICBRAINZ_ALBUMARTISTID&#39;</span>:
+									<span class="tok-keyword">case</span> <span class="tok-string">&#39;MUSICBRAINZ ARTIST ID&#39;</span>:
+									<span class="tok-keyword">case</span> <span class="tok-string">&#39;MUSICBRAINZ ALBUM ARTIST ID&#39;</span>:
+										url = <span class="tok-string">&#39;https://musicbrainz.org/artist/&#39;</span> + value;
+										<span class="tok-keyword">break</span>;
+									<span class="tok-keyword">case</span> <span class="tok-string">&#39;MUSICBRAINZ_ALBUMID&#39;</span>:
+									<span class="tok-keyword">case</span> <span class="tok-string">&#39;MUSICBRAINZ ALBUM ID&#39;</span>:
+										url = <span class="tok-string">&#39;https://musicbrainz.org/release/&#39;</span> + value;
+										<span class="tok-keyword">break</span>;
+									<span class="tok-keyword">case</span> <span class="tok-string">&#39;MUSICBRAINZ_RELEASEGROUPID&#39;</span>:
+									<span class="tok-keyword">case</span> <span class="tok-string">&#39;MUSICBRAINZ RELEASE GROUP ID&#39;</span>:
+										url = <span class="tok-string">&#39;https://musicbrainz.org/release-group/&#39;</span> + value;
+										<span class="tok-keyword">break</span>;
+									<span class="tok-keyword">case</span> <span class="tok-string">&#39;MUSICBRAINZ_RELEASETRACKID&#39;</span>:
+									<span class="tok-keyword">case</span> <span class="tok-string">&#39;MUSICBRAINZ RELEASE TRACK ID&#39;</span>:
+										url = <span class="tok-string">&#39;https://musicbrainz.org/track/&#39;</span> + value;
+										<span class="tok-keyword">break</span>;
+									<span class="tok-keyword">case</span> <span class="tok-string">&#39;MUSICBRAINZ_TRACKID&#39;</span>:
+									<span class="tok-keyword">case</span> <span class="tok-string">&#39;MUSICBRAINZ TRACK ID&#39;</span>:
+										url = <span class="tok-string">&#39;https://musicbrainz.org/recording/&#39;</span> + value;
+										<span class="tok-keyword">break</span>;
+									<span class="tok-keyword">case</span> <span class="tok-string">&#39;MUSICBRAINZ_WORKID&#39;</span>:
+									<span class="tok-keyword">case</span> <span class="tok-string">&#39;MUSICBRAINZ WORK ID&#39;</span>:
+										url = <span class="tok-string">&#39;https://musicbrainz.org/work/&#39;</span> + value;
+										<span class="tok-keyword">break</span>;
+									<span class="tok-keyword">default</span>:
+										url = name.toLowerCase() + (num == <span class="tok-number">1</span> ? <span class="tok-string">&#39; IS &#39;</span> : <span class="tok-string">&#39; HAS &#39;</span>) + value;
+										<span class="tok-keyword">break</span>;
+								}
+							} <span class="tok-keyword">else</span> {
+								url = name.toLowerCase() + (num == <span class="tok-number">1</span> ? <span class="tok-string">&#39; IS &#39;</span> : <span class="tok-string">&#39; HAS &#39;</span>) + value;
+							}
+							<span class="tok-keyword">this</span>.data.push({
+								name: j == <span class="tok-number">0</span> ? name.toUpperCase() : <span class="tok-string">&#39;&#39;</span>,
+								value: value,
+								url: url
+							});
+						}
+					}
+					<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.data.length) { <span class="tok-comment">// only add blank line if there is some metadata</span>
+						<span class="tok-keyword">this</span>.add();
+					}
+				}
+
+				<span class="tok-keyword">this</span>.add_location = () =&gt; {
+					<span class="tok-keyword">let</span> names = [<span class="tok-string">&#39;FILE NAME&#39;</span>, <span class="tok-string">&#39;FOLDER NAME&#39;</span>, <span class="tok-string">&#39;FILE PATH&#39;</span>, <span class="tok-string">&#39;SUBSONG INDEX&#39;</span>, <span class="tok-string">&#39;FILE SIZE&#39;</span>, <span class="tok-string">&#39;LAST MODIFIED&#39;</span>];
+					<span class="tok-keyword">let</span> values = [panel.tf(<span class="tok-string">&#39;%filename_ext%&#39;</span>), panel.tf(<span class="tok-string">&#39;$directory_path(%path%)&#39;</span>), <span class="tok-keyword">this</span>.filename, panel.metadb.SubSong, panel.tf(<span class="tok-string">&#39;[%filesize_natural%]&#39;</span>), panel.tf(<span class="tok-string">&#39;[%last_modified%]&#39;</span>)];
+					<span class="tok-keyword">let</span> urls = [<span class="tok-string">&#39;%filename_ext% IS &#39;</span>, <span class="tok-string">&#39;&quot;$directory_path(%path%)&quot; IS &#39;</span>, <span class="tok-string">&#39;%path% IS &#39;</span>, <span class="tok-string">&#39;%subsong% IS &#39;</span>, <span class="tok-string">&#39;%filesize_natural% IS &#39;</span>, <span class="tok-string">&#39;%last_modified% IS &#39;</span>];
+					<span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; <span class="tok-number">6</span>; i++) {
+						<span class="tok-keyword">this</span>.data.push({
+							name: names[i],
+							value: values[i],
+							url: urls[i] + values[i]
+						});
+					}
+					<span class="tok-keyword">this</span>.add();
+				}
+
+				<span class="tok-keyword">this</span>.add_tech = (f) =&gt; {
+					<span class="tok-keyword">const</span> duration = utils.FormatDuration(Math.max(<span class="tok-number">0</span>, panel.metadb.Length));
+					<span class="tok-keyword">const</span> samples = _formatNumber(panel.tf(<span class="tok-string">&#39;%length_samples%&#39;</span>), <span class="tok-string">&#39; &#39;</span>);
+					<span class="tok-keyword">this</span>.data.push({
+						name: <span class="tok-string">&#39;DURATION&#39;</span>,
+						value: duration + <span class="tok-string">&#39; (&#39;</span> + samples + <span class="tok-string">&#39; samples)&#39;</span>,
+						url: <span class="tok-string">&#39;%length% IS &#39;</span> + duration
+					});
+					<span class="tok-keyword">let</span> tmp = [];
+					<span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; f.InfoCount; i++) {
+						<span class="tok-keyword">const</span> name = f.InfoName(i);
+						<span class="tok-keyword">const</span> value = f.InfoValue(i).replace(/\s{<span class="tok-number">2</span>,}/g, <span class="tok-string">&#39; &#39;</span>);
+						tmp.push({
+							name: name.toUpperCase(),
+							value: value,
+							url: <span class="tok-string">&#39;%__&#39;</span> + name.toLowerCase() + <span class="tok-string">&#39;% IS &#39;</span> + value
+						});
+					}
+					<span class="tok-keyword">this</span>.data = [...<span class="tok-keyword">this</span>.data, ...(_.orderBy(tmp, <span class="tok-string">&#39;name&#39;</span>))];
+					<span class="tok-keyword">this</span>.add();
+				}
+
+				<span class="tok-keyword">this</span>.add_custom = () =&gt; {
+					<span class="tok-keyword">this</span>.add(<span class="tok-keyword">this</span>.custom_fields);
+					<span class="tok-keyword">this</span>.add();
+				}
+
+				<span class="tok-keyword">this</span>.add_playcount = () =&gt; {
+					<span class="tok-keyword">this</span>.add([<span class="tok-string">&#39;PLAY_COUNT&#39;</span>, <span class="tok-string">&#39;FIRST_PLAYED&#39;</span>, <span class="tok-string">&#39;LAST_PLAYED&#39;</span>, <span class="tok-string">&#39;ADDED&#39;</span>, <span class="tok-string">&#39;RATING&#39;</span>]);
+					<span class="tok-keyword">this</span>.add();
+				}
+
+				<span class="tok-keyword">this</span>.add_stats = () =&gt; {
+					<span class="tok-keyword">this</span>.add([<span class="tok-string">&#39;JSPLITTER_PLAYCOUNT&#39;</span>, <span class="tok-string">&#39;JSPLITTER_LOVED&#39;</span>, <span class="tok-string">&#39;JSPLITTER_FIRST_PLAYED&#39;</span>, <span class="tok-string">&#39;JSPLITTER_LAST_PLAYED&#39;</span>, <span class="tok-string">&#39;JSPLITTER_RATING&#39;</span>]);
+					<span class="tok-keyword">this</span>.add();
+				}
+
+				<span class="tok-keyword">this</span>.add_rg = () =&gt; {
+					<span class="tok-keyword">this</span>.add([<span class="tok-string">&#39;REPLAYGAIN_ALBUM_GAIN&#39;</span>, <span class="tok-string">&#39;REPLAYGAIN_ALBUM_PEAK&#39;</span>, <span class="tok-string">&#39;REPLAYGAIN_TRACK_GAIN&#39;</span>, <span class="tok-string">&#39;REPLAYGAIN_TRACK_PEAK&#39;</span>]);
+					<span class="tok-keyword">this</span>.add();
+				}
+
+				<span class="tok-keyword">this</span>.add = (names) =&gt; {
+					<span class="tok-keyword">if</span> (names) {
+						<span class="tok-keyword">this</span>.data = [...<span class="tok-keyword">this</span>.data, ...(_.map(names, (item) =&gt; ({
+							name: item,
+							value: panel.tf(<span class="tok-string">&#39;[%&#39;</span> + item + <span class="tok-string">&#39;%]&#39;</span>),
+							url: <span class="tok-string">&#39;%&#39;</span> + item + <span class="tok-string">&#39;% IS &#39;</span> + panel.tf(<span class="tok-string">&#39;[%&#39;</span> + item + <span class="tok-string">&#39;%]&#39;</span>)
+						})))];
+					} <span class="tok-keyword">else</span> {
+						<span class="tok-keyword">this</span>.data.push({ name: <span class="tok-string">&#39;&#39;</span>, value: <span class="tok-string">&#39;&#39;</span>, url: <span class="tok-string">&#39;&#39;</span> });
+					}
+				}
+
+				<span class="tok-keyword">this</span>.properties = {
+					meta: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.PROPERTIES.META&#39;</span>, <span class="tok-literal">true</span>),
+					location: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.PROPERTIES.LOCATION&#39;</span>, <span class="tok-literal">true</span>),
+					tech: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.PROPERTIES.TECH&#39;</span>, <span class="tok-literal">true</span>),
+					playcount: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.PROPERTIES.PLAYCOUNT&#39;</span>, <span class="tok-literal">true</span>),
+					stats: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.PROPERTIES.STATS&#39;</span>, <span class="tok-literal">true</span>),
+					rg: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.PROPERTIES.RG&#39;</span>, <span class="tok-literal">true</span>),
+					fullV2: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.PROPERTIES.FULLV2&#39;</span>, <span class="tok-literal">true</span>) <span class="tok-comment">// Regorxxx &lt;- Full properties -&gt;</span>
+				};
+
+				<span class="tok-keyword">this</span>.foo_playcount = _cc(<span class="tok-string">&#39;foo_playcount&#39;</span>);
+				<span class="tok-keyword">break</span>;
+			<span class="tok-keyword">case</span> <span class="tok-string">&#39;queue_viewer&#39;</span>:
+				<span class="tok-keyword">this</span>.properties = {
+					tf: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.QUEUE.TF&#39;</span>, <span class="tok-string">&#39;%artist% - %title%&#39;</span>)
+				};
+				<span class="tok-keyword">this</span>.tfo = fb.TitleFormat(<span class="tok-keyword">this</span>.properties.tf.value);
+				<span class="tok-keyword">this</span>.update();
+				<span class="tok-keyword">break</span>;
+		}
+	}
+
+	panel.list_objects.push(<span class="tok-keyword">this</span>);
+	<span class="tok-keyword">this</span>.mode = mode;
+	<span class="tok-keyword">this</span>.x = x;
+	<span class="tok-keyword">this</span>.y = y;
+	<span class="tok-keyword">this</span>.w = w;
+	<span class="tok-keyword">this</span>.h = h;
+	<span class="tok-keyword">this</span>.mx = <span class="tok-number">0</span>;
+	<span class="tok-keyword">this</span>.my = <span class="tok-number">0</span>;
+	<span class="tok-keyword">this</span>.index = <span class="tok-number">0</span>;
+	<span class="tok-keyword">this</span>.offset = <span class="tok-number">0</span>;
+	<span class="tok-keyword">this</span>.items = <span class="tok-number">0</span>;
+	<span class="tok-keyword">this</span>.text_x = <span class="tok-number">0</span>;
+	<span class="tok-keyword">this</span>.spacer_w = <span class="tok-number">0</span>;
+	<span class="tok-keyword">this</span>.artist = <span class="tok-string">&#39;&#39;</span>;
+	<span class="tok-keyword">this</span>.filename = <span class="tok-string">&#39;&#39;</span>;
+	<span class="tok-keyword">this</span>.up_btn = <span class="tok-keyword">new</span> _sb(chars.up, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y, _scale(<span class="tok-number">12</span>), _scale(<span class="tok-number">12</span>), () =&gt; { <span class="tok-keyword">return</span> <span class="tok-keyword">this</span>.offset &gt; <span class="tok-number">0</span>; }, () =&gt; { <span class="tok-keyword">this</span>.wheel(<span class="tok-number">1</span>); });
+	<span class="tok-keyword">this</span>.down_btn = <span class="tok-keyword">new</span> _sb(chars.down, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y, _scale(<span class="tok-number">12</span>), _scale(<span class="tok-number">12</span>), () =&gt; { <span class="tok-keyword">return</span> <span class="tok-keyword">this</span>.offset &lt; <span class="tok-keyword">this</span>.items - <span class="tok-keyword">this</span>.rows; }, () =&gt; { <span class="tok-keyword">this</span>.wheel(-<span class="tok-number">1</span>); });
+	<span class="tok-keyword">this</span>.init();
+}
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

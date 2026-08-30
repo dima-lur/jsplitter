@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>thumbs.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <a class="nav-link " href="globals.html">Globals</a>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><a class="nav-link " href="console.html">console</a><a class="nav-link " href="d2d.html">d2d</a><a class="nav-link " href="fb.html">fb</a><a class="nav-link " href="gdi.html">gdi</a><a class="nav-link " href="performance.html">performance</a><a class="nav-link " href="plman.html">plman</a><a class="nav-link " href="utils.html">utils</a><a class="nav-link " href="window.html">window</a></div><div class="nav-group"><div class="nav-title">Classes</div><a class="nav-link " href="ActiveXObject.html">ActiveXObject</a><a class="nav-link " href="ButtonObject.html">ButtonObject</a><a class="nav-link " href="ContextMenuManager.html">ContextMenuManager</a><a class="nav-link " href="D2DBitmap.html">D2DBitmap</a><a class="nav-link " href="D2DBrush.html">D2DBrush</a><a class="nav-link " href="D2DCompileInfo.html">D2DCompileInfo</a><a class="nav-link " href="D2DEffect.html">D2DEffect</a><a class="nav-link " href="D2DFont.html">D2DFont</a><a class="nav-link " href="D2DGraphics.html">D2DGraphics</a><a class="nav-link " href="DropTargetAction.html">DropTargetAction</a><a class="nav-link " href="Enumerator.html">Enumerator</a><a class="nav-link " href="FbAudioChunk.html">FbAudioChunk</a><a class="nav-link " href="FbFileInfo.html">FbFileInfo</a><a class="nav-link " href="FbMetadbHandle.html">FbMetadbHandle</a><a class="nav-link " href="FbMetadbHandleList.html">FbMetadbHandleList</a><a class="nav-link " href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a><a class="nav-link " href="FbPlayingItemLocation.html">FbPlayingItemLocation</a><a class="nav-link " href="FbPlaylistRecycler.html">FbPlaylistRecycler</a><a class="nav-link " href="FbProfiler.html">FbProfiler</a><a class="nav-link " href="FbTitleFormat.html">FbTitleFormat</a><a class="nav-link " href="FbTooltip.html">FbTooltip</a><a class="nav-link " href="FbUiSelectionHolder.html">FbUiSelectionHolder</a><a class="nav-link " href="GdiBitmap.html">GdiBitmap</a><a class="nav-link " href="GdiBrush.html">GdiBrush</a><a class="nav-link " href="GdiFont.html">GdiFont</a><a class="nav-link " href="GdiGraphics.html">GdiGraphics</a><a class="nav-link " href="GdiRawBitmap.html">GdiRawBitmap</a><a class="nav-link " href="HtmlDocument.html">HtmlDocument</a><a class="nav-link " href="HtmlNode.html">HtmlNode</a><a class="nav-link " href="IUIHacks.html">IUIHacks</a><a class="nav-link " href="MainMenuManager.html">MainMenuManager</a><a class="nav-link " href="MenuObject.html">MenuObject</a><a class="nav-link " href="PanelObject.html">PanelObject</a><a class="nav-link " href="PerformanceObserver.html">PerformanceObserver</a><a class="nav-link " href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a><a class="nav-link " href="RunResult.html">RunResult</a><a class="nav-link " href="ThemeManager.html">ThemeManager</a></div><div class="nav-group"><div class="nav-title">Modules</div><a class="nav-link " href="module-Callbacks.html">Callbacks</a><a class="nav-link " href="module-Codepages.html">Codepages</a><a class="nav-link " href="module-Effects.html">Effects</a><a class="nav-link " href="module-Flags.html">Flags</a><a class="nav-link " href="module-Helpers.html">Helpers</a><a class="nav-link " href="module-Matrix.html">Matrix</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/complete/js/thumbs.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="utils.html#HTTPRequestAsync">utils.HTTPRequestAsync</a></div>
+        </header>
+        <pre class="source-code"><code><span class="tok-string">&#39;use strict&#39;</span>;
+
+<span class="tok-keyword">function</span> _thumbs() {
+	<span class="tok-keyword">this</span>.size = (f) =&gt; {
+		<span class="tok-keyword">this</span>.nc = f || <span class="tok-keyword">this</span>.nc;
+		<span class="tok-keyword">this</span>.close_btn.x = panel.w - <span class="tok-keyword">this</span>.close_btn.w;
+		<span class="tok-keyword">this</span>.offset = <span class="tok-number">0</span>;
+		<span class="tok-keyword">switch</span> (<span class="tok-literal">true</span>) {
+		<span class="tok-keyword">case</span> panel.w &lt; <span class="tok-keyword">this</span>.properties.px.value || panel.h &lt; <span class="tok-keyword">this</span>.properties.px.value || <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">5</span>: <span class="tok-comment">// off</span>
+			<span class="tok-keyword">this</span>.nc = <span class="tok-literal">true</span>;
+			<span class="tok-keyword">this</span>.img = <span class="tok-literal">null</span>;
+			<span class="tok-keyword">this</span>.w = <span class="tok-number">0</span>;
+			<span class="tok-keyword">this</span>.h = <span class="tok-number">0</span>;
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">0</span>: <span class="tok-comment">// grid</span>
+			<span class="tok-keyword">this</span>.x = <span class="tok-number">0</span>;
+			<span class="tok-keyword">this</span>.y = <span class="tok-number">0</span>;
+			<span class="tok-keyword">this</span>.w = panel.w;
+			<span class="tok-keyword">this</span>.h = panel.h;
+			<span class="tok-keyword">if</span> (!<span class="tok-keyword">this</span>.nc &amp;&amp; <span class="tok-keyword">this</span>.columns != Math.floor(<span class="tok-keyword">this</span>.w / <span class="tok-keyword">this</span>.properties.px.value)) {
+				<span class="tok-keyword">this</span>.nc = <span class="tok-literal">true</span>;
+			}
+			<span class="tok-keyword">this</span>.rows = Math.ceil(<span class="tok-keyword">this</span>.h / <span class="tok-keyword">this</span>.properties.px.value);
+			<span class="tok-keyword">this</span>.columns = Math.floor(<span class="tok-keyword">this</span>.w / <span class="tok-keyword">this</span>.properties.px.value);
+			<span class="tok-keyword">this</span>.img_rows = Math.ceil(<span class="tok-keyword">this</span>.images.length / <span class="tok-keyword">this</span>.columns);
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.nc &amp;&amp; <span class="tok-keyword">this</span>.images.length) {
+				<span class="tok-keyword">this</span>.nc = <span class="tok-literal">false</span>;
+				<span class="tok-keyword">this</span>.img = <span class="tok-literal">null</span>;
+				<span class="tok-keyword">this</span>.img = gdi.CreateImage(Math.min(<span class="tok-keyword">this</span>.columns, <span class="tok-keyword">this</span>.images.length) * <span class="tok-keyword">this</span>.properties.px.value, <span class="tok-keyword">this</span>.img_rows * <span class="tok-keyword">this</span>.properties.px.value);
+				<span class="tok-keyword">let</span> temp_gr = <span class="tok-keyword">this</span>.img.GetGraphics();
+				<span class="tok-keyword">let</span> ci = <span class="tok-number">0</span>;
+				<span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> row = <span class="tok-number">0</span>; row &lt; <span class="tok-keyword">this</span>.img_rows; row++) {
+					<span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> col = <span class="tok-number">0</span>; col &lt; <span class="tok-keyword">this</span>.columns; col++) {
+						_drawImage(temp_gr, <span class="tok-keyword">this</span>.images[ci], col * <span class="tok-keyword">this</span>.properties.px.value, row * <span class="tok-keyword">this</span>.properties.px.value, <span class="tok-keyword">this</span>.properties.px.value, <span class="tok-keyword">this</span>.properties.px.value, image.crop_top);
+						ci++;
+					};
+				};
+				<span class="tok-keyword">this</span>.img.ReleaseGraphics(temp_gr);
+				temp_gr = <span class="tok-literal">null</span>;
+			}
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">1</span>: <span class="tok-comment">// left</span>
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">2</span>: <span class="tok-comment">// right</span>
+			<span class="tok-keyword">this</span>.x = <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">1</span> ? <span class="tok-number">0</span> : panel.w - <span class="tok-keyword">this</span>.properties.px.value;
+			<span class="tok-keyword">this</span>.y = <span class="tok-number">0</span>;
+			<span class="tok-keyword">this</span>.w = <span class="tok-keyword">this</span>.properties.px.value;
+			<span class="tok-keyword">this</span>.h = panel.h;
+			<span class="tok-keyword">this</span>.rows = Math.ceil(<span class="tok-keyword">this</span>.h / <span class="tok-keyword">this</span>.properties.px.value);
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.nc &amp;&amp; <span class="tok-keyword">this</span>.images.length) {
+				<span class="tok-keyword">this</span>.nc = <span class="tok-literal">false</span>;
+				<span class="tok-keyword">this</span>.img = <span class="tok-literal">null</span>;
+				<span class="tok-keyword">this</span>.img = gdi.CreateImage(<span class="tok-keyword">this</span>.properties.px.value, <span class="tok-keyword">this</span>.properties.px.value * <span class="tok-keyword">this</span>.images.length);
+				<span class="tok-keyword">let</span> temp_gr = <span class="tok-keyword">this</span>.img.GetGraphics();
+				_.forEach(<span class="tok-keyword">this</span>.images, (item, i) =&gt; {
+					_drawImage(temp_gr, item, <span class="tok-number">0</span>, i * <span class="tok-keyword">this</span>.properties.px.value, <span class="tok-keyword">this</span>.properties.px.value, <span class="tok-keyword">this</span>.properties.px.value, image.crop_top);
+				});
+				<span class="tok-keyword">this</span>.img.ReleaseGraphics(temp_gr);
+				temp_gr = <span class="tok-literal">null</span>;
+			}
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">3</span>: <span class="tok-comment">// top</span>
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">4</span>: <span class="tok-comment">// bottom</span>
+			<span class="tok-keyword">this</span>.x = <span class="tok-number">0</span>;
+			<span class="tok-keyword">this</span>.y = <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">3</span> ? <span class="tok-number">0</span> : panel.h - <span class="tok-keyword">this</span>.properties.px.value;
+			<span class="tok-keyword">this</span>.w = panel.w;
+			<span class="tok-keyword">this</span>.h = <span class="tok-keyword">this</span>.properties.px.value;
+			<span class="tok-keyword">this</span>.columns = Math.ceil(<span class="tok-keyword">this</span>.w / <span class="tok-keyword">this</span>.properties.px.value);
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.nc &amp;&amp; <span class="tok-keyword">this</span>.images.length) {
+				<span class="tok-keyword">this</span>.nc = <span class="tok-literal">false</span>;
+				<span class="tok-keyword">this</span>.img = <span class="tok-literal">null</span>;
+				<span class="tok-keyword">this</span>.img = gdi.CreateImage(<span class="tok-keyword">this</span>.properties.px.value * <span class="tok-keyword">this</span>.images.length, <span class="tok-keyword">this</span>.properties.px.value);
+				<span class="tok-keyword">let</span> temp_gr = <span class="tok-keyword">this</span>.img.GetGraphics();
+				_.forEach(<span class="tok-keyword">this</span>.images, (item, i) =&gt; {
+					_drawImage(temp_gr, item, i * <span class="tok-keyword">this</span>.properties.px.value, <span class="tok-number">0</span>, <span class="tok-keyword">this</span>.properties.px.value, <span class="tok-keyword">this</span>.properties.px.value, image.crop_top);
+				});
+				<span class="tok-keyword">this</span>.img.ReleaseGraphics(temp_gr);
+				temp_gr = <span class="tok-literal">null</span>;
+			}
+			<span class="tok-keyword">break</span>;
+		}
+	}
+
+	<span class="tok-keyword">this</span>.paint = (gr) =&gt; {
+		<span class="tok-keyword">switch</span> (<span class="tok-literal">true</span>) {
+		<span class="tok-keyword">case</span> !<span class="tok-keyword">this</span>.images.length:
+			<span class="tok-keyword">this</span>.image_xywh = [];
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">5</span>: <span class="tok-comment">// off</span>
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.aspect.value == image.centre) {
+				<span class="tok-keyword">this</span>.image_xywh = _drawImage(gr, <span class="tok-keyword">this</span>.images[<span class="tok-keyword">this</span>.image], <span class="tok-number">20</span>, <span class="tok-number">20</span>, panel.w - <span class="tok-number">40</span>, panel.h - <span class="tok-number">40</span>, <span class="tok-keyword">this</span>.properties.aspect.value);
+			} <span class="tok-keyword">else</span> {
+				<span class="tok-keyword">this</span>.image_xywh = _drawImage(gr, <span class="tok-keyword">this</span>.images[<span class="tok-keyword">this</span>.image], <span class="tok-number">0</span>, <span class="tok-number">0</span>, panel.w, panel.h, <span class="tok-keyword">this</span>.properties.aspect.value);
+			}
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> !<span class="tok-keyword">this</span>.img:
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">0</span>: <span class="tok-comment">// grid</span>
+			gr.DrawImage(<span class="tok-keyword">this</span>.img, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y, <span class="tok-keyword">this</span>.w, <span class="tok-keyword">this</span>.h, <span class="tok-number">0</span>, <span class="tok-keyword">this</span>.offset * <span class="tok-keyword">this</span>.properties.px.value, <span class="tok-keyword">this</span>.w, <span class="tok-keyword">this</span>.h);
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.overlay) {
+				_drawOverlay(gr, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y, <span class="tok-keyword">this</span>.w, <span class="tok-keyword">this</span>.h);
+				<span class="tok-keyword">this</span>.image_xywh = _drawImage(gr, <span class="tok-keyword">this</span>.images[<span class="tok-keyword">this</span>.image], <span class="tok-number">20</span>, <span class="tok-number">20</span>, panel.w - <span class="tok-number">40</span>, panel.h - <span class="tok-number">40</span>, image.centre);
+				<span class="tok-keyword">this</span>.close_btn.paint(gr, _RGB(<span class="tok-number">230</span>, <span class="tok-number">230</span>, <span class="tok-number">230</span>));
+			} <span class="tok-keyword">else</span> {
+				<span class="tok-keyword">this</span>.image_xywh = [];
+			}
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">1</span>: <span class="tok-comment">// left</span>
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.aspect.value == image.centre) {
+				<span class="tok-keyword">this</span>.image_xywh = _drawImage(gr, <span class="tok-keyword">this</span>.images[<span class="tok-keyword">this</span>.image], <span class="tok-keyword">this</span>.properties.px.value + <span class="tok-number">20</span>, <span class="tok-number">20</span>, panel.w - <span class="tok-keyword">this</span>.properties.px.value - <span class="tok-number">40</span>, panel.h - <span class="tok-number">40</span>, <span class="tok-keyword">this</span>.properties.aspect.value);
+			} <span class="tok-keyword">else</span> {
+				<span class="tok-keyword">this</span>.image_xywh = _drawImage(gr, <span class="tok-keyword">this</span>.images[<span class="tok-keyword">this</span>.image], <span class="tok-number">0</span>, <span class="tok-number">0</span>, panel.w, panel.h, <span class="tok-keyword">this</span>.properties.aspect.value);
+			}
+			_drawOverlay(gr, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y, <span class="tok-keyword">this</span>.w, <span class="tok-keyword">this</span>.h);
+			gr.DrawImage(<span class="tok-keyword">this</span>.img, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y, <span class="tok-keyword">this</span>.w, <span class="tok-keyword">this</span>.h, <span class="tok-number">0</span>, <span class="tok-keyword">this</span>.offset * <span class="tok-keyword">this</span>.properties.px.value, <span class="tok-keyword">this</span>.w, <span class="tok-keyword">this</span>.h);
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">2</span>: <span class="tok-comment">// right</span>
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.aspect.value == image.centre) {
+				<span class="tok-keyword">this</span>.image_xywh = _drawImage(gr, <span class="tok-keyword">this</span>.images[<span class="tok-keyword">this</span>.image], <span class="tok-number">20</span>, <span class="tok-number">20</span>, panel.w - <span class="tok-keyword">this</span>.properties.px.value - <span class="tok-number">40</span>, panel.h - <span class="tok-number">40</span>, <span class="tok-keyword">this</span>.properties.aspect.value);
+			} <span class="tok-keyword">else</span> {
+				<span class="tok-keyword">this</span>.image_xywh = _drawImage(gr, <span class="tok-keyword">this</span>.images[<span class="tok-keyword">this</span>.image], <span class="tok-number">0</span>, <span class="tok-number">0</span>, panel.w, panel.h, <span class="tok-keyword">this</span>.properties.aspect.value);
+			}
+			_drawOverlay(gr, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y, <span class="tok-keyword">this</span>.w, <span class="tok-keyword">this</span>.h);
+			gr.DrawImage(<span class="tok-keyword">this</span>.img, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y, <span class="tok-keyword">this</span>.w, <span class="tok-keyword">this</span>.h, <span class="tok-number">0</span>, <span class="tok-keyword">this</span>.offset * <span class="tok-keyword">this</span>.properties.px.value, <span class="tok-keyword">this</span>.w, <span class="tok-keyword">this</span>.h);
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">3</span>: <span class="tok-comment">// top</span>
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.aspect.value == image.centre) {
+				<span class="tok-keyword">this</span>.image_xywh = _drawImage(gr, <span class="tok-keyword">this</span>.images[<span class="tok-keyword">this</span>.image], <span class="tok-number">20</span>, <span class="tok-keyword">this</span>.properties.px.value + <span class="tok-number">20</span>, panel.w - <span class="tok-number">40</span>, panel.h - <span class="tok-keyword">this</span>.properties.px.value - <span class="tok-number">40</span>, <span class="tok-keyword">this</span>.properties.aspect.value);
+			} <span class="tok-keyword">else</span> {
+				<span class="tok-keyword">this</span>.image_xywh = _drawImage(gr, <span class="tok-keyword">this</span>.images[<span class="tok-keyword">this</span>.image], <span class="tok-number">0</span>, <span class="tok-number">0</span>, panel.w, panel.h, <span class="tok-keyword">this</span>.properties.aspect.value);
+			}
+			_drawOverlay(gr, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y, <span class="tok-keyword">this</span>.w, <span class="tok-keyword">this</span>.h);
+			gr.DrawImage(<span class="tok-keyword">this</span>.img, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y, <span class="tok-keyword">this</span>.w, <span class="tok-keyword">this</span>.h, <span class="tok-keyword">this</span>.offset * <span class="tok-keyword">this</span>.properties.px.value, <span class="tok-number">0</span>, <span class="tok-keyword">this</span>.w, <span class="tok-keyword">this</span>.h);
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">4</span>: <span class="tok-comment">// bottom</span>
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.aspect.value == image.centre) {
+				<span class="tok-keyword">this</span>.image_xywh = _drawImage(gr, <span class="tok-keyword">this</span>.images[<span class="tok-keyword">this</span>.image], <span class="tok-number">20</span>, <span class="tok-number">20</span>, panel.w - <span class="tok-number">40</span>, panel.h - <span class="tok-keyword">this</span>.properties.px.value - <span class="tok-number">40</span>, <span class="tok-keyword">this</span>.properties.aspect.value);
+			} <span class="tok-keyword">else</span> {
+				<span class="tok-keyword">this</span>.image_xywh = _drawImage(gr, <span class="tok-keyword">this</span>.images[<span class="tok-keyword">this</span>.image], <span class="tok-number">0</span>, <span class="tok-number">0</span>, panel.w, panel.h, <span class="tok-keyword">this</span>.properties.aspect.value);
+			}
+			_drawOverlay(gr, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y, <span class="tok-keyword">this</span>.w, <span class="tok-keyword">this</span>.h);
+			gr.DrawImage(<span class="tok-keyword">this</span>.img, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y, <span class="tok-keyword">this</span>.w, <span class="tok-keyword">this</span>.h, <span class="tok-keyword">this</span>.offset * <span class="tok-keyword">this</span>.properties.px.value, <span class="tok-number">0</span>, <span class="tok-keyword">this</span>.w, <span class="tok-keyword">this</span>.h);
+			<span class="tok-keyword">break</span>;
+		}
+	}
+
+	<span class="tok-keyword">this</span>.metadb_changed = () =&gt; {
+		<span class="tok-keyword">if</span> (panel.metadb) {
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.source.value == <span class="tok-number">0</span>) { <span class="tok-comment">// custom folder</span>
+				<span class="tok-keyword">let</span> temp_folder = <span class="tok-keyword">this</span>.properties.tf.value.replace(<span class="tok-string">&#39;%profile%&#39;</span>, fb.ProfilePath);
+				temp_folder = temp_folder.startsWith(fb.ProfilePath) ? fb.ProfilePath + panel.tf(temp_folder.substring(fb.ProfilePath.length, temp_folder.length)) : panel.tf(temp_folder);
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.folder == temp_folder) {
+					<span class="tok-keyword">return</span>;
+				}
+				<span class="tok-keyword">this</span>.folder = temp_folder;
+			} <span class="tok-keyword">else</span> { <span class="tok-comment">// last.fm</span>
+				<span class="tok-keyword">const</span> temp_artist = panel.tf(DEFAULT_ARTIST);
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.artist == temp_artist) {
+					<span class="tok-keyword">return</span>;
+				}
+				<span class="tok-keyword">this</span>.artist = temp_artist;
+				<span class="tok-keyword">this</span>.folder = _artistFolder(<span class="tok-keyword">this</span>.artist);
+			}
+		} <span class="tok-keyword">else</span> {
+			<span class="tok-keyword">this</span>.artist = <span class="tok-string">&#39;&#39;</span>;
+			<span class="tok-keyword">this</span>.folder = <span class="tok-string">&#39;&#39;</span>;
+		}
+		<span class="tok-keyword">this</span>.update();
+	}
+
+	<span class="tok-keyword">this</span>.playback_new_track = () =&gt; {
+		<span class="tok-keyword">this</span>.counter = <span class="tok-number">0</span>;
+		panel.item_focus_change();
+	}
+
+	<span class="tok-keyword">this</span>.playback_time = () =&gt; {
+		<span class="tok-keyword">this</span>.counter++;
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.source.value == <span class="tok-number">1</span> &amp;&amp; <span class="tok-keyword">this</span>.properties.auto_download.enabled &amp;&amp; <span class="tok-keyword">this</span>.counter == <span class="tok-number">2</span> &amp;&amp; <span class="tok-keyword">this</span>.images.length == <span class="tok-number">0</span>) {
+			<span class="tok-keyword">var</span> np = fb.GetNowPlaying();
+			<span class="tok-comment">// check selection matches playing item</span>
+			<span class="tok-keyword">if</span> (panel.metadb.Path == np.Path &amp;&amp; panel.metadb.SubSong == np.SubSong) {
+				<span class="tok-keyword">this</span>.download();
+			}
+		}
+	}
+
+	<span class="tok-keyword">this</span>.trace = (x, y) =&gt; {
+		<span class="tok-keyword">return</span> x &gt; <span class="tok-keyword">this</span>.x &amp;&amp; x &lt; <span class="tok-keyword">this</span>.x + <span class="tok-keyword">this</span>.w &amp;&amp; y &gt; <span class="tok-keyword">this</span>.y &amp;&amp; y &lt; <span class="tok-keyword">this</span>.y + <span class="tok-keyword">this</span>.h;
+	}
+
+	<span class="tok-keyword">this</span>.image_xywh_trace = (x, y) =&gt; {
+		<span class="tok-keyword">switch</span> (<span class="tok-literal">true</span>) {
+		<span class="tok-keyword">case</span> !<span class="tok-keyword">this</span>.images.length:
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">0</span> &amp;&amp; !<span class="tok-keyword">this</span>.overlay: <span class="tok-comment">// grid</span>
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value != <span class="tok-number">0</span> &amp;&amp; <span class="tok-keyword">this</span>.trace(x, y): <span class="tok-comment">// not grid</span>
+			<span class="tok-keyword">return</span> <span class="tok-literal">false</span>;
+		<span class="tok-keyword">default</span>:
+			<span class="tok-keyword">return</span> x &gt; <span class="tok-keyword">this</span>.image_xywh[<span class="tok-number">0</span>] &amp;&amp; x &lt; <span class="tok-keyword">this</span>.image_xywh[<span class="tok-number">0</span>] + <span class="tok-keyword">this</span>.image_xywh[<span class="tok-number">2</span>] &amp;&amp; y &gt; <span class="tok-keyword">this</span>.image_xywh[<span class="tok-number">1</span>] &amp;&amp; y &lt; <span class="tok-keyword">this</span>.image_xywh[<span class="tok-number">1</span>] + <span class="tok-keyword">this</span>.image_xywh[<span class="tok-number">3</span>];
+		}
+	}
+
+	<span class="tok-keyword">this</span>.wheel = (s) =&gt; {
+		<span class="tok-keyword">let</span> offset = <span class="tok-keyword">this</span>.offset - s;
+		<span class="tok-keyword">switch</span> (<span class="tok-literal">true</span>) {
+		<span class="tok-keyword">case</span> !<span class="tok-keyword">this</span>.trace(<span class="tok-keyword">this</span>.mx, <span class="tok-keyword">this</span>.my):
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">0</span> &amp;&amp; <span class="tok-keyword">this</span>.overlay: <span class="tok-comment">// grid</span>
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.images.length &lt; <span class="tok-number">2</span>) {
+				<span class="tok-keyword">return</span>;
+			}
+			<span class="tok-keyword">this</span>.image -= s;
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.image &lt; <span class="tok-number">0</span>) {
+				<span class="tok-keyword">this</span>.image = <span class="tok-keyword">this</span>.images.length - <span class="tok-number">1</span>;
+			}
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.image &gt;= <span class="tok-keyword">this</span>.images.length) {
+				<span class="tok-keyword">this</span>.image = <span class="tok-number">0</span>;
+			}
+			window.Repaint();
+			<span class="tok-keyword">return</span>;
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">0</span>: <span class="tok-comment">// grid</span>
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.img_rows &lt; <span class="tok-keyword">this</span>.rows) {
+				<span class="tok-keyword">return</span>;
+			}
+			<span class="tok-keyword">if</span> (offset &lt; <span class="tok-number">0</span>) {
+				offset = <span class="tok-number">0</span>;
+			}
+			<span class="tok-keyword">if</span> (offset &gt; <span class="tok-keyword">this</span>.img_rows - <span class="tok-keyword">this</span>.rows) {
+				offset = <span class="tok-keyword">this</span>.img_rows - <span class="tok-keyword">this</span>.rows + <span class="tok-number">1</span>;
+			}
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">1</span>: <span class="tok-comment">// left</span>
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">2</span>: <span class="tok-comment">// right</span>
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.images.length &lt; <span class="tok-keyword">this</span>.rows) {
+				<span class="tok-keyword">return</span>;
+			}
+			<span class="tok-keyword">if</span> (offset &lt; <span class="tok-number">0</span>) {
+				offset = <span class="tok-number">0</span>;
+			}
+			<span class="tok-keyword">if</span> (offset + <span class="tok-keyword">this</span>.rows &gt; <span class="tok-keyword">this</span>.images.length) {
+				offset = <span class="tok-keyword">this</span>.images.length - <span class="tok-keyword">this</span>.rows + <span class="tok-number">1</span>;
+			}
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">3</span>: <span class="tok-comment">// top</span>
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">4</span>: <span class="tok-comment">// bottom</span>
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.images.length &lt; <span class="tok-keyword">this</span>.columns) {
+				<span class="tok-keyword">return</span>;
+			}
+			<span class="tok-keyword">if</span> (offset &lt; <span class="tok-number">0</span>) {
+				offset = <span class="tok-number">0</span>;
+			}
+			<span class="tok-keyword">if</span> (offset + <span class="tok-keyword">this</span>.columns &gt; <span class="tok-keyword">this</span>.images.length) {
+				offset = <span class="tok-keyword">this</span>.images.length - <span class="tok-keyword">this</span>.columns + <span class="tok-number">1</span>;
+			}
+			<span class="tok-keyword">break</span>;
+		}
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.offset != offset) {
+			<span class="tok-keyword">this</span>.offset = offset;
+			window.RepaintRect(<span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y, <span class="tok-keyword">this</span>.w, <span class="tok-keyword">this</span>.h);
+		}
+	}
+
+	<span class="tok-keyword">this</span>.move = (x, y) =&gt; {
+		<span class="tok-keyword">this</span>.mx = x;
+		<span class="tok-keyword">this</span>.my = y;
+		<span class="tok-keyword">this</span>.index = <span class="tok-keyword">this</span>.images.length;
+		<span class="tok-keyword">switch</span> (<span class="tok-literal">true</span>) {
+		<span class="tok-keyword">case</span> !<span class="tok-keyword">this</span>.trace(x, y):
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">0</span>: <span class="tok-comment">// grid</span>
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.overlay) {
+				<span class="tok-keyword">return</span> window.SetCursor(<span class="tok-keyword">this</span>.close_btn.move(x, y) ? IDC_HAND : IDC_ARROW);
+			}
+			<span class="tok-keyword">const</span> tmp = Math.floor(x / <span class="tok-keyword">this</span>.properties.px.value);
+			<span class="tok-keyword">if</span> (tmp &lt; <span class="tok-keyword">this</span>.columns) {
+				<span class="tok-keyword">this</span>.index = tmp + ((Math.floor(y / <span class="tok-keyword">this</span>.properties.px.value) + <span class="tok-keyword">this</span>.offset) * <span class="tok-keyword">this</span>.columns);
+			}
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">1</span>: <span class="tok-comment">// left</span>
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">2</span>: <span class="tok-comment">// right</span>
+			<span class="tok-keyword">this</span>.index = Math.floor(y / <span class="tok-keyword">this</span>.properties.px.value) + <span class="tok-keyword">this</span>.offset;
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">3</span>: <span class="tok-comment">// top</span>
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">4</span>: <span class="tok-comment">// bottom</span>
+			<span class="tok-keyword">this</span>.index = Math.floor(x / <span class="tok-keyword">this</span>.properties.px.value) + <span class="tok-keyword">this</span>.offset;
+			<span class="tok-keyword">break</span>;
+		}
+		window.SetCursor(<span class="tok-keyword">this</span>.index &lt; <span class="tok-keyword">this</span>.images.length ? IDC_HAND : IDC_ARROW);
+	}
+
+	<span class="tok-keyword">this</span>.lbtn_up = (x, y) =&gt; {
+		<span class="tok-keyword">switch</span> (<span class="tok-literal">true</span>) {
+		<span class="tok-keyword">case</span> !<span class="tok-keyword">this</span>.trace(x, y):
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">0</span> &amp;&amp; <span class="tok-keyword">this</span>.overlay &amp;&amp; <span class="tok-keyword">this</span>.close_btn.lbtn_up(x, y):
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">0</span> &amp;&amp; !<span class="tok-keyword">this</span>.overlay &amp;&amp; <span class="tok-keyword">this</span>.index &lt; <span class="tok-keyword">this</span>.images.length:
+			<span class="tok-keyword">this</span>.image = <span class="tok-keyword">this</span>.index;
+			<span class="tok-keyword">this</span>.enable_overlay(<span class="tok-literal">true</span>);
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.index &lt; <span class="tok-keyword">this</span>.images.length:
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.image != <span class="tok-keyword">this</span>.index) {
+				<span class="tok-keyword">this</span>.image = <span class="tok-keyword">this</span>.index;
+				window.Repaint();
+			}
+			<span class="tok-keyword">break</span>;
+		}
+	}
+
+	<span class="tok-keyword">this</span>.lbtn_dblclk = (x, y) =&gt; {
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.image_xywh_trace(x, y)) {
+			_run(<span class="tok-keyword">this</span>.files[<span class="tok-keyword">this</span>.image]);
+		}
+	}
+
+	<span class="tok-keyword">this</span>.rbtn_up = (x, y) =&gt; {
+		panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1000</span>, <span class="tok-string">&#39;Custom folder&#39;</span>);
+		panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1001</span>, <span class="tok-string">&#39;Last.fm artist art&#39;</span>);
+		panel.m.CheckMenuRadioItem(<span class="tok-number">1000</span>, <span class="tok-number">1001</span>, <span class="tok-keyword">this</span>.properties.source.value + <span class="tok-number">1000</span>);
+		panel.m.AppendMenuSeparator();
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.source.value == <span class="tok-number">0</span>) { <span class="tok-comment">// custom folder</span>
+			panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1002</span>, <span class="tok-string">&#39;Refresh&#39;</span>);
+			panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1003</span>, <span class="tok-string">&#39;Set custom folder...&#39;</span>);
+		} <span class="tok-keyword">else</span> { <span class="tok-comment">// last.fm</span>
+			panel.m.AppendMenuItem(panel.metadb ? MF_STRING : MF_GRAYED, <span class="tok-number">1004</span>, <span class="tok-string">&#39;Download now&#39;</span>);
+			panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1005</span>, <span class="tok-string">&#39;Automatic downloads&#39;</span>);
+			panel.m.CheckMenuItem(<span class="tok-number">1005</span>, <span class="tok-keyword">this</span>.properties.auto_download.enabled);
+			_.forEach(<span class="tok-keyword">this</span>.limits, (item) =&gt; {
+				panel.s10.AppendMenuItem(MF_STRING, item + <span class="tok-number">1010</span>, item);
+			});
+			panel.s10.CheckMenuRadioItem(_.first(<span class="tok-keyword">this</span>.limits) + <span class="tok-number">1010</span>, _.last(<span class="tok-keyword">this</span>.limits) + <span class="tok-number">1010</span>, <span class="tok-keyword">this</span>.properties.limit.value + <span class="tok-number">1010</span>);
+			panel.s10.AppendTo(panel.m, MF_STRING, <span class="tok-string">&#39;Limit&#39;</span>);
+		}
+		panel.m.AppendMenuSeparator();
+		<span class="tok-keyword">if</span> (!panel.text_objects.length &amp;&amp; !panel.list_objects.length) {
+			_.forEach(<span class="tok-keyword">this</span>.modes, (item, i) =&gt; {
+				panel.s11.AppendMenuItem(MF_STRING, i + <span class="tok-number">1050</span>, _.capitalize(item));
+			});
+			panel.s11.CheckMenuRadioItem(<span class="tok-number">1050</span>, <span class="tok-number">1055</span>, <span class="tok-keyword">this</span>.properties.mode.value + <span class="tok-number">1050</span>);
+			panel.s11.AppendMenuSeparator();
+			<span class="tok-keyword">const</span> flag = <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">5</span> ? MF_GRAYED : MF_STRING; <span class="tok-comment">// off</span>
+			_.forEach(<span class="tok-keyword">this</span>.pxs, (item) =&gt; {
+				panel.s11.AppendMenuItem(flag, item + <span class="tok-number">1000</span>, item + <span class="tok-string">&#39;px&#39;</span>);
+			});
+			panel.s11.CheckMenuRadioItem(_.first(<span class="tok-keyword">this</span>.pxs) + <span class="tok-number">1000</span>, _.last(<span class="tok-keyword">this</span>.pxs) + <span class="tok-number">1000</span>, <span class="tok-keyword">this</span>.properties.px.value + <span class="tok-number">1000</span>);
+			panel.s11.AppendTo(panel.m, MF_STRING, <span class="tok-string">&#39;Thumbs&#39;</span>);
+			panel.m.AppendMenuSeparator();
+		}
+		panel.s12.AppendMenuItem(MF_STRING, <span class="tok-number">1400</span>, <span class="tok-string">&#39;Off&#39;</span>);
+		panel.s12.AppendMenuItem(MF_STRING, <span class="tok-number">1405</span>, <span class="tok-string">&#39;5 seconds&#39;</span>);
+		panel.s12.AppendMenuItem(MF_STRING, <span class="tok-number">1410</span>, <span class="tok-string">&#39;10 seconds&#39;</span>);
+		panel.s12.AppendMenuItem(MF_STRING, <span class="tok-number">1420</span>, <span class="tok-string">&#39;20 seconds&#39;</span>);
+		panel.s12.CheckMenuRadioItem(<span class="tok-number">1400</span>, <span class="tok-number">1420</span>, <span class="tok-keyword">this</span>.properties.cycle.value + <span class="tok-number">1400</span>);
+		panel.s12.AppendTo(panel.m, MF_STRING, <span class="tok-string">&#39;Cycle&#39;</span>);
+		panel.m.AppendMenuSeparator();
+		panel.s13.AppendMenuItem(MF_STRING, <span class="tok-number">1500</span>, <span class="tok-string">&#39;A-Z&#39;</span>);
+		panel.s13.AppendMenuItem(MF_STRING, <span class="tok-number">1501</span>, <span class="tok-string">&#39;Newest first&#39;</span>);
+		panel.s13.CheckMenuRadioItem(<span class="tok-number">1500</span>, <span class="tok-number">1501</span>, <span class="tok-keyword">this</span>.properties.sort.value + <span class="tok-number">1500</span>);
+		panel.s13.AppendTo(panel.m, MF_STRING, <span class="tok-string">&#39;Sort&#39;</span>);
+		panel.m.AppendMenuSeparator();
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.image_xywh_trace(x, y)) {
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.mode.value != <span class="tok-number">0</span>) {
+				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1510</span>, <span class="tok-string">&#39;Crop (focus on centre)&#39;</span>);
+				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1511</span>, <span class="tok-string">&#39;Crop (focus on top)&#39;</span>);
+				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1512</span>, <span class="tok-string">&#39;Stretch&#39;</span>);
+				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1513</span>, <span class="tok-string">&#39;Centre&#39;</span>);
+				panel.m.CheckMenuRadioItem(<span class="tok-number">1510</span>, <span class="tok-number">1513</span>, <span class="tok-keyword">this</span>.properties.aspect.value + <span class="tok-number">1510</span>);
+				panel.m.AppendMenuSeparator();
+			}
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.source.value == <span class="tok-number">1</span> &amp;&amp; <span class="tok-keyword">this</span>.images.length &gt; <span class="tok-number">1</span>) {
+				panel.m.AppendMenuItem(<span class="tok-keyword">this</span>.default_file == <span class="tok-keyword">this</span>.files[<span class="tok-keyword">this</span>.image] ? MF_GRAYED : MF_STRING, <span class="tok-number">1520</span>, <span class="tok-string">&#39;Set as default&#39;</span>);
+				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1521</span>, <span class="tok-string">&#39;Clear default&#39;</span>);
+				panel.m.AppendMenuSeparator();
+			}
+			panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1530</span>, <span class="tok-string">&#39;Open image&#39;</span>);
+			panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1531</span>, <span class="tok-string">&#39;Delete image&#39;</span>);
+			panel.m.AppendMenuSeparator();
+		}
+		panel.m.AppendMenuItem(_isFolder(<span class="tok-keyword">this</span>.folder) ? MF_STRING : MF_GRAYED, <span class="tok-number">1540</span>, <span class="tok-string">&#39;Open containing folder&#39;</span>);
+		panel.m.AppendMenuSeparator();
+	}
+
+	<span class="tok-keyword">this</span>.rbtn_up_done = (idx) =&gt; {
+		<span class="tok-keyword">switch</span> (idx) {
+		<span class="tok-keyword">case</span> <span class="tok-number">1000</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1001</span>:
+			<span class="tok-keyword">this</span>.properties.source.value = idx - <span class="tok-number">1000</span>;
+			<span class="tok-keyword">this</span>.artist = <span class="tok-string">&#39;&#39;</span>;
+			<span class="tok-keyword">this</span>.folder = <span class="tok-string">&#39;&#39;</span>;
+			panel.item_focus_change();
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">1002</span>:
+			<span class="tok-keyword">this</span>.update();
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">1003</span>:
+			<span class="tok-keyword">const</span> tmp = utils.InputBox(window.ID, <span class="tok-string">&#39;Enter title formatting or an absolute path to a folder.\n\n%profile% will resolve to your foobar2000 profile folder or the program folder if using portable mode.&#39;</span>, window.ScriptInfo.Name, <span class="tok-keyword">this</span>.properties.tf.value);
+			<span class="tok-keyword">this</span>.properties.tf.value = tmp || <span class="tok-string">&#39;$directory_path(%path%)&#39;</span>;
+			<span class="tok-keyword">this</span>.folder = <span class="tok-string">&#39;&#39;</span>;
+			panel.item_focus_change();
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">1004</span>:
+			<span class="tok-keyword">this</span>.download();
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">1005</span>:
+			<span class="tok-keyword">this</span>.properties.auto_download.toggle();
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">1011</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1013</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1015</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1020</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1025</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1030</span>:
+			<span class="tok-keyword">this</span>.properties.limit.value = idx - <span class="tok-number">1010</span>;
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">1050</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1051</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1052</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1053</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1054</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1055</span>:
+			<span class="tok-keyword">this</span>.properties.mode.value = idx - <span class="tok-number">1050</span>;
+			<span class="tok-keyword">this</span>.size(<span class="tok-literal">true</span>);
+			window.Repaint();
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">1075</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1100</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1150</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1200</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1250</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1300</span>:
+			<span class="tok-keyword">this</span>.properties.px.value = idx - <span class="tok-number">1000</span>;
+			<span class="tok-keyword">this</span>.size(<span class="tok-literal">true</span>);
+			window.Repaint();
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">1400</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1405</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1410</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1420</span>:
+			<span class="tok-keyword">this</span>.properties.cycle.value = idx - <span class="tok-number">1400</span>;
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">1500</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1501</span>:
+			<span class="tok-keyword">this</span>.properties.sort.value = idx - <span class="tok-number">1500</span>;
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.images.length &gt; <span class="tok-number">1</span>) {
+				<span class="tok-keyword">this</span>.update();
+			}
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">1510</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1511</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1512</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">1513</span>:
+			<span class="tok-keyword">this</span>.properties.aspect.value = idx - <span class="tok-number">1510</span>;
+			window.Repaint();
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">1520</span>:
+			<span class="tok-keyword">this</span>.set_default(<span class="tok-keyword">this</span>.files[<span class="tok-keyword">this</span>.image].split(<span class="tok-string">&#39;\\&#39;</span>).pop());
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">1521</span>:
+			<span class="tok-keyword">this</span>.set_default(<span class="tok-string">&#39;&#39;</span>);
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">1530</span>:
+			_run(<span class="tok-keyword">this</span>.files[<span class="tok-keyword">this</span>.image]);
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">1531</span>:
+			_recycleFile(<span class="tok-keyword">this</span>.files[<span class="tok-keyword">this</span>.image]);
+			<span class="tok-keyword">this</span>.update();
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">1540</span>:
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.files.length) {
+				_explorer(<span class="tok-keyword">this</span>.files[<span class="tok-keyword">this</span>.image]);
+			} <span class="tok-keyword">else</span> {
+				_run(<span class="tok-keyword">this</span>.folder);
+			}
+			<span class="tok-keyword">break</span>;
+		}
+	}
+
+	<span class="tok-keyword">this</span>.key_down = (k) =&gt; {
+		<span class="tok-keyword">switch</span> (k) {
+		<span class="tok-keyword">case</span> VK_ESCAPE:
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">0</span> &amp;&amp; <span class="tok-keyword">this</span>.overlay) { <span class="tok-comment">// grid</span>
+				<span class="tok-keyword">this</span>.enable_overlay(<span class="tok-literal">false</span>);
+			}
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> VK_LEFT:
+		<span class="tok-keyword">case</span> VK_UP:
+			<span class="tok-keyword">this</span>.wheel(<span class="tok-number">1</span>);
+			<span class="tok-keyword">break</span>
+		<span class="tok-keyword">case</span> VK_RIGHT:
+		<span class="tok-keyword">case</span> VK_DOWN:
+			<span class="tok-keyword">this</span>.wheel(-<span class="tok-number">1</span>);
+			<span class="tok-keyword">break</span>;
+		}
+	}
+
+	<span class="tok-keyword">this</span>.update = () =&gt; {
+		<span class="tok-keyword">this</span>.image = <span class="tok-number">0</span>;
+		<span class="tok-keyword">this</span>.files = _getFiles(<span class="tok-keyword">this</span>.folder, <span class="tok-keyword">this</span>.exts, <span class="tok-keyword">this</span>.properties.sort.value == <span class="tok-number">1</span>);
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.source.value == <span class="tok-number">1</span> &amp;&amp; <span class="tok-keyword">this</span>.files.length &gt; <span class="tok-number">1</span>) {
+			<span class="tok-keyword">this</span>.default_file = <span class="tok-keyword">this</span>.folder + utils.ReadINI(<span class="tok-keyword">this</span>.ini_file, <span class="tok-string">&#39;Defaults&#39;</span>, _fbSanitise(<span class="tok-keyword">this</span>.artist));
+			<span class="tok-keyword">const</span> tmp = _.indexOf(<span class="tok-keyword">this</span>.files, <span class="tok-keyword">this</span>.default_file);
+			<span class="tok-keyword">if</span> (tmp &gt; -<span class="tok-number">1</span>) {
+				<span class="tok-keyword">this</span>.files.splice(tmp, <span class="tok-number">1</span>);
+				<span class="tok-keyword">this</span>.files.unshift(<span class="tok-keyword">this</span>.default_file);
+			}
+		}
+		<span class="tok-keyword">this</span>.images = _.map(<span class="tok-keyword">this</span>.files, _img);
+		<span class="tok-keyword">this</span>.size(<span class="tok-literal">true</span>);
+		window.Repaint();
+	}
+
+	<span class="tok-keyword">this</span>.enable_overlay = (b) =&gt; {
+		<span class="tok-keyword">this</span>.overlay = b;
+		window.Repaint();
+	}
+
+	<span class="tok-keyword">this</span>.set_default = (t) =&gt; {
+		utils.WriteINI(<span class="tok-keyword">this</span>.ini_file, <span class="tok-string">&#39;Defaults&#39;</span>, _fbSanitise(<span class="tok-keyword">this</span>.artist), t);
+		<span class="tok-keyword">this</span>.update();
+	}
+
+	<span class="tok-keyword">this</span>.download = () =&gt; {
+		<span class="tok-keyword">if</span> (!_tagged(<span class="tok-keyword">this</span>.artist))
+			<span class="tok-keyword">return</span>;
+
+		<span class="tok-keyword">var</span> url = <span class="tok-string">&#39;https://www.last.fm/music/&#39;</span> + encodeURIComponent(<span class="tok-keyword">this</span>.artist) + <span class="tok-string">&#39;/+images&#39;</span>;
+		<span class="tok-keyword">var</span> task_id = utils.HTTPRequestAsync(<span class="tok-number">0</span>, url, <span class="tok-keyword">this</span>.headers);
+		<span class="tok-keyword">this</span>.artists[task_id] = <span class="tok-keyword">this</span>.artist;
+	}
+
+	<span class="tok-keyword">this</span>.http_request_done = <span class="tok-keyword">function</span> (id, success, response_text) {
+		<span class="tok-keyword">var</span> artist = <span class="tok-keyword">this</span>.artists[id];
+
+		<span class="tok-keyword">if</span> (!artist)
+			<span class="tok-keyword">return</span>; <span class="tok-comment">// we didn&#39;t request this id</span>
+
+		<span class="tok-keyword">if</span> (!success) {
+			console.log(N, response_text);
+			<span class="tok-keyword">return</span>;
+		}
+
+		<span class="tok-keyword">var</span> filename_base = _artistFolder(artist) + _fbSanitise(artist) + <span class="tok-string">&#39;_&#39;</span>;
+
+		_(_getElementsByTagName(response_text, <span class="tok-string">&#39;li&#39;</span>))
+			.filter({ className : <span class="tok-string">&#39;image-list-item-wrapper&#39;</span> })
+			.map((item) =&gt; {
+				<span class="tok-keyword">var</span> img = _firstElement(item, <span class="tok-string">&#39;img&#39;</span>);
+				<span class="tok-keyword">var</span> url = img.src.replace(<span class="tok-string">&#39;avatar170s/&#39;</span>, <span class="tok-string">&#39;&#39;</span>);
+				<span class="tok-keyword">return</span> {
+					url : url,
+					filename : filename_base + url.substring(url.lastIndexOf(<span class="tok-string">&#39;/&#39;</span>) + <span class="tok-number">1</span>) + <span class="tok-string">&#39;.jpg&#39;</span>,
+				};
+			})
+			.filter((item) =&gt; {
+				<span class="tok-keyword">return</span> !utils.IsFile(item.filename);
+			})
+			.take(<span class="tok-keyword">this</span>.properties.limit.value)
+			.forEach((item) =&gt; {
+				utils.DownloadFileAsync(item.url, item.filename, <span class="tok-literal">true</span>);
+			});
+	}
+
+	<span class="tok-keyword">this</span>.interval_func = () =&gt; {
+		<span class="tok-keyword">this</span>.time++;
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.cycle.value &gt; <span class="tok-number">0</span> &amp;&amp; <span class="tok-keyword">this</span>.images.length &gt; <span class="tok-number">1</span> &amp;&amp; <span class="tok-keyword">this</span>.time % <span class="tok-keyword">this</span>.properties.cycle.value == <span class="tok-number">0</span>) {
+			<span class="tok-keyword">this</span>.image++;
+			<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.image == <span class="tok-keyword">this</span>.images.length) {
+				<span class="tok-keyword">this</span>.image = <span class="tok-number">0</span>;
+			}
+			window.Repaint();
+		}
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.source.value == <span class="tok-number">1</span> &amp;&amp; <span class="tok-keyword">this</span>.time % <span class="tok-number">3</span> == <span class="tok-number">0</span> &amp;&amp; _getFiles(<span class="tok-keyword">this</span>.folder, <span class="tok-keyword">this</span>.exts).length != <span class="tok-keyword">this</span>.files.length) {
+			<span class="tok-keyword">this</span>.update();
+		}
+	}
+
+	_createFolder(folders.data);
+	_createFolder(folders.artists);
+	<span class="tok-keyword">this</span>.mx = <span class="tok-number">0</span>;
+	<span class="tok-keyword">this</span>.my = <span class="tok-number">0</span>;
+	<span class="tok-keyword">this</span>.files = [];
+	<span class="tok-keyword">this</span>.images = [];
+	<span class="tok-keyword">this</span>.artists = {};
+	<span class="tok-keyword">this</span>.limits = [<span class="tok-number">1</span>, <span class="tok-number">3</span>, <span class="tok-number">5</span>, <span class="tok-number">10</span>, <span class="tok-number">15</span>, <span class="tok-number">20</span>];
+	<span class="tok-keyword">this</span>.modes = [<span class="tok-string">&#39;grid&#39;</span>, <span class="tok-string">&#39;left&#39;</span>, <span class="tok-string">&#39;right&#39;</span>, <span class="tok-string">&#39;top&#39;</span>, <span class="tok-string">&#39;bottom&#39;</span>, <span class="tok-string">&#39;off&#39;</span>];
+	<span class="tok-keyword">this</span>.pxs = [<span class="tok-number">75</span>, <span class="tok-number">100</span>, <span class="tok-number">150</span>, <span class="tok-number">200</span>, <span class="tok-number">250</span>, <span class="tok-number">300</span>];
+	<span class="tok-keyword">this</span>.ini_file = folders.data + <span class="tok-string">&#39;thumbs.ini&#39;</span>;
+	<span class="tok-keyword">this</span>.exts = <span class="tok-string">&#39;jpg|jpeg|png|gif&#39;</span>;
+	<span class="tok-keyword">this</span>.folder = <span class="tok-string">&#39;&#39;</span>;
+	<span class="tok-keyword">this</span>.default_file = <span class="tok-string">&#39;&#39;</span>;
+	<span class="tok-keyword">this</span>.artist = <span class="tok-string">&#39;&#39;</span>;
+	<span class="tok-keyword">this</span>.img = <span class="tok-literal">null</span>;
+	<span class="tok-keyword">this</span>.nc = <span class="tok-literal">false</span>;
+	<span class="tok-keyword">this</span>.image = <span class="tok-number">0</span>;
+	<span class="tok-keyword">this</span>.image_xywh = [];
+	<span class="tok-keyword">this</span>.index = <span class="tok-number">0</span>;
+	<span class="tok-keyword">this</span>.time = <span class="tok-number">0</span>;
+	<span class="tok-keyword">this</span>.counter = <span class="tok-number">0</span>;
+
+	<span class="tok-keyword">this</span>.properties = {
+		mode : <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.THUMBS.MODE&#39;</span>, <span class="tok-number">4</span>), <span class="tok-comment">// 0 grid 1 left 2 right 3 top 4 bottom 5 off</span>
+		source : <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.THUMBS.SOURCE&#39;</span>, <span class="tok-number">0</span>), <span class="tok-comment">// 0 custom folder 1 last.fm</span>
+		tf : <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.THUMBS.CUSTOM.FOLDER.TF&#39;</span>, <span class="tok-string">&#39;$directory_path(%path%)&#39;</span>),
+		limit : <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.THUMBS.DOWNLOAD.LIMIT&#39;</span>, <span class="tok-number">10</span>),
+		px : <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.THUMBS.PX&#39;</span>, <span class="tok-number">75</span>),
+		cycle : <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.THUMBS.CYCLE&#39;</span>, <span class="tok-number">0</span>),
+		sort : <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.THUMBS.SORT&#39;</span>, <span class="tok-number">0</span>), <span class="tok-comment">// 0 a-z 1 newest first</span>
+		aspect : <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.THUMBS.ASPECT&#39;</span>, image.crop_top),
+		auto_download : <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.THUMBS.AUTO.DOWNLOAD&#39;</span>, <span class="tok-literal">true</span>),
+	};
+
+	<span class="tok-keyword">this</span>.headers = JSON.stringify({
+		<span class="tok-string">&#39;User-Agent&#39;</span> : <span class="tok-string">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0&#39;</span>,
+		<span class="tok-string">&#39;Referer&#39;</span> : <span class="tok-string">&#39;https://www.last.fm&#39;</span>,
+	});
+
+	<span class="tok-keyword">this</span>.close_btn = <span class="tok-keyword">new</span> _sb(chars.close, <span class="tok-number">0</span>, <span class="tok-number">0</span>, _scale(<span class="tok-number">12</span>), _scale(<span class="tok-number">12</span>), () =&gt; { <span class="tok-keyword">return</span> <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">0</span> &amp;&amp; <span class="tok-keyword">this</span>.overlay; }, () =&gt; { <span class="tok-keyword">this</span>.enable_overlay(<span class="tok-literal">false</span>); });
+	window.SetInterval(<span class="tok-keyword">this</span>.interval_func, <span class="tok-number">1000</span>);
+}
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>
