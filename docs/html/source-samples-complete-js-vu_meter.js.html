@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>vu_meter.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <a class="nav-link " href="globals.html">Globals</a>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><a class="nav-link " href="console.html">console</a><a class="nav-link " href="d2d.html">d2d</a><a class="nav-link " href="fb.html">fb</a><a class="nav-link " href="gdi.html">gdi</a><a class="nav-link " href="performance.html">performance</a><a class="nav-link " href="plman.html">plman</a><a class="nav-link " href="utils.html">utils</a><a class="nav-link " href="window.html">window</a></div><div class="nav-group"><div class="nav-title">Classes</div><a class="nav-link " href="ActiveXObject.html">ActiveXObject</a><a class="nav-link " href="ButtonObject.html">ButtonObject</a><a class="nav-link " href="ContextMenuManager.html">ContextMenuManager</a><a class="nav-link " href="D2DBitmap.html">D2DBitmap</a><a class="nav-link " href="D2DBrush.html">D2DBrush</a><a class="nav-link " href="D2DCompileInfo.html">D2DCompileInfo</a><a class="nav-link " href="D2DEffect.html">D2DEffect</a><a class="nav-link " href="D2DFont.html">D2DFont</a><a class="nav-link " href="D2DGraphics.html">D2DGraphics</a><a class="nav-link " href="DropTargetAction.html">DropTargetAction</a><a class="nav-link " href="Enumerator.html">Enumerator</a><a class="nav-link " href="FbAudioChunk.html">FbAudioChunk</a><a class="nav-link " href="FbFileInfo.html">FbFileInfo</a><a class="nav-link " href="FbMetadbHandle.html">FbMetadbHandle</a><a class="nav-link " href="FbMetadbHandleList.html">FbMetadbHandleList</a><a class="nav-link " href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a><a class="nav-link " href="FbPlayingItemLocation.html">FbPlayingItemLocation</a><a class="nav-link " href="FbPlaylistRecycler.html">FbPlaylistRecycler</a><a class="nav-link " href="FbProfiler.html">FbProfiler</a><a class="nav-link " href="FbTitleFormat.html">FbTitleFormat</a><a class="nav-link " href="FbTooltip.html">FbTooltip</a><a class="nav-link " href="FbUiSelectionHolder.html">FbUiSelectionHolder</a><a class="nav-link " href="GdiBitmap.html">GdiBitmap</a><a class="nav-link " href="GdiBrush.html">GdiBrush</a><a class="nav-link " href="GdiFont.html">GdiFont</a><a class="nav-link " href="GdiGraphics.html">GdiGraphics</a><a class="nav-link " href="GdiRawBitmap.html">GdiRawBitmap</a><a class="nav-link " href="HtmlDocument.html">HtmlDocument</a><a class="nav-link " href="HtmlNode.html">HtmlNode</a><a class="nav-link " href="IUIHacks.html">IUIHacks</a><a class="nav-link " href="MainMenuManager.html">MainMenuManager</a><a class="nav-link " href="MenuObject.html">MenuObject</a><a class="nav-link " href="PanelObject.html">PanelObject</a><a class="nav-link " href="PerformanceObserver.html">PerformanceObserver</a><a class="nav-link " href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a><a class="nav-link " href="RunResult.html">RunResult</a><a class="nav-link " href="ThemeManager.html">ThemeManager</a></div><div class="nav-group"><div class="nav-title">Modules</div><a class="nav-link " href="module-Callbacks.html">Callbacks</a><a class="nav-link " href="module-Codepages.html">Codepages</a><a class="nav-link " href="module-Effects.html">Effects</a><a class="nav-link " href="module-Flags.html">Flags</a><a class="nav-link " href="module-Helpers.html">Helpers</a><a class="nav-link " href="module-Matrix.html">Matrix</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/complete/js/vu_meter.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="fb.html#GetAudioChunk">fb.GetAudioChunk</a></div>
+        </header>
+        <pre class="source-code"><code><span class="tok-keyword">function</span> Clamp(value, min, max) {
+	<span class="tok-keyword">if</span> (value &lt; min)
+		<span class="tok-keyword">return</span> min;
+	<span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (value &gt; max)
+		<span class="tok-keyword">return</span> max;
+	<span class="tok-keyword">else</span>
+		<span class="tok-keyword">return</span> value;
+}
+
+<span class="tok-keyword">function</span> EnableMenuIf(condition) {
+	<span class="tok-keyword">return</span> condition ? MF_STRING : MF_GRAYED;
+}
+
+<span class="tok-keyword">function</span> _vu_meter(x, y, w, h) {
+	<span class="tok-keyword">this</span>.clear_graph = <span class="tok-keyword">function</span> () {
+		<span class="tok-keyword">for</span> (<span class="tok-keyword">var</span> c = <span class="tok-number">0</span>; c &lt; <span class="tok-keyword">this</span>.channels.count; ++c) {
+			<span class="tok-keyword">this</span>.RMS_levels[c] = <span class="tok-number">0</span>;
+			<span class="tok-keyword">this</span>.Peak_levels[c] = <span class="tok-number">0</span>;
+			<span class="tok-keyword">this</span>.Peak_falldown[c] = <span class="tok-number">0</span>;
+		}
+
+		window.Repaint();
+	}
+
+	<span class="tok-keyword">this</span>.init = <span class="tok-keyword">function</span> () {
+		<span class="tok-keyword">this</span>.dBrange = <span class="tok-keyword">this</span>.maxDB - <span class="tok-keyword">this</span>.minDB;
+
+		<span class="tok-keyword">if</span> (fb.IsPaused)
+			<span class="tok-keyword">this</span>.update_graph();
+		<span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (fb.IsPlaying)
+			<span class="tok-keyword">this</span>.start_timer();
+	}
+
+	<span class="tok-keyword">this</span>.start_timer = <span class="tok-keyword">function</span> () {
+		<span class="tok-keyword">if</span> (!<span class="tok-keyword">this</span>.timer_id) {
+			<span class="tok-keyword">this</span>.timer_id = window.SetInterval((<span class="tok-keyword">function</span> () { <span class="tok-keyword">this</span>.update_graph(); }).bind(<span class="tok-keyword">this</span>), <span class="tok-keyword">this</span>.timer_interval);
+		}
+	}
+
+	<span class="tok-keyword">this</span>.stop_timer = <span class="tok-keyword">function</span> () {
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.timer_id) {
+			window.ClearInterval(<span class="tok-keyword">this</span>.timer_id);
+		}
+
+		<span class="tok-keyword">this</span>.timer_id = <span class="tok-number">0</span>;
+	}
+
+	<span class="tok-keyword">this</span>.to_db = <span class="tok-keyword">function</span> (num) {
+		<span class="tok-keyword">return</span> <span class="tok-number">20</span> * Math.log(num) / Math.LN10;
+	}
+
+	<span class="tok-keyword">this</span>.update_graph = <span class="tok-keyword">function</span> () {
+		<span class="tok-keyword">var</span> cur_time = fb.PlaybackTime;
+
+		<span class="tok-keyword">if</span> (cur_time &lt; <span class="tok-keyword">this</span>.rms_window)
+			<span class="tok-keyword">return</span>;
+
+		<span class="tok-keyword">var</span> chunk = fb.GetAudioChunk(<span class="tok-keyword">this</span>.rms_window);
+
+		<span class="tok-keyword">if</span> (!chunk)
+			<span class="tok-keyword">return</span>;
+
+		<span class="tok-keyword">this</span>.channels.count = chunk.ChannelCount;
+		<span class="tok-keyword">this</span>.channels.config = chunk.ChannelConfig;
+		<span class="tok-keyword">var</span> data = chunk.Data;
+		<span class="tok-keyword">var</span> frame_len = chunk.SampleCount;
+
+		<span class="tok-keyword">if</span> (data &amp;&amp; <span class="tok-keyword">this</span>.channels.count &gt; <span class="tok-number">0</span> &amp;&amp; frame_len &gt; <span class="tok-number">0</span>) {
+			<span class="tok-keyword">var</span> old_count = <span class="tok-keyword">this</span>.Peak_levels.length;
+			<span class="tok-keyword">this</span>.RMS_levels.length = <span class="tok-keyword">this</span>.channels.count;
+			<span class="tok-keyword">this</span>.Peak_levels.length = <span class="tok-keyword">this</span>.channels.count;
+			<span class="tok-keyword">this</span>.Peak_falldown.length = <span class="tok-keyword">this</span>.channels.count;
+
+			<span class="tok-keyword">if</span> (old_count &lt; <span class="tok-keyword">this</span>.channels.count) {
+				<span class="tok-keyword">for</span> (<span class="tok-keyword">var</span> c = old_count; c &lt; <span class="tok-keyword">this</span>.channels.count; ++c) {
+					<span class="tok-keyword">this</span>.Peak_levels[c] = <span class="tok-number">0</span>;
+					<span class="tok-keyword">this</span>.Peak_falldown[c] = <span class="tok-number">0</span>;
+				}
+			}
+
+			<span class="tok-keyword">for</span> (<span class="tok-keyword">var</span> c = <span class="tok-number">0</span>; c &lt; <span class="tok-keyword">this</span>.channels.count; ++c) {
+				<span class="tok-keyword">var</span> sum = <span class="tok-number">0</span>, peak = <span class="tok-number">0</span>;
+
+				<span class="tok-keyword">for</span> (<span class="tok-keyword">var</span> i = c; i &lt; data.length; i += <span class="tok-keyword">this</span>.channels.count) {
+					<span class="tok-keyword">var</span> s = Math.abs(data[i]);
+
+					<span class="tok-keyword">if</span> (s &gt; peak) {
+						peak = s;
+					}
+
+					sum += s * s;
+				}
+
+				<span class="tok-keyword">this</span>.RMS_levels[c] = Math.sqrt(sum / frame_len);
+
+				<span class="tok-keyword">if</span> (peak &gt;= <span class="tok-keyword">this</span>.Peak_levels[c]) {
+					<span class="tok-keyword">this</span>.Peak_levels[c] = peak;
+					<span class="tok-keyword">this</span>.Peak_falldown[c] = <span class="tok-number">0</span>;
+				} <span class="tok-keyword">else</span> {
+					<span class="tok-keyword">if</span> (++<span class="tok-keyword">this</span>.Peak_falldown[c] &gt; <span class="tok-keyword">this</span>.peak_hold) {
+						<span class="tok-keyword">this</span>.Peak_levels[c] *= <span class="tok-keyword">this</span>.peak_fall_mul;
+					}
+				}
+			}
+
+			window.Repaint();
+		}
+	}
+
+<span class="tok-comment">// callbacks begin</span>
+	<span class="tok-keyword">this</span>.paint = <span class="tok-keyword">function</span> (gr) {
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.w &lt; <span class="tok-number">1</span> || <span class="tok-keyword">this</span>.h &lt; <span class="tok-number">1</span>)
+			<span class="tok-keyword">return</span>;
+
+		<span class="tok-keyword">var</span> smooth_mode = <span class="tok-keyword">this</span>.properties.meter_style.value == <span class="tok-number">0</span>;
+
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.w &gt; <span class="tok-keyword">this</span>.h) { <span class="tok-comment">// horizontal</span>
+			<span class="tok-keyword">var</span> bar_width = <span class="tok-keyword">this</span>.w;
+			<span class="tok-keyword">var</span> bar_height = Math.floor(<span class="tok-keyword">this</span>.h / <span class="tok-keyword">this</span>.channels.count);
+
+			<span class="tok-keyword">if</span> (!smooth_mode) {
+				<span class="tok-keyword">var</span> block_count = Math.max(Math.floor(<span class="tok-keyword">this</span>.dBrange / <span class="tok-keyword">this</span>.properties.rms_block_db.value), <span class="tok-number">1</span>);
+				<span class="tok-keyword">var</span> block_width = bar_width / block_count;
+				<span class="tok-keyword">var</span> block_pad = Math.max(Math.ceil(block_width * <span class="tok-number">0.05</span>), <span class="tok-number">1</span>);
+			}
+
+			<span class="tok-keyword">for</span> (<span class="tok-keyword">var</span> c = <span class="tok-number">0</span>; c &lt; <span class="tok-keyword">this</span>.channels.count; ++c) {
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.RMS_levels[c]) {
+					<span class="tok-keyword">var</span> rms_db = Clamp(<span class="tok-keyword">this</span>.to_db(<span class="tok-keyword">this</span>.RMS_levels[c]), <span class="tok-keyword">this</span>.minDB, <span class="tok-keyword">this</span>.maxDB);
+
+					<span class="tok-keyword">if</span> (smooth_mode) {
+						<span class="tok-keyword">var</span> width = Math.round(bar_width * (rms_db - <span class="tok-keyword">this</span>.minDB) / <span class="tok-keyword">this</span>.dBrange);
+						gr.FillSolidRect(<span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y + (bar_height * c), width, bar_height - <span class="tok-number">1</span>, <span class="tok-keyword">this</span>.properties.custom_bar.value);
+					} <span class="tok-keyword">else</span> {
+						<span class="tok-keyword">var</span> blocks = Math.round(block_count * (rms_db - <span class="tok-keyword">this</span>.minDB) / <span class="tok-keyword">this</span>.dBrange);
+						<span class="tok-keyword">var</span> width = blocks * block_width;
+						gr.FillSolidRect(<span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y + (bar_height * c), width, bar_height - <span class="tok-number">1</span>, <span class="tok-keyword">this</span>.properties.custom_bar.value);
+
+						<span class="tok-keyword">for</span> (<span class="tok-keyword">var</span> i = <span class="tok-number">1</span>; i &lt;= blocks; ++i) {
+							gr.FillSolidRect(<span class="tok-keyword">this</span>.x - Math.ceil(block_pad / <span class="tok-number">2</span>) + (i * block_width), <span class="tok-keyword">this</span>.y + (bar_height * c), block_pad, bar_height - <span class="tok-number">1</span>, <span class="tok-keyword">this</span>.properties.custom_background.value);
+						}
+					}
+				}
+
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.peak_bar_width &gt; <span class="tok-number">0</span> &amp;&amp; <span class="tok-keyword">this</span>.Peak_levels[c] &gt; <span class="tok-number">0</span>) {
+					<span class="tok-keyword">var</span> peak_db = Clamp(<span class="tok-keyword">this</span>.to_db(<span class="tok-keyword">this</span>.Peak_levels[c]), <span class="tok-keyword">this</span>.minDB, <span class="tok-keyword">this</span>.maxDB);
+
+					<span class="tok-keyword">if</span> (peak_db &gt; <span class="tok-keyword">this</span>.minDB) {
+						<span class="tok-keyword">var</span> peak_pos = Math.round(bar_width * (peak_db - <span class="tok-keyword">this</span>.minDB) / <span class="tok-keyword">this</span>.dBrange);
+						gr.FillSolidRect(<span class="tok-keyword">this</span>.x + peak_pos - <span class="tok-keyword">this</span>.peak_bar_width / <span class="tok-number">2</span>, <span class="tok-keyword">this</span>.y + (bar_height * c), <span class="tok-keyword">this</span>.peak_bar_width, bar_height - <span class="tok-number">1</span>, <span class="tok-keyword">this</span>.properties.custom_peak.value);
+					}
+				}
+			}
+		} <span class="tok-keyword">else</span> { <span class="tok-comment">// vertical</span>
+			<span class="tok-keyword">var</span> bar_width = Math.floor(<span class="tok-keyword">this</span>.w / <span class="tok-keyword">this</span>.channels.count);
+			<span class="tok-keyword">var</span> bar_height = <span class="tok-keyword">this</span>.h;
+
+			<span class="tok-keyword">if</span> (!smooth_mode) {
+				<span class="tok-keyword">var</span> block_count = Math.max(Math.floor(<span class="tok-keyword">this</span>.dBrange / <span class="tok-keyword">this</span>.properties.rms_block_db.value), <span class="tok-number">1</span>);
+				<span class="tok-keyword">var</span> block_height = bar_height / block_count;
+				<span class="tok-keyword">var</span> block_pad = Math.max(Math.ceil(block_height * <span class="tok-number">0.05</span>), <span class="tok-number">1</span>);
+			}
+
+			<span class="tok-keyword">for</span> (<span class="tok-keyword">var</span> c = <span class="tok-number">0</span>; c &lt; <span class="tok-keyword">this</span>.channels.count; ++c) {
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.RMS_levels[c]) {
+					<span class="tok-keyword">var</span> rms_db = Clamp(<span class="tok-keyword">this</span>.to_db(<span class="tok-keyword">this</span>.RMS_levels[c]), <span class="tok-keyword">this</span>.minDB, <span class="tok-keyword">this</span>.maxDB);
+
+					<span class="tok-keyword">if</span> (smooth_mode) {
+						<span class="tok-keyword">var</span> height = Math.round(bar_height * (rms_db - <span class="tok-keyword">this</span>.minDB) / <span class="tok-keyword">this</span>.dBrange);
+					} <span class="tok-keyword">else</span> {
+						<span class="tok-keyword">var</span> blocks = Math.round(block_count * (rms_db - <span class="tok-keyword">this</span>.minDB) / <span class="tok-keyword">this</span>.dBrange);
+						<span class="tok-keyword">var</span> height = blocks * block_height;
+					}
+
+					gr.FillSolidRect(<span class="tok-keyword">this</span>.x + (bar_width * c), <span class="tok-keyword">this</span>.y, bar_width - <span class="tok-number">1</span>, <span class="tok-keyword">this</span>.h, <span class="tok-keyword">this</span>.properties.custom_bar.value);
+					gr.FillSolidRect(<span class="tok-keyword">this</span>.x + (bar_width * c), <span class="tok-keyword">this</span>.y, bar_width - <span class="tok-number">1</span>, <span class="tok-keyword">this</span>.h - height, <span class="tok-keyword">this</span>.properties.custom_background.value);
+
+					<span class="tok-keyword">if</span> (!smooth_mode) {
+						<span class="tok-keyword">for</span> (<span class="tok-keyword">var</span> i = <span class="tok-number">1</span>; i &lt;= blocks; ++i) {
+							gr.FillSolidRect(bar_width * c, <span class="tok-keyword">this</span>.h - height + Math.ceil(block_pad / <span class="tok-number">2</span>) + (i * block_height), bar_width - <span class="tok-number">1</span>, block_pad, <span class="tok-keyword">this</span>.properties.custom_background.value);
+						}
+					}
+				}
+
+				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.peak_bar_width &gt; <span class="tok-number">0</span> &amp;&amp; <span class="tok-keyword">this</span>.Peak_levels[c] &gt; <span class="tok-number">0</span>) {
+					<span class="tok-keyword">var</span> peak_db = Clamp(<span class="tok-keyword">this</span>.to_db(<span class="tok-keyword">this</span>.Peak_levels[c]), <span class="tok-keyword">this</span>.minDB, <span class="tok-keyword">this</span>.maxDB);
+
+					<span class="tok-keyword">if</span> (peak_db &gt; <span class="tok-keyword">this</span>.minDB) {
+						<span class="tok-keyword">var</span> peak_pos = <span class="tok-keyword">this</span>.h - Math.round(bar_height * (peak_db - <span class="tok-keyword">this</span>.minDB) / <span class="tok-keyword">this</span>.dBrange);
+						gr.FillSolidRect(<span class="tok-keyword">this</span>.x + (bar_width * c), <span class="tok-keyword">this</span>.y + peak_pos, bar_width - <span class="tok-number">1</span>, <span class="tok-keyword">this</span>.peak_bar_width, <span class="tok-keyword">this</span>.properties.custom_peak.value);
+					}
+				}
+			}
+		}
+	}
+
+	<span class="tok-keyword">this</span>.playback_new_track = <span class="tok-keyword">function</span> () {
+		<span class="tok-keyword">this</span>.start_timer();
+	}
+
+	<span class="tok-keyword">this</span>.playback_pause = <span class="tok-keyword">function</span> (state) {
+		state ? <span class="tok-keyword">this</span>.stop_timer() : <span class="tok-keyword">this</span>.start_timer();
+	}
+
+	<span class="tok-keyword">this</span>.playback_stop = <span class="tok-keyword">function</span> (reason) {
+		<span class="tok-keyword">if</span> (reason != <span class="tok-number">2</span>) {
+			<span class="tok-keyword">this</span>.stop_timer();
+		}
+
+		<span class="tok-keyword">this</span>.clear_graph();
+	}
+
+	<span class="tok-keyword">this</span>.rbtn_up = <span class="tok-keyword">function</span> (x, y) {
+		<span class="tok-keyword">var</span> menu = window.CreatePopupMenu();
+		<span class="tok-keyword">var</span> style_menu = window.CreatePopupMenu();
+
+		menu.AppendMenuItem(MF_STRING, <span class="tok-number">3</span>, <span class="tok-string">&#39;Background...&#39;</span>);
+		menu.AppendMenuItem(MF_STRING, <span class="tok-number">4</span>, <span class="tok-string">&#39;Bar...&#39;</span>);
+		menu.AppendMenuItem(EnableMenuIf(<span class="tok-keyword">this</span>.peak_bar_width &gt; <span class="tok-number">0</span>), <span class="tok-number">5</span>, <span class="tok-string">&#39;Peak...&#39;</span>);
+
+		style_menu.AppendMenuItem(MF_STRING, <span class="tok-number">10</span>, <span class="tok-string">&#39;Smooth&#39;</span>);
+		style_menu.AppendMenuItem(MF_STRING, <span class="tok-number">11</span>, <span class="tok-string">&#39;Blocks&#39;</span>);
+		style_menu.CheckMenuRadioItem(<span class="tok-number">10</span>, <span class="tok-number">11</span>, <span class="tok-keyword">this</span>.properties.meter_style.value + <span class="tok-number">10</span>);
+
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.meter_style.value == <span class="tok-number">1</span>) {
+			style_menu.AppendMenuSeparator();
+			style_menu.AppendMenuItem(MF_GRAYED, <span class="tok-number">0</span>, <span class="tok-string">&#39;Block width (dB)&#39;</span>);
+
+			<span class="tok-keyword">this</span>.rms_block_dbs.forEach(<span class="tok-keyword">function</span> (item, index) {
+				style_menu.AppendMenuItem(MF_STRING, <span class="tok-number">20</span> + index, item);
+			});
+
+			<span class="tok-keyword">var</span> rms_block_db_index = <span class="tok-keyword">this</span>.rms_block_dbs.indexOf(<span class="tok-keyword">this</span>.properties.rms_block_db.value);
+			style_menu.CheckMenuRadioItem(<span class="tok-number">20</span>, <span class="tok-number">20</span> + <span class="tok-keyword">this</span>.rms_block_dbs.length, <span class="tok-number">20</span> + rms_block_db_index);
+		}
+
+		style_menu.AppendTo(menu, MF_STRING, <span class="tok-string">&#39;Meter style&#39;</span>);
+
+		menu.AppendMenuSeparator();
+		menu.AppendMenuItem(MF_STRING, <span class="tok-number">50</span>, <span class="tok-string">&#39;Configure...&#39;</span>);
+
+		<span class="tok-keyword">var</span> idx = menu.TrackPopupMenu(x, y);
+
+		<span class="tok-keyword">switch</span> (idx) {
+		<span class="tok-keyword">case</span> <span class="tok-number">0</span>:
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">3</span>:
+			<span class="tok-keyword">var</span> tmp = utils.ColourPicker(window.ID, <span class="tok-keyword">this</span>.properties.custom_background.value);
+
+			<span class="tok-keyword">if</span> (tmp != <span class="tok-keyword">this</span>.properties.custom_background.value) {
+				<span class="tok-keyword">this</span>.properties.custom_background.value = tmp;
+				window.Repaint();
+			}
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">4</span>:
+			<span class="tok-keyword">var</span> tmp = utils.ColourPicker(window.ID, <span class="tok-keyword">this</span>.properties.custom_bar.value);
+
+			<span class="tok-keyword">if</span> (tmp != <span class="tok-keyword">this</span>.properties.custom_bar.value) {
+				<span class="tok-keyword">this</span>.properties.custom_bar.value = tmp;
+				window.Repaint();
+			}
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">5</span>:
+			<span class="tok-keyword">var</span> tmp = utils.ColourPicker(window.ID, <span class="tok-keyword">this</span>.properties.custom_peak.value);
+
+			<span class="tok-keyword">if</span> (tmp != <span class="tok-keyword">this</span>.properties.custom_peak.value) {
+				<span class="tok-keyword">this</span>.properties.custom_peak.value = tmp;
+				window.Repaint();
+			}
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">10</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">11</span>:
+			<span class="tok-keyword">this</span>.properties.meter_style.value = idx - <span class="tok-number">10</span>;
+			window.Repaint();
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">20</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">21</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">22</span>:
+		<span class="tok-keyword">case</span> <span class="tok-number">23</span>:
+			<span class="tok-keyword">this</span>.properties.rms_block_db.value = <span class="tok-keyword">this</span>.rms_block_dbs[idx - <span class="tok-number">20</span>];
+			window.Repaint();
+			<span class="tok-keyword">break</span>;
+		<span class="tok-keyword">case</span> <span class="tok-number">50</span>:
+			window.ShowConfigure();
+			<span class="tok-keyword">break</span>;
+		}
+
+		<span class="tok-keyword">return</span> <span class="tok-literal">true</span>;
+	}
+<span class="tok-comment">// callbacks end</span>
+
+	<span class="tok-keyword">this</span>.x = x;
+	<span class="tok-keyword">this</span>.y = y;
+	<span class="tok-keyword">this</span>.w = w;
+	<span class="tok-keyword">this</span>.h = h;
+
+	<span class="tok-keyword">this</span>.minDB = -<span class="tok-number">60</span>; <span class="tok-comment">// minimum dB on the meter (meter range)</span>
+	<span class="tok-keyword">this</span>.maxDB = <span class="tok-number">5</span>; <span class="tok-comment">// maximum dB on the meter (meter range)</span>
+
+	<span class="tok-keyword">this</span>.rms_block_dbs = [<span class="tok-number">0.3125</span>, <span class="tok-number">0.625</span>, <span class="tok-number">1.25</span>, <span class="tok-number">2.5</span>];
+	<span class="tok-keyword">this</span>.RMS_levels = [];
+	<span class="tok-keyword">this</span>.Peak_levels = [];
+	<span class="tok-keyword">this</span>.Peak_falldown = [];
+	<span class="tok-keyword">this</span>.timer_id = <span class="tok-number">0</span>;
+	<span class="tok-keyword">this</span>.dBrange = <span class="tok-number">0</span>;
+
+	<span class="tok-keyword">this</span>.channels = {
+		count : <span class="tok-number">2</span>,
+		config : <span class="tok-number">0</span>,
+	};
+
+	<span class="tok-keyword">this</span>.properties = {
+		custom_background : <span class="tok-keyword">new</span> _p(<span class="tok-string">&quot;2K3.METER.BACKGROUND.COLOUR&quot;</span>, _RGB(<span class="tok-number">30</span>, <span class="tok-number">30</span>, <span class="tok-number">30</span>)),
+		custom_bar : <span class="tok-keyword">new</span> _p(<span class="tok-string">&quot;2K3.METER.BAR.COLOUR&quot;</span>, _RGB(<span class="tok-number">200</span>, <span class="tok-number">200</span>, <span class="tok-number">200</span>)),
+		custom_peak : <span class="tok-keyword">new</span> _p(<span class="tok-string">&quot;2K3.METER.PEAK.COLOUR&quot;</span>, _RGB(<span class="tok-number">255</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>)), <span class="tok-comment">// no default</span>
+		meter_style : <span class="tok-keyword">new</span> _p(<span class="tok-string">&quot;2K3.METER.STYLE&quot;</span>, <span class="tok-number">1</span>), <span class="tok-comment">// 0: smooth, 1: blocks</span>
+		rms_block_db : <span class="tok-keyword">new</span> _p(<span class="tok-string">&quot;2K3.METER.BLOCK.DB&quot;</span>, <span class="tok-number">0.625</span>),
+	};
+}
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

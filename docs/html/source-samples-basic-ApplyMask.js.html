@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ApplyMask.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <a class="nav-link " href="globals.html">Globals</a>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><a class="nav-link " href="console.html">console</a><a class="nav-link " href="d2d.html">d2d</a><a class="nav-link " href="fb.html">fb</a><a class="nav-link " href="gdi.html">gdi</a><a class="nav-link " href="performance.html">performance</a><a class="nav-link " href="plman.html">plman</a><a class="nav-link " href="utils.html">utils</a><a class="nav-link " href="window.html">window</a></div><div class="nav-group"><div class="nav-title">Classes</div><a class="nav-link " href="ActiveXObject.html">ActiveXObject</a><a class="nav-link " href="ButtonObject.html">ButtonObject</a><a class="nav-link " href="ContextMenuManager.html">ContextMenuManager</a><a class="nav-link " href="D2DBitmap.html">D2DBitmap</a><a class="nav-link " href="D2DBrush.html">D2DBrush</a><a class="nav-link " href="D2DCompileInfo.html">D2DCompileInfo</a><a class="nav-link " href="D2DEffect.html">D2DEffect</a><a class="nav-link " href="D2DFont.html">D2DFont</a><a class="nav-link " href="D2DGraphics.html">D2DGraphics</a><a class="nav-link " href="DropTargetAction.html">DropTargetAction</a><a class="nav-link " href="Enumerator.html">Enumerator</a><a class="nav-link " href="FbAudioChunk.html">FbAudioChunk</a><a class="nav-link " href="FbFileInfo.html">FbFileInfo</a><a class="nav-link " href="FbMetadbHandle.html">FbMetadbHandle</a><a class="nav-link " href="FbMetadbHandleList.html">FbMetadbHandleList</a><a class="nav-link " href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a><a class="nav-link " href="FbPlayingItemLocation.html">FbPlayingItemLocation</a><a class="nav-link " href="FbPlaylistRecycler.html">FbPlaylistRecycler</a><a class="nav-link " href="FbProfiler.html">FbProfiler</a><a class="nav-link " href="FbTitleFormat.html">FbTitleFormat</a><a class="nav-link " href="FbTooltip.html">FbTooltip</a><a class="nav-link " href="FbUiSelectionHolder.html">FbUiSelectionHolder</a><a class="nav-link " href="GdiBitmap.html">GdiBitmap</a><a class="nav-link " href="GdiBrush.html">GdiBrush</a><a class="nav-link " href="GdiFont.html">GdiFont</a><a class="nav-link " href="GdiGraphics.html">GdiGraphics</a><a class="nav-link " href="GdiRawBitmap.html">GdiRawBitmap</a><a class="nav-link " href="HtmlDocument.html">HtmlDocument</a><a class="nav-link " href="HtmlNode.html">HtmlNode</a><a class="nav-link " href="IUIHacks.html">IUIHacks</a><a class="nav-link " href="MainMenuManager.html">MainMenuManager</a><a class="nav-link " href="MenuObject.html">MenuObject</a><a class="nav-link " href="PanelObject.html">PanelObject</a><a class="nav-link " href="PerformanceObserver.html">PerformanceObserver</a><a class="nav-link " href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a><a class="nav-link " href="RunResult.html">RunResult</a><a class="nav-link " href="ThemeManager.html">ThemeManager</a></div><div class="nav-group"><div class="nav-title">Modules</div><a class="nav-link " href="module-Callbacks.html">Callbacks</a><a class="nav-link " href="module-Codepages.html">Codepages</a><a class="nav-link " href="module-Effects.html">Effects</a><a class="nav-link " href="module-Flags.html">Flags</a><a class="nav-link " href="module-Helpers.html">Helpers</a><a class="nav-link " href="module-Matrix.html">Matrix</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/basic/ApplyMask.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="D2DBitmap.html#ApplyMask">D2DBitmap#ApplyMask</a><a href="GdiBitmap.html#ApplyMask">GdiBitmap#ApplyMask</a></div>
+        </header>
+        <pre class="source-code"><code>window.DefineScript(<span class="tok-string">&#39;ApplyMask&#39;</span>, { author: <span class="tok-string">&#39;T.P Wang / marc2003&#39;</span> });
+include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
+include(<span class="tok-string">&#39;docs/Helpers.js&#39;</span>);
+
+<span class="tok-keyword">const</span> g_img = gdi.Image(<span class="tok-string">`${fb.ComponentPath}samples/basic/images/post.jpg`</span>);
+<span class="tok-keyword">const</span> g_mask = gdi.Image(<span class="tok-string">`${fb.ComponentPath}samples/basic/images/mask.png`</span>);
+<span class="tok-keyword">const</span> font = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">16</span>, <span class="tok-number">1</span>);
+
+<span class="tok-keyword">let</span> ww = <span class="tok-number">0</span>, wh = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> applied = <span class="tok-literal">false</span>;
+
+<span class="tok-keyword">function</span> on_size() {
+    ww = window.Width;
+    wh = window.Height;
+}
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    <span class="tok-keyword">if</span> (g_img) {
+        <span class="tok-comment">// Keep aspect ratio</span>
+        <span class="tok-keyword">let</span> scale_w = ww / g_img.Width;
+        <span class="tok-keyword">let</span> scale_h = wh / g_img.Height;
+        <span class="tok-keyword">let</span> scale = Math.min(scale_w, scale_h);
+        <span class="tok-keyword">let</span> pos_x = <span class="tok-number">0</span>, pos_y = <span class="tok-number">0</span>;
+        <span class="tok-keyword">if</span> (scale_w &lt; scale_h)
+            pos_y = (wh - g_img.Height * scale) / <span class="tok-number">2</span>;
+        <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (scale_w &gt; scale_h)
+            pos_x = (ww - g_img.Width * scale) / <span class="tok-number">2</span>;
+        gr.DrawImage(g_img, pos_x, pos_y, g_img.Width * scale, g_img.Height * scale, <span class="tok-number">0</span>, <span class="tok-number">0</span>, g_img.Width, g_img.Height);
+    }
+    <span class="tok-keyword">if</span> (!applied) {
+        gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, ww, <span class="tok-number">24</span>, RGB(<span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>));
+        gr.GdiDrawText(<span class="tok-string">&#39;Double click panel to apply mask&#39;</span>, font, RGB(<span class="tok-number">255</span>, <span class="tok-number">255</span>, <span class="tok-number">255</span>), <span class="tok-number">0</span>, <span class="tok-number">0</span>, ww, <span class="tok-number">24</span>, DT_CENTER);
+    }
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_dblclk() {
+    <span class="tok-keyword">if</span> (!applied) {
+        apply();
+    }
+}
+
+<span class="tok-keyword">function</span> apply() {
+    <span class="tok-keyword">let</span> g_img_mask = g_mask;
+    <span class="tok-comment">// mask *MUST* be the same size as g_img</span>
+    <span class="tok-keyword">let</span> mask = g_img_mask.Resize(g_img.Width, g_img.Height);
+    <span class="tok-comment">// Apply mask image to g_img</span>
+    g_img.ApplyMask(mask);
+    applied = <span class="tok-literal">true</span>;
+    window.Repaint();
+}
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MainMenuManager All-In-One.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <a class="nav-link " href="globals.html">Globals</a>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><a class="nav-link " href="console.html">console</a><a class="nav-link " href="d2d.html">d2d</a><a class="nav-link " href="fb.html">fb</a><a class="nav-link " href="gdi.html">gdi</a><a class="nav-link " href="performance.html">performance</a><a class="nav-link " href="plman.html">plman</a><a class="nav-link " href="utils.html">utils</a><a class="nav-link " href="window.html">window</a></div><div class="nav-group"><div class="nav-title">Classes</div><a class="nav-link " href="ActiveXObject.html">ActiveXObject</a><a class="nav-link " href="ButtonObject.html">ButtonObject</a><a class="nav-link " href="ContextMenuManager.html">ContextMenuManager</a><a class="nav-link " href="D2DBitmap.html">D2DBitmap</a><a class="nav-link " href="D2DBrush.html">D2DBrush</a><a class="nav-link " href="D2DCompileInfo.html">D2DCompileInfo</a><a class="nav-link " href="D2DEffect.html">D2DEffect</a><a class="nav-link " href="D2DFont.html">D2DFont</a><a class="nav-link " href="D2DGraphics.html">D2DGraphics</a><a class="nav-link " href="DropTargetAction.html">DropTargetAction</a><a class="nav-link " href="Enumerator.html">Enumerator</a><a class="nav-link " href="FbAudioChunk.html">FbAudioChunk</a><a class="nav-link " href="FbFileInfo.html">FbFileInfo</a><a class="nav-link " href="FbMetadbHandle.html">FbMetadbHandle</a><a class="nav-link " href="FbMetadbHandleList.html">FbMetadbHandleList</a><a class="nav-link " href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a><a class="nav-link " href="FbPlayingItemLocation.html">FbPlayingItemLocation</a><a class="nav-link " href="FbPlaylistRecycler.html">FbPlaylistRecycler</a><a class="nav-link " href="FbProfiler.html">FbProfiler</a><a class="nav-link " href="FbTitleFormat.html">FbTitleFormat</a><a class="nav-link " href="FbTooltip.html">FbTooltip</a><a class="nav-link " href="FbUiSelectionHolder.html">FbUiSelectionHolder</a><a class="nav-link " href="GdiBitmap.html">GdiBitmap</a><a class="nav-link " href="GdiBrush.html">GdiBrush</a><a class="nav-link " href="GdiFont.html">GdiFont</a><a class="nav-link " href="GdiGraphics.html">GdiGraphics</a><a class="nav-link " href="GdiRawBitmap.html">GdiRawBitmap</a><a class="nav-link " href="HtmlDocument.html">HtmlDocument</a><a class="nav-link " href="HtmlNode.html">HtmlNode</a><a class="nav-link " href="IUIHacks.html">IUIHacks</a><a class="nav-link " href="MainMenuManager.html">MainMenuManager</a><a class="nav-link " href="MenuObject.html">MenuObject</a><a class="nav-link " href="PanelObject.html">PanelObject</a><a class="nav-link " href="PerformanceObserver.html">PerformanceObserver</a><a class="nav-link " href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a><a class="nav-link " href="RunResult.html">RunResult</a><a class="nav-link " href="ThemeManager.html">ThemeManager</a></div><div class="nav-group"><div class="nav-title">Modules</div><a class="nav-link " href="module-Callbacks.html">Callbacks</a><a class="nav-link " href="module-Codepages.html">Codepages</a><a class="nav-link " href="module-Effects.html">Effects</a><a class="nav-link " href="module-Flags.html">Flags</a><a class="nav-link " href="module-Helpers.html">Helpers</a><a class="nav-link " href="module-Matrix.html">Matrix</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/basic/MainMenuManager All-In-One.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="fb.html#CreateContextMenuManager">fb.CreateContextMenuManager</a><a href="fb.html#CreateMainMenuManager">fb.CreateMainMenuManager</a><a href="window.html#CreatePopupMenu">window.CreatePopupMenu</a></div>
+        </header>
+        <pre class="source-code"><code>window.DefineScript(<span class="tok-string">&#39;MainMenuManager All-In-One&#39;</span>, { author: <span class="tok-string">&#39;YBStone / T.P Wang / marc2003&#39;</span> });
+include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
+include(<span class="tok-string">&#39;docs/Helpers.js&#39;</span>);
+
+<span class="tok-keyword">const</span> img = gdi.Image(<span class="tok-string">`${fb.ComponentPath}samples/basic/images/cog.png`</span>);
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    gr.DrawImage(img, <span class="tok-number">0</span>, <span class="tok-number">0</span>, img.Width, img.Height, <span class="tok-number">0</span>, <span class="tok-number">0</span>, img.Width, img.Height);
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_up(x, y) {
+    <span class="tok-keyword">if</span> (x &gt; <span class="tok-number">0</span> &amp;&amp; x &lt; img.Width &amp;&amp; y &gt; <span class="tok-number">0</span> &amp;&amp; y &lt; img.Height) {
+        menu();
+    }
+}
+
+<span class="tok-keyword">function</span> menu() {
+    <span class="tok-keyword">let</span> basemenu = window.CreatePopupMenu();
+    <span class="tok-keyword">let</span> contextman = fb.CreateContextMenuManager();
+    contextman.InitNowPlaying();
+    
+    <span class="tok-keyword">let</span> child1 = window.CreatePopupMenu(); <span class="tok-comment">//File</span>
+    <span class="tok-keyword">let</span> child2 = window.CreatePopupMenu(); <span class="tok-comment">//Edit</span>
+    <span class="tok-keyword">let</span> child3 = window.CreatePopupMenu(); <span class="tok-comment">//View</span>
+    <span class="tok-keyword">let</span> child4 = window.CreatePopupMenu(); <span class="tok-comment">//Playback</span>
+    <span class="tok-keyword">let</span> child5 = window.CreatePopupMenu(); <span class="tok-comment">//Library</span>
+    <span class="tok-keyword">let</span> child6 = window.CreatePopupMenu(); <span class="tok-comment">//Help</span>
+    <span class="tok-keyword">let</span> child7 = window.CreatePopupMenu(); <span class="tok-comment">//Now playing</span>
+    
+    <span class="tok-keyword">let</span> menuman1 = fb.CreateMainMenuManager();
+    <span class="tok-keyword">let</span> menuman2 = fb.CreateMainMenuManager();
+    <span class="tok-keyword">let</span> menuman3 = fb.CreateMainMenuManager();
+    <span class="tok-keyword">let</span> menuman4 = fb.CreateMainMenuManager();
+    <span class="tok-keyword">let</span> menuman5 = fb.CreateMainMenuManager();
+    <span class="tok-keyword">let</span> menuman6 = fb.CreateMainMenuManager();
+    
+    <span class="tok-comment">// MF_STRING is defined in docs/Flags.js</span>
+    child1.AppendTo(basemenu, MF_STRING, <span class="tok-string">&#39;File&#39;</span>);
+    child2.AppendTo(basemenu, MF_STRING, <span class="tok-string">&#39;Edit&#39;</span>);
+    child3.AppendTo(basemenu, MF_STRING, <span class="tok-string">&#39;View&#39;</span>);
+    child4.AppendTo(basemenu, MF_STRING, <span class="tok-string">&#39;Playback&#39;</span>);
+    child5.AppendTo(basemenu, MF_STRING, <span class="tok-string">&#39;Library&#39;</span>);
+    child6.AppendTo(basemenu, MF_STRING, <span class="tok-string">&#39;Help&#39;</span>);
+    basemenu.AppendMenuSeparator();
+    child7.AppendTo(basemenu, MF_STRING, <span class="tok-string">&#39;Now Playing&#39;</span>);
+    
+    menuman1.Init(<span class="tok-string">&#39;file&#39;</span>);
+    menuman2.Init(<span class="tok-string">&#39;edit&#39;</span>);
+    menuman3.Init(<span class="tok-string">&#39;View&#39;</span>);
+    menuman4.Init(<span class="tok-string">&#39;playback&#39;</span>);
+    menuman5.Init(<span class="tok-string">&#39;library&#39;</span>);
+    menuman6.Init(<span class="tok-string">&#39;help&#39;</span>);
+    
+    menuman1.BuildMenu(child1, <span class="tok-number">1</span>, <span class="tok-number">200</span>);
+    menuman2.BuildMenu(child2, <span class="tok-number">201</span>, <span class="tok-number">200</span>);
+    menuman3.BuildMenu(child3, <span class="tok-number">401</span>, <span class="tok-number">200</span>);
+    menuman4.BuildMenu(child4, <span class="tok-number">601</span>, <span class="tok-number">300</span>);
+    menuman5.BuildMenu(child5, <span class="tok-number">901</span>, <span class="tok-number">300</span>);
+    menuman6.BuildMenu(child6, <span class="tok-number">1201</span>, <span class="tok-number">100</span>);
+    
+    contextman.InitNowPlaying();
+    contextman.BuildMenu(child7, <span class="tok-number">1301</span>);
+    <span class="tok-keyword">const</span> ret = basemenu.TrackPopupMenu(<span class="tok-number">0</span>, <span class="tok-number">0</span>);
+
+    <span class="tok-keyword">if</span> (ret &gt;= <span class="tok-number">1</span> &amp;&amp; ret &lt; <span class="tok-number">201</span>) {
+        menuman1.ExecuteByID(ret - <span class="tok-number">1</span>);
+    }
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (ret &gt;= <span class="tok-number">201</span> &amp;&amp; ret &lt; <span class="tok-number">401</span>) {
+        menuman2.ExecuteByID(ret - <span class="tok-number">201</span>);
+    }
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (ret &gt;= <span class="tok-number">401</span> &amp;&amp; ret &lt; <span class="tok-number">601</span>) {
+        menuman3.ExecuteByID(ret - <span class="tok-number">401</span>);
+    }
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (ret &gt;= <span class="tok-number">601</span> &amp;&amp; ret &lt; <span class="tok-number">901</span>) {
+        menuman4.ExecuteByID(ret - <span class="tok-number">601</span>);
+    }
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (ret &gt;= <span class="tok-number">901</span> &amp;&amp; ret &lt; <span class="tok-number">1201</span>) {
+        menuman5.ExecuteByID(ret - <span class="tok-number">901</span>);
+    }
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (ret &gt;= <span class="tok-number">1201</span> &amp;&amp; ret &lt; <span class="tok-number">1301</span>) {
+        menuman6.ExecuteByID(ret - <span class="tok-number">1201</span>);
+    }
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (ret &gt;= <span class="tok-number">1301</span>) {
+        contextman.ExecuteByID(ret - <span class="tok-number">1301</span>);
+    }
+}
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

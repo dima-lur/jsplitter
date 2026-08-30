@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>HtmlDocument — JSplitter API</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <a class="nav-link " href="globals.html">Globals</a>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><a class="nav-link " href="console.html">console</a><a class="nav-link " href="d2d.html">d2d</a><a class="nav-link " href="fb.html">fb</a><a class="nav-link " href="gdi.html">gdi</a><a class="nav-link " href="performance.html">performance</a><a class="nav-link " href="plman.html">plman</a><a class="nav-link " href="utils.html">utils</a><a class="nav-link " href="window.html">window</a></div><div class="nav-group"><div class="nav-title">Classes</div><a class="nav-link " href="ActiveXObject.html">ActiveXObject</a><a class="nav-link " href="ButtonObject.html">ButtonObject</a><a class="nav-link " href="ContextMenuManager.html">ContextMenuManager</a><a class="nav-link " href="D2DBitmap.html">D2DBitmap</a><a class="nav-link " href="D2DBrush.html">D2DBrush</a><a class="nav-link " href="D2DCompileInfo.html">D2DCompileInfo</a><a class="nav-link " href="D2DEffect.html">D2DEffect</a><a class="nav-link " href="D2DFont.html">D2DFont</a><a class="nav-link " href="D2DGraphics.html">D2DGraphics</a><a class="nav-link " href="DropTargetAction.html">DropTargetAction</a><a class="nav-link " href="Enumerator.html">Enumerator</a><a class="nav-link " href="FbAudioChunk.html">FbAudioChunk</a><a class="nav-link " href="FbFileInfo.html">FbFileInfo</a><a class="nav-link " href="FbMetadbHandle.html">FbMetadbHandle</a><a class="nav-link " href="FbMetadbHandleList.html">FbMetadbHandleList</a><a class="nav-link " href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a><a class="nav-link " href="FbPlayingItemLocation.html">FbPlayingItemLocation</a><a class="nav-link " href="FbPlaylistRecycler.html">FbPlaylistRecycler</a><a class="nav-link " href="FbProfiler.html">FbProfiler</a><a class="nav-link " href="FbTitleFormat.html">FbTitleFormat</a><a class="nav-link " href="FbTooltip.html">FbTooltip</a><a class="nav-link " href="FbUiSelectionHolder.html">FbUiSelectionHolder</a><a class="nav-link " href="GdiBitmap.html">GdiBitmap</a><a class="nav-link " href="GdiBrush.html">GdiBrush</a><a class="nav-link " href="GdiFont.html">GdiFont</a><a class="nav-link " href="GdiGraphics.html">GdiGraphics</a><a class="nav-link " href="GdiRawBitmap.html">GdiRawBitmap</a><a class="nav-link active" href="HtmlDocument.html">HtmlDocument</a><a class="nav-link " href="HtmlNode.html">HtmlNode</a><a class="nav-link " href="IUIHacks.html">IUIHacks</a><a class="nav-link " href="MainMenuManager.html">MainMenuManager</a><a class="nav-link " href="MenuObject.html">MenuObject</a><a class="nav-link " href="PanelObject.html">PanelObject</a><a class="nav-link " href="PerformanceObserver.html">PerformanceObserver</a><a class="nav-link " href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a><a class="nav-link " href="RunResult.html">RunResult</a><a class="nav-link " href="ThemeManager.html">ThemeManager</a></div><div class="nav-group"><div class="nav-title">Modules</div><a class="nav-link " href="module-Callbacks.html">Callbacks</a><a class="nav-link " href="module-Codepages.html">Codepages</a><a class="nav-link " href="module-Effects.html">Effects</a><a class="nav-link " href="module-Flags.html">Flags</a><a class="nav-link " href="module-Helpers.html">Helpers</a><a class="nav-link " href="module-Matrix.html">Matrix</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>HtmlDocument</b></div>
+        
+    <article class="api-item" id="HtmlDocument" data-kind="class" data-name="htmldocument">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-class">class</span></div>
+                <h2><a class="anchor" href="#HtmlDocument">HtmlDocument</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5275</div>
+        </header>
+        
+        
+        <div class="description"><p>Object returned by <a href="utils.html#ParseHtml">utils.ParseHtml</a><br> <br> Lightweight DOM-like HTML document backed by the native HTML parser.<br> <br> Notes:<br> - This is not a full browser DOM.<br> - Scripts, CSS, layout, external resources and browser events are not processed.<br> - <b>innerText</b> is currently an alias of <b>textContent</b>.<br></p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+        
+    <article class="api-item" id="body" data-kind="property" data-name="body">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#body">body</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5325</div>
+        </header>
+        <pre class="signature"><code>body: ?HtmlNode</code></pre>
+        
+        <div class="description"><p>The document &lt;body&gt; element.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> doc = utils.ParseHtml(<span class="tok-string">&quot;&lt;html&gt;&lt;body&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>);
+<span class="tok-keyword">if</span> (doc &amp;&amp; doc.body) console.log(doc.body.innerHTML); <span class="tok-comment">// &quot;&lt;p&gt;Hello&lt;/p&gt;&quot;</span></code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="documentElement" data-kind="property" data-name="documentelement">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#documentElement">documentElement</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5301</div>
+        </header>
+        <pre class="signature"><code>documentElement: ?HtmlNode</code></pre>
+        
+        <div class="description"><p>Root document element, usually the &lt;html&gt; element.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> doc = utils.ParseHtml(<span class="tok-string">&quot;&lt;html&gt;&lt;body&gt;Hello&lt;/body&gt;&lt;/html&gt;&quot;</span>);
+<span class="tok-keyword">if</span> (doc) console.log(doc.documentElement.tagName); <span class="tok-comment">// &quot;html&quot;</span></code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="head" data-kind="property" data-name="head">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#head">head</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5313</div>
+        </header>
+        <pre class="signature"><code>head: ?HtmlNode</code></pre>
+        
+        <div class="description"><p>The document &lt;head&gt; element.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> doc = utils.ParseHtml(<span class="tok-string">&quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;Test&lt;/title&gt;&lt;/head&gt;&lt;/html&gt;&quot;</span>);
+<span class="tok-keyword">if</span> (doc &amp;&amp; doc.head) console.log(doc.head.innerHTML); <span class="tok-comment">// &quot;&lt;title&gt;Test&lt;/title&gt;&quot;</span></code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="innerHTML" data-kind="property" data-name="innerhtml">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#innerHTML">innerHTML</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5360</div>
+        </header>
+        <pre class="signature"><code>innerHTML: string</code></pre>
+        
+        <div class="description"><p>Serialized HTML markup inside the document body.<br> If the document has no body, this falls back to the root element.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> doc = utils.ParseHtml(<span class="tok-string">&quot;&lt;html&gt;&lt;body&gt;&lt;p&gt;Hello &lt;b&gt;world&lt;/b&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>);
+<span class="tok-keyword">if</span> (doc) console.log(doc.innerHTML); <span class="tok-comment">// &quot;&lt;p&gt;Hello &lt;b&gt;world&lt;/b&gt;&lt;/p&gt;&quot;</span></code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="innerText" data-kind="property" data-name="innertext">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#innerText">innerText</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5351</div>
+        </header>
+        <pre class="signature"><code>innerText: string</code></pre>
+        
+        <div class="description"><p>Alias of <a href="HtmlDocument.html#textContent">textContent</a>.<br> Since this parser has no browser layout engine, <b>innerText</b> does not emulate CSS visibility, rendered line wrapping, or layout-dependent text extraction.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="outerHTML" data-kind="property" data-name="outerhtml">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#outerHTML">outerHTML</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5373</div>
+        </header>
+        <pre class="signature"><code>outerHTML: string</code></pre>
+        
+        <div class="description"><p>Serialized outer HTML of the root element.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> doc = utils.ParseHtml(<span class="tok-string">&quot;&lt;html&gt;&lt;body&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>);
+<span class="tok-keyword">if</span> (doc) console.log(doc.outerHTML); <span class="tok-comment">// &quot;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span></code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="root" data-kind="property" data-name="root">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#root">root</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5288</div>
+        </header>
+        <pre class="signature"><code>root: ?HtmlNode</code></pre>
+        
+        <div class="description"><p>Root document element, usually the &lt;html&gt; element.<br> Alias of <a href="HtmlDocument.html#documentElement">documentElement</a>.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> doc = utils.ParseHtml(<span class="tok-string">&quot;&lt;html&gt;&lt;body&gt;Hello&lt;/body&gt;&lt;/html&gt;&quot;</span>);
+<span class="tok-keyword">if</span> (doc) console.log(doc.root.tagName); <span class="tok-comment">// &quot;html&quot;</span></code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="textContent" data-kind="property" data-name="textcontent">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#textContent">textContent</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5337</div>
+        </header>
+        <pre class="signature"><code>textContent: string</code></pre>
+        
+        <div class="description"><p>Text content of the document body.<br> If the document has no body, this falls back to the root element text.<br> Whitespace is returned as it exists in the parsed text nodes.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> doc = utils.ParseHtml(<span class="tok-string">&quot;&lt;html&gt;&lt;body&gt;&lt;p&gt;Hello &lt;b&gt;world&lt;/b&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>);
+<span class="tok-keyword">if</span> (doc) console.log(doc.textContent); <span class="tok-comment">// &quot;Hello world&quot;</span></code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="getElementsByTagName" data-kind="method" data-name="getelementsbytagname">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#getElementsByTagName">getElementsByTagName</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5414</div>
+        </header>
+        <pre class="signature"><code>getElementsByTagName(tagName)</code></pre>
+        
+        <div class="description"><p>Returns all descendant elements with the specified tag name.<br> Use "*" to return all descendant elements.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>tagName</code></td><td><code>string</code></td><td><p>Tag name, for example "a", "div", "section" or "*".</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Array&lt;<a class="type-link" href="HtmlNode.html#HtmlNode">HtmlNode</a>&gt;</code> — <p>Array of matching nodes. Empty array if nothing matches.</p></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">const</span> doc = utils.ParseHtml(<span class="tok-string">&quot;&lt;p&gt;&lt;a href=&#39;https://example.com&#39;&gt;Link&lt;/a&gt;&lt;/p&gt;&quot;</span>);
+<span class="tok-keyword">const</span> links = doc ? doc.getElementsByTagName(<span class="tok-string">&quot;a&quot;</span>) : [];
+console.log(links.length); <span class="tok-comment">// 1</span></code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="querySelector" data-kind="method" data-name="queryselector">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#querySelector">querySelector</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5385</div>
+        </header>
+        <pre class="signature"><code>querySelector(selector)</code></pre>
+        
+        <div class="description"><p>Returns the first element matching a CSS selector.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>selector</code></td><td><code>string</code></td><td><p>CSS selector.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>?<a class="type-link" href="HtmlNode.html#HtmlNode">HtmlNode</a></code> — <p>First matching node, or <code>null</code> if nothing matches.</p></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> doc = utils.ParseHtml(<span class="tok-string">&quot;&lt;html&gt;&lt;body&gt;&lt;p class=&#39;name&#39;&gt;Test Artist&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>);
+<span class="tok-keyword">let</span> node = doc ? doc.querySelector(<span class="tok-string">&quot;.name&quot;</span>) : <span class="tok-literal">null</span>;
+<span class="tok-keyword">if</span> (node) console.log(node.textContent); <span class="tok-comment">// &quot;Test Artist&quot;</span></code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="querySelectorAll" data-kind="method" data-name="queryselectorall">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#querySelectorAll">querySelectorAll</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5399</div>
+        </header>
+        <pre class="signature"><code>querySelectorAll(selector)</code></pre>
+        
+        <div class="description"><p>Returns all elements matching a CSS selector.<br> The returned value is a regular JavaScript array.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>selector</code></td><td><code>string</code></td><td><p>CSS selector.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Array&lt;<a class="type-link" href="HtmlNode.html#HtmlNode">HtmlNode</a>&gt;</code> — <p>Array of matching nodes. Empty array if nothing matches.</p></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">let</span> doc = utils.ParseHtml(<span class="tok-string">&quot;&lt;ul&gt;&lt;li class=&#39;album&#39;&gt;A&lt;/li&gt;&lt;li class=&#39;album&#39;&gt;B&lt;/li&gt;&lt;/ul&gt;&quot;</span>);
+<span class="tok-keyword">let</span> albums = doc ? doc.querySelectorAll(<span class="tok-string">&quot;.album&quot;</span>) : [];
+console.log(albums.length); <span class="tok-comment">// 2</span></code></pre>
+        </section>
+        
+    </article></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>PerformanceObserver — JSplitter API</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <a class="nav-link " href="globals.html">Globals</a>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><a class="nav-link " href="console.html">console</a><a class="nav-link " href="d2d.html">d2d</a><a class="nav-link " href="fb.html">fb</a><a class="nav-link " href="gdi.html">gdi</a><a class="nav-link " href="performance.html">performance</a><a class="nav-link " href="plman.html">plman</a><a class="nav-link " href="utils.html">utils</a><a class="nav-link " href="window.html">window</a></div><div class="nav-group"><div class="nav-title">Classes</div><a class="nav-link " href="ActiveXObject.html">ActiveXObject</a><a class="nav-link " href="ButtonObject.html">ButtonObject</a><a class="nav-link " href="ContextMenuManager.html">ContextMenuManager</a><a class="nav-link " href="D2DBitmap.html">D2DBitmap</a><a class="nav-link " href="D2DBrush.html">D2DBrush</a><a class="nav-link " href="D2DCompileInfo.html">D2DCompileInfo</a><a class="nav-link " href="D2DEffect.html">D2DEffect</a><a class="nav-link " href="D2DFont.html">D2DFont</a><a class="nav-link " href="D2DGraphics.html">D2DGraphics</a><a class="nav-link " href="DropTargetAction.html">DropTargetAction</a><a class="nav-link " href="Enumerator.html">Enumerator</a><a class="nav-link " href="FbAudioChunk.html">FbAudioChunk</a><a class="nav-link " href="FbFileInfo.html">FbFileInfo</a><a class="nav-link " href="FbMetadbHandle.html">FbMetadbHandle</a><a class="nav-link " href="FbMetadbHandleList.html">FbMetadbHandleList</a><a class="nav-link " href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a><a class="nav-link " href="FbPlayingItemLocation.html">FbPlayingItemLocation</a><a class="nav-link " href="FbPlaylistRecycler.html">FbPlaylistRecycler</a><a class="nav-link " href="FbProfiler.html">FbProfiler</a><a class="nav-link " href="FbTitleFormat.html">FbTitleFormat</a><a class="nav-link " href="FbTooltip.html">FbTooltip</a><a class="nav-link " href="FbUiSelectionHolder.html">FbUiSelectionHolder</a><a class="nav-link " href="GdiBitmap.html">GdiBitmap</a><a class="nav-link " href="GdiBrush.html">GdiBrush</a><a class="nav-link " href="GdiFont.html">GdiFont</a><a class="nav-link " href="GdiGraphics.html">GdiGraphics</a><a class="nav-link " href="GdiRawBitmap.html">GdiRawBitmap</a><a class="nav-link " href="HtmlDocument.html">HtmlDocument</a><a class="nav-link " href="HtmlNode.html">HtmlNode</a><a class="nav-link " href="IUIHacks.html">IUIHacks</a><a class="nav-link " href="MainMenuManager.html">MainMenuManager</a><a class="nav-link " href="MenuObject.html">MenuObject</a><a class="nav-link " href="PanelObject.html">PanelObject</a><a class="nav-link active" href="PerformanceObserver.html">PerformanceObserver</a><a class="nav-link " href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a><a class="nav-link " href="RunResult.html">RunResult</a><a class="nav-link " href="ThemeManager.html">ThemeManager</a></div><div class="nav-group"><div class="nav-title">Modules</div><a class="nav-link " href="module-Callbacks.html">Callbacks</a><a class="nav-link " href="module-Codepages.html">Codepages</a><a class="nav-link " href="module-Effects.html">Effects</a><a class="nav-link " href="module-Flags.html">Flags</a><a class="nav-link " href="module-Helpers.html">Helpers</a><a class="nav-link " href="module-Matrix.html">Matrix</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>PerformanceObserver</b></div>
+        
+    <article class="api-item" id="PerformanceObserver" data-kind="class" data-name="performanceobserver">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-class">class</span></div>
+                <h2><a class="anchor" href="#PerformanceObserver">PerformanceObserver</a></h2>
+            </div>
+            <div class="source-location">js/performance.js:49</div>
+        </header>
+        <pre class="signature"><code>PerformanceObserver(callback)</code></pre>
+        
+        <div class="description"><p>Creates and returns a new <a href="PerformanceObserver.html#PerformanceObserver">PerformanceObserver</a> object.<br></p>
+<p>The observer <a href="module-Callbacks.html#PerformanceObserverCallback">callback</a> is invoked when performance entry events are recorded by <a href="performance.html#mark">performance.mark()</a> or <a href="performance.html#measure">performance.measure()</a> calls for the entry types that have been registered, via the <a href="PerformanceObserver.html#observe">observe()</a> method.<br></p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>callback</code></td><td><code>function</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+        
+    <article class="api-item" id="supportedEntryTypes" data-kind="property" data-name="supportedentrytypes">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#supportedEntryTypes">supportedEntryTypes</a></h2>
+            </div>
+            <div class="source-location">js/performance.js:57</div>
+        </header>
+        <pre class="signature"><code>supportedEntryTypes: Array&lt;string&gt; = [&quot;mark&quot;</code></pre>
+        
+        <div class="description"><p>Returns an array of the <a href="globals.html#PerformanceEntry">entryType</a> values supported by the user agent.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="disconnect" data-kind="method" data-name="disconnect">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#disconnect">disconnect</a></h2>
+            </div>
+            <div class="source-location">js/performance.js:88</div>
+        </header>
+        <pre class="signature"><code>disconnect()</code></pre>
+        
+        <div class="description"><p>Stops the performance observer callback from receiving performance entries.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="observe" data-kind="method" data-name="observe">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#observe">observe</a></h2>
+            </div>
+            <div class="source-location">js/performance.js:64</div>
+        </header>
+        <pre class="signature"><code>observe(options)</code></pre>
+        
+        <div class="description"><p>Specifies the set of entry types to observe.<br> The performance observer's <a href="module-Callbacks.html#PerformanceObserverCallback">callback</a> function will be invoked when performance entry is recorded for one of the specified entryTypes.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>options</code></td><td><code>Object</code></td><td><p>An object with the following possible members:<br> <b>entryTypes</b> - An array of strings, each specifying one performance entry type to observe. May not be used together with the <code>type</code><br> <b>type</b> - A single string specifying exactly one performance entry type to observe. May not be used together with the <code>entryTypes</code> option.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">function</span> perfObserver(list, observer) {
+  list.getEntries().forEach((entry) =&gt; {
+    <span class="tok-keyword">if</span> (entry.entryType === <span class="tok-string">&quot;mark&quot;</span>) {
+      console.log(<span class="tok-string">`${entry.name}&#39;s startTime: ${entry.startTime}`</span>);
+    }
+    <span class="tok-keyword">if</span> (entry.entryType === <span class="tok-string">&quot;measure&quot;</span>) {
+      console.log(<span class="tok-string">`${entry.name}&#39;s duration: ${entry.duration}`</span>);
+    }
+  });
+}
+<span class="tok-keyword">const</span> observer = <span class="tok-keyword">new</span> PerformanceObserver(perfObserver);
+observer.observe({ entryTypes: [<span class="tok-string">&quot;measure&quot;</span>, <span class="tok-string">&quot;mark&quot;</span>] });</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="takeRecords" data-kind="method" data-name="takerecords">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#takeRecords">takeRecords</a></h2>
+            </div>
+            <div class="source-location">js/performance.js:93</div>
+        </header>
+        <pre class="signature"><code>takeRecords()</code></pre>
+        
+        <div class="description"><p>Returns the current list of performance entries stored in the performance observer, emptying it out.</p></div>
+        
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Array&lt;<a class="type-link" href="globals.html#PerformanceEntry">PerformanceEntry</a>&gt;</code></div>
+        </section>
+        
+        
+        
+        
+    </article></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

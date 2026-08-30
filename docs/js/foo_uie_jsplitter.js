@@ -1574,11 +1574,12 @@ let plman = {
      * Shows popup window letting you set various locks on playlist with specified index
      *
      * @param {number} playlistIndex
+     * @param {number} [window_id=0] Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window.
      *
      * @example
      * fb.ShowPlaylistLockUI(plman.ActivePlaylist);
      */
-    ShowPlaylistLockUI: function (playlistIndex) { },
+    ShowPlaylistLockUI: function (playlistIndex, window_id) { },
 
     /**
      * @param {number} playlistIndex Index of playlist to alter.
@@ -1889,9 +1890,10 @@ let utils = {
      * @param {string=} [default_path=undefined] Default file path to choose. If only path without file name is specified it will open specified folder
      * @param {string=} [filter=undefined] Files filter in form (for ex.): "Image files (*.jpg;*.png;*.bmp)|*.jpg;*.png;*.bmp|All files (*.*)|*.*"
      * @param {string=} [mode=0] File dialog mode. 0 - open, 1 - save
+     * @param {number} [window_id=0] Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window.
      * @return {string} Chosen file path. If dialog is cancelled returns empty string
      */
-    FilePicker: function (title, default_path, filter, mode) { },
+    FilePicker: function (title, default_path, filter, mode, window_id) { },
 
     /**
      * Various utility functions for working with file.<br>
@@ -1923,9 +1925,10 @@ let utils = {
      *
      * @param {string=} [title=undefined] Title of dialog. If empty it will be the title by system default
      * @param {string=} [default_path=undefined] Default folder path to choose
+     * @param {number=} [window_id=0] Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window.
      * @return {string} Chosen folder path. If dialog is cancelled returns empty string
      */
-    FolderPicker: function (title, default_path) { },
+    FolderPicker: function (title, default_path, window_id) { },
 
     /**
      * Opens system font picker dialog window (with pixel size field extension).
@@ -2205,9 +2208,10 @@ let utils = {
      * @param {MessageBoxIcon=} [icon=MessageBoxIcon.Information] See {@link module:Flags.MessageBoxIcon MessageBoxIcon}
      * @param {MessageBoxDefaultButton=} [default_button=MessageBoxDefaultButton.Button1] See {@link module:Flags.MessageBoxDefaultButton MessageBoxDefaultButton}
      * @param {string=} [help_text=""] If not empty, a Help button will show in the dialog. If <b>help_text</b> begins with "http://" or "https://", it will launch a web browser otherwise it will open a popup window containing the text
+     * @param {number=} [window_id=0] Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window.
      * @return {number} Result of message box. See {@link module:Flags.DialogResult DialogResult}
      */
-    MessageBox: function (msg, title, buttons, icon, default_button, help_text) { }, // (string)
+    MessageBox: function (msg, title, buttons, icon, default_button, help_text, window_id) { }, // (string)
 
     /**
      * Parses an HTML string and returns a lightweight DOM-like document.<br>
@@ -3795,6 +3799,16 @@ function FbMetadbHandleList(arg) {
     this.RemoveRange = function (from, num) { }; // (void)
 
     /**
+     * Reverses the order of the items in the handle list.
+     */
+    this.Reverse = function() { },
+
+    /**
+     * Randomly shuffles the items in the handle list.
+     */
+    this.Shuffle = function() { },
+
+    /**
      * @param {string} path
      *
      */
@@ -4230,40 +4244,57 @@ function GdiBitmap(arg) {
     this.CreateRawBitmap = function () { }; // (GdiRawBitmap)
 
     /**
-     * Takes the top of colors found in the image
-     * @param {number} max_count
+     * Returns up to max_count representative colours found in the image.<br>
+     * This is a legacy colour extraction method. For colour frequency information and
+     * more advanced clustering, use {@link GdiBitmap#GetColourSchemeJSON GetColourSchemeJSON}
+     * or {@link GdiBitmap#GetColourSchemeJSONV2 GetColourSchemeJSONV2}.
+     *
+     * @param {number} max_count maximum number of colours to return
      * @return {Array<number>}
      */
     this.GetColourScheme = function (max_count) { }; // (Array)
 
     /**
+     * Extracts representative colours from the image using K-means clustering in the RGB colour space.<br>
      * Returns a JSON array in string form so you need to use JSON.parse() on the result.<br>
-     * Each entry in the array is an object which contains colour and frequency values.<br>
+     * Each entry contains a colour and its relative frequency in the clustered image.<br>
      * Uses a different method for calculating colours than {@link GdiBitmap#GetColourScheme GetColourScheme}.<br>
      * Image is automatically resized during processing for performance reasons so there's no
      * need to resize before calling the method.
      *
-     * @param {number} max_count
+     * @param {number} max_count maximum number of colours to return
      * @return {string}
      *
      * @example
      * // See docs\Helpers.js for "toRGB" function.
      * img = ... // use utils.GetAlbumArtV2 / gdi.Image / etc
      * colours = JSON.parse(img.GetColourSchemeJSON(5));
-     * console.log(colours[0].col); // -4194304
+     * console.log(colours[0].col); // 4290772992
      * console.log(colours[0].freq); // 0.34
      * console.log(toRGB(colours[0].col)); // [192, 0, 0]
      */
     this.GetColourSchemeJSON = function (max_count) { }; // (string)
 
     /**
+     * Extracts representative colours from the image using K-means++ clustering in the Oklab colour space.<br>
      * Returns a JSON array in string form so you need to use JSON.parse() on the result.<br>
-     * Each entry in the array is an object which contains colour and frequency values.<br>
-     * Uses a different method than {@link GdiBitmap#GetColourSchemeJSON GetColourSchemeJSON} for calculating colours (K-means++ with Oklab).<br>
+     * Each entry contains a colour and its relative frequency in the clustered image.<br>
+     * K-means++ initialization improves the distribution of the initial cluster centres, while Oklab
+     * provides a perceptually more uniform distance metric than RGB.<br>
+     * The optional min_chroma parameter limits the initial cluster centre selection to pixels with at
+     * least the specified Oklab chroma. It does not filter pixels or colours from the clustering result.
      *
-     * @param {number} max_count 
-     * @param {number} [min_chroma=0.0] minimal chroma value for choosing start cluster pixel
+     * @param {number} max_count maximum number of colours to return
+     * @param {number} [min_chroma=0.0] minimum Oklab chroma for pixels used as initial cluster centres
      * @return {string}
+     *
+     * @example
+     * // See docs\Helpers.js for "toRGB" function.
+     * img = ... // use utils.GetAlbumArtV2 / gdi.Image / etc
+     * colours = JSON.parse(img.GetColourSchemeJSONV2(10, 0.02));
+     * console.log(colours[0].col); // 4290772992
+     * console.log(colours[0].freq); // 0.34
+     * console.log(toRGB(colours[0].col)); // [192, 0, 0]
      */
     this.GetColourSchemeJSONV2 = function (max_count, min_chroma) { }; // (string)
 

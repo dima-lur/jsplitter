@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SimpleThemedButton.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <a class="nav-link " href="globals.html">Globals</a>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><a class="nav-link " href="console.html">console</a><a class="nav-link " href="d2d.html">d2d</a><a class="nav-link " href="fb.html">fb</a><a class="nav-link " href="gdi.html">gdi</a><a class="nav-link " href="performance.html">performance</a><a class="nav-link " href="plman.html">plman</a><a class="nav-link " href="utils.html">utils</a><a class="nav-link " href="window.html">window</a></div><div class="nav-group"><div class="nav-title">Classes</div><a class="nav-link " href="ActiveXObject.html">ActiveXObject</a><a class="nav-link " href="ButtonObject.html">ButtonObject</a><a class="nav-link " href="ContextMenuManager.html">ContextMenuManager</a><a class="nav-link " href="D2DBitmap.html">D2DBitmap</a><a class="nav-link " href="D2DBrush.html">D2DBrush</a><a class="nav-link " href="D2DCompileInfo.html">D2DCompileInfo</a><a class="nav-link " href="D2DEffect.html">D2DEffect</a><a class="nav-link " href="D2DFont.html">D2DFont</a><a class="nav-link " href="D2DGraphics.html">D2DGraphics</a><a class="nav-link " href="DropTargetAction.html">DropTargetAction</a><a class="nav-link " href="Enumerator.html">Enumerator</a><a class="nav-link " href="FbAudioChunk.html">FbAudioChunk</a><a class="nav-link " href="FbFileInfo.html">FbFileInfo</a><a class="nav-link " href="FbMetadbHandle.html">FbMetadbHandle</a><a class="nav-link " href="FbMetadbHandleList.html">FbMetadbHandleList</a><a class="nav-link " href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a><a class="nav-link " href="FbPlayingItemLocation.html">FbPlayingItemLocation</a><a class="nav-link " href="FbPlaylistRecycler.html">FbPlaylistRecycler</a><a class="nav-link " href="FbProfiler.html">FbProfiler</a><a class="nav-link " href="FbTitleFormat.html">FbTitleFormat</a><a class="nav-link " href="FbTooltip.html">FbTooltip</a><a class="nav-link " href="FbUiSelectionHolder.html">FbUiSelectionHolder</a><a class="nav-link " href="GdiBitmap.html">GdiBitmap</a><a class="nav-link " href="GdiBrush.html">GdiBrush</a><a class="nav-link " href="GdiFont.html">GdiFont</a><a class="nav-link " href="GdiGraphics.html">GdiGraphics</a><a class="nav-link " href="GdiRawBitmap.html">GdiRawBitmap</a><a class="nav-link " href="HtmlDocument.html">HtmlDocument</a><a class="nav-link " href="HtmlNode.html">HtmlNode</a><a class="nav-link " href="IUIHacks.html">IUIHacks</a><a class="nav-link " href="MainMenuManager.html">MainMenuManager</a><a class="nav-link " href="MenuObject.html">MenuObject</a><a class="nav-link " href="PanelObject.html">PanelObject</a><a class="nav-link " href="PerformanceObserver.html">PerformanceObserver</a><a class="nav-link " href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a><a class="nav-link " href="RunResult.html">RunResult</a><a class="nav-link " href="ThemeManager.html">ThemeManager</a></div><div class="nav-group"><div class="nav-title">Modules</div><a class="nav-link " href="module-Callbacks.html">Callbacks</a><a class="nav-link " href="module-Codepages.html">Codepages</a><a class="nav-link " href="module-Effects.html">Effects</a><a class="nav-link " href="module-Flags.html">Flags</a><a class="nav-link " href="module-Helpers.html">Helpers</a><a class="nav-link " href="module-Matrix.html">Matrix</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/basic/SimpleThemedButton.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="window.html#CreateThemeManager">window.CreateThemeManager</a></div>
+        </header>
+        <pre class="source-code"><code>window.DefineScript(<span class="tok-string">&#39;SimpleThemedButton&#39;</span>, {author: <span class="tok-string">&#39;T.P Wang&#39;</span>});
+include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
+include(<span class="tok-string">&#39;docs/Helpers.js&#39;</span>);
+
+<span class="tok-keyword">const</span> g_theme = window.CreateThemeManager(<span class="tok-string">&#39;Button&#39;</span>);
+<span class="tok-keyword">const</span> g_font = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">12</span>);
+<span class="tok-keyword">const</span> ButtonStates = {
+    normal: <span class="tok-number">0</span>,
+    hover: <span class="tok-number">1</span>,
+    down: <span class="tok-number">2</span>,
+    hide: <span class="tok-number">3</span>
+};
+
+<span class="tok-keyword">const</span> buttons = {
+    Console: <span class="tok-keyword">new</span> SimpleButton(<span class="tok-number">5</span>, <span class="tok-number">5</span>, <span class="tok-number">80</span>, <span class="tok-number">26</span>, <span class="tok-string">&#39;Console&#39;</span>, <span class="tok-keyword">function</span> () {
+        fb.ShowConsole();
+    }),
+    Configure: <span class="tok-keyword">new</span> SimpleButton(<span class="tok-number">5</span>, <span class="tok-number">40</span>, <span class="tok-number">80</span>, <span class="tok-number">26</span>, <span class="tok-string">&#39;Configure&#39;</span>, <span class="tok-keyword">function</span> () {
+        window.ShowConfigure();
+    })
+};
+
+<span class="tok-keyword">let</span> g_down = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> cur_btn = <span class="tok-literal">null</span>;
+
+<span class="tok-keyword">function</span> SimpleButton(x, y, w, h, text, fonClick, state) {
+    <span class="tok-keyword">this</span>.state = state ? state : ButtonStates.normal;
+    <span class="tok-keyword">this</span>.x = x;
+    <span class="tok-keyword">this</span>.y = y;
+    <span class="tok-keyword">this</span>.w = w;
+    <span class="tok-keyword">this</span>.h = h;
+    <span class="tok-keyword">this</span>.text = text;
+    <span class="tok-keyword">this</span>.fonClick = fonClick;
+
+    <span class="tok-keyword">this</span>.containXY = <span class="tok-keyword">function</span> (x, y) {
+        <span class="tok-keyword">return</span> (<span class="tok-keyword">this</span>.x &lt;= x) &amp;&amp; (x &lt;= <span class="tok-keyword">this</span>.x + <span class="tok-keyword">this</span>.w) &amp;&amp; (<span class="tok-keyword">this</span>.y &lt;= y) &amp;&amp; (y &lt;= <span class="tok-keyword">this</span>.y + <span class="tok-keyword">this</span>.h);
+    };
+
+    <span class="tok-keyword">this</span>.changeState = <span class="tok-keyword">function</span> (state) {
+        <span class="tok-keyword">let</span> old = <span class="tok-keyword">this</span>.state;
+        <span class="tok-keyword">this</span>.state = state;
+        <span class="tok-keyword">return</span> old;
+    };
+
+    <span class="tok-keyword">this</span>.draw = <span class="tok-keyword">function</span> (gr) {
+        <span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.state === ButtonStates.hide) {
+            <span class="tok-keyword">return</span>;
+        }
+
+        <span class="tok-keyword">switch</span> (<span class="tok-keyword">this</span>.state) {
+            <span class="tok-keyword">case</span> ButtonStates.normal:
+                g_theme.SetPartAndStateID(<span class="tok-number">1</span>, <span class="tok-number">1</span>);
+                <span class="tok-keyword">break</span>;
+
+            <span class="tok-keyword">case</span> ButtonStates.hover:
+                g_theme.SetPartAndStateID(<span class="tok-number">1</span>, <span class="tok-number">2</span>);
+                <span class="tok-keyword">break</span>;
+
+            <span class="tok-keyword">case</span> ButtonStates.down:
+                g_theme.SetPartAndStateID(<span class="tok-number">1</span>, <span class="tok-number">3</span>);
+                <span class="tok-keyword">break</span>;
+
+            <span class="tok-keyword">case</span> ButtonStates.hide:
+                <span class="tok-keyword">return</span>;
+        }
+
+        g_theme.DrawThemeBackground(gr, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y, <span class="tok-keyword">this</span>.w, <span class="tok-keyword">this</span>.h);
+        gr.GdiDrawText(<span class="tok-keyword">this</span>.text, g_font, RGB(<span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>), <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y, <span class="tok-keyword">this</span>.w, <span class="tok-keyword">this</span>.h, DT_CENTER | DT_VCENTER | DT_CALCRECT | DT_NOPREFIX);
+    };
+
+    <span class="tok-keyword">this</span>.onClick = <span class="tok-keyword">function</span> () {
+        <span class="tok-keyword">this</span>.fonClick &amp;&amp; <span class="tok-keyword">this</span>.fonClick();
+    };
+}
+
+<span class="tok-keyword">function</span> drawAllButtons(gr) {
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i <span class="tok-keyword">in</span> buttons) {
+        buttons[i].draw(gr);
+    }
+}
+
+<span class="tok-keyword">function</span> chooseButton(x, y) {
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i <span class="tok-keyword">in</span> buttons) {
+        <span class="tok-keyword">if</span> (buttons[i].containXY(x, y) &amp;&amp; buttons[i].state !== ButtonStates.hide) {
+            <span class="tok-keyword">return</span> buttons[i];
+        }
+    }
+
+    <span class="tok-keyword">return</span> <span class="tok-literal">null</span>;
+}
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, window.Width, window.Height, utils.GetSysColour(<span class="tok-number">15</span>));
+    drawAllButtons(gr);
+}
+
+<span class="tok-keyword">function</span> on_mouse_move(x, y) {
+    <span class="tok-keyword">let</span> old = cur_btn;
+    cur_btn = chooseButton(x, y);
+
+    <span class="tok-keyword">if</span> (old === cur_btn) {
+        <span class="tok-keyword">if</span> (g_down) {
+            <span class="tok-keyword">return</span>;
+        }
+    }
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (g_down &amp;&amp; cur_btn &amp;&amp; cur_btn.state !== ButtonStates.down) {
+        cur_btn.changeState(ButtonStates.down);
+        window.Repaint();
+        <span class="tok-keyword">return</span>;
+    }
+
+    old &amp;&amp; old.changeState(ButtonStates.normal);
+    cur_btn &amp;&amp; cur_btn.changeState(ButtonStates.hover);
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> on_mouse_leave() {
+    g_down = <span class="tok-literal">false</span>;
+
+    <span class="tok-keyword">if</span> (cur_btn) {
+        cur_btn.changeState(ButtonStates.normal);
+        window.Repaint();
+    }
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_down(x, y) {
+    g_down = <span class="tok-literal">true</span>;
+
+    <span class="tok-keyword">if</span> (cur_btn) {
+        cur_btn.changeState(ButtonStates.down);
+        window.Repaint();
+    }
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_up(x, y) {
+    g_down = <span class="tok-literal">false</span>;
+
+    <span class="tok-keyword">if</span> (cur_btn) {
+        cur_btn.onClick();
+        cur_btn.changeState(ButtonStates.hover);
+        window.Repaint();
+    }
+}
+
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

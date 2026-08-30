@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Matrix — JSplitter API</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <a class="nav-link " href="globals.html">Globals</a>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><a class="nav-link " href="console.html">console</a><a class="nav-link " href="d2d.html">d2d</a><a class="nav-link " href="fb.html">fb</a><a class="nav-link " href="gdi.html">gdi</a><a class="nav-link " href="performance.html">performance</a><a class="nav-link " href="plman.html">plman</a><a class="nav-link " href="utils.html">utils</a><a class="nav-link " href="window.html">window</a></div><div class="nav-group"><div class="nav-title">Classes</div><a class="nav-link " href="ActiveXObject.html">ActiveXObject</a><a class="nav-link " href="ButtonObject.html">ButtonObject</a><a class="nav-link " href="ContextMenuManager.html">ContextMenuManager</a><a class="nav-link " href="D2DBitmap.html">D2DBitmap</a><a class="nav-link " href="D2DBrush.html">D2DBrush</a><a class="nav-link " href="D2DCompileInfo.html">D2DCompileInfo</a><a class="nav-link " href="D2DEffect.html">D2DEffect</a><a class="nav-link " href="D2DFont.html">D2DFont</a><a class="nav-link " href="D2DGraphics.html">D2DGraphics</a><a class="nav-link " href="DropTargetAction.html">DropTargetAction</a><a class="nav-link " href="Enumerator.html">Enumerator</a><a class="nav-link " href="FbAudioChunk.html">FbAudioChunk</a><a class="nav-link " href="FbFileInfo.html">FbFileInfo</a><a class="nav-link " href="FbMetadbHandle.html">FbMetadbHandle</a><a class="nav-link " href="FbMetadbHandleList.html">FbMetadbHandleList</a><a class="nav-link " href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a><a class="nav-link " href="FbPlayingItemLocation.html">FbPlayingItemLocation</a><a class="nav-link " href="FbPlaylistRecycler.html">FbPlaylistRecycler</a><a class="nav-link " href="FbProfiler.html">FbProfiler</a><a class="nav-link " href="FbTitleFormat.html">FbTitleFormat</a><a class="nav-link " href="FbTooltip.html">FbTooltip</a><a class="nav-link " href="FbUiSelectionHolder.html">FbUiSelectionHolder</a><a class="nav-link " href="GdiBitmap.html">GdiBitmap</a><a class="nav-link " href="GdiBrush.html">GdiBrush</a><a class="nav-link " href="GdiFont.html">GdiFont</a><a class="nav-link " href="GdiGraphics.html">GdiGraphics</a><a class="nav-link " href="GdiRawBitmap.html">GdiRawBitmap</a><a class="nav-link " href="HtmlDocument.html">HtmlDocument</a><a class="nav-link " href="HtmlNode.html">HtmlNode</a><a class="nav-link " href="IUIHacks.html">IUIHacks</a><a class="nav-link " href="MainMenuManager.html">MainMenuManager</a><a class="nav-link " href="MenuObject.html">MenuObject</a><a class="nav-link " href="PanelObject.html">PanelObject</a><a class="nav-link " href="PerformanceObserver.html">PerformanceObserver</a><a class="nav-link " href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a><a class="nav-link " href="RunResult.html">RunResult</a><a class="nav-link " href="ThemeManager.html">ThemeManager</a></div><div class="nav-group"><div class="nav-title">Modules</div><a class="nav-link " href="module-Callbacks.html">Callbacks</a><a class="nav-link " href="module-Codepages.html">Codepages</a><a class="nav-link " href="module-Effects.html">Effects</a><a class="nav-link " href="module-Flags.html">Flags</a><a class="nav-link " href="module-Helpers.html">Helpers</a><a class="nav-link active" href="module-Matrix.html">Matrix</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Matrix</b></div>
+        
+    <article class="api-item" id="Matrix" data-kind="module" data-name="matrix">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-module">module</span></div>
+                <h2><a class="anchor" href="#Matrix">Matrix</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:1</div>
+        </header>
+        
+        
+        <div class="description"><p>Matrix helpers<br></p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+        
+    <article class="api-item" id="Matrix3x2" data-kind="class" data-name="matrix3x2">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-class">class</span></div>
+                <h2><a class="anchor" href="#Matrix3x2">Matrix3x2</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:6</div>
+        </header>
+        
+        
+        <div class="description"><p>Matrix class to provide helper functions for transforming the image in 3 dimensions.<br> For more information, see: <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nl-d2d1helper-matrix3x2f" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nl-d2d1helper-matrix3x2f</a><br> May be used for <a href="D2DGraphics.html#SetTransform">SetTransform</a>, <a href="D2DGraphics.html#ApplyTransform">ApplyTransform</a> or <a href="module-Effects.html#Effects.Effects">Effects.AffineTransform</a><br></p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Matrix4x4" data-kind="class" data-name="matrix4x4">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-class">class</span></div>
+                <h2><a class="anchor" href="#Matrix4x4">Matrix4x4</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:158</div>
+        </header>
+        
+        
+        <div class="description"><p>Matrix class to provide helper functions for transforming the image in 3 dimensions.<br> For more information, see: <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1_1helper/nl-d2d1_1helper-matrix4x4f" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/api/d2d1_1helper/nl-d2d1_1helper-matrix4x4f</a><br> May be used for <a href="module-Effects.html#Effects.Effects">Effects.D3DTransform</a><br></p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Determinant" data-kind="method" data-name="determinant">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#Determinant">Determinant</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:98</div>
+        </header>
+        <pre class="signature"><code>Determinant(m)</code></pre>
+        
+        <div class="description"><p>Returns determinant for specified matrix.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>m</code></td><td><code>Float32Array</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code><a class="type-link" href="globals.html#float">float</a></code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Matrix.Matrix4x4.Determinant" data-kind="method" data-name="determinant">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#Matrix.Matrix4x4.Determinant">Determinant</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:428</div>
+        </header>
+        <pre class="signature"><code>Determinant(m)</code></pre>
+        
+        <div class="description"><p>Returns determinant for specified matrix.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>m</code></td><td><code>Float32Array</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code><a class="type-link" href="globals.html#float">float</a></code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Identity" data-kind="method" data-name="identity">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#Identity">Identity</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:16</div>
+        </header>
+        <pre class="signature"><code>Identity()</code></pre>
+        
+        <div class="description"><p>Generates identity matrix.</p></div>
+        
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Float32Array</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Matrix.Matrix4x4.Identity" data-kind="method" data-name="identity">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#Matrix.Matrix4x4.Identity">Identity</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:168</div>
+        </header>
+        <pre class="signature"><code>Identity()</code></pre>
+        
+        <div class="description"><p>Generates identity matrix.</p></div>
+        
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Float32Array</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Multiply" data-kind="method" data-name="multiply">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#Multiply">Multiply</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:108</div>
+        </header>
+        <pre class="signature"><code>Multiply(...matrices)</code></pre>
+        
+        <div class="description"><p>Returns product of two or more matrices.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>matrices</code></td><td><code>Array&lt;Float32Array&gt;</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Float32Array</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Matrix.Matrix4x4.Multiply" data-kind="method" data-name="multiply">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#Matrix.Matrix4x4.Multiply">Multiply</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:370</div>
+        </header>
+        <pre class="signature"><code>Multiply(...matrices)</code></pre>
+        
+        <div class="description"><p>Returns product of two or more matrices.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>matrices</code></td><td><code>Array&lt;Float32Array&gt;</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Float32Array</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="PerspectiveProjection" data-kind="method" data-name="perspectiveprojection">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#PerspectiveProjection">PerspectiveProjection</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:304</div>
+        </header>
+        <pre class="signature"><code>PerspectiveProjection(depth)</code></pre>
+        
+        <div class="description"><p>A perspective transformation with a depth value.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>depth</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Float32Array</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Rotation" data-kind="method" data-name="rotation">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#Rotation">Rotation</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:61</div>
+        </header>
+        <pre class="signature"><code>Rotation(angle, centerX, centerY)</code></pre>
+        
+        <div class="description"><p>Creates a rotation transformation that has the specified angle and center point.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>angle</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr><tr><td><code>centerX</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr><tr><td><code>centerY</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Float32Array</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="RotationArbitraryAxis" data-kind="method" data-name="rotationarbitraryaxis">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#RotationArbitraryAxis">RotationArbitraryAxis</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:327</div>
+        </header>
+        <pre class="signature"><code>RotationArbitraryAxis(x, y, z, degree)</code></pre>
+        
+        <div class="description"><p>Rotates the projection plane about the axis you specify.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>x</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr><tr><td><code>y</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr><tr><td><code>z</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr><tr><td><code>degree</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Float32Array</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="RotationX" data-kind="method" data-name="rotationx">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#RotationX">RotationX</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:216</div>
+        </header>
+        <pre class="signature"><code>RotationX(degreeX)</code></pre>
+        
+        <div class="description"><p>Generates a transform matrix that rotates the projection plane about the X axis.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>degreeX</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Float32Array</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="RotationY" data-kind="method" data-name="rotationy">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#RotationY">RotationY</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:234</div>
+        </header>
+        <pre class="signature"><code>RotationY(degreeY)</code></pre>
+        
+        <div class="description"><p>Generates a transform matrix that rotates the projection plane about the Y axis.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>degreeY</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Float32Array</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="RotationZ" data-kind="method" data-name="rotationz">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#RotationZ">RotationZ</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:252</div>
+        </header>
+        <pre class="signature"><code>RotationZ(degreeZ)</code></pre>
+        
+        <div class="description"><p>Generates a transform matrix that rotates the projection plane about the Z axis.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>degreeZ</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Float32Array</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Scale" data-kind="method" data-name="scale">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#Scale">Scale</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:44</div>
+        </header>
+        <pre class="signature"><code>Scale(sx, sy, centerX, centerY)</code></pre>
+        
+        <div class="description"><p>Creates a scale transformation that has the specified scale factors and center point.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>sx</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr><tr><td><code>sy</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr><tr><td><code>centerX</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr><tr><td><code>centerY</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Float32Array</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Matrix.Matrix4x4.Scale" data-kind="method" data-name="scale">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#Matrix.Matrix4x4.Scale">Scale</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:199</div>
+        </header>
+        <pre class="signature"><code>Scale(sx, sy, sz)</code></pre>
+        
+        <div class="description"><p>Generates a transform matrix that scales the projection plane in the X, Y, and/or Z direction.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>x</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr><tr><td><code>y</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr><tr><td><code>z</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Float32Array</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Skew" data-kind="method" data-name="skew">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#Skew">Skew</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:80</div>
+        </header>
+        <pre class="signature"><code>Skew(angleX, angleY, centerX, centerY)</code></pre>
+        
+        <div class="description"><p>Creates a skew transformation that has the specified x-axis and y-axis values and center point.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>degreeX</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Float32Array</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="SkewX" data-kind="method" data-name="skewx">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#SkewX">SkewX</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:270</div>
+        </header>
+        <pre class="signature"><code>SkewX(degreeX)</code></pre>
+        
+        <div class="description"><p>Generates a transform matrix that skews the projection plane in the X direction.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>degreeX</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Float32Array</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="SkewY" data-kind="method" data-name="skewy">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#SkewY">SkewY</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:287</div>
+        </header>
+        <pre class="signature"><code>SkewY(degreeY)</code></pre>
+        
+        <div class="description"><p>Generates a transform matrix that skews the projection plane in the Y direction.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>degreeY</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Float32Array</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="TransformPoint" data-kind="method" data-name="transformpoint">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#TransformPoint">TransformPoint</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:144</div>
+        </header>
+        <pre class="signature"><code>TransformPoint(pointX, pointY, m)</code></pre>
+        
+        <div class="description"><p>Uses this matrix m to transform the specified point and returns the result.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>matrices</code></td><td><code>Array&lt;Float32Array&gt;</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Object(x, y)</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Translation" data-kind="method" data-name="translation">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#Translation">Translation</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:29</div>
+        </header>
+        <pre class="signature"><code>Translation(dx, dy)</code></pre>
+        
+        <div class="description"><p>Creates a translation transformation that has the specified x and y displacements.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>dx</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr><tr><td><code>dy</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Float32Array</code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Matrix.Matrix4x4.Translation" data-kind="method" data-name="translation">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#Matrix.Matrix4x4.Translation">Translation</a></h2>
+            </div>
+            <div class="source-location">Matrix.js:182</div>
+        </header>
+        <pre class="signature"><code>Translation(x, y, z)</code></pre>
+        
+        <div class="description"><p>Generates a transform matrix that translates the projection plane in the X, Y, or Z direction.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>x</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr><tr><td><code>y</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr><tr><td><code>z</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Float32Array</code></div>
+        </section>
+        
+        
+        
+        
+    </article></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>
