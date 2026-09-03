@@ -1,4 +1,4 @@
-/** 
+﻿/** 
  * @module Callbacks 
  */
 
@@ -710,3 +710,14 @@ function PerformanceObserverCallback (entries, observer) { }
  * Captured standard error and internal error messages.<br>
  */
 function on_run_cmd_async_done(task_id, success, exit_code, stdout, stderr) { }
+
+/**
+ * Called when an asynchronous folder size calculation started by {@link utils.GetFolderSizeAsync utils.GetFolderSizeAsync} is finished.<br>
+ *
+ * @memberof module:Callbacks
+ * @param {number} task_id Task id returned by {@link utils.GetFolderSizeAsync utils.GetFolderSizeAsync}
+ * @param {boolean} success true if the calculation completed successfully
+ * @param {number} size Total folder size in bytes. 0 if the operation failed.
+ * @param {string} error_text Error message, or an empty string on success
+ */
+function on_get_folder_size_done(task_id, success, size, error_text) { }

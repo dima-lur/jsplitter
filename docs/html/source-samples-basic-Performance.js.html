@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Performance.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="IUIHacks">
+        <a class="nav-link nav-page-link" href="IUIHacks.html">IUIHacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/basic/Performance.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="PerformanceObserver.html#PerformanceObserver">PerformanceObserver</a><a href="performance.html#performance">performance</a></div>
+        </header>
+        <pre class="source-code"><code><span class="tok-string">&quot;use strict&quot;</span>;
+
+<span class="tok-comment">/*
+ * Performance / User Timing API sample
+ *
+ * Demonstrates:
+ *   - performance.now()
+ *   - performance.mark()
+ *   - performance.measure()
+ *   - PerformanceObserver
+ *   - repeated mark/measure names
+ *   - getEntriesByName()/getEntriesByType()
+ *   - clearMarks()/clearMeasures()
+ */</span>
+
+<span class="tok-keyword">function</span> printEntry(entry) {
+    console.log(
+        entry.entryType + <span class="tok-string">&quot; \&quot;&quot;</span> + entry.name + <span class="tok-string">&quot;\&quot;&quot;</span> +
+        <span class="tok-string">&quot;  start=&quot;</span> + entry.startTime.toFixed(<span class="tok-number">3</span>) + <span class="tok-string">&quot; ms&quot;</span> +
+        <span class="tok-string">&quot;  duration=&quot;</span> + entry.duration.toFixed(<span class="tok-number">3</span>) + <span class="tok-string">&quot; ms&quot;</span>
+    );
+}
+
+<span class="tok-comment">// PerformanceObserver receives new mark/measure entries asynchronously.</span>
+<span class="tok-keyword">const</span> observer = <span class="tok-keyword">new</span> PerformanceObserver((list) =&gt; {
+    console.log(<span class="tok-string">&quot;\nObserver:&quot;</span>);
+
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> entry <span class="tok-keyword">of</span> list.getEntries()) {
+        printEntry(entry);
+    }
+});
+
+console.log(
+    <span class="tok-string">&quot;Supported entry types: &quot;</span> +
+    PerformanceObserver.supportedEntryTypes.join(<span class="tok-string">&quot;, &quot;</span>)
+);
+
+observer.observe({
+    entryTypes: [<span class="tok-string">&quot;mark&quot;</span>, <span class="tok-string">&quot;measure&quot;</span>]
+});
+
+<span class="tok-keyword">function</span> doSomeWork() {
+    <span class="tok-keyword">let</span> value = <span class="tok-number">0</span>;
+
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; <span class="tok-number">100000</span>; ++i) {
+        value += Math.sqrt(i);
+    }
+
+    <span class="tok-keyword">return</span> value;
+}
+
+<span class="tok-comment">// The same mark names may be reused.</span>
+<span class="tok-comment">// measure() resolves the most recently created marks with those names.</span>
+<span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> pass = <span class="tok-number">1</span>; pass &lt;= <span class="tok-number">3</span>; ++pass) {
+    performance.mark(<span class="tok-string">&quot;work-start&quot;</span>);
+
+    doSomeWork();
+
+    performance.mark(<span class="tok-string">&quot;work-end&quot;</span>);
+
+    <span class="tok-keyword">const</span> measure = performance.measure(
+        <span class="tok-string">&quot;work&quot;</span>,
+        <span class="tok-string">&quot;work-start&quot;</span>,
+        <span class="tok-string">&quot;work-end&quot;</span>
+    );
+
+    console.log(
+        <span class="tok-string">&quot;Pass &quot;</span> + pass + <span class="tok-string">&quot;: &quot;</span> +
+        measure.duration.toFixed(<span class="tok-number">3</span>) + <span class="tok-string">&quot; ms&quot;</span>
+    );
+}
+
+<span class="tok-comment">// Measures can also be created directly from timestamps.</span>
+<span class="tok-keyword">const</span> customMeasure = performance.measure(<span class="tok-string">&quot;custom-range&quot;</span>, {
+    start: <span class="tok-number">10</span>,
+    duration: <span class="tok-number">25</span>
+});
+
+console.log(
+    <span class="tok-string">&quot;Custom range: &quot;</span> +
+    customMeasure.startTime.toFixed(<span class="tok-number">3</span>) + <span class="tok-string">&quot; ms -&gt; &quot;</span> +
+    (customMeasure.startTime + customMeasure.duration).toFixed(<span class="tok-number">3</span>) + <span class="tok-string">&quot; ms&quot;</span>
+);
+
+<span class="tok-comment">// Query previously recorded entries.</span>
+<span class="tok-keyword">const</span> workMeasures = performance.getEntriesByName(<span class="tok-string">&quot;work&quot;</span>, <span class="tok-string">&quot;measure&quot;</span>);
+
+console.log(<span class="tok-string">&quot;\nRecorded work measures:&quot;</span>);
+
+<span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> entry <span class="tok-keyword">of</span> workMeasures) {
+    printEntry(entry);
+}
+
+<span class="tok-comment">// getEntriesByType() returns entries ordered by startTime.</span>
+<span class="tok-keyword">const</span> allMeasures = performance.getEntriesByType(<span class="tok-string">&quot;measure&quot;</span>);
+
+console.log(<span class="tok-string">&quot;\nAll measures:&quot;</span>);
+
+<span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> entry <span class="tok-keyword">of</span> allMeasures) {
+    printEntry(entry);
+}
+
+<span class="tok-comment">// performance.now() is useful when no timeline entry is needed.</span>
+<span class="tok-keyword">const</span> begin = performance.now();
+
+doSomeWork();
+
+<span class="tok-keyword">const</span> elapsed = performance.now() - begin;
+
+console.log(
+    <span class="tok-string">&quot;\nDirect performance.now(): &quot;</span> +
+    elapsed.toFixed(<span class="tok-number">3</span>) + <span class="tok-string">&quot; ms&quot;</span>
+);
+
+<span class="tok-comment">// Remove entries when they are no longer needed.</span>
+<span class="tok-comment">// This does not affect entries already delivered to the observer.</span>
+performance.clearMarks(<span class="tok-string">&quot;work-start&quot;</span>);
+performance.clearMarks(<span class="tok-string">&quot;work-end&quot;</span>);
+performance.clearMeasures(<span class="tok-string">&quot;work&quot;</span>);
+performance.clearMeasures(<span class="tok-string">&quot;custom-range&quot;</span>);
+
+<span class="tok-comment">// Stop observing future entries.</span>
+observer.disconnect();
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

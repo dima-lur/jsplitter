@@ -111,6 +111,45 @@ function D2DBitmap(arg) {
     this.GetColourSchemeJSONV2 = function (max_count, min_chroma) { }; // (string)
 
     /**
+     * Builds an image-derived UI colour scheme for styling interface surfaces, text and interaction states from the bitmap.<br>
+     * <br>
+     * The image is analysed in <b>OKLab</b> using the same weighted <b>K-means++</b> palette extraction as {@link D2DBitmap#GetColourSchemeJSONV2 GetColourSchemeJSONV2}</b>.<br>
+     * The palette stage uses <b>paletteSize</b> centroids after which colours are assigned to five semantic UI roles:<br>
+     * <b>Background</b>, <b>Text</b>, <b>Playing background</b>, <b>Focus frame</b> and <b>Selection background</b>.<br>
+     * <br>
+     * The returned colours are unsigned 32-bit <b>ARGB</b> values.<br>
+     * <b>Background</b> and <b>Text</b> are opaque.<br>
+     * State colours may contain alpha and are intended to be composited over <b>Background</b>.<br>
+     * <b>playingBackgroundColor</b> contains the Playing accent RGB together with the recommended alpha for a background highlight.<br>
+     * The same RGB channels can also be used at full opacity for a solid Playing indicator.<br>
+     * <br>
+     * The algorithm favours a representative image colour family for <b>Background</b>, prefers light body text unless the selected surface requires dark text, and uses independent image colour families for interaction/state accents when suitable candidates are available.<br>
+     * <br>
+     * Returns an empty object <b>{}</b> if a colour scheme cannot be generated.<br>
+     * 
+     * @param {number} [paletteSize=15] <b>Palette size.</b> Number of <b>K-means++</b> colour centroids used as the input palette.<br>
+     * @returns {string} <b>JSON object string.</b> Contains <b>backgroundColor</b>, <b>textColor</b>, <b>playingBackgroundColor</b>, <b>focusFrameColor</b> and <b>selectionBackgroundColor</b>.<br>
+     *
+     * @example
+     * const colours = JSON.parse(image.GetThemeColourSchemeJSON());
+     *
+     * if (Object.keys(colours).length) {
+     *     const playingIndicatorColor =
+     *         0xFF000000 | (colours.playingBackgroundColor & 0x00FFFFFF);
+     *
+     *     console.log(colours.backgroundColor);
+     *     console.log(colours.textColor);
+     *     console.log(colours.playingBackgroundColor);
+     *     console.log(playingIndicatorColor);
+     *     console.log(colours.focusFrameColor);
+     *     console.log(colours.selectionBackgroundColor);
+     * }
+     * 
+     * @sourceFile ../../component/samples/complete/theme colour scheme.js
+     */
+    this.GetThemeColourSchemeJSON = function (paletteSize) { }; // (string)
+
+    /**
      * <b>IMPORTANT</b>: You MUST call {@link D2DBitmap#ReleaseGraphics ReleaseGraphics} after work on D2DGraphics is done!<br>
      * It is illegal to call any methods of D2DBitmap object while working with the obtained D2DGraphics object until {@link D2DBitmap#ReleaseGraphics ReleaseGraphics} is called.
      *
@@ -655,9 +694,6 @@ function D2DGraphics() {
     this.FillEllipse = function (x, y, w, h, colour_or_brush) { }; // (void)
 
     /**
-     * Note: this may appear buggy depending on rectangle size. The easiest fix is
-     * to adjust the "angle" by a degree or two.
-     *
      * @param {number} x
      * @param {number} y
      * @param {number} w

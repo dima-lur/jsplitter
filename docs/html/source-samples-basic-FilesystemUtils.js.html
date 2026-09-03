@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>FilesystemUtils.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="IUIHacks">
+        <a class="nav-link nav-page-link" href="IUIHacks.html">IUIHacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/basic/FilesystemUtils.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="utils.html#GetDriveInfo">utils.GetDriveInfo</a><a href="utils.html#GetDrives">utils.GetDrives</a><a href="utils.html#GetFolderSize">utils.GetFolderSize</a><a href="utils.html#GetFolderSizeAsync">utils.GetFolderSizeAsync</a><a href="utils.html#GetShortPath">utils.GetShortPath</a></div>
+        </header>
+        <pre class="source-code"><code><span class="tok-string">&quot;use strict&quot;</span>;
+
+window.DefineScript(<span class="tok-string">&quot;Filesystem Utils&quot;</span>);
+
+include(<span class="tok-string">&quot;docs/Flags.js&quot;</span>);
+include(<span class="tok-string">&quot;docs/Helpers.js&quot;</span>);
+
+<span class="tok-comment">/*
+ * Filesystem utilities sample
+ *
+ * Demonstrates:
+ *   - utils.GetDrives()
+ *   - utils.GetDriveInfo()
+ *   - utils.GetShortPath()
+ *   - utils.GetFolderSize()
+ *   - utils.GetFolderSizeAsync()
+ */</span>
+
+<span class="tok-keyword">const</span> sampleDir = fb.ProfilePath + <span class="tok-string">&quot;filesystem-utils-sample\\&quot;</span>;
+<span class="tok-keyword">const</span> sampleFile = sampleDir + <span class="tok-string">&quot;sample.txt&quot;</span>;
+
+<span class="tok-keyword">const</span> fontTitle = gdi.Font(<span class="tok-string">&quot;Segoe UI&quot;</span>, <span class="tok-number">18</span>, <span class="tok-number">1</span>);
+<span class="tok-keyword">const</span> fontSection = gdi.Font(<span class="tok-string">&quot;Segoe UI&quot;</span>, <span class="tok-number">13</span>, <span class="tok-number">1</span>);
+<span class="tok-keyword">const</span> fontNormal = gdi.Font(<span class="tok-string">&quot;Segoe UI&quot;</span>, <span class="tok-number">12</span>);
+<span class="tok-keyword">const</span> fontMono = gdi.Font(<span class="tok-string">&quot;Consolas&quot;</span>, <span class="tok-number">11</span>);
+
+<span class="tok-keyword">const</span> colors = {
+    background: RGB(<span class="tok-number">28</span>, <span class="tok-number">28</span>, <span class="tok-number">28</span>),
+    surface: RGB(<span class="tok-number">38</span>, <span class="tok-number">38</span>, <span class="tok-number">38</span>),
+    text: RGB(<span class="tok-number">235</span>, <span class="tok-number">235</span>, <span class="tok-number">235</span>),
+    muted: RGB(<span class="tok-number">170</span>, <span class="tok-number">170</span>, <span class="tok-number">170</span>),
+    accent: RGB(<span class="tok-number">110</span>, <span class="tok-number">175</span>, <span class="tok-number">235</span>),
+    success: RGB(<span class="tok-number">125</span>, <span class="tok-number">205</span>, <span class="tok-number">145</span>),
+    error: RGB(<span class="tok-number">235</span>, <span class="tok-number">125</span>, <span class="tok-number">125</span>),
+    border: RGB(<span class="tok-number">60</span>, <span class="tok-number">60</span>, <span class="tok-number">60</span>)
+};
+
+<span class="tok-keyword">const</span> driveTypeNames = [
+    <span class="tok-string">&quot;Unknown&quot;</span>,
+    <span class="tok-string">&quot;Removable&quot;</span>,
+    <span class="tok-string">&quot;Fixed&quot;</span>,
+    <span class="tok-string">&quot;Network&quot;</span>,
+    <span class="tok-string">&quot;CD-ROM&quot;</span>,
+    <span class="tok-string">&quot;RAM Disk&quot;</span>
+];
+
+<span class="tok-keyword">let</span> ww = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> wh = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> folderSizeTaskId = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> folderSizeSync = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> folderSizeAsync = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> folderSizeAsyncError = <span class="tok-string">&quot;&quot;</span>;
+<span class="tok-keyword">let</span> shortPath = <span class="tok-string">&quot;&quot;</span>;
+<span class="tok-keyword">let</span> drives = [];
+
+<span class="tok-keyword">function</span> formatBytes(value) {
+    <span class="tok-keyword">if</span> (!Number.isFinite(value) || value &lt; <span class="tok-number">0</span>) <span class="tok-keyword">return</span> <span class="tok-string">&quot;n/a&quot;</span>;
+
+    <span class="tok-keyword">const</span> units = [<span class="tok-string">&quot;B&quot;</span>, <span class="tok-string">&quot;KB&quot;</span>, <span class="tok-string">&quot;MB&quot;</span>, <span class="tok-string">&quot;GB&quot;</span>, <span class="tok-string">&quot;TB&quot;</span>, <span class="tok-string">&quot;PB&quot;</span>];
+    <span class="tok-keyword">let</span> size = value;
+    <span class="tok-keyword">let</span> unit = <span class="tok-number">0</span>;
+
+    <span class="tok-keyword">while</span> (size &gt;= <span class="tok-number">1024</span> &amp;&amp; unit &lt; units.length - <span class="tok-number">1</span>) {
+        size /= <span class="tok-number">1024</span>;
+        ++unit;
+    }
+
+    <span class="tok-keyword">const</span> digits = unit === <span class="tok-number">0</span> ? <span class="tok-number">0</span> : size &gt;= <span class="tok-number">100</span> ? <span class="tok-number">0</span> : size &gt;= <span class="tok-number">10</span> ? <span class="tok-number">1</span> : <span class="tok-number">2</span>;
+    <span class="tok-keyword">return</span> size.toFixed(digits) + <span class="tok-string">&quot; &quot;</span> + units[unit];
+}
+
+<span class="tok-keyword">function</span> driveTypeName(type) {
+    <span class="tok-keyword">return</span> driveTypeNames[type] || <span class="tok-string">&quot;Unknown&quot;</span>;
+}
+
+<span class="tok-keyword">function</span> initializeSample() {
+    utils.CreateFolder(sampleDir);
+    utils.WriteTextFile(sampleFile, <span class="tok-string">&quot;12345678&quot;</span>, <span class="tok-literal">false</span>);
+
+    drives = utils.GetDrives()
+        .map((root) =&gt; utils.GetDriveInfo(root))
+        .filter((info) =&gt; !!info);
+
+    shortPath = utils.GetShortPath(sampleDir);
+    folderSizeSync = utils.GetFolderSize(sampleDir);
+    folderSizeTaskId = utils.GetFolderSizeAsync(sampleDir);
+}
+
+<span class="tok-keyword">function</span> drawText(gr, text, font, color, x, y, w, h, flags) {
+    gr.GdiDrawText(text, font, color, x, y, w, h, flags | DT_NOPREFIX);
+}
+
+<span class="tok-keyword">function</span> drawLabelValue(gr, label, value, x, y, w, valueColor) {
+    <span class="tok-keyword">const</span> labelWidth = <span class="tok-number">112</span>;
+    drawText(gr, label, fontNormal, colors.muted, x, y, labelWidth, <span class="tok-number">22</span>, DT_LEFT | DT_VCENTER | DT_SINGLELINE);
+    drawText(gr, value, fontNormal, valueColor || colors.text, x + labelWidth, y, w - labelWidth, <span class="tok-number">22</span>, DT_LEFT | DT_VCENTER | DT_SINGLELINE);
+}
+
+<span class="tok-keyword">function</span> on_size() {
+    ww = window.Width;
+    wh = window.Height;
+}
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, ww, wh, colors.background);
+
+    <span class="tok-keyword">const</span> margin = <span class="tok-number">20</span>;
+    <span class="tok-keyword">const</span> contentWidth = Math.max(<span class="tok-number">0</span>, ww - margin * <span class="tok-number">2</span>);
+    <span class="tok-keyword">let</span> y = <span class="tok-number">18</span>;
+
+    drawText(gr, <span class="tok-string">&quot;Filesystem utilities&quot;</span>, fontTitle, colors.text, margin, y, contentWidth, <span class="tok-number">30</span>, DT_LEFT | DT_VCENTER | DT_SINGLELINE);
+    y += <span class="tok-number">40</span>;
+
+    drawText(gr, <span class="tok-string">&quot;Logical drives&quot;</span>, fontSection, colors.accent, margin, y, contentWidth, <span class="tok-number">24</span>, DT_LEFT | DT_VCENTER | DT_SINGLELINE);
+    y += <span class="tok-number">30</span>;
+
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> info <span class="tok-keyword">of</span> drives) {
+        <span class="tok-keyword">const</span> cardHeight = <span class="tok-number">106</span>;
+        gr.FillSolidRect(margin, y, contentWidth, cardHeight, colors.surface);
+        gr.DrawRect(margin, y, contentWidth - <span class="tok-number">1</span>, cardHeight - <span class="tok-number">1</span>, <span class="tok-number">1</span>, colors.border);
+
+        <span class="tok-keyword">const</span> innerX = margin + <span class="tok-number">12</span>;
+        <span class="tok-keyword">const</span> innerW = Math.max(<span class="tok-number">0</span>, contentWidth - <span class="tok-number">24</span>);
+        <span class="tok-keyword">const</span> label = info.VolumeName
+            ? info.Root + <span class="tok-string">&quot;  —  &quot;</span> + info.VolumeName
+            : info.Root;
+
+        drawText(gr, label, fontSection, colors.text, innerX, y + <span class="tok-number">8</span>, innerW, <span class="tok-number">22</span>, DT_LEFT | DT_VCENTER | DT_SINGLELINE);
+        drawText(
+            gr,
+            driveTypeName(info.DriveType) + (info.FileSystem ? <span class="tok-string">&quot;  •  &quot;</span> + info.FileSystem : <span class="tok-string">&quot;&quot;</span>) + (info.IsReady ? <span class="tok-string">&quot;&quot;</span> : <span class="tok-string">&quot;  •  Not ready&quot;</span>),
+            fontNormal,
+            info.IsReady ? colors.muted : colors.error,
+            innerX,
+            y + <span class="tok-number">31</span>,
+            innerW,
+            <span class="tok-number">20</span>,
+            DT_LEFT | DT_VCENTER | DT_SINGLELINE
+        );
+
+        drawLabelValue(gr, <span class="tok-string">&quot;Total&quot;</span>, formatBytes(info.TotalSize), innerX, y + <span class="tok-number">55</span>, innerW);
+        drawLabelValue(gr, <span class="tok-string">&quot;Free / available&quot;</span>, formatBytes(info.FreeSpace) + <span class="tok-string">&quot; / &quot;</span> + formatBytes(info.AvailableSpace), innerX, y + <span class="tok-number">77</span>, innerW);
+
+        y += cardHeight + <span class="tok-number">10</span>;
+    }
+
+    y += <span class="tok-number">4</span>;
+    drawText(gr, <span class="tok-string">&quot;Path and folder size&quot;</span>, fontSection, colors.accent, margin, y, contentWidth, <span class="tok-number">24</span>, DT_LEFT | DT_VCENTER | DT_SINGLELINE);
+    y += <span class="tok-number">30</span>;
+
+    gr.FillSolidRect(margin, y, contentWidth, <span class="tok-number">118</span>, colors.surface);
+    gr.DrawRect(margin, y, contentWidth - <span class="tok-number">1</span>, <span class="tok-number">117</span>, <span class="tok-number">1</span>, colors.border);
+
+    <span class="tok-keyword">const</span> innerX = margin + <span class="tok-number">12</span>;
+    <span class="tok-keyword">const</span> innerW = Math.max(<span class="tok-number">0</span>, contentWidth - <span class="tok-number">24</span>);
+
+    drawText(gr, <span class="tok-string">&quot;Short path&quot;</span>, fontNormal, colors.muted, innerX, y + <span class="tok-number">8</span>, innerW, <span class="tok-number">20</span>, DT_LEFT | DT_VCENTER | DT_SINGLELINE);
+    drawText(gr, shortPath || <span class="tok-string">&quot;Unavailable&quot;</span>, fontMono, shortPath ? colors.text : colors.error, innerX, y + <span class="tok-number">30</span>, innerW, <span class="tok-number">22</span>, DT_LEFT | DT_VCENTER | DT_SINGLELINE);
+
+    drawLabelValue(gr, <span class="tok-string">&quot;Synchronous&quot;</span>, formatBytes(folderSizeSync), innerX, y + <span class="tok-number">58</span>, innerW);
+
+    <span class="tok-keyword">let</span> asyncText = <span class="tok-string">&quot;Calculating…  (task &quot;</span> + folderSizeTaskId + <span class="tok-string">&quot;)&quot;</span>;
+    <span class="tok-keyword">let</span> asyncColor = colors.muted;
+
+    <span class="tok-keyword">if</span> (folderSizeAsync !== <span class="tok-literal">null</span>) {
+        asyncText = formatBytes(folderSizeAsync);
+        asyncColor = colors.success;
+    }
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (folderSizeAsyncError) {
+        asyncText = folderSizeAsyncError;
+        asyncColor = colors.error;
+    }
+
+    drawLabelValue(gr, <span class="tok-string">&quot;Asynchronous&quot;</span>, asyncText, innerX, y + <span class="tok-number">82</span>, innerW, asyncColor);
+}
+
+<span class="tok-keyword">function</span> on_get_folder_size_done(task_id, success, size, error_text) {
+    <span class="tok-keyword">if</span> (task_id !== folderSizeTaskId) <span class="tok-keyword">return</span>;
+
+    <span class="tok-keyword">if</span> (success) {
+        folderSizeAsync = size;
+    }
+    <span class="tok-keyword">else</span> {
+        folderSizeAsyncError = error_text || <span class="tok-string">&quot;Failed&quot;</span>;
+    }
+
+    utils.RemovePath(sampleDir);
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> on_script_unload() {
+    utils.RemovePath(sampleDir);
+}
+
+initializeSample();
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>
