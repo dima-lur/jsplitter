@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>GdiBrush — JSplitter API</title>
+    <title>DriveInfo — JSplitter API</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -70,7 +70,7 @@
         <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="DriveInfo">
-        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <a class="nav-link nav-page-link active" href="DriveInfo.html">DriveInfo</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
         <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
@@ -115,7 +115,7 @@
         <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="GdiBrush">
-        <a class="nav-link nav-page-link active" href="GdiBrush.html">GdiBrush</a>
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="GdiFont">
         <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
@@ -178,27 +178,19 @@
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
-        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>GdiBrush</b></div>
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>DriveInfo</b></div>
         
-    <article class="api-item" id="GdiBrush" data-kind="class" data-name="gdibrush">
+    <article class="api-item" id="DriveInfo" data-kind="class" data-name="driveinfo">
         <header class="api-item-header">
             <div>
                 <div class="eyebrow"><span class="kind kind-class">class</span></div>
-                <h2><a class="anchor" href="#GdiBrush">GdiBrush</a></h2>
+                <h2><a class="anchor" href="#DriveInfo">DriveInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4655</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2672</div>
         </header>
-        <pre class="signature"><code>GdiBrush(arg)</code></pre>
         
-        <div class="description"><p>Object used for drawing as alternative for simple colour.<br> Can also be used to reuse brushes for drawing instead of creating them every time for any primitive drawing operation (if just a color is specified in the Draw/Fill methods, a brush is always created).<br> Created by <a href="gdi.html#Brush">gdi.Brush</a></p></div>
         
-        <section class="member-section">
-            <h3>Parameters</h3>
-            <div class="table-wrap"><table class="params-table">
-                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>arg</code></td><td><code><a class="type-link" href="GdiBrush.html#GdiBrush">GdiBrush</a></code></td><td></td></tr></tbody>
-            </table></div>
-        </section>
+        <div class="description"><p>Object returned by <a href="utils.html#GetDriveInfo">utils.GetDriveInfo</a>.<br></p></div>
         
         
         
@@ -206,23 +198,20 @@
         
         
         
-        <section class="member-section">
-            <h3>Example source</h3>
-            <div class="source-links"><a class="source-link" href="source-samples-basic-Brushes.js.html"><span>samples/basic/Brushes.js</span><small>open source</small></a></div>
-        </section>
+        
     </article>
         
-    <article class="api-item" id="Type" data-kind="property" data-name="type">
+    <article class="api-item" id="AvailableSpace" data-kind="property" data-name="availablespace">
         <header class="api-item-header">
             <div>
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
-                <h2><a class="anchor" href="#Type">Type</a></h2>
+                <h2><a class="anchor" href="#AvailableSpace">AvailableSpace</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4666</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2754</div>
         </header>
-        <pre class="signature"><code>Type: BrushType</code></pre>
+        <pre class="signature"><code>AvailableSpace: number = 0</code></pre>
         
-        <div class="description"><p>Brush type.<br> See <a href="module-Flags.html#BrushType">BrushType</a></p></div>
+        <div class="description"><p>Free space available to the current user in bytes, or 0 if unavailable.</p></div>
         
         
         
@@ -233,17 +222,17 @@
         
     </article>
 
-    <article class="api-item" id="WrapMode" data-kind="property" data-name="wrapmode">
+    <article class="api-item" id="DriveLetter" data-kind="property" data-name="driveletter">
         <header class="api-item-header">
             <div>
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
-                <h2><a class="anchor" href="#WrapMode">WrapMode</a></h2>
+                <h2><a class="anchor" href="#DriveLetter">DriveLetter</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4674</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2688</div>
         </header>
-        <pre class="signature"><code>WrapMode: BrushWrapMode</code></pre>
+        <pre class="signature"><code>DriveLetter: string = &quot;&quot;</code></pre>
         
-        <div class="description"><p>Wrap mode responsible for how the brush gradient or image is repeated when drawing<br> See <a href="module-Flags.html#BrushWrapMode">BrushWrapMode</a></p></div>
+        <div class="description"><p>Drive letter without the colon, or an empty string when the volume has no drive letter.</p></div>
         
         
         
@@ -254,78 +243,17 @@
         
     </article>
 
-    <article class="api-item" id="ApplyTransform" data-kind="method" data-name="applytransform">
+    <article class="api-item" id="DriveType" data-kind="property" data-name="drivetype">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
-                <h2><a class="anchor" href="#ApplyTransform">ApplyTransform</a></h2>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#DriveType">DriveType</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4756</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2696</div>
         </header>
-        <pre class="signature"><code>ApplyTransform(matrix)</code></pre>
+        <pre class="signature"><code>DriveType: number = 0</code></pre>
         
-        <div class="description"><p>Applies specified transformation matrix of 3x2 size to the current GdiBrush matrix.<br> Matrix3x2 helper class from the component/docs/Matrix.js will be useful</p></div>
-        
-        <section class="member-section">
-            <h3>Parameters</h3>
-            <div class="table-wrap"><table class="params-table">
-                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>matrix</code></td><td><code>Float32Array</code></td><td><p>Array that presents 3x2 matrix for transformation (length = 6)</p></td></tr></tbody>
-            </table></div>
-        </section>
-        
-        
-        
-        
-        
-        
-        
-        <section class="member-section">
-            <h3>Example source</h3>
-            <div class="source-links"><a class="source-link" href="source-docs-Matrix.js.html"><span>docs/Matrix.js</span><small>open source</small></a></div>
-        </section>
-    </article>
-
-    <article class="api-item" id="GetTransform" data-kind="method" data-name="gettransform">
-        <header class="api-item-header">
-            <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
-                <h2><a class="anchor" href="#GetTransform">GetTransform</a></h2>
-            </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4733</div>
-        </header>
-        <pre class="signature"><code>GetTransform()</code></pre>
-        
-        <div class="description"><p>Gets GdiBrush current transformation matrix of 3x2 size (Float32Array(6))<br> Matrix3x2 helper class from the component/docs/Matrix.js will be useful</p></div>
-        
-        
-        
-        
-        <section class="member-section compact-section">
-            <h3>Returns</h3>
-            <div><code>Float32Array</code></div>
-        </section>
-        
-        
-        
-        
-        <section class="member-section">
-            <h3>Example source</h3>
-            <div class="source-links"><a class="source-link" href="source-docs-Matrix.js.html"><span>docs/Matrix.js</span><small>open source</small></a></div>
-        </section>
-    </article>
-
-    <article class="api-item" id="PopTransform" data-kind="method" data-name="poptransform">
-        <header class="api-item-header">
-            <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
-                <h2><a class="anchor" href="#PopTransform">PopTransform</a></h2>
-            </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4728</div>
-        </header>
-        <pre class="signature"><code>PopTransform()</code></pre>
-        
-        <div class="description"><p>Restores GdiBrush matrix from internal stack pushed previously by <a href="GdiGraphics.html#PushTransform">PushTransform</a>.</p></div>
+        <div class="description"><p>Drive type.<br> Values are compatible with <code>Scripting.FileSystemObject</code>:<br> 0 - unknown, 1 - removable, 2 - fixed, 3 - network, 4 - CD-ROM, 5 - RAM disk.</p></div>
         
         
         
@@ -336,17 +264,17 @@
         
     </article>
 
-    <article class="api-item" id="PushTransform" data-kind="method" data-name="pushtransform">
+    <article class="api-item" id="FileSystem" data-kind="property" data-name="filesystem">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
-                <h2><a class="anchor" href="#PushTransform">PushTransform</a></h2>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#FileSystem">FileSystem</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4723</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2722</div>
         </header>
-        <pre class="signature"><code>PushTransform()</code></pre>
+        <pre class="signature"><code>FileSystem: string = &quot;&quot;</code></pre>
         
-        <div class="description"><p>Saves current GdiBrush matrix in internal stack. To restore the matrix use <a href="GdiGraphics.html#PopTransform">PopTransform</a>.</p></div>
+        <div class="description"><p>File system name, or an empty string if unavailable.</p></div>
         
         
         
@@ -357,17 +285,17 @@
         
     </article>
 
-    <article class="api-item" id="ResetTransform" data-kind="method" data-name="resettransform">
+    <article class="api-item" id="FreeSpace" data-kind="property" data-name="freespace">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
-                <h2><a class="anchor" href="#ResetTransform">ResetTransform</a></h2>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#FreeSpace">FreeSpace</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4751</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2746</div>
         </header>
-        <pre class="signature"><code>ResetTransform()</code></pre>
+        <pre class="signature"><code>FreeSpace: number = 0</code></pre>
         
-        <div class="description"><p>Resets current GdiBrush matrix to original identity matrix.</p></div>
+        <div class="description"><p>Total free space in bytes, or 0 if unavailable.</p></div>
         
         
         
@@ -378,25 +306,18 @@
         
     </article>
 
-    <article class="api-item" id="Rotate" data-kind="method" data-name="rotate">
+    <article class="api-item" id="IsReady" data-kind="property" data-name="isready">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
-                <h2><a class="anchor" href="#Rotate">Rotate</a></h2>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#IsReady">IsReady</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4691</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2706</div>
         </header>
-        <pre class="signature"><code>Rotate(angle, cx, cy)</code></pre>
+        <pre class="signature"><code>IsReady: boolean = false</code></pre>
         
-        <div class="description"><p>Applies rotation matrix to the current GdiBrush matrix.<br> For more information see <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-rotation" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-rotation</a></p></div>
+        <div class="description"><p>true if volume or space information can be queried.</p></div>
         
-        <section class="member-section">
-            <h3>Parameters</h3>
-            <div class="table-wrap"><table class="params-table">
-                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>angle</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td><p>Angle of rotation in degrees</p></td></tr><tr><td><code>cx = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Rotation center point x coord</p></td></tr><tr><td><code>cy = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Rotation center point y coord</p></td></tr></tbody>
-            </table></div>
-        </section>
         
         
         
@@ -406,25 +327,18 @@
         
     </article>
 
-    <article class="api-item" id="Scale" data-kind="method" data-name="scale">
+    <article class="api-item" id="Root" data-kind="property" data-name="root">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
-                <h2><a class="anchor" href="#Scale">Scale</a></h2>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#Root">Root</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4701</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2680</div>
         </header>
-        <pre class="signature"><code>Scale(sz, sy, cx, cy)</code></pre>
+        <pre class="signature"><code>Root: string = &quot;&quot;</code></pre>
         
-        <div class="description"><p>Applies scale matrix to the current GdiBrush matrix.<br> For more information see <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-scale(d2d1_size_f_d2d1_point_2f)" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-scale(d2d1_size_f_d2d1_point_2f)</a></p></div>
+        <div class="description"><p>Drive root path, for example <code>C:\</code>.</p></div>
         
-        <section class="member-section">
-            <h3>Parameters</h3>
-            <div class="table-wrap"><table class="params-table">
-                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>sx</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td><p>The x-axis scale factor</p></td></tr><tr><td><code>sy = 0</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td><p>The y-axis scale factor. If zero sx will be used as sy</p></td></tr><tr><td><code>cx = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Scale center point x coord</p></td></tr><tr><td><code>cy = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Scale center point y coord</p></td></tr></tbody>
-            </table></div>
-        </section>
         
         
         
@@ -434,57 +348,18 @@
         
     </article>
 
-    <article class="api-item" id="SetTransform" data-kind="method" data-name="settransform">
+    <article class="api-item" id="SerialNumber" data-kind="property" data-name="serialnumber">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
-                <h2><a class="anchor" href="#SetTransform">SetTransform</a></h2>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#SerialNumber">SerialNumber</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4742</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2730</div>
         </header>
-        <pre class="signature"><code>SetTransform(matrix)</code></pre>
+        <pre class="signature"><code>SerialNumber: number = 0</code></pre>
         
-        <div class="description"><p>Replaces the current GdiBrush matrix with specified transformation matrix of 3x2 size.<br> Matrix3x2 helper class from the component/docs/Matrix.js will be useful</p></div>
+        <div class="description"><p>Volume serial number, or 0 if unavailable.</p></div>
         
-        <section class="member-section">
-            <h3>Parameters</h3>
-            <div class="table-wrap"><table class="params-table">
-                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>matrix</code></td><td><code>Float32Array</code></td><td><p>Array that presents 3x2 matrix for transformation (length = 6)</p></td></tr></tbody>
-            </table></div>
-        </section>
-        
-        
-        
-        
-        
-        
-        
-        <section class="member-section">
-            <h3>Example source</h3>
-            <div class="source-links"><a class="source-link" href="source-docs-Matrix.js.html"><span>docs/Matrix.js</span><small>open source</small></a></div>
-        </section>
-    </article>
-
-    <article class="api-item" id="Skew" data-kind="method" data-name="skew">
-        <header class="api-item-header">
-            <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
-                <h2><a class="anchor" href="#Skew">Skew</a></h2>
-            </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4712</div>
-        </header>
-        <pre class="signature"><code>Skew(angleX, angleY, cx, cy)</code></pre>
-        
-        <div class="description"><p>Applies skew matrix to the current GdiBrush matrix.<br> For more information see <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-skew" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-skew</a></p></div>
-        
-        <section class="member-section">
-            <h3>Parameters</h3>
-            <div class="table-wrap"><table class="params-table">
-                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>angleX</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td><p>The x-axis skew angle, which is measured in degrees counterclockwise from the y-axis.</p></td></tr><tr><td><code>angleY</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td><p>The y-axis skew angle, which is measured in degrees clockwise from the x-axis.</p></td></tr><tr><td><code>cx = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Skew center point x coord</p></td></tr><tr><td><code>cy = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Skew center point y coord</p></td></tr></tbody>
-            </table></div>
-        </section>
         
         
         
@@ -494,25 +369,39 @@
         
     </article>
 
-    <article class="api-item" id="Translate" data-kind="method" data-name="translate">
+    <article class="api-item" id="TotalSize" data-kind="property" data-name="totalsize">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
-                <h2><a class="anchor" href="#Translate">Translate</a></h2>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#TotalSize">TotalSize</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4682</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2738</div>
         </header>
-        <pre class="signature"><code>Translate(dx, dy)</code></pre>
+        <pre class="signature"><code>TotalSize: number = 0</code></pre>
         
-        <div class="description"><p>Applies translation matrix to the current GdiBrush matrix.<br> For more information see <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-translation(d2d1_size_f)" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-translation(d2d1_size_f)</a></p></div>
+        <div class="description"><p>Total size in bytes, or 0 if unavailable.</p></div>
         
-        <section class="member-section">
-            <h3>Parameters</h3>
-            <div class="table-wrap"><table class="params-table">
-                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>dx</code></td><td><code>number</code></td><td></td></tr><tr><td><code>dy</code></td><td><code>number</code></td><td></td></tr></tbody>
-            </table></div>
-        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="VolumeName" data-kind="property" data-name="volumename">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#VolumeName">VolumeName</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2714</div>
+        </header>
+        <pre class="signature"><code>VolumeName: string = &quot;&quot;</code></pre>
+        
+        <div class="description"><p>Volume label, or an empty string if unavailable.</p></div>
+        
         
         
         

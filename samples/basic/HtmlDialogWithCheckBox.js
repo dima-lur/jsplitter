@@ -1,70 +1,69 @@
-window.DefineScript('Html window with checkbox', {author: 'TheQwertiest'});
+﻿window.DefineScript('ShowHtmlDialog sample', { author: 'TheQwertiest / LUR' });
 
-include('docs/Flags.js');
+include(`${fb.ComponentPath}docs/Flags.js`);
+include(`${fb.ComponentPath}docs/Helpers.js`);
 
-let WshShell = new ActiveXObject('WScript.Shell');
-
-function get_windows_version() {
-    let version = '';
-
-    try {
-        version = (WshShell.RegRead('HKLM/SOFTWARE/Microsoft/Windows NT/CurrentVersion/CurrentMajorVersionNumber')).toString();
-        version += '.';
-        version += (WshShell.RegRead('HKLM/SOFTWARE/Microsoft/Windows NT/CurrentVersion/CurrentMinorVersionNumber')).toString();
-
-        return version;
-    }
-    catch (e) {
-    }
-
-    try {
-        version = WshShell.RegRead('HKLM/SOFTWARE/Microsoft/Windows NT/CurrentVersion/CurrentVersion');
-
-        return version;
-    }
-    catch (e) {
-    }
-
-    return '6.1';
-}
-
-const htmlCode = function() {
-    let htmlCode = utils.ReadTextFile( `${fb.ComponentPath}samples/basic/html/PopupWithCheckBox.html`);
-    
-    let cssPath = `${fb.ComponentPath}samples/basic/html/`;
-    if ( get_windows_version() === '6.1' ) {
-        cssPath += 'styles7.css';
-    }
-    else {
-        cssPath += 'styles10.css';
-    }
-    htmlCode = htmlCode.replace(/href="styles10.css"/i, `href="${cssPath}"`);
-    return htmlCode;
-}();
+const htmlCode = utils.ReadTextFile(
+    `${fb.ComponentPath}samples/basic/html/PopupWithCheckBox.html`
+);
 
 let ww = 0;
 let wh = 0;
-let text = '>> Click Me To Open Dialog <<';
-let font = gdi.Font('Segoe Ui Semibold', 11);
+let text = 'Click to open ShowHtmlDialog';
+const font = gdi.Font('Segoe UI Semibold', 11);
 
 function on_paint(gr) {
     gr.SetTextRenderingHint(TextRenderingHint.ClearTypeGridFit);
-    gr.DrawString(text, font, 0xFF000000, 0, 0, ww, wh, 0x11000000);
+    gr.DrawString(
+        text,
+        font,
+        0xFF202020,
+        0,
+        0,
+        ww,
+        wh,
+        StringFormat(StringAlignment.Center, StringAlignment.Center)
+    );
 }
 
-function on_size(w,h) {
+function on_size(w, h) {
     ww = w;
     wh = h;
 }
 
 function on_mouse_lbtn_up() {
     utils.ShowHtmlDialog(0, htmlCode, {
-        data: ['Html Window', 'This is an HTML notification window with a check box\n', '< Click me', window_ok_callback],            
+        width: 460,
+        height: 290,
+        data: [
+            'ShowHtmlDialog sample',
+            'Pass data to HTML and call panel JavaScript back.',
+            'Hello from panel JavaScript',
+            'Remember this choice',
+            show_native_dialog,
+            dialog_closed
+        ]
     });
 }
 
-function window_ok_callback(status, clicked) {
-    text = `Dialog was closed with ${status} and checkbox ${clicked}\n`
-        + '>> Click Me To Open Dialog <<';
+function show_native_dialog(dialogWindow) {
+    utils.MessageBox(
+        'window.external.dialogWindow was passed back to panel JavaScript and used as the owner of this MessageBox.',
+        'Owned native dialog',
+        MessageBoxButtons.OK,
+        MessageBoxIcon.Information,
+        MessageBoxDefaultButton.Button1,
+        '',
+        dialogWindow
+    );
+}
+
+function dialog_closed(status, value, checked) {
+    text =
+        `Result: ${status}\n` +
+        `Text: ${value}\n` +
+        `Checked: ${checked}\n\n` +
+        'Click to open ShowHtmlDialog again';
+
     window.Repaint();
 }

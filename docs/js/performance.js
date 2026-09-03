@@ -1,74 +1,114 @@
-/**
- * Object representing a timestamp marker or measurement entry in the player's performance timeline
+﻿/**
+ * Performance timeline entry created by {@link performance.mark performance.mark} or {@link performance.measure performance.measure}.
  * @typedef {Object} PerformanceEntry
- * 
+ *
  * @property {string} entryType
- * A string representing the type of performance metric. Can be either "mark" or "measure".
+ * Entry type. JSplitter currently supports "mark" and "measure".
  * @property {string} name
- * A string representing the name for a performance entry.
+ * User-defined entry name.
  * @property {number} startTime
- * Timestamp representing the starting time for the performance metric.
+ * Start timestamp in milliseconds relative to {@link performance.timeOrigin}.
  * @property {number} duration
- * Value representing the duration of the performance entry (0.0 for "mark")
- * @property {Object} detail
- * Arbitrary metadata to include in the mark. Defaults to null. Can be an object of any type. 
+ * Entry duration in milliseconds. Always 0 for marks; for measures it is <code>endTime - startTime</code> and may be negative.
+ * @property {*} detail
+ * Optional metadata associated with the entry. Defaults to null.<br>
+ * <b>JSplitter note:</b> unlike the Web User Timing specification, <code>detail</code> is currently retained as the original JavaScript value and is not structured-cloned.
  */
 
 /**
- * List of performance observer entries<br>
- * Passed to {@link PerformanceObserver PerformanceObserver} {@link module:Callbacks.PerformanceObserverCallback callback}
+ * Options accepted by {@link performance.mark performance.mark}.
+ * @typedef {Object} PerformanceMarkOptions
+ *
+ * @property {*} [detail=null]
+ * Arbitrary metadata associated with the mark.<br>
+ * <b>JSplitter note:</b> the value is not structured-cloned.
+ * @property {number} [startTime]
+ * Finite non-negative timestamp in milliseconds relative to {@link performance.timeOrigin}. Defaults to {@link performance.now performance.now}.
+ */
+
+/**
+ * Options accepted by the standard options form of {@link performance.measure performance.measure}.
+ * @typedef {Object} PerformanceMeasureOptions
+ *
+ * @property {*} [detail=null]
+ * Arbitrary metadata associated with the measure.<br>
+ * <b>JSplitter note:</b> the value is not structured-cloned.
+ * @property {(string|number)} [start]
+ * Start mark name or finite non-negative timestamp in milliseconds.
+ * @property {number} [duration]
+ * Finite non-negative duration in milliseconds. May be used together with <code>start</code> or <code>end</code>, but not together with both.
+ * @property {(string|number)} [end]
+ * End mark name or finite non-negative timestamp in milliseconds.
+ */
+
+/**
+ * Options accepted by {@link PerformanceObserver.observe PerformanceObserver.observe}.
+ * @typedef {Object} PerformanceObserverOptions
+ *
+ * @property {Array<string>} [entryTypes]
+ * Entry types to observe. Unsupported types are ignored. Use either <code>entryTypes</code> or <code>type</code> for an observer, not both.
+ * @property {string} [type]
+ * A single entry type to observe. Unsupported types are ignored. Use either <code>type</code> or <code>entryTypes</code> for an observer, not both.
+ */
+
+/**
+ * List of performance entries delivered to a {@link PerformanceObserver PerformanceObserver} callback.<br>
+ * The entries in this list are ordered by {@link PerformanceEntry.startTime startTime}.
  * @constructor
  * @hideconstructor
  */
 function PerformanceObserverEntryList() {
 
-     /**
-     * Returns an array of all new {@link PerformanceEntry} entries' events recorded since last call of {@link module:Callbacks.PerformanceObserverCallback callback}.<br>
+    /**
+     * Returns all entries in this callback's entry list, ordered by {@link PerformanceEntry.startTime startTime}.
      * @return {Array<PerformanceEntry>}
      */
     this.getEntries = function () { };
 
     /**
-     * Returns an array of all new {@link PerformanceEntry} entries' events recorded since last call of {@link module:Callbacks.PerformanceObserverCallback callback}.<br>
-     * Returns array of entries filtered by type
-     * @param {string} type A string representing the name of the measure.
+     * Returns entries in this callback's entry list filtered by entry type and ordered by {@link PerformanceEntry.startTime startTime}.
+     * @param {string} type Entry type, for example "mark" or "measure".
      * @return {Array<PerformanceEntry>}
      */
     this.getEntriesByType = function (type) { };
-    
+
     /**
-     * Returns an array of all new {@link PerformanceEntry} entries' events recorded since last call of {@link module:Callbacks.PerformanceObserverCallback callback}.<br>
-     * Returns array of entries filtered by name (and type (optional))
-     * @param {string} name A string representing the name of the measure.
-     * @param {string} [type=''] A string representing the name of the measure.
+     * Returns entries in this callback's entry list filtered by name and, optionally, entry type. Results are ordered by {@link PerformanceEntry.startTime startTime}.
+     * @param {string} name Entry name.
+     * @param {string} [type] Optional entry type, for example "mark" or "measure".
      * @return {Array<PerformanceEntry>}
      */
     this.getEntriesByName = function (name, type) { };
 }
 
 /**
- * Creates and returns a new {@link PerformanceObserver PerformanceObserver} object.<br>
+ * Creates a new observer for entries added to the JSplitter performance timeline.<br>
  *
- * The observer {@link module:Callbacks.PerformanceObserverCallback callback} is invoked when performance entry events are recorded by {@link performance.mark performance.mark()} or {@link performance.measure performance.measure()} calls for the entry types that have been registered, via the {@link PerformanceObserver.observe observe()} method.<br>
+ * The callback is invoked asynchronously when {@link performance.mark performance.mark} or {@link performance.measure performance.measure} records an entry whose type is currently observed. Entries created in the same event-loop burst may be delivered together in one callback.<br>
+ * JSplitter currently supports only the "mark" and "measure" entry types. The Web Performance Timeline <code>buffered</code> option is not implemented.
+ * @sourceFile ../../component/samples/basic/Performance.js
  * @constructor
- * @param {function} callback
+ * @param {function} callback Callback receiving <code>(list, observer)</code>, where <code>list</code> is a {@link PerformanceObserverEntryList}.
  */
 function PerformanceObserver(callback) {
     /**
-     * Returns an array of the {@link PerformanceEntry entryType} values supported by the user agent.
+     * JSplitter compatibility alias for the standard static {@link PerformanceObserver.supportedEntryTypes PerformanceObserver.supportedEntryTypes} property.<br>
+     * Returns the same frozen array object as the static property.
      * @type {Array<string>}
      * @readonly
      */
-    this.supportedEntryTypes = ["mark", "measure"];
-    
+    this.supportedEntryTypes = PerformanceObserver.supportedEntryTypes;
+
     /**
-     * Specifies the set of entry types to observe.<br>
-     * The performance observer's {@link module:Callbacks.PerformanceObserverCallback callback} function will be invoked when performance entry is recorded for one of the specified entryTypes.
+     * Registers performance entry types to observe.<br>
+     *
+     * Use either <code>entryTypes</code> or <code>type</code> for a given observer until {@link PerformanceObserver.disconnect disconnect} is called. Switching between the two modes throws an error.<br>
+     * Repeated calls using the same mode add supported types to the observer's current set. Unsupported entry types are ignored.<br>
+     * JSplitter currently supports only <code>entryTypes</code> and <code>type</code>; the Web Performance Timeline <code>buffered</code> option is not implemented.
      * @method
-     * @param {Object} options An object with the following possible members:<br>
-     * <b>entryTypes</b> - An array of strings, each specifying one performance entry type to observe. May not be used together with the `type`<br>
-     * <b>type</b> - A single string specifying exactly one performance entry type to observe. May not be used together with the `entryTypes` option.
-     * 
+     * @param {PerformanceObserverOptions} options Observer options.
+     * @throws {Error} If <code>options</code> is not an object or if the observer switches between <code>entryTypes</code> and <code>type</code> modes without first calling {@link PerformanceObserver.disconnect disconnect}.
+     *
      * @example
      * function perfObserver(list, observer) {
      *   list.getEntries().forEach((entry) => {
@@ -80,36 +120,49 @@ function PerformanceObserver(callback) {
      *     }
      *   });
      * }
+     *
      * const observer = new PerformanceObserver(perfObserver);
-     * observer.observe({ entryTypes: ["measure", "mark"] });
+     * observer.observe({ entryTypes: ["mark", "measure"] });
      */
-    this.observe = function(options) {};
-
-    /** Stops the performance observer callback from receiving performance entries.
-     * @method
-     */
-    this.disconnect = function() {};
+    this.observe = function (options) { };
 
     /**
-     * Returns the current list of performance entries stored in the performance observer, emptying it out.
+     * Stops delivery of future performance entries, clears pending observer records, and resets the observer's registered entry types.<br>
+     * The same observer may be configured again with {@link PerformanceObserver.observe observe} after disconnecting.
+     * @method
+     */
+    this.disconnect = function () { };
+
+    /**
+     * Returns the performance entries currently waiting in the observer buffer and empties that buffer.<br>
+     * Entries returned by this method will not later be delivered by the callback.
      * @method
      * @return {Array<PerformanceEntry>}
      */
-    this.takeRecords = function() {};
+    this.takeRecords = function () { };
 }
 
-/** 
- * WebAPI-style benchmarking API<br>
- * For more information, see: {@link https://developer.mozilla.org/en-US/docs/Web/API/Performance_API}
+/**
+ * Frozen array of entry types supported by {@link PerformanceObserver PerformanceObserver}.<br>
+ * JSplitter currently returns <code>["mark", "measure"]</code>. Repeated reads return the same frozen array object.
+ * @type {Array<string>}
+ * @readonly
+ * @static
+ */
+PerformanceObserver.supportedEntryTypes = ["mark", "measure"];
+
+/**
+ * High-resolution timing API implementing the JSplitter subset of the Web High Resolution Time, User Timing, and Performance Timeline APIs.<br>
+ * JSplitter currently records only user-created "mark" and "measure" entries; browser-specific navigation, resource, paint, and similar performance entry types are not available.<br>
+ * For the corresponding Web standards, see {@link https://www.w3.org/TR/hr-time-2/ High Resolution Time}, {@link https://www.w3.org/TR/user-timing/ User Timing}, and {@link https://www.w3.org/TR/performance-timeline/ Performance Timeline}.
+ * @sourceFile ../../component/samples/basic/Performance.js
  * @namespace performance
  */
 let performance = {
-    
+
     /**
-     * Returns a high resolution timestamp in milliseconds with a fractional part. It represents the time elapsed since {@link performance.timeOrigin} (the time when script was loaded)<br>
-     * Unlike Date.now, the timestamps returned by {@link performance.now performance.now()} are not limited to one-millisecond resolution. Instead, they represent times as floating-point numbers with up to microsecond precision.<br>
-     * Also, Date.now() may have been impacted by system and user clock adjustments, clock skew, etc. as it is relative to the Unix epoch (1970-01-01T00:00:00Z) and dependent on the system clock.<br>
-     * The performance.now() method on the other hand is relative to the {@link performance.timeOrigin timeOrigin} property which is a monotonic clock: its current time never decreases and isn't subject to adjustments.
+     * Returns a monotonically increasing high-resolution timestamp in milliseconds relative to {@link performance.timeOrigin}. The value may contain a fractional part; actual resolution depends on the underlying system clock.<br>
+     * Unlike <code>Date.now()</code>, this timestamp is intended for measuring elapsed time and is not affected by wall-clock adjustments.
      * @return {number}
      * @example
      * const t0 = performance.now();
@@ -120,101 +173,121 @@ let performance = {
     now: function () { },
 
     /**
-     * Creates a named {@link PerformanceEntry} object representing a high resolution timestamp marker in the player's performance timeline<br>
+     * Creates a named {@link PerformanceEntry} with <code>entryType</code> "mark" and adds it to the performance timeline.<br>
+     * Multiple marks may use the same name. All marks remain in the timeline until cleared; when a mark name is later used by {@link performance.measure performance.measure}, the most recently created matching mark is used.
      *
-     * @param {string} name A string representing the name of the mark.
-     * @param {object} [markOptions=null] An object for specifying a timestamp and additional metadata for the mark.<br>
-     * Consists of two optional properties:<br>
-     * <b>detail</b>: Arbitrary metadata to include in the mark. Defaults to null. Can be an object of any type<br>
-     * <b>startTime</b>: Value to use as the mark time. Defaults to {@link performance.now performance.now()}
+     * @param {string} name Mark name.
+     * @param {PerformanceMarkOptions} [markOptions] Optional mark timestamp and metadata.
+     * @return {PerformanceEntry} The created mark entry.
+     * @throws {Error} If <code>startTime</code> is not a finite non-negative number.
      * @example
-     * performance.mark('work-begin', { detail: { description: "Begin of some important work", id: 777 } });
+     * const beginMark = performance.mark("work-begin", {
+     *   detail: { description: "Begin of some important work", id: 777 }
+     * });
+     *
      * doSomething();
-     * performance.mark('work-end');
-     * const measure = performance.measure('work-duration', 'work-begin', 'work-end');
-     * const beginMark = performance.getEntriesByName('work-begin')[0];
-     * console.log(`"${beginMark.detail.description}" started for id = ${beginMark.detail.id} executed in ${measure.duration} ms`);
+     * performance.mark("work-end");
+     *
+     * const measure = performance.measure("work-duration", "work-begin", "work-end");
+     * console.log(`"${beginMark.detail.description}" for id=${beginMark.detail.id} took ${measure.duration} ms`);
+     *
      * performance.clearMarks();
      * performance.clearMeasures();
      */
     mark: function (name, markOptions) { },
-    
+
     /**
-     * Creates a named {@link PerformanceEntry} object representing a time measurement between two marks in the player's performance timeline.<br>
-     * When measuring between two marks, there is a start mark and end mark, respectively. The named timestamp is referred to as a measure.<br>
-     * If only <b>measureName</b> is specified, the start timestamp is set to zero, and the end timestamp (which is used to calculate the duration) is the value that would be returned by {@link performance.now performance.now()}
-     * @param {string} measureName A string representing the name of the measure.
-     * @param {string} [startMark=''] A string naming a {@link PerformanceEntry} with "mark" type in the performance timeline. The {@link PerformanceEntry.startTime} property of this mark will be used for calculating the measure.
-     * @param {string} [endMark=''] A string naming a {@link PerformanceEntry} with "mark" type in the performance timeline. The {@link PerformanceEntry.startTime} property of this mark will be used for calculating the measure.
-     * @param {object} [measureOptions=null] An object for specifying a timestamp and additional metadata for the mark.<br>
-     * Consists of two optional properties:<br>
-     * <b>detail</b>: Arbitrary metadata to include in the mark. Defaults to null. Can be an object of any type<br>
-     * <b>start</b>: Value to use as the mark time. Defaults to {@link performance.now performance.now()}<br>
-     * <b>duration</b>: Value to use as the mark time. Defaults to {@link performance.now performance.now()}<br>
-     * <b>end</b>: Value to use as the mark time. Defaults to {@link performance.now performance.now()}<br>
-     * @return {PerformanceEntry}
+     * Creates a named {@link PerformanceEntry} with <code>entryType</code> "measure" and adds it to the performance timeline.<br>
+     *
+     * Standard forms supported by JSplitter:<br>
+     * <code>performance.measure(name)</code> - measures from timestamp 0 to {@link performance.now performance.now}.<br>
+     * <code>performance.measure(name, startMark)</code> - measures from the most recent named start mark to now.<br>
+     * <code>performance.measure(name, startMark, endMark)</code> - measures between the most recent matching named marks.<br>
+     * <code>performance.measure(name, options)</code> - derives start/end times from {@link PerformanceMeasureOptions}.<br>
+     * <code>performance.measure(name, {}, endMark)</code> - measures from timestamp 0 to the named end mark.<br>
+     *
+     * In <code>options</code>, <code>start</code> and <code>end</code> may be either mark names or finite non-negative timestamps. <code>duration</code> may be supplied with exactly one of <code>start</code> or <code>end</code>. If an explicitly named mark does not exist, an error is thrown.<br>
+     * Multiple measures may use the same name. Named mark lookup always uses the most recently created matching mark.<br>
+     *
+     * <b>Compatibility note:</b> for historical JSplitter compatibility, a fourth <code>legacyMeasureOptions</code> argument is also accepted. This form preserves the previous JSplitter precedence rules: existing explicit <code>startMark</code>/<code>endMark</code> values take precedence, while numeric <code>start</code>, <code>end</code>, or <code>duration</code> options fill missing values. New code should prefer the standard forms above.<br>
+     * For backward compatibility, an empty positional mark name (<code>""</code>) is treated as omitted rather than as a mark named with an empty string.
+     *
+     * @param {string} measureName Measure name.
+     * @param {(string|PerformanceMeasureOptions)} [startOrMeasureOptions] Start mark name or standard measure options.
+     * @param {string} [endMark] End mark name.
+     * @param {Object} [legacyMeasureOptions] JSplitter legacy four-argument options object. Supports numeric <code>start</code>, <code>end</code>, <code>duration</code>, and arbitrary <code>detail</code>.
+     * @return {PerformanceEntry} The created measure entry.
+     * @throws {Error} If a named mark cannot be resolved, a numeric timestamp/duration is invalid, or the standard options contain an invalid combination.
+     * @example
+     * performance.mark("work-start");
+     * doSomething();
+     * performance.mark("work-end");
+     *
+     * const byMarks = performance.measure("work", "work-start", "work-end");
+     * const byTimestamp = performance.measure("custom-range", { start: 10, duration: 25 });
+     *
+     * console.log(byMarks.duration);
+     * console.log(byTimestamp.duration);
      */
-    measure: function (measureName, startMark, endMark, measureOptions) { },
-    
+    measure: function (measureName, startOrMeasureOptions, endMark, legacyMeasureOptions) { },
+
     /**
-     * Returns an array of all {@link PerformanceEntry} objects currently present in the performance timeline.<br>
-     * If you are only interested in performance entries of certain types ("mark" or "measure") or that have certain names, see {@link performance.getEntriesByType getEntriesByType} and {@link performance.getEntriesByName getEntriesByName}.
+     * Returns all {@link PerformanceEntry} objects currently stored in the performance timeline, ordered by {@link PerformanceEntry.startTime startTime}.
      * @return {Array<PerformanceEntry>}
      */
     getEntries: function () { },
 
     /**
-     * Returns an array of {@link PerformanceEntry} objects currently present in the performance timeline for a given type ("mark" or "measure").<br>
-     * If you are interested in performance entries of certain name, see {@link performance.getEntriesByName getEntriesByName}. For all performance entries, see {@link performance.getEntries getEntries}.
-     * @param {string} type A string representing the name of the measure.
+     * Returns timeline entries filtered by entry type and ordered by {@link PerformanceEntry.startTime startTime}.
+     * @param {string} type Entry type, for example "mark" or "measure".
      * @return {Array<PerformanceEntry>}
      */
     getEntriesByType: function (type) { },
-    
+
     /**
-     * Returns an array of {@link PerformanceEntry} objects currently present in the performance timeline with the given name and type ("mark" or "measure").<br>
-     * If you are interested in performance entries of certain types, see {@link performance.getEntriesByType getEntriesByType}. For all performance entries, see {@link performance.getEntries getEntries}.
-     * @param {string} name A string representing the name of the measure.
-     * @param {string} [type=''] A string representing the name of the measure.
+     * Returns timeline entries filtered by name and, optionally, entry type. Results are ordered by {@link PerformanceEntry.startTime startTime}.
+     * @param {string} name Entry name.
+     * @param {string} [type] Optional entry type, for example "mark" or "measure".
      * @return {Array<PerformanceEntry>}
      */
     getEntriesByName: function (name, type) { },
-    
-    /**
-     * Removes all or specific {@link PerformanceEntry} objects from the player's performance timeline.<br>
-     * @param {string} [name=''] A string representing the name of the {@link PerformanceEntry} object. If this argument is omitted, all entries with an entryType of "mark" will be removed.
-     */    
-    clearMarks: function (name) { },
-    
-    /**
-     * Removes all or specific {@link PerformanceEntry} objects from the player's performance timeline.<br>
-     * @param {string} [name=''] A string representing the name of the {@link PerformanceEntry} object. If this argument is omitted, all entries with an entryType of "measure" will be removed.
-     */    
-    clearMeasures: function (name) { },
-    
-    /**
-     * Returns string representation of {@link performance Performance} object.<br>
-     * This gives you a list of all performance entries in a human-readable form.
-     * @return {string}
-     */    
-    toString: function (measureName, startMark, endMark, measureOptions) { },
 
     /**
-     * Creates and returns a new {@link PerformanceObserver PerformanceObserver} object.<br>
-     *
-     * The observer {@link module:Callbacks.PerformanceObserverCallback callback} is invoked when performance entry events are recorded by {@link performance.mark performance.mark()} or {@link performance.measure performance.measure()} calls for the entry types that have been registered, via the {@link PerformanceObserver.observe observe()} method.<br>
-     * @param {function} callback
+     * Removes mark entries from the performance timeline.<br>
+     * If <code>name</code> is supplied, all marks with that name are removed. If omitted, all mark entries are removed. Clearing a mark also removes it from subsequent named-mark lookup by {@link performance.measure performance.measure}.
+     * @param {string} [name] Mark name to clear.
+     * @return {undefined}
+     */
+    clearMarks: function (name) { },
+
+    /**
+     * Removes measure entries from the performance timeline.<br>
+     * If <code>name</code> is supplied, all measures with that name are removed. If omitted, all measure entries are removed.
+     * @param {string} [name] Measure name to clear.
+     * @return {undefined}
+     */
+    clearMeasures: function (name) { },
+
+    /**
+     * JSplitter extension that returns a human-readable dump of the current performance timeline.
+     * @return {string}
+     */
+    toString: function () { },
+
+    /**
+     * JSplitter compatibility factory that creates a {@link PerformanceObserver PerformanceObserver}.<br>
+     * New code may use the standard <code>new PerformanceObserver(callback)</code> form instead.
+     * @param {function} callback Callback receiving <code>(list, observer)</code>.
      * @return {PerformanceObserver}
      */
     Observer: function (callback) { },
 
     /**
-     * Read-only property of the Performance interface returns the high resolution timestamp that is used as the baseline for performance-related timestamps.<br>
-     * In JSplitter context this value represents the "UNIX-time" (milliseconds since 1 January 1970) when script was loaded.
+     * Read-only Unix timestamp in milliseconds corresponding to the origin used by this performance timeline.<br>
+     * {@link performance.now performance.now} values are measured relative to this origin.
      *
      * @type {number}
      * @readonly
-     * @default 
      */
     timeOrigin: 0.0
 };

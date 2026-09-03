@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @typedef {number} float
  */
 
@@ -582,6 +582,15 @@ let fb = {
      * console.log(fb.GetLibraryRelativePath(handle)); // Albums\Artist\Some Album\Some Song.flac*
      */
     GetLibraryRelativePath: function (handle) { }, // (string)
+
+    /**
+     * Returns unique Media Library root paths inferred from the current Media Library contents.<br>
+     * Each root is reconstructed from the absolute path and library-relative path of a library item.<br>
+     * Configured library folders that contain no library items cannot be returned.
+     *
+     * @return {Array<string>} Media Library root paths
+     */
+    GetLibraryRoots: function () { },
 
     /**
      * Get handle of the now playing track.
@@ -2041,6 +2050,63 @@ let utils = {
     GetCountryFlag: function (country_or_code) { },
 
     /**
+     * Returns information about a logical drive or volume containing the supplied path.<br>
+     * The method also works with drive roots returned by {@link utils.GetDrives}.<br>
+     * Unready removable/CD drives still return an object with <code>IsReady == false</code> when the drive itself exists.
+     *
+     * @param {string} path Drive root or path on the drive
+     * @return {?DriveInfo} Drive information, or null if the path cannot be resolved to a drive
+     * 
+     * @sourceFile ../../component/samples/basic/FilesystemUtils.js
+     */
+    GetDriveInfo: function (path) { },
+
+    /**
+     * Returns logical drive roots known to Windows, including mapped network drives and removable drives.<br>
+     * A returned removable/CD drive may not currently be ready; use {@link utils.GetDriveInfo} to query its state.
+     *
+     * @return {Array<string>} Drive root paths, for example <code>["C:\\", "D:\\"]</code>
+     * 
+     * @sourceFile ../../component/samples/basic/FilesystemUtils.js
+     */
+    GetDrives: function () { },
+
+    /**
+     * @param {string} path
+     * @return {number} File size, in bytes
+     */
+    GetFileSize: function (path) { },
+
+    /**
+     * Calculates the total size of files contained in a directory and its subdirectories.<br>
+     * Directory reparse points are not followed. Entries that cannot be accessed are skipped.<br>
+     * This is a synchronous operation and may take time for large directory trees.
+     *
+     * @param {string} path Directory path
+     * @return {number} Total size in bytes, or 0 if the path is not a directory
+     * 
+     * @sourceFile ../../component/samples/basic/FilesystemUtils.js
+     */
+    GetFolderSize: function (path) { },
+
+    /**
+     * Calculates the total size of files contained in a directory and its subdirectories asynchronously.<br>
+     * For synchronous calculation, use {@link utils.GetFolderSize utils.GetFolderSize}.<br>
+     * Directory reparse points are not followed. Entries that cannot be accessed are skipped.<br>
+     * The method returns a task id immediately, and the result is delivered later to {@link module:Callbacks.on_get_folder_size_done on_get_folder_size_done}.<br>
+     * Use the returned task id to match the result with the original call.
+     *
+     * @param {string} path Directory path
+     * @return {number} Task id of the asynchronous operation
+     *
+     * @throws
+     * Throws if called before foobar2000 is fully initialized or if the worker thread could not be started.<br>
+     * 
+     * @sourceFile ../../component/samples/basic/FilesystemUtils.js
+     */
+    GetFolderSizeAsync: function (path) { },
+
+    /**
      * Gets "last modified" attribute for file
      * @param {string} path
      * @return {number} UNIX-time (seconds)
@@ -2048,10 +2114,15 @@ let utils = {
     GetLastModified: function (path) { },
 
     /**
-     * @param {string} path
-     * @return {number} File size, in bytes
+     * Converts an existing path to its Windows short (8.3) form.<br>
+     * Returns an empty string if the path does not exist, the conversion fails, or short-name generation is unavailable for the path.
+     *
+     * @param {string} path File or directory path
+     * @return {string} Short path or an empty string on failure
+     * 
+     * @sourceFile ../../component/samples/basic/FilesystemUtils.js
      */
-    GetFileSize: function (path) { },
+    GetShortPath: function (path) { },
 
     /**
      * Note: returned directories are not guaranteed to exist.
@@ -2467,35 +2538,43 @@ let utils = {
      * Utilizes the latest non-Edge IE that you have on your system.<br>
      * Dialog is modal (blocks input to the parent window while open).<br>
      * <br>
-     * Html code must be IE compatible, meaning:<br>
+     * Html code and JavaScript executed inside the dialog must be IE compatible
+     * (see {@link https://www.w3schools.com/js/js_versions.asp}).<br>
+     * <br>
+     * <code>options.data</code> is exposed inside the html dialog through
+     * <code>window.external.dialogArguments</code>. The bridge supports the following values:
      * <ul>
-     *   <li>JavaScript features are limited by IE (see {@link https://www.w3schools.com/js/js_versions.asp})</li>
+     *   <li>Basic types: number, string, boolean, null, undefined</li>
      *   <li>
-     *     Objects passed to <code>data</code> are limited to standard JavaScript objects:
-     *     <ul>
-     *       <li>No extensions from Spider Monkey Panel (e.g. no FbMetadbHandle or GdiBitmap/D2DBitmap etc.)</li>
-     *     </ul>
+     *     Arrays: call <code>window.external.dialogArguments.toArray()</code> inside html to obtain
+     *     a JavaScript array. Each element has the same type limitations as <code>options.data</code>.
+     *   </li>
+     *   <li>
+     *     Functions: callable from html as callbacks into panel JavaScript. A callback may have a
+     *     maximum of 7 arguments, and each argument has the same type limitations as <code>options.data</code>.
+     *   </li>
+     *   <li>
+     *     Objects are not transferred directly. Serialize them with <code>JSON.stringify()</code> before
+     *     passing them and restore them with <code>JSON.parse()</code> inside html.
      *   </li>
      * </ul>
-     * There are also additional limitations:<br>
-     * <ul>
-     *   <li>
-     *     <code>options.data</code> may contain only the following types:
-     *     <ul>
-     *       <li>Basic types: number, string, boolean, null, undefined</li>
-     *       <li>Objects as string: the only way to pass objects is to convert them to string and back with <code>JSON.stringify()</code> and <code>JSON.parse()</code></li>
-     *       <li>Arrays: must be cast via <code>.toArray()</code> inside html. Each element has same type limitations as <code>options.data</code></li>
-     *       <li>Functions: may have a maximum of 7 arguments. Each argument has same type limitations as <code>options.data</code></li>
-     *     </ul>
-     *   </li>
-     * </ul>
+     * JSplitter objects such as <code>FbMetadbHandle</code>, <code>GdiBitmap</code> and <code>D2DBitmap</code>
+     * cannot be passed through this bridge.<br>
+     * <br>
      * The following properties are available through <code>window.external</code> inside the html dialog:<br>
      * <ul>
      *   <li><code>dialogArguments</code> - read-only value containing <code>options.data</code></li>
      *   <li>
      *     <code>dialogWindow</code> - read-only native window handle (HWND) of the html dialog, represented as a number.<br>
-     *     It can be passed as <code>window_id</code> to JSplitter modal dialog functions to make the html dialog their owner,
-     *     e.g. {@link utils.ColourPicker}, {@link utils.FontPicker}, {@link utils.InputBox} or {@link utils.ShowHtmlDialog}.<br>
+     *     It can be passed as <code>window_id</code> to JSplitter modal dialog functions to make the html dialog their owner, e.g.<br>
+     *     {@link utils.ColourPicker}<br>
+     *     {@link utils.FontPicker}<br>
+     *     {@link utils.InputBox}<br>
+     *     {@link plman.ShowPlaylistLockUI}<br>
+     *     {@link utils.FilePicker}<br>
+     *     {@link utils.FolderPicker}<br>
+     *     {@link utils.MessageBox}<br>
+     *     {@link utils.ShowHtmlDialog}<br>
      *     The handle is valid only while the html dialog exists.
      *   </li>
      * </ul>
@@ -2512,10 +2591,9 @@ let utils = {
      * @param {boolean=} [options.resizable=false] If true, will allow to resize the window.
      * @param {boolean=} [options.selection=false] If true, will allow to select everything (label texts, buttons and etc).
      * @param {boolean=} [options.scroll=false] If true, will display scrollbars.
-     * @param {*=} [options.data=undefined] Will be saved in <code>window.external.dialogArguments</code> and can be accessed from JavaScript executed inside HTML window.
-     *                                      This data is read-only and should not be modified. Has type limitations (see above).
+     * @param {*=} [options.data=undefined] Read-only data exposed through <code>window.external.dialogArguments</code>. For multiple values, pass an array and call <code>.toArray()</code> inside html. Has type limitations described above.
      *
-     * @sourceFile ../../component/samples/basic/HtmlDialogWithCheckbox.js
+     * @sourceFile ../../component/samples/basic/HtmlDialogWithCheckBox.js
      *
      * @example <caption>Dialog from file</caption>
      * utils.ShowHtmlDialog(0, `file://${fb.ComponentPath}samples/basic/html/PopupWithCheckBox.html`);
@@ -2589,6 +2667,98 @@ let utils = {
      */
     WriteTextFile: function (filename, content, write_bom) { }, //(boolean)
 };
+
+
+/**
+ * Object returned by {@link utils.GetDriveInfo}.<br>
+ *
+ * @constructor
+ * @hideconstructor
+ */
+function DriveInfo() {
+
+    /**
+     * Drive root path, for example <code>C:\</code>.
+     *
+     * @type {string}
+     * @readonly
+     */
+    this.Root = "";
+
+    /**
+     * Drive letter without the colon, or an empty string when the volume has no drive letter.
+     *
+     * @type {string}
+     * @readonly
+     */
+    this.DriveLetter = "";
+
+    /**
+     * Drive type.<br>
+     * Values are compatible with <code>Scripting.FileSystemObject</code>:<br>
+     * 0 - unknown, 1 - removable, 2 - fixed, 3 - network, 4 - CD-ROM, 5 - RAM disk.
+     *
+     * @type {number}
+     * @readonly
+     */
+    this.DriveType = 0;
+
+    /**
+     * true if volume or space information can be queried.
+     *
+     * @type {boolean}
+     * @readonly
+     */
+    this.IsReady = false;
+
+    /**
+     * Volume label, or an empty string if unavailable.
+     *
+     * @type {string}
+     * @readonly
+     */
+    this.VolumeName = "";
+
+    /**
+     * File system name, or an empty string if unavailable.
+     *
+     * @type {string}
+     * @readonly
+     */
+    this.FileSystem = "";
+
+    /**
+     * Volume serial number, or 0 if unavailable.
+     *
+     * @type {number}
+     * @readonly
+     */
+    this.SerialNumber = 0;
+
+    /**
+     * Total size in bytes, or 0 if unavailable.
+     *
+     * @type {number}
+     * @readonly
+     */
+    this.TotalSize = 0;
+
+    /**
+     * Total free space in bytes, or 0 if unavailable.
+     *
+     * @type {number}
+     * @readonly
+     */
+    this.FreeSpace = 0;
+
+    /**
+     * Free space available to the current user in bytes, or 0 if unavailable.
+     *
+     * @type {number}
+     * @readonly
+     */
+    this.AvailableSpace = 0;
+}
 
 /**
  * Functions for working with the current JSplitter panel and accessing it's properties.
@@ -4298,6 +4468,45 @@ function GdiBitmap(arg) {
      */
     this.GetColourSchemeJSONV2 = function (max_count, min_chroma) { }; // (string)
 
+    /**
+     * Builds an image-derived UI colour scheme for styling interface surfaces, text and interaction states from the bitmap.<br>
+     * <br>
+     * The image is analysed in <b>OKLab</b> using the same weighted <b>K-means++</b> palette extraction as {@link GdiBitmap#GetColourSchemeJSONV2 GetColourSchemeJSONV2}</b>.<br>
+     * The palette stage uses <b>paletteSize</b> centroids, after which colours are assigned to five semantic UI roles:<br>
+     * <b>Background</b>, <b>Text</b>, <b>Playing background</b>, <b>Focus frame</b> and <b>Selection background</b>.<br>
+     * <br>
+     * The returned colours are unsigned 32-bit <b>ARGB</b> values.<br>
+     * <b>Background</b> and <b>Text</b> are opaque.<br>
+     * State colours may contain alpha and are intended to be composited over <b>Background</b>.<br>
+     * <b>playingBackgroundColor</b> contains the Playing accent RGB together with the recommended alpha for a background highlight.<br>
+     * The same RGB channels can also be used at full opacity for a solid Playing indicator.<br>
+     * <br>
+     * * The algorithm favours a representative image colour family for <b>Background</b>, prefers light body text unless the selected surface requires dark text, and uses independent image colour families for interaction/state accents when suitable candidates are available.<br>
+     * <br>
+     * Returns an empty object <b>{}</b> if a colour scheme cannot be generated.<br>
+     * 
+     * @param {number} [paletteSize=15] <b>Palette size.</b> Number of <b>K-means++</b> colour centroids used as the input palette.<br>
+     * @returns {string} <b>JSON object string.</b> Contains <b>backgroundColor</b>, <b>textColor</b>, <b>playingBackgroundColor</b>, <b>focusFrameColor</b> and <b>selectionBackgroundColor</b>.<br>
+     *
+     * @example
+     * const colours = JSON.parse(image.GetThemeColourSchemeJSON());
+     *
+     * if (Object.keys(colours).length) {
+     *     const playingIndicatorColor =
+     *         0xFF000000 | (colours.playingBackgroundColor & 0x00FFFFFF);
+     *
+     *     console.log(colours.backgroundColor);
+     *     console.log(colours.textColor);
+     *     console.log(colours.playingBackgroundColor);
+     *     console.log(playingIndicatorColor);
+     *     console.log(colours.focusFrameColor);
+     *     console.log(colours.selectionBackgroundColor);
+     * }
+     * 
+     * @sourceFile ../../component/samples/complete/theme colour scheme.js
+     */
+    this.GetThemeColourSchemeJSON = function (paletteSize) { }; // (string)
+    
     /**
      * Note: don't forget to use {@link GdiBitmap#ReleaseGraphics ReleaseGraphics} after work on GdiGraphics is done!
      *
