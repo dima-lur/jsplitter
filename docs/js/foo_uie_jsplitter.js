@@ -2909,10 +2909,10 @@ let window = {
     *    Total tracked native/external memory associated with all panel realms (in bytes).<br>
     *    This is an accounting estimate, not total process memory or physical RAM/VRAM residency.
     */
-
     /**
-     * Get SpiderMonkey heap and native/external memory statistics.
-     * 
+     * SpiderMonkey heap and native/external memory statistics.
+     * See {@link JsMemoryStats} for the returned object properties.
+     *
      * @type {JsMemoryStats}
      * @readonly
      */
