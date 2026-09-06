@@ -2,7 +2,7 @@
 
 This is a plugin for the **foobar2000** audio player. It provides a panel that combines the functionality of a splitter — a container for panels from other plugins — and a JavaScript host.
 
-**Documentation:** https://dima-lur.github.io/jsplitter/
+**API Documentation:** https://dima-lur.github.io/jsplitter/
 
 ## Features
 
