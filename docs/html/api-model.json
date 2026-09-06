@@ -28739,7 +28739,7 @@
     "signature": null,
     "type": "JsMemoryStats",
     "value": "undefined",
-    "description": "Get SpiderMonkey heap and native/external memory statistics.",
+    "description": "SpiderMonkey heap and native/external memory statistics.\nSee {@link JsMemoryStats} for the returned object properties.",
     "params": [],
     "properties": [],
     "returns": null,
@@ -28754,7 +28754,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2913
+      "line": 2912
     }
   },
   {
