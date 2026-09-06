@@ -334,14 +334,14 @@ include(<span class="tok-string">&#39;samples/complete/properties.js&#39;</span>
         </header>
         
         
-        <div class="description"><p>Return value of <a href="window.html#JsMemoryStats">window.JsMemoryStats</a>.<br></p></div>
+        <div class="description"><p>Return value of <a href="window.html#JsMemoryStats">window.JsMemoryStats</a>.<br> <br> All panels share a single SpiderMonkey context. SpiderMonkey heap usage is therefore available only for the shared context, not for an individual panel/realm. Native memory owned by panel wrappers is tracked separately as external memory on a per-realm basis.<br> <br> For new code, prefer <a href="globals.html#ExternalMemoryUsage">JsMemoryStats.ExternalMemoryUsage</a>, <a href="globals.html#TotalHeapMemoryUsage">JsMemoryStats.TotalHeapMemoryUsage</a> and <a href="globals.html#TotalExternalMemoryUsage">JsMemoryStats.TotalExternalMemoryUsage</a>. <a href="globals.html#MemoryUsage">JsMemoryStats.MemoryUsage</a> and <a href="globals.html#TotalMemoryUsage">JsMemoryStats.TotalMemoryUsage</a> are compatibility aliases.</p></div>
         
         
         <section class="member-section">
             <h3>Properties</h3>
             <div class="table-wrap"><table>
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr id="MemoryUsage"><td><code>MemoryUsage</code></td><td><code>number</code></td><td><p>Memory usage of the current panel (in bytes)</p></td></tr><tr id="TotalMemoryUsage"><td><code>TotalMemoryUsage</code></td><td><code>number</code></td><td><p>Total memory usage of all panels (in bytes)</p></td></tr><tr id="TotalMemoryLimit"><td><code>TotalMemoryLimit</code></td><td><code>number</code></td><td><p>Maximum allowed memory usage for the component (in bytes).<br>    If the total memory usage exceeds this value, all panels will fail with OOM error.</p></td></tr></tbody>
+                <tbody><tr id="MemoryUsage"><td><code>MemoryUsage</code></td><td><code>number</code></td><td><p>Compatibility alias for <a href="globals.html#ExternalMemoryUsage">JsMemoryStats.ExternalMemoryUsage</a>.</p></td></tr><tr id="TotalMemoryUsage"><td><code>TotalMemoryUsage</code></td><td><code>number</code></td><td><p>Compatibility alias for <a href="globals.html#TotalHeapMemoryUsage">JsMemoryStats.TotalHeapMemoryUsage</a>. External memory is not included.</p></td></tr><tr id="TotalMemoryLimit"><td><code>TotalMemoryLimit</code></td><td><code>number</code></td><td><p>Maximum SpiderMonkey heap size for the shared JavaScript context (in bytes).<br>    External memory is tracked separately and does not count toward this limit.</p></td></tr><tr id="ExternalMemoryUsage"><td><code>ExternalMemoryUsage</code></td><td><code>number</code></td><td><p>Tracked native/external memory associated with the current panel (in bytes). This includes native    wrapper objects and additional native allocations/resources owned by them.<br>    This is an accounting estimate, not the panel process working set or physical RAM/VRAM residency.</p></td></tr><tr id="TotalHeapMemoryUsage"><td><code>TotalHeapMemoryUsage</code></td><td><code>number</code></td><td><p>SpiderMonkey heap usage for the shared JavaScript context used by all panels (in bytes).</p></td></tr><tr id="TotalExternalMemoryUsage"><td><code>TotalExternalMemoryUsage</code></td><td><code>number</code></td><td><p>Total tracked native/external memory associated with all panel realms (in bytes).<br>    This is an accounting estimate, not total process memory or physical RAM/VRAM residency.</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -554,7 +554,7 @@ include(<span class="tok-string">&#39;samples/complete/properties.js&#39;</span>
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#ScriptInfo">ScriptInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2970</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2964</div>
         </header>
         
         

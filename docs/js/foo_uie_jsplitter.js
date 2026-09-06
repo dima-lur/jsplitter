@@ -2882,17 +2882,36 @@ let window = {
 
     /**
     * Return value of {@link window.JsMemoryStats}.<br>
+    * <br>
+    * All panels share a single SpiderMonkey context. SpiderMonkey heap usage is therefore available
+    * only for the shared context, not for an individual panel/realm. Native memory owned by panel
+    * wrappers is tracked separately as external memory on a per-realm basis.<br>
+    * <br>
+    * For new code, prefer {@link JsMemoryStats.ExternalMemoryUsage},
+    * {@link JsMemoryStats.TotalHeapMemoryUsage} and {@link JsMemoryStats.TotalExternalMemoryUsage}.
+    * {@link JsMemoryStats.MemoryUsage} and {@link JsMemoryStats.TotalMemoryUsage} are compatibility aliases.
     * 
     * @typedef {Object} JsMemoryStats
-    * @property {number} MemoryUsage Memory usage of the current panel (in bytes)
-    * @property {number} TotalMemoryUsage Total memory usage of all panels (in bytes)
-    * @property {number} TotalMemoryLimit 
-    *    Maximum allowed memory usage for the component (in bytes).<br>
-    *    If the total memory usage exceeds this value, all panels will fail with OOM error.
+    * @property {number} MemoryUsage
+    *    Compatibility alias for {@link JsMemoryStats.ExternalMemoryUsage}.
+    * @property {number} TotalMemoryUsage
+    *    Compatibility alias for {@link JsMemoryStats.TotalHeapMemoryUsage}. External memory is not included.
+    * @property {number} TotalMemoryLimit
+    *    Maximum SpiderMonkey heap size for the shared JavaScript context (in bytes).<br>
+    *    External memory is tracked separately and does not count toward this limit.
+    * @property {number} ExternalMemoryUsage
+    *    Tracked native/external memory associated with the current panel (in bytes). This includes native
+    *    wrapper objects and additional native allocations/resources owned by them.<br>
+    *    This is an accounting estimate, not the panel process working set or physical RAM/VRAM residency.
+    * @property {number} TotalHeapMemoryUsage
+    *    SpiderMonkey heap usage for the shared JavaScript context used by all panels (in bytes).
+    * @property {number} TotalExternalMemoryUsage
+    *    Total tracked native/external memory associated with all panel realms (in bytes).<br>
+    *    This is an accounting estimate, not total process memory or physical RAM/VRAM residency.
     */
 
     /**
-     * Get memory statistics for JavaScript engine.
+     * Get SpiderMonkey heap and native/external memory statistics.
      * 
      * @type {JsMemoryStats}
      * @readonly
@@ -2921,19 +2940,6 @@ let window = {
     MaxWidth: undefined, // (uint) (read, write)
 
     /**
-     * Maximum allowed memory usage for the component (in bytes).<br>
-     * If the total memory usage exceeds this value, all panels will fail with OOM error.<br>
-     * <br>
-     * Deprecated: use {@link window.JsMemoryStats.TotalMemoryLimit} instead.
-     *
-     * @deprecated
-     * 
-     * @type {number}
-     * @readonly
-     */
-    MemoryLimit: undefined, // (uint) (read)
-
-    /**
      * See {@link window.MaxHeight}.
      *
      * @type {number}
@@ -2954,18 +2960,6 @@ let window = {
      * @readonly
      */
     Name: undefined, // (string) (read)
-
-    /**
-     * Memory usage of the current panel (in bytes).<br>
-     * <br>
-     * Deprecated: use {@link JsMemoryStats.MemoryUsage} instead.
-     *
-     * @deprecated
-     * 
-     * @type {number}
-     * @readonly
-     */
-    PanelMemoryUsage: undefined, // (uint) (read)
 
     /**
     * Return value of {@link window.ScriptInfo}.<br>
@@ -2993,18 +2987,6 @@ let window = {
      * @readonly
      */
     Tooltip: undefined,
-
-    /**
-     * Total memory usage of all panels (in bytes).<br>
-     * <br>
-     * Deprecated: use {@link window.JsMemoryStats.TotalMemoryUsage} instead.
-     *
-     * @deprecated
-     * 
-     * @type {number}
-     * @readonly
-     */
-    TotalMemoryUsage: undefined, // (uint) (read)
 
     /**
      * @type {number}
