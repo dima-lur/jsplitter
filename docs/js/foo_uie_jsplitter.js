@@ -3710,6 +3710,12 @@ let window = {
     ShowConfigureV2: function () { }, // (void)
 
     /**
+     * Show chidren panel list dialog for current panel
+     * @method
+     */
+    ShowPanelList: function () { }, // (void)
+
+    /**
      * Show properties window of current panel
      * @method
      */
