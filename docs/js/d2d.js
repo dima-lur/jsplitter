@@ -1,30 +1,37 @@
-/**
+﻿/**
  * @constructor
  * @param {D2DBitmap} arg
+ * @worker
+ * @cloneable
+ * @transferable
  */
 function D2DBitmap(arg) {
 
     /**
      * @type {number}
      * @readonly
+     * @worker
      */
     this.Height = undefined;// (uint) (read)
 
     /**
      * @type {number}
      * @readonly
+     * @worker
      */
     this.Width = undefined;// (uint) (read)
 
     /**
      * @param {number} alpha Valid values 0-255.
      * @return {D2DBitmap}
+     * @worker
      */
     this.ApplyAlpha = function (alpha) { }; // (D2DBitmap)
 
     /**
      * Apllies alpha for entire image. Unlike {@link D2DBitmap#ApplyAlpha} changes the current object
      * @param {number} alpha Valid values 0-255.
+     * @worker
      */
     this.ApplyAlphaIndirect = function (alpha) { }; // (void)
 
@@ -34,8 +41,19 @@ function D2DBitmap(arg) {
      * @param {D2DBitmap} img
      *
      * @sourceFile ../../component/samples/basic/ApplyMask.js
+     * @worker
      */
     this.ApplyMask = function (img) { }; // (void)
+
+    /**
+     * Applies a mask and returns a new bitmap, leaving the current bitmap unchanged.
+     * The mask must have the same dimensions and pixel format as the current bitmap.
+     *
+     * @param {D2DBitmap} mask
+     * @return {D2DBitmap}
+     * @worker
+     */
+    this.ApplyMaskNew = function (mask) { };
 
     /**
      * Create partial copy of image represented by D2DBitmap object
@@ -45,6 +63,7 @@ function D2DBitmap(arg) {
      * @param {number} w
      * @param {number} h
      * @return {D2DBitmap}
+     * @worker
      */
     this.Clone = function (x, y, w, h) { }; // (D2DBitmap)
 
@@ -52,6 +71,7 @@ function D2DBitmap(arg) {
      * Create clone bitmap from D2DBitmap object
      *
      * @return {D2DBitmap}
+     * @worker
      */
     this.CreateRawBitmap = function () { }; // (D2DBitmap)
 
@@ -63,6 +83,7 @@ function D2DBitmap(arg) {
      *
      * @param {number} max_count maximum number of colours to return
      * @return {Array<number>}
+     * @worker
      */
     this.GetColourScheme = function (max_count) { }; // (Array)
 
@@ -84,6 +105,7 @@ function D2DBitmap(arg) {
      * console.log(colours[0].col); // 4290772992
      * console.log(colours[0].freq); // 0.34
      * console.log(toRGB(colours[0].col)); // [192, 0, 0]
+     * @worker
      */
     this.GetColourSchemeJSON = function (max_count) { }; // (string)
 
@@ -107,6 +129,7 @@ function D2DBitmap(arg) {
      * console.log(colours[0].col); // 4290772992
      * console.log(colours[0].freq); // 0.34
      * console.log(toRGB(colours[0].col)); // [192, 0, 0]
+     * @worker
      */
     this.GetColourSchemeJSONV2 = function (max_count, min_chroma) { }; // (string)
 
@@ -146,6 +169,7 @@ function D2DBitmap(arg) {
      * }
      * 
      * @sourceFile ../../component/samples/complete/theme colour scheme.js
+     * @worker
      */
     this.GetThemeColourSchemeJSON = function (paletteSize) { }; // (string)
 
@@ -154,6 +178,7 @@ function D2DBitmap(arg) {
      * It is illegal to call any methods of D2DBitmap object while working with the obtained D2DGraphics object until {@link D2DBitmap#ReleaseGraphics ReleaseGraphics} is called.
      *
      * @return {D2DGraphics}
+     * @worker
      */
     this.GetGraphics = function () { };
 
@@ -169,6 +194,7 @@ function D2DBitmap(arg) {
      * @returns {Uint8Array} null if was an error (for example, bitmap in unsupported format or unsupported format specified)
      * 
      * @sourceFile ../../component/samples/basic/CreateImageFromPixelData.js
+     * @worker
      */
     this.GetPixelData = function(format) { };
 
@@ -176,12 +202,14 @@ function D2DBitmap(arg) {
      * Inverts the colours in a bitmap, to create a negative image.
      * i.e. White becomes black, black becomes white, etc.
      * @return {D2DBitmap}
+     * @worker
      */
     this.InvertColours = function () { }; // (D2DBitmap)
 
     /**
      * @param {D2DGraphics} gr
      * @return {number}
+     * @worker
      */
     this.ReleaseGraphics = function (gr) { }; // (HRESULT)
 
@@ -190,6 +218,7 @@ function D2DBitmap(arg) {
      * @param {number} h
      * @param {number=} [mode=0] See {@link module:Flags.AlbumArtId InterpolationMode}
      * @return {D2DBitmap}
+     * @worker
      */
     this.Resize = function (w, h, mode) { }; // (D2DBitmap)
 
@@ -202,6 +231,7 @@ function D2DBitmap(arg) {
      * @param {number=} [border_hard=false]
      * @param {number=} [cx=0] Scale center point x
      * @param {number=} [cy=0] Scale center point y
+     * @worker
      */
     this.ResizeIndirect = function (w, h, mode) { }; // (void)
 
@@ -209,6 +239,7 @@ function D2DBitmap(arg) {
      * Changes will be saved in the current bitmap.
      *
      * @param {number} mode See {@link module:Flags.AlbumArtId RotateFlipType}
+     * @worker
      */
     this.RotateFlip = function (mode) { }; // (void)
 
@@ -227,6 +258,7 @@ function D2DBitmap(arg) {
      * if (img) {
      *     img.SaveAs("D:\\export.jpg", "image/jpeg");
      * }
+     * @worker
      */
     this.SaveAs = function (path, format) { }; // (boolean) [, format]
 
@@ -240,8 +272,17 @@ function D2DBitmap(arg) {
      *
      * @example <caption>Blur text<caption>
      * // `samples/basic/StackBlur (text).js`
+     * @worker
      */
     this.StackBlur = function (radius) { }; // (void)
+
+    /**
+     * Applies a Direct2D effect to the current bitmap. Changes are saved in the current bitmap.
+     *
+     * @param {D2DEffect} effect
+     * @worker
+     */
+    this.ApplyEffect = function (effect) { };
 }
 
 /**
@@ -250,11 +291,12 @@ function D2DBitmap(arg) {
  * Performance note: try caching and reusing `D2DFont` objects,
  * since the maximum amount of such objects is hard-limited by Windows.
  * `D2DFont` creation will fail after reaching this limit.
- *
+ * @cloneable
  * @constructor
  * @param {string} name
  * @param {number} size_px See {@link module:Helpers.Point2Pixel Point2Pixel} function for conversions
  * @param {number=} [style=0] See {@link module:Flags.FontStyle FontStyle} flags
+ * @worker
  */
 function D2DFont(name, size_px, style) {
     /**
@@ -263,6 +305,7 @@ function D2DFont(name, size_px, style) {
      *
      * @example
      * console.log(my_font.Height); // 15
+     * @worker
      */
     this.Height = undefined;//    (uint)(read)
 
@@ -272,6 +315,7 @@ function D2DFont(name, size_px, style) {
      *
      * @example
      * console.log(my_font.Name); // Segoe UI
+     * @worker
      */
     this.Name = undefined;//    (string)(read)
 
@@ -281,6 +325,7 @@ function D2DFont(name, size_px, style) {
      *
      * @example
      * console.log(my_font.Size); // 12
+     * @worker
      */
     this.Size = undefined;//    (float)(read)
 
@@ -292,14 +337,25 @@ function D2DFont(name, size_px, style) {
      *
      * @example
      * console.log(my_font.Style);
+     * @worker
      */
     this.Style = undefined;//    (uint)(read)
+
+    /**
+     * Font weight. Common values follow Win32 font weights, for example 400 for normal and 700 for bold.
+     *
+     * @type {number}
+     * @readonly
+     * @worker
+     */
+    this.Weight = undefined;
 }
 
 /**
  * Creates Direct2D effect.
  * @constructor
  * @param {string} CLSID CLSID of Direct2D effect. See {@link module:Effects Effects} for effects' CLSID.
+ * @worker
  */
 function D2DEffect(CLSID) {
 
@@ -307,6 +363,7 @@ function D2DEffect(CLSID) {
      * CLSID of this effect.
      * @type {string}
      * @readonly
+     * @worker
      */
     this.CLSID = ""; // (string) (read)
 
@@ -314,6 +371,7 @@ function D2DEffect(CLSID) {
      * Human-readable name of effect.
      * @type {string}
      * @readonly
+     * @worker
      */
     this.Name = ""; // (string) (read)
 
@@ -321,6 +379,7 @@ function D2DEffect(CLSID) {
      * Description string for this effect.
      * @type {string}
      * @readonly
+     * @worker
      */
     this.Description = // (string) (read)
 
@@ -328,6 +387,7 @@ function D2DEffect(CLSID) {
      * Get/Set input count for effect.
      * @type {number}
      * @readonly
+     * @worker
      */
     this.InputCount = // (number) (read, write)
 
@@ -349,8 +409,18 @@ function D2DEffect(CLSID) {
     * function on_paint(dgr) {	
     *     dgr.DrawEffect(effect, 10, 10, 0, 0, img.Width, img.Height);
     * }
+     * @worker
     */
     this.SetInput = function (index, bitmap, invalidate) { }; // (void)
+
+    /**
+     * Returns the bitmap currently connected to the specified input, or null when the input does not contain a bitmap.
+     *
+     * @param {number} index Index of effect input
+     * @return {?D2DBitmap}
+     * @worker
+     */
+    this.GetInput = function (index) { };
 
     /**
      * @param {number} index Index of effect input
@@ -378,12 +448,14 @@ function D2DEffect(CLSID) {
      * function on_paint(dgr) {	
      *     dgr.DrawEffect(scale, 10, 10, 0, 0, img.Width, img.Height);
      * }
+     * @worker
      */
     this.SetInputEffect = function (index, effect, invalidate) { }; // (void)
 
     /**
      * @param {number} index Index of effect property. See {@link module:Effects Effects}
      * @return {D2DEffectPropertyType} See {@link module:Effects.D2DEffectPropertyType D2DEffectPropertyType}
+     * @worker
      */
     this.GetPropertyType = function (index) { }; // (uint32)
 
@@ -391,6 +463,7 @@ function D2DEffect(CLSID) {
      * Sets the corresponding property by index.
      * @param {number} index Index of input property. See {@link module:Effects Effects}
      * @param {Object} value Property value of corresponding type. See {@link module:Effects.D2DEffectPropertyType D2DEffectPropertyType}
+     * @worker
      */
     this.SetValue = function (index, value) { };
 
@@ -398,6 +471,7 @@ function D2DEffect(CLSID) {
      * Sets the corresponding property by name.
      * @param {string} name Index of input property. See {@link module:Effects Effects}
      * @param {Object} value Property value of corresponding type. See {@link module:Effects.D2DEffectPropertyType D2DEffectPropertyType}
+     * @worker
      */
     this.SetValueByName = function (name, value) { };
 
@@ -405,6 +479,7 @@ function D2DEffect(CLSID) {
      * Gets effect property value by index.
      * @param {number} index Index of input property. See {@link module:Effects Effects}
      * @return {Object} Property value of corresponding type. See {@link module:Effects.D2DEffectPropertyType D2DEffectPropertyType}
+     * @worker
      */
     this.GetValue = function (index) { };    
     
@@ -412,6 +487,7 @@ function D2DEffect(CLSID) {
      * Gets effect property value by name.
      * @param {number} index Index of input property. See {@link module:Effects Effects}
      * @return {Object} Property value of corresponding type. See {@link module:Effects.D2DEffectPropertyType D2DEffectPropertyType}
+     * @worker
      */
     this.GetValueByName = function (name) { };
 }
@@ -422,8 +498,9 @@ function D2DEffect(CLSID) {
  * Created by {@link d2d.Brush}
  * @constructor
  * @param {D2DBrush} arg
- * 
+ * @cloneable
  * @sourceFile ../../component/samples/basic/Brushes.js
+ * @worker
  */
 function D2DBrush(arg) {
 
@@ -432,6 +509,7 @@ function D2DBrush(arg) {
      * See {@link module:Flags.BrushType BrushType}
      * @type {BrushType}
      * @readonly
+     * @worker
      */
     this.Type = undefined;// (uint) (read)
 
@@ -440,6 +518,7 @@ function D2DBrush(arg) {
      * See {@link module:Flags.BrushWrapMode BrushWrapMode}
      * @type {BrushWrapMode} 
      * @readonly
+     * @worker
      */
     this.WrapMode = undefined;// (uint) (read, write)
 
@@ -449,6 +528,7 @@ function D2DBrush(arg) {
      *
      * @param {number} dx
      * @param {number} dy
+     * @worker
      */
     this.Translate = function(dx, dy) {}
 
@@ -459,6 +539,7 @@ function D2DBrush(arg) {
      * @param {float} angle Angle of rotation in degrees
      * @param {number=} [cx=0] Rotation center point x coord
      * @param {number=} [cy=0] Rotation center point y coord
+     * @worker
      */
     this.Rotate = function(angle, cx, cy) {}
 
@@ -470,6 +551,7 @@ function D2DBrush(arg) {
      * @param {float=} [sy=0] The y-axis scale factor. If zero sx will be used as sy
      * @param {number=} [cx=0] Scale center point x coord
      * @param {number=} [cy=0] Scale center point y coord
+     * @worker
      */
     this.Scale = function(sz, sy, cx, cy) {}
     
@@ -481,16 +563,19 @@ function D2DBrush(arg) {
      * @param {float} angleY The y-axis skew angle, which is measured in degrees clockwise from the x-axis.
      * @param {number=} [cx=0] Skew center point x coord
      * @param {number=} [cy=0] Skew center point y coord
+     * @worker
      */
     this.Skew = function(angleX, angleY, cx, cy) {}
 
     /**
      * Saves current D2DBrush matrix in internal stack. To restore the matrix use {@link D2DGraphics#PopTransform PopTransform}.
+     * @worker
      */
     this.PushTransform = function() {}
 
     /**
      * Restores D2DBrush matrix from internal stack pushed previously by {@link D2DGraphics#PushTransform PushTransform}.
+     * @worker
      */
     this.PopTransform = function() {}
 
@@ -500,6 +585,7 @@ function D2DBrush(arg) {
      * @return {Float32Array}
      * 
      * @sourceFile ../../component/docs/Matrix.js
+     * @worker
      */
     this.GetTransform = function() {}
 
@@ -509,11 +595,13 @@ function D2DBrush(arg) {
      * @param {Float32Array} matrix Array that presents 3x2 matrix for transformation (length = 6)
      * 
      * @sourceFile ../../component/docs/Matrix.js
+     * @worker
      */
     this.SetTransform = function(matrix) {}
 
     /**
      * Resets current D2DBrush matrix to original identity matrix.
+     * @worker
      */
     this.ResetTransform = function () {}
 
@@ -523,8 +611,90 @@ function D2DBrush(arg) {
      * @param {Float32Array} matrix Array that presents 3x2 matrix for transformation (length = 6)
      * 
      * @sourceFile ../../component/docs/Matrix.js
+     * @worker
      */
     this.ApplyTransform = function(matrix) {}    
+}
+
+/**
+ * Options used by {@link d2d.StrokeStyle d2d.StrokeStyle}.
+ * @typedef {Object} D2DStrokeStyleOptions
+ * @property {CapStyle} [startCap=CapStyle.Flat] Cap at the start of an open stroke.
+ * @property {CapStyle} [endCap=CapStyle.Flat] Cap at the end of an open stroke.
+ * @property {CapStyle} [dashCap=CapStyle.Flat] Cap applied to each dash segment.
+ * @property {LineJoin} [lineJoin=LineJoin.Miter] Join used where consecutive line segments meet.
+ * @property {number} [miterLimit=10] Positive miter limit used by miter-based joins.
+ * @property {DashStyle} [dashStyle=DashStyle.Solid] Dash pattern. DashStyle.Custom requires a non-empty dashes array.
+ * @property {number} [dashOffset=0] Offset into the dash sequence.
+ * @property {Array<number>} [dashes] Custom dash lengths expressed as multiples of the stroke width. Supplying this array selects DashStyle.Custom automatically.
+ * @worker
+ */
+
+/**
+ * Reusable Direct2D stroke style describing line caps, joins and dash behaviour.<br>
+ * Create with {@link d2d.StrokeStyle d2d.StrokeStyle} and reuse it across drawing calls instead of rebuilding the same stroke configuration every frame.
+ * @cloneable
+ * @constructor
+ * @hideconstructor
+ * @sourceFile ../../component/samples/d2d/StrokeStyle.js
+ * @worker
+ */
+function D2DStrokeStyle() {
+    /**
+     * @type {CapStyle}
+     * @readonly
+     * @worker
+     */
+    this.StartCap = undefined;
+
+    /**
+     * @type {CapStyle}
+     * @readonly
+     * @worker
+     */
+    this.EndCap = undefined;
+
+    /**
+     * @type {CapStyle}
+     * @readonly
+     * @worker
+     */
+    this.DashCap = undefined;
+
+    /**
+     * @type {LineJoin}
+     * @readonly
+     * @worker
+     */
+    this.LineJoin = undefined;
+
+    /**
+     * @type {number}
+     * @readonly
+     * @worker
+     */
+    this.MiterLimit = undefined;
+
+    /**
+     * @type {DashStyle}
+     * @readonly
+     * @worker
+     */
+    this.DashStyle = undefined;
+
+    /**
+     * @type {number}
+     * @readonly
+     * @worker
+     */
+    this.DashOffset = undefined;
+
+    /**
+     * @type {Array<number>}
+     * @readonly
+     * @worker
+     */
+    this.Dashes = undefined;
 }
 
 /**
@@ -537,6 +707,7 @@ function D2DBrush(arg) {
  *
  * @constructor
  * @hideconstructor
+ * @worker
  */
 function D2DGraphics() {
     /**
@@ -546,6 +717,7 @@ function D2DGraphics() {
      * @param {string} str
      * @param {D2DFont} font
      * @return {number}
+     * @worker
      */
     this.CalcTextHeight = function (str, font) { }; // (uint)
 
@@ -560,6 +732,7 @@ function D2DGraphics() {
      * @param {D2DFont} font
      * @param {boolean=} [use_exact=false] Uses a slower, but more accurate method of calculating text width which accounts for kerning pairs.  
      * @return {number}
+     * @worker
      */
     this.CalcTextWidth = function (str, font, use_exact) { }; // (uint)
 
@@ -572,6 +745,7 @@ function D2DGraphics() {
      * @param {number} srcW
      * @param {number} srcH
      * @param {CompositeMode=} [compositionMode=CompositeMode.SourceOver] See {@link module:Flags.CompositeMode CompositeMode}
+     * @worker
      */
     this.DrawEffect = function (effect, dstX, dstY, srcX, srcY, srcW, srcH, compositionMode) { };
 
@@ -582,9 +756,11 @@ function D2DGraphics() {
      * @param {number} h
      * @param {number} line_width
      * @param {*} colour_or_brush colour ARGB or {@link D2DBrush} object
-     * @param {DashStyle=} [style=DashStyle.Solid] See {@link module:Flags.DashStyle DashStyle}
+     * @param {(DashStyle|D2DStrokeStyle)=} [strokeStyle=DashStyle.Solid] {@link module:Flags.DashStyle DashStyle} shorthand or reusable {@link D2DStrokeStyle}
+     * @sourceFile ../../component/samples/d2d/StrokeStyle.js
+     * @worker
      */
-    this.DrawEllipse = function (x, y, w, h, line_width, colour_or_brush, style) { }; // (void)
+    this.DrawEllipse = function (x, y, w, h, line_width, colour_or_brush, strokeStyle) { }; // (void)
 
     /**
      * @param {D2DBitmap} img
@@ -598,8 +774,25 @@ function D2DGraphics() {
      * @param {number} srcH
      * @param {float=} [angle=0]
      * @param {number=} [alpha=255] Valid values 0-255.
+     * @worker
      */
     this.DrawImage = function (img, dstX, dstY, dstW, dstH, srcX, srcY, srcW, srcH, angle, alpha) { }; // (void) [, angle][, alpha]
+
+    /**
+     * Compatibility alias of {@link D2DGraphics#DrawImage DrawImage}.
+     *
+     * @param {D2DBitmap} img
+     * @param {number} dstX
+     * @param {number} dstY
+     * @param {number} dstW
+     * @param {number} dstH
+     * @param {number} srcX
+     * @param {number} srcY
+     * @param {number} srcW
+     * @param {number} srcH
+     * @worker
+     */
+    this.GdiDrawBitmap = function (img, dstX, dstY, dstW, dstH, srcX, srcY, srcW, srcH) { };
 
     /**
      * @param {number} x1
@@ -608,27 +801,37 @@ function D2DGraphics() {
      * @param {number} y2
      * @param {number} line_width
      * @param {*} colour_or_brush colour ARGB or {@link D2DBrush} object
-     * @param {DashStyle=} [style=DashStyle.Solid] See {@link module:Flags.DashStyle DashStyle}
-     * @param {CapStyle=} [startCap=CapStyle.Solid] See {@link module:Flags.CapStyle CapStyle}
-     * @param {CapStyle=} [endCap=CapStyle.Solid] See {@link module:Flags.CapStyle CapStyle}
+     * @param {(DashStyle|D2DStrokeStyle)=} [strokeStyle=DashStyle.Solid] {@link module:Flags.DashStyle DashStyle} shorthand or reusable {@link D2DStrokeStyle}
+     * @param {CapStyle=} [startCap=CapStyle.Flat] Legacy start cap used only when strokeStyle is a DashStyle value. A D2DStrokeStyle carries its own caps.
+     * @param {CapStyle=} [endCap=CapStyle.Flat] Legacy end cap used only when strokeStyle is a DashStyle value. A D2DStrokeStyle carries its own caps.
+     * @sourceFile ../../component/samples/d2d/StrokeStyle.js
+     * @worker
      */
-    this.DrawLine = function (x1, y1, x2, y2, line_width, colour_or_brush, style, startCap, endCap) { }; // (void)
+    this.DrawLine = function (x1, y1, x2, y2, line_width, colour_or_brush, strokeStyle, startCap, endCap) { }; // (void)
 
     /**
+     * Draws a connected sequence of lines.
+     *
      * @param {*} colour_or_brush colour ARGB or {@link D2DBrush} object
      * @param {number} line_width
-     * @param {Array<Array<number>>} points
-     * @param {DashStyle=} [style=DashStyle.Solid] See {@link module:Flags.DashStyle DashStyle}
+     * @param {Array<number>} points array of connected points [x1, y1, x2, y2, ...]
+     * @param {(DashStyle|D2DStrokeStyle)=} [strokeStyle=DashStyle.Solid] {@link module:Flags.DashStyle DashStyle} shorthand or reusable {@link D2DStrokeStyle}
+     * @sourceFile ../../component/samples/d2d/StrokeStyle.js
+     * @worker
      */
-    this.DrawLines = function (colour_or_brush, line_width, points, style) { }; // (void)
+    this.DrawLines = function (colour_or_brush, line_width, points, strokeStyle) { };
 
     /**
+     * Draws a connected sequence of lines with connection of last and first points (unlike {@link D2DGraphics#DrawLines DrawLines}).
+     * 
      * @param {*} colour_or_brush colour ARGB or {@link D2DBrush} object
      * @param {number} line_width
-     * @param {Array<Array<number>>} points
-     * @param {DashStyle=} [style=DashStyle.Solid] See {@link module:Flags.DashStyle DashStyle}
+     * @param {Array<number>} points array of connected points [x1, y1, x2, y2, ...]
+     * @param {(DashStyle|D2DStrokeStyle)=} [strokeStyle=DashStyle.Solid] {@link module:Flags.DashStyle DashStyle} shorthand or reusable {@link D2DStrokeStyle}
+     * @sourceFile ../../component/samples/d2d/StrokeStyle.js
+     * @worker
      */
-    this.DrawPolygon = function (colour_or_brush, line_width, points, style) { }; // (void)
+    this.DrawPolygon = function (colour_or_brush, line_width, points, strokeStyle) { }; // (void)
 
     /**
      * Should be only used when {@link D2DGraphics#DrawText DrawText} is not applicable.
@@ -641,6 +844,7 @@ function D2DGraphics() {
      * @param {number} w
      * @param {number} h
      * @param {number=} [flags=0] See {@link module:Flags.StringFormatFlags StringFormatFlags} flags
+     * @worker
      */
     this.DrawString = function (str, font, colour_or_brush, x, y, w, h, flags) { }; // (void) [, flags]
 
@@ -651,9 +855,11 @@ function D2DGraphics() {
      * @param {number} h
      * @param {number} line_width
      * @param {*} colour_or_brush colour ARGB or {@link D2DBrush} object
-     * @param {DashStyle=} [style=DashStyle.Solid] See {@link module:Flags.DashStyle DashStyle}
+     * @param {(DashStyle|D2DStrokeStyle)=} [strokeStyle=DashStyle.Solid] {@link module:Flags.DashStyle DashStyle} shorthand or reusable {@link D2DStrokeStyle}
+     * @sourceFile ../../component/samples/d2d/StrokeStyle.js
+     * @worker
      */
-    this.DrawRect = function (x, y, w, h, line_width, colour_or_brush, style) { }; // (void)
+    this.DrawRect = function (x, y, w, h, line_width, colour_or_brush, strokeStyle) { }; // (void)
 
     /**
      * @param {number} x
@@ -664,9 +870,11 @@ function D2DGraphics() {
      * @param {number} arc_height
      * @param {number} line_width
      * @param {*} colour_or_brush colour ARGB or {@link D2DBrush} object
-     * @param {DashStyle=} [style=DashStyle.Solid] See {@link module:Flags.DashStyle DashStyle}
+     * @param {(DashStyle|D2DStrokeStyle)=} [strokeStyle=DashStyle.Solid] {@link module:Flags.DashStyle DashStyle} shorthand or reusable {@link D2DStrokeStyle}
+     * @sourceFile ../../component/samples/d2d/StrokeStyle.js
+     * @worker
      */
-    this.DrawRoundRect = function (x, y, w, h, arc_width, arc_height, line_width, colour_or_brush, style) { }; // (void)
+    this.DrawRoundRect = function (x, y, w, h, arc_width, arc_height, line_width, colour_or_brush, strokeStyle) { }; // (void)
 
     /**
      * @param {string} str
@@ -681,6 +889,7 @@ function D2DGraphics() {
      *    ... <br>
      *    [2n + 2] text line n <br>
      *    [2n + 3] width of text line n (px)
+     * @worker
      */
     this.EstimateLineWrap = function (str, font, max_width) { }; // (Array)
 
@@ -690,6 +899,7 @@ function D2DGraphics() {
      * @param {number} w
      * @param {number} h
      * @param {*} colour_or_brush colour ARGB or {@link D2DBrush} object
+     * @worker
      */
     this.FillEllipse = function (x, y, w, h, colour_or_brush) { }; // (void)
 
@@ -702,6 +912,7 @@ function D2DGraphics() {
      * @param {number} colour1
      * @param {number} colour2
      * @param {float} [focus=1.0] Specify where the centred colour will be at its highest intensity. Valid values between 0 and 1.
+     * @worker
      */
     this.FillGradRect = function (x, y, w, h, angle, colour1, colour2, focus) { }; // (void) [, focus]
 
@@ -716,6 +927,7 @@ function D2DGraphics() {
      * @param {Array} stops Specifies gradient stops in form of [pos0, argb0, ..., posN, argbN]
      * @example
      * dgr.FillGradRectV2(10, 10, 200, 100, 0, [0.0, 0xFF0000FF, 0.5, 0xFFFF0000, 1.0, 0xFF000000]);
+     * @worker
      */
     this.FillGradRectV2 = function (x, y, w, h, angle, stops) { };
 
@@ -723,6 +935,7 @@ function D2DGraphics() {
      * @param {*} colour_or_brush colour ARGB or {@link D2DBrush} object
      * @param {number} fillmode 0 alternate, 1 winding.
      * @param {Array<Array<number>>} points
+     * @worker
      */
     this.FillPolygon = function (colour_or_brush, fillmode, points) { }; // (void)
 
@@ -734,6 +947,7 @@ function D2DGraphics() {
      * @param {number} arc_width
      * @param {number} arc_height
      * @param {*} colour_or_brush colour ARGB or {@link D2DBrush} object
+     * @worker
      */
     this.FillRoundRect = function (x, y, w, h, arc_width, arc_height, colour_or_brush) { }; // (void)
 
@@ -743,6 +957,7 @@ function D2DGraphics() {
      * @param {number} w
      * @param {number} h
      * @param {*} colour_or_brush colour ARGB or {@link D2DBrush} object
+     * @worker
      */
     this.FillSolidRect = function (x, y, w, h, colour_or_brush) { }; // (void)
 
@@ -757,8 +972,26 @@ function D2DGraphics() {
      * @param {number} srcW
      * @param {number} srcH
      * @param {number=} [alpha=255] Valid values 0-255.
+     * @worker
      */
     this.AlphaBlend = function (img, dstX, dstY, dstW, dstH, srcX, srcY, srcW, srcH, alpha) { }; // (void) [, alpha]
+
+    /**
+     * Compatibility alias of {@link D2DGraphics#AlphaBlend AlphaBlend}.
+     *
+     * @param {D2DBitmap} img
+     * @param {number} dstX
+     * @param {number} dstY
+     * @param {number} dstW
+     * @param {number} dstH
+     * @param {number} srcX
+     * @param {number} srcY
+     * @param {number} srcW
+     * @param {number} srcH
+     * @param {number=} [alpha=255]
+     * @worker
+     */
+    this.GdiAlphaBlend = function (img, dstX, dstY, dstW, dstH, srcX, srcY, srcW, srcH, alpha) { };
 
     /**
      * Provides faster and better rendering than {@link D2DGraphics#DrawString DrawString}.<br>
@@ -781,6 +1014,7 @@ function D2DGraphics() {
      * @param {number} w
      * @param {number} h
      * @param {number=} [format=0] See flags like {@link module:Flags.DT_LEFT DT_LEFT}
+     * @worker
      */
     this.DrawText = function (str, font, colour_or_brush, x, y, w, h, format) { };
 
@@ -794,6 +1028,7 @@ function D2DGraphics() {
      * @param {number} y
      * @param {number} w
      * @param {number} h
+     * @worker
      */
     this.DrawStrokedText = function (str, font, strokeColor, strokeWidth, fillColor, x, y, w, h) { };
 
@@ -808,6 +1043,7 @@ function D2DGraphics() {
      * @param {number} h
      * @param {number=} [flags=0] See {@link module:Flags.StringFormatFlags StringFormatFlags} flags
      * @return {MeasureStringInfo}
+     * @worker
      */
     this.MeasureString = function (str, font, x, y, w, h, flags) { }; // (MeasureStringInfo) [, flags]
 
@@ -821,6 +1057,7 @@ function D2DGraphics() {
      * @param {number} y top coordinate of the clipping rectangle
      * @param {number} width width of the clipping rectangle
      * @param {number} height height of the clipping rectangle
+      * @worker
      */
     this.PushClip = function(x, y, width, height) { };
 
@@ -828,6 +1065,7 @@ function D2DGraphics() {
      * Restores the clipping region that was active before the matching {@link D2DGraphics#PushClip PushClip} call.<br>
      * Does nothing if the clip stack is empty.<br>
      * The current transform and other graphics state are not affected.
+     * @worker
      */
     this.PopClip = function() { };
 
@@ -837,6 +1075,7 @@ function D2DGraphics() {
      *
      * @param {number} dx
      * @param {number} dy
+     * @worker
      */
     this.Translate = function(dx, dy) { }
 
@@ -847,6 +1086,7 @@ function D2DGraphics() {
      * @param {float} angle Angle of rotation in degrees
      * @param {number=} [cx=0] Rotation center point x coord
      * @param {number=} [cy=0] Rotation center point y coord
+     * @worker
      */
     this.Rotate = function(angle, cx, cy) { };
 
@@ -858,6 +1098,7 @@ function D2DGraphics() {
      * @param {float=} [sy=0] The y-axis scale factor. If zero sx will be used as sy
      * @param {number=} [cx=0] Scale center point x coord
      * @param {number=} [cy=0] Scale center point y coord
+     * @worker
      */
     this.Scale = function(sz, sy, cx, cy) { }
     
@@ -869,16 +1110,19 @@ function D2DGraphics() {
      * @param {float} angleY The y-axis skew angle, which is measured in degrees clockwise from the x-axis.
      * @param {number=} [cx=0] Skew center point x coord
      * @param {number=} [cy=0] Skew center point y coord
+     * @worker
      */
     this.Skew = function(angleX, angleY, cx, cy) {}
 
     /**
      * Saves current D2DGraphics matrix in internal stack. To restore the matrix use {@link D2DGraphics#PopTransform PopTransform}.
+     * @worker
      */
     this.PushTransform = function() {}
 
     /**
      * Restores D2DGraphics matrix from internal stack pushed previously by {@link D2DGraphics#PushTransform PushTransform}.
+     * @worker
      */
     this.PopTransform = function() {}
 
@@ -888,6 +1132,7 @@ function D2DGraphics() {
      * @return {Float32Array}
      * 
      * @sourceFile ../../component/docs/Matrix.js
+     * @worker
      */
     this.GetTransform = function() {}
 
@@ -897,11 +1142,13 @@ function D2DGraphics() {
      * @param {Float32Array} matrix Array that presents 3x2 matrix for transformation (length = 6)
      * 
      * @sourceFile ../../component/docs/Matrix.js
+     * @worker
      */
     this.SetTransform = function(matrix) {}
 
     /**
      * Resets current D2DGraphics matrix to original identity matrix.
+     * @worker
      */
     this.ResetTransform = function () {}
 
@@ -911,6 +1158,7 @@ function D2DGraphics() {
      * @param {Float32Array} matrix Array that presents 3x2 matrix for transformation (length = 6)
      * 
      * @sourceFile ../../component/docs/Matrix.js
+     * @worker
      */
     this.ApplyTransform = function(matrix) {}
 
@@ -935,58 +1183,69 @@ function D2DGraphics() {
      *     console.log(temp.Height); // 2761.2421875 // far larger than my panel height!
      *     console.log(temp.Chars); // 7967
      * }
+     * @worker
+     * @cloneable
      */
     function MeasureStringInfo() {
 
         /**
          * @type {number}
          * @readonly
+         * @worker
          */
         this.Chars = undefined; // (uint) (read)
 
         /**
          * @type {float}
          * @readonly
+         * @worker
          */
         this.Height = undefined; // (float) (read)
 
         /**
          * @type {number}
          * @readonly
+         * @worker
          */
         this.Lines = undefined; // (uint) (read)
 
         /**
          * @type {float}
          * @readonly
+         * @worker
          */
         this.X = undefined; // (float) (read)
 
         /**
          * @type {float}
          * @readonly
+         * @worker
          */
         this.Y = undefined; // (float) (read)
 
         /**
          * @type {float}
          * @readonly
+         * @worker
          */
         this.Width = undefined; // (float) (read)
     }
 
     /**
      * @param {number=} [mode=0] See {@link module:Flags.InterpolationMode InterpolationMode} enum
+     * @worker
      */
     this.SetInterpolationMode = function (mode) { }; // (void)
 
     /**
      * @param {number=} [mode=0] See {@link module:Flags.SmoothingMode SmoothingMode} enum
+     * @worker
      */
     this.SetSmoothingMode = function (mode) { }; // (void)
 
     /**
      * @param {number=} [mode=0] See {@link module:Flags.TextRenderingHint TextRenderingHint} enum
+     * @worker
      */
     this.SetTextRenderingHint = function (mode) { }; // (void)
 
@@ -994,12 +1253,14 @@ function D2DGraphics() {
      * Currect width of device context surface.
      * @type {number}
      * @readonly
+     * @worker
      */
     this.Width = 640;
     /**
      * Currect height of device context surface.
      * @type {number}
      * @readonly
+     * @worker
      */
     this.Height = 480;
 }
@@ -1008,6 +1269,7 @@ function D2DGraphics() {
  * Functions for working with Direct2D graphics.
  *
  * @namespace
+ * @worker
  */
 let d2d = {
 
@@ -1037,13 +1299,27 @@ let d2d = {
      * @return {D2DBrush} Brush object used in Draw/Fill methods
      * 
      * @sourceFile ../../component/samples/basic/Brushes.js
+     * @worker
      */
     Brush: function (type, param1, param2, param3, param4) { }, // (D2DBrush)
+
+    /**
+     * Creates a reusable Direct2D stroke style for line and outline drawing.<br>
+     * The style controls start/end/dash caps, line joins, miter limit, dash pattern and dash offset.<br>
+     * Performance note: create commonly used styles once and reuse them from <code>on_paint</code>.
+     *
+     * @param {D2DStrokeStyleOptions=} [options={}] Stroke appearance options. Omitted properties use the Direct2D defaults documented by D2DStrokeStyleOptions.
+     * @return {D2DStrokeStyle}
+     * @sourceFile ../../component/samples/d2d/StrokeStyle.js
+     * @worker
+     */
+    StrokeStyle: function (options) { },
 
     /**
      * @param {number} w
      * @param {number} h
      * @return {D2DBitmap}
+     * @worker
      */
     CreateImage: function (w, h) { }, // (D2DBitmap)
 
@@ -1062,6 +1338,7 @@ let d2d = {
      * @returns {D2DBitmap} null if was an error (for example pixelData array length is not suitable for the specified parameters)
      * 
      * @sourceFile ../../component/samples/basic/CreateImageFromPixelData.js
+     * @worker
      */
     CreateImageFromPixelData: function(pixelData, width, height, format = "bgra32") { }, // (D2DBitmap)
 
@@ -1075,6 +1352,7 @@ let d2d = {
      * @param {number} size_px See {@link module:Helpers.Point2Pixel Point2Pixel} function for conversions
      * @param {number=} [style=0] See {@link module:Flags.FontStyle FontStyle} flags
      * @return {?D2DFont} null, if font is not present.
+     * @worker
      */
     Font: function (name, size_px, style) { }, // (D2DFont) [, style]
 
@@ -1089,6 +1367,7 @@ let d2d = {
      *
      * @example
      * let img = d2d.Image('e:\\images folder\\my_image.png');
+     * @worker
      */
     Image: function (path) { }, // (D2DBitmap)
 
@@ -1100,6 +1379,7 @@ let d2d = {
      * @return {number} a unique id, which is used in {@link module:Callbacks.on_load_image_done on_load_image_done}.
      *
      * @sourceFile ../../component/samples/basic/LoadImageAsync.js
+     * @worker
      */
     LoadImageAsync: function (window_id, path) { }, // (uint)
 
@@ -1112,6 +1392,7 @@ let d2d = {
      * @return {Promise.<?D2DBitmap>}
      *
      * @sourceFile ../../component/samples/basic/LoadImageAsyncV2.js
+     * @worker
      */
     LoadImageAsyncV2: function (window_id, path) { },
 
@@ -1132,6 +1413,7 @@ let d2d = {
      *     gr.DrawImage(original, 0, 0, original.Width, original.Height, 0, 0, original.Width, original.Height);
      *     gr.DrawImage(large, original.Width, 0, large.Width, large.Height, 0, 0, large.Width, large.Height);
      * }
+     * @worker
      */
     LoadSVG: function (path_or_xml, max_width) { },
 
@@ -1140,6 +1422,7 @@ let d2d = {
      * Minimum system requirements: Windows 7 Platform Update (Direct2D 1.1)
      * @param {string} CLSID CLSID of Direct2D effect. See {@link module:Effects Effects} for effects' CLSID.
      * @return {D2DEffect}
+     * @worker
      */
     Effect: function (CLSID) { },
 
@@ -1198,6 +1481,7 @@ let d2d = {
      * function on_paint(dgr) {	
      *     dgr.DrawEffect(effect, 10, 10, 0, 0, img.Width, img.Height);
      * }
+     * @worker
      */
     Compile: function (source, entryPoint, target, flags) { },
 };
@@ -1206,6 +1490,8 @@ let d2d = {
  * Result of {@link d2d.Compile}
  * @constructor
  * @hideconstructor
+ * @worker
+ * @cloneable
  */
 function D2DCompileInfo() {
 
@@ -1213,6 +1499,7 @@ function D2DCompileInfo() {
      * Compiled shader (bytecode)
      * @type {Uint8Array}
      * @readonly
+     * @worker
      */
     this.Code = [];
 
@@ -1220,6 +1507,7 @@ function D2DCompileInfo() {
      * If there's error after {@link d2d.Compile} call it contains non-empty string representing a compiler error message.
      * @type {string}
      * @readonly
+     * @worker
      */
     this.Error = "";
 }

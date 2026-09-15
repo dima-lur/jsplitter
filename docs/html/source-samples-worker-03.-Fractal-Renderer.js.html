@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>03. Fractal Renderer.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/worker/03. Fractal Renderer.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="Worker.html#Worker">Worker</a></div>
+        </header>
+        <pre class="source-code"><code><span class="tok-string">&#39;use strict&#39;</span>;
+
+<span class="tok-comment">// Worker sample 3: Fractal Renderer</span>
+<span class="tok-comment">// Demonstrates: CPU-bound Worker work, stable local pan/zoom preview,</span>
+<span class="tok-comment">// settled-view rendering, stale-frame rejection and transferable bitmap frames.</span>
+<span class="tok-comment">// The in-panel Renderer switch recreates the Worker so the same gdi.* facade can be</span>
+<span class="tok-comment">// compared in GDI+ and Direct2D modes.</span>
+<span class="tok-keyword">let</span> drawMode = <span class="tok-number">1</span>;
+window.DrawMode = drawMode;
+
+<span class="tok-keyword">const</span> DT_LEFT = <span class="tok-number">0x0000</span>;
+<span class="tok-keyword">const</span> DT_CENTER = <span class="tok-number">0x0001</span>;
+<span class="tok-keyword">const</span> DT_VCENTER = <span class="tok-number">0x0004</span>;
+<span class="tok-keyword">const</span> DT_SINGLELINE = <span class="tok-number">0x0020</span>;
+<span class="tok-keyword">const</span> DT_NOPREFIX = <span class="tok-number">0x0800</span>;
+
+<span class="tok-keyword">const</span> VIEW_DEBOUNCE_MS = <span class="tok-number">80</span>;
+<span class="tok-keyword">const</span> MAX_ITERATIONS = <span class="tok-number">220</span>;
+<span class="tok-keyword">const</span> PREVIEW_INTERPOLATION = <span class="tok-number">2</span>; <span class="tok-comment">// InterpolationMode.HighQuality</span>
+<span class="tok-keyword">let</span> INFO_FONT = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">13</span>);
+<span class="tok-keyword">let</span> switchingRenderer = <span class="tok-literal">false</span>;
+<span class="tok-keyword">const</span> DEFAULT_VIEW = { centerX: -<span class="tok-number">0.65</span>, centerY: <span class="tok-number">0.0</span>, scale: <span class="tok-number">2.8</span> };
+
+<span class="tok-keyword">let</span> frame = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> frameView = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> previewFrame = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> previewView = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> previewActive = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> view = { ...DEFAULT_VIEW };
+<span class="tok-keyword">let</span> viewId = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> viewDirty = <span class="tok-literal">true</span>;
+<span class="tok-keyword">let</span> mouseX = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> mouseY = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> drag = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> wheelActive = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> sendTimer = <span class="tok-number">0</span>;
+
+<span class="tok-keyword">const</span> workerSource = String.raw<span class="tok-string">`
+&#39;use strict&#39;;
+
+function getPalette(maxIterations) {
+    const palette = new Uint32Array(maxIterations + 1);
+    for (let iteration = 0; iteration &lt; maxIterations; ++iteration) {
+        const t = iteration / maxIterations;
+        const r = Math.floor(255 * Math.min(1, 9 * (1 - t) * t * t * t));
+        const g = Math.floor(255 * Math.min(1, 15 * (1 - t) * (1 - t) * t * t));
+        const b = Math.floor(255 * Math.min(1, 8.5 * (1 - t) * (1 - t) * (1 - t) * t));
+        palette[iteration] = (0xFF000000 | (r &lt;&lt; 16) | (g &lt;&lt; 8) | b) &gt;&gt;&gt; 0;
+    }
+    palette[maxIterations] = 0xFF0C0808;
+    return palette;
+}
+
+const palettes = new Map();
+
+function paletteFor(maxIterations) {
+    let palette = palettes.get(maxIterations);
+    if (!palette) {
+        palette = getPalette(maxIterations);
+        palettes.set(maxIterations, palette);
+    }
+    return palette;
+}
+
+function createRenderJob(width, height, centerX, centerY, scale, maxIterations) {
+    const pixels = new Uint8Array(width * height * 4);
+    return {
+        width,
+        height,
+        centerX,
+        centerY,
+        scale,
+        maxIterations,
+        pixels,
+        pixel32: new Uint32Array(pixels.buffer),
+        palette: paletteFor(maxIterations),
+        xStep: scale * (width / Math.max(1, height)) / width,
+        yStep: scale / height,
+        left: centerX - scale * (width / Math.max(1, height)) * 0.5,
+        top: centerY - scale * 0.5,
+        y: 0
+    };
+}
+
+function renderRow(job, y) {
+    const cy = job.top + y * job.yStep;
+    const row = y * job.width;
+
+    for (let x = 0; x &lt; job.width; ++x) {
+        const cx = job.left + x * job.xStep;
+        const xm = cx - 0.25;
+        const q = xm * xm + cy * cy;
+        let iteration = job.maxIterations;
+
+        // Main cardioid and period-2 bulb are known to be inside the set.
+        if (q * (q + xm) &gt; 0.25 * cy * cy &amp;&amp; (cx + 1) * (cx + 1) + cy * cy &gt; 0.0625) {
+            let zx = 0;
+            let zy = 0;
+            let zx2 = 0;
+            let zy2 = 0;
+            iteration = 0;
+
+            while (zx2 + zy2 &lt;= 4 &amp;&amp; iteration &lt; job.maxIterations) {
+                zy = 2 * zx * zy + cy;
+                zx = zx2 - zy2 + cx;
+                zx2 = zx * zx;
+                zy2 = zy * zy;
+                ++iteration;
+            }
+        }
+
+        job.pixel32[row + x] = job.palette[iteration];
+    }
+}
+
+function finishBitmap(job) {
+    // In DrawMode 0 this is a GdiBitmap; in DrawMode 1 the same gdi.* call
+    // is routed to the Worker&#39;s Direct2D backend and returns a D2DBitmap.
+    return gdi.CreateImageFromPixelData(job.pixels, job.width, job.height, &#39;bgra32&#39;);
+}
+
+function renderBitmap(width, height, centerX, centerY, scale, maxIterations) {
+    const job = createRenderJob(width, height, centerX, centerY, scale, maxIterations);
+    for (; job.y &lt; job.height; ++job.y) renderRow(job, job.y);
+    return finishBitmap(job);
+}
+
+onmessage = function (event) {
+    const current = event.data;
+    const bitmap = renderBitmap(
+        current.width,
+        current.height,
+        current.centerX,
+        current.centerY,
+        current.scale,
+        current.maxIterations
+    );
+
+    if (bitmap) {
+        postMessage({
+            viewId: current.viewId,
+            width: current.width,
+            height: current.height,
+            centerX: current.centerX,
+            centerY: current.centerY,
+            scale: current.scale,
+            bitmap
+        }, [bitmap]);
+    }
+};
+`</span>;
+
+<span class="tok-keyword">let</span> worker = <span class="tok-literal">null</span>;
+
+<span class="tok-keyword">function</span> startWorker() {
+    switchingRenderer = <span class="tok-literal">true</span>;
+    <span class="tok-keyword">if</span> (worker) worker.terminate();
+
+    frame = <span class="tok-literal">null</span>;
+    frameView = <span class="tok-literal">null</span>;
+    previewFrame = <span class="tok-literal">null</span>;
+    previewView = <span class="tok-literal">null</span>;
+    previewActive = <span class="tok-literal">false</span>;
+    wheelActive = <span class="tok-literal">false</span>;
+    <span class="tok-keyword">if</span> (sendTimer) {
+        clearTimeout(sendTimer);
+        sendTimer = <span class="tok-number">0</span>;
+    }
+
+    <span class="tok-keyword">try</span> {
+        window.DrawMode = drawMode;
+        INFO_FONT = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">13</span>);
+    } <span class="tok-keyword">finally</span> {
+        switchingRenderer = <span class="tok-literal">false</span>;
+    }
+
+    <span class="tok-keyword">const</span> currentWorker = <span class="tok-keyword">new</span> Worker(workerSource, <span class="tok-string">&#39;fractal-renderer&#39;</span>);
+    worker = currentWorker;
+
+    currentWorker.onmessage = <span class="tok-keyword">function</span> (event) {
+        <span class="tok-keyword">const</span> data = event.data;
+        <span class="tok-keyword">if</span> (worker !== currentWorker || data.viewId !== viewId || drag || wheelActive) <span class="tok-keyword">return</span>;
+
+        frame = data.bitmap;
+        frameView = {
+            width: data.width,
+            height: data.height,
+            centerX: data.centerX,
+            centerY: data.centerY,
+            scale: data.scale
+        };
+        previewFrame = <span class="tok-literal">null</span>;
+        previewView = <span class="tok-literal">null</span>;
+        previewActive = <span class="tok-literal">false</span>;
+        window.Repaint();
+    };
+
+    currentWorker.onerror = <span class="tok-keyword">function</span> (event) {
+        <span class="tok-keyword">if</span> (worker === currentWorker) console.log(<span class="tok-string">`Worker error: ${event.message}`</span>);
+    };
+
+    invalidateView();
+    sendView();
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> invalidateView() {
+    ++viewId;
+    viewDirty = <span class="tok-literal">true</span>;
+}
+
+<span class="tok-keyword">function</span> sendView() {
+    sendTimer = <span class="tok-number">0</span>;
+    <span class="tok-keyword">if</span> (!viewDirty || window.Width &lt;= <span class="tok-number">0</span> || window.Height &lt;= <span class="tok-number">0</span> || !worker) <span class="tok-keyword">return</span>;
+
+    viewDirty = <span class="tok-literal">false</span>;
+    worker.postMessage({
+        type: <span class="tok-string">&#39;render&#39;</span>,
+        viewId,
+        width: window.Width,
+        height: window.Height,
+        centerX: view.centerX,
+        centerY: view.centerY,
+        scale: view.scale,
+        maxIterations: MAX_ITERATIONS
+    });
+}
+
+<span class="tok-keyword">function</span> queueView() {
+    <span class="tok-keyword">if</span> (sendTimer) clearTimeout(sendTimer);
+    sendTimer = setTimeout(<span class="tok-keyword">function</span> () {
+        sendTimer = <span class="tok-number">0</span>;
+        wheelActive = <span class="tok-literal">false</span>;
+        <span class="tok-keyword">if</span> (!drag) sendView();
+    }, VIEW_DEBOUNCE_MS);
+}
+
+<span class="tok-keyword">function</span> flushView() {
+    <span class="tok-keyword">if</span> (sendTimer) {
+        clearTimeout(sendTimer);
+        sendTimer = <span class="tok-number">0</span>;
+    }
+    wheelActive = <span class="tok-literal">false</span>;
+    sendView();
+}
+
+<span class="tok-keyword">function</span> screenToWorld(x, y, currentView = view) {
+    <span class="tok-keyword">const</span> width = Math.max(<span class="tok-number">1</span>, window.Width);
+    <span class="tok-keyword">const</span> height = Math.max(<span class="tok-number">1</span>, window.Height);
+    <span class="tok-keyword">const</span> aspect = width / height;
+    <span class="tok-keyword">return</span> {
+        x: currentView.centerX + (x / width - <span class="tok-number">0.5</span>) * currentView.scale * aspect,
+        y: currentView.centerY + (y / height - <span class="tok-number">0.5</span>) * currentView.scale
+    };
+}
+
+<span class="tok-keyword">function</span> frameSlice(sourceView) {
+    <span class="tok-keyword">if</span> (!sourceView || window.Width &lt;= <span class="tok-number">0</span> || window.Height &lt;= <span class="tok-number">0</span>) <span class="tok-keyword">return</span> <span class="tok-literal">null</span>;
+
+    <span class="tok-keyword">const</span> viewAspect = window.Width / window.Height;
+    <span class="tok-keyword">const</span> viewWorldW = view.scale * viewAspect;
+    <span class="tok-keyword">const</span> viewLeft = view.centerX - viewWorldW * <span class="tok-number">0.5</span>;
+    <span class="tok-keyword">const</span> viewTop = view.centerY - view.scale * <span class="tok-number">0.5</span>;
+    <span class="tok-keyword">const</span> viewRight = viewLeft + viewWorldW;
+    <span class="tok-keyword">const</span> viewBottom = viewTop + view.scale;
+
+    <span class="tok-keyword">const</span> frameAspect = sourceView.width / Math.max(<span class="tok-number">1</span>, sourceView.height);
+    <span class="tok-keyword">const</span> frameWorldW = sourceView.scale * frameAspect;
+    <span class="tok-keyword">const</span> frameLeft = sourceView.centerX - frameWorldW * <span class="tok-number">0.5</span>;
+    <span class="tok-keyword">const</span> frameTop = sourceView.centerY - sourceView.scale * <span class="tok-number">0.5</span>;
+    <span class="tok-keyword">const</span> frameRight = frameLeft + frameWorldW;
+    <span class="tok-keyword">const</span> frameBottom = frameTop + sourceView.scale;
+
+    <span class="tok-keyword">const</span> left = Math.max(viewLeft, frameLeft);
+    <span class="tok-keyword">const</span> top = Math.max(viewTop, frameTop);
+    <span class="tok-keyword">const</span> right = Math.min(viewRight, frameRight);
+    <span class="tok-keyword">const</span> bottom = Math.min(viewBottom, frameBottom);
+    <span class="tok-keyword">if</span> (right &lt;= left || bottom &lt;= top) <span class="tok-keyword">return</span> <span class="tok-literal">null</span>;
+
+    <span class="tok-keyword">return</span> {
+        sx: (left - frameLeft) / frameWorldW * sourceView.width,
+        sy: (top - frameTop) / sourceView.scale * sourceView.height,
+        sw: (right - left) / frameWorldW * sourceView.width,
+        sh: (bottom - top) / sourceView.scale * sourceView.height,
+        dx: (left - viewLeft) / viewWorldW * window.Width,
+        dy: (top - viewTop) / view.scale * window.Height,
+        dw: (right - left) / viewWorldW * window.Width,
+        dh: (bottom - top) / view.scale * window.Height
+    };
+}
+
+<span class="tok-keyword">function</span> beginPreview() {
+    <span class="tok-keyword">if</span> (previewActive) <span class="tok-keyword">return</span>;
+    previewFrame = frame;
+    previewView = frameView;
+    previewActive = !!previewFrame;
+}
+
+<span class="tok-keyword">function</span> on_size() {
+    beginPreview();
+    invalidateView();
+    window.Repaint();
+    queueView();
+}
+
+<span class="tok-keyword">function</span> on_mouse_move(x, y) {
+    mouseX = x;
+    mouseY = y;
+
+    <span class="tok-keyword">if</span> (!drag || window.Width &lt;= <span class="tok-number">0</span> || window.Height &lt;= <span class="tok-number">0</span>) <span class="tok-keyword">return</span>;
+
+    <span class="tok-keyword">const</span> aspect = window.Width / Math.max(<span class="tok-number">1</span>, window.Height);
+    view.centerX = drag.centerX - (x - drag.x) / window.Width * drag.scale * aspect;
+    view.centerY = drag.centerY - (y - drag.y) / window.Height * drag.scale;
+
+    invalidateView();
+
+    <span class="tok-comment">// Interaction is immediate and uses one stable completed bitmap for the</span>
+    <span class="tok-comment">// entire drag. The Worker is not fed intermediate drag positions.</span>
+    window.Repaint();
+}
+
+<span class="tok-keyword">const</span> RENDERER_GDI = { x: <span class="tok-number">82</span>, y: <span class="tok-number">8</span>, w: <span class="tok-number">46</span>, h: <span class="tok-number">26</span> };
+<span class="tok-keyword">const</span> RENDERER_D2D = { x: <span class="tok-number">132</span>, y: <span class="tok-number">8</span>, w: <span class="tok-number">52</span>, h: <span class="tok-number">26</span> };
+
+<span class="tok-keyword">function</span> contains(rect, x, y) {
+    <span class="tok-keyword">return</span> x &gt;= rect.x &amp;&amp; x &lt; rect.x + rect.w &amp;&amp; y &gt;= rect.y &amp;&amp; y &lt; rect.y + rect.h;
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_down(x, y) {
+    <span class="tok-keyword">if</span> (contains(RENDERER_GDI, x, y) || contains(RENDERER_D2D, x, y)) <span class="tok-keyword">return</span>;
+
+    mouseX = x;
+    mouseY = y;
+    beginPreview();
+    drag = {
+        x,
+        y,
+        centerX: view.centerX,
+        centerY: view.centerY,
+        scale: view.scale
+    };
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_up(x, y) {
+    <span class="tok-keyword">if</span> (contains(RENDERER_GDI, x, y) || contains(RENDERER_D2D, x, y)) {
+        <span class="tok-keyword">const</span> nextMode = contains(RENDERER_D2D, x, y) ? <span class="tok-number">1</span> : <span class="tok-number">0</span>;
+        drag = <span class="tok-literal">null</span>;
+        <span class="tok-keyword">if</span> (nextMode !== drawMode) {
+            <span class="tok-keyword">if</span> (sendTimer) {
+                clearTimeout(sendTimer);
+                sendTimer = <span class="tok-number">0</span>;
+            }
+            drawMode = nextMode;
+            startWorker();
+        }
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">if</span> (!drag) <span class="tok-keyword">return</span>;
+    drag = <span class="tok-literal">null</span>;
+    <span class="tok-keyword">if</span> (viewDirty) flushView();
+}
+
+<span class="tok-keyword">function</span> on_mouse_wheel(step) {
+    <span class="tok-keyword">if</span> (window.Width &lt;= <span class="tok-number">0</span> || window.Height &lt;= <span class="tok-number">0</span> || !step) <span class="tok-keyword">return</span>;
+
+    <span class="tok-keyword">if</span> (!wheelActive) beginPreview();
+
+    <span class="tok-keyword">const</span> before = screenToWorld(mouseX, mouseY);
+    <span class="tok-keyword">const</span> factor = Math.pow(<span class="tok-number">0.82</span>, step);
+    view.scale = Math.max(<span class="tok-number">1e-12</span>, Math.min(<span class="tok-number">4.0</span>, view.scale * factor));
+    <span class="tok-keyword">const</span> after = screenToWorld(mouseX, mouseY);
+    view.centerX += before.x - after.x;
+    view.centerY += before.y - after.y;
+
+    wheelActive = <span class="tok-literal">true</span>;
+    invalidateView();
+
+    <span class="tok-comment">// Zoom one stable completed frame locally for the whole wheel burst.</span>
+    <span class="tok-comment">// Only the final viewport is rendered after the burst settles.</span>
+    window.Repaint();
+    queueView();
+}
+
+<span class="tok-keyword">function</span> on_mouse_rbtn_up() {
+    beginPreview();
+    view = { ...DEFAULT_VIEW };
+    drag = <span class="tok-literal">null</span>;
+    wheelActive = <span class="tok-literal">false</span>;
+    invalidateView();
+    window.Repaint();
+    flushView();
+    <span class="tok-keyword">return</span> <span class="tok-literal">true</span>;
+}
+
+<span class="tok-keyword">function</span> drawChoice(gr, rect, text, selected) {
+    gr.FillSolidRect(rect.x, rect.y, rect.w, rect.h, selected ? <span class="tok-number">0xFF355D7A</span> : <span class="tok-number">0xFF20262E</span>);
+    gr.DrawText(text, INFO_FONT, selected ? <span class="tok-number">0xFFFFFFFF</span> : <span class="tok-number">0xFFB7C1CB</span>,
+        rect.x, rect.y, rect.w, rect.h, DT_CENTER | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+}
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, window.Width, window.Height, <span class="tok-number">0xFF101014</span>);
+    <span class="tok-keyword">if</span> (switchingRenderer) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">const</span> shownFrame = previewActive &amp;&amp; previewFrame ? previewFrame : frame;
+    <span class="tok-keyword">const</span> shownView = previewActive &amp;&amp; previewFrame ? previewView : frameView;
+    <span class="tok-keyword">if</span> (shownFrame) {
+        <span class="tok-keyword">const</span> slice = frameSlice(shownView);
+        <span class="tok-keyword">if</span> (slice) {
+            gr.SetInterpolationMode(PREVIEW_INTERPOLATION);
+            gr.DrawImage(shownFrame, slice.dx, slice.dy, slice.dw, slice.dh, slice.sx, slice.sy, slice.sw, slice.sh);
+        }
+    }
+
+    gr.FillSolidRect(<span class="tok-number">8</span>, <span class="tok-number">8</span>, Math.max(<span class="tok-number">1</span>, Math.min(window.Width - <span class="tok-number">16</span>, <span class="tok-number">520</span>)), <span class="tok-number">26</span>, <span class="tok-number">0xC0101318</span>);
+    gr.DrawText(<span class="tok-string">&#39;Renderer:&#39;</span>, INFO_FONT, <span class="tok-number">0xFFB7C1CB</span>, <span class="tok-number">14</span>, <span class="tok-number">8</span>, <span class="tok-number">66</span>, <span class="tok-number">26</span>,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+    drawChoice(gr, RENDERER_GDI, <span class="tok-string">&#39;GDI&#39;</span>, drawMode === <span class="tok-number">0</span>);
+    drawChoice(gr, RENDERER_D2D, <span class="tok-string">&#39;D2D&#39;</span>, drawMode === <span class="tok-number">1</span>);
+    gr.DrawText(<span class="tok-string">&#39;Wheel: zoom   Drag: pan   Right click: reset&#39;</span>, INFO_FONT, <span class="tok-number">0xFFE8EDF2</span>,
+        <span class="tok-number">196</span>, <span class="tok-number">8</span>, Math.max(<span class="tok-number">1</span>, window.Width - <span class="tok-number">210</span>), <span class="tok-number">26</span>, DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+}
+
+startWorker();
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

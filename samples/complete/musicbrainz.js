@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 window.DefineScript('Musicbrainz', {author:'marc2003'});
 include(fb.ComponentPath + 'samples\\complete\\js\\lodash.min.js');
@@ -13,8 +13,8 @@ let list = new _list('musicbrainz', LM, TM, 0, 0);
 
 panel.item_focus_change();
 
-function on_http_request_done(task_id, success, response_text) {
-	list.http_request_done(task_id, success, response_text);
+function on_http_request_done(task_id, success, response_text, status) {
+	list.http_request_done(task_id, success, response_text, status);
 }
 
 function on_size() {

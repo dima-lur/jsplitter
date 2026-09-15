@@ -127,6 +127,7 @@ function on_font_changed() { }
  * @param {number} art_id See {@link module:Flags.AlbumArtId AlbumArtId} flags
  * @param {?GdiBitmap} image (or {@link D2DBitmap} if {@link window.DrawMode} == 1). Null on failure
  * @param {string} image_path path to image file (or music file if image is embedded)
+ * @worker
  */
 function on_get_album_art_done(handle, art_id, image, image_path) { }
 
@@ -195,6 +196,7 @@ function on_library_items_removed(handle_list) { }
  * @param {number} cookie the return value from the {@link gdi.LoadImageAsync} call
  * @param {?GdiBitmap} image (or {@link D2DBitmap} if {@link window.DrawMode} == 1). Null on failure (invalid path/not an image)
  * @param {string} image_path the path that was originally supplied to {@link gdi.LoadImageAsync}
+ * @worker
  */
 function on_load_image_done(cookie, image, image_path) { }
 
@@ -643,6 +645,7 @@ function on_panel_mouse_leave(name) { }
  * @param {string} path of downloaded file
  * @param {boolean} success 
  * @param {string} error_text
+ * @worker
  */
 function on_download_file_done(path, success, error_text) { }
 
@@ -664,6 +667,7 @@ function on_download_file_done(path, success, error_text) { }
  *     console.log("callback task_id", task_id);
  *     console.log(handle_list.Count);
  * }
+ * @worker
  */
 function on_locations_added(task_id, handles) { }
 
@@ -676,6 +680,7 @@ function on_locations_added(task_id, handles) { }
  * @param {string} response_text
  * @param {number} status HTTP response code
  * @param {string} response_headers stringified JSON containing response headers
+ * @worker
  */
 function on_http_request_done(task_id, success, response_text, status, response_headers) { }
 
@@ -688,26 +693,23 @@ function on_http_request_done(task_id, success, response_text, status, response_
 function PerformanceObserverCallback (entries, observer) { }
 
 /**
- * Called when a process started by utils.RunCmdAsync finishes, fails to start, or times out.<br>
- *
- * @callback on_run_cmd_async_done
+ * Called when a process started by utils.RunCmdAsync finishes, fails to start, or times out.
+ * 
+ * @memberof module:Callbacks
  *
  * @param {number} task_id
  * Task id returned by utils.RunCmdAsync.<br>
- *
  * @param {boolean} success
  * true only when the process was started, finished before timeout, and exited with code 0.<br>
  * false when the process fails to start, times out, or exits with a non-zero code.<br>
- *
  * @param {number} exit_code
  * Process exit code.<br>
  * If the process timed out, this value is 0xFFFFFFFF.<br>
- *
  * @param {string} stdout
  * Captured standard output.<br>
- *
  * @param {string} stderr
  * Captured standard error and internal error messages.<br>
+ * @worker
  */
 function on_run_cmd_async_done(task_id, success, exit_code, stdout, stderr) { }
 
@@ -719,5 +721,6 @@ function on_run_cmd_async_done(task_id, success, exit_code, stdout, stderr) { }
  * @param {boolean} success true if the calculation completed successfully
  * @param {number} size Total folder size in bytes. 0 if the operation failed.
  * @param {string} error_text Error message, or an empty string on success
+ * @worker
  */
 function on_get_folder_size_done(task_id, success, size, error_text) { }

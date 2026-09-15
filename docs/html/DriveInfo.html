@@ -69,6 +69,9 @@
     </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
         <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="DriveInfo">
         <a class="nav-link nav-page-link active" href="DriveInfo.html">DriveInfo</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -77,6 +80,15 @@
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Enumerator">
         <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
         <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
@@ -132,14 +144,14 @@
     </div><div class="nav-page-tree" data-nav-root="HtmlNode">
         <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><div class="nav-page-tree" data-nav-root="IUIHacks">
-        <a class="nav-link nav-page-link" href="IUIHacks.html">IUIHacks</a>
-        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
         <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="MenuObject">
         <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="PanelObject">
         <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
@@ -150,11 +162,20 @@
     </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
         <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="RunResult">
         <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
         <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
@@ -183,14 +204,14 @@
     <article class="api-item" id="DriveInfo" data-kind="class" data-name="driveinfo">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-class">class</span></div>
+                <div class="eyebrow"><span class="kind kind-class">class</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability cloneable" title="Instances can be sent through postMessage() using structured clone.">CLONEABLE</span></div>
                 <h2><a class="anchor" href="#DriveInfo">DriveInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2672</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3036</div>
         </header>
         
         
-        <div class="description"><p>Object returned by <a href="utils.html#GetDriveInfo">utils.GetDriveInfo</a>.<br></p></div>
+        <div class="description"><p>Object returned by <a href="utils.html#GetDriveInfo">utils.GetDriveInfo</a>.<br> Property names and semantics follow the Microsoft Scripting Runtime <code>Drive</code> object where applicable.</p></div>
         
         
         
@@ -204,10 +225,10 @@
     <article class="api-item" id="AvailableSpace" data-kind="property" data-name="availablespace">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#AvailableSpace">AvailableSpace</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2754</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3147</div>
         </header>
         <pre class="signature"><code>AvailableSpace: number = 0</code></pre>
         
@@ -225,10 +246,10 @@
     <article class="api-item" id="DriveLetter" data-kind="property" data-name="driveletter">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#DriveLetter">DriveLetter</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2688</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3065</div>
         </header>
         <pre class="signature"><code>DriveLetter: string = &quot;&quot;</code></pre>
         
@@ -246,10 +267,10 @@
     <article class="api-item" id="DriveType" data-kind="property" data-name="drivetype">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#DriveType">DriveType</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2696</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3074</div>
         </header>
         <pre class="signature"><code>DriveType: number = 0</code></pre>
         
@@ -267,10 +288,10 @@
     <article class="api-item" id="FileSystem" data-kind="property" data-name="filesystem">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#FileSystem">FileSystem</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2722</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3102</div>
         </header>
         <pre class="signature"><code>FileSystem: string = &quot;&quot;</code></pre>
         
@@ -288,10 +309,10 @@
     <article class="api-item" id="FreeSpace" data-kind="property" data-name="freespace">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#FreeSpace">FreeSpace</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2746</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3138</div>
         </header>
         <pre class="signature"><code>FreeSpace: number = 0</code></pre>
         
@@ -309,10 +330,10 @@
     <article class="api-item" id="IsReady" data-kind="property" data-name="isready">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#IsReady">IsReady</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2706</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3085</div>
         </header>
         <pre class="signature"><code>IsReady: boolean = false</code></pre>
         
@@ -327,17 +348,38 @@
         
     </article>
 
-    <article class="api-item" id="Root" data-kind="property" data-name="root">
+    <article class="api-item" id="Path" data-kind="property" data-name="path">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
-                <h2><a class="anchor" href="#Root">Root</a></h2>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#Path">Path</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2680</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3047</div>
         </header>
-        <pre class="signature"><code>Root: string = &quot;&quot;</code></pre>
+        <pre class="signature"><code>Path: string = &quot;&quot;</code></pre>
         
-        <div class="description"><p>Drive root path, for example <code>C:\</code>.</p></div>
+        <div class="description"><p>Drive path, for example <code>C:</code>. For a mapped network drive this is still the mapped drive path.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="RootFolder" data-kind="property" data-name="rootfolder">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#RootFolder">RootFolder</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3056</div>
+        </header>
+        <pre class="signature"><code>RootFolder: string = &quot;&quot;</code></pre>
+        
+        <div class="description"><p>Root folder path, for example <code>C:\</code>.</p></div>
         
         
         
@@ -351,10 +393,10 @@
     <article class="api-item" id="SerialNumber" data-kind="property" data-name="serialnumber">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#SerialNumber">SerialNumber</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2730</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3111</div>
         </header>
         <pre class="signature"><code>SerialNumber: number = 0</code></pre>
         
@@ -369,13 +411,34 @@
         
     </article>
 
+    <article class="api-item" id="ShareName" data-kind="property" data-name="sharename">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#ShareName">ShareName</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3120</div>
+        </header>
+        <pre class="signature"><code>ShareName: string = &quot;&quot;</code></pre>
+        
+        <div class="description"><p>Share name for a network drive, or an empty string for a local drive or when unavailable.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
     <article class="api-item" id="TotalSize" data-kind="property" data-name="totalsize">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#TotalSize">TotalSize</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2738</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3129</div>
         </header>
         <pre class="signature"><code>TotalSize: number = 0</code></pre>
         
@@ -393,14 +456,14 @@
     <article class="api-item" id="VolumeName" data-kind="property" data-name="volumename">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#VolumeName">VolumeName</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2714</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3094</div>
         </header>
         <pre class="signature"><code>VolumeName: string = &quot;&quot;</code></pre>
         
-        <div class="description"><p>Volume label, or an empty string if unavailable.</p></div>
+        <div class="description"><p>Volume label, or an empty string if unavailable. Writable for ready volumes.</p></div>
         
         
         

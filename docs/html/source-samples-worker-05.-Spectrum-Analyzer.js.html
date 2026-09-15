@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>05. Spectrum Analyzer.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/worker/05. Spectrum Analyzer.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="Worker.html#Worker">Worker</a></div>
+        </header>
+        <pre class="source-code"><code><span class="tok-string">&#39;use strict&#39;</span>;
+
+<span class="tok-comment">// Worker sample 5: Spectrum Analyzer</span>
+<span class="tok-comment">// Demonstrates: the same real-time audio/FFT/render pipeline on the panel thread</span>
+<span class="tok-comment">// and in a Worker, offscreen GDI/Direct2D rendering and transferable Worker frames.</span>
+<span class="tok-comment">// Use the in-panel switches to compare execution mode, rendering backend, FFT size and rate limiting.</span>
+<span class="tok-comment">// Only one completed frame is allowed at a time; the next frame starts after the previous one is painted.</span>
+<span class="tok-comment">//</span>
+<span class="tok-comment">// GDI can show a higher maximum FPS than D2D in this sample. That is expected for this</span>
+<span class="tok-comment">// particular workload: every frame creates a small offscreen bitmap, draws only simple</span>
+<span class="tok-comment">// rectangles/lines, finishes it immediately and transfers it. GDI performs that tiny job</span>
+<span class="tok-comment">// directly in CPU memory, while D2D has additional per-frame resource, command-submission</span>
+<span class="tok-comment">// and synchronization overhead, so the fixed overhead can dominate. This is not a general</span>
+<span class="tok-comment">// GDI-vs-D2D benchmark; D2D benefits more from retained/reused resources and larger drawing</span>
+<span class="tok-comment">// or composition workloads. The difference is easiest to see in Max mode.</span>
+
+<span class="tok-keyword">let</span> engineMode = <span class="tok-string">&#39;worker&#39;</span>;
+<span class="tok-keyword">let</span> drawMode = <span class="tok-number">1</span>;
+<span class="tok-keyword">let</span> fftSize = <span class="tok-number">4096</span>;
+<span class="tok-keyword">let</span> rateMode = <span class="tok-string">&#39;max&#39;</span>;
+window.DrawMode = drawMode;
+
+<span class="tok-keyword">const</span> TARGET_FPS = <span class="tok-number">120</span>;
+<span class="tok-keyword">const</span> FRAME_TIME = <span class="tok-number">1000</span> / TARGET_FPS;
+<span class="tok-keyword">const</span> BAR_WIDTH = <span class="tok-number">5</span>;
+<span class="tok-keyword">const</span> BAR_GAP = <span class="tok-number">2</span>;
+<span class="tok-keyword">const</span> BAR_COLOUR = <span class="tok-number">0xFF42A5F5</span>;
+<span class="tok-keyword">const</span> SPECTRUM_TOP = <span class="tok-number">92</span>;
+
+<span class="tok-keyword">const</span> DT_LEFT = <span class="tok-number">0x0000</span>;
+<span class="tok-keyword">const</span> DT_CENTER = <span class="tok-number">0x0001</span>;
+<span class="tok-keyword">const</span> DT_VCENTER = <span class="tok-number">0x0004</span>;
+<span class="tok-keyword">const</span> DT_SINGLELINE = <span class="tok-number">0x0020</span>;
+<span class="tok-keyword">const</span> DT_NOPREFIX = <span class="tok-number">0x0800</span>;
+<span class="tok-keyword">const</span> DT_END_ELLIPSIS = <span class="tok-number">0x8000</span>;
+<span class="tok-keyword">let</span> INFO_FONT = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">12</span>);
+<span class="tok-keyword">let</span> switchingRenderer = <span class="tok-literal">false</span>;
+
+<span class="tok-keyword">let</span> frame = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> timing = { audio: <span class="tok-number">0</span>, analysis: <span class="tok-number">0</span>, render: <span class="tok-number">0</span>, total: <span class="tok-number">0</span>, interval: <span class="tok-number">0</span> };
+<span class="tok-keyword">let</span> frameSequence = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> lastPaintedSequence = -<span class="tok-number">1</span>;
+<span class="tok-keyword">let</span> frameFps = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> paintFps = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> frameCount = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> paintCount = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> frameWindowStart = performance.now();
+<span class="tok-keyword">let</span> paintWindowStart = frameWindowStart;
+
+<span class="tok-keyword">function</span> createSpectrumEngine(currentFftSize) {
+    <span class="tok-keyword">const</span> FFT_SIZE = currentFftSize;
+    <span class="tok-keyword">const</span> FLOOR_LEVEL = <span class="tok-number">0.04</span>;
+    <span class="tok-keyword">const</span> IDLE_LEVEL = <span class="tok-number">0.015</span>;
+    <span class="tok-keyword">let</span> width = <span class="tok-number">1</span>;
+    <span class="tok-keyword">let</span> height = <span class="tok-number">1</span>;
+    <span class="tok-keyword">let</span> bandCount = <span class="tok-number">1</span>;
+    <span class="tok-keyword">let</span> bandSampleRate = <span class="tok-number">0</span>;
+    <span class="tok-keyword">let</span> windowLength = <span class="tok-number">0</span>;
+
+    <span class="tok-keyword">const</span> real = <span class="tok-keyword">new</span> Float64Array(FFT_SIZE);
+    <span class="tok-keyword">const</span> imag = <span class="tok-keyword">new</span> Float64Array(FFT_SIZE);
+    <span class="tok-keyword">const</span> magnitudes = <span class="tok-keyword">new</span> Float64Array((FFT_SIZE &gt;&gt; <span class="tok-number">1</span>) + <span class="tok-number">1</span>);
+    <span class="tok-keyword">let</span> targets = <span class="tok-keyword">new</span> Float64Array(<span class="tok-number">1</span>);
+    <span class="tok-keyword">let</span> smoothed = <span class="tok-keyword">new</span> Float64Array(<span class="tok-number">1</span>);
+    <span class="tok-keyword">let</span> peaks = <span class="tok-keyword">new</span> Float64Array(<span class="tok-number">1</span>);
+    <span class="tok-keyword">let</span> peakVelocity = <span class="tok-keyword">new</span> Float64Array(<span class="tok-number">1</span>);
+    <span class="tok-keyword">let</span> peakHold = <span class="tok-keyword">new</span> Float64Array(<span class="tok-number">1</span>);
+    <span class="tok-keyword">let</span> windowCoefficients = <span class="tok-keyword">new</span> Float64Array(<span class="tok-number">1</span>);
+    <span class="tok-keyword">let</span> bandStart = <span class="tok-keyword">new</span> Int32Array(<span class="tok-number">1</span>);
+    <span class="tok-keyword">let</span> bandEnd = <span class="tok-keyword">new</span> Int32Array(<span class="tok-number">1</span>);
+
+    <span class="tok-keyword">function</span> ensureWindow(length) {
+        length = Math.max(<span class="tok-number">1</span>, Math.min(FFT_SIZE, length | <span class="tok-number">0</span>));
+        <span class="tok-keyword">if</span> (length === windowLength) <span class="tok-keyword">return</span> windowCoefficients;
+
+        windowLength = length;
+        windowCoefficients = <span class="tok-keyword">new</span> Float64Array(length);
+        <span class="tok-keyword">if</span> (length === <span class="tok-number">1</span>) {
+            windowCoefficients[<span class="tok-number">0</span>] = <span class="tok-number">1</span>;
+        } <span class="tok-keyword">else</span> {
+            <span class="tok-keyword">const</span> scale = <span class="tok-number">2</span> * Math.PI / (length - <span class="tok-number">1</span>);
+            <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; length; ++i) {
+                windowCoefficients[i] = <span class="tok-number">0.5</span> - <span class="tok-number">0.5</span> * Math.cos(scale * i);
+            }
+        }
+        <span class="tok-keyword">return</span> windowCoefficients;
+    }
+
+    <span class="tok-keyword">function</span> fft() {
+        <span class="tok-keyword">let</span> j = <span class="tok-number">0</span>;
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">1</span>; i &lt; FFT_SIZE; ++i) {
+            <span class="tok-keyword">let</span> bit = FFT_SIZE &gt;&gt; <span class="tok-number">1</span>;
+            <span class="tok-keyword">while</span> (j &amp; bit) {
+                j ^= bit;
+                bit &gt;&gt;= <span class="tok-number">1</span>;
+            }
+            j ^= bit;
+            <span class="tok-keyword">if</span> (i &lt; j) {
+                <span class="tok-keyword">let</span> temp = real[i]; real[i] = real[j]; real[j] = temp;
+                temp = imag[i]; imag[i] = imag[j]; imag[j] = temp;
+            }
+        }
+
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> length = <span class="tok-number">2</span>; length &lt;= FFT_SIZE; length &lt;&lt;= <span class="tok-number">1</span>) {
+            <span class="tok-keyword">const</span> angle = -<span class="tok-number">2</span> * Math.PI / length;
+            <span class="tok-keyword">const</span> wLenCos = Math.cos(angle);
+            <span class="tok-keyword">const</span> wLenSin = Math.sin(angle);
+
+            <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; FFT_SIZE; i += length) {
+                <span class="tok-keyword">let</span> wCos = <span class="tok-number">1</span>;
+                <span class="tok-keyword">let</span> wSin = <span class="tok-number">0</span>;
+                <span class="tok-keyword">const</span> half = length &gt;&gt; <span class="tok-number">1</span>;
+
+                <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> k = <span class="tok-number">0</span>; k &lt; half; ++k) {
+                    <span class="tok-keyword">const</span> even = i + k;
+                    <span class="tok-keyword">const</span> odd = even + half;
+                    <span class="tok-keyword">const</span> oddReal = real[odd] * wCos - imag[odd] * wSin;
+                    <span class="tok-keyword">const</span> oddImag = real[odd] * wSin + imag[odd] * wCos;
+                    <span class="tok-keyword">const</span> evenReal = real[even];
+                    <span class="tok-keyword">const</span> evenImag = imag[even];
+
+                    real[even] = evenReal + oddReal;
+                    imag[even] = evenImag + oddImag;
+                    real[odd] = evenReal - oddReal;
+                    imag[odd] = evenImag - oddImag;
+
+                    <span class="tok-keyword">const</span> nextCos = wCos * wLenCos - wSin * wLenSin;
+                    wSin = wCos * wLenSin + wSin * wLenCos;
+                    wCos = nextCos;
+                }
+            }
+        }
+    }
+
+    <span class="tok-keyword">function</span> configureLayout() {
+        <span class="tok-keyword">const</span> count = Math.max(<span class="tok-number">1</span>, Math.floor((width + BAR_GAP) / (BAR_WIDTH + BAR_GAP)));
+        <span class="tok-keyword">if</span> (count === bandCount) <span class="tok-keyword">return</span>;
+
+        bandCount = count;
+        targets = <span class="tok-keyword">new</span> Float64Array(bandCount);
+        smoothed = <span class="tok-keyword">new</span> Float64Array(bandCount);
+        peaks = <span class="tok-keyword">new</span> Float64Array(bandCount);
+        peakVelocity = <span class="tok-keyword">new</span> Float64Array(bandCount);
+        peakHold = <span class="tok-keyword">new</span> Float64Array(bandCount);
+        bandStart = <span class="tok-keyword">new</span> Int32Array(bandCount);
+        bandEnd = <span class="tok-keyword">new</span> Int32Array(bandCount);
+        bandSampleRate = <span class="tok-number">0</span>;
+    }
+
+    <span class="tok-keyword">function</span> configureBands(sampleRate) {
+        <span class="tok-keyword">if</span> (sampleRate === bandSampleRate) <span class="tok-keyword">return</span>;
+        bandSampleRate = sampleRate;
+
+        <span class="tok-keyword">const</span> nyquist = sampleRate * <span class="tok-number">0.5</span>;
+        <span class="tok-keyword">const</span> minFrequency = Math.min(<span class="tok-number">30</span>, nyquist * <span class="tok-number">0.5</span>);
+        <span class="tok-keyword">const</span> maxFrequency = Math.max(minFrequency + <span class="tok-number">1</span>, Math.min(<span class="tok-number">16000</span>, nyquist * <span class="tok-number">0.96</span>));
+        <span class="tok-keyword">const</span> ratio = maxFrequency / minFrequency;
+        <span class="tok-keyword">const</span> half = FFT_SIZE &gt;&gt; <span class="tok-number">1</span>;
+
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> band = <span class="tok-number">0</span>; band &lt; bandCount; ++band) {
+            <span class="tok-keyword">const</span> t0 = band / bandCount;
+            <span class="tok-keyword">const</span> t1 = (band + <span class="tok-number">1</span>) / bandCount;
+            <span class="tok-keyword">const</span> f0 = minFrequency * Math.pow(ratio, t0);
+            <span class="tok-keyword">const</span> f1 = minFrequency * Math.pow(ratio, t1);
+            <span class="tok-keyword">const</span> bin0 = Math.max(<span class="tok-number">1</span>, Math.floor(f0 * FFT_SIZE / sampleRate));
+            <span class="tok-keyword">const</span> bin1 = Math.min(half + <span class="tok-number">1</span>, Math.max(bin0 + <span class="tok-number">1</span>, Math.ceil(f1 * FFT_SIZE / sampleRate)));
+            bandStart[band] = bin0;
+            bandEnd[band] = bin1;
+        }
+    }
+
+    <span class="tok-keyword">function</span> updateDynamics(dt, floorLevel) {
+        <span class="tok-keyword">const</span> attack = <span class="tok-number">1</span> - Math.exp(-dt / <span class="tok-number">0.018</span>);
+        <span class="tok-keyword">const</span> release = <span class="tok-number">1</span> - Math.exp(-dt / <span class="tok-number">0.095</span>);
+        <span class="tok-keyword">const</span> gravity = <span class="tok-number">3.0</span>;
+        <span class="tok-keyword">const</span> peakHoldSeconds = <span class="tok-number">0.10</span>;
+
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; bandCount; ++i) {
+            <span class="tok-keyword">const</span> target = targets[i];
+            <span class="tok-keyword">let</span> level = smoothed[i] || <span class="tok-number">0</span>;
+            level += (target - level) * (target &gt;= level ? attack : release);
+            level = Math.max(floorLevel, Math.min(<span class="tok-number">0.98</span>, level));
+            smoothed[i] = level;
+
+            <span class="tok-keyword">let</span> peak = peaks[i] || <span class="tok-number">0</span>;
+            <span class="tok-keyword">if</span> (level &gt;= peak) {
+                peak = level;
+                peakVelocity[i] = <span class="tok-number">0</span>;
+                peakHold[i] = peakHoldSeconds;
+            } <span class="tok-keyword">else</span> {
+                <span class="tok-keyword">const</span> hold = Math.max(<span class="tok-number">0</span>, (peakHold[i] || <span class="tok-number">0</span>) - dt);
+                peakHold[i] = hold;
+                <span class="tok-keyword">if</span> (hold &lt;= <span class="tok-number">0</span>) {
+                    <span class="tok-keyword">let</span> velocity = (peakVelocity[i] || <span class="tok-number">0</span>) + gravity * dt;
+                    peak -= velocity * dt;
+                    peakVelocity[i] = velocity;
+                    <span class="tok-keyword">if</span> (peak &lt;= level) {
+                        peak = level;
+                        peakVelocity[i] = <span class="tok-number">0</span>;
+                    }
+                }
+            }
+            peaks[i] = Math.max(level, Math.min(<span class="tok-number">0.98</span>, peak));
+        }
+    }
+
+    <span class="tok-keyword">function</span> analyse(chunk, dt) {
+        <span class="tok-keyword">if</span> (!chunk || !chunk.ChannelCount || !chunk.SampleRate || !chunk.SampleCount) {
+            targets.fill(IDLE_LEVEL);
+            updateDynamics(dt, IDLE_LEVEL);
+            <span class="tok-keyword">return</span>;
+        }
+
+        <span class="tok-comment">// Data materializes the PCM samples as a JS array. Read it once for this frame</span>
+        <span class="tok-comment">// and then work only with that local array inside the hot loops below.</span>
+        <span class="tok-keyword">const</span> data = chunk.Data;
+        <span class="tok-keyword">if</span> (!data || !data.length) {
+            targets.fill(IDLE_LEVEL);
+            updateDynamics(dt, IDLE_LEVEL);
+            <span class="tok-keyword">return</span>;
+        }
+
+        <span class="tok-keyword">const</span> channels = chunk.ChannelCount;
+        <span class="tok-keyword">const</span> sampleRate = chunk.SampleRate;
+        <span class="tok-keyword">const</span> sampleCount = chunk.SampleCount;
+        <span class="tok-keyword">const</span> used = Math.min(sampleCount, FFT_SIZE);
+        <span class="tok-keyword">const</span> firstFrame = sampleCount - used;
+        <span class="tok-keyword">const</span> window = ensureWindow(used);
+
+        real.fill(<span class="tok-number">0</span>);
+        imag.fill(<span class="tok-number">0</span>);
+
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> frameIndex = <span class="tok-number">0</span>; frameIndex &lt; used; ++frameIndex) {
+            <span class="tok-keyword">let</span> mono = <span class="tok-number">0</span>;
+            <span class="tok-keyword">const</span> sourceOffset = (firstFrame + frameIndex) * channels;
+            <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> channel = <span class="tok-number">0</span>; channel &lt; channels; ++channel) {
+                mono += Number(data[sourceOffset + channel]) || <span class="tok-number">0</span>;
+            }
+            mono /= channels;
+            real[frameIndex] = mono * window[frameIndex];
+        }
+
+        fft();
+        configureBands(sampleRate);
+
+        <span class="tok-keyword">const</span> coherentGain = used &gt; <span class="tok-number">1</span> ? <span class="tok-number">4</span> / used : <span class="tok-number">1</span>;
+        <span class="tok-keyword">const</span> half = FFT_SIZE &gt;&gt; <span class="tok-number">1</span>;
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> bin = <span class="tok-number">0</span>; bin &lt;= half; ++bin) {
+            magnitudes[bin] = Math.hypot(real[bin], imag[bin]) * coherentGain;
+        }
+
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> band = <span class="tok-number">0</span>; band &lt; bandCount; ++band) {
+            <span class="tok-keyword">let</span> energy = <span class="tok-number">0</span>;
+            <span class="tok-keyword">const</span> bin0 = bandStart[band];
+            <span class="tok-keyword">const</span> bin1 = bandEnd[band];
+
+            <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> bin = bin0; bin &lt; bin1; ++bin) {
+                <span class="tok-keyword">const</span> magnitude = magnitudes[bin];
+                energy += magnitude * magnitude;
+            }
+
+            <span class="tok-keyword">const</span> rms = Math.sqrt(energy / Math.max(<span class="tok-number">1</span>, bin1 - bin0));
+            <span class="tok-keyword">const</span> db = <span class="tok-number">20</span> * Math.log10(Math.max(<span class="tok-number">1e-12</span>, rms));
+            <span class="tok-keyword">const</span> level = Math.max(<span class="tok-number">0</span>, Math.min(<span class="tok-number">1</span>, (db + <span class="tok-number">72</span>) / <span class="tok-number">72</span>));
+            targets[band] = Math.max(FLOOR_LEVEL, Math.min(<span class="tok-number">0.98</span>, level));
+        }
+
+        updateDynamics(dt, FLOOR_LEVEL);
+    }
+
+    <span class="tok-keyword">function</span> renderSpectrum() {
+        <span class="tok-keyword">const</span> bitmap = gdi.CreateImage(width, height);
+        <span class="tok-keyword">const</span> gr = bitmap.GetGraphics();
+
+        gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, width, height, <span class="tok-number">0xFF101319</span>);
+
+        <span class="tok-keyword">const</span> plotTop = Math.min(Math.max(<span class="tok-number">0</span>, SPECTRUM_TOP), Math.max(<span class="tok-number">0</span>, height - <span class="tok-number">1</span>));
+        <span class="tok-keyword">const</span> marginBottom = Math.max(<span class="tok-number">8</span>, Math.round(height * <span class="tok-number">0.04</span>));
+        <span class="tok-keyword">const</span> plotBottom = Math.max(plotTop + <span class="tok-number">1</span>, height - marginBottom);
+        <span class="tok-keyword">const</span> usableHeight = Math.max(<span class="tok-number">1</span>, plotBottom - plotTop);
+        <span class="tok-keyword">const</span> barWidth = Math.min(BAR_WIDTH, width);
+        <span class="tok-keyword">const</span> totalWidth = bandCount * barWidth + (bandCount - <span class="tok-number">1</span>) * BAR_GAP;
+        <span class="tok-keyword">const</span> firstX = Math.floor((width - totalWidth) * <span class="tok-number">0.5</span>);
+
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; bandCount; ++i) {
+            <span class="tok-keyword">const</span> x = firstX + i * (barWidth + BAR_GAP);
+            <span class="tok-keyword">const</span> barHeight = Math.max(<span class="tok-number">1</span>, smoothed[i] * usableHeight);
+            <span class="tok-keyword">const</span> y = plotBottom - barHeight;
+
+            gr.FillSolidRect(x, y, barWidth, barHeight, BAR_COLOUR);
+
+            <span class="tok-keyword">const</span> peakY = plotBottom - peaks[i] * usableHeight;
+            gr.DrawLine(x, peakY, x + barWidth - <span class="tok-number">1</span>, peakY, <span class="tok-number">1</span>, <span class="tok-number">0xFFE8EDF2</span>);
+        }
+
+        bitmap.ReleaseGraphics(gr);
+        <span class="tok-keyword">return</span> bitmap;
+    }
+
+    <span class="tok-keyword">return</span> {
+        configure: <span class="tok-keyword">function</span> (newWidth, newHeight) {
+            width = Math.max(<span class="tok-number">1</span>, newWidth | <span class="tok-number">0</span>);
+            height = Math.max(<span class="tok-number">1</span>, newHeight | <span class="tok-number">0</span>);
+            configureLayout();
+        },
+
+        renderFrame: <span class="tok-keyword">function</span> (interval) {
+            <span class="tok-keyword">const</span> dt = Math.max(<span class="tok-number">0.001</span>, Math.min(<span class="tok-number">0.2</span>, (interval &gt; <span class="tok-number">0</span> ? interval : FRAME_TIME) / <span class="tok-number">1000</span>));
+            <span class="tok-keyword">const</span> audioStart = performance.now();
+            <span class="tok-keyword">const</span> chunk = fb.GetAudioChunk(<span class="tok-number">0.06</span>, -<span class="tok-number">0.03</span>);
+            <span class="tok-keyword">const</span> audioEnd = performance.now();
+
+            analyse(chunk, dt);
+            <span class="tok-keyword">const</span> analysisEnd = performance.now();
+
+            <span class="tok-keyword">const</span> bitmap = renderSpectrum();
+            <span class="tok-keyword">const</span> renderEnd = performance.now();
+
+            <span class="tok-keyword">return</span> {
+                bitmap,
+                timing: {
+                    audio: audioEnd - audioStart,
+                    analysis: analysisEnd - audioEnd,
+                    render: renderEnd - analysisEnd,
+                    total: renderEnd - audioStart,
+                    interval
+                }
+            };
+        }
+    };
+}
+
+<span class="tok-keyword">function</span> makeWorkerSource(currentFftSize, uncapped) {
+    <span class="tok-keyword">return</span> String.raw<span class="tok-string">`
+&#39;use strict&#39;;
+
+const TARGET_FPS = ${TARGET_FPS};
+const FRAME_TIME = 1000 / TARGET_FPS;
+const UNCAPPED = ${uncapped};
+const BAR_WIDTH = ${BAR_WIDTH};
+const BAR_GAP = ${BAR_GAP};
+const BAR_COLOUR = ${BAR_COLOUR};
+const SPECTRUM_TOP = ${SPECTRUM_TOP};
+const createSpectrumEngine = ${createSpectrumEngine.toString()};
+const engine = createSpectrumEngine(${currentFftSize});
+
+let configured = false;
+let waitingForPanel = false;
+let timerId = 0;
+let lastFrameStart = 0;
+let sequence = 0;
+
+function scheduleNext() {
+    if (!configured || waitingForPanel || timerId) return;
+    const elapsed = performance.now() - lastFrameStart;
+    const delay = UNCAPPED ? 0 : Math.max(0, FRAME_TIME - elapsed);
+
+    timerId = setTimeout(function () {
+        timerId = 0;
+        renderFrame();
+    }, delay);
+}
+
+function renderFrame() {
+    if (!configured || waitingForPanel) return;
+
+    const frameStart = performance.now();
+    const interval = lastFrameStart ? frameStart - lastFrameStart : 0;
+    lastFrameStart = frameStart;
+
+    const result = engine.renderFrame(interval);
+
+    waitingForPanel = true;
+    postMessage({
+        bitmap: result.bitmap,
+        sequence: ++sequence,
+        timing: result.timing
+    }, [result.bitmap]);
+}
+
+onmessage = function (event) {
+    const message = event.data;
+
+    if (message.type === &#39;config&#39;) {
+        engine.configure(message.width, message.height);
+        configured = true;
+        scheduleNext();
+        return;
+    }
+
+    if (message.type === &#39;next&#39;) {
+        waitingForPanel = false;
+        scheduleNext();
+    }
+};
+`</span>;
+}
+
+<span class="tok-keyword">let</span> worker = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> mainEngine = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> mainTimerId = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> mainLastFrameStart = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> mainSequence = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> mainWaitingForPaint = <span class="tok-literal">false</span>;
+
+<span class="tok-keyword">function</span> resetCounters() {
+    frame = <span class="tok-literal">null</span>;
+    timing = { audio: <span class="tok-number">0</span>, analysis: <span class="tok-number">0</span>, render: <span class="tok-number">0</span>, total: <span class="tok-number">0</span>, interval: <span class="tok-number">0</span> };
+    frameSequence = <span class="tok-number">0</span>;
+    lastPaintedSequence = -<span class="tok-number">1</span>;
+    frameFps = <span class="tok-number">0</span>;
+    paintFps = <span class="tok-number">0</span>;
+    frameCount = <span class="tok-number">0</span>;
+    paintCount = <span class="tok-number">0</span>;
+    frameWindowStart = performance.now();
+    paintWindowStart = frameWindowStart;
+}
+
+<span class="tok-keyword">function</span> recordFrame(bitmap, sequence, nextTiming) {
+    frame = bitmap;
+    frameSequence = sequence;
+    timing = nextTiming;
+
+    ++frameCount;
+    <span class="tok-keyword">const</span> now = performance.now();
+    <span class="tok-keyword">const</span> elapsed = now - frameWindowStart;
+    <span class="tok-keyword">if</span> (elapsed &gt;= <span class="tok-number">500</span>) {
+        frameFps = frameCount * <span class="tok-number">1000</span> / elapsed;
+        frameCount = <span class="tok-number">0</span>;
+        frameWindowStart = now;
+    }
+
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> stopEngine() {
+    <span class="tok-keyword">if</span> (worker) {
+        worker.terminate();
+        worker = <span class="tok-literal">null</span>;
+    }
+    <span class="tok-keyword">if</span> (mainTimerId) {
+        clearTimeout(mainTimerId);
+        mainTimerId = <span class="tok-number">0</span>;
+    }
+    mainEngine = <span class="tok-literal">null</span>;
+    mainLastFrameStart = <span class="tok-number">0</span>;
+    mainSequence = <span class="tok-number">0</span>;
+    mainWaitingForPaint = <span class="tok-literal">false</span>;
+}
+
+<span class="tok-keyword">function</span> scheduleMain() {
+    <span class="tok-keyword">if</span> (engineMode !== <span class="tok-string">&#39;main&#39;</span> || !mainEngine || mainTimerId || mainWaitingForPaint) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">const</span> elapsed = performance.now() - mainLastFrameStart;
+    <span class="tok-keyword">const</span> delay = rateMode === <span class="tok-string">&#39;max&#39;</span> ? <span class="tok-number">0</span> : Math.max(<span class="tok-number">0</span>, FRAME_TIME - elapsed);
+
+    mainTimerId = setTimeout(<span class="tok-keyword">function</span> () {
+        mainTimerId = <span class="tok-number">0</span>;
+        renderMainFrame();
+    }, delay);
+}
+
+<span class="tok-keyword">function</span> renderMainFrame() {
+    <span class="tok-keyword">if</span> (engineMode !== <span class="tok-string">&#39;main&#39;</span> || !mainEngine) <span class="tok-keyword">return</span>;
+
+    <span class="tok-keyword">const</span> frameStart = performance.now();
+    <span class="tok-keyword">const</span> interval = mainLastFrameStart ? frameStart - mainLastFrameStart : <span class="tok-number">0</span>;
+    mainLastFrameStart = frameStart;
+
+    <span class="tok-keyword">const</span> result = mainEngine.renderFrame(interval);
+    mainWaitingForPaint = <span class="tok-literal">true</span>;
+    recordFrame(result.bitmap, ++mainSequence, result.timing);
+}
+
+<span class="tok-keyword">function</span> startEngine() {
+    switchingRenderer = <span class="tok-literal">true</span>;
+    stopEngine();
+    resetCounters();
+
+    <span class="tok-keyword">try</span> {
+        window.DrawMode = drawMode;
+        INFO_FONT = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">12</span>);
+    } <span class="tok-keyword">finally</span> {
+        switchingRenderer = <span class="tok-literal">false</span>;
+    }
+
+    <span class="tok-keyword">if</span> (engineMode === <span class="tok-string">&#39;worker&#39;</span>) {
+        <span class="tok-keyword">const</span> currentWorker = <span class="tok-keyword">new</span> Worker(makeWorkerSource(fftSize, rateMode === <span class="tok-string">&#39;max&#39;</span>), <span class="tok-string">&#39;spectrum-analyzer&#39;</span>);
+        worker = currentWorker;
+
+        currentWorker.onmessage = <span class="tok-keyword">function</span> (event) {
+            <span class="tok-keyword">if</span> (worker !== currentWorker) <span class="tok-keyword">return</span>;
+            recordFrame(event.data.bitmap, event.data.sequence, event.data.timing);
+        };
+
+        currentWorker.onerror = <span class="tok-keyword">function</span> (event) {
+            <span class="tok-keyword">if</span> (worker === currentWorker) console.log(<span class="tok-string">`Worker error: ${event.message}`</span>);
+        };
+    } <span class="tok-keyword">else</span> {
+        mainEngine = createSpectrumEngine(fftSize);
+    }
+
+    sendSize();
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> sendSize() {
+    <span class="tok-keyword">const</span> width = Math.max(<span class="tok-number">1</span>, window.Width);
+    <span class="tok-keyword">const</span> height = Math.max(<span class="tok-number">1</span>, window.Height);
+
+    <span class="tok-keyword">if</span> (engineMode === <span class="tok-string">&#39;worker&#39;</span>) {
+        <span class="tok-keyword">if</span> (!worker) <span class="tok-keyword">return</span>;
+        worker.postMessage({ type: <span class="tok-string">&#39;config&#39;</span>, width, height });
+    } <span class="tok-keyword">else</span> {
+        <span class="tok-keyword">if</span> (!mainEngine) <span class="tok-keyword">return</span>;
+        mainEngine.configure(width, height);
+        scheduleMain();
+    }
+}
+
+<span class="tok-keyword">function</span> on_size() {
+    sendSize();
+}
+
+<span class="tok-keyword">const</span> SETTINGS_Y = <span class="tok-number">42</span>;
+<span class="tok-keyword">const</span> SETTINGS_H = <span class="tok-number">24</span>;
+<span class="tok-keyword">const</span> ENGINE_MAIN = { x: <span class="tok-number">66</span>, y: SETTINGS_Y, w: <span class="tok-number">50</span>, h: SETTINGS_H };
+<span class="tok-keyword">const</span> ENGINE_WORKER = { x: <span class="tok-number">120</span>, y: SETTINGS_Y, w: <span class="tok-number">62</span>, h: SETTINGS_H };
+<span class="tok-keyword">const</span> RENDERER_GDI = { x: <span class="tok-number">272</span>, y: SETTINGS_Y, w: <span class="tok-number">46</span>, h: SETTINGS_H };
+<span class="tok-keyword">const</span> RENDERER_D2D = { x: <span class="tok-number">322</span>, y: SETTINGS_Y, w: <span class="tok-number">52</span>, h: SETTINGS_H };
+<span class="tok-keyword">const</span> FFT_1024 = { x: <span class="tok-number">426</span>, y: SETTINGS_Y, w: <span class="tok-number">52</span>, h: SETTINGS_H };
+<span class="tok-keyword">const</span> FFT_2048 = { x: <span class="tok-number">482</span>, y: SETTINGS_Y, w: <span class="tok-number">52</span>, h: SETTINGS_H };
+<span class="tok-keyword">const</span> FFT_4096 = { x: <span class="tok-number">538</span>, y: SETTINGS_Y, w: <span class="tok-number">52</span>, h: SETTINGS_H };
+<span class="tok-keyword">const</span> RATE_120 = { x: <span class="tok-number">644</span>, y: SETTINGS_Y, w: <span class="tok-number">46</span>, h: SETTINGS_H };
+<span class="tok-keyword">const</span> RATE_MAX = { x: <span class="tok-number">694</span>, y: SETTINGS_Y, w: <span class="tok-number">46</span>, h: SETTINGS_H };
+
+<span class="tok-keyword">function</span> contains(rect, x, y) {
+    <span class="tok-keyword">return</span> x &gt;= rect.x &amp;&amp; x &lt; rect.x + rect.w &amp;&amp; y &gt;= rect.y &amp;&amp; y &lt; rect.y + rect.h;
+}
+
+<span class="tok-keyword">function</span> drawChoice(gr, rect, text, selected) {
+    gr.FillSolidRect(rect.x, rect.y, rect.w, rect.h, selected ? <span class="tok-number">0xFF355D7A</span> : <span class="tok-number">0xFF20262E</span>);
+    gr.DrawText(text, INFO_FONT, selected ? <span class="tok-number">0xFFFFFFFF</span> : <span class="tok-number">0xFFB7C1CB</span>,
+        rect.x, rect.y, rect.w, rect.h, DT_CENTER | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_up(x, y) {
+    <span class="tok-keyword">let</span> nextEngine = engineMode;
+    <span class="tok-keyword">let</span> nextMode = drawMode;
+    <span class="tok-keyword">let</span> nextFft = fftSize;
+    <span class="tok-keyword">let</span> nextRate = rateMode;
+
+    <span class="tok-keyword">if</span> (contains(ENGINE_MAIN, x, y)) nextEngine = <span class="tok-string">&#39;main&#39;</span>;
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (contains(ENGINE_WORKER, x, y)) nextEngine = <span class="tok-string">&#39;worker&#39;</span>;
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (contains(RENDERER_GDI, x, y)) nextMode = <span class="tok-number">0</span>;
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (contains(RENDERER_D2D, x, y)) nextMode = <span class="tok-number">1</span>;
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (contains(FFT_1024, x, y)) nextFft = <span class="tok-number">1024</span>;
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (contains(FFT_2048, x, y)) nextFft = <span class="tok-number">2048</span>;
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (contains(FFT_4096, x, y)) nextFft = <span class="tok-number">4096</span>;
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (contains(RATE_120, x, y)) nextRate = <span class="tok-string">&#39;120&#39;</span>;
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (contains(RATE_MAX, x, y)) nextRate = <span class="tok-string">&#39;max&#39;</span>;
+    <span class="tok-keyword">else</span> <span class="tok-keyword">return</span>;
+
+    <span class="tok-keyword">if</span> (nextEngine === engineMode &amp;&amp; nextMode === drawMode &amp;&amp; nextFft === fftSize &amp;&amp; nextRate === rateMode) <span class="tok-keyword">return</span>;
+    engineMode = nextEngine;
+    drawMode = nextMode;
+    fftSize = nextFft;
+    rateMode = nextRate;
+    startEngine();
+}
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, window.Width, window.Height, <span class="tok-number">0xFF101319</span>);
+    <span class="tok-keyword">if</span> (switchingRenderer) <span class="tok-keyword">return</span>;
+
+    <span class="tok-keyword">if</span> (frame) {
+        gr.DrawImage(frame, <span class="tok-number">0</span>, <span class="tok-number">0</span>, window.Width, window.Height, <span class="tok-number">0</span>, <span class="tok-number">0</span>, frame.Width, frame.Height);
+
+        <span class="tok-keyword">if</span> (frameSequence !== lastPaintedSequence) {
+            lastPaintedSequence = frameSequence;
+            ++paintCount;
+            <span class="tok-keyword">const</span> now = performance.now();
+            <span class="tok-keyword">const</span> elapsed = now - paintWindowStart;
+            <span class="tok-keyword">if</span> (elapsed &gt;= <span class="tok-number">500</span>) {
+                paintFps = paintCount * <span class="tok-number">1000</span> / elapsed;
+                paintCount = <span class="tok-number">0</span>;
+                paintWindowStart = now;
+            }
+
+            <span class="tok-keyword">if</span> (engineMode === <span class="tok-string">&#39;worker&#39;</span>) {
+                <span class="tok-keyword">if</span> (worker) worker.postMessage({ type: <span class="tok-string">&#39;next&#39;</span> });
+            } <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (mainWaitingForPaint) {
+                mainWaitingForPaint = <span class="tok-literal">false</span>;
+                scheduleMain();
+            }
+        }
+    }
+
+    <span class="tok-keyword">const</span> engine = engineMode === <span class="tok-string">&#39;worker&#39;</span> ? <span class="tok-string">&#39;Worker&#39;</span> : <span class="tok-string">&#39;Main&#39;</span>;
+    <span class="tok-keyword">const</span> backend = drawMode === <span class="tok-number">1</span> ? <span class="tok-string">&#39;D2D&#39;</span> : <span class="tok-string">&#39;GDI&#39;</span>;
+    <span class="tok-keyword">const</span> overlay = <span class="tok-string">`${engine}/${backend}   frame ${frameFps.toFixed(1)} FPS   paint ${paintFps.toFixed(1)} FPS   interval ${timing.interval.toFixed(1)} ms   audio ${timing.audio.toFixed(2)}   FFT ${timing.analysis.toFixed(2)}   render ${timing.render.toFixed(2)}   total ${timing.total.toFixed(2)} ms`</span>;
+    gr.FillSolidRect(<span class="tok-number">8</span>, <span class="tok-number">8</span>, Math.max(<span class="tok-number">1</span>, Math.min(window.Width - <span class="tok-number">16</span>, <span class="tok-number">760</span>)), <span class="tok-number">28</span>, <span class="tok-number">0xC0101319</span>);
+    gr.DrawText(overlay, INFO_FONT, <span class="tok-number">0xFFE8EDF2</span>, <span class="tok-number">14</span>, <span class="tok-number">8</span>, Math.max(<span class="tok-number">1</span>, window.Width - <span class="tok-number">28</span>), <span class="tok-number">28</span>,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+
+    gr.DrawText(<span class="tok-string">&#39;Engine:&#39;</span>, INFO_FONT, <span class="tok-number">0xFFB7C1CB</span>, <span class="tok-number">14</span>, SETTINGS_Y, <span class="tok-number">50</span>, SETTINGS_H,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+    drawChoice(gr, ENGINE_MAIN, <span class="tok-string">&#39;Main&#39;</span>, engineMode === <span class="tok-string">&#39;main&#39;</span>);
+    drawChoice(gr, ENGINE_WORKER, <span class="tok-string">&#39;Worker&#39;</span>, engineMode === <span class="tok-string">&#39;worker&#39;</span>);
+
+    gr.DrawText(<span class="tok-string">&#39;Renderer:&#39;</span>, INFO_FONT, <span class="tok-number">0xFFB7C1CB</span>, <span class="tok-number">196</span>, SETTINGS_Y, <span class="tok-number">74</span>, SETTINGS_H,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+    drawChoice(gr, RENDERER_GDI, <span class="tok-string">&#39;GDI&#39;</span>, drawMode === <span class="tok-number">0</span>);
+    drawChoice(gr, RENDERER_D2D, <span class="tok-string">&#39;D2D&#39;</span>, drawMode === <span class="tok-number">1</span>);
+
+    gr.DrawText(<span class="tok-string">&#39;FFT:&#39;</span>, INFO_FONT, <span class="tok-number">0xFFB7C1CB</span>, <span class="tok-number">388</span>, SETTINGS_Y, <span class="tok-number">34</span>, SETTINGS_H,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+    drawChoice(gr, FFT_1024, <span class="tok-string">&#39;1024&#39;</span>, fftSize === <span class="tok-number">1024</span>);
+    drawChoice(gr, FFT_2048, <span class="tok-string">&#39;2048&#39;</span>, fftSize === <span class="tok-number">2048</span>);
+    drawChoice(gr, FFT_4096, <span class="tok-string">&#39;4096&#39;</span>, fftSize === <span class="tok-number">4096</span>);
+
+    gr.DrawText(<span class="tok-string">&#39;Rate:&#39;</span>, INFO_FONT, <span class="tok-number">0xFFB7C1CB</span>, <span class="tok-number">604</span>, SETTINGS_Y, <span class="tok-number">36</span>, SETTINGS_H,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+    drawChoice(gr, RATE_120, <span class="tok-string">&#39;120&#39;</span>, rateMode === <span class="tok-string">&#39;120&#39;</span>);
+    drawChoice(gr, RATE_MAX, <span class="tok-string">&#39;Max&#39;</span>, rateMode === <span class="tok-string">&#39;max&#39;</span>);
+
+    gr.DrawText(<span class="tok-string">&#39;Tip: for finer timer granularity, enable &quot;Use high-resolution timers&quot; in Advanced &gt; Tools &gt; JSplitter &gt; Performance (restart required).&#39;</span>,
+        INFO_FONT, <span class="tok-number">0xFF7E8A96</span>, <span class="tok-number">14</span>, <span class="tok-number">68</span>, Math.max(<span class="tok-number">1</span>, window.Width - <span class="tok-number">28</span>), <span class="tok-number">18</span>,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_END_ELLIPSIS | DT_NOPREFIX);
+}
+
+startEngine();
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

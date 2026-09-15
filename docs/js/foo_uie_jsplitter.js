@@ -3,17 +3,17 @@
  */
 
 /**
- * Evaluates the script in file.<br>
+ * Evaluates JavaScript from a file in the current panel or Worker realm.<br>
  * Similar to `eval({@link utils.ReadTextFile}(path))`, but provides more features:<br>
- * - Has `include guards` - script won't be evaluated a second time if it was evaluated before in the same panel.<br>
- * - Has script caching - script file will be read only once from filesystem (even if it is included from different panels).<br>
+ * - Has `include guards` - a file is evaluated only once per realm unless `always_evaluate` is used.<br>
+ * - Panel-side includes also use compiled-script caching; Worker includes keep their own per-Worker include guard.<br>
  * - Has better error reporting.<br>
  * <br>
- * Note: when the relative `path` is used it will be searched in the following paths:<br>
- * - `${current_package_path}/scripts/${path}`, if the panel uses a package script.<br>
- * - `${current_script_path}/${path}`, if the script is not a top-level `in-memory` script.<br>
- * - `${fb.ComponentPath}/${path}`, otherwise.
- *
+ * Relative paths are resolved from the currently executing script file first when available.<br>
+ * For a file-backed Worker, this makes its own directory the natural root for nested relative `include()` calls.<br>
+ * Configured panel/package script roots are then considered where applicable.<br>
+ * `${fb.ComponentPath}` is the final fallback.
+ * @worker
  * @param {string} path Absolute or relative path to JavaScript file.
  * @param {object=} [options=undefined]
  * @param {boolean=} [options.always_evaluate=false] If true, evaluates the script even if it was included before.
@@ -24,31 +24,30 @@
 function include(path, options) { }
 
 /**
- * See {@link https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearTimeout}.
  *
  * @param {number} timerID
+ * @worker
  */
 function clearTimeout(timerID) { } // (void)
 
 /**
- * See {@link https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearInterval}.
  *
  * @param {number} timerID
+ * @worker
  */
 function clearInterval(timerID) { } // (void)
 
 /**
- * See {@link https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval}.
  *
  * @param {function()} func
  * @param {number} delay
  * @param {...*} func_args
  * @return {number}
+ * @worker
  */
 function setInterval(func, delay, ...func_args) { } // (uint)
 
 /**
- * See {@link https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout}.
  * 
  * @sourceFile ../../component/samples/basic/Timer.js
  * 
@@ -57,6 +56,7 @@ function setInterval(func, delay, ...func_args) { } // (uint)
  * @param {...*} func_args
  * @return {number}
  * 
+ * @worker
  */
 function setTimeout(func, delay, ...func_args) { } // (uint)
 
@@ -169,12 +169,13 @@ function Enumerator(active_x_object) {
 
 /**
  * @namespace
+ * @worker
  */
 let console = {
     /**
-     * See {@link https://developer.mozilla.org/en-US/docs/Web/API/Console/log}
      *
      * @param {...*} var_args
+     * @worker
      */
     log: function (...var_args) { }, // (void)
 
@@ -183,6 +184,8 @@ let console = {
      *  
      * @param {boolean=} [with_timestamp=false] To return console lines with timestamps or not
      * @return {Array<string>} 
+     * @worker
+     * @mainthread
      */
     GetLines: function (with_timestamp) { },
 
@@ -190,6 +193,8 @@ let console = {
      * Clears console backlog<br>
      * NOTE: Limitation of foobar2000 versions < 2.0: clears only JSplitter's internal backlog.
      * 
+     * @worker
+     * @mainthread
      */
     ClearBacklog: function () { },
 };
@@ -198,6 +203,7 @@ let console = {
  * Functions for controlling foobar2000 and accessing it's data.
  *
  * @namespace
+ * @worker
  */
 let fb = {
     /**
@@ -205,6 +211,8 @@ let fb = {
      *
      * @example
      * fb.AlwaysOnTop = !fb.AlwaysOnTop; // Toggles the current value.
+     * @worker
+     * @mainthread
      */
     AlwaysOnTop: undefined, //(boolean) (read, write)
 
@@ -214,10 +222,15 @@ let fb = {
      *
      * @example
      * console.log(fb.ComponentPath); // C:\Users\User\AppData\Roaming\foobar2000\user-components\foo_uie_jsplitter\
+     * @worker
      */
     ComponentPath: undefined, // (string) (read)
 
-    /** @type {boolean} */
+    /**
+     * @type {boolean}
+     * @worker
+     * @mainthread
+     */
     CursorFollowPlayback: undefined, // (boolean) (read, write)
 
     /** 
@@ -226,28 +239,39 @@ let fb = {
      * When a custom volume control is active, you can not use fb.Volume and must use fb.VolumeUp() / fb.VolumeDown() / fb.VolumeMute().
      * @type {boolean}
      * @readonly
+     * @worker
+     * @mainthread
      */
     CustomVolume: undefined, // (int) (read)
 
     /**
      * @type {string}
      * @readonly
+     * @worker
      */
     FoobarPath: undefined, // (string) (read)
 
     /**
      * @type {boolean}
      * @readonly
+     * @worker
+     * @mainthread
      */
     IsPaused: undefined, // (boolean) (read)
 
     /**
      * @type {boolean}
      * @readonly
+     * @worker
+     * @mainthread
      */
     IsPlaying: undefined, // (boolean) (read)
 
-    /** @type {boolean} */
+    /**
+     * @type {boolean}
+     * @worker
+     * @mainthread
+     */
     PlaybackFollowCursor: undefined, // (boolean) (read, write)
 
     /**
@@ -259,6 +283,8 @@ let fb = {
      *
      * @example
      * console.log(Math.round(fb.PlaybackLength)); // 323
+     * @worker
+     * @mainthread
      */
     PlaybackLength: undefined, // (double) (read)
 
@@ -267,12 +293,15 @@ let fb = {
      *
      * @example
      * fb.PlaybackTime = 60; // Jumps to the 1 minute mark.
+     * @worker
+     * @mainthread
      */
     PlaybackTime: undefined, // (double) (read, write)
 
     /**
      * @type {string}
      * @readonly
+     * @worker
      */
     ProfilePath: undefined, // (string) (read)
 
@@ -284,6 +313,8 @@ let fb = {
      * See {@link module:Flags.ReplayGainMode ReplayGainMode} enum
      *
      * @type {number}
+     * @worker
+     * @mainthread
      */
     ReplaygainMode: undefined, // (uint) (read, write)
 
@@ -292,6 +323,8 @@ let fb = {
      *
      * @example
      * fb.StopAfterCurrent = !fb.StopAfterCurrent; // Toggles the current value.
+     * @worker
+     * @mainthread
      */
     StopAfterCurrent: undefined, // (boolean) (read, write)
 
@@ -302,6 +335,7 @@ let fb = {
     * @example
     * console.log(fb.Version)
     * // 1.4.1
+     * @worker
     */
     Version: undefined,
 
@@ -310,11 +344,15 @@ let fb = {
      *
      * @example
      * fb.Volume = 0; // Sets the volume to max. -100 is the minimum.
+     * @worker
+     * @mainthread
      */
     Volume: undefined, // (float) (read, write),
 
     /**
      * @return {FbUiSelectionHolder}
+     * @worker
+     * @mainthread
      */
     AcquireUiSelectionHolder: function () { }, // (FbUiSelectionHolder)
 
@@ -341,6 +379,8 @@ let fb = {
      *     console.log("callback task_id", task_id);
      *     console.log(handle_list.Count);
      * }
+     * @worker
+     * @mainthread
      */
     AddLocationsAsync: function (locations) { }, // (uint)
 
@@ -349,12 +389,16 @@ let fb = {
      * with {@link fb.GetClipboardContents}.
      *
      * @return {boolean}
+     * @worker
+     * @mainthread
      */
     CheckClipboardContents: function () { }, // (boolean)
 
     /**
      * Clears active playlist.<br>
      * If you wish to clear a specific playlist, use {@link plman.ClearPlaylist}(playlistIndex).
+     * @worker
+     * @mainthread
      */
     ClearPlaylist: function () { }, // (void)
 
@@ -377,6 +421,8 @@ let fb = {
      *        plman.RemovePlaylistSelection(ap);
      *    }
      *  }
+     * @worker
+     * @mainthread
      */
     CopyHandleListToClipboard: function (handle_list) { }, // (boolean)
 
@@ -394,6 +440,7 @@ let fb = {
      * @deprecated
      * 
      * @return {FbMetadbHandleList}
+     * @worker
      */
     CreateHandleList: function () { }, // (FbMetadbHandleList)
 
@@ -407,6 +454,7 @@ let fb = {
     /**
      * @param {string=} [name=''] Will be shown in console when used with {@link FbProfiler#Print Print} method.
      * @return {FbProfiler}
+     * @worker
      */
     CreateProfiler: function (name) { }, // (FbProfiler) [name]
 
@@ -451,13 +499,18 @@ let fb = {
      */
     DoDragDrop: function (window_id, handle_list, effect, options) { }, // (uint),
 
-    /** @method */
+    /**
+     * @method
+     * @worker
+     * @mainthread
+     */
     Exit: function () { }, // (void)
 
     /**
      * For future development purposes (e.g. verbose console output)
      * 
      * @method
+     * @worker
      */
     EnableAdvancedLogging: function () { }, 
 
@@ -482,6 +535,8 @@ let fb = {
      * menuCommands
      *     .filter(command => command.Checked)
      *     .forEach(({ FullPath }) => console.log(FullPath));
+     * @worker
+     * @mainthread
      */
     EnumerateMainMenuCommands: function () { }, 
 
@@ -489,15 +544,21 @@ let fb = {
      * Returns array of active DSPs names.
      * 
      * @return {Array<string>} 
+     * @worker
+     * @mainthread
      */
     GetActiveDSPs: function () { }, 
     
     /**
+     * Returns PCM data from the foobar2000 visualisation stream.
+     * The stream is created lazily. A negative <code>offset</code> requests data before the current visualisation time; JSplitter automatically maintains the native backlog required for that offset. The first stream initialization may briefly synchronize with the foobar2000 main thread.
+     *
      * @param {number} requested_length 
      * @param {number=} [offset=0] 
      * @return {FbAudioChunk}
      * 
      * @sourceFile ../../component/samples/complete/js/vu_meter.js
+     * @worker
      */
     GetAudioChunk: function (requested_length, offset) { },
 
@@ -522,6 +583,8 @@ let fb = {
      *    }
      *    return true;
      * }
+     * @worker
+     * @mainthread
      */
     GetClipboardContents: function (window_id) { }, // (FbMetadbHandleList)
 
@@ -551,12 +614,16 @@ let fb = {
      * //         "name": "7.1 upmix"
      * //     }
      * // ]
+     * @worker
+     * @mainthread
      */
     GetDSPPresets: function () { },
 
     /**
      * @param {boolean=} [force=true] When true, it will use the first item of the active playlist if it is unable to get the focus item.
      * @return {FbMetadbHandle}
+     * @worker
+     * @mainthread
      */
     GetFocusItem: function (force) { }, // (FbMetadbHandle) [force]
 
@@ -564,6 +631,8 @@ let fb = {
      * Returns all Media Library items as a handle list.
      *
      * @return {FbMetadbHandleList}
+     * @worker
+     * @mainthread
      */
     GetLibraryItems: function () { }, // (FbMetadbHandleList)
 
@@ -580,6 +649,8 @@ let fb = {
      * // path of the now playing item is "D:\Music\Albums\Artist\Some Album\Some Song.flac"
      * let handle = fb.GetNowPlaying();
      * console.log(fb.GetLibraryRelativePath(handle)); // Albums\Artist\Some Album\Some Song.flac*
+     * @worker
+     * @mainthread
      */
     GetLibraryRelativePath: function (handle) { }, // (string)
 
@@ -589,6 +660,8 @@ let fb = {
      * Configured library folders that contain no library items cannot be returned.
      *
      * @return {Array<string>} Media Library root paths
+     * @worker
+     * @mainthread
      */
     GetLibraryRoots: function () { },
 
@@ -596,6 +669,8 @@ let fb = {
      * Get handle of the now playing track.
      *
      * @return {?FbMetadbHandle} null, if nothing is being played.
+     * @worker
+     * @mainthread
      */
     GetNowPlaying: function () { }, // (FbMetadbHandle)
 
@@ -647,6 +722,7 @@ let fb = {
      * // indicating the currently configured output device.
      * // If the configured output device is unavailable, the array
      * // may contain no active item.
+     * @worker
      */
     GetOutputDevices: function () { }, // (string)
 
@@ -663,6 +739,7 @@ let fb = {
      *
      * @example
      * let b = fb.GetQueryItems(fb.GetLibraryItems(), "rating IS 5");
+     * @worker
      */
     GetQueryItems: function (handle_list, query) { }, // (FbMetadbHandleList)
 
@@ -670,6 +747,8 @@ let fb = {
      * Gets now playing or selected item according to settings in "File>Preferences>Display>Selection viewers".
      *
      * @return {?FbMetadbHandle}
+     * @worker
+     * @mainthread
      */
     GetSelection: function () { }, // (FbMetadbHandle)
 
@@ -678,6 +757,8 @@ let fb = {
      *
      * @param {number=} [flags=0] 1 - no now playing
      * @return {FbMetadbHandleList}
+     * @worker
+     * @mainthread
      */
     GetSelections: function (flags) { }, // (FbMetadbHandleList) //[flags]
 
@@ -692,11 +773,15 @@ let fb = {
      *     4 - now_playing<br>
      *     5 - keyboard_shortcut_list<br>
      *     6 - media_library_viewer
+     * @worker
+     * @mainthread
      */
     GetSelectionType: function () { }, // (uint)
 
     /**
      * @return {boolean}
+     * @worker
+     * @mainthread
      */
     IsLibraryEnabled: function () { }, // (boolean)
 
@@ -704,6 +789,7 @@ let fb = {
      * Returns true if the library has already been initialized by this time
      * 
      * @return {boolean}
+     * @worker
      */
     IsLibraryInitialised: function () { }, // (boolean)
     
@@ -715,6 +801,8 @@ let fb = {
      *
      * @example
      * fb.RunMainMenuCommand("Playback/Scrobble Tracks"); // available with foo_scrobble
+     * @worker
+     * @mainthread
      */
     IsMainMenuCommandChecked: function (command) { }, // (boolean)
 
@@ -725,6 +813,8 @@ let fb = {
      * @example
      * let np = fb.GetNowplaying();
      * console.log(fb.IsMetadbInMediaLibrary(np)); // If false, playing track is not in Media Library.
+     * @worker
+     * @mainthread
      */
     IsMetadbInMediaLibrary: function (handle) { }, // (boolean)
 
@@ -735,22 +825,46 @@ let fb = {
      */
     LoadPlaylist: function () { }, // (void)
 
-    /** @method */
+    /**
+     * @method
+     * @worker
+     * @mainthread
+     */
     Next: function () { }, // (void)
 
-    /** @method */
+    /**
+     * @method
+     * @worker
+     * @mainthread
+     */
     Pause: function () { }, // (void)
 
-    /** @method */
+    /**
+     * @method
+     * @worker
+     * @mainthread
+     */
     Play: function () { }, // (void)
 
-    /** @method */
+    /**
+     * @method
+     * @worker
+     * @mainthread
+     */
     PlayOrPause: function () { }, // (void)
 
-    /** @method */
+    /**
+     * @method
+     * @worker
+     * @mainthread
+     */
     Prev: function () { }, // (void)
 
-    /** @method */
+    /**
+     * @method
+     * @worker
+     * @mainthread
+     */
     Random: function () { }, // (void)
 
     /**
@@ -767,10 +881,16 @@ let fb = {
      * @param {number} id
      * @param {string} name
      * @param {string=} [description='']
+     * @worker
+     * @mainthread
      */
     RegisterMainMenuCommand: function (id, name, description) { },
 
-    /** @method */
+    /**
+     * @method
+     * @worker
+     * @mainthread
+     */
     Restart: function () { }, // (void)
 
     /**
@@ -823,6 +943,8 @@ let fb = {
      * let arr = JSON.parse(str);
      * let idx; // find the required DSP from `arr` and assign it to `idx`
      * fb.SetDSPPreset(idx);
+     * @worker
+     * @mainthread
      */
     SetDSPPreset: function (idx) { }, // (void)
 
@@ -841,6 +963,8 @@ let fb = {
      * let arr = JSON.parse(str);
      * // Assuming same list from above, switch output to the last device.
      * fb.SetOutputDevice(arr[4].output_id, arr[4].device_id);
+     * @worker
+     * @mainthread
      */
     SetOutputDevice: function (output, device) { }, // (void)
 
@@ -848,6 +972,8 @@ let fb = {
      * Shows foobar2000 console window or close it (if show=false).
      *
      * @param {boolean=} [show=true]
+     * @worker
+     * @mainthread
      */
     ShowConsole: function (show) { }, // (void)
 
@@ -855,6 +981,8 @@ let fb = {
      * Opens the Library>Search window populated with the query you set.
      *
      * @param {string} query
+     * @worker
+     * @mainthread
      */
     ShowLibrarySearchUI: function (query) { }, // (void)
 
@@ -862,24 +990,38 @@ let fb = {
      * Opens the image viewer built in to `foobar2000` and shows image file specified by image_path
      *
      * @param {string} image_path path of image file
+     * @worker
+     * @mainthread
      */
     ShowPictureViewer(image_path) { }, // (void)
 
     /**
      * Opens the "Playlist Search" window
+     * @worker
+     * @mainthread
      */
     ShowPlaylistSearchUI: function () { }, // (void)
 
     /**
      * @param {string} message
      * @param {string=} [title='JSplitter']
+     * @worker
+     * @mainthread
      */
     ShowPopupMessage: function (message, title) { }, // (void) [, title]
 
-    /** @method */
+    /**
+     * @method
+     * @worker
+     * @mainthread
+     */
     ShowPreferences: function () { }, // (void)
 
-    /** @method */
+    /**
+     * @method
+     * @worker
+     * @mainthread
+     */
     Stop: function () { }, // (void)
 
     /**
@@ -889,6 +1031,7 @@ let fb = {
      *
      * @param {string} expression
      * @return {FbTitleFormat}
+     * @worker
      */
     TitleFormat: function (expression) { }, // (FbTitleFormat)
 
@@ -898,23 +1041,38 @@ let fb = {
      * Related methods: {@link fb.RegisterMainMenuCommand}
      *
      * @param {number} id
+     * @worker
+     * @mainthread
      */
     UnregisterMainMenuCommand: function (id, name, description) { },
 
-    /** @method */
+    /**
+     * @method
+     * @worker
+     * @mainthread
+     */
     VolumeDown: function () { }, // (void)
 
-    /** @method */
+    /**
+     * @method
+     * @worker
+     * @mainthread
+     */
     VolumeMute: function () { }, // (void)
 
-    /** @method */
+    /**
+     * @method
+     * @worker
+     * @mainthread
+     */
     VolumeUp: function () { }, // (void)
 };
 
 /**
- * Functions for working with graphics. Most of them are wrappers for Gdi and GdiPlus methods.
+ * DrawMode-aware graphics facade. With <code>window.DrawMode == 0</code> its resource factories use GDI+; with <code>window.DrawMode == 1</code> they create the corresponding Direct2D resources instead. A Worker uses the DrawMode captured when that Worker is created, so the same <code>gdi.*</code> calls match the parent panel graphics backend.
  *
  * @namespace
+ * @worker
  */
 let gdi = {
 
@@ -944,6 +1102,7 @@ let gdi = {
      * @return {GdiBrush} Brush object used in Draw/Fill methods
      * 
      * @sourceFile ../../component/samples/basic/Brushes.js
+     * @worker
      */
     Brush: function (type, param1, param2, param3, param4) { }, // (GdiBrush)
 
@@ -951,6 +1110,7 @@ let gdi = {
      * @param {number} w
      * @param {number} h
      * @return {GdiBitmap}
+     * @worker
      */
     CreateImage: function (w, h) { }, // (GdiBitmap)
 
@@ -969,6 +1129,7 @@ let gdi = {
      * @returns {GdiBitmap} null if was an error (for example pixelData array length is not suitable for the specified parameters)
      * 
      * @sourceFile ../../component/samples/basic/CreateImageFromPixelData.js
+     * @worker
      */
     CreateImageFromPixelData: function(pixelData, width, height, format = "bgra32") { }, // (GdiBitmap)
 
@@ -982,6 +1143,7 @@ let gdi = {
      * @param {number} size_px See {@link module:Helpers.Point2Pixel Point2Pixel} function for conversions
      * @param {number=} [style=0] See {@link module:Flags.FontStyle FontStyle} flags
      * @return {?GdiFont} null, if font is not present.
+     * @worker
      */
     Font: function (name, size_px, style) { }, // (GdiFont) [, style]
 
@@ -996,6 +1158,7 @@ let gdi = {
      *
      * @example
      * let img = gdi.Image('e:\\images folder\\my_image.png');
+     * @worker
      */
     Image: function (path) { }, // (GdiBitmap)
 
@@ -1007,6 +1170,7 @@ let gdi = {
      * @return {number} a unique id, which is used in {@link module:Callbacks.on_load_image_done on_load_image_done}.
      *
      * @sourceFile ../../component/samples/basic/LoadImageAsync.js
+     * @worker
      */
     LoadImageAsync: function (window_id, path) { }, // (uint)
 
@@ -1019,6 +1183,7 @@ let gdi = {
      * @return {Promise.<?GdiBitmap>}
      *
      * @sourceFile ../../component/samples/basic/LoadImageAsyncV2.js
+     * @worker
      */
     LoadImageAsyncV2: function (window_id, path) { },
 
@@ -1039,6 +1204,7 @@ let gdi = {
      *     gr.DrawImage(original, 0, 0, original.Width, original.Height, 0, 0, original.Width, original.Height);
      *     gr.DrawImage(large, original.Width, 0, large.Width, large.Height, 0, 0, large.Width, large.Height);
      * }
+     * @worker
      */
     LoadSVG: function (path_or_xml, max_width) { }
 };
@@ -1047,6 +1213,7 @@ let gdi = {
  * Functions for managing foobar2000 playlists.
  *
  * @namespace
+ * @worker
  */
 let plman = {
 
@@ -1060,6 +1227,8 @@ let plman = {
      *
      * @example
      * plman.ActivePlaylist = 1; // Switches to 2nd playlist.
+     * @worker
+     * @mainthread
      */
     ActivePlaylist: undefined, // (int) (read, write)
 
@@ -1074,6 +1243,8 @@ let plman = {
      * 6 - Shuffle (folders)
      *
      * @type {number}
+     * @worker
+     * @mainthread
      */
     PlaybackOrder: undefined, // (uint) (read, write)
 
@@ -1085,12 +1256,16 @@ let plman = {
      *
      * @example
      * console.log(plman.PlayingPlaylist);
+     * @worker
+     * @mainthread
      */
     PlayingPlaylist: undefined, // (int) (read, write)
 
     /**
      * @type {number}
      * @readonly
+     * @worker
+     * @mainthread
      */
     PlaylistCount: undefined, // (uint) (read)
 
@@ -1099,6 +1274,7 @@ let plman = {
      *
      * @type {FbPlaylistRecycler}
      * @readonly
+     * @worker
      */
     PlaylistRecycler: undefined, // (FbPlaylistRecycler) (read)
 
@@ -1115,6 +1291,8 @@ let plman = {
      * plman.AddLocations(plman.ActivePlaylist, ["e:\\1.mp3"]);
      * // This operation is asynchronous, so any code in your script directly
      * // after this line will run immediately without waiting for the job to finish.
+     * @worker
+     * @mainthread
      */
     AddLocations: function (playlistIndex, paths, select) { }, // (void) [, select]
 
@@ -1123,6 +1301,8 @@ let plman = {
      *
      * @example
      * plman.ClearPlaylist(plman.PlayingPlaylist);
+     * @worker
+     * @mainthread
      */
     ClearPlaylist: function (playlistIndex) { }, // (void)
 
@@ -1131,6 +1311,8 @@ let plman = {
      *
      * @example
      * plman.ClearPlaylistSelection(plman.ActivePlaylist);
+     * @worker
+     * @mainthread
      */
     ClearPlaylistSelection: function (playlistIndex) { }, // (void)
 
@@ -1141,6 +1323,8 @@ let plman = {
      * @param {string=} [sort=''] Title formatting pattern for sorting.
      * @param {number=} [flags=0] 1 - when set, will keep the autoplaylist sorted and prevent user from reordering it.
      * @return {number} Index of the created playlist.
+     * @worker
+     * @mainthread
      */
     CreateAutoPlaylist: function (playlistIndex, name, query, sort, flags) { }, // (uint) [, sort][, flags]
 
@@ -1156,6 +1340,8 @@ let plman = {
      * @example
      * // Create a new playlist named "my favourites", which is put at the end.
      * plman.CreatePlaylist(plman.PlaylistCount, 'my favourites');
+     * @worker
+     * @mainthread
      */
     CreatePlaylist: function (playlistIndex, name) { }, // (uint)
 
@@ -1166,6 +1352,8 @@ let plman = {
      * @param {number} playlistIndex
      * @param {?string=} [name] A name for the new playlist. If the name is "" or undefined, the name of the source playlist will be used.
      * @return {number} Index of the created playlist.
+     * @worker
+     * @mainthread
      */
     DuplicatePlaylist: function (playlistIndex, name) { }, // (uint)
 
@@ -1174,6 +1362,8 @@ let plman = {
      *
      * @param {number} playlistIndex
      * @param {number} playlistItemIndex
+     * @worker
+     * @mainthread
      */
     EnsurePlaylistItemVisible: function (playlistIndex, playlistItemIndex) { }, // (void)
 
@@ -1183,6 +1373,8 @@ let plman = {
      * @param {number} playlistIndex
      * @param {number} playlistItemIndex
      * @return {boolean} -1 on failure.
+     * @worker
+     * @mainthread
      */
     ExecutePlaylistDefaultAction: function (playlistIndex, playlistItemIndex) { }, // (boolean)
 
@@ -1194,12 +1386,16 @@ let plman = {
      * @param {boolean} unlocked If true, locked playlists are ignored when looking for existing playlists.
      *                           If false, the playlistIndex of any playlist with the matching name will be returned.
      * @return {number} Index of the found or created playlist.
+     * @worker
+     * @mainthread
      */
     FindOrCreatePlaylist: function (name, unlocked) { }, // (uint)
 
     /**
      * @param {string} name Case insensitive.
      * @return {number} Index of the found playlist on success, -1 on failure.
+     * @worker
+     * @mainthread
      */
     FindPlaylist: function (name) { }, // (int)
 
@@ -1209,12 +1405,16 @@ let plman = {
     *
     * @example
     * console.log(plman.GetGUID(plman.ActivePlaylist));
+     * @worker
+     * @mainthread
     */
     GetGUID: function (playlistIndex) { }, // (string)
 
     /**
      * @param {string} guid String representing GUID.
      * @return {number} Index of the found playlist on success, -1 on failure.
+     * @worker
+     * @mainthread
      */
     FindByGUID: function (guid) { }, // (int)
 
@@ -1223,6 +1423,8 @@ let plman = {
      * On failure, the property {@link FbPlayingItemLocation#IsValid FbPlayingItemLocation.IsValid} will be set to false.
      *
      * @return {FbPlayingItemLocation}
+     * @worker
+     * @mainthread
      */
     GetPlayingItemLocation: function () { }, // (FbPlayingItemLocation)
 
@@ -1232,6 +1434,8 @@ let plman = {
      *
      * @example
      * let focus_item_index = plman.GetPlaylistFocusItemIndex(plman.ActivePlaylist); // 0 would be the first item
+     * @worker
+     * @mainthread
      */
     GetPlaylistFocusItemIndex: function (playlistIndex) { }, // (int)
 
@@ -1241,6 +1445,8 @@ let plman = {
      *
      * @example
      * let handle_list = plman.GetPlaylistItems(plman.PlayingPlaylist);
+     * @worker
+     * @mainthread
      */
     GetPlaylistItems: function (playlistIndex) { }, // (FbMetadbHandleList)
 
@@ -1256,12 +1462,16 @@ let plman = {
      *   - 'RenamePlaylist'<br>
      *   - 'RemovePlaylist'<br>
      *   - 'ExecuteDefaultAction'
+     * @worker
+     * @mainthread
      */
     GetPlaylistLockedActions: function (playlistIndex) { },
 
     /**
      * @param {number} playlistIndex
      * @return {?string} name of lock owner if there is a lock, null otherwise
+     * @worker
+     * @mainthread
      */
     GetPlaylistLockName: function (playlistIndex) { },
 
@@ -1271,6 +1481,8 @@ let plman = {
      *
      * @example
      * console.log(plman.GetPlaylistName(plman.ActivePlaylist));
+     * @worker
+     * @mainthread
      */
     GetPlaylistName: function (playlistIndex) { }, // (string)
 
@@ -1280,6 +1492,8 @@ let plman = {
      *
      * @example
      * let selected_indexes = plman.GetPlaylistSelectedIndexes(plman.ActivePlaylist);
+     * @worker
+     * @mainthread
      */
     GetPlaylistSelectedIndexes: function (playlistIndex) { }, // (FbMetadbHandleList)
 
@@ -1289,6 +1503,8 @@ let plman = {
      *
      * @example
      * let selected_items = plman.GetPlaylistSelectedItems(plman.ActivePlaylist);
+     * @worker
+     * @mainthread
      */
     GetPlaylistSelectedItems: function (playlistIndex) { }, // (FbMetadbHandleList)
 
@@ -1305,6 +1521,8 @@ let plman = {
      * @example <caption>Add all library tracks to end of playlist.</caption>
      * let ap = plman.ActivePlaylist;
      * plman.InsertPlaylistItems(ap, plman.PlaylistItemCount(ap), fb.GetLibraryItems());
+     * @worker
+     * @mainthread
      */
     InsertPlaylistItems: function (playlistIndex, base, handle_list, select) { }, // (void) [, select]
 
@@ -1315,17 +1533,23 @@ let plman = {
      * @param {number} base Position in playlist
      * @param {FbMetadbHandleList} handle_list Items to insert
      * @param {boolean=} [select=false] If true then inserted items will be selected
+     * @worker
+     * @mainthread
      */
     InsertPlaylistItemsFilter: function (playlistIndex, base, handle_list, select) { }, // (void) select = false
 
     /**
      * @param {number} playlistIndex
+     * @worker
+     * @mainthread
      */
     InvertSelection: function (playlistIndex) { },
     
     /**
      * @param {number} playlistIndex
      * @return {boolean}
+     * @worker
+     * @mainthread
      */
     IsAutoPlaylist: function (playlistIndex) { }, // (boolean)
 
@@ -1333,6 +1557,8 @@ let plman = {
      * @param {number} playlistIndex
      * @param {number} playlistItemIndex
      * @return {boolean}
+     * @worker
+     * @mainthread
      */
     IsPlaylistItemSelected: function (playlistIndex, playlistItemIndex) { }, // (boolean)
 
@@ -1346,6 +1572,8 @@ let plman = {
      * 
      * @param {number} playlistIndex
      * @return {boolean}
+     * @worker
+     * @mainthread
      */
     IsPlaylistLocked: function (playlistIndex) { }, // (boolean)
 
@@ -1356,6 +1584,8 @@ let plman = {
      *
      * @param {number} playlistIndex
      * @return {boolean}
+     * @worker
+     * @mainthread
      */
     IsRedoAvailable: function (playlistIndex) { }, // (void)
 
@@ -1366,6 +1596,8 @@ let plman = {
      *
      * @param {number} playlistIndex
      * @return {boolean}
+     * @worker
+     * @mainthread
      */
     IsUndoAvailable: function (playlistIndex) { }, // (void)
 
@@ -1373,6 +1605,8 @@ let plman = {
      * @param {number} from
      * @param {number} to
      * @return {boolean}
+     * @worker
+     * @mainthread
      */
     MovePlaylist: function (from, to) { }, // (boolean)
 
@@ -1384,6 +1618,8 @@ let plman = {
      * @example
      * // Moves selected items to end of playlist.
      * plman.MovePlaylistSelection(plman.ActivePlaylist, plman.PlaylistItemCount(plman.ActivePlaylist));
+     * @worker
+     * @mainthread
      */
     MovePlaylistSelection: function (playlistIndex, delta) { }, // (boolean)
 
@@ -1392,6 +1628,8 @@ let plman = {
      * 
      * @param {number} playlistIndex
      * @param {number} new_pos
+     * @worker
+     * @mainthread
      */
     MovePlaylistSelectionV2: function (playlistIndex, new_pos) { }, 
 
@@ -1401,6 +1639,8 @@ let plman = {
      *
      * @example
      * console.log(plman.PlaylistItemCount(plman.PlayingPlaylist)); // 12
+     * @worker
+     * @mainthread
      */
     PlaylistItemCount: function (playlistIndex) { }, // (uint) (read)
 
@@ -1412,6 +1652,8 @@ let plman = {
      * Related methods: {@link plman.IsRedoAvailable}, {@link plman.IsUndoAvailable}, {@link plman.Undo}, {@link plman.UndoBackup}
      *
      * @param {number} playlistIndex
+     * @worker
+     * @mainthread
      */
     Redo: function (playlistIndex) { }, // (void)
 
@@ -1422,6 +1664,8 @@ let plman = {
      *
      * @param {number} playlistIndex
      * @return {boolean}
+     * @worker
+     * @mainthread
      */
     RemovePlaylist: function (playlistIndex) { }, // (boolean)
 
@@ -1434,6 +1678,8 @@ let plman = {
      *
      * @example <Remove items that are NOT selected>
      * plman.RemovePlaylistSelection(plman.ActivePlaylist, true);
+     * @worker
+     * @mainthread
      */
     RemovePlaylistSelection: function (playlistIndex, crop) { }, // (void) [, crop]
 
@@ -1443,6 +1689,8 @@ let plman = {
      *
      * @param {number} playlistIndex
      * @return {boolean}
+     * @worker
+     * @mainthread
      */
     RemovePlaylistSwitch: function (playlistIndex) { }, // (boolean)
 
@@ -1450,6 +1698,8 @@ let plman = {
      * @param {number} playlistIndex
      * @param {string} name
      * @return {boolean}
+     * @worker
+     * @mainthread
      */
     RenamePlaylist: function (playlistIndex, name) { }, // (boolean)
 
@@ -1469,6 +1719,8 @@ let plman = {
      * @example
      * // Changes the order from [A, B, C] to [C, A, B]
      * const success = ReorderPlaylistItems(0, [2, 0, 1])
+     * @worker
+     * @mainthread
      */
     ReorderPlaylistItems: function(playlistIndex, order) { }, // (boolean)
 
@@ -1476,6 +1728,8 @@ let plman = {
      * @param {number} playlistIndex
      * @param {number} playlistItemIndex
      * @param {FbMetadbHandle|FbMetadbHandleList} handle_or_handles
+     * @worker
+     * @mainthread
      */
     ReplacePlaylistItem: function (playlistIndex, playlistItemIndex, handle_or_handles) { },
 
@@ -1485,6 +1739,8 @@ let plman = {
      * @param {number} playlistIndex
      * @param {string} query
      * @return {Array<number>} Array of selected indexes
+     * @worker
+     * @mainthread
      */
     SelectQueryItems: function (playlistIndex, query) { }, 
 
@@ -1500,6 +1756,8 @@ let plman = {
      *        plman.SetActivePlaylistContext(); // When the panel gets focus but not on every click
      *    }
      * }
+     * @worker
+     * @mainthread
      */
     SetActivePlaylistContext: function () { }, // (void)
 
@@ -1509,6 +1767,8 @@ let plman = {
      *
      * @example
      * plman.SetPlaylistFocusItem(plman.ActivePlaylist, 0);
+     * @worker
+     * @mainthread
      */
     SetPlaylistFocusItem: function (playlistIndex, playlistItemIndex) { }, // (void)
 
@@ -1520,6 +1780,8 @@ let plman = {
      * let ap = plman.ActivePlaylist;
      * let handle = plman.GetPlaylistItems(ap)[1]; // 2nd item in playlist
      * plman.SetPlaylistFocusItemByHandle(ap, handle);
+     * @worker
+     * @mainthread
      */
     SetPlaylistFocusItemByHandle: function (playlistIndex, handle) { }, // (void)
 
@@ -1537,6 +1799,8 @@ let plman = {
      *   - 'RenamePlaylist'<br>
      *   - 'RemovePlaylist'<br>
      *   - 'ExecuteDefaultAction'
+     * @worker
+     * @mainthread
     */
     SetPlaylistLockedActions: function (playlistIndex, lockedActions) { },
 
@@ -1548,6 +1812,8 @@ let plman = {
      * @example
      * // Selects first, third and fifth tracks in playlist. This does not affect other selected items.
      * plman.SetPlaylistSelection(plman.ActivePlaylist, [0, 2, 4], true);
+     * @worker
+     * @mainthread
      */
     SetPlaylistSelection: function (playlistIndex, affectedItems, state) { }, // (void)
 
@@ -1564,6 +1830,8 @@ let plman = {
      * let ap = plman.ActivePlaylist;
      * // Selects last item in playlist. This does not affect other selected items.
      * plman.SetPlaylistSelectionSingle(ap, plman.PlaylistItemCount(ap) - 1, true);
+     * @worker
+     * @mainthread
      */
     SetPlaylistSelectionSingle: function (playlistIndex, playlistItemIndex, state) { }, // (void)
 
@@ -1595,6 +1863,8 @@ let plman = {
      * @param {string} pattern Title formatting pattern to sort by. Set to "" to randomise the order of items.
      * @param {boolean=} [selected_items_only=false]
      * @return {boolean} true on success, false on failure (playlist locked etc).
+     * @worker
+     * @mainthread
      */
     SortByFormat: function (playlistIndex, pattern, selected_items_only) { }, // (boolean) [, selected_items_only]
 
@@ -1605,6 +1875,8 @@ let plman = {
      *     1 - ascending<br>
      *     -1 - descending<br>
      * @return {boolean}
+     * @worker
+     * @mainthread
      */
     SortByFormatV2: function (playlistIndex, pattern, direction) { }, // (boolean) [, direction]
 
@@ -1612,6 +1884,8 @@ let plman = {
      * @param {number=} [direction=1]
      *     1 - ascending<br>
      *     -1 - descending<br>
+     * @worker
+     * @mainthread
      */
     SortPlaylistsByName: function (direction) { }, //(void)
 
@@ -1623,6 +1897,8 @@ let plman = {
      * Related methods: {@link plman.IsRedoAvailable}, {@link plman.IsUndoAvailable}, {@link plman.Redo}, {@link plman.UndoBackup}
      *
      * @param {number} playlistIndex
+     * @worker
+     * @mainthread
      */
     Undo: function (playlistIndex) { }, // (void)
 
@@ -1633,17 +1909,23 @@ let plman = {
      * Related methods: {@link plman.IsRedoAvailable}, {@link plman.IsUndoAvailable}, {@link plman.Redo}, {@link plman.Undo}
      * 
      * @param {number} playlistIndex
+     * @worker
+     * @mainthread
      */
     UndoBackup: function (playlistIndex) { }, // (void)
 
     /**
      * @param {FbMetadbHandle} handle
+     * @worker
+     * @mainthread
      */
     AddItemToPlaybackQueue: function (handle) { }, // (void)
 
     /**
      * @param {number} playlistIndex
      * @param {number} playlistItemIndex
+     * @worker
+     * @mainthread
      */
     AddPlaylistItemToPlaybackQueue: function (playlistIndex, playlistItemIndex) { }, // (void)
 
@@ -1652,10 +1934,16 @@ let plman = {
      * @param {number} playlistIndex
      * @param {number} playlistItemIndex
      * @return {number} Returns position in queue on success, -1 if track is not in queue.
+     * @worker
+     * @mainthread
      */
     FindPlaybackQueueItemIndex: function (handle, playlistIndex, playlistItemIndex) { }, // (int)
 
-    /** @method */
+    /**
+     * @method
+     * @worker
+     * @mainthread
+     */
     FlushPlaybackQueue: function () { }, // (void)
 
     /**
@@ -1667,6 +1955,8 @@ let plman = {
      *     // access properties of first item
      *     console.log(contents[0].PlaylistIndex, contents[0].PlaylistItemIndex);
      * }
+     * @worker
+     * @mainthread
      */
     GetPlaybackQueueContents: function () { }, // (Array)
 
@@ -1678,16 +1968,22 @@ let plman = {
      * if (handles.Count > 0) {
      *    // use "Count" to determine if Playback Queue is active.
      * }
+     * @worker
+     * @mainthread
      */
     GetPlaybackQueueHandles: function () { }, // ((FbMetadbHandleList))
 
     /**
      * @param {number} index
+     * @worker
+     * @mainthread
      */
     RemoveItemFromPlaybackQueue: function (index) { }, // (void)
 
     /**
      * @param {Array<number>} affectedItems Array like [1, 3, 5]
+     * @worker
+     * @mainthread
      */
     RemoveItemsFromPlaybackQueue: function (affectedItems) { }, // (void)
 };
@@ -1696,6 +1992,7 @@ let plman = {
  * Various utility functions.
  *
  * @namespace
+ * @worker
  */
 let utils = {
 
@@ -1727,6 +2024,7 @@ let utils = {
      * if (!is_compatible(requiredVersionStr)) {
      *     fb.ShowPopupMessage(`This script requires v${requiredVersionStr}. Current component version is v${utils.Version}.`);
      * }
+     * @worker
      */
     Version: undefined, // (string) (read)
 
@@ -1739,6 +2037,8 @@ let utils = {
      *
      * @example
      * console.log(utils.CheckComponent("foo_playcount", true));
+     * @worker
+     * @mainthread
      */
     CheckComponent: function (name, is_dll) { }, //(boolean)
 
@@ -1748,6 +2048,7 @@ let utils = {
      *
      * @param {string} name Can be either in English or the localised name in your OS.
      * @return {boolean}
+     * @worker
      */
     CheckFont: function (name) { }, // (boolean)
 
@@ -1770,6 +2071,7 @@ let utils = {
      *
      * @param {string} str
      * @return {string}
+     * @worker
      */
     ConvertToAscii: function (str) { },
 
@@ -1780,6 +2082,7 @@ let utils = {
      * @param {string} to
      * @param {boolean} [overwrite=true]
      * @return {boolean}
+     * @worker
      */
     CopyFile: function (from, to, overwrite) { },
 
@@ -1791,6 +2094,7 @@ let utils = {
      * @param {boolean} [overwrite=true]
      * @param {boolean} [recur=true]
      * @return {boolean}
+     * @worker
      */
     CopyFolder: function (from, to, overwrite, recur) { },
 
@@ -1799,6 +2103,7 @@ let utils = {
      *
      * @param {string} path
      * @return {boolean}
+     * @worker
      */
     CreateFolder: function (path) { }, // (uint)
 
@@ -1807,6 +2112,7 @@ let utils = {
      *
      * @param {string} str input string
      * @return {number} CRC32 value for input string. If string is empty returns 0
+     * @worker
      */
     CRC32: function (str) { }, // (uint)
 
@@ -1815,6 +2121,7 @@ let utils = {
      *
      * @param {string} path input file path
      * @return {number} CRC32 value for input file content. If it was an error while reading file or file is empty returns 0
+     * @worker
      */
     CRC32FromFile: function (path) { }, // (uint)
 
@@ -1827,6 +2134,7 @@ let utils = {
      *
      * @param {number} path Path to file
      * @return {number} Codepage number on success, 0 if codepage detection failed
+     * @worker
      */
 
     DetectCharset: function (path) { },
@@ -1845,6 +2153,7 @@ let utils = {
 	 *     console.log(path, success, error_text);
      * }
      * 
+     * @worker
      */
     DownloadFileAsync: function (url, path) { },
 
@@ -1875,6 +2184,7 @@ let utils = {
      *   console.log("status = ", status, "response_text = ", response_text);
      * }
      * 
+     * @worker
      */
     HTTPRequestAsync: function (type, url, user_agent_or_headers, post_data) { },
 
@@ -1889,6 +2199,7 @@ let utils = {
     /**
      * @param {number} path Path to file
      * @return {boolean} true, if file exists.
+     * @worker
      */
     FileExists: function (path) { },
 
@@ -1926,6 +2237,7 @@ let utils = {
      * // arr[0] <= "D:\\Somedir\\" (always includes backslash at the end)
      * // arr[1] <= "Somefile"
      * // arr[2] <= ".txt"
+     * @worker
      */
     FileTest: function (path, mode) { }, // (VARIANT)
 
@@ -1956,6 +2268,7 @@ let utils = {
      *
      * @example
      * console.log(utils.FormatDuration(plman.GetPlaylistItems(plman.ActivePlaylist).CalcTotalDuration())); // 1wk 1d 17:25:30
+     * @worker
      */
     FormatDuration: function (seconds) { }, // (string)
 
@@ -1965,6 +2278,7 @@ let utils = {
      *
      * @example
      * console.log(utils.FormatFileSize(plman.GetPlaylistItems(plman.ActivePlaylist).CalcTotalSize())); // 7.9 GB
+     * @worker
      */
     FormatFileSize: function (bytes) { }, // (string)
 
@@ -1979,6 +2293,7 @@ let utils = {
      * @param {boolean=} [no_load=false]  If true, "image" parameter will be null in {@link module:Callbacks.on_get_album_art_done on_get_album_art_done} callback.
      *
      * @sourceFile ../../component/samples/basic/GetAlbumArtAsync.js
+     * @worker
      */
     GetAlbumArtAsync: function (window_id, handle, art_id, need_stub, only_embed, no_load) { },
 
@@ -2001,6 +2316,7 @@ let utils = {
      * @return {Promise.<ArtPromiseResult>}
      *
      * @sourceFile ../../component/samples/basic/GetAlbumArtAsyncV2.js
+     * @worker
      */
     GetAlbumArtAsyncV2: function (window_id, handle, art_id, need_stub, only_embed, no_load) { },
 
@@ -2015,6 +2331,7 @@ let utils = {
      *
      * @example
      * let img = utils.GetAlbumArtEmbedded(fb.GetNowPlaying().RawPath, 0);
+     * @worker
      */
     GetAlbumArtEmbedded: function (rawpath, art_id) { },
 
@@ -2029,11 +2346,14 @@ let utils = {
      * @return {GdiBitmap} (or {@link D2DBitmap} if {@link window.DrawMode} == 1)
      *
      * @sourceFile ../../component/samples/basic/GetAlbumArtV2.js
+     * @worker
      */
     GetAlbumArtV2: function (handle, art_id, need_stub) { },
 
     /**
      * @return {string} Returns an empty string if clipboard contents are not text.
+     * @worker
+     * @mainthread
      */
     GetClipboardText: function () { },
 
@@ -2046,6 +2366,7 @@ let utils = {
      * "cn" "China"<br>
      * @return {string} Country string code 
      * @sourceFile ../../component/docs/countries.json
+     * @worker
      */
     GetCountryFlag: function (country_or_code) { },
 
@@ -2058,6 +2379,7 @@ let utils = {
      * @return {?DriveInfo} Drive information, or null if the path cannot be resolved to a drive
      * 
      * @sourceFile ../../component/samples/basic/FilesystemUtils.js
+     * @worker
      */
     GetDriveInfo: function (path) { },
 
@@ -2068,12 +2390,14 @@ let utils = {
      * @return {Array<string>} Drive root paths, for example <code>["C:\\", "D:\\"]</code>
      * 
      * @sourceFile ../../component/samples/basic/FilesystemUtils.js
+     * @worker
      */
     GetDrives: function () { },
 
     /**
      * @param {string} path
      * @return {number} File size, in bytes
+     * @worker
      */
     GetFileSize: function (path) { },
 
@@ -2086,6 +2410,7 @@ let utils = {
      * @return {number} Total size in bytes, or 0 if the path is not a directory
      * 
      * @sourceFile ../../component/samples/basic/FilesystemUtils.js
+     * @worker
      */
     GetFolderSize: function (path) { },
 
@@ -2103,6 +2428,7 @@ let utils = {
      * Throws if called before foobar2000 is fully initialized or if the worker thread could not be started.<br>
      * 
      * @sourceFile ../../component/samples/basic/FilesystemUtils.js
+     * @worker
      */
     GetFolderSizeAsync: function (path) { },
 
@@ -2110,6 +2436,7 @@ let utils = {
      * Gets "last modified" attribute for file
      * @param {string} path
      * @return {number} UNIX-time (seconds)
+     * @worker
      */
     GetLastModified: function (path) { },
 
@@ -2121,6 +2448,7 @@ let utils = {
      * @return {string} Short path or an empty string on failure
      * 
      * @sourceFile ../../component/samples/basic/FilesystemUtils.js
+     * @worker
      */
     GetShortPath: function (path) { },
 
@@ -2147,6 +2475,8 @@ let utils = {
      * 
      * @param {string} package_id Can be obtained by {@link window.ScriptInfo}
      * @return {?JsPackageInfo} null if not found, package information otherwise
+     * @worker
+     * @mainthread
      */
     GetPackageInfo: function (package_id) { },
 
@@ -2160,6 +2490,8 @@ let utils = {
      * 
      * @param {string} package_id Can be obtained by {@link window.ScriptInfo}
      * @return {string}
+     * @worker
+     * @mainthread
      */
     GetPackagePath: function (package_id) { },
 
@@ -2169,12 +2501,14 @@ let utils = {
      *
      * @example
      * let splitter_colour = utils.GetSysColour(15);
+     * @worker
      */
     GetSysColour: function (index) { }, // (uint)
 
     /**
      * @param {number} index {@link https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsyscolor}
      * @return {number} 0 if failed
+     * @worker
      */
     GetSystemMetrics: function (index) { }, // (int)
 
@@ -2189,6 +2523,7 @@ let utils = {
      * @example
      * let arr = utils.Glob("C:\\*.*");
      * let arr2 = utils.Glob(fb.ProfilePath + 'image*\\album?\\*.jpg');
+     * @worker
      */
     Glob: function (pattern, exc_mask, inc_mask) { }, // (Array) [, exc_mask][, inc_mask]
 
@@ -2222,12 +2557,14 @@ let utils = {
     /**
      * @param {string} path
      * @return {boolean} true, if location exists and it's a directory
+     * @worker
      */
     IsDirectory: function (path) { },
 
     /**
      * @param {string} path
      * @return {boolean} true, if location exists and it's a file
+     * @worker
      */
     IsFile: function (path) { },
 
@@ -2235,6 +2572,7 @@ let utils = {
      * @param {number} vkey See {@link https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes}.<br>
      * Some are defined in {@link module:Flags Flags}, like {@link module:Flags.VK_LEFT VK_LEFT}
      * @return {boolean}
+     * @worker
      */
     IsKeyPressed: function (vkey) { }, // (boolean)
 
@@ -2242,6 +2580,7 @@ let utils = {
      * Gets system font collection array filled up by font families' names.
      * @param {number} [mode=0] 0 - Auto, 1 - GDI fonts, 2 - DirectWrite fonts
      * @return {Array<string>} array of font family names
+     * @worker
      */
     ListFonts: function (mode) { },
     
@@ -2251,6 +2590,7 @@ let utils = {
      * @param {string} lcid
      * @param {number} flags defined in {@link module:Flags Flags}, like {@link module:Flags.LCMAP_LOWERCASE LCMAP_LOWERCASE}
      * @return {string}
+     * @worker
      */
     MapString: function (text, lcid, flags) { }, // (string)
 
@@ -2259,6 +2599,7 @@ let utils = {
      *
      * @param {string} str input string
      * @return {string} MD5 value for input in hex format string. If input string is empty returns "d41d8cd98f00b204e9800998ecf8427e"
+     * @worker
      */
     MD5: function (str) { }, // (uint)
 
@@ -2267,6 +2608,7 @@ let utils = {
      *
      * @param {string} path input file path
      * @return {string} MD5 value for input file content in hex format string. If it was an error while reading file returns empty string. If file is empty returns "d41d8cd98f00b204e9800998ecf8427e"
+     * @worker
      */
     MD5FromFile: function (path) { }, // (uint)
 
@@ -2304,6 +2646,7 @@ let utils = {
      * if (doc) console.log(doc.body.textContent); // "Hello world"
      * 
      * @sourceFile ../../component/samples/basic/ParseHtml.js
+     * @worker
      */
     ParseHtml: function (html) { },
 
@@ -2314,6 +2657,7 @@ let utils = {
      * @param {string} pattern
      * @param {string} str
      * @return {boolean}
+     * @worker
      */
     PathWildcardMatch: function (pattern, str) { }, // (boolean)
 
@@ -2326,6 +2670,7 @@ let utils = {
      *
      * @example
      * let text = utils.ReadTextFile("E:\\some text file.txt");
+     * @worker
      */
     ReadTextFile: function (filename, codepage) { }, // (string) [,codepage]
 
@@ -2334,6 +2679,7 @@ let utils = {
      * For UTF8 files with or without BOM. If you're unsure about the file encoding, continue to use {@link utils.ReadTextFile}
      * @param {string} path
      * @return {string}
+     * @worker
      */
     ReadUTF8: function(path) { },
 
@@ -2342,6 +2688,8 @@ let utils = {
      *
      * @param {string} path path to a file or directory
      * @returns {boolean} true on success, false otherwise
+     * @worker
+     * @mainthread
      */
     RecyclePath: function(path) { }, // (boolean)
 
@@ -2350,6 +2698,7 @@ let utils = {
      * May be 0 if the path did not exist or -1 if some other internal error occurred.
      * @param {string} path
      * @return {number}
+     * @worker
      */
     RemovePath: function(path) { },
 
@@ -2359,6 +2708,7 @@ let utils = {
      * @param {string} from
      * @param {string} to
      * @return {boolean}
+     * @worker
      */
     RenamePath: function(from, to) { },
 
@@ -2368,6 +2718,7 @@ let utils = {
      * @param {string} str
      * @param {boolean} [strip_trailing_periods=false] Set to true if str is a folder name.
      * @return {boolean}
+     * @worker
      */
     ReplaceIllegalChars(str, strip_trailing_periods) { },
     
@@ -2377,6 +2728,7 @@ let utils = {
      * @returns {Uint8Array} File bytes, or null if was an error
      * 
      * @sourceFile ../../component/samples/basic/CreateImageFromPixelData.js
+     * @worker
      */
     ReadBinaryFile: function(path) { },
 
@@ -2391,6 +2743,7 @@ let utils = {
      *
      * @example
      * let username = utils.ReadINI("e:\\my_file.ini", "Last.fm", "username");
+     * @worker
      */
     ReadINI: function (filename, section, key, default_val) { }, // (string) [, default_val]
     
@@ -2472,6 +2825,8 @@ let utils = {
      *     ShowWindow.Show,
      *     false
      * );
+     * @worker
+     * @mainthread
      */
     Run(target, args, working_dir, verb, show, wait) { },
 
@@ -2509,11 +2864,14 @@ let utils = {
      *
      * @throws
      * Throws if called before foobar2000 is fully initialized, if args is invalid, or if the worker thread could not be started.<br>
+      * @worker
      */
     RunCmdAsync(app, args, working_dir, show, timeout_ms) { },
 
     /**
      * @param {string} text
+     * @worker
+     * @mainthread
      */
     SetClipboardText: function (text) { },
 
@@ -2522,6 +2880,7 @@ let utils = {
      *
      * @param {string} str input string
      * @return {string} SHA1 value for input in hex format string. If input string is empty returns "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+     * @worker
      */
     SHA1: function (str) { }, // (uint)
 
@@ -2530,6 +2889,7 @@ let utils = {
      *
      * @param {string} path input file path
      * @return {string} SHA1 value for input file content in hex format string. If it was an error while reading file returns empty string. If file is empty returns "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+     * @worker
      */
     SHA1FromFile: function (path) { }, // (uint)
     
@@ -2609,6 +2969,7 @@ let utils = {
      * // arr[0] <= 'D:\\Somedir\\' (always includes backslash at the end)
      * // arr[1] <= 'Somefile'
      * // arr[2] <= '.txt'
+     * @worker
      */
     SplitFilePath: function (path) { }, // (boolean)
 
@@ -2631,6 +2992,7 @@ let utils = {
      * function on_paint(gr) {
      *     gr.DrawImage(rImg, 0, 0, img.Width, img.Height, 0, 0, img.Width, img.Height);
      * }
+     * @worker
      */
     WriteBinaryFile: function(path, data) { },
 
@@ -2643,6 +3005,7 @@ let utils = {
      *
      * @example
      * utils.WriteINI("e:\\my_file.ini", "Last.fm", "username", "Bob");
+     * @worker
      */
     WriteINI: function (filename, section, key, val) { }, // (boolean)
 
@@ -2664,6 +3027,7 @@ let utils = {
      *
      * @example <caption>UTF8 without BOM</caption>
      * utils.WriteTextFile("z:\\3.txt", "test", false);
+     * @worker
      */
     WriteTextFile: function (filename, content, write_bom) { }, //(boolean)
 };
@@ -2671,25 +3035,39 @@ let utils = {
 
 /**
  * Object returned by {@link utils.GetDriveInfo}.<br>
+ * Property names and semantics follow the Microsoft Scripting Runtime <code>Drive</code> object where applicable.
  *
  * @constructor
  * @hideconstructor
+ * @worker
+ * @cloneable
  */
 function DriveInfo() {
 
     /**
-     * Drive root path, for example <code>C:\</code>.
+     * Drive path, for example <code>C:</code>. For a mapped network drive this is still the mapped drive path.
      *
      * @type {string}
      * @readonly
+     * @worker
      */
-    this.Root = "";
+    this.Path = "";
+
+    /**
+     * Root folder path, for example <code>C:\</code>.
+     *
+     * @type {string}
+     * @readonly
+     * @worker
+     */
+    this.RootFolder = "";
 
     /**
      * Drive letter without the colon, or an empty string when the volume has no drive letter.
      *
      * @type {string}
      * @readonly
+     * @worker
      */
     this.DriveLetter = "";
 
@@ -2700,6 +3078,7 @@ function DriveInfo() {
      *
      * @type {number}
      * @readonly
+     * @worker
      */
     this.DriveType = 0;
 
@@ -2708,14 +3087,15 @@ function DriveInfo() {
      *
      * @type {boolean}
      * @readonly
+     * @worker
      */
     this.IsReady = false;
 
     /**
-     * Volume label, or an empty string if unavailable.
+     * Volume label, or an empty string if unavailable. Writable for ready volumes.
      *
      * @type {string}
-     * @readonly
+     * @worker
      */
     this.VolumeName = "";
 
@@ -2724,6 +3104,7 @@ function DriveInfo() {
      *
      * @type {string}
      * @readonly
+     * @worker
      */
     this.FileSystem = "";
 
@@ -2732,14 +3113,25 @@ function DriveInfo() {
      *
      * @type {number}
      * @readonly
+     * @worker
      */
     this.SerialNumber = 0;
+
+    /**
+     * Share name for a network drive, or an empty string for a local drive or when unavailable.
+     *
+     * @type {string}
+     * @readonly
+     * @worker
+     */
+    this.ShareName = "";
 
     /**
      * Total size in bytes, or 0 if unavailable.
      *
      * @type {number}
      * @readonly
+     * @worker
      */
     this.TotalSize = 0;
 
@@ -2748,6 +3140,7 @@ function DriveInfo() {
      *
      * @type {number}
      * @readonly
+     * @worker
      */
     this.FreeSpace = 0;
 
@@ -2756,6 +3149,7 @@ function DriveInfo() {
      *
      * @type {number}
      * @readonly
+     * @worker
      */
     this.AvailableSpace = 0;
 }
@@ -2865,6 +3259,15 @@ let window = {
     InstanceType: undefined, // (uint)
 
     /**
+     * Indicates whether this JSplitter panel currently has keyboard focus.
+     * This reflects the same focus state reported by {@link on_focus}: it is true only while the panel window itself owns keyboard focus.
+     *
+     * @type {boolean}
+     * @readonly
+     */
+    IsFocused: undefined, // (boolean) (read)
+
+    /**
      * Only useful within Panel Stack Splitter (Columns UI component)<br>
      * Depends on setting inside Spider Monkey Panel Configuration window. You generally use it to determine
      * whether or not to draw a background.
@@ -2881,33 +3284,51 @@ let window = {
     IsVisible: undefined, // (boolean) (read)
 
     /**
+    * Memory statistics for one Worker created by the current panel.
+    *
+    * Related GC settings are under <b>Advanced &gt; JSplitter &gt; Performance: restart is required &gt; GC</b>.
+    *
+    * @typedef {Object} JsWorkerMemoryStats
+    * @property {string} Name
+    *    The Worker's immutable constructor name, identical to Worker-global <code>self.name</code>. The value is an empty string if no name was supplied. The same identity is used by unhandled Worker exception diagnostics, where an empty name is displayed as <code>&lt;unnamed&gt;</code>.
+    * @property {number} HeapUsage
+    *    SpiderMonkey heap usage of this Worker (in bytes). The per-Worker heap limit is configured by
+    *    <b>Worker maximum heap size (in MB, per Worker)</b>; see <a href="globals.html#JsMemoryStats-WorkerHeapLimit"><code>JsMemoryStats.WorkerHeapLimit</code></a>.
+    *    Automatic GC based on heap growth is controlled by <b>Heap growth before GC (in MB)</b>.
+    * @property {number} ExternalUsage
+    *    Tracked native/external memory retained by this Worker (in bytes). This is an accounting estimate,
+    *    not process working set or physical RAM/VRAM residency. Automatic GC based on external-memory growth is
+    *    controlled by <b>External memory growth before GC (in MB)</b>.
+    */
+
+    /**
     * Return value of {@link window.JsMemoryStats}.<br>
     * <br>
-    * All panels share a single SpiderMonkey context. SpiderMonkey heap usage is therefore available
-    * only for the shared context, not for an individual panel/realm. Native memory owned by panel
-    * wrappers is tracked separately as external memory on a per-realm basis.<br>
+    * Panel scripts run on the main thread and share one SpiderMonkey heap. Per-panel heap usage is therefore
+    * not available. Native/external memory is tracked separately for the current panel. Each Worker has its own
+    * SpiderMonkey context and is reported separately in <a href="globals.html#JsMemoryStats-Workers"><code>JsMemoryStats.Workers</code></a>.<br>
     * <br>
-    * For new code, prefer {@link JsMemoryStats.ExternalMemoryUsage},
-    * {@link JsMemoryStats.TotalHeapMemoryUsage} and {@link JsMemoryStats.TotalExternalMemoryUsage}.
-    * {@link JsMemoryStats.MemoryUsage} and {@link JsMemoryStats.TotalMemoryUsage} are compatibility aliases.
-    * 
+    * Related GC settings are under <b>Advanced &gt; JSplitter &gt; Performance: restart is required &gt; GC</b>.
+    *
     * @typedef {Object} JsMemoryStats
-    * @property {number} MemoryUsage
-    *    Compatibility alias for {@link JsMemoryStats.ExternalMemoryUsage}.
-    * @property {number} TotalMemoryUsage
-    *    Compatibility alias for {@link JsMemoryStats.TotalHeapMemoryUsage}. External memory is not included.
-    * @property {number} TotalMemoryLimit
-    *    Maximum SpiderMonkey heap size for the shared JavaScript context (in bytes).<br>
-    *    External memory is tracked separately and does not count toward this limit.
-    * @property {number} ExternalMemoryUsage
-    *    Tracked native/external memory associated with the current panel (in bytes). This includes native
-    *    wrapper objects and additional native allocations/resources owned by them.<br>
-    *    This is an accounting estimate, not the panel process working set or physical RAM/VRAM residency.
-    * @property {number} TotalHeapMemoryUsage
-    *    SpiderMonkey heap usage for the shared JavaScript context used by all panels (in bytes).
-    * @property {number} TotalExternalMemoryUsage
-    *    Total tracked native/external memory associated with all panel realms (in bytes).<br>
-    *    This is an accounting estimate, not total process memory or physical RAM/VRAM residency.
+    * @property {number} MainThreadHeapUsage
+    *    SpiderMonkey heap usage shared by all JSplitter panel scripts running on the main thread (in bytes).
+    *    The maximum is configured by <b>Main thread maximum heap size (in MB)</b>; see <code>MainThreadHeapLimit</code>.
+    *    Automatic GC based on heap growth is controlled by <b>Heap growth before GC (in MB)</b>.
+    * @property {number} MainThreadHeapLimit
+    *    Maximum SpiderMonkey heap size for main-thread panel scripts (in bytes). External memory does not count
+    *    toward this limit. This value reflects <b>Main thread maximum heap size (in MB)</b>.
+    * @property {number} WorkerHeapLimit
+    *    <span id="JsMemoryStats-WorkerHeapLimit"></span>Maximum SpiderMonkey heap size for each Worker (in bytes).
+    *    The limit is shared as one setting value by all Workers, but applies independently to each Worker.
+    *    This value reflects <b>Worker maximum heap size (in MB, per Worker)</b>.
+    * @property {number} CurrentPanelExternalUsage
+    *    Tracked native/external memory retained by the current panel (in bytes). This is an accounting estimate,
+    *    not process working set or physical RAM/VRAM residency. Automatic GC based on external-memory growth is
+    *    controlled by <b>External memory growth before GC (in MB)</b>.
+    * @property {JsWorkerMemoryStats[]} Workers
+    *    <span id="JsMemoryStats-Workers"></span>Memory snapshots for Workers created by the current panel. Worker snapshots are published by each Worker
+    *    thread without blocking the panel and may lag while a Worker is executing a long-running task.
     */
     /**
      * SpiderMonkey heap and native/external memory statistics.
@@ -3429,35 +3850,43 @@ let window = {
 /**
  * Object returned by {@link fb.GetAudioChunk}
  * @hideconstructor
+ * @worker
+ * @cloneable
+ * @transferable
  */
 class FbAudioChunk {
      /**
      * @type {Array<float>}
      * @readonly
+      * @worker
      */
     Data = 0; // (Array<string>) (read)
 
     /**
      * @type {number}
      * @readonly
+     * @worker
      */
     ChannelConfig = 0; // (uint) (read)
 
     /**
      * @type {number}
      * @readonly
+     * @worker
      */
     ChannelCount = 0; // (uint) (read)
 
     /**
      * @type {number}
      * @readonly
+     * @worker
      */
     SampleRate = 0; // (uint) (read)    
 
     /**
      * @type {number}
      * @readonly
+     * @worker
      */
     SampleCount = 0; // (uisize_tnt) (read)   
 }
@@ -3465,6 +3894,8 @@ class FbAudioChunk {
 /**
  * @constructor
  * @hideconstructor
+ * @worker
+ * @cloneable
  */
 function FbMetadbHandle() {
     /**
@@ -3474,6 +3905,7 @@ function FbMetadbHandle() {
      * @example
      * let handle = fb.GetFocusItem();
      * console.log(handle.Path); // D:\SomeSong.flac
+     * @worker
      */
     this.Path = undefined; // (string) (read)
 
@@ -3483,12 +3915,14 @@ function FbMetadbHandle() {
      *
      * @example
      * console.log(handle.RawPath); // file://D:\SomeSong.flac
+     * @worker
      */
     this.RawPath = undefined; // (string) (read)
 
     /**
      * @type {number}
      * @readonly
+     * @worker
      */
     this.SubSong = undefined; // (uint) (read)
 
@@ -3497,47 +3931,57 @@ function FbMetadbHandle() {
      *
      * @type {number}
      * @readonly
+     * @worker
      */
     this.FileSize = undefined; // (LONGLONG) (read)
 
     /**
      * @type {float}
      * @readonly
+     * @worker
      */
     this.Length = undefined; // (double) (read)
 
     /**
      * @param {number} playcount Use 0 to clear
+     * @worker
      */
-    this.SetPlayCount = function (playcount) { }; // (void)
+    this.SetPlaycount = function (playcount) { }; // (void)
 
     /**
      * @param {number} loved Use 0 to clear
+     * @worker
      */
     this.SetLoved = function (loved) { }; // (void)
 
     /**
      * @param {string} first_played Use "" to clear
+     * @worker
      */
     this.SetFirstPlayed = function (first_played) { }; // (void)
 
     /**
      * @param {string} last_played Use "" to clear
+     * @worker
      */
     this.SetLastPlayed = function (last_played) { }; // (void)
 
     /**
      * @param {number} rating Use 0 to clear
+     * @worker
      */
     this.SetRating = function (rating) { }; // (void)
 
     /**
      * @method
+     * @worker
      */
     this.ClearStats = function () { }; // (void)
 
     /**
      * @method
+     * @worker
+     * @mainthread
      */
     this.RefreshStats = function () { }; // (void)
 
@@ -3550,12 +3994,14 @@ function FbMetadbHandle() {
      *
      * @example
      * handle.Compare(handle2);
+     * @worker
      */
     this.Compare = function (handle) { }; // (boolean)
 
     /**
      * @param {boolean} [want_full_info=false] This enables full retrieval of tags that have been blocked with [b][url=https://www.foobar2000.org/LargeFieldsConfig-v2]LargeFieldsConfig-v2[/url][/b] in the latest foobar2000 2.26 previews.
      * @return {?FbFileInfo} null if file info is not available.
+     * @worker
      */
     this.GetFileInfo = function (want_full_info) { }; // (FbFileInfo)
 }
@@ -3563,6 +4009,8 @@ function FbMetadbHandle() {
 /**
  * Object returned by {@link FbMetadbHandle#GetFileInfo GetFileInfo}
  * @hideconstructor
+ * @worker
+ * @cloneable
  */
 class FbFileInfo {
     /**
@@ -3575,6 +4023,7 @@ class FbFileInfo {
      * if (file_info) {
      *     console.log(file_info.MetaCount); // 11
      * }
+     * @worker
      */
     MetaCount = undefined; // (read)
 
@@ -3584,30 +4033,35 @@ class FbFileInfo {
      *
      * @example
      * console.log(file_info.InfoCount); // 9
+     * @worker
      */
     InfoCount = undefined; // (read)
 
     /**
      * @param {string} name
      * @return {number} -1 if not found
+     * @worker
      */
     InfoFind = function (name) { }; //
 
     /**
      * @param {number} idx
      * @return {string}
+     * @worker
      */
     InfoName = function (idx) { }; //
 
     /**
      * @param {number} idx
      * @return {string}
+     * @worker
      */
     InfoValue = function (idx) { }; //
 
     /**
      * @param {string} name
      * @return {number} -1 if not found
+     * @worker
      */
     MetaFind = function (name) { }; //
 
@@ -3622,6 +4076,7 @@ class FbFileInfo {
      * for (let i = 0; i < f.MetaCount; ++i) {
      *      console.log(file_info.MetaName(i).toUpperCase());
      * }
+     * @worker
      */
     MetaName = function (idx) { }; //
 
@@ -3629,6 +4084,7 @@ class FbFileInfo {
      * @param {number} idx
      * @param {number} value_idx Used for iterating through multi-value tags.
      * @return {string}
+     * @worker
      */
     MetaValue = function (idx, value_idx) { }; //
 
@@ -3637,6 +4093,7 @@ class FbFileInfo {
      *
      * @param {number} idx
      * @return {number}
+     * @worker
      */
     MetaValueCount = function (idx) { }; //
 }
@@ -3646,6 +4103,8 @@ class FbFileInfo {
  *
  * @constructor
  * @param {FbMetadbHandleList | FbMetadbHandle | Array<FbMetadbHandle> | null | undefined} [arg]
+ * @worker
+ * @cloneable
  */
 function FbMetadbHandleList(arg) {
     /**
@@ -3655,6 +4114,7 @@ function FbMetadbHandleList(arg) {
      * @example
     *  let handle_list = plman.GetPlaylistItems(plman.ActivePlaylist);
      * console.log(handle_list.Count);
+     * @worker
      */
     this.Count = undefined; // (uint) (read)
 
@@ -3664,6 +4124,7 @@ function FbMetadbHandleList(arg) {
      *
      * @example
      * handle_list.Add(fb.GetNowPlaying());
+     * @worker
      */
     this.Add = function (handle) { }; // (uint)
 
@@ -3672,6 +4133,7 @@ function FbMetadbHandleList(arg) {
      *
      * @example
      * handle_list.AddRange(fb.GetLibraryItems());
+     * @worker
      */
     this.AddRange = function (handle_list) { }; // (void)
 
@@ -3700,6 +4162,7 @@ function FbMetadbHandleList(arg) {
      * const handle_list = new FbMetadbHandleList(fb.GetFocusItem());
      * const img_path = "C:\\path\\to\\image.jpg";
      * handle_list.AttachImage(img_path, AlbumArtId.front);
+     * @worker
      */
     this.AttachImage = function (image_path, art_id) { }; //(bool)
 
@@ -3730,6 +4193,7 @@ function FbMetadbHandleList(arg) {
      * const handle_list = new FbMetadbHandleList(fb.GetFocusItem());
      * const img = gdi.Image("C:\\path\\to\\image.jpg");
      * handle_list.AttachImage2(img, AlbumArtId.front, AttachImage2Codec.WebP, 60);
+     * @worker
      */
     this.AttachImage2 = function (image, art_id, codec, quality) { }; //(bool)
 
@@ -3738,16 +4202,19 @@ function FbMetadbHandleList(arg) {
      *
      * @param {FbMetadbHandle} handle Must be sorted with {@link FbMetadbHandleList#Sort Sort}.
      * @return {number} -1 on failure.
+     * @worker
      */
     this.BSearch = function (handle) { }; // (uint)
 
     /**
      * @return {float} total duration in seconds. For display purposes, consider using {@link utils.FormatDuration} on the result.
+     * @worker
      */
     this.CalcTotalDuration = function () { }; // (double)
 
     /**
      * @return {number} total size in bytes. For display purposes, consider using utils.FormatFileSize() on the result.
+     * @worker
      */
     this.CalcTotalSize = function () { }; // (LONGLONG)
 
@@ -3756,6 +4223,7 @@ function FbMetadbHandleList(arg) {
      *
      * @example
      * let handle_list2 = handle_list.Clone();
+     * @worker
      */
     this.Clone = function () { }; // (FbMetadbHandleList)
 
@@ -3771,6 +4239,7 @@ function FbMetadbHandleList(arg) {
      * for (let i = 0; i < playlist_items_array.length; ++i) {
      *    // do something with playlist_items_array[i] which is your handle
      * }
+     * @worker
      */
     this.Convert = function () { }; // (Array)
 
@@ -3779,6 +4248,7 @@ function FbMetadbHandleList(arg) {
      *
      * @param {FbMetadbHandle} handle
      * @return {number} index in the handle list on success, -1 if not found
+     * @worker
      */
     this.Find = function (handle) { }; // (int)
 
@@ -3793,6 +4263,8 @@ function FbMetadbHandleList(arg) {
      * let handle_list = fb.GetLibraryItems();
      * handle_list.OrderByRelativePath();
      * let relative_paths = handle_list.GetLibraryRelativePaths();
+     * @worker
+     * @mainthread
      */
     this.GetLibraryRelativePaths = function () { }; // (Array)
 
@@ -3806,6 +4278,7 @@ function FbMetadbHandleList(arg) {
      * const handle_list = plman.GetPlaylistItems(plman.ActivePlaylist);
      * const str = handle_list.GetOtherInfo();
      * console.log(str);
+     * @worker
      */
     this.GetOtherInfo = function () { }; // (string)
 
@@ -3816,12 +4289,14 @@ function FbMetadbHandleList(arg) {
      * @example
      * // This inserts at the end of the handle list.
      * handle_list.Insert(handle_list.Count, fb.GetNowPlaying());
+     * @worker
      */
     this.Insert = function (index, handle) { }; // (void)
 
     /**
      * @param {number} index
      * @param {FbMetadbHandleList} handle_list
+     * @worker
      */
     this.InsertRange = function (index, handle_list) { }; // (void)
 
@@ -3840,6 +4315,7 @@ function FbMetadbHandleList(arg) {
      * one.MakeDifference(two);
      * // "one" now only contains handles that were unique to "one".
      * // Anything that also existed in "two" will have been removed.
+     * @worker
      */
     this.MakeDifference = function (handle_list) { }; // (void)
 
@@ -3857,6 +4333,7 @@ function FbMetadbHandleList(arg) {
      *
      * one.MakeIntersection(two);
      * // "one" now only contains handles that were in BOTH "one" AND "two"
+     * @worker
      */
     this.MakeIntersection = function (handle_list) { }; // (void)
 
@@ -3874,6 +4351,7 @@ function FbMetadbHandleList(arg) {
      *
      * one.MakeUnion(two);
      * // "one" now contains all handles from "one" AND "two" with any duplicates removed
+     * @worker
      */
     this.MakeUnion = function (handle_list) { }; // (void)
 
@@ -3882,6 +4360,8 @@ function FbMetadbHandleList(arg) {
      *
      * This provides the same functionality as the native context menu items
      * under `Utilities` except there are no prompts.
+     * @worker
+     * @mainthread
      */
     this.OptimiseFileLayout = function (minimise) { }; // (void)
 
@@ -3893,6 +4373,7 @@ function FbMetadbHandleList(arg) {
      * let handle_list = fb.GetLibraryItems();
      * let tfo = fb.TitleFormat("%album artist%|%date%|%album%|%discnumber%|%tracknumber%");
      * handle_list.OrderByFormat(tfo, 1);
+     * @worker
      */
     this.OrderByFormat = function (tfo, direction) { }; // (void)
 
@@ -3900,29 +4381,42 @@ function FbMetadbHandleList(arg) {
      * Note: this method should only be used on a handle list containing items that are monitored as part of the Media Library.
      *
      * @method
+     * @worker
      */
     this.OrderByPath = function () { }; // (void)
 
-    /** @method */
+    /**
+     * @method
+     * @worker
+     * @mainthread
+     */
     this.OrderByRelativePath = function () { }; // (void)
 
     /**
      * @method
+     * @worker
+     * @mainthread
      */
     this.RefreshStats = function () { }; // (void)
 
     /**
      * @param {FbMetadbHandle} handle
+     * @worker
      */
     this.Remove = function (handle) { }; // (void)
 
-    /** @method */
+    /**
+     * @method
+     * @worker
+     */
     this.RemoveAll = function () { }; // (void)
 
     /**
      * Note: a progress dialog will be shown for larger file selections.
      *
      * @param {number=} [art_id=0] See {@link module:Flags.AlbumArtId AlbumArtId}
+     * @worker
+     * @mainthread
      */
     this.RemoveAttachedImage = function (art_id) { }; // (void)
 
@@ -3930,6 +4424,8 @@ function FbMetadbHandleList(arg) {
      * Removes all attached images.
      *
      * Note: a progress dialog will be shown for larger file selections.
+     * @worker
+     * @mainthread
      */
     this.RemoveAttachedImages = function () { }; // (void)
 
@@ -3938,6 +4434,7 @@ function FbMetadbHandleList(arg) {
      *
      * @example
      * handle_list.RemoveById(0);
+     * @worker
      */
     this.RemoveById = function (idx) { }; // (void)
 
@@ -3947,22 +4444,26 @@ function FbMetadbHandleList(arg) {
      *
      * @example
      * handle_list.RemoveRange(10, 20);
+     * @worker
      */
     this.RemoveRange = function (from, num) { }; // (void)
 
     /**
      * Reverses the order of the items in the handle list.
+     * @worker
      */
     this.Reverse = function() { },
 
     /**
      * Randomly shuffles the items in the handle list.
+     * @worker
      */
     this.Shuffle = function() { },
 
     /**
      * @param {string} path
      *
+     * @worker
      */
     this.SaveAs = function (path) { }; // (void)
 
@@ -3970,6 +4471,7 @@ function FbMetadbHandleList(arg) {
      * Remove duplicates and optimise for other handle list operations
      *
      * @method
+     * @worker
      */
     this.Sort = function () { }; // (void)
 
@@ -3996,6 +4498,8 @@ function FbMetadbHandleList(arg) {
      * }
      *
      * handles.UpdateFileInfoFromJSON(JSON.stringify(arr));
+     * @worker
+     * @mainthread
      */
     this.UpdateFileInfoFromJSON = function (str) { }; // (void)
 }
@@ -4005,34 +4509,45 @@ function FbMetadbHandleList(arg) {
  *
  * @constructor
  * @hideconstructor
+ * @worker
  */
 function FbPlaylistRecycler() {
 
     /**
      * @type {number}
      * @readonly
+     * @worker
+     * @mainthread
      */
     this.Count = undefined; // (uint) (read)
 
     /**
      * @param {number} index
      * @return {string}
+     * @worker
+     * @mainthread
      */
     this.GetName = function (index) { }; // (string) (read)
 
     /**
      * @param {number} index
      * @return {FbMetadbHandleList}
+     * @worker
+     * @mainthread
      */
     this.GetContent = function (index) { }; // (FbMetadbHandleList) (read)
 
     /**
      * @param {number} affectedItems array like [1, 3, 5]
+     * @worker
+     * @mainthread
      */
     this.Purge = function (affectedItems) { }; // (void)
 
     /**
      * @param {number} index
+     * @worker
+     * @mainthread
      */
     this.Restore = function (index) { }; // (void)
 }
@@ -4047,6 +4562,8 @@ function FbPlaylistRecycler() {
  *     console.log(playing_item_location.PlaylistIndex);
  *     console.log(playing_item_location.PlaylistItemIndex);
  * }
+ * @worker
+ * @cloneable
  */
 function FbPlayingItemLocation() {
 
@@ -4056,6 +4573,7 @@ function FbPlayingItemLocation() {
      *
      * @type {boolean}
      * @readonly
+     * @worker
      */
     this.IsValid = undefined; // (boolean) (read)
 
@@ -4064,6 +4582,7 @@ function FbPlayingItemLocation() {
      *
      * @type {number}
      * @readonly
+     * @worker
      */
     this.PlaylistIndex = undefined; // (int) (read)
 
@@ -4072,6 +4591,7 @@ function FbPlayingItemLocation() {
      *
      * @type {number}
      * @readonly
+     * @worker
      */
     this.PlaylistItemIndex = undefined; // (int) (read)
 }
@@ -4079,12 +4599,15 @@ function FbPlayingItemLocation() {
 /**
  * @constructor
  * @hideconstructor
+ * @worker
+ * @cloneable
  */
 function FbPlaybackQueueItem() {
 
     /**
      * @type {FbMetadbHandle}
      * @readonly
+     * @worker
      */
     this.Handle = undefined; // (FbMetadbHandle) (read)
 
@@ -4093,6 +4616,7 @@ function FbPlaybackQueueItem() {
      *
      * @type {number}
      * @readonly
+     * @worker
      */
     this.PlaylistIndex = undefined; // (int) (read)
 
@@ -4101,6 +4625,7 @@ function FbPlaybackQueueItem() {
      *
      * @type {number}
      * @readonly
+     * @worker
      */
     this.PlaylistItemIndex = undefined; // (int) (read)
 }
@@ -4114,16 +4639,21 @@ function FbPlaybackQueueItem() {
  * // do something time consuming
  * console.log(test.Time); // Outputs bare time in ms like "789"
  * test.Print(); // Outputs component name/version/assigned name like "Spider Monkey Panel v1.0.0: profiler (test): 789 ms"
+ * @worker
  */
 function FbProfiler(name) {
 
     /**
      * @type {number}
      * @readonly
+     * @worker
      */
     this.Time = undefined; // (uint) // milliseconds
 
-    /** @method */
+    /**
+     * @method
+     * @worker
+     */
     this.Reset = function () { }; // (void)
 
     /**
@@ -4144,6 +4674,7 @@ function FbProfiler(name) {
      * // profiler (Group #1):
      * // Task #2: 1530 ms"
      * // Spider Monkey Panel v1.0.0: profiler (Group #1): 3541 ms"
+     * @worker
      */
     this.Print = function (additionalMsg, printComponentInfo) { }; // (void)
 }
@@ -4155,6 +4686,8 @@ function FbProfiler(name) {
  *
  * @constructor
  * @param {string} expression
+ * @worker
+ * @cloneable
  */
 function FbTitleFormat(expression) {
     /**
@@ -4169,6 +4702,8 @@ function FbTitleFormat(expression) {
      * @example
      * let tfo = fb.TitleFormat("%artist%");
      * console.log(tfo.Eval());
+     * @worker
+     * @mainthread
      */
     this.Eval = function (force) { }; // [force]
 
@@ -4180,6 +4715,7 @@ function FbTitleFormat(expression) {
      * @example
      * let tfo = fb.TitleFormat("%artist%");
      * console.log(tfo.EvalWithMetadb(fb.GetFocusItem()));
+     * @worker
      */
     this.EvalWithMetadb = function (handle, want_full_info) { }; //
 
@@ -4192,6 +4728,7 @@ function FbTitleFormat(expression) {
      * let handle_list = fb.GetLibraryItems();
      * let artists = tfo.EvalWithMetadbs(handle_list);
      * console.log(handle_list.Count === artists.length); // should always be true!
+     * @worker
      */
     this.EvalWithMetadbs = function (handle_list) { }; //(Array)
 }
@@ -4309,6 +4846,7 @@ function FbTooltip() {
  *            selection_holder.SetSelection(handle_list);
  *    }
  * }
+ * @worker
  */
 function FbUiSelectionHolder() {
 
@@ -4326,6 +4864,8 @@ function FbUiSelectionHolder() {
      *     5 - keyboard_shortcut_list<br>
      *     6 - media_library_viewer
      * 
+     * @worker
+     * @mainthread
      */
     this.SetSelection = function (handle_list, type) { }; // (void)
 
@@ -4334,6 +4874,8 @@ function FbUiSelectionHolder() {
      * When the playlist selection changes, the stored selection is automatically
      * updated. Tracking ends when a set method is called on any ui_selection_holder
      * or when the last reference to this ui_selection_holder is released.
+     * @worker
+     * @mainthread
      */
     this.SetPlaylistSelectionTracking = function () { }; // (void)
 
@@ -4342,6 +4884,8 @@ function FbUiSelectionHolder() {
      * When the playlist selection changes, the stored selection is automatically
      * updated. Tracking ends when a set method is called on any ui_selection_holder
      * or when the last reference to this ui_selection_holder is released.
+     * @worker
+     * @mainthread
      */
     this.SetPlaylistTracking = function () { }; // (void)
 }
@@ -4349,24 +4893,30 @@ function FbUiSelectionHolder() {
 /**
  * @constructor
  * @param {GdiBitmap} arg
+ * @worker
+ * @cloneable
+ * @transferable
  */
 function GdiBitmap(arg) {
 
     /**
      * @type {number}
      * @readonly
+     * @worker
      */
     this.Height = undefined;// (uint) (read)
 
     /**
      * @type {number}
      * @readonly
+     * @worker
      */
     this.Width = undefined;// (uint) (read)
 
     /**
      * @param {number} alpha Valid values 0-255.
      * @return {GdiBitmap}
+     * @worker
      */
     this.ApplyAlpha = function (alpha) { }; // (GdiBitmap)
 
@@ -4376,6 +4926,7 @@ function GdiBitmap(arg) {
      * @param {GdiBitmap} img
      *
      * @sourceFile ../../component/samples/basic/ApplyMask.js
+     * @worker
      */
     this.ApplyMask = function (img) { }; // (boolean)
 
@@ -4385,6 +4936,7 @@ function GdiBitmap(arg) {
      * @param {number} w
      * @param {number} h
      * @return {GdiBitmap}
+     * @worker
      */
     this.Clone = function (x, y, w, h) { }; // (GdiBitmap)
 
@@ -4392,6 +4944,7 @@ function GdiBitmap(arg) {
      * Create a DDB bitmap from GdiBitmap, which is used in {@link GdiGraphics#GdiDrawBitmap GdiDrawBitmap}
      *
      * @return {GdiRawBitmap}
+     * @worker
      */
     this.CreateRawBitmap = function () { }; // (GdiRawBitmap)
 
@@ -4403,6 +4956,7 @@ function GdiBitmap(arg) {
      *
      * @param {number} max_count maximum number of colours to return
      * @return {Array<number>}
+     * @worker
      */
     this.GetColourScheme = function (max_count) { }; // (Array)
 
@@ -4424,6 +4978,7 @@ function GdiBitmap(arg) {
      * console.log(colours[0].col); // 4290772992
      * console.log(colours[0].freq); // 0.34
      * console.log(toRGB(colours[0].col)); // [192, 0, 0]
+     * @worker
      */
     this.GetColourSchemeJSON = function (max_count) { }; // (string)
 
@@ -4447,6 +5002,7 @@ function GdiBitmap(arg) {
      * console.log(colours[0].col); // 4290772992
      * console.log(colours[0].freq); // 0.34
      * console.log(toRGB(colours[0].col)); // [192, 0, 0]
+     * @worker
      */
     this.GetColourSchemeJSONV2 = function (max_count, min_chroma) { }; // (string)
 
@@ -4486,6 +5042,7 @@ function GdiBitmap(arg) {
      * }
      * 
      * @sourceFile ../../component/samples/complete/theme colour scheme.js
+     * @worker
      */
     this.GetThemeColourSchemeJSON = function (paletteSize) { }; // (string)
     
@@ -4493,6 +5050,7 @@ function GdiBitmap(arg) {
      * Note: don't forget to use {@link GdiBitmap#ReleaseGraphics ReleaseGraphics} after work on GdiGraphics is done!
      *
      * @return {GdiGraphics}
+     * @worker
      */
     this.GetGraphics = function () { };
 
@@ -4520,6 +5078,7 @@ function GdiBitmap(arg) {
      * function on_paint(gr) {
      *     gr.DrawImage(rImg, 0, 0, img.Width, img.Height, 0, 0, img.Width, img.Height);
      * }
+     * @worker
      */
     this.GetPixelData = function(format) { };
 
@@ -4527,11 +5086,13 @@ function GdiBitmap(arg) {
      * Inverts the colours in a bitmap, to create a negative image.
      * i.e. White becomes black, black becomes white, etc.
      * @return {GdiBitmap}
+     * @worker
      */
     this.InvertColours = function () { }; // (GdiBitmap)
 
     /**
      * @param {GdiGraphics} gr
+     * @worker
      */
     this.ReleaseGraphics = function (gr) { }; // (GdiGraphics)
 
@@ -4540,6 +5101,7 @@ function GdiBitmap(arg) {
      * @param {number} h
      * @param {number=} [mode=0] See {@link module:Flags.AlbumArtId InterpolationMode}
      * @return {GdiBitmap}
+     * @worker
      */
     this.Resize = function (w, h, mode) { }; // (GdiBitmap) [, mode]
 
@@ -4547,6 +5109,7 @@ function GdiBitmap(arg) {
      * Changes will be saved in the current bitmap.
      *
      * @param {number} mode See {@link module:Flags.AlbumArtId RotateFlipType}
+     * @worker
      */
     this.RotateFlip = function (mode) { }; // (void)
 
@@ -4565,6 +5128,7 @@ function GdiBitmap(arg) {
      * if (img) {
      *     img.SaveAs("D:\\export.jpg", "image/jpeg");
      * }
+     * @worker
      */
     this.SaveAs = function (path, format) { }; // (boolean) [, format]
 
@@ -4578,6 +5142,7 @@ function GdiBitmap(arg) {
      *
      * @example <caption>Blur text<caption>
      * // `samples/basic/StackBlur (text).js`
+     * @worker
      */
     this.StackBlur = function (radius) { }; // (void)
 }
@@ -4588,11 +5153,12 @@ function GdiBitmap(arg) {
  * Performance note: try caching and reusing `GdiFont` objects,
  * since the maximum amount of such objects is hard-limited by Windows.
  * `GdiFont` creation will fail after reaching this limit.
- *
+ * @cloneable
  * @constructor
  * @param {string} name
  * @param {number} size_px See {@link module:Helpers.Point2Pixel Point2Pixel} function for conversions
  * @param {number=} [style=0] See {@link module:Flags.FontStyle FontStyle} flags
+ * @worker
  */
 function GdiFont(name, size_px, style) {
     /**
@@ -4601,6 +5167,7 @@ function GdiFont(name, size_px, style) {
      *
      * @example
      * console.log(my_font.Height); // 15
+     * @worker
      */
     this.Height = undefined;//    (uint)(read)
 
@@ -4610,6 +5177,7 @@ function GdiFont(name, size_px, style) {
      *
      * @example
      * console.log(my_font.Name); // Segoe UI
+     * @worker
      */
     this.Name = undefined;//    (string)(read)
 
@@ -4619,6 +5187,7 @@ function GdiFont(name, size_px, style) {
      *
      * @example
      * console.log(my_font.Size); // 12
+     * @worker
      */
     this.Size = undefined;//    (float)(read)
 
@@ -4630,8 +5199,18 @@ function GdiFont(name, size_px, style) {
      *
      * @example
      * console.log(my_font.Style);
+     * @worker
      */
     this.Style = undefined;//    (uint)(read)
+
+    /**
+     * Font weight. Common values follow Win32 font weights, for example 400 for normal and 700 for bold.
+     *
+     * @type {number}
+     * @readonly
+     * @worker
+     */
+    this.Weight = undefined;
 }
 
 /**
@@ -4640,8 +5219,9 @@ function GdiFont(name, size_px, style) {
  * Created by {@link gdi.Brush}
  * @constructor
  * @param {GdiBrush} arg
- * 
+ * @cloneable
  * @sourceFile ../../component/samples/basic/Brushes.js
+ * @worker
  */
 function GdiBrush(arg) {
 
@@ -4650,6 +5230,7 @@ function GdiBrush(arg) {
      * See {@link module:Flags.BrushType BrushType}
      * @type {BrushType}
      * @readonly
+     * @worker
      */
     this.Type = undefined;// (uint) (read)
 
@@ -4658,6 +5239,7 @@ function GdiBrush(arg) {
      * See {@link module:Flags.BrushWrapMode BrushWrapMode}
      * @type {BrushWrapMode} 
      * @readonly
+     * @worker
      */
     this.WrapMode = undefined;// (uint) (read, write)
 
@@ -4667,6 +5249,7 @@ function GdiBrush(arg) {
      *
      * @param {number} dx
      * @param {number} dy
+     * @worker
      */
     this.Translate = function(dx, dy) {}
 
@@ -4677,6 +5260,7 @@ function GdiBrush(arg) {
      * @param {float} angle Angle of rotation in degrees
      * @param {number=} [cx=0] Rotation center point x coord
      * @param {number=} [cy=0] Rotation center point y coord
+     * @worker
      */
     this.Rotate = function(angle, cx, cy) {}
 
@@ -4688,6 +5272,7 @@ function GdiBrush(arg) {
      * @param {float=} [sy=0] The y-axis scale factor. If zero sx will be used as sy
      * @param {number=} [cx=0] Scale center point x coord
      * @param {number=} [cy=0] Scale center point y coord
+     * @worker
      */
     this.Scale = function(sz, sy, cx, cy) {}
     
@@ -4699,16 +5284,19 @@ function GdiBrush(arg) {
      * @param {float} angleY The y-axis skew angle, which is measured in degrees clockwise from the x-axis.
      * @param {number=} [cx=0] Skew center point x coord
      * @param {number=} [cy=0] Skew center point y coord
+     * @worker
      */
     this.Skew = function(angleX, angleY, cx, cy) {}
 
     /**
      * Saves current GdiBrush matrix in internal stack. To restore the matrix use {@link GdiGraphics#PopTransform PopTransform}.
+     * @worker
      */
     this.PushTransform = function() {}
 
     /**
      * Restores GdiBrush matrix from internal stack pushed previously by {@link GdiGraphics#PushTransform PushTransform}.
+     * @worker
      */
     this.PopTransform = function() {}
 
@@ -4718,6 +5306,7 @@ function GdiBrush(arg) {
      * @return {Float32Array}
      * 
      * @sourceFile ../../component/docs/Matrix.js
+     * @worker
      */
     this.GetTransform = function() {}
 
@@ -4727,11 +5316,13 @@ function GdiBrush(arg) {
      * @param {Float32Array} matrix Array that presents 3x2 matrix for transformation (length = 6)
      * 
      * @sourceFile ../../component/docs/Matrix.js
+     * @worker
      */
     this.SetTransform = function(matrix) {}
 
     /**
      * Resets current GdiBrush matrix to original identity matrix.
+     * @worker
      */
     this.ResetTransform = function () {}
 
@@ -4741,6 +5332,7 @@ function GdiBrush(arg) {
      * @param {Float32Array} matrix Array that presents 3x2 matrix for transformation (length = 6)
      * 
      * @sourceFile ../../component/docs/Matrix.js
+     * @worker
      */
     this.ApplyTransform = function(matrix) {}    
 }
@@ -4755,6 +5347,7 @@ function GdiBrush(arg) {
  *
  * @constructor
  * @hideconstructor
+ * @worker
  */
 function GdiGraphics() {
     /**
@@ -4764,6 +5357,7 @@ function GdiGraphics() {
      * @param {string} str
      * @param {GdiFont} font
      * @return {number}
+     * @worker
      */
     this.CalcTextHeight = function (str, font) { }; // (uint)
 
@@ -4778,6 +5372,7 @@ function GdiGraphics() {
      * @param {GdiFont} font
      * @param {boolean=} [use_exact=false] Uses a slower, but more accurate method of calculating text width which accounts for kerning pairs.  
      * @return {number}
+     * @worker
      */
     this.CalcTextWidth = function (str, font, use_exact) { }; // (uint)
 
@@ -4788,6 +5383,7 @@ function GdiGraphics() {
      * @param {number} h
      * @param {number} line_width
      * @param {*} colour_or_brush colour ARGB or {@link GdiBrush} object
+     * @worker
      */
     this.DrawEllipse = function (x, y, w, h, line_width, colour_or_brush) { }; // (void)
 
@@ -4803,8 +5399,25 @@ function GdiGraphics() {
      * @param {number} srcH
      * @param {float=} [angle=0]
      * @param {number=} [alpha=255] Valid values 0-255.
+     * @worker
      */
     this.DrawImage = function (img, dstX, dstY, dstW, dstH, srcX, srcY, srcW, srcH, angle, alpha) { }; // (void) [, angle][, alpha]
+
+    /**
+     * Compatibility alias of {@link GdiGraphics#DrawImage DrawImage}.
+     *
+     * @param {GdiBitmap} img
+     * @param {number} dstX
+     * @param {number} dstY
+     * @param {number} dstW
+     * @param {number} dstH
+     * @param {number} srcX
+     * @param {number} srcY
+     * @param {number} srcW
+     * @param {number} srcH
+     * @worker
+     */
+    this.DrawBitmap = function (img, dstX, dstY, dstW, dstH, srcX, srcY, srcW, srcH) { };
 
     /**
      * @param {number} x1
@@ -4813,13 +5426,27 @@ function GdiGraphics() {
      * @param {number} y2
      * @param {number} line_width
      * @param {*} colour_or_brush colour ARGB or {@link GdiBrush} object
+     * @worker
      */
     this.DrawLine = function (x1, y1, x2, y2, line_width, colour_or_brush) { }; // (void)
 
     /**
+     * Draws a connected sequence of lines.
+     *
      * @param {*} colour_or_brush colour ARGB or {@link GdiBrush} object
      * @param {number} line_width
-     * @param {Array<Array<number>>} points
+     * @param {Array<number>} points array of connected points [x1, y1, x2, y2, ...]
+     * @worker
+     */
+    this.DrawLines = function (colour_or_brush, line_width, points) { };
+
+    /**
+     * Draws a connected sequence of lines with connection of last and first points (unlike {@link GdiGraphics#DrawLines DrawLines}).
+     * 
+     * @param {*} colour_or_brush colour ARGB or {@link GdiBrush} object
+     * @param {number} line_width
+     * @param {Array<number>} points array of connected points [x1, y1, x2, y2, ...]
+     * @worker
      */
     this.DrawPolygon = function (colour_or_brush, line_width, points) { }; // (void)
 
@@ -4834,6 +5461,7 @@ function GdiGraphics() {
      * @param {number} w
      * @param {number} h
      * @param {number=} [flags=0] See {@link module:Flags.StringFormatFlags StringFormatFlags} flags
+     * @worker
      */
     this.DrawString = function (str, font, colour_or_brush, x, y, w, h, flags) { }; // (void) [, flags]
 
@@ -4844,6 +5472,7 @@ function GdiGraphics() {
      * @param {number} h
      * @param {number} line_width
      * @param {*} colour_or_brush colour ARGB or {@link GdiBrush} object
+     * @worker
      */
     this.DrawRect = function (x, y, w, h, line_width, colour_or_brush) { }; // (void)
 
@@ -4856,6 +5485,7 @@ function GdiGraphics() {
      * @param {number} arc_height
      * @param {number} line_width
      * @param {*} colour_or_brush colour ARGB or {@link GdiBrush} object
+     * @worker
      */
     this.DrawRoundRect = function (x, y, w, h, arc_width, arc_height, line_width, colour_or_brush) { }; // (void)
 
@@ -4872,6 +5502,7 @@ function GdiGraphics() {
      *    ... <br>
      *    [2n + 2] text line n <br>
      *    [2n + 3] width of text line n (px)
+     * @worker
      */
     this.EstimateLineWrap = function (str, font, max_width) { }; // (Array)
 
@@ -4881,6 +5512,7 @@ function GdiGraphics() {
      * @param {number} w
      * @param {number} h
      * @param {*} colour_or_brush colour ARGB or {@link GdiBrush} object
+     * @worker
      */
     this.FillEllipse = function (x, y, w, h, colour_or_brush) { }; // (void)
 
@@ -4896,6 +5528,7 @@ function GdiGraphics() {
      * @param {number} colour1
      * @param {number} colour2
      * @param {float} [focus=1.0] Specify where the centred colour will be at its highest intensity. Valid values between 0 and 1.
+     * @worker
      */
     this.FillGradRect = function (x, y, w, h, angle, colour1, colour2, focus) { }; // (void) [, focus]
 
@@ -4909,6 +5542,7 @@ function GdiGraphics() {
      * @param {Array} stops Specifies gradient stops in form of [pos0, argb0, ..., posN, argbN]
      * @example
      * dgr.FillGradRectV2(10, 10, 200, 100, 0, [0.0, 0xFF0000FF, 0.5, 0xFFFF0000, 1.0, 0xFF000000]);
+     * @worker
      */
     this.FillGradRectV2 = function (x, y, w, h, angle, stops) { };
 
@@ -4916,6 +5550,7 @@ function GdiGraphics() {
      * @param {*} colour_or_brush colour ARGB or {@link GdiBrush} object
      * @param {number} fillmode 0 alternate, 1 winding.
      * @param {Array<Array<number>>} points
+     * @worker
      */
     this.FillPolygon = function (colour_or_brush, fillmode, points) { }; // (void)
 
@@ -4927,6 +5562,7 @@ function GdiGraphics() {
      * @param {number} arc_width
      * @param {number} arc_height
      * @param {*} colour_or_brush colour ARGB or {@link GdiBrush} object
+     * @worker
      */
     this.FillRoundRect = function (x, y, w, h, arc_width, arc_height, colour_or_brush) { }; // (void)
 
@@ -4936,6 +5572,7 @@ function GdiGraphics() {
      * @param {number} w
      * @param {number} h
      * @param {*} colour_or_brush colour ARGB or {@link GdiBrush} object
+     * @worker
      */
     this.FillSolidRect = function (x, y, w, h, colour_or_brush) { }; // (void)
 
@@ -4950,6 +5587,7 @@ function GdiGraphics() {
      * @param {number} srcW
      * @param {number} srcH
      * @param {number=} [alpha=255] Valid values 0-255.
+     * @worker
      */
     this.GdiAlphaBlend = function (img, dstX, dstY, dstW, dstH, srcX, srcY, srcW, srcH, alpha) { }; // (void) [, alpha]
 
@@ -4965,6 +5603,7 @@ function GdiGraphics() {
      * @param {number} srcY
      * @param {number} srcW
      * @param {number} srcH
+     * @worker
      */
     this.GdiDrawBitmap = function (img, dstX, dstY, dstW, dstH, srcX, srcY, srcW, srcH) { }; // (void)
 
@@ -4989,8 +5628,24 @@ function GdiGraphics() {
      * @param {number} w
      * @param {number} h
      * @param {number=} [format=0] See flags like {@link module:Flags.DT_LEFT DT_LEFT}
+     * @worker
      */
     this.GdiDrawText = function (str, font, colour, x, y, w, h, format) { };
+
+    /**
+     * Alias of {@link GdiGraphics#GdiDrawText GdiDrawText}.
+     *
+     * @param {string} str
+     * @param {GdiFont} font
+     * @param {number} colour
+     * @param {number} x
+     * @param {number} y
+     * @param {number} w
+     * @param {number} h
+     * @param {number=} [format=0]
+     * @worker
+     */
+    this.DrawText = function (str, font, colour, x, y, w, h, format) { };
 
     /**
      * Calculates text dimensions for {@link GdiGraphics#DrawString DrawString}.
@@ -5003,6 +5658,7 @@ function GdiGraphics() {
      * @param {number} h
      * @param {number=} [flags=0] See {@link module:Flags.StringFormatFlags StringFormatFlags} flags
      * @return {MeasureStringInfo}
+     * @worker
      */
     this.MeasureString = function (str, font, x, y, w, h, flags) { }; // (MeasureStringInfo) [, flags]
 
@@ -5016,6 +5672,7 @@ function GdiGraphics() {
      * @param {number} y top coordinate of the clipping rectangle
      * @param {number} width width of the clipping rectangle
      * @param {number} height height of the clipping rectangle
+      * @worker
      */
     this.PushClip = function(x, y, width, height) { };
 
@@ -5023,6 +5680,7 @@ function GdiGraphics() {
      * Restores the clipping region that was active before the matching {@link GdiGraphics#PushClip PushClip} call.<br>
      * Does nothing if the clip stack is empty.<br>
      * The current transform and other graphics state are not affected.
+     * @worker
      */
     this.PopClip = function() { };
 
@@ -5032,6 +5690,7 @@ function GdiGraphics() {
      *
      * @param {number} dx
      * @param {number} dy
+     * @worker
      */
     this.Translate = function(dx, dy) {}
 
@@ -5042,6 +5701,7 @@ function GdiGraphics() {
      * @param {float} angle Angle of rotation in degrees
      * @param {number=} [cx=0] Rotation center point x coord
      * @param {number=} [cy=0] Rotation center point y coord
+     * @worker
      */
     this.Rotate = function(angle, cx, cy) {}
 
@@ -5053,6 +5713,7 @@ function GdiGraphics() {
      * @param {float=} [sy=0] The y-axis scale factor. If zero sx will be used as sy
      * @param {number=} [cx=0] Scale center point x coord
      * @param {number=} [cy=0] Scale center point y coord
+     * @worker
      */
     this.Scale = function(sz, sy, cx, cy) {}
     
@@ -5064,16 +5725,19 @@ function GdiGraphics() {
      * @param {float} angleY The y-axis skew angle, which is measured in degrees clockwise from the x-axis.
      * @param {number=} [cx=0] Skew center point x coord
      * @param {number=} [cy=0] Skew center point y coord
+     * @worker
      */
     this.Skew = function(angleX, angleY, cx, cy) {}
 
     /**
      * Saves current GdiGraphics matrix in internal stack. To restore the matrix use {@link GdiGraphics#PopTransform PopTransform}.
+     * @worker
      */
     this.PushTransform = function() {}
 
     /**
      * Restores current GdiGraphics matrix from internal stack pushed previously by {@link GdiGraphics#PushTransform PushTransform}.
+     * @worker
      */
     this.PopTransform = function() {}
 
@@ -5083,6 +5747,7 @@ function GdiGraphics() {
      * @return {Float32Array}
      * 
      * @sourceFile ../../component/docs/Matrix.js
+     * @worker
      */
     this.GetTransform = function() {}
 
@@ -5092,11 +5757,13 @@ function GdiGraphics() {
      * @param {Float32Array} matrix Array that presents 3x2 matrix for transformation (length = 6)
      * 
      * @sourceFile ../../component/docs/Matrix.js
+     * @worker
      */
     this.SetTransform = function(matrix) {}
 
     /**
      * Resets current GdiGraphics matrix to original identity matrix.
+     * @worker
      */
     this.ResetTransform = function () {}
 
@@ -5106,6 +5773,7 @@ function GdiGraphics() {
      * @param {Float32Array} matrix Array that presents 3x2 matrix for transformation (length = 6)
      * 
      * @sourceFile ../../component/docs/Matrix.js
+     * @worker
      */
     this.ApplyTransform = function(matrix) {}
 
@@ -5130,58 +5798,69 @@ function GdiGraphics() {
      *     console.log(temp.Height); // 2761.2421875 // far larger than my panel height!
      *     console.log(temp.Chars); // 7967
      * }
+     * @worker
+     * @cloneable
      */
     function MeasureStringInfo() {
 
         /**
          * @type {number}
          * @readonly
+         * @worker
          */
         this.Chars = undefined; // (uint) (read)
 
         /**
          * @type {float}
          * @readonly
+         * @worker
          */
         this.Height = undefined; // (float) (read)
 
         /**
          * @type {number}
          * @readonly
+         * @worker
          */
         this.Lines = undefined; // (uint) (read)
 
         /**
          * @type {float}
          * @readonly
+         * @worker
          */
         this.X = undefined; // (float) (read)
 
         /**
          * @type {float}
          * @readonly
+         * @worker
          */
         this.Y = undefined; // (float) (read)
 
         /**
          * @type {float}
          * @readonly
+         * @worker
          */
         this.Width = undefined; // (float) (read)
     }
 
     /**
      * @param {number=} [mode=0] See {@link module:Flags.InterpolationMode InterpolationMode} enum
+     * @worker
      */
     this.SetInterpolationMode = function (mode) { }; // (void)
 
     /**
      * @param {number=} [mode=0] See {@link module:Flags.SmoothingMode SmoothingMode} enum
+     * @worker
      */
     this.SetSmoothingMode = function (mode) { }; // (void)
 
     /**
      * @param {number=} [mode=0] See {@link module:Flags.TextRenderingHint TextRenderingHint} enum
+     * @worker
      */
     this.SetTextRenderingHint = function (mode) { }; // (void)
 
@@ -5189,12 +5868,14 @@ function GdiGraphics() {
      * Currect width of device context surface.
      * @type {number}
      * @readonly
+     * @worker
      */
     this.Width = 640;
     /**
      * Currect height of device context surface.
      * @type {number}
      * @readonly
+     * @worker
      */
     this.Height = 480;
 }
@@ -5202,18 +5883,21 @@ function GdiGraphics() {
 /**
  * @constructor
  * @hideconstructor
+ * @worker
  */
 function GdiRawBitmap() {
 
     /**
      * @type {number}
      * @readonly
+     * @worker
      */
     this.Width = undefined; // (uint) (read)
 
     /**
      * @type {number}
      * @readonly
+     * @worker
      */
     this.Height = undefined; // (uint) (read)
 }
@@ -5417,6 +6101,8 @@ function ThemeManager() {
  *
  * @constructor
  * @hideconstructor
+ * @worker
+ * @cloneable
  */
 function RunResult() {
 
@@ -5428,6 +6114,7 @@ function RunResult() {
      *
      * @type {boolean}
      * @readonly
+     * @worker
      */
     this.OK = false;
 
@@ -5438,6 +6125,7 @@ function RunResult() {
      *
      * @type {number}
      * @readonly
+     * @worker
      */
     this.ExitCode = 0;
 
@@ -5448,6 +6136,7 @@ function RunResult() {
      *
      * @type {number}
      * @readonly
+     * @worker
      */
     this.Win32Error = 0;
 
@@ -5459,6 +6148,7 @@ function RunResult() {
      *
      * @type {number}
      * @readonly
+     * @worker
      */
     this.ShellCode = 0;
 }
@@ -5474,6 +6164,7 @@ function RunResult() {
  * - <b>innerText</b> is currently an alias of <b>textContent</b>.<br>
  *
  * @hideconstructor
+ * @worker
  */
 class HtmlDocument {
     /**
@@ -5486,6 +6177,7 @@ class HtmlDocument {
      * @example
      * let doc = utils.ParseHtml("<html><body>Hello</body></html>");
      * if (doc) console.log(doc.root.tagName); // "html"
+     * @worker
      */
     root = undefined; // (read)
 
@@ -5498,6 +6190,7 @@ class HtmlDocument {
      * @example
      * let doc = utils.ParseHtml("<html><body>Hello</body></html>");
      * if (doc) console.log(doc.documentElement.tagName); // "html"
+     * @worker
      */
     documentElement = undefined; // (read)
 
@@ -5510,6 +6203,7 @@ class HtmlDocument {
      * @example
      * let doc = utils.ParseHtml("<html><head><title>Test</title></head></html>");
      * if (doc && doc.head) console.log(doc.head.innerHTML); // "<title>Test</title>"
+     * @worker
      */
     head = undefined; // (read)
 
@@ -5522,6 +6216,7 @@ class HtmlDocument {
      * @example
      * let doc = utils.ParseHtml("<html><body><p>Hello</p></body></html>");
      * if (doc && doc.body) console.log(doc.body.innerHTML); // "<p>Hello</p>"
+     * @worker
      */
     body = undefined; // (read)
 
@@ -5536,6 +6231,7 @@ class HtmlDocument {
      * @example
      * let doc = utils.ParseHtml("<html><body><p>Hello <b>world</b></p></body></html>");
      * if (doc) console.log(doc.textContent); // "Hello world"
+     * @worker
      */
     textContent = undefined; // (read)
 
@@ -5545,6 +6241,7 @@ class HtmlDocument {
      *
      * @type {string}
      * @readonly
+     * @worker
      */
     innerText = undefined; // (read)
 
@@ -5558,6 +6255,7 @@ class HtmlDocument {
      * @example
      * let doc = utils.ParseHtml("<html><body><p>Hello <b>world</b></p></body></html>");
      * if (doc) console.log(doc.innerHTML); // "<p>Hello <b>world</b></p>"
+     * @worker
      */
     innerHTML = undefined; // (read)
 
@@ -5570,6 +6268,7 @@ class HtmlDocument {
      * @example
      * let doc = utils.ParseHtml("<html><body><p>Hello</p></body></html>");
      * if (doc) console.log(doc.outerHTML); // "<html><head></head><body><p>Hello</p></body></html>"
+     * @worker
      */
     outerHTML = undefined; // (read)
 
@@ -5584,6 +6283,7 @@ class HtmlDocument {
      * let doc = utils.ParseHtml("<html><body><p class='name'>Test Artist</p></body></html>");
      * let node = doc ? doc.querySelector(".name") : null;
      * if (node) console.log(node.textContent); // "Test Artist"
+     * @worker
      */
     querySelector = function (selector) { }; //
 
@@ -5599,6 +6299,7 @@ class HtmlDocument {
      * let doc = utils.ParseHtml("<ul><li class='album'>A</li><li class='album'>B</li></ul>");
      * let albums = doc ? doc.querySelectorAll(".album") : [];
      * console.log(albums.length); // 2
+     * @worker
      */
     querySelectorAll = function (selector) { }; //
 
@@ -5614,6 +6315,7 @@ class HtmlDocument {
      * const doc = utils.ParseHtml("<p><a href='https://example.com'>Link</a></p>");
      * const links = doc ? doc.getElementsByTagName("a") : [];
      * console.log(links.length); // 1
+     * @worker
      */
     getElementsByTagName = function (tagName) { }; //
 }
@@ -5625,6 +6327,7 @@ class HtmlDocument {
  * <b>NOTE</b>: HtmlNode objects keep the underlying native document alive while they exist.
  *
  * @hideconstructor
+ * @worker
  */
 class HtmlNode {
     /**
@@ -5642,6 +6345,7 @@ class HtmlNode {
      *     console.log(p.isElement); // true
      *     console.log(p.firstChild ? p.firstChild.isElement : null); // false
      * }
+     * @worker
      */
     isElement = undefined; // (read)
 
@@ -5655,6 +6359,7 @@ class HtmlNode {
      * @example
      * const doc = utils.ParseHtml("<BODY><P>Hello</P></BODY>");
      * if (doc) console.log(doc.body.tagName); // "body"
+     * @worker
      */
     tagName = undefined; // (read)
 
@@ -5671,6 +6376,7 @@ class HtmlNode {
      *     const p = doc.querySelector("p");
      *     console.log(p.className); // "album featured"
      * }
+     * @worker
      */
     className = undefined; // (read)
 
@@ -5687,6 +6393,7 @@ class HtmlNode {
      *     const p = doc.querySelector("p");
      *     console.log(p ? p.textContent : null); // "Hello world"
      * }
+     * @worker
      */
     textContent = undefined; // (read)
 
@@ -5696,6 +6403,7 @@ class HtmlNode {
      *
      * @type {string}
      * @readonly
+     * @worker
      */
     innerText = undefined; // (read)
 
@@ -5709,6 +6417,7 @@ class HtmlNode {
      * const doc = utils.ParseHtml("<p>Hello <b>world</b></p>");
      * const p = doc.querySelector("p");
      * console.log(p.innerHTML); // "Hello <b>world</b>"
+     * @worker
      */
     innerHTML = undefined; // (read)
 
@@ -5722,6 +6431,7 @@ class HtmlNode {
      * const doc = utils.ParseHtml("<p>Hello <b>world</b></p>");
      * const p = doc.querySelector("p");
      * console.log(p.outerHTML); // "<p>Hello <b>world</b></p>"
+     * @worker
      */
     outerHTML = undefined; // (read)
 
@@ -5744,6 +6454,7 @@ class HtmlNode {
      *
      * const a = li.querySelector("a");
      * console.log(a.getAttribute("href")); // "https://example.com"
+     * @worker
      */
     firstChild = undefined; // (read)
 
@@ -5757,6 +6468,7 @@ class HtmlNode {
      * const doc = utils.ParseHtml("<p>Hello <b>world</b></p>");
      * const p = doc.querySelector("p");
      * console.log(p.childNodes.length); // 2
+     * @worker
      */
     childNodes = undefined; // (read)
 
@@ -5772,6 +6484,7 @@ class HtmlNode {
      * const p = doc.querySelector("p");
      * console.log(p.children.length); // 1
      * console.log(p.children[0].tagName); // "b"
+     * @worker
      */
     children = undefined; // (read)
 
@@ -5787,6 +6500,7 @@ class HtmlNode {
      * const doc = utils.ParseHtml("<a href='https://example.com'>Link</a>");
      * const a = doc.querySelector("a");
      * console.log(a.getAttribute("href")); // "https://example.com"
+     * @worker
      */
     getAttribute = function (name) { }; //
 
@@ -5803,6 +6517,7 @@ class HtmlNode {
      * const a = doc.querySelector("a");
      * console.log(a.hasAttribute("href")); // true
      * console.log(a.hasAttribute("title")); // false
+     * @worker
      */
     hasAttribute = function (name) { }; //
 
@@ -5823,6 +6538,7 @@ class HtmlNode {
      * console.log(li.hasClass("album")); // true
      * console.log(li.hasClass("featured")); // true
      * console.log(li.hasClass("album-list")); // false
+     * @worker
      */
     hasClass = function (className) { }; //
 
@@ -5841,6 +6557,7 @@ class HtmlNode {
      * if (a) {
      *     console.log(a.getAttribute("href")); // "https://example.com"
      * }
+     * @worker
      */
     querySelector = function (selector) { }; //
 
@@ -5858,6 +6575,7 @@ class HtmlNode {
      * const albums = list.querySelectorAll(".album");
      *
      * console.log(albums.length); // 2
+     * @worker
      */
     querySelectorAll = function (selector) { }; //
 
@@ -5875,6 +6593,7 @@ class HtmlNode {
      * const links = p.getElementsByTagName("a");
      *
      * console.log(links.length); // 2
+     * @worker
      */
     getElementsByTagName = function (tagName) { }; //
 }

@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Worker — JSplitter API</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link active" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Worker</b></div>
+        
+    <article class="api-item" id="Worker" data-kind="class" data-name="worker">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-class">class</span></div>
+                <h2><a class="anchor" href="#Worker">Worker</a></h2>
+            </div>
+            <div class="source-location">js/worker.js:1</div>
+        </header>
+        <div class="signatures"><pre class="signature"><code>Worker(source[, name])</code></pre><pre class="signature"><code>Worker({ file }[, name])</code></pre></div>
+        
+        <div class="description"><p>Runs JavaScript in a separate JSplitter Worker realm and Worker thread.<br> JSplitter Workers use a Web-Worker-inspired programming model, but this page describes the actual JSplitter behaviour and should be treated as the primary guide. A Worker has its own global scope and event loop, communicates with its parent panel through structured-clone messages, and has no direct access to the panel UI.</p>
+<h2>Why use a Worker?</h2>
+<p>A panel script shares its thread with panel/UI work. Expensive JavaScript, large metadata aggregation, image processing, or repeated frame preparation performed there can make the interface less responsive. A Worker moves suitable work to another thread and lets the panel remain focused on interaction and presentation.</p>
+<div class="doc-article-diagram">Panel realm                         Worker realm
+UI / callbacks                       own JS realm + event loop
+    |                                      |
+    | new Worker(source / { file })                   |
+    |------------------------------------->|
+    |                                      | script starts
+    | postMessage(data)                    |
+    |------------------------------------->| process / render / I/O
+    |                                      |
+    |                  postMessage(result) |
+    |<-------------------------------------|
+    | repaint / present result             |
+    |                                      |
+    | terminate()              close() ----|</div>
+<h2>Creating a Worker</h2>
+<p>The <a href="Worker.html#Worker">Worker</a> constructor has two explicit startup forms:</p>
+<ul class="doc-article-list">
+<li><b><code>new Worker(source[, name])</code></b> — evaluates JavaScript <b><code>source</code></b> text supplied by the panel script.</li>
+<li><b><code>new Worker({ file: 'path/to/worker.js' }[, name])</code></b> — reads and evaluates a JavaScript file.</li>
+</ul>
+<p>In the file-backed form, <b><code>file</code></b> may be an absolute or relative path. Relative paths use the caller/package/component search roots, and the resolved file becomes the Worker's startup script origin.</p>
+<p>The optional second <b><code>name</code></b> argument has the same meaning in both startup forms: it is the Worker's immutable identity for its lifetime. Supply it when the Worker is created; inside the Worker the same value is exposed through read-only <a href="WorkerGlobalScope.html#name">self.name</a>. JSplitter also uses this exact name in <a href="window.html#JsMemoryStats">window.JsMemoryStats</a> (<b><code>Workers[].Name</code></b>) and as the first diagnostic metadata line of every unhandled Worker exception (see below). Giving long-lived or multiple concurrent Workers short descriptive names therefore makes both memory inspection and failures much easier to identify.</p>
+<p>Here are the examples of Worker creation:</p>
+<pre class="description-code language-js"><code><span class="tok-keyword">const</span> inlineWorker = <span class="tok-keyword">new</span> Worker(<span class="tok-string">`
+    include(&#39;workers/main.js&#39;);
+`</span>,
+<span class="tok-string">&#39;inline-worker&#39;</span>);
+
+<span class="tok-keyword">const</span> fileWorker = <span class="tok-keyword">new</span> Worker(
+    { file: <span class="tok-string">&#39;workers/main.js&#39;</span> },
+    <span class="tok-string">&#39;file-worker&#39;</span>
+);</code></pre>
+<p>This also means an inline Worker based on source text can be any piece of executable JavaScript code or only a tiny bootstrap that <a href="globals.html#include">include()</a>s ordinary files, while a file-backed Worker can start from the same file directly. Relative paths are resolved from the currently executing script file first when one exists, so a file-backed <b><code>workers/main.js</code></b> can <b><code>include('./helpers.js')</code></b>; otherwise the Worker's inherited script/package roots and component path are used.</p>
+<p>Source text passed to <a href="Worker.html#Worker">Worker</a> is ordinary JavaScript. JSplitter evaluates it in a new Worker realm running on its own thread:</p>
+<pre class="description-code language-js"><code><span class="tok-keyword">const</span> worker = <span class="tok-keyword">new</span> Worker(<span class="tok-string">`
+    const value = 21 * 2;
+    console.log(&#39;Worker result: &#39; + value);
+`</span>, <span class="tok-string">&#39;example-worker&#39;</span>);</code></pre>
+<p>The code inside the string runs in the Worker, not in the panel. It can use the APIs available to Worker code just as ordinary panel JavaScript can use panel APIs.</p>
+<p>This example is intentionally not very useful: it performs one calculation and does not communicate with the panel. The next section explains an important consequence of this execution model: the Worker remains alive even after that startup code reaches its end. Later sections show how messaging turns it into a useful long-lived Worker.</p>
+<h2>Worker lifetime and the event loop</h2>
+<p>Reaching the end of the Worker's initial source does <b>not</b> mean that the Worker has finished. In the example above, execution reaches the end immediately after <b><code>console.log()</code></b>, but the Worker itself remains alive. JSplitter keeps it running in its event loop. In this documentation, <b>event loop</b> simply means the Worker waits for the next unit of work and dispatches it when it arrives: a message from the panel, a timer, a Worker-capable asynchronous host completion, observer delivery, or Promise work associated with a task. When there is nothing to do, the Worker waits; it does not repeatedly execute the initial source and it does not need a user-written loop.</p>
+<p>This also means that processing one message does not end the Worker. The same Worker can receive many later messages through the same <a href="WorkerGlobalScope.html#onmessage">onmessage</a> handler with one <a href="MessageEvent.html#MessageEvent">MessageEvent</a> parameter. If the panel stays loaded and keeps the Worker alive, and neither side closes it, the Worker remains alive waiting for more work. It is therefore important to end Workers that are no longer needed rather than assuming that returning from the startup script or from a message handler stops them.</p>
+<p>There are two normal ways to end a Worker:</p>
+<ul class="doc-article-list">
+<li>The parent panel calls <a href="Worker.html#terminate">terminate()</a> when it decides that the Worker is no longer needed.</li>
+<li>Worker code calls Worker-global <a href="WorkerGlobalScope.html#close">close()</a> when the Worker itself knows that its work is finished. New work is no longer accepted, the current task is allowed to finish, and then the event loop exits.</li>
+</ul>
+<p>Next example shows typical <b>worker <-> panel</b> messaging:</p>
+<pre class="description-code language-js"><code><span class="tok-keyword">const</span> worker = <span class="tok-keyword">new</span> Worker(<span class="tok-string">`
+onmessage = function (event) {
+    if (event.data === &#39;stop&#39;) {
+        // WORKER: the Worker decides that it has finished.
+        postMessage(&#39;finished&#39;);
+        close();
+        return;
+    }
+
+    postMessage(&#39;processed: &#39; + event.data);
+};
+`</span>);
+
+<span class="tok-comment">// PANEL: receives messages sent by postMessage() inside the Worker here</span>
+worker.onmessage = <span class="tok-keyword">function</span> (event) {
+    console.log(<span class="tok-string">&#39;Worker says: &#39;</span> + event.data);
+};
+
+<span class="tok-comment">// PANEL: sends message to worker</span>
+worker.postMessage(<span class="tok-string">&#39;hello&#39;</span>);
+<span class="tok-comment">// -&gt; Worker says: processed: hello</span>
+
+<span class="tok-comment">// If Worker is no longer needed then:</span>
+
+<span class="tok-comment">// Option A: ask the Worker to finish through its own message protocol</span>
+worker.postMessage(<span class="tok-string">&#39;stop&#39;</span>);
+<span class="tok-comment">// -&gt; Worker says: finished</span>
+
+<span class="tok-comment">// Option B: stop Worker directly from the outside instead.</span>
+<span class="tok-comment">// Calling terminate() here is also safe, after the Worker has already called close()</span>
+<span class="tok-comment">// worker.terminate();</span></code></pre>
+<p>JSplitter automatically terminates all Workers still owned by a panel when that panel is unloaded, so explicit cleanup is not required merely for panel teardown. Explicit <a href="Worker.html#terminate">terminate()</a> is for ending a Worker <b>earlier</b>, while the panel continues to live. Conversely, while the panel remains loaded, a Worker that is still kept alive and is never closed or terminated will remain waiting in its event loop and will continue to hold its Worker realm and associated resources.</p>
+<div class="doc-note warning"><b>Do not treat a Worker as a one-shot function call.</b><br>
+If the panel keeps a Worker alive after its useful work is finished, returning from the Worker source or from its last message handler does not dispose it. Call <a href="Worker.html#terminate">terminate()</a> when the panel is done with it, or design the Worker protocol so Worker-global <a href="WorkerGlobalScope.html#close">close()</a> is called when the Worker knows it is finished.</div>
+<h2>Handling Worker errors</h2>
+<p>An exception that is <strong>not caught by Worker code</strong> and escapes Worker startup code, a Worker message handler, a timer callback, or another Worker task is reported as an <a href="ErrorEvent.html#ErrorEvent">ErrorEvent</a>. A normal <code>try...catch</code> handles the exception locally and prevents this error-reporting path from being used.</p>
+<p>For uncaught exceptions, Worker-local handling comes first: if Worker-global <a href="WorkerGlobalScope.html#onerror">onerror</a> or an <strong><code>error</code></strong> listener is installed, the error is handled there and is not forwarded to the parent. Otherwise it is forwarded to the parent side, where <a href="Worker.html#onerror">Worker.onerror</a> or an <strong><code>error</code></strong> listener can handle it.</p>
+<pre class="description-code language-js"><code>worker.onerror = <span class="tok-keyword">function</span> (event) {
+    console.log(<span class="tok-string">&#39;Worker error: &#39;</span> + event.message);
+    console.log(<span class="tok-string">&#39;Source: &#39;</span> + event.filename);
+    console.log(<span class="tok-string">&#39;Location: &#39;</span> + event.lineno + <span class="tok-string">&#39;:&#39;</span> + event.colno);
+};</code></pre>
+<p>If the error reaches the parent and no parent error handler is installed, JSplitter shows the normal panel-script error UI. A named inline Worker can produce a diagnostic like this:</p>
+<pre class="description-code language-text"><code>z is not defined
+
+Worker: spectrum-renderer
+File: worker.js
+Line: 42, Column: 5
+Stack trace:
+  scheduleNext@worker.js:42:5
+  onmessage@worker.js:68:3</code></pre>
+<p>Read it from top to bottom:</p>
+<ul class="doc-article-list">
+<li><b>Error message</b> — <b><code>z is not defined</code></b> is the exception text.</li>
+<li><b><code>Worker:</code></b> — the immutable Worker name supplied at construction time. An unnamed Worker shows <b><code>&lt;unnamed&gt;</code></b>.</li>
+<li><b><code>File:</code></b> — the Worker source name. Inline Workers use <b><code>worker.js</code></b>; file-backed Workers use the startup script basename.</li>
+<li><b><code>Line / Column:</code></b> — the original location of the exception in Worker code.</li>
+<li><b><code>Stack trace:</code></b> — the original Worker call chain when SpiderMonkey provides it.</li>
+</ul>
+<p>The resolved full path of a file-backed Worker is retained internally for relative file resolution, but diagnostics intentionally use the script basename to match ordinary panel-script diagnostics.</p>
+<p>A parent-side error handler can also deliberately turn a Worker failure into a normal panel-script exception by throwing. The <b><code>event</code></b> parameter below is the incoming <a href="ErrorEvent.html#ErrorEvent">ErrorEvent</a>, so the original Worker location is available directly on that object:</p>
+<pre class="description-code language-js"><code>worker.onerror = <span class="tok-keyword">function</span> (event) {
+    console.log(<span class="tok-string">&#39;Original Worker location: &#39;</span> +
+        event.filename + <span class="tok-string">&#39;:&#39;</span> + event.lineno + <span class="tok-string">&#39;:&#39;</span> + event.colno);
+
+    <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;Worker failed: &#39;</span> + event.message);
+};</code></pre>
+<h2>Sending structured data</h2>
+<p>Messages are not limited to strings. <a href="Worker.html#postMessage">Worker.postMessage()</a> and Worker-global <a href="WorkerGlobalScope.html#postMessage">postMessage()</a> use structured-clone semantics: the sender serializes the value and the receiver reconstructs its own independent value. The two realms do not share the same JavaScript object.</p>
+<pre class="description-code language-js"><code><span class="tok-keyword">const</span> worker = <span class="tok-keyword">new</span> Worker(<span class="tok-string">`
+onmessage = function (event) {
+    const request = event.data;
+
+    if (request.command === &#39;sum&#39;) {
+        const total = request.values.reduce((a, b) =&gt; a + b, 0);
+
+        // WORKER: send a structured result object back to the panel.
+        postMessage({
+            command: &#39;sum-result&#39;,
+            total: total
+        });
+    }
+};
+`</span>);
+
+worker.onmessage = <span class="tok-keyword">function</span> (event) {
+    console.log(event.data.command); <span class="tok-comment">// sum-result</span>
+    console.log(event.data.total);   <span class="tok-comment">// 10</span>
+
+    <span class="tok-comment">// PANEL: this one-shot example has its result, so it no longer needs</span>
+    <span class="tok-comment">// the Worker to remain alive waiting for more messages.</span>
+    worker.terminate();
+};
+
+<span class="tok-comment">// PANEL: the object and nested array are cloned for the Worker.</span>
+worker.postMessage({
+    command: <span class="tok-string">&#39;sum&#39;</span>,
+    values: [<span class="tok-number">1</span>, <span class="tok-number">2</span>, <span class="tok-number">3</span>, <span class="tok-number">4</span>]
+});</code></pre>
+<p>Ordinary JavaScript objects, arrays, maps, sets, typed arrays, ArrayBuffers and other supported structured-clone values can be sent this way. Selected JSplitter host wrappers can also cross the message boundary; the exact types and their ownership rules are listed later under <b>Host objects in messages</b>.</p>
+<h2>Transferring ownership</h2>
+<p>A transferable value uses the same message channel but a different ownership model. Normal structured clone leaves the source usable and creates a representation for the receiver. Transfer instead <b>moves ownership</b> of the underlying resource without cloning. After a successful transfer, the source wrapper is detached and <b>must not be used</b> again by the sender.</p>
+<p>The syntax difference is the <b>transfer list</b> passed as the second argument. The transfer list is separate from the message payload. It identifies transferable objects contained anywhere in the payload that should have their ownership moved instead of being cloned.</p>
+<pre class="description-code language-js"><code><span class="tok-comment">// Clone: both objects remain usable in the panel.</span>
+worker.postMessage({
+    bitmap: bitmap,
+    chunk: audioChunk
+});
+
+<span class="tok-comment">// Transfer: the message payload is still the first argument.</span>
+<span class="tok-comment">// The transfer list only specifies which transferable objects inside that</span>
+<span class="tok-comment">// payload move to the Worker instead of being cloned.</span>
+worker.postMessage(
+    {
+        bitmap: bitmap,
+        chunk: audioChunk,
+        values: [<span class="tok-number">1</span>, <span class="tok-number">2</span>, <span class="tok-number">3</span>, <span class="tok-number">4</span>]
+    },
+    [bitmap, audioChunk]
+);
+
+<span class="tok-comment">// After a successful transfer, bitmap and audioChunk are detached in the</span>
+<span class="tok-comment">// panel. Other values in the message, such as &quot;values&quot;, are cloned normally.</span></code></pre>
+<p>Transfers are atomic with respect to the transfer list. A call to <b><code>postMessage(value, transferList)</code></b> either transfers every transferable object in the list or transfers none of them.</p>
+<p>If the message cannot be serialized, or any object in the transfer list cannot be transferred, <a href="Worker.html#postMessage">postMessage()</a> fails and all source objects remain usable. No object in the list is detached.</p>
+<p>After <a href="Worker.html#postMessage">postMessage()</a> successfully serializes the message and commits the transfer, all objects listed in the transfer list are detached in the sender.</p>
+<p>A message is delivered only after it has been serialized successfully. If serialization and transfer succeed but the receiving realm cannot reconstruct one of the message values, that endpoint receives a <a href="Worker.html#onmessageerror">messageerror</a> event and remains usable for later messages. This is a receiver-side delivery failure: a completed transfer is <b>not rolled back</b>, and transferred source objects remain detached.</p>
+<p>JSplitter adds two diagnostic fields to that <a href="MessageEvent.html#MessageEvent">MessageEvent</a>: <a href="MessageEvent.html#errorMessage">errorMessage</a> tells you why reconstruction failed, while <a href="MessageEvent.html#direction">direction</a> tells you whether the failed delivery was <b>panel-to-worker</b> or <b>worker-to-panel</b>. The original payload is not available because reconstruction did not complete, so <a href="MessageEvent.html#data">data</a> is <b>undefined</b>.</p>
+<pre class="description-code language-js"><code>worker.onmessageerror = <span class="tok-keyword">function</span> (event) {
+    <span class="tok-comment">// PANEL: a Worker result reached this panel but could not be reconstructed.</span>
+    console.log(<span class="tok-string">&#39;Failed direction: &#39;</span> + event.direction);
+    console.log(<span class="tok-string">&#39;Reason: &#39;</span> + event.errorMessage);
+};</code></pre>
+<p>Inside a Worker, Worker-global <a href="WorkerGlobalScope.html#onmessageerror">onmessageerror</a> exposes the same fields; its direction is <b>panel-to-worker</b>. This is a delivery/structured-clone failure, not an uncaught Worker exception, so it is separate from <a href="Worker.html#onerror">onerror</a>.</p>
+<h2>Host objects in messages</h2>
+<p>The examples above cover normal structured data and transfer syntax. JSplitter also defines explicit messaging rules for its native host wrappers. The lists below are the reference for which wrappers may cross between the panel and Worker realms.</p>
+<p><b>Cloneable host objects.</b> Sending one of these without a transfer list leaves the source object usable in the sender and creates an independent representation for the receiving realm.</p>
+<details class="doc-capability-list"><summary><b>Cloneable host objects</b></summary>
+<ul class="doc-api-link-list">
+<li><a href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a></li>
+<li><a href="FbMetadbHandleList.html#FbMetadbHandleList">FbMetadbHandleList</a></li>
+<li><a href="FbFileInfo.html#FbFileInfo">FbFileInfo</a></li>
+<li><a href="FbTitleFormat.html#FbTitleFormat">FbTitleFormat</a></li>
+<li><a href="FbPlaybackQueueItem.html#FbPlaybackQueueItem">FbPlaybackQueueItem</a></li>
+<li><a href="FbPlayingItemLocation.html#FbPlayingItemLocation">FbPlayingItemLocation</a></li>
+<li><a href="FbAudioChunk.html#FbAudioChunk">FbAudioChunk</a></li>
+<li><a href="DriveInfo.html#DriveInfo">DriveInfo</a></li>
+<li><a href="RunResult.html#RunResult">RunResult</a></li>
+<li><a href="GdiGraphics.html#MeasureStringInfo">GDI MeasureStringInfo</a></li>
+<li><a href="D2DGraphics.html#MeasureStringInfo">D2D MeasureStringInfo</a></li>
+<li><a href="D2DCompileInfo.html#D2DCompileInfo">D2DCompileInfo</a></li>
+<li><a href="GdiBitmap.html#GdiBitmap">GdiBitmap</a></li>
+<li><a href="GdiFont.html#GdiFont">GdiFont</a></li>
+<li><a href="GdiBrush.html#GdiBrush">GdiBrush</a></li>
+<li><a href="D2DBitmap.html#D2DBitmap">D2DBitmap</a></li>
+<li><a href="D2DFont.html#D2DFont">D2DFont</a></li>
+<li><a href="D2DBrush.html#D2DBrush">D2DBrush</a></li>
+<li><a href="D2DStrokeStyle.html#D2DStrokeStyle">D2DStrokeStyle</a></li>
+</ul>
+</details>
+<p><b>Transferable host objects.</b> These are the JSplitter host wrappers that support the transfer-list ownership model demonstrated above. After a successful transfer the source wrapper is detached and no longer usable on the sender side; if serialization itself fails, the transfer is rolled back and the source remains usable.</p>
+<p>Transfer support is intentionally limited to objects that own a significant dynamic resource whose ownership can be moved efficiently and unambiguously between realms. Smaller value-like objects are simply cloned, while shared or realm-bound resources are not made transferable.</p>
+<details class="doc-capability-list"><summary><b>Transferable host objects</b></summary>
+<ul class="doc-api-link-list">
+<li><a href="FbAudioChunk.html#FbAudioChunk">FbAudioChunk</a></li>
+<li><a href="GdiBitmap.html#GdiBitmap">GdiBitmap</a></li>
+<li><a href="D2DBitmap.html#D2DBitmap">D2DBitmap</a></li>
+</ul>
+<p>All three types are also cloneable. Choose ordinary cloning when both realms still need a usable object. Transfer moves bitmap pixel storage or the <a href="FbAudioChunk.html#FbAudioChunk">FbAudioChunk</a> sample buffer to the receiving realm without keeping a usable source wrapper.</p>
+</details>
+<p><b>Realm-local host objects.</b> Other wrappers represent live services, graphics state or resources whose meaning is tied to the realm that created them. They can be used normally inside that realm, including inside a Worker when the relevant API is available there, but they cannot cross a structured-clone message boundary. Attempting to post one fails serialization rather than silently sharing the native object.</p>
+<details class="doc-capability-list"><summary><b>Realm-local host objects</b></summary>
+<ul class="doc-api-link-list">
+<li><a href="FbProfiler.html#FbProfiler">FbProfiler</a></li>
+<li><a href="FbUiSelectionHolder.html#FbUiSelectionHolder">FbUiSelectionHolder</a></li>
+<li><a href="FbPlaylistRecycler.html#FbPlaylistRecycler">FbPlaylistRecycler</a></li>
+<li><a href="HtmlDocument.html#HtmlDocument">HtmlDocument</a></li>
+<li><a href="HtmlNode.html#HtmlNode">HtmlNode</a></li>
+<li><a href="GdiRawBitmap.html#GdiRawBitmap">GdiRawBitmap</a></li>
+<li><a href="GdiGraphics.html#GdiGraphics">GdiGraphics</a></li>
+<li><a href="D2DGraphics.html#D2DGraphics">D2DGraphics</a></li>
+<li><a href="D2DEffect.html#D2DEffect">D2DEffect</a></li>
+</ul>
+<p><a href="MainMenuManager.html#MainMenuManager">MainMenuManager</a> and <a href="ContextMenuManager.html#ContextMenuManager">ContextMenuManager</a> are additionally panel-only because their factories are not exposed in Workers.</p>
+</details>
+<h2>Panel realm versus Worker realm</h2>
+<p>A Worker is not another panel. It has no panel HWND, no <a href="window.html#window">window</a> object, no panel graphics render target, and no panel UI/input callbacks such as <a href="module-Callbacks.html#on_paint">on_paint</a>, <a href="module-Callbacks.html#on_key_down">on_key_down</a> or <a href="module-Callbacks.html#on_mouse_move">on_mouse_move</a>. This does not mean Worker code has no callbacks at all: message/event handlers and completion callbacks belonging to Worker-capable asynchronous host APIs remain available where documented. A Worker has its own <a href="fb.html#fb">fb</a>, <a href="plman.html#plman">plman</a>, <a href="utils.html#utils">utils</a>, <a href="gdi.html#gdi">gdi</a>, <a href="console.html#console">console</a> and <a href="performance.html#performance">performance</a> namespace objects. When Direct2D is initialized before the Worker is created, <a href="d2d.html#d2d">d2d</a> is available as well.</p>
+<p>These APIs are exposed in the Worker realm, but this does not mean that every operation runs on the Worker thread: methods marked <strong>MAIN THREAD</strong> cross to the main thread internally but, for example, GDI and Direct2D resources can be created and used by the Worker for offscreen rendering in its own thread.</p>
+<p>The Worker environment implements the JSplitter subset of familiar Worker primitives: <a href="EventTarget.html#EventTarget">EventTarget</a>, <a href="Event.html#Event">Event</a>, <a href="MessageEvent.html#MessageEvent">MessageEvent</a>, <a href="ErrorEvent.html#ErrorEvent">ErrorEvent</a>, <a href="PromiseRejectionEvent.html#PromiseRejectionEvent">PromiseRejectionEvent</a>, <a href="WorkerGlobalScope.html#WorkerGlobalScope">WorkerGlobalScope</a>, timers and promises. The local JSplitter interface pages describe the supported surface and behaviour.</p>
+<h2>Worker API coverage</h2>
+<p>Most useful non-UI JSplitter API is available inside a Worker. Namespaces marked <b>mostly available</b> below expose the large majority of their normal surface; the relatively small set of exclusions is listed separately in <b>APIs intentionally unavailable in Workers</b>.</p>
+<ul class="doc-article-list">
+<li><b>Core Worker environment</b> — messaging, events, timers, promises, <a href="globals.html#include">include()</a> are available.</li>
+<li><a href="fb.html#fb">fb</a> — <b>mostly available</b>. Playback, library/selection data, title formatting, DSP/output state and most non-modal host operations are exposed.</li>
+<li><a href="plman.html#plman">plman</a> — <b>mostly available</b>. Playlist manipulation, playback queue, sorting, undo/redo and the playlist recycler are exposed.</li>
+<li><a href="utils.html#utils">utils</a> — <b>mostly available</b>. Filesystem, hashing, text/binary/INI, package/system information, HTML parsing, drives, image/album-art loading, process, HTTP and download helpers are exposed.</li>
+<li><a href="gdi.html#gdi">gdi</a> — <b>fully available</b> as a DrawMode-aware Worker namespace. In GDI mode its factories create GDI+ resources; when the Worker is created from a Direct2D panel, the same <b><code>gdi.*</code></b> factories route to the Worker Direct2D backend and create the corresponding D2D resources.</li>
+<li><a href="d2d.html#d2d">d2d</a> — <b>fully available</b> as a Worker namespace when Direct2D is initialized before Worker creation, including effects, compile support and Worker-local offscreen rendering. Set <a href="window.html#DrawMode">window.DrawMode</a> to <b>1</b> in the panel <b>before</b> creating a Worker that needs Direct2D.</li>
+<li><a href="console.html#console">console</a> — <b>fully available</b> inside a Worker.</li>
+<li><a href="performance.html#performance">performance</a> — <b>fully available</b> inside a Worker.</li>
+</ul>
+<h2>APIs intentionally unavailable in Workers</h2>
+<p><b>Panel and browser globals.</b> The panel <a href="window.html#window">window</a> namespace, panel UI/input callbacks such as <a href="module-Callbacks.html#on_paint">on_paint</a>, <a href="module-Callbacks.html#on_key_down">on_key_down</a> and <a href="module-Callbacks.html#on_mouse_move">on_mouse_move</a>, tooltips, theme/HWND services and the panel graphics render target are not Worker concepts. In particular, the panel-provided <a href="GdiGraphics.html#GdiGraphics">GdiGraphics</a> or <a href="D2DGraphics.html#D2DGraphics">D2DGraphics</a> graphics context passed to UI painting callbacks is not available to Worker code. Also panel-only compatibility globals such as <a href="ActiveXObject.html#ActiveXObject">ActiveXObject</a> and <a href="Enumerator.html#Enumerator">Enumerator</a>, and nested <a href="Worker.html#Worker">Worker</a> creation are also unavailable.</p>
+<p>The mostly available namespaces listed above also omit a small number of operations that are modal, interactive, tied to live panel UI state, or otherwise unsuitable for a Worker:</p>
+<details class="doc-capability-list"><summary><b>fb</b></summary>
+<ul class="doc-api-link-list">
+<li><a href="fb.html#AddDirectory">fb.AddDirectory</a></li>
+<li><a href="fb.html#AddFiles">fb.AddFiles</a></li>
+<li><a href="fb.html#CreateContextMenuManager">fb.CreateContextMenuManager</a></li>
+<li><a href="fb.html#CreateMainMenuManager">fb.CreateMainMenuManager</a></li>
+<li><a href="fb.html#DoDragDrop">fb.DoDragDrop</a></li>
+<li><a href="fb.html#LoadPlaylist">fb.LoadPlaylist</a></li>
+<li><a href="fb.html#RunContextCommand">fb.RunContextCommand</a></li>
+<li><a href="fb.html#RunContextCommandWithMetadb">fb.RunContextCommandWithMetadb</a></li>
+<li><a href="fb.html#RunMainMenuCommand">fb.RunMainMenuCommand</a></li>
+<li><a href="fb.html#SavePlaylist">fb.SavePlaylist</a></li>
+</ul>
+</details>
+<details class="doc-capability-list"><summary><b>plman</b></summary>
+<ul class="doc-api-link-list">
+<li><a href="plman.html#ShowAutoPlaylistUI">plman.ShowAutoPlaylistUI</a></li>
+<li><a href="plman.html#ShowPlaylistLockUI">plman.ShowPlaylistLockUI</a></li>
+</ul>
+</details>
+<details class="doc-capability-list"><summary><b>utils</b></summary>
+<ul class="doc-api-link-list">
+<li><a href="utils.html#ColourPicker">utils.ColourPicker</a></li>
+<li><a href="utils.html#EditTextFile">utils.EditTextFile</a></li>
+<li><a href="utils.html#FilePicker">utils.FilePicker</a></li>
+<li><a href="utils.html#FolderPicker">utils.FolderPicker</a></li>
+<li><a href="utils.html#FontPicker">utils.FontPicker</a></li>
+<li><a href="utils.html#InputBox">utils.InputBox</a></li>
+<li><a href="utils.html#MessageBox">utils.MessageBox</a></li>
+<li><a href="utils.html#ShowHtmlDialog">utils.ShowHtmlDialog</a></li>
+</ul>
+</details>
+<h2>Main-thread host operations</h2>
+<p>Many APIs are callable from Worker code but ultimately use foobar2000 services that can only execute on the main thread (this is a foobar2000 SDK requirement). When the Worker calls one of these APIs, it waits synchronously until that host operation finishes. Occasional calls are fine; a tight loop of them defeats much of the reason for moving work to a Worker.</p>
+<div class="doc-article-diagram">GOOD
+panel:  send one useful batch
+                   |
+                   v
+worker: process / aggregate / render
+                   |
+                   v
+panel:  receive compact result
+
+POOR
+worker: main thread -> main thread -> main thread -> ...</div>
+<div class="doc-note warning"><b>Avoid building a Worker around repeated main-thread calls.</b><br>
+If most of a Worker consists of frequent synchronous host calls, moving that code to a Worker will usually provide no performance benefit and can make it slower because of repeated cross-thread synchronization. If the main thread is busy, the Worker waits too.</div>
+<p>The lists below show the Worker-accessible API that uses this synchronous main-thread bridge:</p>
+<details class="doc-capability-list"><summary><b>plman</b></summary>
+<p><b>EVERY</b> Worker-exposed <a href="plman.html#plman">plman</a> function is main-thread bridged. These live properties also have main-thread accessors:</p>
+<ul class="doc-api-link-list">
+<li><a href="plman.html#ActivePlaylist">plman.ActivePlaylist</a></li>
+<li><a href="plman.html#PlaybackOrder">plman.PlaybackOrder</a></li>
+<li><a href="plman.html#PlayingPlaylist">plman.PlayingPlaylist</a></li>
+<li><a href="plman.html#PlaylistCount">plman.PlaylistCount</a></li>
+</ul>
+<p>Reading <a href="plman.html#PlaylistRecycler">plman.PlaylistRecycler</a> itself only obtains the Worker-local <a href="FbPlaylistRecycler.html#FbPlaylistRecycler">FbPlaylistRecycler</a> wrapper; its operations are main-thread bridged.</p>
+</details>
+<details class="doc-capability-list"><summary><b>fb</b></summary>
+<h4>Functions</h4>
+<ul class="doc-api-link-list">
+<li><a href="fb.html#AcquireUiSelectionHolder">fb.AcquireUiSelectionHolder</a></li>
+<li><a href="fb.html#AddLocationsAsync">fb.AddLocationsAsync</a></li>
+<li><a href="fb.html#CheckClipboardContents">fb.CheckClipboardContents</a></li>
+<li><a href="fb.html#ClearPlaylist">fb.ClearPlaylist</a></li>
+<li><a href="fb.html#CopyHandleListToClipboard">fb.CopyHandleListToClipboard</a></li>
+<li><a href="fb.html#Exit">fb.Exit</a></li>
+<li><a href="fb.html#EnumerateMainMenuCommands">fb.EnumerateMainMenuCommands</a></li>
+<li><a href="fb.html#GetActiveDSPs">fb.GetActiveDSPs</a></li>
+<li><a href="fb.html#GetClipboardContents">fb.GetClipboardContents</a></li>
+<li><a href="fb.html#GetDSPPresets">fb.GetDSPPresets</a></li>
+<li><a href="fb.html#GetFocusItem">fb.GetFocusItem</a></li>
+<li><a href="fb.html#GetLibraryItems">fb.GetLibraryItems</a></li>
+<li><a href="fb.html#GetLibraryRelativePath">fb.GetLibraryRelativePath</a></li>
+<li><a href="fb.html#GetLibraryRoots">fb.GetLibraryRoots</a></li>
+<li><a href="fb.html#GetNowPlaying">fb.GetNowPlaying</a></li>
+<li><a href="fb.html#GetSelection">fb.GetSelection</a></li>
+<li><a href="fb.html#GetSelections">fb.GetSelections</a></li>
+<li><a href="fb.html#GetSelectionType">fb.GetSelectionType</a></li>
+<li><a href="fb.html#IsLibraryEnabled">fb.IsLibraryEnabled</a></li>
+<li><a href="fb.html#IsMainMenuCommandChecked">fb.IsMainMenuCommandChecked</a></li>
+<li><a href="fb.html#IsMetadbInMediaLibrary">fb.IsMetadbInMediaLibrary</a></li>
+<li><a href="fb.html#Next">fb.Next</a></li>
+<li><a href="fb.html#Pause">fb.Pause</a></li>
+<li><a href="fb.html#Play">fb.Play</a></li>
+<li><a href="fb.html#PlayOrPause">fb.PlayOrPause</a></li>
+<li><a href="fb.html#Prev">fb.Prev</a></li>
+<li><a href="fb.html#Random">fb.Random</a></li>
+<li><a href="fb.html#RegisterMainMenuCommand">fb.RegisterMainMenuCommand</a></li>
+<li><a href="fb.html#Restart">fb.Restart</a></li>
+<li><a href="fb.html#SetDSPPreset">fb.SetDSPPreset</a></li>
+<li><a href="fb.html#SetOutputDevice">fb.SetOutputDevice</a></li>
+<li><a href="fb.html#ShowConsole">fb.ShowConsole</a></li>
+<li><a href="fb.html#ShowLibrarySearchUI">fb.ShowLibrarySearchUI</a></li>
+<li><a href="fb.html#ShowPictureViewer">fb.ShowPictureViewer</a></li>
+<li><a href="fb.html#ShowPlaylistSearchUI">fb.ShowPlaylistSearchUI</a></li>
+<li><a href="fb.html#ShowPreferences">fb.ShowPreferences</a></li>
+<li><a href="fb.html#Stop">fb.Stop</a></li>
+<li><a href="fb.html#UnregisterMainMenuCommand">fb.UnregisterMainMenuCommand</a></li>
+<li><a href="fb.html#VolumeDown">fb.VolumeDown</a></li>
+<li><a href="fb.html#VolumeMute">fb.VolumeMute</a></li>
+<li><a href="fb.html#VolumeUp">fb.VolumeUp</a></li>
+</ul>
+<h4>Properties</h4>
+<ul class="doc-api-link-list">
+<li><a href="fb.html#AlwaysOnTop">fb.AlwaysOnTop</a></li>
+<li><a href="fb.html#CursorFollowPlayback">fb.CursorFollowPlayback</a></li>
+<li><a href="fb.html#CustomVolume">fb.CustomVolume</a></li>
+<li><a href="fb.html#IsPaused">fb.IsPaused</a></li>
+<li><a href="fb.html#IsPlaying">fb.IsPlaying</a></li>
+<li><a href="fb.html#PlaybackFollowCursor">fb.PlaybackFollowCursor</a></li>
+<li><a href="fb.html#PlaybackLength">fb.PlaybackLength</a></li>
+<li><a href="fb.html#PlaybackTime">fb.PlaybackTime</a></li>
+<li><a href="fb.html#ReplaygainMode">fb.ReplaygainMode</a></li>
+<li><a href="fb.html#StopAfterCurrent">fb.StopAfterCurrent</a></li>
+<li><a href="fb.html#Volume">fb.Volume</a></li>
+</ul>
+</details>
+<details class="doc-capability-list"><summary><b>utils / console</b></summary>
+<h4>utils</h4>
+<ul class="doc-api-link-list">
+<li><a href="utils.html#CheckComponent">utils.CheckComponent</a></li>
+<li><a href="utils.html#GetClipboardText">utils.GetClipboardText</a></li>
+<li><a href="utils.html#GetPackageInfo">utils.GetPackageInfo</a></li>
+<li><a href="utils.html#GetPackagePath">utils.GetPackagePath</a></li>
+<li><a href="utils.html#RecyclePath">utils.RecyclePath</a></li>
+<li><a href="utils.html#Run">utils.Run</a></li>
+<li><a href="utils.html#SetClipboardText">utils.SetClipboardText</a></li>
+</ul>
+<h4>console</h4>
+<ul class="doc-api-link-list">
+<li><a href="console.html#GetLines">console.GetLines</a></li>
+<li><a href="console.html#ClearBacklog">console.ClearBacklog</a></li>
+</ul>
+<p>The console methods above use the foobar2000 main-thread console manager on foobar2000 2.0 and newer; the legacy JSplitter-owned console backlog path is thread-safe and direct.</p>
+</details>
+<details class="doc-capability-list"><summary><b>Host wrapper methods</b></summary>
+<ul class="doc-api-link-list">
+<li><a href="FbMetadbHandle.html#RefreshStats">FbMetadbHandle#RefreshStats</a></li>
+<li><a href="FbMetadbHandleList.html#GetLibraryRelativePaths">FbMetadbHandleList#GetLibraryRelativePaths</a></li>
+<li><a href="FbMetadbHandleList.html#OptimiseFileLayout">FbMetadbHandleList#OptimiseFileLayout</a></li>
+<li><a href="FbMetadbHandleList.html#OrderByRelativePath">FbMetadbHandleList#OrderByRelativePath</a></li>
+<li><a href="FbMetadbHandleList.html#RefreshStats">FbMetadbHandleList#RefreshStats</a></li>
+<li><a href="FbMetadbHandleList.html#RemoveAttachedImage">FbMetadbHandleList#RemoveAttachedImage</a></li>
+<li><a href="FbMetadbHandleList.html#RemoveAttachedImages">FbMetadbHandleList#RemoveAttachedImages</a></li>
+<li><a href="FbMetadbHandleList.html#UpdateFileInfoFromJSON">FbMetadbHandleList#UpdateFileInfoFromJSON</a></li>
+<li><a href="FbTitleFormat.html#Eval">FbTitleFormat#Eval</a></li>
+<li><a href="FbUiSelectionHolder.html#SetSelection">FbUiSelectionHolder#SetSelection</a></li>
+<li><a href="FbUiSelectionHolder.html#SetPlaylistSelectionTracking">FbUiSelectionHolder#SetPlaylistSelectionTracking</a></li>
+<li><a href="FbUiSelectionHolder.html#SetPlaylistTracking">FbUiSelectionHolder#SetPlaylistTracking</a></li>
+<li><a href="FbPlaylistRecycler.html#Count">FbPlaylistRecycler#Count</a></li>
+<li><a href="FbPlaylistRecycler.html#GetName">FbPlaylistRecycler#GetName</a></li>
+<li><a href="FbPlaylistRecycler.html#GetContent">FbPlaylistRecycler#GetContent</a></li>
+<li><a href="FbPlaylistRecycler.html#Purge">FbPlaylistRecycler#Purge</a></li>
+<li><a href="FbPlaylistRecycler.html#Restore">FbPlaylistRecycler#Restore</a></li>
+</ul>
+</details>
+<p>A small note on <a href="fb.html#GetAudioChunk">fb.GetAudioChunk</a>: it's normally accesses the visualisation stream directly from the Worker but its first use may briefly synchronize with the main thread while that stream is initialized.</p>
+<p>A Worker waiting for a bridge call can normally be terminated cleanly. Once a main-thread callback has already begun executing, however, it cannot be interrupted halfway through; that in-progress host operation must return before it can be fully unwound. Blocking or modal host APIs are therefore deliberately excluded from the Worker surface.</p>
+<h2>Capability badges and terms</h2>
+<p>The detailed API pages use four local badges for the concepts introduced above:</p>
+<ul class="doc-article-list">
+<li><span class="flag capability worker">WORKER</span> — this API item is available from Worker code. Absence of this badge means the item is not part of the documented Worker surface.</li>
+<li><span class="flag capability main-thread">MAIN THREAD</span> — as described in <b>Main-thread host operations</b> above, the item is callable from a Worker but its foobar2000 host operation executes synchronously on the main thread. The Worker waits for that operation to return, so repeated calls should be avoided in hot Worker loops.</li>
+<li><span class="flag capability cloneable">CLONEABLE</span> — instances of this host type can be sent through <a href="Worker.html#postMessage">postMessage()</a> using structured clone while the source remains usable.</li>
+<li><span class="flag capability transferable">TRANSFERABLE</span> — instances can additionally be placed in the transfer list so ownership moves to the receiver; after a successful transfer the source wrapper is detached and no longer usable on the sender side.</li>
+</ul>
+<h2>Samples</h2>
+<p>The samples are intentionally ordered. Start with lifecycle/messaging, then move through batch data processing, CPU-bound work, asynchronous image processing and finally a real-time audio/render pipeline.</p>
+<p><b>1. Basic Messaging.</b> The smallest complete lifecycle example: create a named inline Worker, send a structured object, receive a result, install parent/Worker <b><code>messageerror</code></b> diagnostics and a parent error handler, then let the Worker finish with Worker-global <a href="WorkerGlobalScope.html#close">close()</a>. The unload handler also shows that parent <a href="Worker.html#terminate">terminate()</a> is safe during panel teardown.</p>
+<pre class="description-code language-js"><code><span class="tok-comment">// PANEL: create and immediately start a named Worker from prepared source text.</span>
+<span class="tok-keyword">const</span> worker = <span class="tok-keyword">new</span> Worker(source, <span class="tok-string">&#39;basic-messaging&#39;</span>);
+
+<span class="tok-comment">// PANEL: values sent by Worker-global postMessage(...) arrive here as event.data.</span>
+worker.onmessage = event =&gt; console.log(event.data);
+
+<span class="tok-comment">// PANEL: send one object to this Worker. JSplitter structured-clones it before</span>
+<span class="tok-comment">// the Worker&#39;s onmessage handler receives its own reconstructed copy.</span>
+worker.postMessage({ values: [<span class="tok-number">1</span>, <span class="tok-number">2</span>, <span class="tok-number">3</span>, <span class="tok-number">4</span>] });</code></pre>
+<p><b>2. Playlist Statistics.</b> Presents Media Library and the existing playlists as an interactive source list. The panel obtains one <a href="FbMetadbHandleList.html#FbMetadbHandleList">FbMetadbHandleList</a>, then the <b>Main / Worker</b> switch runs the same metadata and <a href="FbFileInfo.html#FbFileInfo">FbFileInfo</a> aggregation either synchronously in the panel realm or on the cloned list in the Worker. The detail view reports calculation and end-to-end time, making the responsiveness/overhead trade-off visible on large real-world batches.</p>
+<pre class="description-code language-js"><code><span class="tok-comment">// Panel: obtain one source batch. Media Library uses fb.GetLibraryItems();</span>
+<span class="tok-comment">// playlists use plman.GetPlaylistItems(...).</span>
+<span class="tok-keyword">const</span> handles = source.library ? fb.GetLibraryItems() : plman.GetPlaylistItems(source.index);
+
+<span class="tok-comment">// Worker mode: clone the complete list once and aggregate it off the panel thread.</span>
+worker.postMessage({ requestId, handles });
+
+<span class="tok-comment">// Main mode runs the same analyseHandles(handles) function in the panel realm.</span></code></pre>
+<p><b>3. Fractal Renderer.</b> Demonstrates a CPU-bound render job that belongs entirely in a Worker. Pan and zoom reuse one completed frame locally for immediate feedback; drag sends one final viewport on release, while wheel and resize bursts are coalesced for 80 ms. The Worker renders only the settled viewport, transfers the completed bitmap, and stale results are rejected by view id. The <b>GDI / D2D</b> switch recreates the Worker so the same <b><code>gdi.*</code></b> facade can be compared in both rendering modes.</p>
+<p><b>4. Playlist Album Gallery.</b> A practical artwork-loading A/B test. <b>Main / Worker</b> runs the same visible-cover pipeline either in the panel or in the Worker. In Worker mode the panel sends one cloneable <a href="FbMetadbHandleList.html#FbMetadbHandleList">FbMetadbHandleList</a>; the Worker deduplicates it into albums, loads artwork with <a href="utils.html#GetAlbumArtAsyncV2">GetAlbumArtAsyncV2</a>, resizes each image and transfers completed bitmaps back individually. Only the covers that fit in the current viewport are requested, changing cover size intentionally reloads them, and the sample has no artwork cache. <b>Concurrency</b> controls how many artwork requests may be in flight, while <b>GDI / D2D</b> selects the rendering backend. Targeted <b><code>RepaintRect</code></b> updates and timing counters make first display, loading, delivery and paint cost visible.</p>
+<p><b>5. Spectrum Analyzer.</b> The real-time A/B test. <b>Main / Worker</b> runs the same audio-read, FFT and offscreen-render pipeline on either thread. Both paths allow only one completed frame at a time; the next frame starts only after the previous bitmap reaches <b><code>on_paint</code></b>, so the counters measure work that can actually be presented. Additional switches select <b>GDI / D2D</b>, FFT size, and either a <b>120 FPS</b> limiter or <b>Max</b> mode. The overlay reports frame/paint rate plus audio, FFT, render and total processing time. <b>Max</b> is useful for exposing fixed per-frame overhead, but the sample is not intended as a general GDI-versus-D2D benchmark.</p>
+<pre class="description-code language-js"><code><span class="tok-comment">// Worker: read a short audio window and turn it into spectrum data.</span>
+<span class="tok-keyword">const</span> chunk = fb.GetAudioChunk(<span class="tok-number">0.06</span>, -<span class="tok-number">0.03</span>);
+analyse(chunk);
+
+<span class="tok-comment">// Render a complete offscreen frame, then transfer its ownership to the panel.</span>
+<span class="tok-keyword">const</span> frame = renderSpectrum();
+postMessage({ bitmap: frame, timing }, [frame]);
+<span class="tok-comment">// frame is detached here after a successful transfer and must not be reused.</span>
+
+<span class="tok-comment">// Panel: keep one completed frame and request presentation. Do not acknowledge</span>
+<span class="tok-comment">// it yet: the Worker remains paused until this exact frame reaches on_paint.</span>
+worker.onmessage = <span class="tok-keyword">function</span> (event) {
+    frame = event.data.bitmap;
+    window.Repaint();
+};
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    gr.DrawImage(frame, <span class="tok-number">0</span>, <span class="tok-number">0</span>, window.Width, window.Height, <span class="tok-number">0</span>, <span class="tok-number">0</span>, frame.Width, frame.Height);
+    worker.postMessage({ type: <span class="tok-string">&#39;next&#39;</span> });
+}</code></pre></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>source</code></td><td><code>(string|Object)</code></td><td><p>JavaScript source text, or a file descriptor object such as <code>{ file: 'workers/main.js' }</code>.</p></td></tr><tr><td><code>name = &quot;&quot;</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>Optional immutable Worker identity exposed through read-only Worker-global <a href="WorkerGlobalScope.html#name">name</a>, reported by <a href="window.html#JsMemoryStats">window.JsMemoryStats</a>, and shown in unhandled Worker exception diagnostics.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example sources</h3>
+            <div class="source-links"><a class="source-link" href="source-samples-worker-01.-Basic-Messaging.js.html"><span>samples/worker/01. Basic Messaging.js</span><small>open source</small></a><a class="source-link" href="source-samples-worker-02.-Playlist-Statistics.js.html"><span>samples/worker/02. Playlist Statistics.js</span><small>open source</small></a><a class="source-link" href="source-samples-worker-03.-Fractal-Renderer.js.html"><span>samples/worker/03. Fractal Renderer.js</span><small>open source</small></a><a class="source-link" href="source-samples-worker-04.-Playlist-Album-Gallery.js.html"><span>samples/worker/04. Playlist Album Gallery.js</span><small>open source</small></a><a class="source-link" href="source-samples-worker-05.-Spectrum-Analyzer.js.html"><span>samples/worker/05. Spectrum Analyzer.js</span><small>open source</small></a></div>
+        </section>
+    </article>
+        
+    <article class="api-item" id="onerror" data-kind="property" data-name="onerror">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#onerror">onerror</a></h2>
+            </div>
+            <div class="source-location">js/worker.js:618</div>
+        </header>
+        <pre class="signature"><code>onerror: ?<a class="type-link" href="globals.html#WorkerErrorCallback">WorkerErrorCallback</a> = null</code></pre>
+        
+        <div class="description"><p>Receives uncaught Worker errors reported to the parent endpoint as an <a href="ErrorEvent.html#ErrorEvent">ErrorEvent</a>. The callback argument exposes the error text through <a href="ErrorEvent.html#message">message</a> and the original Worker source location through <a href="ErrorEvent.html#filename">filename</a>, <a href="ErrorEvent.html#lineno">lineno</a> and <a href="ErrorEvent.html#colno">colno</a>. If no parent error handler exists, the Worker error is promoted to the normal panel-script error UI/failure path. Throwing from this handler likewise propagates as a normal panel script exception, whose stack begins in the parent handler.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="onmessage" data-kind="property" data-name="onmessage">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#onmessage">onmessage</a></h2>
+            </div>
+            <div class="source-location">js/worker.js:611</div>
+        </header>
+        <pre class="signature"><code>onmessage: ?<a class="type-link" href="globals.html#WorkerMessageCallback">WorkerMessageCallback</a> = null</code></pre>
+        
+        <div class="description"><p>Receives messages sent from the Worker through Worker-global <a href="WorkerGlobalScope.html#postMessage">postMessage()</a>.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="onmessageerror" data-kind="property" data-name="onmessageerror">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#onmessageerror">onmessageerror</a></h2>
+            </div>
+            <div class="source-location">js/worker.js:627</div>
+        </header>
+        <pre class="signature"><code>onmessageerror: ?<a class="type-link" href="globals.html#WorkerMessageCallback">WorkerMessageCallback</a> = null</code></pre>
+        
+        <div class="description"><p>Receives a <a href="MessageEvent.html#MessageEvent">MessageEvent</a> when a serialized message cannot be reconstructed by the parent endpoint. <a href="MessageEvent.html#errorMessage">errorMessage</a> contains the reconstruction failure and <a href="MessageEvent.html#direction">direction</a> is <b>worker-to-panel</b>.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="postMessage" data-kind="method" data-name="postmessage">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#postMessage">postMessage</a></h2>
+            </div>
+            <div class="source-location">js/worker.js:635</div>
+        </header>
+        <pre class="signature"><code>postMessage(data, transfer)</code></pre>
+        
+        <div class="description"><p>Serializes and sends a value to the Worker.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>data</code></td><td><code>*</code></td><td><p>Value to send.</p></td></tr><tr><td><code>transfer</code><span class="mini-flag">optional</span></td><td><code>(Array&lt;*&gt;|Object)</code></td><td><p>Transfer list, either directly as an array or as an object containing <code>{ transfer: [...] }</code>.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="terminate" data-kind="method" data-name="terminate">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#terminate">terminate</a></h2>
+            </div>
+            <div class="source-location">js/worker.js:643</div>
+        </header>
+        <pre class="signature"><code>terminate()</code></pre>
+        
+        <div class="description"><p>Stops this Worker from the parent panel and releases pending Worker-side state. Use this when the panel no longer needs the Worker; Workers are terminated automatically when their parent panel is unloaded. A main-thread host callback that has already begun executing cannot be interrupted halfway through.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>
