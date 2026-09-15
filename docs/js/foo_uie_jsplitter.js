@@ -2029,6 +2029,14 @@ let utils = {
     Version: undefined, // (string) (read)
 
     /**
+     * Indicates that current process architecture is 64-bit.
+     *
+     * @type {boolean}
+     * @worker
+     */
+    Is64Bit: undefined, // (bool) (read)
+    
+    /**
      * Checks the availability of foobar2000 component.
      *
      * @param {string} name
