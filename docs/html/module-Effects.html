@@ -69,6 +69,9 @@
     </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
         <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="DriveInfo">
         <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -77,6 +80,15 @@
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Enumerator">
         <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
         <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
@@ -132,14 +144,14 @@
     </div><div class="nav-page-tree" data-nav-root="HtmlNode">
         <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><div class="nav-page-tree" data-nav-root="IUIHacks">
-        <a class="nav-link nav-page-link" href="IUIHacks.html">IUIHacks</a>
-        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
         <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="MenuObject">
         <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="PanelObject">
         <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
@@ -150,11 +162,20 @@
     </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
         <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="RunResult">
         <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
         <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
@@ -190,7 +211,10 @@
         </header>
         
         
-        <div class="description"><p>Direct2D effects<br> Minimum system requirements: Windows 7 Platform Update (Direct2D 1.1)<br> Not all effects in this module supported by minimum Direct2D version.<br> <a href="d2d.html#Effect">d2d.Effect</a> returns null if effect is not supported.<br> See examples on top and bottom of this page.</p></div>
+        <div class="description"><p>Direct2D effects<br></p>
+<div class="doc-note warning"><b>Direct2D versions earlier than 1.1 are not supported.</b><br>
+Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div>
+<p>Not all effects in this module supported by minimum Direct2D version.<br> <a href="d2d.html#Effect">d2d.Effect</a> returns null if effect is not supported.<br> See examples on top and bottom of this page.</p></div>
         
         
         
@@ -283,7 +307,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#AlphaMode">AlphaMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1285</div>
+            <div class="source-location">Effects.js:1287</div>
         </header>
         
         
@@ -311,7 +335,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#BlendMode">BlendMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1461</div>
+            <div class="source-location">Effects.js:1463</div>
         </header>
         
         
@@ -339,7 +363,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#BorderEdgeMode">BorderEdgeMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1447</div>
+            <div class="source-location">Effects.js:1449</div>
         </header>
         
         
@@ -367,7 +391,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#BorderMode">BorderMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1245</div>
+            <div class="source-location">Effects.js:1247</div>
         </header>
         
         
@@ -395,7 +419,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#ChannelSelector">ChannelSelector</a></h2>
             </div>
-            <div class="source-location">Effects.js:1313</div>
+            <div class="source-location">Effects.js:1315</div>
         </header>
         
         
@@ -423,7 +447,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#ColorMatrixAlphaMode">ColorMatrixAlphaMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1510</div>
+            <div class="source-location">Effects.js:1512</div>
         </header>
         
         
@@ -451,7 +475,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#ConvolveMatrixScaleMode">ConvolveMatrixScaleMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1347</div>
+            <div class="source-location">Effects.js:1349</div>
         </header>
         
         
@@ -479,7 +503,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#D2DAffinetransformInterpolationMode">D2DAffinetransformInterpolationMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1391</div>
+            <div class="source-location">Effects.js:1393</div>
         </header>
         
         
@@ -507,7 +531,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#D2DEffectPropertyType">D2DEffectPropertyType</a></h2>
             </div>
-            <div class="source-location">Effects.js:1197</div>
+            <div class="source-location">Effects.js:1199</div>
         </header>
         
         
@@ -535,7 +559,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#D3DPerspectiveTransformInterpolationMode">D3DPerspectiveTransformInterpolationMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1429</div>
+            <div class="source-location">Effects.js:1431</div>
         </header>
         
         
@@ -563,7 +587,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#D3DTransformInterpolationMode">D3DTransformInterpolationMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1411</div>
+            <div class="source-location">Effects.js:1413</div>
         </header>
         
         
@@ -591,7 +615,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#DirectionalBlurOptimization">DirectionalBlurOptimization</a></h2>
             </div>
-            <div class="source-location">Effects.js:1257</div>
+            <div class="source-location">Effects.js:1259</div>
         </header>
         
         
@@ -619,7 +643,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#EdgeDetectionMode">EdgeDetectionMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1367</div>
+            <div class="source-location">Effects.js:1369</div>
         </header>
         
         
@@ -647,7 +671,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#GaussianBlurOptimization">GaussianBlurOptimization</a></h2>
             </div>
-            <div class="source-location">Effects.js:1271</div>
+            <div class="source-location">Effects.js:1273</div>
         </header>
         
         
@@ -675,7 +699,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#HdrToneMapDisplayMode">HdrToneMapDisplayMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1526</div>
+            <div class="source-location">Effects.js:1528</div>
         </header>
         
         
@@ -703,7 +727,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#InputGamma">InputGamma</a></h2>
             </div>
-            <div class="source-location">Effects.js:1301</div>
+            <div class="source-location">Effects.js:1303</div>
         </header>
         
         
@@ -731,7 +755,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#MorphologyMode">MorphologyMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1379</div>
+            <div class="source-location">Effects.js:1381</div>
         </header>
         
         
@@ -759,7 +783,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#ScaleInterpolationMode">ScaleInterpolationMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1225</div>
+            <div class="source-location">Effects.js:1227</div>
         </header>
         
         
@@ -787,7 +811,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#ShadowOptimization">ShadowOptimization</a></h2>
             </div>
-            <div class="source-location">Effects.js:1496</div>
+            <div class="source-location">Effects.js:1498</div>
         </header>
         
         
@@ -815,7 +839,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#StraightenScaleMode">StraightenScaleMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1329</div>
+            <div class="source-location">Effects.js:1331</div>
         </header>
         
         
@@ -843,7 +867,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#TurbulenceNoise">TurbulenceNoise</a></h2>
             </div>
-            <div class="source-location">Effects.js:1538</div>
+            <div class="source-location">Effects.js:1540</div>
         </header>
         
         
@@ -871,7 +895,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-object">object</span></div>
                 <h2><a class="anchor" href="#Effects.Effects">Effects</a></h2>
             </div>
-            <div class="source-location">Effects.js:90</div>
+            <div class="source-location">Effects.js:92</div>
         </header>
         
         
@@ -1077,7 +1101,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                     <div class="nested-properties-title">Properties</div>
                     <table>
                         <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                        <tbody><tr id="Histogram.ID"><td><code>ID</code></td><td><code>string</code></td><td><p>CLSID of effect.</p></td></tr><tr id="Histogram.NumBins"><td><code>NumBins</code></td><td><code>number</code></td><td><p>Value type: <b>UINT32</b><br> Specifies the number of bins used for the histogram. The range of intensity values that fall into a particular bucket depend on the number of specified buckets. The default value is 256</p></td></tr><tr id="Histogram.ChannelSelect"><td><code>ChannelSelect</code></td><td><code>number</code></td><td><p>Value type: <b><a href="module-Effects.html#ChannelSelector">ChannelSelector</a></b><br> Specifies the channel used to generate the histogram. This effect has a single data output corresponding to the specified channel. See Channel selectors for more info. The default value is <a href="module-Effects.html#ChannelSelector">ChannelSelector.R</a></p></td></tr><tr id="Histogram.HistogramOutput"><td><code>HistogramOutput</code></td><td><code>number</code></td><td><p>Value type: <b>Float32Array (output property only!)</b><br>  This effect outputs a Float32Array, with the number of elements corresponding to the number of specified NumBins.<br></p></td></tr></tbody>
+                        <tbody><tr id="Histogram.ID"><td><code>ID</code></td><td><code>string</code></td><td><p>CLSID of effect.</p></td></tr><tr id="Histogram.NumBins"><td><code>NumBins</code></td><td><code>number</code></td><td><p>Value type: <b>UINT32</b><br> Specifies the number of bins used for the histogram. The range of intensity values that fall into a particular bucket depend on the number of specified buckets. The default value is 256</p></td></tr><tr id="Histogram.ChannelSelect"><td><code>ChannelSelect</code></td><td><code>number</code></td><td><p>Value type: <b><a href="module-Effects.html#ChannelSelector">ChannelSelector</a></b><br> Specifies the channel used to generate the histogram. This effect has a single data output corresponding to the specified channel. See Channel selectors for more info. The default value is <a href="module-Effects.html#ChannelSelector">ChannelSelector.R</a></p></td></tr><tr id="Histogram.HistogramOutput"><td><code>HistogramOutput</code></td><td><code>number</code></td><td><p>Value type: <b>Float32Array (output property only!)</b><br> This effect outputs a Float32Array, with the number of elements corresponding to the number of specified NumBins.<br></p></td></tr></tbody>
                     </table>
                 </div>
             </td></tr><tr id="Invert" class="property-group-main"><td><code>Invert</code></td><td><code>Object</code></td><td><p>Inverts the colors of an image.<br> For more information, see: <a href="https://learn.microsoft.com/en-us/windows/win32/direct2d/invert-effect" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/direct2d/invert-effect</a></p></td></tr>

@@ -203,8 +203,14 @@ code { font-size: 0.93em; }
 .kind-method, .kind-function, .kind-callback { color: #91c7ff; }
 .kind-property, .kind-constant { color: #e4b3ff; }
 .kind-class, .kind-namespace, .kind-module { color: #9ee6b8; }
+.flag.capability { font-weight: 700; }
+.flag.worker { color: #78dca7; border-color: rgba(120,220,167,.34); background: rgba(120,220,167,.07); }
+.flag.main-thread { color: #f0b66a; border-color: rgba(240,182,106,.38); background: rgba(240,182,106,.08); }
+.flag.cloneable { color: #79cbea; border-color: rgba(121,203,234,.36); background: rgba(121,203,234,.07); }
+.flag.transferable { color: #c7a2ff; border-color: rgba(199,162,255,.38); background: rgba(199,162,255,.08); }
 .flag.deprecated { color: var(--danger); }
-.signature, .example, .source-code {
+.example-caption { margin: 14px 0 6px; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .02em; }
+.signature, .example, .source-code, .description-code {
     overflow: auto;
     border: 1px solid var(--border);
     border-radius: 10px;
@@ -213,6 +219,8 @@ code { font-size: 0.93em; }
     line-height: 1.5;
 }
 .signature { display: inline-block; max-width: 100%; margin: 0 0 14px; }
+.signatures { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin: 0 0 14px; }
+.signatures .signature { margin: 0; }
 .description { max-width: 900px; }
 .description p { margin: 8px 0; }
 .member-section { margin-top: 22px; }
@@ -254,13 +262,15 @@ td p { margin: 0; }
 .source-link.broken { border-color: rgba(255,123,134,.45); }
 .source-references { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; color: var(--muted); font-size: 12px; margin-top: 12px; }
 .source-references a { border: 1px solid var(--border); padding: 3px 7px; border-radius: 999px; }
-.source-code { font-size: 13px; white-space: pre; }
+.source-code, .description-code { font-size: 13px; white-space: pre; }
+.description-code { margin: 12px 0; }
 
 .tok-comment { color: #6a9955; }
 .tok-string { color: #ce9178; }
 .tok-keyword { color: #569cd6; }
 .tok-number { color: #b5cea8; }
 .tok-literal { color: #569cd6; }
+.tok-preprocessor { color: #c586c0; }
 
 .audit-section { border-top: 1px solid var(--border); padding: 24px 0; }
 .audit-section h2 { margin: 0 0 8px; font-size: 20px; }
@@ -381,3 +391,75 @@ td p { margin: 0; }
 }
 .enum-table th:nth-child(3),
 .enum-table td:nth-child(3) { width: auto; }
+
+@media (prefers-color-scheme: light) {
+    .flag.worker { color: #197947; border-color: rgba(25,121,71,.25); background: rgba(25,121,71,.06); }
+    .flag.main-thread { color: #9b5f0b; border-color: rgba(155,95,11,.27); background: rgba(155,95,11,.06); }
+    .flag.cloneable { color: #15718f; border-color: rgba(21,113,143,.25); background: rgba(21,113,143,.06); }
+    .flag.transferable { color: #6b45a6; border-color: rgba(107,69,166,.25); background: rgba(107,69,166,.06); }
+}
+
+
+/* Long-form API articles */
+.doc-article-diagram {
+    margin: 1rem 0;
+    padding: .9rem 1rem;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--code);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    white-space: pre;
+}
+.doc-note {
+    margin: 1rem 0;
+    padding: .85rem 1rem;
+    border-left: 4px solid var(--accent);
+    border-radius: 4px;
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+.doc-note.warning {
+    border-left-color: #d38b2c;
+    background: rgba(211, 139, 44, .10);
+}
+.doc-article-list {
+    margin: .6rem 0 1.1rem 1.35rem;
+}
+.doc-article-list li {
+    margin: .3rem 0;
+}
+
+
+.doc-api-link-list {
+    list-style: none;
+    margin: .45rem .85rem .85rem;
+    padding: 0;
+}
+.doc-api-link-list li {
+    margin: .28rem 0;
+}
+.doc-api-link-list a {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.doc-capability-list {
+    margin: 0.75rem 0;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--code);
+}
+
+.doc-capability-list > summary {
+    cursor: pointer;
+    padding: 0.65rem 0.85rem;
+    font-weight: 600;
+}
+
+.doc-capability-list > :not(summary) {
+    margin-left: 0.85rem;
+    margin-right: 0.85rem;
+}
+
+.doc-capability-list > :last-child {
+    margin-bottom: 0.85rem;
+}

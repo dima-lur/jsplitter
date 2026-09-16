@@ -1,5 +1,5 @@
-'use strict';
-//14/05/26
+﻿'use strict';
+//14/09/26
 
 _.mixin({
 	nest(collection, keys) {
@@ -94,6 +94,12 @@ function _list(mode, x, y, w, h) {
 				this.artist = '';
 				this.data = [];
 				this.items = 0;
+				if (this.mode == 'musicbrainz') {
+					this.mb_id = '';
+					this.mb_generation++;
+					this.mb_requests = {};
+					this.filename = '';
+				}
 				window.Repaint();
 				break;
 			case this.mode == 'properties':
@@ -289,6 +295,8 @@ function _list(mode, x, y, w, h) {
 				panel.m.AppendMenuItem(MF_STRING, 1201, 'Links');
 				panel.m.CheckMenuRadioItem(1200, 1201, this.properties.mode.value + 1200);
 				panel.m.AppendMenuSeparator();
+				panel.m.AppendMenuItem(_isUUID(this.mb_id) ? MF_STRING : MF_GRAYED, 1202, 'Refresh');
+				panel.m.AppendMenuSeparator();
 				if (!_isUUID(this.mb_id)) {
 					panel.m.AppendMenuItem(MF_GRAYED, 1203, 'Artist MBID missing. Use Musicbrainz Picard or foo_musicbrainz to tag your files.');
 					panel.m.AppendMenuSeparator();
@@ -401,6 +409,9 @@ function _list(mode, x, y, w, h) {
 			case 1201:
 				this.properties.mode.value = idx - 1200;
 				this.reset();
+				break;
+			case 1202:
+				this.refresh();
 				break;
 			case 1300:
 				this.properties.meta.toggle();
@@ -560,72 +571,112 @@ function _list(mode, x, y, w, h) {
 						}
 				}
 				break;
-			case 'musicbrainz':
+			case 'musicbrainz': {
+				this.mb_generation++;
+				this.mb_requests = {};
+				this.filename = '';
+
+				if (!_isUUID(this.mb_id)) {
+					break;
+				}
+
 				if (this.properties.mode.value == 0) {
-					this.mb_data = [];
-					this.mb_offset = 0;
 					this.filename = _artistFolder(this.artist) + 'musicbrainz.releases.' + this.mb_id + '.json';
-					if (_isFile(this.filename)) {
-						let data = _(_jsonParseFile(this.filename))
+					let cache = this.mb_read_cache(this.filename);
+					const valid_cache = _.isArray(cache);
+
+					if (valid_cache) {
+						const primary_order = {
+							Album: 0,
+							Single: 1,
+							EP: 2,
+							Other: 3,
+							Broadcast: 4
+						};
+
+						const releases = _(cache)
+							.filter((item) => item && _.isString(item.id) && _.isString(item.title))
 							.orderBy(['first-release-date', 'title'], ['desc', 'asc'])
-							.map((item) => ({
-								name: item.title,
-								width: _textWidth(item.title, panel.fonts.normal),
-								url: 'https://musicbrainz.org/release-group/' + item.id,
-								date: item['first-release-date'].substring(0, 4),
-								primary: item['primary-type'],
-								secondary: item['secondary-types'].sort()[0] || null
-							}))
-							.nest(['primary', 'secondary'])
-							.value()
-						_.forEach(['Album', 'Single', 'EP', 'Other', 'Broadcast', 'null'], (primary) => {
-							_.forEach(['null', 'Audiobook', 'Compilation', 'Demo', 'DJ-mix', 'Interview', 'Live', 'Mixtape/Street', 'Remix', 'Spokenword', 'Soundtrack'], (secondary) => {
-								let group = _.get(data, primary + '.' + secondary);
-								if (group) {
-									const name = (primary + ' + ' + secondary).replace('null + null', 'Unspecified type').replace('null + ', '').replace(' + null', '');
-									this.data.push({ name: name, width: 0, url: '', date: '' });
-									this.data = [...this.data, ...group];
-									this.data.push({ name: '', width: 0, url: '', date: '' });
+							.map((item) => {
+								const primary = item['primary-type'] || '';
+								const secondary = _.sortBy(_.isArray(item['secondary-types']) ? item['secondary-types'] : []);
+								let types = [];
+								if (primary.length) {
+									types.push(primary);
 								}
+								Array.prototype.push.apply(types, secondary);
+
+								return {
+									name: item.title,
+									width: _textWidth(item.title, panel.fonts.normal),
+									url: 'https://musicbrainz.org/release-group/' + item.id,
+									date: (item['first-release-date'] || '').substring(0, 4),
+									group: types.join(' + ') || 'Unspecified type',
+									group_order: Object.prototype.hasOwnProperty.call(primary_order, primary) ? primary_order[primary] : (primary.length ? 50 : 100)
+								};
+							})
+							.value();
+
+						_(releases)
+							.groupBy('group')
+							.map((items, name) => ({ name: name, items: items, order: items[0].group_order }))
+							.orderBy(['order', 'name'], ['asc', 'asc'])
+							.forEach((group) => {
+								this.data.push({ name: group.name, width: 0, url: '', date: '' });
+								this.data = [...this.data, ...group.items];
+								this.data.push({ name: '', width: 0, url: '', date: '' });
 							});
-						});
-						this.data.pop();
-						if (_fileExpired(this.filename, ONE_DAY)) {
-							this.get();
+
+						if (this.data.length) {
+							this.data.pop();
 						}
-					} else {
+					}
+
+					if (!valid_cache || _fileExpired(this.filename, ONE_DAY)) {
 						this.get();
 					}
 				} else {
 					this.filename = _artistFolder(this.artist) + 'musicbrainz.links.' + this.mb_id + '.json';
-					if (_isFile(this.filename)) {
-						this.data = _(_.get(_jsonParseFile(this.filename), 'relations', []))
-							.map((item) => {
-								const url = decodeURIComponent(item.url.resource);
-								return {
-									name: url,
-									url: url,
-									width: _textWidth(url, panel.fonts.normal)
-								};
+					let cache = this.mb_read_cache(this.filename);
+					const valid_cache = _.isObject(cache) && _.isArray(cache.relations);
+
+					if (valid_cache) {
+						this.data = _(cache.relations)
+							.map((item) => _.get(item, 'url.resource', ''))
+							.filter((url) => _.isString(url) && url.length)
+							.map((url) => {
+								try {
+									return decodeURIComponent(url);
+								} catch (e) {
+									return url;
+								}
 							})
+							.uniq()
+							.map((url) => ({
+								name: url,
+								url: url,
+								width: _textWidth(url, panel.fonts.normal)
+							}))
 							.sortBy((item) => {
-								return item.name.split('//')[1].replace('www.', '');
+								const match = item.name.match(/^https?:\/\/(?:www\.)?([^/]+)/i);
+								return match ? match[1].toLowerCase() : item.name.toLowerCase();
 							})
 							.value();
+
 						const url = 'https://musicbrainz.org/artist/' + this.mb_id;
 						this.data.unshift({
 							name: url,
 							url: url,
 							width: _textWidth(url, panel.fonts.normal)
 						});
-						if (_fileExpired(this.filename, ONE_DAY)) {
-							this.get();
-						}
-					} else {
+					}
+
+					if (!valid_cache || _fileExpired(this.filename, ONE_DAY)) {
 						this.get();
 					}
 				}
 				break;
+			}
 			case 'properties': {
 				this.text_x = 0;
 				this.filename = panel.metadb.Path;
@@ -954,50 +1005,137 @@ function _list(mode, x, y, w, h) {
 
 				break;
 			case 'musicbrainz':
-				this.get = function () {
-					const url = this.properties.mode.value == 0
-						? 'https://musicbrainz.org/ws/2/release-group?fmt=json&limit=100&offset=' + this.mb_offset + '&artist=' + this.mb_id
-						: 'https://musicbrainz.org/ws/2/artist/' + this.mb_id + '?fmt=json&inc=url-rels';
-					const task_id = utils.HTTPRequestAsync(0, url, 'jsplitter_musicbrainz');
-					this.filenames[task_id] = this.filename;
+				this.mb_read_cache = function (file) {
+					if (!_isFile(file)) {
+						return null;
+					}
+
+					try {
+						return JSON.parse(_open(file));
+					} catch (e) {
+						console.log(N, 'Invalid MusicBrainz cache:', file);
+						return null;
+					}
 				}
 
-				this.http_request_done = function (id, success, response_text) {
-					const f = this.filenames[id];
-
-					if (!f)
+				this.mb_request = function (request) {
+					if (request.generation != this.mb_generation || request.mb_id != this.mb_id || request.mode != this.properties.mode.value) {
 						return;
+					}
+
+					// MusicBrainz allows at most one API request per second.
+					const delay = Math.max(0, this.mb_request_interval - (_.now() - this.mb_last_request));
+					if (delay) {
+						setTimeout(() => this.mb_request(request), delay);
+						return;
+					}
+
+					const url = request.mode == 0
+						? 'https://musicbrainz.org/ws/2/release-group?fmt=json&limit=100&offset=' + request.offset + '&artist=' + request.mb_id
+						: 'https://musicbrainz.org/ws/2/artist/' + request.mb_id + '?fmt=json&inc=url-rels';
+
+					this.mb_last_request = _.now();
+					try {
+						const task_id = utils.HTTPRequestAsync(0, url, this.mb_headers);
+						this.mb_requests[task_id] = request;
+					} catch (e) {
+						console.log(N, 'MusicBrainz request failed:', `${e}`);
+					}
+				}
+
+				this.get = function () {
+					if (!_isUUID(this.mb_id) || !this.filename.length) {
+						return;
+					}
+
+					this.mb_request({
+						generation: this.mb_generation,
+						mode: this.properties.mode.value,
+						mb_id: this.mb_id,
+						filename: this.filename,
+						offset: 0,
+						data: []
+					});
+				}
+
+				this.refresh = function () {
+					if (!_isUUID(this.mb_id)) {
+						return;
+					}
+
+					this.mb_generation++;
+					this.mb_requests = {};
+					this.get();
+				}
+
+				this.http_request_done = function (id, success, response_text, status) {
+					const request = this.mb_requests[id];
+					delete this.mb_requests[id];
+
+					if (!request || request.generation != this.mb_generation || request.mb_id != this.mb_id || request.mode != this.properties.mode.value) {
+						return;
+					}
 
 					if (!success) {
-						console.log(N, response_text);
+						console.log(N, 'MusicBrainz request failed' + (status ? ' (HTTP ' + status + ')' : '') + ':', response_text);
 						return;
 					}
 
-					if (this.properties.mode.value == 0) {
-						const data = _jsonParse(response_text);
-						const max_offset = Math.min(500, data['release-group-count'] || 0) - 100;
-						const rg = data['release-groups'] || [];
+					let data;
+					try {
+						data = JSON.parse(response_text);
+					} catch (e) {
+						console.log(N, 'MusicBrainz returned invalid JSON.');
+						return;
+					}
 
-						if (rg.length) {
-							Array.prototype.push.apply(this.mb_data, rg);
+					if (data && data.error) {
+						console.log(N, 'MusicBrainz:', data.error);
+						return;
+					}
+
+					if (request.mode == 0) {
+						if (!_.isObject(data) || !_.isArray(data['release-groups']) || !_.isNumber(data['release-group-count'])) {
+							console.log(N, 'MusicBrainz returned an unexpected release-group response.');
+							return;
 						}
 
-						if (this.mb_offset < max_offset) {
-							this.mb_offset += 100;
-							this.get();
-						} else {
-							if (_save(f, JSON.stringify(this.mb_data))) {
-								this.reset();
-							}
+						const count = Math.max(0, Math.min(500, data['release-group-count']));
+						const releases = data['release-groups'];
+
+						if (request.offset < count && releases.length == 0) {
+							console.log(N, 'MusicBrainz returned an unexpectedly empty release-group page. Cached data was kept.');
+							return;
+						}
+
+						Array.prototype.push.apply(request.data, releases);
+
+						const next_offset = request.offset + 100;
+						if (next_offset < count) {
+							request.offset = next_offset;
+							this.mb_request(request);
+						} else if (_save(request.filename, JSON.stringify(request.data))) {
+							this.update();
 						}
 					} else {
-						if (_save(f, response_text)) {
-							this.reset();
+						if (!_.isObject(data) || !_.isArray(data.relations)) {
+							console.log(N, 'MusicBrainz returned an unexpected artist response.');
+							return;
+						}
+
+						if (_save(request.filename, response_text)) {
+							this.update();
 						}
 					}
 				}
 
-				this.filenames = {};
+				this.mb_generation = 0;
+				this.mb_requests = {};
+				this.mb_last_request = 0;
+				this.mb_request_interval = 1100;
+				this.mb_headers = JSON.stringify({
+					'User-Agent': 'JSplitter-MusicBrainz-Sample/1.0 (https://dima-lur.github.io/jsplitter/)'
+				});
 				this.mb_id = '';
 				this.properties = {
 					mode: new _p('2K3.LIST.MUSICBRAINZ.MODE', 0) // 0 releases 1 links

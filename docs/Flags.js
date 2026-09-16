@@ -1,4 +1,4 @@
-/**
+﻿/**
  *  @module Flags 
  */
 
@@ -1217,13 +1217,11 @@ const UIInstanceType = {
 };
 
 /**
- * Used as a line drawing <b>style</b> parameter value in:<br>
- *    {@link D2DGraphics#DrawLine DrawLine}<br>
- *    {@link D2DGraphics#DrawRect DrawRect}<br>
- *    {@link D2DGraphics#DrawRoundRect DrawRoundRect}<br>
- *    {@link D2DGraphics#DrawEllipse DrawEllipse}<br>
- *    {@link D2DGraphics#DrawPolygon DrawPolygon}<br>
- *    {@link D2DGraphics#DrawLines DrawLines}<br>
+ * Direct2D dash style. A value can be passed directly to D2D drawing methods as a shorthand,
+ * or used as the <code>dashStyle</code> option of {@link D2DStrokeStyleOptions} when creating a reusable
+ * {@link D2DStrokeStyle}.<br>
+ * <b>Custom</b> requires a non-empty <code>dashes</code> array and is intended for
+ * {@link d2d.StrokeStyle d2d.StrokeStyle}; do not pass <b>DashStyle.Custom</b> directly to a drawing method.
  * @memberof module:Flags
  * @enum {number}
  */
@@ -1232,11 +1230,13 @@ const DashStyle = {
     Dash: 1,
     Dot: 2,
     DashDot: 3,
-    DashDotDot: 4
+    DashDotDot: 4,
+    Custom: 5
 };
 
 /**
- * Used as a line drawing <b>startCap</b> and <b>endCap</b> parameter value in {@link D2DGraphics#DrawLine DrawLine}<br>
+ * Direct2D line cap style used by {@link d2d.StrokeStyle d2d.StrokeStyle}.
+ * The legacy {@link D2DGraphics#DrawLine DrawLine} startCap/endCap parameters use the same values.
  * @memberof module:Flags
  * @enum {number}
  */
@@ -1245,7 +1245,19 @@ const CapStyle = {
     Square: 1,
     Round: 2,
     Triangle: 3
-}
+};
+
+/**
+ * Direct2D line join style used by {@link d2d.StrokeStyle d2d.StrokeStyle}.
+ * @memberof module:Flags
+ * @enum {number}
+ */
+const LineJoin = {
+    Miter: 0,
+    Bevel: 1,
+    Round: 2,
+    MiterOrBevel: 3
+};
 
 /**
  * Compilation flags for {@link d2d.Compile}

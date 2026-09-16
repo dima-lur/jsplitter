@@ -69,6 +69,9 @@
     </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
         <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="DriveInfo">
         <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -77,6 +80,15 @@
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Enumerator">
         <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
         <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
@@ -132,14 +144,14 @@
     </div><div class="nav-page-tree" data-nav-root="HtmlNode">
         <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><div class="nav-page-tree" data-nav-root="IUIHacks">
-        <a class="nav-link nav-page-link" href="IUIHacks.html">IUIHacks</a>
-        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
         <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="MenuObject">
         <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="PanelObject">
         <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
@@ -150,11 +162,20 @@
     </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
         <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="RunResult">
         <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
         <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
@@ -183,10 +204,10 @@
     <article class="api-item" id="D2DFont" data-kind="class" data-name="d2dfont">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-class">class</span></div>
+                <div class="eyebrow"><span class="kind kind-class">class</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability cloneable" title="Instances can be sent through postMessage() using structured clone.">CLONEABLE</span></div>
                 <h2><a class="anchor" href="#D2DFont">D2DFont</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:247</div>
+            <div class="source-location">js/d2d.js:280</div>
         </header>
         <pre class="signature"><code>D2DFont(name, size_px, style)</code></pre>
         
@@ -212,10 +233,10 @@
     <article class="api-item" id="Height" data-kind="property" data-name="height">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#Height">Height</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:260</div>
+            <div class="source-location">js/d2d.js:294</div>
         </header>
         <pre class="signature"><code>Height: number</code></pre>
         
@@ -237,10 +258,10 @@
     <article class="api-item" id="Name" data-kind="property" data-name="name">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#Name">Name</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:269</div>
+            <div class="source-location">js/d2d.js:304</div>
         </header>
         <pre class="signature"><code>Name: string</code></pre>
         
@@ -262,10 +283,10 @@
     <article class="api-item" id="Size" data-kind="property" data-name="size">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#Size">Size</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:278</div>
+            <div class="source-location">js/d2d.js:314</div>
         </header>
         <pre class="signature"><code>Size: <a class="type-link" href="globals.html#float">float</a></code></pre>
         
@@ -287,10 +308,10 @@
     <article class="api-item" id="Style" data-kind="property" data-name="style">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#Style">Style</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:287</div>
+            <div class="source-location">js/d2d.js:324</div>
         </header>
         <pre class="signature"><code>Style: number</code></pre>
         
@@ -306,6 +327,27 @@
             <h3>Example</h3>
             <pre class="example"><code>console.log(my_font.Style);</code></pre>
         </section>
+        
+    </article>
+
+    <article class="api-item" id="Weight" data-kind="property" data-name="weight">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#Weight">Weight</a></h2>
+            </div>
+            <div class="source-location">js/d2d.js:336</div>
+        </header>
+        <pre class="signature"><code>Weight: number</code></pre>
+        
+        <div class="description"><p>Font weight. Common values follow Win32 font weights, for example 400 for normal and 700 for bold.</p></div>
+        
+        
+        
+        
+        
+        
+        
         
     </article></main>
     <script src="assets/search-data.js"></script><script src="assets/app.js"></script>

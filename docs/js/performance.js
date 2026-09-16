@@ -13,6 +13,7 @@
  * @property {*} detail
  * Optional metadata associated with the entry. Defaults to null.<br>
  * <b>JSplitter note:</b> unlike the Web User Timing specification, <code>detail</code> is currently retained as the original JavaScript value and is not structured-cloned.
+ * @worker
  */
 
 /**
@@ -24,6 +25,7 @@
  * <b>JSplitter note:</b> the value is not structured-cloned.
  * @property {number} [startTime]
  * Finite non-negative timestamp in milliseconds relative to {@link performance.timeOrigin}. Defaults to {@link performance.now performance.now}.
+ * @worker
  */
 
 /**
@@ -39,6 +41,7 @@
  * Finite non-negative duration in milliseconds. May be used together with <code>start</code> or <code>end</code>, but not together with both.
  * @property {(string|number)} [end]
  * End mark name or finite non-negative timestamp in milliseconds.
+ * @worker
  */
 
 /**
@@ -49,6 +52,7 @@
  * Entry types to observe. Unsupported types are ignored. Use either <code>entryTypes</code> or <code>type</code> for an observer, not both.
  * @property {string} [type]
  * A single entry type to observe. Unsupported types are ignored. Use either <code>type</code> or <code>entryTypes</code> for an observer, not both.
+ * @worker
  */
 
 /**
@@ -56,12 +60,14 @@
  * The entries in this list are ordered by {@link PerformanceEntry.startTime startTime}.
  * @constructor
  * @hideconstructor
+ * @worker
  */
 function PerformanceObserverEntryList() {
 
     /**
      * Returns all entries in this callback's entry list, ordered by {@link PerformanceEntry.startTime startTime}.
      * @return {Array<PerformanceEntry>}
+     * @worker
      */
     this.getEntries = function () { };
 
@@ -69,6 +75,7 @@ function PerformanceObserverEntryList() {
      * Returns entries in this callback's entry list filtered by entry type and ordered by {@link PerformanceEntry.startTime startTime}.
      * @param {string} type Entry type, for example "mark" or "measure".
      * @return {Array<PerformanceEntry>}
+     * @worker
      */
     this.getEntriesByType = function (type) { };
 
@@ -77,9 +84,20 @@ function PerformanceObserverEntryList() {
      * @param {string} name Entry name.
      * @param {string} [type] Optional entry type, for example "mark" or "measure".
      * @return {Array<PerformanceEntry>}
+     * @worker
      */
     this.getEntriesByName = function (name, type) { };
 }
+
+/**
+ * Callback invoked when observed performance entries are delivered.
+ *
+ * @callback PerformanceObserverCallback
+ * @param {PerformanceObserverEntryList} list Entries delivered in this callback.
+ * @param {PerformanceObserver} observer Observer receiving the entries.
+ * @return {void}
+ * @worker
+ */
 
 /**
  * Creates a new observer for entries added to the JSplitter performance timeline.<br>
@@ -88,7 +106,8 @@ function PerformanceObserverEntryList() {
  * JSplitter currently supports only the "mark" and "measure" entry types. The Web Performance Timeline <code>buffered</code> option is not implemented.
  * @sourceFile ../../component/samples/basic/Performance.js
  * @constructor
- * @param {function} callback Callback receiving <code>(list, observer)</code>, where <code>list</code> is a {@link PerformanceObserverEntryList}.
+ * @param {PerformanceObserverCallback} callback Callback invoked when matching entries are delivered.
+ * @worker
  */
 function PerformanceObserver(callback) {
     /**
@@ -96,6 +115,7 @@ function PerformanceObserver(callback) {
      * Returns the same frozen array object as the static property.
      * @type {Array<string>}
      * @readonly
+     * @worker
      */
     this.supportedEntryTypes = PerformanceObserver.supportedEntryTypes;
 
@@ -123,6 +143,7 @@ function PerformanceObserver(callback) {
      *
      * const observer = new PerformanceObserver(perfObserver);
      * observer.observe({ entryTypes: ["mark", "measure"] });
+     * @worker
      */
     this.observe = function (options) { };
 
@@ -130,6 +151,7 @@ function PerformanceObserver(callback) {
      * Stops delivery of future performance entries, clears pending observer records, and resets the observer's registered entry types.<br>
      * The same observer may be configured again with {@link PerformanceObserver.observe observe} after disconnecting.
      * @method
+     * @worker
      */
     this.disconnect = function () { };
 
@@ -138,6 +160,7 @@ function PerformanceObserver(callback) {
      * Entries returned by this method will not later be delivered by the callback.
      * @method
      * @return {Array<PerformanceEntry>}
+     * @worker
      */
     this.takeRecords = function () { };
 }
@@ -148,6 +171,7 @@ function PerformanceObserver(callback) {
  * @type {Array<string>}
  * @readonly
  * @static
+ * @worker
  */
 PerformanceObserver.supportedEntryTypes = ["mark", "measure"];
 
@@ -157,6 +181,7 @@ PerformanceObserver.supportedEntryTypes = ["mark", "measure"];
  * For the corresponding Web standards, see {@link https://www.w3.org/TR/hr-time-2/ High Resolution Time}, {@link https://www.w3.org/TR/user-timing/ User Timing}, and {@link https://www.w3.org/TR/performance-timeline/ Performance Timeline}.
  * @sourceFile ../../component/samples/basic/Performance.js
  * @namespace performance
+ * @worker
  */
 let performance = {
 
@@ -169,6 +194,7 @@ let performance = {
      * doSomething();
      * const t1 = performance.now();
      * console.log(`Call to doSomething took ${t1 - t0} milliseconds.`);
+     * @worker
      */
     now: function () { },
 
@@ -193,6 +219,7 @@ let performance = {
      *
      * performance.clearMarks();
      * performance.clearMeasures();
+     * @worker
      */
     mark: function (name, markOptions) { },
 
@@ -228,12 +255,14 @@ let performance = {
      *
      * console.log(byMarks.duration);
      * console.log(byTimestamp.duration);
+     * @worker
      */
     measure: function (measureName, startOrMeasureOptions, endMark, legacyMeasureOptions) { },
 
     /**
      * Returns all {@link PerformanceEntry} objects currently stored in the performance timeline, ordered by {@link PerformanceEntry.startTime startTime}.
      * @return {Array<PerformanceEntry>}
+     * @worker
      */
     getEntries: function () { },
 
@@ -241,6 +270,7 @@ let performance = {
      * Returns timeline entries filtered by entry type and ordered by {@link PerformanceEntry.startTime startTime}.
      * @param {string} type Entry type, for example "mark" or "measure".
      * @return {Array<PerformanceEntry>}
+     * @worker
      */
     getEntriesByType: function (type) { },
 
@@ -249,6 +279,7 @@ let performance = {
      * @param {string} name Entry name.
      * @param {string} [type] Optional entry type, for example "mark" or "measure".
      * @return {Array<PerformanceEntry>}
+     * @worker
      */
     getEntriesByName: function (name, type) { },
 
@@ -257,6 +288,7 @@ let performance = {
      * If <code>name</code> is supplied, all marks with that name are removed. If omitted, all mark entries are removed. Clearing a mark also removes it from subsequent named-mark lookup by {@link performance.measure performance.measure}.
      * @param {string} [name] Mark name to clear.
      * @return {undefined}
+     * @worker
      */
     clearMarks: function (name) { },
 
@@ -265,20 +297,23 @@ let performance = {
      * If <code>name</code> is supplied, all measures with that name are removed. If omitted, all measure entries are removed.
      * @param {string} [name] Measure name to clear.
      * @return {undefined}
+     * @worker
      */
     clearMeasures: function (name) { },
 
     /**
      * JSplitter extension that returns a human-readable dump of the current performance timeline.
      * @return {string}
+     * @worker
      */
     toString: function () { },
 
     /**
      * JSplitter compatibility factory that creates a {@link PerformanceObserver PerformanceObserver}.<br>
      * New code may use the standard <code>new PerformanceObserver(callback)</code> form instead.
-     * @param {function} callback Callback receiving <code>(list, observer)</code>.
+     * @param {PerformanceObserverCallback} callback Callback invoked when matching entries are delivered.
      * @return {PerformanceObserver}
+     * @worker
      */
     Observer: function (callback) { },
 
@@ -288,6 +323,7 @@ let performance = {
      *
      * @type {number}
      * @readonly
+     * @worker
      */
     timeOrigin: 0.0
 };

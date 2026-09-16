@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>02. Playlist Statistics.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/worker/02. Playlist Statistics.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="Worker.html#Worker">Worker</a></div>
+        </header>
+        <pre class="source-code"><code><span class="tok-string">&#39;use strict&#39;</span>;
+
+<span class="tok-comment">// Worker sample 2: Playlist Statistics</span>
+<span class="tok-comment">// Demonstrates: cloning FbMetadbHandleList, bulk metadata/file-info aggregation in Main/Worker,</span>
+<span class="tok-comment">// and presenting the result in an interactive panel UI.</span>
+<span class="tok-comment">// Media Library is exposed alongside playlists so larger real-world batches are easy to test.</span>
+<span class="tok-comment">// Why a Worker: one metadata batch crosses the realm boundary instead of keeping the panel</span>
+<span class="tok-comment">// thread busy while every handle and FbFileInfo object is inspected. Engine switches between</span>
+<span class="tok-comment">// Main and Worker for a direct A/B comparison of the same analysis.</span>
+
+window.DrawMode = <span class="tok-number">0</span>;
+window.DlgCode = <span class="tok-number">0x0004</span>;
+
+<span class="tok-keyword">const</span> DT_LEFT = <span class="tok-number">0x0000</span>;
+<span class="tok-keyword">const</span> DT_CENTER = <span class="tok-number">0x0001</span>;
+<span class="tok-keyword">const</span> DT_RIGHT = <span class="tok-number">0x0002</span>;
+<span class="tok-keyword">const</span> DT_VCENTER = <span class="tok-number">0x0004</span>;
+<span class="tok-keyword">const</span> DT_SINGLELINE = <span class="tok-number">0x0020</span>;
+<span class="tok-keyword">const</span> DT_NOPREFIX = <span class="tok-number">0x0800</span>;
+<span class="tok-keyword">const</span> DT_END_ELLIPSIS = <span class="tok-number">0x8000</span>;
+
+<span class="tok-keyword">const</span> VK_PRIOR = <span class="tok-number">0x21</span>;
+<span class="tok-keyword">const</span> VK_NEXT = <span class="tok-number">0x22</span>;
+<span class="tok-keyword">const</span> VK_END = <span class="tok-number">0x23</span>;
+<span class="tok-keyword">const</span> VK_HOME = <span class="tok-number">0x24</span>;
+<span class="tok-keyword">const</span> VK_UP = <span class="tok-number">0x26</span>;
+<span class="tok-keyword">const</span> VK_DOWN = <span class="tok-number">0x28</span>;
+
+<span class="tok-keyword">const</span> FONT = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">13</span>);
+<span class="tok-keyword">const</span> FONT_BOLD = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">13</span>, <span class="tok-number">1</span>);
+<span class="tok-keyword">const</span> FONT_TITLE = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">18</span>, <span class="tok-number">1</span>);
+<span class="tok-keyword">const</span> ROW_HEIGHT = <span class="tok-number">30</span>;
+<span class="tok-keyword">const</span> PADDING = <span class="tok-number">14</span>;
+
+<span class="tok-keyword">const</span> COLOUR_BG = <span class="tok-number">0xFF101318</span>;
+<span class="tok-keyword">const</span> COLOUR_SIDEBAR = <span class="tok-number">0xFF171B22</span>;
+<span class="tok-keyword">const</span> COLOUR_SELECTED = <span class="tok-number">0xFF2B3440</span>;
+<span class="tok-keyword">const</span> COLOUR_HOVER = <span class="tok-number">0xFF222A34</span>;
+<span class="tok-keyword">const</span> COLOUR_TEXT = <span class="tok-number">0xFFE8EDF2</span>;
+<span class="tok-keyword">const</span> COLOUR_DIM = <span class="tok-number">0xFF9AA6B2</span>;
+<span class="tok-keyword">const</span> COLOUR_ACCENT = <span class="tok-number">0xFF4FA3F7</span>;
+<span class="tok-keyword">const</span> COLOUR_BAR = <span class="tok-number">0xFF25394C</span>;
+<span class="tok-keyword">const</span> COLOUR_DIVIDER = <span class="tok-number">0xFF2A313A</span>;
+
+<span class="tok-keyword">let</span> engine = <span class="tok-string">&#39;worker&#39;</span>;
+<span class="tok-keyword">let</span> sources = [];
+<span class="tok-keyword">let</span> selectedSource = -<span class="tok-number">1</span>;
+<span class="tok-keyword">let</span> hoverSource = -<span class="tok-number">1</span>;
+<span class="tok-keyword">let</span> scrollOffset = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> requestId = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> pendingRequestId = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> pendingStarted = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> stats = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> loading = <span class="tok-literal">false</span>;
+
+<span class="tok-keyword">function</span> cleanValue(value) {
+    <span class="tok-keyword">const</span> text = String(value == <span class="tok-literal">null</span> ? <span class="tok-string">&#39;&#39;</span> : value).trim();
+    <span class="tok-keyword">return</span> text || <span class="tok-string">&#39;(unknown)&#39;</span>;
+}
+
+<span class="tok-keyword">function</span> normaliseFieldName(name) {
+    <span class="tok-keyword">return</span> String(name || <span class="tok-string">&#39;&#39;</span>).toUpperCase().replace(/[^A-Z0-<span class="tok-number">9</span>]/g, <span class="tok-string">&#39;&#39;</span>);
+}
+
+<span class="tok-keyword">function</span> addCount(counts, value) {
+    <span class="tok-keyword">const</span> key = cleanValue(value);
+    counts.set(key, (counts.get(key) || <span class="tok-number">0</span>) + <span class="tok-number">1</span>);
+}
+
+<span class="tok-keyword">function</span> addNamedCount(counts, key, name) {
+    <span class="tok-keyword">const</span> old = counts.get(key);
+    <span class="tok-keyword">if</span> (old) {
+        old.count++;
+    } <span class="tok-keyword">else</span> {
+        counts.set(key, { name, count: <span class="tok-number">1</span> });
+    }
+}
+
+<span class="tok-keyword">function</span> topEntries(counts, limit) {
+    <span class="tok-keyword">return</span> Array.from(counts.entries())
+        .map(entry =&gt; ({ name: entry[<span class="tok-number">0</span>], count: entry[<span class="tok-number">1</span>] }))
+        .sort((a, b) =&gt; b.count - a.count || a.name.localeCompare(b.name))
+        .slice(<span class="tok-number">0</span>, limit);
+}
+
+<span class="tok-keyword">function</span> topNamedEntries(counts, limit) {
+    <span class="tok-keyword">return</span> Array.from(counts.values())
+        .sort((a, b) =&gt; b.count - a.count || a.name.localeCompare(b.name))
+        .slice(<span class="tok-number">0</span>, limit);
+}
+
+<span class="tok-keyword">function</span> knownCount(counts) {
+    <span class="tok-keyword">return</span> counts.size - (counts.has(<span class="tok-string">&#39;(unknown)&#39;</span>) ? <span class="tok-number">1</span> : <span class="tok-number">0</span>);
+}
+
+<span class="tok-keyword">function</span> extractYear(value) {
+    <span class="tok-keyword">const</span> match = String(value || <span class="tok-string">&#39;&#39;</span>).match(/\d{<span class="tok-number">4</span>}/);
+    <span class="tok-keyword">return</span> match ? match[<span class="tok-number">0</span>] : <span class="tok-string">&#39;(unknown)&#39;</span>;
+}
+
+<span class="tok-keyword">function</span> normaliseSampleRate(value) {
+    <span class="tok-keyword">const</span> text = cleanValue(value);
+    <span class="tok-keyword">if</span> (text === <span class="tok-string">&#39;(unknown)&#39;</span>) <span class="tok-keyword">return</span> text;
+
+    <span class="tok-keyword">let</span> rate = parseFloat(text.replace(/[^<span class="tok-number">0</span>-<span class="tok-number">9</span>.]/g, <span class="tok-string">&#39;&#39;</span>));
+    <span class="tok-keyword">if</span> (!Number.isFinite(rate) || rate &lt;= <span class="tok-number">0</span>) <span class="tok-keyword">return</span> text;
+    <span class="tok-keyword">if</span> (/khz/i.test(text)) rate *= <span class="tok-number">1000</span>;
+
+    <span class="tok-keyword">if</span> (rate &gt;= <span class="tok-number">1000</span>) {
+        <span class="tok-keyword">const</span> khz = rate / <span class="tok-number">1000</span>;
+        <span class="tok-keyword">return</span> <span class="tok-string">`${Number.isInteger(khz) ? khz.toFixed(0) : khz.toFixed(1)} kHz`</span>;
+    }
+    <span class="tok-keyword">return</span> <span class="tok-string">`${Math.round(rate)} Hz`</span>;
+}
+
+<span class="tok-keyword">function</span> analyseHandles(handles) {
+    <span class="tok-keyword">const</span> artistCounts = <span class="tok-keyword">new</span> Map();
+    <span class="tok-keyword">const</span> albumCounts = <span class="tok-keyword">new</span> Map();
+    <span class="tok-keyword">const</span> genreCounts = <span class="tok-keyword">new</span> Map();
+    <span class="tok-keyword">const</span> yearCounts = <span class="tok-keyword">new</span> Map();
+    <span class="tok-keyword">const</span> codecCounts = <span class="tok-keyword">new</span> Map();
+    <span class="tok-keyword">const</span> sampleRateCounts = <span class="tok-keyword">new</span> Map();
+
+    <span class="tok-keyword">let</span> totalSeconds = <span class="tok-number">0</span>;
+    <span class="tok-keyword">let</span> totalBytes = <span class="tok-number">0</span>;
+    <span class="tok-keyword">let</span> bitrateTotal = <span class="tok-number">0</span>;
+    <span class="tok-keyword">let</span> bitrateCount = <span class="tok-number">0</span>;
+
+    <span class="tok-keyword">const</span> items = handles.Convert();
+
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> handle <span class="tok-keyword">of</span> items) {
+        <span class="tok-keyword">const</span> length = Number(handle.Length);
+        <span class="tok-keyword">if</span> (Number.isFinite(length) &amp;&amp; length &gt; <span class="tok-number">0</span>) totalSeconds += length;
+
+        <span class="tok-keyword">const</span> fileSize = Number(handle.FileSize);
+        <span class="tok-keyword">if</span> (Number.isFinite(fileSize) &amp;&amp; fileSize &gt; <span class="tok-number">0</span>) totalBytes += fileSize;
+
+        <span class="tok-keyword">const</span> trackArtists = [];
+        <span class="tok-keyword">const</span> albumArtists = [];
+        <span class="tok-keyword">const</span> genres = [];
+        <span class="tok-keyword">let</span> album = <span class="tok-string">&#39;&#39;</span>;
+        <span class="tok-keyword">let</span> date = <span class="tok-string">&#39;&#39;</span>;
+        <span class="tok-keyword">let</span> codec = <span class="tok-string">&#39;&#39;</span>;
+        <span class="tok-keyword">let</span> sampleRate = <span class="tok-string">&#39;&#39;</span>;
+        <span class="tok-keyword">let</span> bitrate = <span class="tok-literal">NaN</span>;
+
+        <span class="tok-keyword">const</span> info = handle.GetFileInfo();
+        <span class="tok-keyword">if</span> (info) {
+            <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; info.MetaCount; ++i) {
+                <span class="tok-keyword">const</span> name = normaliseFieldName(info.MetaName(i));
+                <span class="tok-keyword">const</span> valueCount = info.MetaValueCount(i);
+
+                <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> j = <span class="tok-number">0</span>; j &lt; valueCount; ++j) {
+                    <span class="tok-keyword">const</span> value = cleanValue(info.MetaValue(i, j));
+                    <span class="tok-keyword">if</span> (value === <span class="tok-string">&#39;(unknown)&#39;</span>) <span class="tok-keyword">continue</span>;
+
+                    <span class="tok-keyword">if</span> (name === <span class="tok-string">&#39;ARTIST&#39;</span>) trackArtists.push(value);
+                    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (name === <span class="tok-string">&#39;ALBUMARTIST&#39;</span>) albumArtists.push(value);
+                    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (name === <span class="tok-string">&#39;ALBUM&#39;</span> &amp;&amp; !album) album = value;
+                    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (name === <span class="tok-string">&#39;GENRE&#39;</span>) genres.push(value);
+                    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> ((name === <span class="tok-string">&#39;DATE&#39;</span> || name === <span class="tok-string">&#39;YEAR&#39;</span>) &amp;&amp; !date) date = value;
+                }
+            }
+
+            <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; info.InfoCount; ++i) {
+                <span class="tok-keyword">const</span> name = normaliseFieldName(info.InfoName(i));
+                <span class="tok-keyword">const</span> value = cleanValue(info.InfoValue(i));
+
+                <span class="tok-keyword">if</span> (name === <span class="tok-string">&#39;CODEC&#39;</span> &amp;&amp; !codec) codec = value;
+                <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (name === <span class="tok-string">&#39;SAMPLERATE&#39;</span> &amp;&amp; !sampleRate) sampleRate = value;
+                <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (name === <span class="tok-string">&#39;BITRATE&#39;</span> &amp;&amp; !Number.isFinite(bitrate)) {
+                    <span class="tok-keyword">const</span> parsed = parseFloat(value);
+                    <span class="tok-keyword">if</span> (Number.isFinite(parsed) &amp;&amp; parsed &gt; <span class="tok-number">0</span>) bitrate = parsed;
+                }
+            }
+        }
+
+        <span class="tok-keyword">if</span> (trackArtists.length) {
+            <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> artist <span class="tok-keyword">of</span> <span class="tok-keyword">new</span> Set(trackArtists)) addCount(artistCounts, artist);
+        } <span class="tok-keyword">else</span> {
+            addCount(artistCounts, <span class="tok-string">&#39;(unknown)&#39;</span>);
+        }
+
+        <span class="tok-keyword">const</span> albumOwner = albumArtists[<span class="tok-number">0</span>] || trackArtists[<span class="tok-number">0</span>] || <span class="tok-string">&#39;(unknown)&#39;</span>;
+        <span class="tok-keyword">if</span> (album) {
+            <span class="tok-keyword">const</span> albumKey = <span class="tok-string">`${albumOwner}\u0000${album}`</span>;
+            <span class="tok-keyword">const</span> albumLabel = albumOwner === <span class="tok-string">&#39;(unknown)&#39;</span> ? album : <span class="tok-string">`${album} — ${albumOwner}`</span>;
+            addNamedCount(albumCounts, albumKey, albumLabel);
+        } <span class="tok-keyword">else</span> {
+            addNamedCount(albumCounts, <span class="tok-string">&#39;(unknown)&#39;</span>, <span class="tok-string">&#39;(unknown)&#39;</span>);
+        }
+
+        <span class="tok-keyword">if</span> (genres.length) {
+            <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> genre <span class="tok-keyword">of</span> <span class="tok-keyword">new</span> Set(genres)) addCount(genreCounts, genre);
+        } <span class="tok-keyword">else</span> {
+            addCount(genreCounts, <span class="tok-string">&#39;(unknown)&#39;</span>);
+        }
+
+        addCount(yearCounts, extractYear(date));
+        addCount(codecCounts, codec || <span class="tok-string">&#39;(unknown)&#39;</span>);
+        addCount(sampleRateCounts, normaliseSampleRate(sampleRate));
+
+        <span class="tok-keyword">if</span> (Number.isFinite(bitrate)) {
+            bitrateTotal += bitrate;
+            bitrateCount++;
+        }
+    }
+
+    <span class="tok-keyword">let</span> averageBitrate = bitrateCount ? bitrateTotal / bitrateCount : <span class="tok-number">0</span>;
+    <span class="tok-keyword">if</span> (!averageBitrate &amp;&amp; totalSeconds &gt; <span class="tok-number">0</span> &amp;&amp; totalBytes &gt; <span class="tok-number">0</span>) {
+        averageBitrate = totalBytes * <span class="tok-number">8</span> / totalSeconds / <span class="tok-number">1000</span>;
+    }
+
+    <span class="tok-keyword">return</span> {
+        tracks: handles.Count,
+        totalSeconds,
+        totalBytes,
+        uniqueArtists: knownCount(artistCounts),
+        uniqueAlbums: albumCounts.size - (albumCounts.has(<span class="tok-string">&#39;(unknown)&#39;</span>) ? <span class="tok-number">1</span> : <span class="tok-number">0</span>),
+        uniqueGenres: knownCount(genreCounts),
+        averageBitrate,
+        topArtists: topEntries(artistCounts, <span class="tok-number">8</span>),
+        topAlbums: topNamedEntries(albumCounts, <span class="tok-number">8</span>),
+        topGenres: topEntries(genreCounts, <span class="tok-number">8</span>),
+        topYears: topEntries(yearCounts, <span class="tok-number">8</span>),
+        codecs: topEntries(codecCounts, <span class="tok-number">8</span>),
+        sampleRates: topEntries(sampleRateCounts, <span class="tok-number">8</span>)
+    };
+}
+
+<span class="tok-keyword">const</span> workerSource = <span class="tok-string">`&#39;use strict&#39;;\n\n${cleanValue.toString()}\n\n${normaliseFieldName.toString()}\n\n${addCount.toString()}\n\n${addNamedCount.toString()}\n\n${topEntries.toString()}\n\n${topNamedEntries.toString()}\n\n${knownCount.toString()}\n\n${extractYear.toString()}\n\n${normaliseSampleRate.toString()}\n\n${analyseHandles.toString()}\n\nonmessage = function (event) {\n    const started = performance.now();\n    const result = analyseHandles(event.data.handles);\n    result.requestId = event.data.requestId;\n    result.calcElapsed = performance.now() - started;\n    postMessage(result);\n};`</span>;
+
+<span class="tok-keyword">const</span> worker = <span class="tok-keyword">new</span> Worker(workerSource, <span class="tok-string">&#39;playlist-statistics&#39;</span>);
+
+worker.onmessage = <span class="tok-keyword">function</span> (event) {
+    <span class="tok-keyword">if</span> (event.data.requestId !== pendingRequestId || engine !== <span class="tok-string">&#39;worker&#39;</span>) <span class="tok-keyword">return</span>;
+    stats = event.data;
+    stats.totalElapsed = performance.now() - pendingStarted;
+    loading = <span class="tok-literal">false</span>;
+    window.Repaint();
+};
+
+worker.onerror = <span class="tok-keyword">function</span> (event) {
+    loading = <span class="tok-literal">false</span>;
+    console.log(<span class="tok-string">`Worker error: ${event.message}`</span>);
+    window.Repaint();
+};
+
+<span class="tok-keyword">function</span> sidebarWidth() {
+    <span class="tok-keyword">return</span> Math.max(<span class="tok-number">180</span>, Math.min(<span class="tok-number">320</span>, Math.round(window.Width * <span class="tok-number">0.32</span>)));
+}
+
+<span class="tok-keyword">function</span> visibleRows() {
+    <span class="tok-keyword">return</span> Math.max(<span class="tok-number">1</span>, Math.floor(window.Height / ROW_HEIGHT));
+}
+
+<span class="tok-keyword">function</span> clampScroll() {
+    <span class="tok-keyword">const</span> maxOffset = Math.max(<span class="tok-number">0</span>, sources.length - visibleRows());
+    scrollOffset = Math.max(<span class="tok-number">0</span>, Math.min(maxOffset, scrollOffset));
+}
+
+<span class="tok-keyword">function</span> ensureSelectedVisible() {
+    <span class="tok-keyword">if</span> (selectedSource &lt; scrollOffset) {
+        scrollOffset = selectedSource;
+    } <span class="tok-keyword">else</span> {
+        <span class="tok-keyword">const</span> rows = visibleRows();
+        <span class="tok-keyword">if</span> (selectedSource &gt;= scrollOffset + rows) {
+            scrollOffset = selectedSource - rows + <span class="tok-number">1</span>;
+        }
+    }
+    clampScroll();
+}
+
+<span class="tok-keyword">function</span> selectSource(index) {
+    <span class="tok-keyword">if</span> (!sources.length) <span class="tok-keyword">return</span>;
+    index = Math.max(<span class="tok-number">0</span>, Math.min(sources.length - <span class="tok-number">1</span>, index));
+    <span class="tok-keyword">if</span> (index === selectedSource) <span class="tok-keyword">return</span>;
+
+    selectedSource = index;
+    ensureSelectedVisible();
+    analyseSelectedSource();
+}
+
+<span class="tok-keyword">function</span> sourceKey(source) {
+    <span class="tok-keyword">return</span> source &amp;&amp; source.library ? <span class="tok-string">&#39;library&#39;</span> : source ? <span class="tok-string">&#39;playlist:&#39;</span> + source.name : <span class="tok-string">&#39;&#39;</span>;
+}
+
+<span class="tok-keyword">function</span> refreshSources() {
+    <span class="tok-keyword">const</span> previousKey = selectedSource &gt;= <span class="tok-number">0</span> &amp;&amp; selectedSource &lt; sources.length
+        ? sourceKey(sources[selectedSource])
+        : <span class="tok-string">&#39;&#39;</span>;
+
+    sources = [{ library: <span class="tok-literal">true</span>, index: -<span class="tok-number">1</span>, name: <span class="tok-string">&#39;Media Library&#39;</span> }];
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; plman.PlaylistCount; ++i) {
+        sources.push({ library: <span class="tok-literal">false</span>, index: i, name: plman.GetPlaylistName(i) });
+    }
+
+    <span class="tok-keyword">let</span> next = -<span class="tok-number">1</span>;
+    <span class="tok-keyword">if</span> (previousKey) next = sources.findIndex(item =&gt; sourceKey(item) === previousKey);
+    <span class="tok-keyword">if</span> (next &lt; <span class="tok-number">0</span> &amp;&amp; plman.ActivePlaylist &gt;= <span class="tok-number">0</span> &amp;&amp; plman.ActivePlaylist &lt; plman.PlaylistCount) {
+        next = plman.ActivePlaylist + <span class="tok-number">1</span>;
+    }
+    <span class="tok-keyword">if</span> (next &lt; <span class="tok-number">0</span>) next = <span class="tok-number">0</span>;
+
+    selectedSource = next;
+    clampScroll();
+    analyseSelectedSource();
+}
+
+<span class="tok-keyword">function</span> getSelectedHandles() {
+    <span class="tok-keyword">if</span> (selectedSource &lt; <span class="tok-number">0</span> || selectedSource &gt;= sources.length) <span class="tok-keyword">return</span> <span class="tok-literal">null</span>;
+    <span class="tok-keyword">const</span> source = sources[selectedSource];
+    <span class="tok-keyword">return</span> source.library ? fb.GetLibraryItems() : plman.GetPlaylistItems(source.index);
+}
+
+<span class="tok-keyword">function</span> analyseSelectedSource() {
+    <span class="tok-keyword">const</span> handles = getSelectedHandles();
+    <span class="tok-keyword">if</span> (!handles) <span class="tok-keyword">return</span>;
+
+    <span class="tok-keyword">const</span> id = ++requestId;
+    pendingRequestId = id;
+    pendingStarted = performance.now();
+    stats = <span class="tok-literal">null</span>;
+    loading = <span class="tok-literal">true</span>;
+    window.Repaint();
+
+    <span class="tok-keyword">if</span> (engine === <span class="tok-string">&#39;worker&#39;</span>) {
+        <span class="tok-comment">// FbMetadbHandleList is CLONEABLE. The panel keeps its own usable list.</span>
+        worker.postMessage({ requestId: id, handles });
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-comment">// Defer one task so the panel can present the loading state before the synchronous baseline.</span>
+    <span class="tok-keyword">const</span> started = pendingStarted;
+    setTimeout(() =&gt; {
+        <span class="tok-keyword">if</span> (id !== pendingRequestId || engine !== <span class="tok-string">&#39;main&#39;</span>) <span class="tok-keyword">return</span>;
+        <span class="tok-keyword">const</span> calcStarted = performance.now();
+        <span class="tok-keyword">const</span> result = analyseHandles(handles);
+        result.requestId = id;
+        result.calcElapsed = performance.now() - calcStarted;
+        result.totalElapsed = performance.now() - started;
+        stats = result;
+        loading = <span class="tok-literal">false</span>;
+        window.Repaint();
+    }, <span class="tok-number">0</span>);
+}
+
+<span class="tok-keyword">function</span> formatDuration(totalSeconds) {
+    <span class="tok-keyword">let</span> seconds = Math.max(<span class="tok-number">0</span>, Math.round(totalSeconds || <span class="tok-number">0</span>));
+    <span class="tok-keyword">const</span> hours = Math.floor(seconds / <span class="tok-number">3600</span>);
+    seconds -= hours * <span class="tok-number">3600</span>;
+    <span class="tok-keyword">const</span> minutes = Math.floor(seconds / <span class="tok-number">60</span>);
+    seconds -= minutes * <span class="tok-number">60</span>;
+    <span class="tok-keyword">return</span> hours &gt; <span class="tok-number">0</span>
+        ? <span class="tok-string">`${hours}:${String(minutes).padStart(2, &#39;0&#39;)}:${String(seconds).padStart(2, &#39;0&#39;)}`</span>
+        : <span class="tok-string">`${minutes}:${String(seconds).padStart(2, &#39;0&#39;)}`</span>;
+}
+
+<span class="tok-keyword">function</span> formatBytes(bytes) {
+    <span class="tok-keyword">let</span> value = Math.max(<span class="tok-number">0</span>, Number(bytes) || <span class="tok-number">0</span>);
+    <span class="tok-keyword">const</span> units = [<span class="tok-string">&#39;B&#39;</span>, <span class="tok-string">&#39;KB&#39;</span>, <span class="tok-string">&#39;MB&#39;</span>, <span class="tok-string">&#39;GB&#39;</span>, <span class="tok-string">&#39;TB&#39;</span>];
+    <span class="tok-keyword">let</span> unit = <span class="tok-number">0</span>;
+    <span class="tok-keyword">while</span> (value &gt;= <span class="tok-number">1024</span> &amp;&amp; unit &lt; units.length - <span class="tok-number">1</span>) {
+        value /= <span class="tok-number">1024</span>;
+        unit++;
+    }
+    <span class="tok-keyword">const</span> digits = value &gt;= <span class="tok-number">100</span> || unit === <span class="tok-number">0</span> ? <span class="tok-number">0</span> : value &gt;= <span class="tok-number">10</span> ? <span class="tok-number">1</span> : <span class="tok-number">2</span>;
+    <span class="tok-keyword">return</span> <span class="tok-string">`${value.toFixed(digits)} ${units[unit]}`</span>;
+}
+
+<span class="tok-keyword">function</span> formatCount(value) {
+    <span class="tok-keyword">return</span> Math.max(<span class="tok-number">0</span>, Number(value) || <span class="tok-number">0</span>).toLocaleString();
+}
+
+<span class="tok-keyword">function</span> engineRects() {
+    <span class="tok-keyword">const</span> y = <span class="tok-number">10</span>;
+    <span class="tok-keyword">const</span> x = Math.max(sidebarWidth() + PADDING, window.Width - <span class="tok-number">174</span>);
+    <span class="tok-keyword">return</span> {
+        label: { x, y, w: <span class="tok-number">46</span>, h: <span class="tok-number">26</span> },
+        main: { x: x + <span class="tok-number">48</span>, y, w: <span class="tok-number">48</span>, h: <span class="tok-number">26</span> },
+        worker: { x: x + <span class="tok-number">100</span>, y, w: <span class="tok-number">60</span>, h: <span class="tok-number">26</span> }
+    };
+}
+
+<span class="tok-keyword">function</span> contains(rect, x, y) {
+    <span class="tok-keyword">return</span> x &gt;= rect.x &amp;&amp; x &lt; rect.x + rect.w &amp;&amp; y &gt;= rect.y &amp;&amp; y &lt; rect.y + rect.h;
+}
+
+<span class="tok-keyword">function</span> drawChoice(gr, rect, text, selected) {
+    gr.FillSolidRect(rect.x, rect.y, rect.w, rect.h, selected ? <span class="tok-number">0xFF355D7A</span> : <span class="tok-number">0xFF20262E</span>);
+    gr.GdiDrawText(text, FONT, selected ? <span class="tok-number">0xFFFFFFFF</span> : <span class="tok-number">0xFFB7C1CB</span>,
+        rect.x, rect.y, rect.w, rect.h, DT_CENTER | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+}
+
+<span class="tok-keyword">function</span> drawEntryList(gr, title, entries, x, y, w, maxRows) {
+    gr.GdiDrawText(title, FONT_BOLD, COLOUR_TEXT, x, y, w, <span class="tok-number">24</span>, DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+    y += <span class="tok-number">26</span>;
+
+    <span class="tok-keyword">const</span> shown = entries.slice(<span class="tok-number">0</span>, maxRows);
+    <span class="tok-keyword">const</span> maxCount = shown.length ? Math.max(...shown.map(entry =&gt; entry.count)) : <span class="tok-number">1</span>;
+
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> entry <span class="tok-keyword">of</span> shown) {
+        <span class="tok-keyword">const</span> barWidth = Math.max(<span class="tok-number">2</span>, (w - <span class="tok-number">54</span>) * entry.count / maxCount);
+        gr.FillSolidRect(x, y + <span class="tok-number">4</span>, barWidth, <span class="tok-number">18</span>, COLOUR_BAR);
+        gr.GdiDrawText(entry.name, FONT, COLOUR_TEXT, x + <span class="tok-number">6</span>, y, Math.max(<span class="tok-number">1</span>, w - <span class="tok-number">58</span>), <span class="tok-number">26</span>,
+            DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_END_ELLIPSIS | DT_NOPREFIX);
+        gr.GdiDrawText(String(entry.count), FONT, COLOUR_DIM, x + w - <span class="tok-number">48</span>, y, <span class="tok-number">48</span>, <span class="tok-number">26</span>,
+            DT_RIGHT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+        y += <span class="tok-number">27</span>;
+    }
+}
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    <span class="tok-keyword">const</span> sw = sidebarWidth();
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, window.Width, window.Height, COLOUR_BG);
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, sw, window.Height, COLOUR_SIDEBAR);
+    gr.FillSolidRect(sw - <span class="tok-number">1</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>, window.Height, COLOUR_DIVIDER);
+
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> row = <span class="tok-number">0</span>; row &lt; visibleRows(); ++row) {
+        <span class="tok-keyword">const</span> listIndex = scrollOffset + row;
+        <span class="tok-keyword">if</span> (listIndex &gt;= sources.length) <span class="tok-keyword">break</span>;
+        <span class="tok-keyword">const</span> y = row * ROW_HEIGHT;
+
+        <span class="tok-keyword">if</span> (listIndex === selectedSource) {
+            gr.FillSolidRect(<span class="tok-number">0</span>, y, sw - <span class="tok-number">1</span>, ROW_HEIGHT, COLOUR_SELECTED);
+            gr.FillSolidRect(<span class="tok-number">0</span>, y, <span class="tok-number">3</span>, ROW_HEIGHT, COLOUR_ACCENT);
+        } <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (listIndex === hoverSource) {
+            gr.FillSolidRect(<span class="tok-number">0</span>, y, sw - <span class="tok-number">1</span>, ROW_HEIGHT, COLOUR_HOVER);
+        }
+
+        gr.GdiDrawText(sources[listIndex].name, sources[listIndex].library ? FONT_BOLD : FONT, COLOUR_TEXT,
+            <span class="tok-number">10</span>, y, sw - <span class="tok-number">20</span>, ROW_HEIGHT,
+            DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_END_ELLIPSIS | DT_NOPREFIX);
+
+        <span class="tok-keyword">if</span> (listIndex === <span class="tok-number">0</span> &amp;&amp; scrollOffset === <span class="tok-number">0</span>) {
+            gr.FillSolidRect(<span class="tok-number">10</span>, ROW_HEIGHT - <span class="tok-number">1</span>, Math.max(<span class="tok-number">1</span>, sw - <span class="tok-number">20</span>), <span class="tok-number">1</span>, COLOUR_DIVIDER);
+        }
+    }
+
+    <span class="tok-keyword">const</span> x = sw + PADDING;
+    <span class="tok-keyword">const</span> w = Math.max(<span class="tok-number">1</span>, window.Width - x - PADDING);
+    <span class="tok-keyword">let</span> y = PADDING;
+
+    <span class="tok-keyword">if</span> (selectedSource &lt; <span class="tok-number">0</span> || selectedSource &gt;= sources.length) <span class="tok-keyword">return</span>;
+
+    <span class="tok-keyword">const</span> engineUi = engineRects();
+    <span class="tok-keyword">const</span> titleRight = Math.max(x + <span class="tok-number">1</span>, engineUi.label.x - <span class="tok-number">10</span>);
+    gr.GdiDrawText(<span class="tok-string">&#39;Statistics&#39;</span>, FONT_TITLE, COLOUR_TEXT, x, y,
+        Math.max(<span class="tok-number">1</span>, titleRight - x), <span class="tok-number">34</span>,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_END_ELLIPSIS | DT_NOPREFIX);
+
+    gr.GdiDrawText(<span class="tok-string">&#39;Engine:&#39;</span>, FONT, COLOUR_DIM,
+        engineUi.label.x, engineUi.label.y, engineUi.label.w, engineUi.label.h,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+    drawChoice(gr, engineUi.main, <span class="tok-string">&#39;Main&#39;</span>, engine === <span class="tok-string">&#39;main&#39;</span>);
+    drawChoice(gr, engineUi.worker, <span class="tok-string">&#39;Worker&#39;</span>, engine === <span class="tok-string">&#39;worker&#39;</span>);
+    y += <span class="tok-number">42</span>;
+
+    <span class="tok-keyword">if</span> (loading) {
+        gr.GdiDrawText(<span class="tok-string">`Calculating in ${engine === &#39;worker&#39; ? &#39;Worker&#39; : &#39;Main&#39;}…`</span>, FONT, COLOUR_DIM, x, y, w, <span class="tok-number">28</span>,
+            DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">if</span> (!stats) <span class="tok-keyword">return</span>;
+
+    gr.GdiDrawText(<span class="tok-string">`${engine === &#39;worker&#39; ? &#39;Worker&#39; : &#39;Main&#39;}  •  calc ${stats.calcElapsed.toFixed(1)} ms  •  total ${stats.totalElapsed.toFixed(1)} ms`</span>,
+        FONT, COLOUR_DIM, x, y, w, <span class="tok-number">24</span>,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+    y += <span class="tok-number">28</span>;
+
+    gr.GdiDrawText(<span class="tok-string">`Tracks  ${formatCount(stats.tracks)}`</span>, FONT_BOLD, COLOUR_TEXT, x, y, w / <span class="tok-number">2</span>, <span class="tok-number">26</span>,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+    gr.GdiDrawText(<span class="tok-string">`Duration  ${formatDuration(stats.totalSeconds)}`</span>, FONT_BOLD, COLOUR_TEXT, x + w / <span class="tok-number">2</span>, y, w / <span class="tok-number">2</span>, <span class="tok-number">26</span>,
+        DT_RIGHT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+    y += <span class="tok-number">26</span>;
+
+    gr.GdiDrawText(<span class="tok-string">`Size  ${formatBytes(stats.totalBytes)}`</span>, FONT_BOLD, COLOUR_TEXT, x, y, w / <span class="tok-number">2</span>, <span class="tok-number">26</span>,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+    gr.GdiDrawText(<span class="tok-string">`Avg bitrate  ${Math.round(stats.averageBitrate || 0)} kbps`</span>, FONT_BOLD, COLOUR_TEXT, x + w / <span class="tok-number">2</span>, y, w / <span class="tok-number">2</span>, <span class="tok-number">26</span>,
+        DT_RIGHT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+    y += <span class="tok-number">30</span>;
+
+    gr.GdiDrawText(<span class="tok-string">`Artists  ${formatCount(stats.uniqueArtists)}  •  Albums  ${formatCount(stats.uniqueAlbums)}  •  Genres  ${formatCount(stats.uniqueGenres)}`</span>,
+        FONT, COLOUR_DIM, x, y, w, <span class="tok-number">24</span>,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_END_ELLIPSIS | DT_NOPREFIX);
+    y += <span class="tok-number">34</span>;
+
+    <span class="tok-keyword">const</span> sections = [
+        { title: <span class="tok-string">&#39;Top artists&#39;</span>, entries: stats.topArtists },
+        { title: <span class="tok-string">&#39;Top albums&#39;</span>, entries: stats.topAlbums },
+        { title: <span class="tok-string">&#39;Genres&#39;</span>, entries: stats.topGenres },
+        { title: <span class="tok-string">&#39;Years&#39;</span>, entries: stats.topYears },
+        { title: <span class="tok-string">&#39;Codecs&#39;</span>, entries: stats.codecs },
+        { title: <span class="tok-string">&#39;Sample rates&#39;</span>, entries: stats.sampleRates }
+    ];
+
+    <span class="tok-keyword">const</span> columns = w &gt;= <span class="tok-number">560</span> ? <span class="tok-number">2</span> : <span class="tok-number">1</span>;
+    <span class="tok-keyword">const</span> sectionRows = Math.ceil(sections.length / columns);
+    <span class="tok-keyword">const</span> gapX = <span class="tok-number">18</span>;
+    <span class="tok-keyword">const</span> gapY = <span class="tok-number">10</span>;
+    <span class="tok-keyword">const</span> columnWidth = columns === <span class="tok-number">2</span> ? (w - gapX) / <span class="tok-number">2</span> : w;
+    <span class="tok-keyword">const</span> available = Math.max(<span class="tok-number">60</span>, window.Height - y - PADDING);
+    <span class="tok-keyword">const</span> rowsPerSection = Math.max(<span class="tok-number">1</span>, Math.min(<span class="tok-number">5</span>,
+        Math.floor((available / sectionRows - <span class="tok-number">26</span> - gapY) / <span class="tok-number">27</span>)));
+    <span class="tok-keyword">const</span> sectionHeight = <span class="tok-number">26</span> + rowsPerSection * <span class="tok-number">27</span> + gapY;
+
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; sections.length; ++i) {
+        <span class="tok-keyword">const</span> column = i % columns;
+        <span class="tok-keyword">const</span> row = Math.floor(i / columns);
+        drawEntryList(gr, sections[i].title, sections[i].entries,
+            x + column * (columnWidth + gapX), y + row * sectionHeight,
+            columnWidth, rowsPerSection);
+    }
+}
+
+<span class="tok-keyword">function</span> on_mouse_move(x, y) {
+    <span class="tok-keyword">const</span> sw = sidebarWidth();
+    <span class="tok-keyword">const</span> oldHover = hoverSource;
+    hoverSource = -<span class="tok-number">1</span>;
+
+    <span class="tok-keyword">if</span> (x &gt;= <span class="tok-number">0</span> &amp;&amp; x &lt; sw &amp;&amp; y &gt;= <span class="tok-number">0</span> &amp;&amp; y &lt; window.Height) {
+        <span class="tok-keyword">const</span> row = Math.floor(y / ROW_HEIGHT);
+        <span class="tok-keyword">const</span> index = scrollOffset + row;
+        <span class="tok-keyword">if</span> (index &gt;= <span class="tok-number">0</span> &amp;&amp; index &lt; sources.length) hoverSource = index;
+    }
+
+    <span class="tok-keyword">if</span> (hoverSource !== oldHover) window.Repaint();
+}
+
+<span class="tok-keyword">function</span> on_mouse_leave() {
+    <span class="tok-keyword">if</span> (hoverSource !== -<span class="tok-number">1</span>) {
+        hoverSource = -<span class="tok-number">1</span>;
+        window.Repaint();
+    }
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_up(x, y) {
+    <span class="tok-keyword">const</span> engineUi = engineRects();
+    <span class="tok-keyword">let</span> nextEngine = engine;
+    <span class="tok-keyword">if</span> (contains(engineUi.main, x, y)) nextEngine = <span class="tok-string">&#39;main&#39;</span>;
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (contains(engineUi.worker, x, y)) nextEngine = <span class="tok-string">&#39;worker&#39;</span>;
+
+    <span class="tok-keyword">if</span> (nextEngine !== engine) {
+        engine = nextEngine;
+        analyseSelectedSource();
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">const</span> sw = sidebarWidth();
+    <span class="tok-keyword">if</span> (x &lt; <span class="tok-number">0</span> || x &gt;= sw || y &lt; <span class="tok-number">0</span> || y &gt;= window.Height) <span class="tok-keyword">return</span>;
+
+    <span class="tok-keyword">const</span> index = scrollOffset + Math.floor(y / ROW_HEIGHT);
+    <span class="tok-keyword">if</span> (index &lt; <span class="tok-number">0</span> || index &gt;= sources.length) <span class="tok-keyword">return</span>;
+
+    selectSource(index);
+}
+
+<span class="tok-keyword">function</span> on_key_down(vkey) {
+    <span class="tok-keyword">if</span> (!sources.length) <span class="tok-keyword">return</span>;
+
+    <span class="tok-keyword">let</span> next = selectedSource &lt; <span class="tok-number">0</span> ? <span class="tok-number">0</span> : selectedSource;
+    <span class="tok-keyword">const</span> page = Math.max(<span class="tok-number">1</span>, visibleRows() - <span class="tok-number">1</span>);
+
+    <span class="tok-keyword">switch</span> (vkey) {
+        <span class="tok-keyword">case</span> VK_UP:
+            next--;
+            <span class="tok-keyword">break</span>;
+        <span class="tok-keyword">case</span> VK_DOWN:
+            next++;
+            <span class="tok-keyword">break</span>;
+        <span class="tok-keyword">case</span> VK_HOME:
+            next = <span class="tok-number">0</span>;
+            <span class="tok-keyword">break</span>;
+        <span class="tok-keyword">case</span> VK_END:
+            next = sources.length - <span class="tok-number">1</span>;
+            <span class="tok-keyword">break</span>;
+        <span class="tok-keyword">case</span> VK_PRIOR:
+            next -= page;
+            <span class="tok-keyword">break</span>;
+        <span class="tok-keyword">case</span> VK_NEXT:
+            next += page;
+            <span class="tok-keyword">break</span>;
+        <span class="tok-keyword">default</span>:
+            <span class="tok-keyword">return</span>;
+    }
+
+    selectSource(next);
+}
+
+<span class="tok-keyword">function</span> on_mouse_wheel(step) {
+    <span class="tok-keyword">if</span> (!sources.length) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">const</span> oldOffset = scrollOffset;
+    scrollOffset -= step * <span class="tok-number">3</span>;
+    clampScroll();
+    <span class="tok-keyword">if</span> (scrollOffset !== oldOffset) window.Repaint();
+}
+
+<span class="tok-keyword">function</span> on_size() {
+    clampScroll();
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> on_playlists_changed() {
+    refreshSources();
+}
+
+<span class="tok-keyword">function</span> on_playlist_items_added(playlistIndex) {
+    <span class="tok-keyword">const</span> source = sources[selectedSource];
+    <span class="tok-keyword">if</span> (source &amp;&amp; !source.library &amp;&amp; source.index === playlistIndex) analyseSelectedSource();
+}
+
+<span class="tok-keyword">function</span> on_playlist_items_removed(playlistIndex) {
+    <span class="tok-keyword">const</span> source = sources[selectedSource];
+    <span class="tok-keyword">if</span> (source &amp;&amp; !source.library &amp;&amp; source.index === playlistIndex) analyseSelectedSource();
+}
+
+<span class="tok-keyword">function</span> on_playlist_items_reordered(playlistIndex) {
+    <span class="tok-keyword">const</span> source = sources[selectedSource];
+    <span class="tok-keyword">if</span> (source &amp;&amp; !source.library &amp;&amp; source.index === playlistIndex) analyseSelectedSource();
+}
+
+<span class="tok-keyword">function</span> on_library_items_added() {
+    <span class="tok-keyword">const</span> source = sources[selectedSource];
+    <span class="tok-keyword">if</span> (source &amp;&amp; source.library) analyseSelectedSource();
+}
+
+<span class="tok-keyword">function</span> on_library_items_removed() {
+    <span class="tok-keyword">const</span> source = sources[selectedSource];
+    <span class="tok-keyword">if</span> (source &amp;&amp; source.library) analyseSelectedSource();
+}
+
+<span class="tok-keyword">function</span> on_library_items_changed() {
+    <span class="tok-keyword">const</span> source = sources[selectedSource];
+    <span class="tok-keyword">if</span> (source &amp;&amp; source.library) analyseSelectedSource();
+}
+
+refreshSources();
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

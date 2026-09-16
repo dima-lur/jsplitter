@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>04. Playlist Album Gallery.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/worker/04. Playlist Album Gallery.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="Worker.html#Worker">Worker</a></div>
+        </header>
+        <pre class="source-code"><code><span class="tok-string">&#39;use strict&#39;</span>;
+
+<span class="tok-comment">// Worker sample 4: Playlist Album Gallery</span>
+<span class="tok-comment">// Demonstrates: cloning playlist handles, Worker-side album deduplication, asynchronous</span>
+<span class="tok-comment">// artwork loading, thumbnail resizing and transferring GDI/D2D images back to a live panel UI.</span>
+<span class="tok-comment">// Engine switches between the panel-side baseline and the Worker pipeline so the effect on</span>
+<span class="tok-comment">// UI responsiveness and useful artwork concurrency can be compared directly.</span>
+<span class="tok-comment">// Mouse wheel changes cover size. Only the albums that fit in the current viewport are</span>
+<span class="tok-comment">// requested, and every settled size reloads them from scratch on purpose: this sample has</span>
+<span class="tok-comment">// no artwork cache. Each image is resized in the Worker so its shorter side matches the</span>
+<span class="tok-comment">// current cover size; panel drawing then only crops the already-small thumbnail. In Worker mode</span>
+<span class="tok-comment">// resize runs in the Worker; in Main mode it deliberately runs in the panel realm as a baseline.</span>
+<span class="tok-comment">// Images are drawn directly in on_paint as they arrive; no offscreen gallery bitmap is composed.</span>
+<span class="tok-comment">// Concurrency controls how many album-art</span>
+<span class="tok-comment">// promises may be in flight at once. Worker GDI uses the runtime&#39;s eager WIC decode path, while</span>
+<span class="tok-comment">// Main GDI keeps the legacy GDI+ path. The status separates first display, load, panel receive/display, and paint cost.</span>
+
+<span class="tok-keyword">let</span> engine = <span class="tok-string">&#39;worker&#39;</span>;
+<span class="tok-keyword">let</span> drawMode = <span class="tok-number">1</span>;
+window.DrawMode = drawMode;
+
+<span class="tok-keyword">const</span> DT_LEFT = <span class="tok-number">0x0000</span>;
+<span class="tok-keyword">const</span> DT_CENTER = <span class="tok-number">0x0001</span>;
+<span class="tok-keyword">const</span> DT_VCENTER = <span class="tok-number">0x0004</span>;
+<span class="tok-keyword">const</span> DT_SINGLELINE = <span class="tok-number">0x0020</span>;
+<span class="tok-keyword">const</span> DT_NOPREFIX = <span class="tok-number">0x0800</span>;
+<span class="tok-keyword">const</span> DT_END_ELLIPSIS = <span class="tok-number">0x8000</span>;
+
+<span class="tok-keyword">const</span> MARGIN = <span class="tok-number">12</span>;
+<span class="tok-keyword">const</span> HEADER_H = <span class="tok-number">64</span>;
+<span class="tok-keyword">const</span> GAP = <span class="tok-number">10</span>;
+<span class="tok-keyword">const</span> TEXT_H = <span class="tok-number">38</span>;
+<span class="tok-keyword">const</span> COVER_MIN = <span class="tok-number">72</span>;
+<span class="tok-keyword">const</span> COVER_MAX = <span class="tok-number">288</span>;
+<span class="tok-keyword">const</span> COVER_STEP = <span class="tok-number">16</span>;
+<span class="tok-keyword">const</span> LOAD_DEBOUNCE_MS = <span class="tok-number">70</span>;
+<span class="tok-keyword">const</span> CONCURRENCY_CHOICES = [<span class="tok-number">4</span>, <span class="tok-number">8</span>, <span class="tok-number">16</span>, <span class="tok-number">0</span>];
+
+<span class="tok-keyword">let</span> coverSize = <span class="tok-number">144</span>;
+<span class="tok-keyword">let</span> switchingRenderer = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> worker = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> generation = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> loadRequestId = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> loadTimer = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> lastCapacity = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> concurrency = <span class="tok-number">8</span>;
+<span class="tok-keyword">let</span> mainLoadToken = <span class="tok-number">0</span>;
+
+<span class="tok-keyword">let</span> playlistName = <span class="tok-string">&#39;&#39;</span>;
+<span class="tok-keyword">let</span> albums = [];
+<span class="tok-keyword">let</span> images = [];
+<span class="tok-keyword">let</span> loadState = { requestId: <span class="tok-number">0</span>, count: <span class="tok-number">0</span>, completed: <span class="tok-number">0</span>, loaded: <span class="tok-number">0</span>, firstDisplayElapsed: <span class="tok-number">0</span>, loadElapsed: <span class="tok-number">0</span>, receiveElapsed: <span class="tok-number">0</span>, displayElapsed: <span class="tok-number">0</span>, paintCount: <span class="tok-number">0</span>, paintElapsed: <span class="tok-number">0</span>, started: <span class="tok-number">0</span>, active: <span class="tok-literal">false</span> };
+
+<span class="tok-keyword">let</span> TITLE_FONT;
+<span class="tok-keyword">let</span> INFO_FONT;
+<span class="tok-keyword">let</span> ALBUM_FONT;
+<span class="tok-keyword">let</span> META_FONT;
+
+<span class="tok-keyword">function</span> createFonts() {
+    TITLE_FONT = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">15</span>, <span class="tok-number">1</span>);
+    INFO_FONT = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">11</span>);
+    ALBUM_FONT = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">11</span>, <span class="tok-number">1</span>);
+    META_FONT = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">10</span>);
+}
+
+createFonts();
+
+<span class="tok-keyword">function</span> resizeArtwork(image, size) {
+    <span class="tok-keyword">if</span> (!image || size &lt;= <span class="tok-number">0</span>) <span class="tok-keyword">return</span> image;
+
+    <span class="tok-keyword">const</span> width = image.Width;
+    <span class="tok-keyword">const</span> height = image.Height;
+    <span class="tok-keyword">if</span> (width &lt;= <span class="tok-number">0</span> || height &lt;= <span class="tok-number">0</span>) <span class="tok-keyword">return</span> image;
+
+    <span class="tok-keyword">let</span> targetWidth;
+    <span class="tok-keyword">let</span> targetHeight;
+    <span class="tok-keyword">if</span> (width &gt;= height) {
+        targetHeight = size;
+        targetWidth = Math.max(size, Math.round(width * size / height));
+    } <span class="tok-keyword">else</span> {
+        targetWidth = size;
+        targetHeight = Math.max(size, Math.round(height * size / width));
+    }
+
+    <span class="tok-keyword">if</span> (targetWidth === width &amp;&amp; targetHeight === height) <span class="tok-keyword">return</span> image;
+    <span class="tok-keyword">return</span> image.Resize(targetWidth, targetHeight, <span class="tok-number">2</span>);
+}
+
+<span class="tok-keyword">function</span> buildAlbumsMain(handles) {
+    <span class="tok-keyword">const</span> artists = fb.TitleFormat(<span class="tok-string">&#39;$if2(%album artist%,%artist%)&#39;</span>).EvalWithMetadbs(handles);
+    <span class="tok-keyword">const</span> titles = fb.TitleFormat(<span class="tok-string">&#39;$if2(%album%,%title%)&#39;</span>).EvalWithMetadbs(handles);
+    <span class="tok-keyword">const</span> years = fb.TitleFormat(<span class="tok-string">&#39;$if2($year(%date%),)&#39;</span>).EvalWithMetadbs(handles);
+    <span class="tok-keyword">const</span> map = <span class="tok-keyword">new</span> Map();
+    <span class="tok-keyword">const</span> result = [];
+
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; handles.Count; ++i) {
+        <span class="tok-keyword">const</span> artist = artists[i] || <span class="tok-string">&#39;(unknown artist)&#39;</span>;
+        <span class="tok-keyword">const</span> title = titles[i] || <span class="tok-string">&#39;(unknown album)&#39;</span>;
+        <span class="tok-keyword">const</span> year = years[i] || <span class="tok-string">&#39;&#39;</span>;
+        <span class="tok-keyword">const</span> key = artist + <span class="tok-string">&#39;\0&#39;</span> + title;
+
+        <span class="tok-keyword">let</span> album = map.get(key);
+        <span class="tok-keyword">if</span> (!album) {
+            album = { artist, title, year, tracks: <span class="tok-number">0</span>, handle: handles[i] };
+            map.set(key, album);
+            result.push(album);
+        }
+        ++album.tracks;
+    }
+
+    <span class="tok-keyword">return</span> result;
+}
+
+<span class="tok-keyword">const</span> workerSource = String.raw<span class="tok-string">`
+&#39;use strict&#39;;
+
+let currentGeneration = 0;
+let activeLoadId = 0;
+let albums = [];
+
+function resizeArtwork(image, size) {
+    if (!image || size &lt;= 0) return image;
+
+    const width = image.Width;
+    const height = image.Height;
+    if (width &lt;= 0 || height &lt;= 0) return image;
+
+    let targetWidth;
+    let targetHeight;
+    if (width &gt;= height) {
+        targetHeight = size;
+        targetWidth = Math.max(size, Math.round(width * size / height));
+    } else {
+        targetWidth = size;
+        targetHeight = Math.max(size, Math.round(height * size / width));
+    }
+
+    if (targetWidth === width &amp;&amp; targetHeight === height) return image;
+    return image.Resize(targetWidth, targetHeight, 2);
+}
+
+function buildAlbums(handles) {
+    const artists = fb.TitleFormat(&#39;$if2(%album artist%,%artist%)&#39;).EvalWithMetadbs(handles);
+    const titles = fb.TitleFormat(&#39;$if2(%album%,%title%)&#39;).EvalWithMetadbs(handles);
+    const years = fb.TitleFormat(&#39;$if2($year(%date%),)&#39;).EvalWithMetadbs(handles);
+    const map = new Map();
+    const result = [];
+
+    for (let i = 0; i &lt; handles.Count; ++i) {
+        const artist = artists[i] || &#39;(unknown artist)&#39;;
+        const title = titles[i] || &#39;(unknown album)&#39;;
+        const year = years[i] || &#39;&#39;;
+        const key = artist + &#39;\\0&#39; + title;
+
+        let album = map.get(key);
+        if (!album) {
+            album = { artist, title, year, tracks: 0, handle: handles[i] };
+            map.set(key, album);
+            result.push(album);
+        }
+        ++album.tracks;
+    }
+
+    return result;
+}
+
+function publicAlbums() {
+    return albums.map(album =&gt; ({
+        artist: album.artist,
+        title: album.title,
+        year: album.year,
+        tracks: album.tracks
+    }));
+}
+
+async function loadVisible(message) {
+    const requestId = message.requestId;
+    const generation = message.generation;
+    const count = Math.min(Math.max(0, message.count | 0), albums.length);
+    const requestedConcurrency = message.concurrency | 0;
+    const coverSize = Math.max(1, message.coverSize | 0);
+    const limit = requestedConcurrency &gt; 0 ? Math.min(requestedConcurrency, count) : count;
+    activeLoadId = requestId;
+    const started = performance.now();
+    let nextIndex = 0;
+
+    async function runQueue() {
+        while (generation === currentGeneration &amp;&amp; requestId === activeLoadId) {
+            const index = nextIndex++;
+            if (index &gt;= count) return;
+
+            const album = albums[index];
+            let image = null;
+            try {
+                const result = await utils.GetAlbumArtAsyncV2(0, album.handle, 0, false, false, false);
+                if (result &amp;&amp; result.image) image = resizeArtwork(result.image, coverSize);
+            } catch (_) {
+                image = null;
+            }
+
+            if (generation !== currentGeneration || requestId !== activeLoadId) return;
+
+            const elapsed = performance.now() - started;
+            if (image) {
+                postMessage({ type: &#39;art&#39;, generation, requestId, index, elapsed, image }, [image]);
+            } else {
+                postMessage({ type: &#39;art&#39;, generation, requestId, index, elapsed, image: null });
+            }
+        }
+    }
+
+    const jobs = [];
+    for (let i = 0; i &lt; limit; ++i) jobs.push(runQueue());
+    await Promise.all(jobs);
+    if (generation !== currentGeneration || requestId !== activeLoadId) return;
+
+    postMessage({
+        type: &#39;complete&#39;,
+        generation,
+        requestId,
+        elapsed: performance.now() - started
+    });
+}
+
+onmessage = function (event) {
+    const message = event.data;
+
+    if (message.type === &#39;playlist&#39;) {
+        currentGeneration = message.generation;
+        activeLoadId = 0;
+        albums = buildAlbums(message.handles);
+        postMessage({
+            type: &#39;catalog&#39;,
+            generation: currentGeneration,
+            playlistName: message.playlistName || &#39;&#39;,
+            albums: publicAlbums()
+        });
+        return;
+    }
+
+    if (message.type === &#39;cancel&#39;) {
+        if (message.generation === currentGeneration) activeLoadId = 0;
+        return;
+    }
+
+    if (message.type === &#39;load&#39; &amp;&amp; message.generation === currentGeneration) {
+        loadVisible(message);
+    }
+};
+`</span>;
+
+<span class="tok-keyword">function</span> engineRects() {
+    <span class="tok-keyword">const</span> y = <span class="tok-number">7</span>;
+    <span class="tok-keyword">const</span> x = Math.max(<span class="tok-number">8</span>, window.Width - <span class="tok-number">342</span>);
+    <span class="tok-keyword">return</span> {
+        label: { x, y, w: <span class="tok-number">46</span>, h: <span class="tok-number">26</span> },
+        main: { x: x + <span class="tok-number">48</span>, y, w: <span class="tok-number">48</span>, h: <span class="tok-number">26</span> },
+        worker: { x: x + <span class="tok-number">100</span>, y, w: <span class="tok-number">60</span>, h: <span class="tok-number">26</span> }
+    };
+}
+
+<span class="tok-keyword">function</span> rendererRects() {
+    <span class="tok-keyword">const</span> y = <span class="tok-number">7</span>;
+    <span class="tok-keyword">const</span> x = Math.max(<span class="tok-number">8</span>, window.Width - <span class="tok-number">342</span>) + <span class="tok-number">168</span>;
+    <span class="tok-keyword">return</span> {
+        label: { x, y, w: <span class="tok-number">62</span>, h: <span class="tok-number">26</span> },
+        gdi: { x: x + <span class="tok-number">64</span>, y, w: <span class="tok-number">48</span>, h: <span class="tok-number">26</span> },
+        d2d: { x: x + <span class="tok-number">116</span>, y, w: <span class="tok-number">54</span>, h: <span class="tok-number">26</span> }
+    };
+}
+
+<span class="tok-keyword">function</span> concurrencyRects() {
+    <span class="tok-keyword">const</span> y = <span class="tok-number">34</span>;
+    <span class="tok-keyword">const</span> x = Math.max(<span class="tok-number">8</span>, window.Width - <span class="tok-number">246</span>);
+    <span class="tok-keyword">return</span> {
+        label: { x, y, w: <span class="tok-number">78</span>, h: <span class="tok-number">24</span> },
+        choices: [
+            { value: <span class="tok-number">4</span>, rect: { x: x + <span class="tok-number">80</span>, y, w: <span class="tok-number">30</span>, h: <span class="tok-number">24</span> }, text: <span class="tok-string">&#39;4&#39;</span> },
+            { value: <span class="tok-number">8</span>, rect: { x: x + <span class="tok-number">114</span>, y, w: <span class="tok-number">30</span>, h: <span class="tok-number">24</span> }, text: <span class="tok-string">&#39;8&#39;</span> },
+            { value: <span class="tok-number">16</span>, rect: { x: x + <span class="tok-number">148</span>, y, w: <span class="tok-number">34</span>, h: <span class="tok-number">24</span> }, text: <span class="tok-string">&#39;16&#39;</span> },
+            { value: <span class="tok-number">0</span>, rect: { x: x + <span class="tok-number">186</span>, y, w: <span class="tok-number">48</span>, h: <span class="tok-number">24</span> }, text: <span class="tok-string">&#39;All&#39;</span> }
+        ]
+    };
+}
+
+<span class="tok-keyword">function</span> contains(rect, x, y) {
+    <span class="tok-keyword">return</span> x &gt;= rect.x &amp;&amp; x &lt; rect.x + rect.w &amp;&amp; y &gt;= rect.y &amp;&amp; y &lt; rect.y + rect.h;
+}
+
+<span class="tok-keyword">function</span> drawChoice(gr, rect, text, selected) {
+    gr.FillSolidRect(rect.x, rect.y, rect.w, rect.h, selected ? <span class="tok-number">0xFF355D7A</span> : <span class="tok-number">0xFF20262E</span>);
+    gr.DrawText(text, INFO_FONT, selected ? <span class="tok-number">0xFFFFFFFF</span> : <span class="tok-number">0xFFB7C1CB</span>,
+        rect.x, rect.y, rect.w, rect.h, DT_CENTER | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+}
+
+<span class="tok-keyword">function</span> getLayout() {
+    <span class="tok-keyword">const</span> contentW = Math.max(<span class="tok-number">1</span>, window.Width - MARGIN * <span class="tok-number">2</span>);
+    <span class="tok-keyword">const</span> contentH = Math.max(<span class="tok-number">1</span>, window.Height - HEADER_H - MARGIN);
+    <span class="tok-keyword">const</span> cellW = coverSize;
+    <span class="tok-keyword">const</span> cellH = coverSize + TEXT_H;
+
+    <span class="tok-keyword">const</span> columns = Math.max(<span class="tok-number">1</span>, Math.floor((contentW + GAP) / (cellW + GAP)));
+    <span class="tok-keyword">const</span> rows = Math.max(<span class="tok-number">1</span>, Math.floor((contentH + GAP) / (cellH + GAP)));
+    <span class="tok-keyword">const</span> capacity = columns * rows;
+    <span class="tok-keyword">const</span> totalW = columns * cellW + (columns - <span class="tok-number">1</span>) * GAP;
+    <span class="tok-keyword">const</span> firstX = MARGIN + Math.max(<span class="tok-number">0</span>, Math.floor((contentW - totalW) * <span class="tok-number">0.5</span>));
+
+    <span class="tok-keyword">return</span> { columns, rows, capacity, firstX, top: HEADER_H, cellW, cellH };
+}
+
+<span class="tok-keyword">function</span> tileRect(index, layout) {
+    <span class="tok-keyword">const</span> col = index % layout.columns;
+    <span class="tok-keyword">const</span> row = Math.floor(index / layout.columns);
+    <span class="tok-keyword">return</span> {
+        x: layout.firstX + col * (layout.cellW + GAP),
+        y: layout.top + row * (layout.cellH + GAP),
+        w: layout.cellW,
+        h: layout.cellH
+    };
+}
+
+<span class="tok-keyword">function</span> drawCover(gr, image, x, y, size) {
+    <span class="tok-keyword">const</span> srcAspect = image.Width / image.Height;
+    <span class="tok-keyword">let</span> sx = <span class="tok-number">0</span>;
+    <span class="tok-keyword">let</span> sy = <span class="tok-number">0</span>;
+    <span class="tok-keyword">let</span> sw = image.Width;
+    <span class="tok-keyword">let</span> sh = image.Height;
+
+    <span class="tok-keyword">if</span> (srcAspect &gt; <span class="tok-number">1</span>) {
+        sw = image.Height;
+        sx = (image.Width - sw) * <span class="tok-number">0.5</span>;
+    } <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (srcAspect &lt; <span class="tok-number">1</span>) {
+        sh = image.Width;
+        sy = (image.Height - sh) * <span class="tok-number">0.5</span>;
+    }
+
+    gr.DrawImage(image, x, y, size, size, sx, sy, sw, sh);
+}
+
+<span class="tok-keyword">function</span> statusText() {
+    <span class="tok-keyword">const</span> visible = Math.min(albums.length, getLayout().capacity);
+    <span class="tok-keyword">let</span> text = coverSize + <span class="tok-string">&#39; px  •  visible &#39;</span> + visible + <span class="tok-string">&#39;/&#39;</span> + albums.length;
+
+    <span class="tok-keyword">if</span> (loadState.count) {
+        text += <span class="tok-string">&#39;  •  &#39;</span> + loadState.completed + <span class="tok-string">&#39;/&#39;</span> + loadState.count;
+        <span class="tok-keyword">if</span> (loadState.firstDisplayElapsed &gt; <span class="tok-number">0</span>) text += <span class="tok-string">&#39;  •  first &#39;</span> + loadState.firstDisplayElapsed.toFixed(<span class="tok-number">0</span>) + <span class="tok-string">&#39; ms&#39;</span>;
+        <span class="tok-keyword">if</span> (loadState.loadElapsed &gt; <span class="tok-number">0</span>) text += <span class="tok-string">&#39;  •  load &#39;</span> + loadState.loadElapsed.toFixed(<span class="tok-number">0</span>) + <span class="tok-string">&#39; ms&#39;</span>;
+        <span class="tok-keyword">if</span> (loadState.receiveElapsed &gt; <span class="tok-number">0</span>) text += <span class="tok-string">&#39;  •  receive &#39;</span> + loadState.receiveElapsed.toFixed(<span class="tok-number">0</span>) + <span class="tok-string">&#39; ms&#39;</span>;
+        <span class="tok-keyword">if</span> (loadState.displayElapsed &gt; <span class="tok-number">0</span>) text += <span class="tok-string">&#39;  •  display &#39;</span> + loadState.displayElapsed.toFixed(<span class="tok-number">0</span>) + <span class="tok-string">&#39; ms&#39;</span>;
+        <span class="tok-keyword">if</span> (loadState.paintCount &gt; <span class="tok-number">0</span>) text += <span class="tok-string">&#39;  •  paints &#39;</span> + loadState.paintCount + <span class="tok-string">&#39;/&#39;</span> + loadState.paintElapsed.toFixed(<span class="tok-number">0</span>) + <span class="tok-string">&#39; ms&#39;</span>;
+    }
+
+    <span class="tok-keyword">return</span> text;
+}
+
+<span class="tok-keyword">async</span> <span class="tok-keyword">function</span> loadVisibleMain(requestId, count, token) {
+    <span class="tok-keyword">const</span> started = performance.now();
+    <span class="tok-keyword">const</span> limit = concurrency &gt; <span class="tok-number">0</span> ? Math.min(concurrency, count) : count;
+    <span class="tok-keyword">let</span> nextIndex = <span class="tok-number">0</span>;
+
+    <span class="tok-keyword">async</span> <span class="tok-keyword">function</span> runQueue() {
+        <span class="tok-keyword">while</span> (engine === <span class="tok-string">&#39;main&#39;</span> &amp;&amp; token === mainLoadToken &amp;&amp; requestId === loadState.requestId) {
+            <span class="tok-keyword">const</span> index = nextIndex++;
+            <span class="tok-keyword">if</span> (index &gt;= count) <span class="tok-keyword">return</span>;
+
+            <span class="tok-keyword">const</span> album = albums[index];
+            <span class="tok-keyword">let</span> image = <span class="tok-literal">null</span>;
+            <span class="tok-keyword">try</span> {
+                <span class="tok-keyword">const</span> result = <span class="tok-keyword">await</span> utils.GetAlbumArtAsyncV2(<span class="tok-number">0</span>, album.handle, <span class="tok-number">0</span>, <span class="tok-literal">false</span>, <span class="tok-literal">false</span>, <span class="tok-literal">false</span>);
+                <span class="tok-keyword">if</span> (result &amp;&amp; result.image) image = resizeArtwork(result.image, coverSize);
+            } <span class="tok-keyword">catch</span> (_) {
+                image = <span class="tok-literal">null</span>;
+            }
+
+            <span class="tok-keyword">if</span> (engine !== <span class="tok-string">&#39;main&#39;</span> || token !== mainLoadToken || requestId !== loadState.requestId) <span class="tok-keyword">return</span>;
+
+            ++loadState.completed;
+            <span class="tok-keyword">if</span> (image) {
+                images[index] = image;
+                ++loadState.loaded;
+            }
+
+            <span class="tok-keyword">const</span> elapsed = performance.now() - started;
+            loadState.loadElapsed = elapsed;
+            <span class="tok-keyword">if</span> (loadState.completed &gt;= loadState.count &amp;&amp; loadState.receiveElapsed &lt;= <span class="tok-number">0</span>) {
+                loadState.receiveElapsed = elapsed;
+            }
+
+            <span class="tok-keyword">const</span> rect = tileRect(index, getLayout());
+            window.RepaintRect(rect.x, rect.y, rect.w, rect.h);
+            window.RepaintRect(MARGIN, <span class="tok-number">32</span>, Math.max(<span class="tok-number">1</span>, window.Width - <span class="tok-number">220</span>), <span class="tok-number">20</span>);
+        }
+    }
+
+    <span class="tok-keyword">const</span> jobs = [];
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; limit; ++i) jobs.push(runQueue());
+    <span class="tok-keyword">await</span> Promise.all(jobs);
+
+    <span class="tok-keyword">if</span> (engine !== <span class="tok-string">&#39;main&#39;</span> || token !== mainLoadToken || requestId !== loadState.requestId) <span class="tok-keyword">return</span>;
+
+    <span class="tok-keyword">const</span> elapsed = performance.now() - started;
+    loadState.active = <span class="tok-literal">false</span>;
+    loadState.loadElapsed = elapsed;
+    <span class="tok-keyword">if</span> (loadState.receiveElapsed &lt;= <span class="tok-number">0</span>) loadState.receiveElapsed = elapsed;
+    window.RepaintRect(MARGIN, <span class="tok-number">32</span>, Math.max(<span class="tok-number">1</span>, window.Width - <span class="tok-number">220</span>), <span class="tok-number">20</span>);
+}
+
+<span class="tok-keyword">function</span> cancelCurrentLoad() {
+    ++mainLoadToken;
+    <span class="tok-keyword">if</span> (worker) worker.postMessage({ type: <span class="tok-string">&#39;cancel&#39;</span>, generation });
+    loadState.active = <span class="tok-literal">false</span>;
+}
+
+<span class="tok-keyword">function</span> beginVisibleLoad() {
+    loadTimer = <span class="tok-number">0</span>;
+    <span class="tok-keyword">if</span> (!albums.length) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">if</span> (engine === <span class="tok-string">&#39;worker&#39;</span> &amp;&amp; !worker) <span class="tok-keyword">return</span>;
+
+    <span class="tok-keyword">const</span> count = Math.min(albums.length, getLayout().capacity);
+    <span class="tok-keyword">const</span> requestId = ++loadRequestId;
+    <span class="tok-keyword">const</span> token = ++mainLoadToken;
+
+    images = <span class="tok-keyword">new</span> Array(count).fill(<span class="tok-literal">null</span>);
+    loadState = { requestId, count, completed: <span class="tok-number">0</span>, loaded: <span class="tok-number">0</span>, firstDisplayElapsed: <span class="tok-number">0</span>, loadElapsed: <span class="tok-number">0</span>, receiveElapsed: <span class="tok-number">0</span>, displayElapsed: <span class="tok-number">0</span>, paintCount: <span class="tok-number">0</span>, paintElapsed: <span class="tok-number">0</span>, started: performance.now(), active: <span class="tok-literal">true</span> };
+
+    <span class="tok-keyword">if</span> (engine === <span class="tok-string">&#39;worker&#39;</span>) {
+        worker.postMessage({
+            type: <span class="tok-string">&#39;load&#39;</span>,
+            generation,
+            requestId,
+            count,
+            concurrency,
+            coverSize
+        });
+    } <span class="tok-keyword">else</span> {
+        loadVisibleMain(requestId, count, token);
+    }
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> scheduleVisibleLoad(delay = LOAD_DEBOUNCE_MS) {
+    <span class="tok-keyword">if</span> (loadTimer) clearTimeout(loadTimer);
+    cancelCurrentLoad();
+    loadTimer = setTimeout(beginVisibleLoad, delay);
+}
+
+<span class="tok-keyword">function</span> sendPlaylist() {
+    <span class="tok-keyword">if</span> (engine === <span class="tok-string">&#39;worker&#39;</span> &amp;&amp; !worker) <span class="tok-keyword">return</span>;
+
+    <span class="tok-keyword">if</span> (loadTimer) {
+        clearTimeout(loadTimer);
+        loadTimer = <span class="tok-number">0</span>;
+    }
+    ++mainLoadToken;
+
+    albums = [];
+    images = [];
+    loadState = { requestId: <span class="tok-number">0</span>, count: <span class="tok-number">0</span>, completed: <span class="tok-number">0</span>, loaded: <span class="tok-number">0</span>, firstDisplayElapsed: <span class="tok-number">0</span>, loadElapsed: <span class="tok-number">0</span>, receiveElapsed: <span class="tok-number">0</span>, displayElapsed: <span class="tok-number">0</span>, paintCount: <span class="tok-number">0</span>, paintElapsed: <span class="tok-number">0</span>, started: <span class="tok-number">0</span>, active: <span class="tok-literal">false</span> };
+    lastCapacity = <span class="tok-number">0</span>;
+
+    <span class="tok-keyword">const</span> playlistIndex = plman.ActivePlaylist;
+    <span class="tok-keyword">const</span> handles = playlistIndex &gt;= <span class="tok-number">0</span> ? plman.GetPlaylistItems(playlistIndex) : fb.CreateHandleList();
+    playlistName = playlistIndex &gt;= <span class="tok-number">0</span> ? plman.GetPlaylistName(playlistIndex) : <span class="tok-string">&#39;No active playlist&#39;</span>;
+
+    ++generation;
+    <span class="tok-keyword">if</span> (engine === <span class="tok-string">&#39;worker&#39;</span>) {
+        worker.postMessage({
+            type: <span class="tok-string">&#39;playlist&#39;</span>,
+            generation,
+            playlistName,
+            handles
+        });
+    } <span class="tok-keyword">else</span> {
+        albums = buildAlbumsMain(handles);
+        lastCapacity = getLayout().capacity;
+        beginVisibleLoad();
+    }
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> startEngine() {
+    switchingRenderer = <span class="tok-literal">true</span>;
+    <span class="tok-keyword">if</span> (loadTimer) {
+        clearTimeout(loadTimer);
+        loadTimer = <span class="tok-number">0</span>;
+    }
+    ++mainLoadToken;
+    <span class="tok-keyword">if</span> (worker) worker.terminate();
+    worker = <span class="tok-literal">null</span>;
+
+    albums = [];
+    images = [];
+    loadState = { requestId: <span class="tok-number">0</span>, count: <span class="tok-number">0</span>, completed: <span class="tok-number">0</span>, loaded: <span class="tok-number">0</span>, firstDisplayElapsed: <span class="tok-number">0</span>, loadElapsed: <span class="tok-number">0</span>, receiveElapsed: <span class="tok-number">0</span>, displayElapsed: <span class="tok-number">0</span>, paintCount: <span class="tok-number">0</span>, paintElapsed: <span class="tok-number">0</span>, started: <span class="tok-number">0</span>, active: <span class="tok-literal">false</span> };
+
+    <span class="tok-keyword">try</span> {
+        window.DrawMode = drawMode;
+        createFonts();
+    } <span class="tok-keyword">finally</span> {
+        switchingRenderer = <span class="tok-literal">false</span>;
+    }
+
+    <span class="tok-keyword">if</span> (engine === <span class="tok-string">&#39;worker&#39;</span>) {
+        <span class="tok-keyword">const</span> currentWorker = <span class="tok-keyword">new</span> Worker(workerSource, <span class="tok-string">&#39;playlist-album-gallery&#39;</span>);
+        worker = currentWorker;
+
+        currentWorker.onmessage = <span class="tok-keyword">function</span> (event) {
+            <span class="tok-keyword">if</span> (worker !== currentWorker) <span class="tok-keyword">return</span>;
+            <span class="tok-keyword">const</span> message = event.data;
+            <span class="tok-keyword">if</span> (message.generation !== generation) <span class="tok-keyword">return</span>;
+
+            <span class="tok-keyword">if</span> (message.type === <span class="tok-string">&#39;catalog&#39;</span>) {
+                playlistName = message.playlistName || playlistName;
+                albums = message.albums || [];
+                lastCapacity = getLayout().capacity;
+                beginVisibleLoad();
+                window.Repaint();
+                <span class="tok-keyword">return</span>;
+            }
+
+            <span class="tok-keyword">if</span> (message.type === <span class="tok-string">&#39;art&#39;</span>) {
+                <span class="tok-keyword">if</span> (message.requestId !== loadState.requestId) <span class="tok-keyword">return</span>;
+                <span class="tok-keyword">if</span> (message.index &lt; <span class="tok-number">0</span> || message.index &gt;= images.length) <span class="tok-keyword">return</span>;
+
+                ++loadState.completed;
+                <span class="tok-keyword">if</span> (loadState.completed &gt;= loadState.count &amp;&amp; loadState.receiveElapsed &lt;= <span class="tok-number">0</span> &amp;&amp; loadState.started &gt; <span class="tok-number">0</span>) {
+                    loadState.receiveElapsed = performance.now() - loadState.started;
+                }
+                <span class="tok-keyword">if</span> (message.image) {
+                    images[message.index] = message.image;
+                    ++loadState.loaded;
+                }
+                loadState.loadElapsed = message.elapsed || loadState.loadElapsed;
+
+                <span class="tok-keyword">const</span> rect = tileRect(message.index, getLayout());
+                window.RepaintRect(rect.x, rect.y, rect.w, rect.h);
+                window.RepaintRect(MARGIN, <span class="tok-number">32</span>, Math.max(<span class="tok-number">1</span>, window.Width - <span class="tok-number">220</span>), <span class="tok-number">20</span>);
+                <span class="tok-keyword">return</span>;
+            }
+
+            <span class="tok-keyword">if</span> (message.type === <span class="tok-string">&#39;complete&#39;</span> &amp;&amp; message.requestId === loadState.requestId) {
+                loadState.active = <span class="tok-literal">false</span>;
+                loadState.loadElapsed = message.elapsed || loadState.loadElapsed;
+                window.RepaintRect(MARGIN, <span class="tok-number">32</span>, Math.max(<span class="tok-number">1</span>, window.Width - <span class="tok-number">220</span>), <span class="tok-number">20</span>);
+            }
+        };
+
+        currentWorker.onerror = <span class="tok-keyword">function</span> (event) {
+            <span class="tok-keyword">if</span> (worker === currentWorker) console.log(<span class="tok-string">&#39;Worker error: &#39;</span> + event.message);
+        };
+    }
+
+    sendPlaylist();
+}
+
+<span class="tok-keyword">function</span> on_size() {
+    <span class="tok-keyword">const</span> capacity = getLayout().capacity;
+    <span class="tok-keyword">if</span> (capacity !== lastCapacity &amp;&amp; albums.length) {
+        lastCapacity = capacity;
+        scheduleVisibleLoad(<span class="tok-number">90</span>);
+    }
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> on_mouse_wheel(step) {
+    <span class="tok-keyword">const</span> next = Math.max(COVER_MIN, Math.min(COVER_MAX,
+        coverSize + (step &gt; <span class="tok-number">0</span> ? COVER_STEP : -COVER_STEP)));
+    <span class="tok-keyword">if</span> (next === coverSize) <span class="tok-keyword">return</span>;
+
+    coverSize = next;
+    lastCapacity = getLayout().capacity;
+    scheduleVisibleLoad();
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_up(x, y) {
+    <span class="tok-keyword">const</span> engineUi = engineRects();
+    <span class="tok-keyword">let</span> nextEngine = engine;
+    <span class="tok-keyword">if</span> (contains(engineUi.main, x, y)) nextEngine = <span class="tok-string">&#39;main&#39;</span>;
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (contains(engineUi.worker, x, y)) nextEngine = <span class="tok-string">&#39;worker&#39;</span>;
+
+    <span class="tok-keyword">if</span> (nextEngine !== engine) {
+        engine = nextEngine;
+        startEngine();
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">const</span> concurrencyUi = concurrencyRects();
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> choice <span class="tok-keyword">of</span> concurrencyUi.choices) {
+        <span class="tok-keyword">if</span> (!contains(choice.rect, x, y)) <span class="tok-keyword">continue</span>;
+        <span class="tok-keyword">if</span> (choice.value === concurrency) <span class="tok-keyword">return</span>;
+        concurrency = choice.value;
+        scheduleVisibleLoad(<span class="tok-number">0</span>);
+        window.Repaint();
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">const</span> rects = rendererRects();
+    <span class="tok-keyword">let</span> nextMode = drawMode;
+    <span class="tok-keyword">if</span> (contains(rects.gdi, x, y)) {
+        nextMode = <span class="tok-number">0</span>;
+    } <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (contains(rects.d2d, x, y)) {
+        nextMode = <span class="tok-number">1</span>;
+    } <span class="tok-keyword">else</span> {
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">if</span> (nextMode === drawMode) <span class="tok-keyword">return</span>;
+    drawMode = nextMode;
+    startEngine();
+}
+
+<span class="tok-keyword">function</span> on_playlist_switch() {
+    sendPlaylist();
+}
+
+<span class="tok-keyword">function</span> on_playlists_changed() {
+    sendPlaylist();
+}
+
+<span class="tok-keyword">function</span> on_playlist_items_added(playlistIndex) {
+    <span class="tok-keyword">if</span> (playlistIndex === plman.ActivePlaylist) sendPlaylist();
+}
+
+<span class="tok-keyword">function</span> on_playlist_items_removed(playlistIndex) {
+    <span class="tok-keyword">if</span> (playlistIndex === plman.ActivePlaylist) sendPlaylist();
+}
+
+<span class="tok-keyword">function</span> on_playlist_items_reordered(playlistIndex) {
+    <span class="tok-keyword">if</span> (playlistIndex === plman.ActivePlaylist) sendPlaylist();
+}
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    <span class="tok-keyword">const</span> trackPaint = loadState.count &gt; <span class="tok-number">0</span> &amp;&amp; loadState.started &gt; <span class="tok-number">0</span> &amp;&amp; loadState.displayElapsed &lt;= <span class="tok-number">0</span>;
+    <span class="tok-keyword">const</span> paintStarted = trackPaint ? performance.now() : <span class="tok-number">0</span>;
+
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, window.Width, window.Height, <span class="tok-number">0xFF101318</span>);
+    <span class="tok-keyword">if</span> (switchingRenderer) <span class="tok-keyword">return</span>;
+
+    <span class="tok-keyword">const</span> engineUi = engineRects();
+    <span class="tok-keyword">const</span> rects = rendererRects();
+    <span class="tok-keyword">const</span> concurrencyUi = concurrencyRects();
+    <span class="tok-keyword">const</span> titleRight = Math.max(MARGIN + <span class="tok-number">80</span>, engineUi.label.x - <span class="tok-number">10</span>);
+    <span class="tok-keyword">const</span> statusRight = Math.max(MARGIN + <span class="tok-number">80</span>, concurrencyUi.label.x - <span class="tok-number">10</span>);
+    gr.DrawText(<span class="tok-string">&#39;Albums&#39;</span>, TITLE_FONT, <span class="tok-number">0xFFE8EDF2</span>,
+        MARGIN, <span class="tok-number">5</span>, <span class="tok-number">60</span>, <span class="tok-number">24</span>,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+    gr.DrawText(<span class="tok-string">&#39;Mouse wheel: resize covers&#39;</span>, INFO_FONT, <span class="tok-number">0xFF7E8A96</span>,
+        MARGIN + <span class="tok-number">66</span>, <span class="tok-number">5</span>, Math.max(<span class="tok-number">1</span>, titleRight - (MARGIN + <span class="tok-number">66</span>)), <span class="tok-number">24</span>,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_END_ELLIPSIS | DT_NOPREFIX);
+    gr.DrawText(statusText(), INFO_FONT, <span class="tok-number">0xFF9AA6B2</span>,
+        MARGIN, <span class="tok-number">34</span>, Math.max(<span class="tok-number">1</span>, statusRight - MARGIN), <span class="tok-number">20</span>,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_END_ELLIPSIS | DT_NOPREFIX);
+
+    gr.DrawText(<span class="tok-string">&#39;Engine:&#39;</span>, INFO_FONT, <span class="tok-number">0xFFB7C1CB</span>,
+        engineUi.label.x, engineUi.label.y, engineUi.label.w, engineUi.label.h,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+    drawChoice(gr, engineUi.main, <span class="tok-string">&#39;Main&#39;</span>, engine === <span class="tok-string">&#39;main&#39;</span>);
+    drawChoice(gr, engineUi.worker, <span class="tok-string">&#39;Worker&#39;</span>, engine === <span class="tok-string">&#39;worker&#39;</span>);
+
+    gr.DrawText(<span class="tok-string">&#39;Renderer:&#39;</span>, INFO_FONT, <span class="tok-number">0xFFB7C1CB</span>,
+        rects.label.x, rects.label.y, rects.label.w, rects.label.h,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+    drawChoice(gr, rects.gdi, <span class="tok-string">&#39;GDI&#39;</span>, drawMode === <span class="tok-number">0</span>);
+    drawChoice(gr, rects.d2d, <span class="tok-string">&#39;D2D&#39;</span>, drawMode === <span class="tok-number">1</span>);
+
+    gr.DrawText(<span class="tok-string">&#39;Concurrent:&#39;</span>, INFO_FONT, <span class="tok-number">0xFFB7C1CB</span>,
+        concurrencyUi.label.x, concurrencyUi.label.y, concurrencyUi.label.w, concurrencyUi.label.h,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> choice <span class="tok-keyword">of</span> concurrencyUi.choices) {
+        drawChoice(gr, choice.rect, choice.text, choice.value === concurrency);
+    }
+
+    <span class="tok-keyword">if</span> (!albums.length) {
+        gr.DrawText(<span class="tok-string">&#39;No albums in the active playlist.&#39;</span>, INFO_FONT, <span class="tok-number">0xFF7E8A96</span>,
+            MARGIN, HEADER_H + <span class="tok-number">8</span>, Math.max(<span class="tok-number">1</span>, window.Width - MARGIN * <span class="tok-number">2</span>), <span class="tok-number">28</span>,
+            DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+        <span class="tok-keyword">return</span>;
+    }
+
+    gr.SetInterpolationMode(<span class="tok-number">2</span>);
+
+    <span class="tok-keyword">const</span> layout = getLayout();
+    <span class="tok-keyword">const</span> visibleCount = Math.min(albums.length, layout.capacity);
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; visibleCount; ++i) {
+        <span class="tok-keyword">const</span> album = albums[i];
+        <span class="tok-keyword">const</span> rect = tileRect(i, layout);
+        <span class="tok-keyword">const</span> image = i &lt; images.length ? images[i] : <span class="tok-literal">null</span>;
+
+        gr.FillSolidRect(rect.x, rect.y, coverSize, coverSize, <span class="tok-number">0xFF20262E</span>);
+        <span class="tok-keyword">if</span> (image) {
+            drawCover(gr, image, rect.x, rect.y, coverSize);
+        } <span class="tok-keyword">else</span> {
+            gr.DrawText(loadState.active ? <span class="tok-string">&#39;Loading...&#39;</span> : <span class="tok-string">&#39;No artwork&#39;</span>, META_FONT, <span class="tok-number">0xFF72808D</span>,
+                rect.x, rect.y, coverSize, coverSize,
+                DT_CENTER | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+        }
+
+        gr.DrawText(album.title, ALBUM_FONT, <span class="tok-number">0xFFE8EDF2</span>,
+            rect.x, rect.y + coverSize + <span class="tok-number">2</span>, coverSize, <span class="tok-number">18</span>,
+            DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_END_ELLIPSIS | DT_NOPREFIX);
+
+        <span class="tok-keyword">const</span> meta = album.artist + (album.year ? <span class="tok-string">&#39;  •  &#39;</span> + album.year : <span class="tok-string">&#39;&#39;</span>);
+        gr.DrawText(meta, META_FONT, <span class="tok-number">0xFF8F9BA7</span>,
+            rect.x, rect.y + coverSize + <span class="tok-number">20</span>, coverSize, <span class="tok-number">16</span>,
+            DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_END_ELLIPSIS | DT_NOPREFIX);
+    }
+
+    <span class="tok-keyword">if</span> (trackPaint) {
+        <span class="tok-keyword">const</span> paintedAt = performance.now();
+        ++loadState.paintCount;
+        loadState.paintElapsed += paintedAt - paintStarted;
+
+        <span class="tok-keyword">if</span> (loadState.firstDisplayElapsed &lt;= <span class="tok-number">0</span> &amp;&amp; loadState.loaded &gt; <span class="tok-number">0</span>) {
+            loadState.firstDisplayElapsed = paintedAt - loadState.started;
+        }
+
+        <span class="tok-keyword">if</span> (loadState.completed &gt;= loadState.count &amp;&amp; loadState.displayElapsed &lt;= <span class="tok-number">0</span>) {
+            loadState.displayElapsed = paintedAt - loadState.started;
+            window.RepaintRect(MARGIN, <span class="tok-number">32</span>, Math.max(<span class="tok-number">1</span>, window.Width - <span class="tok-number">220</span>), <span class="tok-number">20</span>);
+        }
+    }
+}
+
+startEngine();
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

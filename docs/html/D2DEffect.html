@@ -69,6 +69,9 @@
     </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
         <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="DriveInfo">
         <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -77,6 +80,15 @@
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Enumerator">
         <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
         <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
@@ -132,14 +144,14 @@
     </div><div class="nav-page-tree" data-nav-root="HtmlNode">
         <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><div class="nav-page-tree" data-nav-root="IUIHacks">
-        <a class="nav-link nav-page-link" href="IUIHacks.html">IUIHacks</a>
-        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
         <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="MenuObject">
         <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="PanelObject">
         <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
@@ -150,11 +162,20 @@
     </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
         <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="RunResult">
         <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
         <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
@@ -183,14 +204,16 @@
     <article class="api-item" id="D2DEffect" data-kind="class" data-name="d2deffect">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-class">class</span></div>
+                <div class="eyebrow"><span class="kind kind-class">class</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#D2DEffect">D2DEffect</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:299</div>
+            <div class="source-location">js/d2d.js:346</div>
         </header>
         <pre class="signature"><code>D2DEffect(CLSID)</code></pre>
         
-        <div class="description"><p>Creates Direct2D effect.</p></div>
+        <div class="description"><p>Creates Direct2D effect.</p>
+<div class="doc-note warning"><b>Direct2D versions earlier than 1.1 are not supported.</b><br>
+Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -211,10 +234,10 @@
     <article class="api-item" id="CLSID" data-kind="property" data-name="clsid">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#CLSID">CLSID</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:306</div>
+            <div class="source-location">js/d2d.js:356</div>
         </header>
         <pre class="signature"><code>CLSID: string = &quot;&quot;</code></pre>
         
@@ -232,10 +255,10 @@
     <article class="api-item" id="Description" data-kind="property" data-name="description">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#Description">Description</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:320</div>
+            <div class="source-location">js/d2d.js:372</div>
         </header>
         <pre class="signature"><code>Description: string</code></pre>
         
@@ -253,10 +276,10 @@
     <article class="api-item" id="InputCount" data-kind="property" data-name="inputcount">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#InputCount">InputCount</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:327</div>
+            <div class="source-location">js/d2d.js:380</div>
         </header>
         <pre class="signature"><code>InputCount: number</code></pre>
         
@@ -274,10 +297,10 @@
     <article class="api-item" id="Name" data-kind="property" data-name="name">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#Name">Name</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:313</div>
+            <div class="source-location">js/d2d.js:364</div>
         </header>
         <pre class="signature"><code>Name: string = &quot;&quot;</code></pre>
         
@@ -292,13 +315,45 @@
         
     </article>
 
+    <article class="api-item" id="GetInput" data-kind="method" data-name="getinput">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
+                <h2><a class="anchor" href="#GetInput">GetInput</a></h2>
+            </div>
+            <div class="source-location">js/d2d.js:410</div>
+        </header>
+        <pre class="signature"><code>GetInput(index)</code></pre>
+        
+        <div class="description"><p>Returns the bitmap currently connected to the specified input, or null when the input does not contain a bitmap.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>index</code></td><td><code>number</code></td><td><p>Index of effect input</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>?<a class="type-link" href="D2DBitmap.html#D2DBitmap">D2DBitmap</a></code></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
     <article class="api-item" id="GetPropertyType" data-kind="method" data-name="getpropertytype">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#GetPropertyType">GetPropertyType</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:384</div>
+            <div class="source-location">js/d2d.js:449</div>
         </header>
         <pre class="signature"><code>GetPropertyType(index)</code></pre>
         
@@ -327,10 +382,10 @@
     <article class="api-item" id="GetValue" data-kind="method" data-name="getvalue">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#GetValue">GetValue</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:404</div>
+            <div class="source-location">js/d2d.js:472</div>
         </header>
         <pre class="signature"><code>GetValue(index)</code></pre>
         
@@ -359,10 +414,10 @@
     <article class="api-item" id="GetValueByName" data-kind="method" data-name="getvaluebyname">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#GetValueByName">GetValueByName</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:411</div>
+            <div class="source-location">js/d2d.js:480</div>
         </header>
         <pre class="signature"><code>GetValueByName(name)</code></pre>
         
@@ -391,10 +446,10 @@
     <article class="api-item" id="SetInput" data-kind="method" data-name="setinput">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#SetInput">SetInput</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:334</div>
+            <div class="source-location">js/d2d.js:388</div>
         </header>
         <pre class="signature"><code>SetInput(index, bitmap, invalidate)</code></pre>
         
@@ -435,10 +490,10 @@ effect.SetValue(Effects.Sepia.Intensity, <span class="tok-number">0.5</span>);
     <article class="api-item" id="SetInputEffect" data-kind="method" data-name="setinputeffect">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#SetInputEffect">SetInputEffect</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:355</div>
+            <div class="source-location">js/d2d.js:419</div>
         </header>
         <pre class="signature"><code>SetInputEffect(index, effect, invalidate)</code></pre>
         
@@ -487,10 +542,10 @@ scale.SetValue(Effects.Scale.Scale, [<span class="tok-number">0.7</span>, <span 
     <article class="api-item" id="SetValue" data-kind="method" data-name="setvalue">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#SetValue">SetValue</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:390</div>
+            <div class="source-location">js/d2d.js:456</div>
         </header>
         <pre class="signature"><code>SetValue(index, value)</code></pre>
         
@@ -515,10 +570,10 @@ scale.SetValue(Effects.Scale.Scale, [<span class="tok-number">0.7</span>, <span 
     <article class="api-item" id="SetValueByName" data-kind="method" data-name="setvaluebyname">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#SetValueByName">SetValueByName</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:397</div>
+            <div class="source-location">js/d2d.js:464</div>
         </header>
         <pre class="signature"><code>SetValueByName(name, value)</code></pre>
         

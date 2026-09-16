@@ -1,6 +1,8 @@
 /**
  * Direct2D effects<br>
- * Minimum system requirements: Windows 7 Platform Update (Direct2D 1.1)<br>
+ * <div class="doc-note warning"><b>Direct2D versions earlier than 1.1 are not supported.</b><br>
+ * Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div>
+ * 
  * Not all effects in this module supported by minimum Direct2D version.<br>
  * {@link d2d.Effect} returns null if effect is not supported.<br>
  * See examples on top and bottom of this page.

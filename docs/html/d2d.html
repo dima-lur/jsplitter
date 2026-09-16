@@ -69,6 +69,9 @@
     </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
         <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="DriveInfo">
         <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -77,6 +80,15 @@
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Enumerator">
         <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
         <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
@@ -132,14 +144,14 @@
     </div><div class="nav-page-tree" data-nav-root="HtmlNode">
         <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><div class="nav-page-tree" data-nav-root="IUIHacks">
-        <a class="nav-link nav-page-link" href="IUIHacks.html">IUIHacks</a>
-        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
         <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="MenuObject">
         <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="PanelObject">
         <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
@@ -150,11 +162,20 @@
     </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
         <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="RunResult">
         <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
         <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
@@ -183,14 +204,16 @@
     <article class="api-item" id="d2d" data-kind="namespace" data-name="d2d">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-namespace">namespace</span></div>
+                <div class="eyebrow"><span class="kind kind-namespace">namespace</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#d2d">d2d</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1007</div>
+            <div class="source-location">js/d2d.js:1262</div>
         </header>
         
         
-        <div class="description"><p>Functions for working with Direct2D graphics.</p></div>
+        <div class="description"><p>Functions for working with Direct2D graphics.</p>
+<div class="doc-note warning"><b>Direct2D versions earlier than 1.1 are not supported in the Worker.</b><br>
+Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div></div>
         
         
         
@@ -204,10 +227,10 @@
     <article class="api-item" id="Brush" data-kind="method" data-name="brush">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Brush">Brush</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1014</div>
+            <div class="source-location">js/d2d.js:1272</div>
         </header>
         <pre class="signature"><code>Brush(type, param1, param2, param3, param4)</code></pre>
         
@@ -240,10 +263,10 @@
     <article class="api-item" id="Compile" data-kind="method" data-name="compile">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Compile">Compile</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1146</div>
+            <div class="source-location">js/d2d.js:1426</div>
         </header>
         <pre class="signature"><code>Compile(source, entryPoint, target, flags)</code></pre>
         
@@ -316,10 +339,10 @@ effect.SetInput(<span class="tok-number">0</span>, img);
     <article class="api-item" id="CreateImage" data-kind="method" data-name="createimage">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#CreateImage">CreateImage</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1043</div>
+            <div class="source-location">js/d2d.js:1314</div>
         </header>
         <pre class="signature"><code>CreateImage(w, h)</code></pre>
         
@@ -348,10 +371,10 @@ effect.SetInput(<span class="tok-number">0</span>, img);
     <article class="api-item" id="CreateImageFromPixelData" data-kind="method" data-name="createimagefrompixeldata">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#CreateImageFromPixelData">CreateImageFromPixelData</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1050</div>
+            <div class="source-location">js/d2d.js:1322</div>
         </header>
         <pre class="signature"><code>CreateImageFromPixelData(pixelData, width, height, format = &quot;bgra32&quot;)</code></pre>
         
@@ -361,7 +384,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>pixelData</code></td><td><code>Uint8Array</code></td><td><p>Raw pixel bytes</p></td></tr><tr><td><code>width</code></td><td><code>number</code></td><td><p>Image width in pixels</p></td></tr><tr><td><code>height</code></td><td><code>number</code></td><td><p>Image height in pixels</p></td></tr><tr><td><code>format = &quot;bgra32&quot;</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>Pixel format string (default: "bgra32") Supported formats:<br>   "bgra32"  32bpp BGRA<br>   "rgba32"  32bpp RGBA<br>   "bgr24"   24bpp BGR<br>   "rgb24"   24bpp RGB<br></p></td></tr></tbody>
+                <tbody><tr><td><code>pixelData</code></td><td><code>Uint8Array</code></td><td><p>Raw pixel bytes</p></td></tr><tr><td><code>width</code></td><td><code>number</code></td><td><p>Image width in pixels</p></td></tr><tr><td><code>height</code></td><td><code>number</code></td><td><p>Image height in pixels</p></td></tr><tr><td><code>format = &quot;bgra32&quot;</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>Pixel format string (default: "bgra32") Supported formats:<br> "bgra32"  32bpp BGRA<br> "rgba32"  32bpp RGBA<br> "bgr24"   24bpp BGR<br> "rgb24"   24bpp RGB<br></p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -384,14 +407,16 @@ effect.SetInput(<span class="tok-number">0</span>, img);
     <article class="api-item" id="Effect" data-kind="method" data-name="effect">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Effect">Effect</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1138</div>
+            <div class="source-location">js/d2d.js:1416</div>
         </header>
         <pre class="signature"><code>Effect(CLSID)</code></pre>
         
-        <div class="description"><p>Creates Direct2D effect.<br> Minimum system requirements: Windows 7 Platform Update (Direct2D 1.1)</p></div>
+        <div class="description"><p>Creates Direct2D effect.<br></p>
+<div class="doc-note warning"><b>Direct2D versions earlier than 1.1 are not supported.</b><br>
+Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -416,10 +441,10 @@ effect.SetInput(<span class="tok-number">0</span>, img);
     <article class="api-item" id="Font" data-kind="method" data-name="font">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Font">Font</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1068</div>
+            <div class="source-location">js/d2d.js:1341</div>
         </header>
         <pre class="signature"><code>Font(name, size_px, style)</code></pre>
         
@@ -448,10 +473,10 @@ effect.SetInput(<span class="tok-number">0</span>, img);
     <article class="api-item" id="Image" data-kind="method" data-name="image">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Image">Image</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1081</div>
+            <div class="source-location">js/d2d.js:1355</div>
         </header>
         <pre class="signature"><code>Image(path)</code></pre>
         
@@ -484,10 +509,10 @@ effect.SetInput(<span class="tok-number">0</span>, img);
     <article class="api-item" id="LoadImageAsync" data-kind="method" data-name="loadimageasync">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#LoadImageAsync">LoadImageAsync</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1095</div>
+            <div class="source-location">js/d2d.js:1370</div>
         </header>
         <pre class="signature"><code>LoadImageAsync(window_id, path)</code></pre>
         
@@ -520,10 +545,10 @@ effect.SetInput(<span class="tok-number">0</span>, img);
     <article class="api-item" id="LoadImageAsyncV2" data-kind="method" data-name="loadimageasyncv2">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#LoadImageAsyncV2">LoadImageAsyncV2</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1106</div>
+            <div class="source-location">js/d2d.js:1382</div>
         </header>
         <pre class="signature"><code>LoadImageAsyncV2(window_id, path)</code></pre>
         
@@ -556,10 +581,10 @@ effect.SetInput(<span class="tok-number">0</span>, img);
     <article class="api-item" id="LoadSVG" data-kind="method" data-name="loadsvg">
         <header class="api-item-header">
             <div>
-                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#LoadSVG">LoadSVG</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1118</div>
+            <div class="source-location">js/d2d.js:1395</div>
         </header>
         <pre class="signature"><code>LoadSVG(path_or_xml, max_width)</code></pre>
         
@@ -595,6 +620,42 @@ effect.SetInput(<span class="tok-number">0</span>, img);
 }</code></pre>
         </section>
         
+    </article>
+
+    <article class="api-item" id="StrokeStyle" data-kind="method" data-name="strokestyle">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
+                <h2><a class="anchor" href="#StrokeStyle">StrokeStyle</a></h2>
+            </div>
+            <div class="source-location">js/d2d.js:1302</div>
+        </header>
+        <pre class="signature"><code>StrokeStyle(options)</code></pre>
+        
+        <div class="description"><p>Creates a reusable Direct2D stroke style for line and outline drawing.<br> The style controls start/end/dash caps, line joins, miter limit, dash pattern and dash offset.<br> Performance note: create commonly used styles once and reuse them from <code>on_paint</code>.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>options = {}</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="globals.html#D2DStrokeStyleOptions">D2DStrokeStyleOptions</a></code></td><td><p>Stroke appearance options. Omitted properties use the Direct2D defaults documented by D2DStrokeStyleOptions.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code><a class="type-link" href="D2DStrokeStyle.html#D2DStrokeStyle">D2DStrokeStyle</a></code></div>
+        </section>
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example source</h3>
+            <div class="source-links"><a class="source-link" href="source-samples-d2d-StrokeStyle.js.html"><span>samples/d2d/StrokeStyle.js</span><small>open source</small></a></div>
+        </section>
     </article></main>
     <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
 </body>
