@@ -2029,6 +2029,16 @@ let utils = {
     Version: undefined, // (string) (read)
 
     /**
+     * Allowing scripts to detect whether the high-resolution timer backend is actually active and adapt scheduling/yield strategies accordingly.
+     * 
+     * The value is derived from the <b>Advanced Preferences → Performance → Use high-resolution timers</b> setting, but reports the effective runtime state, not merely the checkbox: it returns true only when the option is enabled and the current Windows version actually supports high-resolution waitable timers; otherwise it returns false.
+     *
+     * @type {boolean}
+     * @worker
+     */
+    HighResolutionTimersEnabled: undefined, // (bool) (read)
+
+    /**
      * Indicates that current process architecture is 64-bit.
      *
      * @type {boolean}
