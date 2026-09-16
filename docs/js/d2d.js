@@ -275,14 +275,6 @@ function D2DBitmap(arg) {
      * @worker
      */
     this.StackBlur = function (radius) { }; // (void)
-
-    /**
-     * Applies a Direct2D effect to the current bitmap. Changes are saved in the current bitmap.
-     *
-     * @param {D2DEffect} effect
-     * @worker
-     */
-    this.ApplyEffect = function (effect) { };
 }
 
 /**
@@ -353,6 +345,8 @@ function D2DFont(name, size_px, style) {
 
 /**
  * Creates Direct2D effect.
+ * <div class="doc-note warning"><b>Direct2D versions earlier than 1.1 are not supported.</b><br>
+ * Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div>
  * @constructor
  * @param {string} CLSID CLSID of Direct2D effect. See {@link module:Effects Effects} for effects' CLSID.
  * @worker
@@ -1267,6 +1261,8 @@ function D2DGraphics() {
 
 /**
  * Functions for working with Direct2D graphics.
+ * <div class="doc-note warning"><b>Direct2D versions earlier than 1.1 are not supported in the Worker.</b><br>
+ * Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div>
  *
  * @namespace
  * @worker
@@ -1419,7 +1415,8 @@ let d2d = {
 
     /**
      * Creates Direct2D effect.<br>
-     * Minimum system requirements: Windows 7 Platform Update (Direct2D 1.1)
+     * <div class="doc-note warning"><b>Direct2D versions earlier than 1.1 are not supported.</b><br>
+     * Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div>
      * @param {string} CLSID CLSID of Direct2D effect. See {@link module:Effects Effects} for effects' CLSID.
      * @return {D2DEffect}
      * @worker
