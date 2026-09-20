@@ -210,7 +210,7 @@
                 <div class="eyebrow"><span class="kind kind-class">class</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#WorkerGlobalScope">WorkerGlobalScope</a></h2>
             </div>
-            <div class="source-location">js/worker.js:919</div>
+            <div class="source-location">js/worker.js:921</div>
         </header>
         
         
@@ -231,7 +231,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#name">name</a></h2>
             </div>
-            <div class="source-location">js/worker.js:935</div>
+            <div class="source-location">js/worker.js:937</div>
         </header>
         <pre class="signature"><code>name: string = &quot;&quot;</code></pre>
         
@@ -252,7 +252,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#onerror">onerror</a></h2>
             </div>
-            <div class="source-location">js/worker.js:976</div>
+            <div class="source-location">js/worker.js:979</div>
         </header>
         <pre class="signature"><code>onerror: ?<a class="type-link" href="globals.html#WorkerErrorCallback">WorkerErrorCallback</a> = null</code></pre>
         
@@ -273,7 +273,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#onmessage">onmessage</a></h2>
             </div>
-            <div class="source-location">js/worker.js:961</div>
+            <div class="source-location">js/worker.js:964</div>
         </header>
         <pre class="signature"><code>onmessage: ?<a class="type-link" href="globals.html#WorkerMessageCallback">WorkerMessageCallback</a> = null</code></pre>
         
@@ -294,7 +294,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#onmessageerror">onmessageerror</a></h2>
             </div>
-            <div class="source-location">js/worker.js:968</div>
+            <div class="source-location">js/worker.js:971</div>
         </header>
         <pre class="signature"><code>onmessageerror: ?<a class="type-link" href="globals.html#WorkerMessageCallback">WorkerMessageCallback</a> = null</code></pre>
         
@@ -315,7 +315,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#onrejectionhandled">onrejectionhandled</a></h2>
             </div>
-            <div class="source-location">js/worker.js:990</div>
+            <div class="source-location">js/worker.js:993</div>
         </header>
         <pre class="signature"><code>onrejectionhandled: ?<a class="type-link" href="globals.html#WorkerPromiseRejectionCallback">WorkerPromiseRejectionCallback</a> = null</code></pre>
         
@@ -336,7 +336,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#onunhandledrejection">onunhandledrejection</a></h2>
             </div>
-            <div class="source-location">js/worker.js:983</div>
+            <div class="source-location">js/worker.js:986</div>
         </header>
         <pre class="signature"><code>onunhandledrejection: ?<a class="type-link" href="globals.html#WorkerPromiseRejectionCallback">WorkerPromiseRejectionCallback</a> = null</code></pre>
         
@@ -357,7 +357,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#performance">performance</a></h2>
             </div>
-            <div class="source-location">js/worker.js:997</div>
+            <div class="source-location">js/worker.js:1000</div>
         </header>
         <pre class="signature"><code>performance: Object</code></pre>
         
@@ -378,7 +378,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#self">self</a></h2>
             </div>
-            <div class="source-location">js/worker.js:927</div>
+            <div class="source-location">js/worker.js:929</div>
         </header>
         <pre class="signature"><code>self: <a class="type-link" href="WorkerGlobalScope.html#WorkerGlobalScope">WorkerGlobalScope</a></code></pre>
         
@@ -399,7 +399,7 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#close">close</a></h2>
             </div>
-            <div class="source-location">js/worker.js:953</div>
+            <div class="source-location">js/worker.js:956</div>
         </header>
         <pre class="signature"><code>close()</code></pre>
         
@@ -420,11 +420,11 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#postMessage">postMessage</a></h2>
             </div>
-            <div class="source-location">js/worker.js:944</div>
+            <div class="source-location">js/worker.js:946</div>
         </header>
         <pre class="signature"><code>postMessage(data, transfer)</code></pre>
         
-        <div class="description"><p>Serializes and sends a value from the Worker to its parent.</p></div>
+        <div class="description"><p>Serializes and sends a value from the Worker to its parent. Sender-side serialization and transfer-list validation are synchronous; successful delivery to the parent is asynchronous.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -437,6 +437,10 @@
         
         
         
+        <section class="member-section compact-section">
+            <h3>Throws</h3>
+            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If the required data argument is omitted, the value cannot be structured-cloned, or the transfer list is invalid or cannot be committed. No message is queued and transferable source objects remain usable when this happens.</p></div>
+        </section>
         
         
         

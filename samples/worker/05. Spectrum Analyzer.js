@@ -1,18 +1,18 @@
 ﻿'use strict';
 
 // Worker sample 5: Spectrum Analyzer
-// Demonstrates: the same real-time audio/FFT/render pipeline on the panel thread
-// and in a Worker, offscreen GDI/Direct2D rendering and transferable Worker frames.
-// Use the in-panel switches to compare execution mode, rendering backend, FFT size and rate limiting.
-// Only one completed frame is allowed at a time; the next frame starts after the previous one is painted.
+// Demonstrates: real-time audio/FFT analysis in a Worker, direct panel rendering and
+// transferable Float32Array frame ping-pong. The Worker sends only spectrum levels/peaks;
+// on_paint() draws them directly with the panel graphics object, so no offscreen bitmap is
+// created per frame. After a frame has painted, the previous Float32Array is transferred back
+// to the Worker and reused for a later frame. After the first two frames, the same two buffers
+// ping-pong between Worker and panel.
 //
-// GDI can show a higher maximum FPS than D2D in this sample. That is expected for this
-// particular workload: every frame creates a small offscreen bitmap, draws only simple
-// rectangles/lines, finishes it immediately and transfers it. GDI performs that tiny job
-// directly in CPU memory, while D2D has additional per-frame resource, command-submission
-// and synchronization overhead, so the fixed overhead can dominate. This is not a general
-// GDI-vs-D2D benchmark; D2D benefits more from retained/reused resources and larger drawing
-// or composition workloads. The difference is easiest to see in Max mode.
+// Main mode runs the same analysis engine on the panel thread for comparison. GDI/D2D selects
+// the panel rendering backend only; both modes use the same spectrum data and direct paint path.
+// Use the in-panel switches to compare execution mode, rendering backend, FFT size and rate limit.
+// Only one completed Worker frame is allowed in flight at a time; the next frame starts after
+// the previous one has been painted and acknowledged.
 
 let engineMode = 'worker';
 let drawMode = 1;
@@ -37,7 +37,9 @@ let INFO_FONT = gdi.Font('Segoe UI', 12);
 let switchingRenderer = false;
 
 let frame = null;
-let timing = { audio: 0, analysis: 0, render: 0, total: 0, interval: 0 };
+let frameReturn = null;
+let frameNeedsAck = false;
+let timing = { audio: 0, analysis: 0, pack: 0, total: 0, interval: 0 };
 let frameSequence = 0;
 let lastPaintedSequence = -1;
 let frameFps = 0;
@@ -51,8 +53,6 @@ function createSpectrumEngine(currentFftSize) {
     const FFT_SIZE = currentFftSize;
     const FLOOR_LEVEL = 0.04;
     const IDLE_LEVEL = 0.015;
-    let width = 1;
-    let height = 1;
     let bandCount = 1;
     let bandSampleRate = 0;
     let windowLength = 0;
@@ -60,6 +60,8 @@ function createSpectrumEngine(currentFftSize) {
     const real = new Float64Array(FFT_SIZE);
     const imag = new Float64Array(FFT_SIZE);
     const magnitudes = new Float64Array((FFT_SIZE >> 1) + 1);
+    let pcm = new Float32Array(131072);
+    const chunkInfo = { SampleCount: 0, ChannelCount: 0, SampleRate: 0, ChannelConfig: 0 };
     let targets = new Float64Array(1);
     let smoothed = new Float64Array(1);
     let peaks = new Float64Array(1);
@@ -132,21 +134,6 @@ function createSpectrumEngine(currentFftSize) {
         }
     }
 
-    function configureLayout() {
-        const count = Math.max(1, Math.floor((width + BAR_GAP) / (BAR_WIDTH + BAR_GAP)));
-        if (count === bandCount) return;
-
-        bandCount = count;
-        targets = new Float64Array(bandCount);
-        smoothed = new Float64Array(bandCount);
-        peaks = new Float64Array(bandCount);
-        peakVelocity = new Float64Array(bandCount);
-        peakHold = new Float64Array(bandCount);
-        bandStart = new Int32Array(bandCount);
-        bandEnd = new Int32Array(bandCount);
-        bandSampleRate = 0;
-    }
-
     function configureBands(sampleRate) {
         if (sampleRate === bandSampleRate) return;
         bandSampleRate = sampleRate;
@@ -204,25 +191,14 @@ function createSpectrumEngine(currentFftSize) {
         }
     }
 
-    function analyse(chunk, dt) {
-        if (!chunk || !chunk.ChannelCount || !chunk.SampleRate || !chunk.SampleCount) {
+    function analyse(data, sampleCount, channels, sampleRate, available, dt) {
+        const required = sampleCount * channels;
+        if (!data || !sampleCount || !channels || !sampleRate || available < required) {
             targets.fill(IDLE_LEVEL);
             updateDynamics(dt, IDLE_LEVEL);
             return;
         }
 
-        // Data materializes the PCM samples as a JS array. Read it once for this frame
-        // and then work only with that local array inside the hot loops below.
-        const data = chunk.Data;
-        if (!data || !data.length) {
-            targets.fill(IDLE_LEVEL);
-            updateDynamics(dt, IDLE_LEVEL);
-            return;
-        }
-
-        const channels = chunk.ChannelCount;
-        const sampleRate = chunk.SampleRate;
-        const sampleCount = chunk.SampleCount;
         const used = Math.min(sampleCount, FFT_SIZE);
         const firstFrame = sampleCount - used;
         const window = ensureWindow(used);
@@ -268,61 +244,93 @@ function createSpectrumEngine(currentFftSize) {
         updateDynamics(dt, FLOOR_LEVEL);
     }
 
-    function renderSpectrum() {
-        const bitmap = gdi.CreateImage(width, height);
-        const gr = bitmap.GetGraphics();
-
-        gr.FillSolidRect(0, 0, width, height, 0xFF101319);
-
-        const plotTop = Math.min(Math.max(0, SPECTRUM_TOP), Math.max(0, height - 1));
-        const marginBottom = Math.max(8, Math.round(height * 0.04));
-        const plotBottom = Math.max(plotTop + 1, height - marginBottom);
-        const usableHeight = Math.max(1, plotBottom - plotTop);
-        const barWidth = Math.min(BAR_WIDTH, width);
-        const totalWidth = bandCount * barWidth + (bandCount - 1) * BAR_GAP;
-        const firstX = Math.floor((width - totalWidth) * 0.5);
-
-        for (let i = 0; i < bandCount; ++i) {
-            const x = firstX + i * (barWidth + BAR_GAP);
-            const barHeight = Math.max(1, smoothed[i] * usableHeight);
-            const y = plotBottom - barHeight;
-
-            gr.FillSolidRect(x, y, barWidth, barHeight, BAR_COLOUR);
-
-            const peakY = plotBottom - peaks[i] * usableHeight;
-            gr.DrawLine(x, peakY, x + barWidth - 1, peakY, 1, 0xFFE8EDF2);
+    function makeSpectrumFrame() {
+        const length = bandCount * 2;
+        if (!(outputFrame instanceof Float32Array) || outputFrame.length !== length) {
+            outputFrame = new Float32Array(length);
         }
 
-        bitmap.ReleaseGraphics(gr);
-        return bitmap;
+        const frame = outputFrame;
+        for (let i = 0; i < bandCount; ++i) {
+            const at = i * 2;
+            frame[at] = smoothed[i] || FLOOR_LEVEL;
+            frame[at + 1] = peaks[i] || FLOOR_LEVEL;
+        }
+        return frame;
     }
 
+    let outputFrame = null;
+
     return {
-        configure: function (newWidth, newHeight) {
-            width = Math.max(1, newWidth | 0);
-            height = Math.max(1, newHeight | 0);
-            configureLayout();
+        configure: function (count) {
+            const nextCount = Math.max(1, count | 0);
+            if (nextCount === bandCount) return;
+            bandCount = nextCount;
+            targets = new Float64Array(bandCount);
+            smoothed = new Float64Array(bandCount);
+            peaks = new Float64Array(bandCount);
+            peakVelocity = new Float64Array(bandCount);
+            peakHold = new Float64Array(bandCount);
+            bandStart = new Int32Array(bandCount);
+            bandEnd = new Int32Array(bandCount);
+            bandSampleRate = 0;
+            outputFrame = null;
+        },
+
+        setOutputFrame: function (frame) {
+            const expectedLength = bandCount * 2;
+            outputFrame = frame instanceof Float32Array && frame.length === expectedLength
+                ? frame
+                : null;
         },
 
         renderFrame: function (interval) {
             const dt = Math.max(0.001, Math.min(0.2, (interval > 0 ? interval : FRAME_TIME) / 1000));
             const audioStart = performance.now();
-            const chunk = fb.GetAudioChunk(0.06, -0.03);
+            let data = null;
+            let sampleCount = 0;
+            let channels = 0;
+            let sampleRate = 0;
+            let available = 0;
+
+            if (typeof fb.GetAudioChunkTo === 'function') {
+                available = fb.GetAudioChunkTo(pcm, 0.06, -0.03, chunkInfo);
+                data = pcm;
+                sampleCount = chunkInfo.SampleCount;
+                channels = chunkInfo.ChannelCount;
+                sampleRate = chunkInfo.SampleRate;
+            } else {
+                const chunk = fb.GetAudioChunk(0.06, -0.03);
+                if (chunk) {
+                    sampleCount = chunk.SampleCount;
+                    channels = chunk.ChannelCount;
+                    sampleRate = chunk.SampleRate;
+                    const required = sampleCount * channels;
+                    if (typeof chunk.CopyDataTo === 'function') {
+                        if (pcm.length < required) pcm = new Float32Array(required);
+                        available = chunk.CopyDataTo(pcm);
+                        data = pcm;
+                    } else {
+                        data = chunk.Data;
+                        available = data ? data.length : 0;
+                    }
+                }
+            }
             const audioEnd = performance.now();
 
-            analyse(chunk, dt);
+            analyse(data, sampleCount, channels, sampleRate, available, dt);
             const analysisEnd = performance.now();
 
-            const bitmap = renderSpectrum();
-            const renderEnd = performance.now();
+            const frame = makeSpectrumFrame();
+            const packEnd = performance.now();
 
             return {
-                bitmap,
+                frame,
                 timing: {
                     audio: audioEnd - audioStart,
                     analysis: analysisEnd - audioEnd,
-                    render: renderEnd - analysisEnd,
-                    total: renderEnd - audioStart,
+                    pack: packEnd - analysisEnd,
+                    total: packEnd - audioStart,
                     interval
                 }
             };
@@ -337,10 +345,6 @@ function makeWorkerSource(currentFftSize, uncapped) {
 const TARGET_FPS = ${TARGET_FPS};
 const FRAME_TIME = 1000 / TARGET_FPS;
 const UNCAPPED = ${uncapped};
-const BAR_WIDTH = ${BAR_WIDTH};
-const BAR_GAP = ${BAR_GAP};
-const BAR_COLOUR = ${BAR_COLOUR};
-const SPECTRUM_TOP = ${SPECTRUM_TOP};
 const createSpectrumEngine = ${createSpectrumEngine.toString()};
 const engine = createSpectrumEngine(${currentFftSize});
 
@@ -349,6 +353,7 @@ let waitingForPanel = false;
 let timerId = 0;
 let lastFrameStart = 0;
 let sequence = 0;
+const frameMessage = { frame: null, sequence: 0, timing: null };
 
 function scheduleNext() {
     if (!configured || waitingForPanel || timerId) return;
@@ -357,11 +362,11 @@ function scheduleNext() {
 
     timerId = setTimeout(function () {
         timerId = 0;
-        renderFrame();
+        produceFrame();
     }, delay);
 }
 
-function renderFrame() {
+function produceFrame() {
     if (!configured || waitingForPanel) return;
 
     const frameStart = performance.now();
@@ -369,20 +374,28 @@ function renderFrame() {
     lastFrameStart = frameStart;
 
     const result = engine.renderFrame(interval);
+    const frame = result.frame;
 
+    // Ownership of this ArrayBuffer moves to the panel. The Worker does not retain another
+    // output buffer; the panel returns its previous displayed frame with the ACK after paint.
+    engine.setOutputFrame(null);
     waitingForPanel = true;
-    postMessage({
-        bitmap: result.bitmap,
-        sequence: ++sequence,
-        timing: result.timing
-    }, [result.bitmap]);
+    frameMessage.frame = frame;
+    frameMessage.sequence = ++sequence;
+    frameMessage.timing = result.timing;
+    try {
+        postMessage(frameMessage, [frame.buffer]);
+    } finally {
+        frameMessage.frame = null;
+        frameMessage.timing = null;
+    }
 }
 
 onmessage = function (event) {
     const message = event.data;
 
     if (message.type === 'config') {
-        engine.configure(message.width, message.height);
+        engine.configure(message.count);
         configured = true;
         scheduleNext();
         return;
@@ -390,6 +403,7 @@ onmessage = function (event) {
 
     if (message.type === 'next') {
         waitingForPanel = false;
+        engine.setOutputFrame(message.frame || null);
         scheduleNext();
     }
 };
@@ -402,10 +416,13 @@ let mainTimerId = 0;
 let mainLastFrameStart = 0;
 let mainSequence = 0;
 let mainWaitingForPaint = false;
+const workerNextMessage = { type: 'next', frame: null };
 
 function resetCounters() {
     frame = null;
-    timing = { audio: 0, analysis: 0, render: 0, total: 0, interval: 0 };
+    frameReturn = null;
+    frameNeedsAck = false;
+    timing = { audio: 0, analysis: 0, pack: 0, total: 0, interval: 0 };
     frameSequence = 0;
     lastPaintedSequence = -1;
     frameFps = 0;
@@ -416,8 +433,11 @@ function resetCounters() {
     paintWindowStart = frameWindowStart;
 }
 
-function recordFrame(bitmap, sequence, nextTiming) {
-    frame = bitmap;
+function recordFrame(nextFrame, sequence, nextTiming) {
+    const previousFrame = frame;
+    frame = nextFrame instanceof Float32Array ? nextFrame : previousFrame;
+    frameReturn = frame !== previousFrame ? previousFrame : null;
+    frameNeedsAck = engineMode === 'worker';
     frameSequence = sequence;
     timing = nextTiming;
 
@@ -468,7 +488,7 @@ function renderMainFrame() {
 
     const result = mainEngine.renderFrame(interval);
     mainWaitingForPaint = true;
-    recordFrame(result.bitmap, ++mainSequence, result.timing);
+    recordFrame(result.frame, ++mainSequence, result.timing);
 }
 
 function startEngine() {
@@ -489,7 +509,7 @@ function startEngine() {
 
         currentWorker.onmessage = function (event) {
             if (worker !== currentWorker) return;
-            recordFrame(event.data.bitmap, event.data.sequence, event.data.timing);
+            recordFrame(event.data.frame, event.data.sequence, event.data.timing);
         };
 
         currentWorker.onerror = function (event) {
@@ -505,14 +525,14 @@ function startEngine() {
 
 function sendSize() {
     const width = Math.max(1, window.Width);
-    const height = Math.max(1, window.Height);
+    const count = Math.max(1, Math.floor((width + BAR_GAP) / (BAR_WIDTH + BAR_GAP)));
 
     if (engineMode === 'worker') {
         if (!worker) return;
-        worker.postMessage({ type: 'config', width, height });
+        worker.postMessage({ type: 'config', count });
     } else {
         if (!mainEngine) return;
-        mainEngine.configure(width, height);
+        mainEngine.configure(count);
         scheduleMain();
     }
 }
@@ -568,12 +588,40 @@ function on_mouse_lbtn_up(x, y) {
     startEngine();
 }
 
+function drawSpectrumFrame(gr, spectrumFrame) {
+    if (!(spectrumFrame instanceof Float32Array) || spectrumFrame.length < 2) return;
+
+    const width = Math.max(1, window.Width);
+    const height = Math.max(1, window.Height);
+    const plotTop = Math.min(Math.max(0, SPECTRUM_TOP), Math.max(0, height - 1));
+    const marginBottom = Math.max(8, Math.round(height * 0.04));
+    const plotBottom = Math.max(plotTop + 1, height - marginBottom);
+    const usableHeight = Math.max(1, plotBottom - plotTop);
+    const barWidth = Math.min(BAR_WIDTH, width);
+    const count = spectrumFrame.length >> 1;
+    const totalWidth = count * barWidth + (count - 1) * BAR_GAP;
+    const firstX = Math.floor((width - totalWidth) * 0.5);
+
+    for (let i = 0; i < count; ++i) {
+        const x = firstX + i * (barWidth + BAR_GAP);
+        const level = spectrumFrame[i * 2] || 0.04;
+        const peak = spectrumFrame[i * 2 + 1] || 0.04;
+        const barHeight = Math.max(1, level * usableHeight);
+        const y = plotBottom - barHeight;
+
+        gr.FillSolidRect(x, y, barWidth, barHeight, BAR_COLOUR);
+
+        const peakY = plotBottom - peak * usableHeight;
+        gr.DrawLine(x, peakY, x + barWidth - 1, peakY, 1, 0xFFE8EDF2);
+    }
+}
+
 function on_paint(gr) {
     gr.FillSolidRect(0, 0, window.Width, window.Height, 0xFF101319);
     if (switchingRenderer) return;
 
     if (frame) {
-        gr.DrawImage(frame, 0, 0, window.Width, window.Height, 0, 0, frame.Width, frame.Height);
+        drawSpectrumFrame(gr, frame);
 
         if (frameSequence !== lastPaintedSequence) {
             lastPaintedSequence = frameSequence;
@@ -586,9 +634,23 @@ function on_paint(gr) {
                 paintWindowStart = now;
             }
 
-            if (engineMode === 'worker') {
-                if (worker) worker.postMessage({ type: 'next' });
-            } else if (mainWaitingForPaint) {
+            if (engineMode === 'worker' && frameNeedsAck) {
+                const returnFrame = frameReturn;
+                frameReturn = null;
+                frameNeedsAck = false;
+                if (worker) {
+                    workerNextMessage.frame = returnFrame || null;
+                    try {
+                        if (returnFrame && returnFrame.buffer) {
+                            worker.postMessage(workerNextMessage, [returnFrame.buffer]);
+                        } else {
+                            worker.postMessage(workerNextMessage);
+                        }
+                    } finally {
+                        workerNextMessage.frame = null;
+                    }
+                }
+            } else if (engineMode === 'main' && mainWaitingForPaint) {
                 mainWaitingForPaint = false;
                 scheduleMain();
             }
@@ -597,7 +659,7 @@ function on_paint(gr) {
 
     const engine = engineMode === 'worker' ? 'Worker' : 'Main';
     const backend = drawMode === 1 ? 'D2D' : 'GDI';
-    const overlay = `${engine}/${backend}   frame ${frameFps.toFixed(1)} FPS   paint ${paintFps.toFixed(1)} FPS   interval ${timing.interval.toFixed(1)} ms   audio ${timing.audio.toFixed(2)}   FFT ${timing.analysis.toFixed(2)}   render ${timing.render.toFixed(2)}   total ${timing.total.toFixed(2)} ms`;
+    const overlay = `${engine}/${backend}   frame ${frameFps.toFixed(1)} FPS   paint ${paintFps.toFixed(1)} FPS   interval ${timing.interval.toFixed(1)} ms   audio ${timing.audio.toFixed(2)}   FFT ${timing.analysis.toFixed(2)}   pack ${timing.pack.toFixed(2)}   total ${timing.total.toFixed(2)} ms`;
     gr.FillSolidRect(8, 8, Math.max(1, Math.min(window.Width - 16, 760)), 28, 0xC0101319);
     gr.DrawText(overlay, INFO_FONT, 0xFFE8EDF2, 14, 8, Math.max(1, window.Width - 28), 28,
         DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);

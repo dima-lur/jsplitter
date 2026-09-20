@@ -20906,7 +20906,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1991
+      "line": 2007
     }
   },
   {
@@ -20969,7 +20969,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2003
+      "line": 2019
     }
   },
   {
@@ -21040,7 +21040,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2020
+      "line": 2036
     }
   },
   {
@@ -21087,7 +21087,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2393
+      "line": 2409
     }
   },
   {
@@ -21150,7 +21150,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2548
+      "line": 2564
     }
   },
   {
@@ -21197,7 +21197,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2558
+      "line": 2574
     }
   },
   {
@@ -21252,7 +21252,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3438
+      "line": 3454
     }
   },
   {
@@ -21323,7 +21323,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3456
+      "line": 3472
     }
   },
   {
@@ -21386,7 +21386,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3537
+      "line": 3553
     }
   },
   {
@@ -23258,7 +23258,7 @@
     "signature": "GetAudioChunk(requested_length, offset)",
     "type": null,
     "value": null,
-    "description": "Returns PCM data from the foobar2000 visualisation stream.\nThe stream is created lazily. A negative <code>offset</code> requests data before the current visualisation time; JSplitter automatically maintains the native backlog required for that offset. The first stream initialization may briefly synchronize with the foobar2000 main thread.",
+    "description": "Returns PCM data from the foobar2000 visualisation stream.<br>\nThe stream is created lazily. A negative <code>offset</code> requests data before the current visualisation time; JSplitter automatically maintains the native backlog required for that offset. The first stream initialization may briefly synchronize with the foobar2000 main thread.<br>\nFor repeated real-time processing, prefer {@link fb.GetAudioChunkTo} to write directly into a reusable <code>Float32Array</code> without creating a transient {@link FbAudioChunk}. {@link FbAudioChunk#CopyDataTo CopyDataTo()} remains useful when a chunk object is already required, while {@link FbAudioChunk#Data Data} preserves its legacy allocating <code>Array</code> behaviour for compatibility.",
     "params": [
       {
         "type": "number",
@@ -23304,6 +23304,78 @@
     }
   },
   {
+    "canonical": "fb.GetAudioChunkTo",
+    "name": "GetAudioChunkTo",
+    "kind": "method",
+    "parent": "fb",
+    "signature": "GetAudioChunkTo(destination, requested_length, offset, info)",
+    "type": null,
+    "value": null,
+    "description": "Writes interleaved PCM samples from the foobar2000 visualisation stream directly into an existing <code>Float32Array</code>.\nUnlike {@link fb.GetAudioChunk}, this method does not create an {@link FbAudioChunk}; after the first sufficiently large native scratch buffer has been established, repeated calls can reuse both the native scratch storage and the JavaScript destination buffer.<br>\nA negative <code>offset</code> has the same backlog semantics as {@link fb.GetAudioChunk}. If <code>info</code> is supplied, it is updated in place with <code>SampleCount</code>, <code>ChannelCount</code>, <code>SampleRate</code> and <code>ChannelConfig</code>.",
+    "params": [
+      {
+        "type": "Float32Array",
+        "name": "destination",
+        "rawName": "destination",
+        "optional": false,
+        "variadic": false,
+        "description": "Destination buffer. It must have room for all interleaved PCM sample values."
+      },
+      {
+        "type": "number",
+        "name": "requested_length",
+        "rawName": "requested_length",
+        "optional": false,
+        "variadic": false,
+        "description": ""
+      },
+      {
+        "type": "number",
+        "name": "offset",
+        "rawName": "[offset=0]",
+        "optional": true,
+        "variadic": false,
+        "default": "0",
+        "description": ""
+      },
+      {
+        "type": "Object",
+        "name": "info",
+        "rawName": "info",
+        "optional": true,
+        "variadic": false,
+        "description": "Reusable metadata object updated in place."
+      }
+    ],
+    "properties": [],
+    "returns": {
+      "type": "number",
+      "description": "Number of scalar PCM samples written, or 0 when no chunk is currently available."
+    },
+    "throws": [
+      {
+        "type": "Error",
+        "description": "If <code>destination</code> is not a <code>Float32Array</code>, is too small, or <code>info</code> is not an object."
+      }
+    ],
+    "examples": [],
+    "sourceFiles": [],
+    "readonly": false,
+    "static": false,
+    "deprecated": false,
+    "worker": true,
+    "mainThread": false,
+    "cloneable": false,
+    "transferable": false,
+    "enumType": null,
+    "enumMembers": null,
+    "legacyEnumMarkup": false,
+    "source": {
+      "file": "js/foo_uie_jsplitter.js",
+      "line": 566
+    }
+  },
+  {
     "canonical": "fb.GetClipboardContents",
     "name": "GetClipboardContents",
     "kind": "method",
@@ -23345,7 +23417,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 565
+      "line": 581
     }
   },
   {
@@ -23380,7 +23452,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 591
+      "line": 607
     }
   },
   {
@@ -23423,7 +23495,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 622
+      "line": 638
     }
   },
   {
@@ -23456,7 +23528,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 630
+      "line": 646
     }
   },
   {
@@ -23500,7 +23572,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 639
+      "line": 655
     }
   },
   {
@@ -23533,7 +23605,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 657
+      "line": 673
     }
   },
   {
@@ -23566,7 +23638,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 668
+      "line": 684
     }
   },
   {
@@ -23601,7 +23673,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 677
+      "line": 693
     }
   },
   {
@@ -23654,7 +23726,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 729
+      "line": 745
     }
   },
   {
@@ -23687,7 +23759,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 746
+      "line": 762
     }
   },
   {
@@ -23730,7 +23802,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 755
+      "line": 771
     }
   },
   {
@@ -23763,7 +23835,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 765
+      "line": 781
     }
   },
   {
@@ -23796,7 +23868,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 781
+      "line": 797
     }
   },
   {
@@ -23829,7 +23901,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 788
+      "line": 804
     }
   },
   {
@@ -23873,7 +23945,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 796
+      "line": 812
     }
   },
   {
@@ -23917,7 +23989,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 809
+      "line": 825
     }
   },
   {
@@ -23947,7 +24019,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 821
+      "line": 837
     }
   },
   {
@@ -23977,7 +24049,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 828
+      "line": 844
     }
   },
   {
@@ -24007,7 +24079,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 835
+      "line": 851
     }
   },
   {
@@ -24037,7 +24109,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 842
+      "line": 858
     }
   },
   {
@@ -24067,7 +24139,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 849
+      "line": 865
     }
   },
   {
@@ -24097,7 +24169,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 856
+      "line": 872
     }
   },
   {
@@ -24127,7 +24199,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 863
+      "line": 879
     }
   },
   {
@@ -24183,7 +24255,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 870
+      "line": 886
     }
   },
   {
@@ -24213,7 +24285,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 889
+      "line": 905
     }
   },
   {
@@ -24266,7 +24338,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 896
+      "line": 912
     }
   },
   {
@@ -24324,7 +24396,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 912
+      "line": 928
     }
   },
   {
@@ -24368,7 +24440,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 922
+      "line": 938
     }
   },
   {
@@ -24398,7 +24470,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 931
+      "line": 947
     }
   },
   {
@@ -24439,7 +24511,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 934
+      "line": 950
     }
   },
   {
@@ -24488,7 +24560,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 951
+      "line": 967
     }
   },
   {
@@ -24528,7 +24600,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 971
+      "line": 987
     }
   },
   {
@@ -24567,7 +24639,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 980
+      "line": 996
     }
   },
   {
@@ -24606,7 +24678,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 989
+      "line": 1005
     }
   },
   {
@@ -24636,7 +24708,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 998
+      "line": 1014
     }
   },
   {
@@ -24684,7 +24756,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1005
+      "line": 1021
     }
   },
   {
@@ -24714,7 +24786,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1013
+      "line": 1029
     }
   },
   {
@@ -24744,7 +24816,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1020
+      "line": 1036
     }
   },
   {
@@ -24786,7 +24858,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1027
+      "line": 1043
     }
   },
   {
@@ -24825,7 +24897,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1038
+      "line": 1054
     }
   },
   {
@@ -24855,7 +24927,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1049
+      "line": 1065
     }
   },
   {
@@ -24885,7 +24957,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1056
+      "line": 1072
     }
   },
   {
@@ -24915,7 +24987,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1063
+      "line": 1079
     }
   },
   {
@@ -24945,7 +25017,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1071
+      "line": 1087
     }
   },
   {
@@ -25024,7 +25096,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1079
+      "line": 1095
     }
   },
   {
@@ -25074,7 +25146,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1109
+      "line": 1125
     }
   },
   {
@@ -25143,7 +25215,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1117
+      "line": 1133
     }
   },
   {
@@ -25202,7 +25274,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1136
+      "line": 1152
     }
   },
   {
@@ -25246,7 +25318,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1150
+      "line": 1166
     }
   },
   {
@@ -25298,7 +25370,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1165
+      "line": 1181
     }
   },
   {
@@ -25350,7 +25422,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1177
+      "line": 1193
     }
   },
   {
@@ -25403,7 +25475,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1190
+      "line": 1206
     }
   },
   {
@@ -25433,7 +25505,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1212
+      "line": 1228
     }
   },
   {
@@ -25466,7 +25538,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1220
+      "line": 1236
     }
   },
   {
@@ -25496,7 +25568,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1235
+      "line": 1251
     }
   },
   {
@@ -25528,7 +25600,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1252
+      "line": 1268
     }
   },
   {
@@ -25558,7 +25630,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1264
+      "line": 1280
     }
   },
   {
@@ -25588,7 +25660,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1272
+      "line": 1288
     }
   },
   {
@@ -25646,7 +25718,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1281
+      "line": 1297
     }
   },
   {
@@ -25687,7 +25759,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1299
+      "line": 1315
     }
   },
   {
@@ -25728,7 +25800,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1309
+      "line": 1325
     }
   },
   {
@@ -25804,7 +25876,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1319
+      "line": 1335
     }
   },
   {
@@ -25857,7 +25929,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1331
+      "line": 1347
     }
   },
   {
@@ -25907,7 +25979,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1348
+      "line": 1364
     }
   },
   {
@@ -25954,7 +26026,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1360
+      "line": 1376
     }
   },
   {
@@ -26004,7 +26076,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1370
+      "line": 1386
     }
   },
   {
@@ -26054,7 +26126,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1381
+      "line": 1397
     }
   },
   {
@@ -26096,7 +26168,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1394
+      "line": 1410
     }
   },
   {
@@ -26140,7 +26212,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1402
+      "line": 1418
     }
   },
   {
@@ -26182,7 +26254,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1413
+      "line": 1429
     }
   },
   {
@@ -26215,7 +26287,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1421
+      "line": 1437
     }
   },
   {
@@ -26259,7 +26331,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1431
+      "line": 1447
     }
   },
   {
@@ -26303,7 +26375,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1442
+      "line": 1458
     }
   },
   {
@@ -26345,7 +26417,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1453
+      "line": 1469
     }
   },
   {
@@ -26387,7 +26459,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1470
+      "line": 1486
     }
   },
   {
@@ -26431,7 +26503,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1478
+      "line": 1494
     }
   },
   {
@@ -26475,7 +26547,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1489
+      "line": 1505
     }
   },
   {
@@ -26519,7 +26591,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1500
+      "line": 1516
     }
   },
   {
@@ -26586,7 +26658,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1511
+      "line": 1527
     }
   },
   {
@@ -26650,7 +26722,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1529
+      "line": 1545
     }
   },
   {
@@ -26689,7 +26761,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1541
+      "line": 1557
     }
   },
   {
@@ -26731,7 +26803,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1548
+      "line": 1564
     }
   },
   {
@@ -26781,7 +26853,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1556
+      "line": 1572
     }
   },
   {
@@ -26823,7 +26895,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1565
+      "line": 1581
     }
   },
   {
@@ -26865,7 +26937,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1580
+      "line": 1596
     }
   },
   {
@@ -26907,7 +26979,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1592
+      "line": 1608
     }
   },
   {
@@ -26957,7 +27029,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1604
+      "line": 1620
     }
   },
   {
@@ -27009,7 +27081,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1613
+      "line": 1629
     }
   },
   {
@@ -27056,7 +27128,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1626
+      "line": 1642
     }
   },
   {
@@ -27100,7 +27172,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1636
+      "line": 1652
     }
   },
   {
@@ -27139,7 +27211,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1647
+      "line": 1663
     }
   },
   {
@@ -27181,7 +27253,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1660
+      "line": 1676
     }
   },
   {
@@ -27232,7 +27304,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1672
+      "line": 1688
     }
   },
   {
@@ -27274,7 +27346,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1686
+      "line": 1702
     }
   },
   {
@@ -27324,7 +27396,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1697
+      "line": 1713
     }
   },
   {
@@ -27381,7 +27453,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1706
+      "line": 1722
     }
   },
   {
@@ -27436,7 +27508,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1727
+      "line": 1743
     }
   },
   {
@@ -27486,7 +27558,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1736
+      "line": 1752
     }
   },
   {
@@ -27518,7 +27590,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1747
+      "line": 1763
     }
   },
   {
@@ -27567,7 +27639,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1764
+      "line": 1780
     }
   },
   {
@@ -27616,7 +27688,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1775
+      "line": 1791
     }
   },
   {
@@ -27663,7 +27735,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1788
+      "line": 1804
     }
   },
   {
@@ -27720,7 +27792,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1807
+      "line": 1823
     }
   },
   {
@@ -27778,7 +27850,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1820
+      "line": 1836
     }
   },
   {
@@ -27822,7 +27894,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1838
+      "line": 1854
     }
   },
   {
@@ -27872,7 +27944,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1850
+      "line": 1866
     }
   },
   {
@@ -27931,7 +28003,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1861
+      "line": 1877
     }
   },
   {
@@ -27990,7 +28062,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1871
+      "line": 1887
     }
   },
   {
@@ -28030,7 +28102,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1883
+      "line": 1899
     }
   },
   {
@@ -28069,7 +28141,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1892
+      "line": 1908
     }
   },
   {
@@ -28108,7 +28180,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1905
+      "line": 1921
     }
   },
   {
@@ -28147,7 +28219,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1917
+      "line": 1933
     }
   },
   {
@@ -28194,7 +28266,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1924
+      "line": 1940
     }
   },
   {
@@ -28252,7 +28324,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1932
+      "line": 1948
     }
   },
   {
@@ -28282,7 +28354,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1942
+      "line": 1958
     }
   },
   {
@@ -28317,7 +28389,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1949
+      "line": 1965
     }
   },
   {
@@ -28352,7 +28424,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1963
+      "line": 1979
     }
   },
   {
@@ -28391,7 +28463,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1976
+      "line": 1992
     }
   },
   {
@@ -28430,7 +28502,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 1983
+      "line": 1999
     }
   },
   {
@@ -28460,7 +28532,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2036
+      "line": 2052
     }
   },
   {
@@ -28492,7 +28564,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2044
+      "line": 2060
     }
   },
   {
@@ -28522,7 +28594,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2076
+      "line": 2092
     }
   },
   {
@@ -28552,7 +28624,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2086
+      "line": 2102
     }
   },
   {
@@ -28582,7 +28654,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2096
+      "line": 2112
     }
   },
   {
@@ -28614,7 +28686,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2106
+      "line": 2122
     }
   },
   {
@@ -28667,7 +28739,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2124
+      "line": 2140
     }
   },
   {
@@ -28709,7 +28781,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2138
+      "line": 2154
     }
   },
   {
@@ -28759,7 +28831,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2148
+      "line": 2164
     }
   },
   {
@@ -28801,7 +28873,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2162
+      "line": 2178
     }
   },
   {
@@ -28860,7 +28932,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2171
+      "line": 2187
     }
   },
   {
@@ -28928,7 +29000,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2182
+      "line": 2198
     }
   },
   {
@@ -28970,7 +29042,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2194
+      "line": 2210
     }
   },
   {
@@ -29012,7 +29084,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2203
+      "line": 2219
     }
   },
   {
@@ -29054,7 +29126,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2212
+      "line": 2228
     }
   },
   {
@@ -29096,7 +29168,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2221
+      "line": 2237
     }
   },
   {
@@ -29145,7 +29217,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2235
+      "line": 2251
     }
   },
   {
@@ -29218,7 +29290,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2253
+      "line": 2269
     }
   },
   {
@@ -29257,7 +29329,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2284
+      "line": 2300
     }
   },
   {
@@ -29299,7 +29371,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2292
+      "line": 2308
     }
   },
   {
@@ -29378,7 +29450,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2299
+      "line": 2315
     }
   },
   {
@@ -29430,7 +29502,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2311
+      "line": 2327
     }
   },
   {
@@ -29491,7 +29563,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2337
+      "line": 2353
     }
   },
   {
@@ -29545,7 +29617,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2347
+      "line": 2363
     }
   },
   {
@@ -29589,7 +29661,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2358
+      "line": 2374
     }
   },
   {
@@ -29633,7 +29705,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2368
+      "line": 2384
     }
   },
   {
@@ -29718,7 +29790,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2378
+      "line": 2394
     }
   },
   {
@@ -29806,7 +29878,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2399
+      "line": 2415
     }
   },
   {
@@ -29859,7 +29931,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2416
+      "line": 2432
     }
   },
   {
@@ -29921,7 +29993,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2431
+      "line": 2447
     }
   },
   {
@@ -29954,7 +30026,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2446
+      "line": 2462
     }
   },
   {
@@ -29998,7 +30070,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2453
+      "line": 2469
     }
   },
   {
@@ -30042,7 +30114,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2466
+      "line": 2482
     }
   },
   {
@@ -30077,7 +30149,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2479
+      "line": 2495
     }
   },
   {
@@ -30119,7 +30191,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2490
+      "line": 2506
     }
   },
   {
@@ -30163,7 +30235,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2497
+      "line": 2513
     }
   },
   {
@@ -30212,7 +30284,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2510
+      "line": 2526
     }
   },
   {
@@ -30254,7 +30326,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2528
+      "line": 2544
     }
   },
   {
@@ -30298,7 +30370,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2536
+      "line": 2552
     }
   },
   {
@@ -30340,7 +30412,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2566
+      "line": 2582
     }
   },
   {
@@ -30382,7 +30454,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2576
+      "line": 2592
     }
   },
   {
@@ -30426,7 +30498,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2591
+      "line": 2607
     }
   },
   {
@@ -30468,7 +30540,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2601
+      "line": 2617
     }
   },
   {
@@ -30545,7 +30617,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2608
+      "line": 2624
     }
   },
   {
@@ -30607,7 +30679,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2667
+      "line": 2683
     }
   },
   {
@@ -30695,7 +30767,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2682
+      "line": 2698
     }
   },
   {
@@ -30737,7 +30809,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2709
+      "line": 2725
     }
   },
   {
@@ -30779,7 +30851,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2716
+      "line": 2732
     }
   },
   {
@@ -30821,7 +30893,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2723
+      "line": 2739
     }
   },
   {
@@ -30864,7 +30936,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2731
+      "line": 2747
     }
   },
   {
@@ -30922,7 +30994,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2739
+      "line": 2755
     }
   },
   {
@@ -30964,7 +31036,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2749
+      "line": 2765
     }
   },
   {
@@ -31006,7 +31078,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2758
+      "line": 2774
     }
   },
   {
@@ -31102,7 +31174,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2767
+      "line": 2783
     }
   },
   {
@@ -31148,7 +31220,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2781
+      "line": 2797
     }
   },
   {
@@ -31198,7 +31270,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2805
+      "line": 2821
     }
   },
   {
@@ -31251,7 +31323,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2816
+      "line": 2832
     }
   },
   {
@@ -31293,7 +31365,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2829
+      "line": 2845
     }
   },
   {
@@ -31335,7 +31407,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2838
+      "line": 2854
     }
   },
   {
@@ -31377,7 +31449,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2848
+      "line": 2864
     }
   },
   {
@@ -31427,7 +31499,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2857
+      "line": 2873
     }
   },
   {
@@ -31478,7 +31550,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2867
+      "line": 2883
     }
   },
   {
@@ -31522,7 +31594,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2877
+      "line": 2893
     }
   },
   {
@@ -31590,7 +31662,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2887
+      "line": 2903
     }
   },
   {
@@ -31680,7 +31752,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2902
+      "line": 2918
     }
   },
   {
@@ -31762,7 +31834,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 2985
+      "line": 3001
     }
   },
   {
@@ -31801,7 +31873,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3023
+      "line": 3039
     }
   },
   {
@@ -31843,7 +31915,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3030
+      "line": 3046
     }
   },
   {
@@ -31885,7 +31957,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3039
+      "line": 3055
     }
   },
   {
@@ -32035,7 +32107,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3048
+      "line": 3064
     }
   },
   {
@@ -32079,7 +32151,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3115
+      "line": 3131
     }
   },
   {
@@ -32131,7 +32203,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3128
+      "line": 3144
     }
   },
   {
@@ -32199,7 +32271,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3151
+      "line": 3167
     }
   },
   {
@@ -32262,7 +32334,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3164
+      "line": 3180
     }
   },
   {
@@ -32292,7 +32364,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3188
+      "line": 3204
     }
   },
   {
@@ -32322,7 +32394,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3199
+      "line": 3215
     }
   },
   {
@@ -32352,7 +32424,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3208
+      "line": 3224
     }
   },
   {
@@ -32382,7 +32454,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3217
+      "line": 3233
     }
   },
   {
@@ -32412,7 +32484,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3226
+      "line": 3242
     }
   },
   {
@@ -32442,7 +32514,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3237
+      "line": 3253
     }
   },
   {
@@ -32472,7 +32544,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3246
+      "line": 3262
     }
   },
   {
@@ -32502,7 +32574,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3254
+      "line": 3270
     }
   },
   {
@@ -32532,7 +32604,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3263
+      "line": 3279
     }
   },
   {
@@ -32562,7 +32634,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3272
+      "line": 3288
     }
   },
   {
@@ -32592,7 +32664,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3281
+      "line": 3297
     }
   },
   {
@@ -32622,7 +32694,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3290
+      "line": 3306
     }
   },
   {
@@ -32652,7 +32724,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3299
+      "line": 3315
     }
   },
   {
@@ -32682,7 +32754,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3309
+      "line": 3325
     }
   },
   {
@@ -32717,7 +32789,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3315
+      "line": 3331
     }
   },
   {
@@ -32747,7 +32819,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3326
+      "line": 3342
     }
   },
   {
@@ -32779,7 +32851,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3334
+      "line": 3350
     }
   },
   {
@@ -32809,7 +32881,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3382
+      "line": 3398
     }
   },
   {
@@ -32839,7 +32911,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3394
+      "line": 3410
     }
   },
   {
@@ -32869,7 +32941,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3402
+      "line": 3418
     }
   },
   {
@@ -32899,7 +32971,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3413
+      "line": 3429
     }
   },
   {
@@ -32929,7 +33001,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3422
+      "line": 3438
     }
   },
   {
@@ -32959,7 +33031,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3432
+      "line": 3448
     }
   },
   {
@@ -32989,7 +33061,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3485
+      "line": 3501
     }
   },
   {
@@ -33019,7 +33091,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3494
+      "line": 3510
     }
   },
   {
@@ -33049,7 +33121,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3500
+      "line": 3516
     }
   },
   {
@@ -33079,7 +33151,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3508
+      "line": 3524
     }
   },
   {
@@ -33109,7 +33181,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3515
+      "line": 3531
     }
   },
   {
@@ -33139,7 +33211,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3522
+      "line": 3538
     }
   },
   {
@@ -33169,7 +33241,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3529
+      "line": 3545
     }
   },
   {
@@ -33199,7 +33271,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3548
+      "line": 3564
     }
   },
   {
@@ -33229,7 +33301,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3556
+      "line": 3572
     }
   },
   {
@@ -33259,7 +33331,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3564
+      "line": 3580
     }
   },
   {
@@ -33299,7 +33371,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3570
+      "line": 3586
     }
   },
   {
@@ -33338,7 +33410,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3577
+      "line": 3593
     }
   },
   {
@@ -33377,7 +33449,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3584
+      "line": 3600
     }
   },
   {
@@ -33461,7 +33533,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3591
+      "line": 3607
     }
   },
   {
@@ -33554,7 +33626,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3610
+      "line": 3626
     }
   },
   {
@@ -33584,7 +33656,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3624
+      "line": 3640
     }
   },
   {
@@ -33626,7 +33698,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3630
+      "line": 3646
     }
   },
   {
@@ -33661,7 +33733,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3637
+      "line": 3653
     }
   },
   {
@@ -33705,7 +33777,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3644
+      "line": 3660
     }
   },
   {
@@ -33765,7 +33837,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3652
+      "line": 3668
     }
   },
   {
@@ -33815,7 +33887,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3667
+      "line": 3683
     }
   },
   {
@@ -33857,7 +33929,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3674
+      "line": 3690
     }
   },
   {
@@ -33907,7 +33979,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3680
+      "line": 3696
     }
   },
   {
@@ -33951,7 +34023,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3689
+      "line": 3705
     }
   },
   {
@@ -33986,7 +34058,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3704
+      "line": 3720
     }
   },
   {
@@ -34036,7 +34108,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3714
+      "line": 3730
     }
   },
   {
@@ -34087,7 +34159,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3727
+      "line": 3743
     }
   },
   {
@@ -34136,7 +34208,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3736
+      "line": 3752
     }
   },
   {
@@ -34176,7 +34248,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3756
+      "line": 3772
     }
   },
   {
@@ -34216,7 +34288,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3762
+      "line": 3778
     }
   },
   {
@@ -34288,7 +34360,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3771
+      "line": 3787
     }
   },
   {
@@ -34327,7 +34399,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3786
+      "line": 3802
     }
   },
   {
@@ -34377,7 +34449,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3794
+      "line": 3810
     }
   },
   {
@@ -34427,7 +34499,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3804
+      "line": 3820
     }
   },
   {
@@ -34474,7 +34546,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3817
+      "line": 3833
     }
   },
   {
@@ -34532,7 +34604,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3830
+      "line": 3846
     }
   },
   {
@@ -34582,7 +34654,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3839
+      "line": 3855
     }
   },
   {
@@ -34612,7 +34684,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3849
+      "line": 3865
     }
   },
   {
@@ -34642,7 +34714,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3860
+      "line": 3876
     }
   },
   {
@@ -34672,7 +34744,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3866
+      "line": 3882
     }
   },
   {
@@ -34702,7 +34774,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3872
+      "line": 3888
     }
   },
   {
@@ -34744,7 +34816,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3880
+      "line": 3896
     }
   },
   {
@@ -34777,7 +34849,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3887
+      "line": 3903
     }
   },
   {
@@ -34819,7 +34891,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3893
+      "line": 3909
     }
   },
   {
@@ -34888,7 +34960,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3900
+      "line": 3916
     }
   },
   {
@@ -34930,7 +35002,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3927
+      "line": 3943
     }
   },
   {
@@ -34971,7 +35043,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3934
+      "line": 3950
     }
   },
   {
@@ -35010,7 +35082,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3947
+      "line": 3963
     }
   },
   {
@@ -35040,7 +35112,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3953
+      "line": 3969
     }
   },
   {
@@ -35070,7 +35142,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3962
+      "line": 3978
     }
   },
   {
@@ -35100,7 +35172,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3972
+      "line": 3988
     }
   },
   {
@@ -35130,7 +35202,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3981
+      "line": 3997
     }
   },
   {
@@ -35160,7 +35232,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3988
+      "line": 4004
     }
   },
   {
@@ -35190,7 +35262,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 3995
+      "line": 4011
     }
   },
   {
@@ -35220,7 +35292,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4002
+      "line": 4018
     }
   },
   {
@@ -35250,7 +35322,54 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4010
+      "line": 4026
+    }
+  },
+  {
+    "canonical": "FbAudioChunk#CopyDataTo",
+    "name": "CopyDataTo",
+    "kind": "method",
+    "parent": "FbAudioChunk",
+    "signature": "CopyDataTo(destination)",
+    "type": null,
+    "value": null,
+    "description": "Copies the chunk's interleaved PCM samples into an existing <code>Float32Array</code> without allocating a new JavaScript sample array.\nThe destination must have room for at least <code>SampleCount * ChannelCount</code> values.\nThis is useful for real-time visualizations that reuse the same buffer on every update; the legacy {@link FbAudioChunk#Data Data} property remains unchanged for compatibility.",
+    "params": [
+      {
+        "type": "Float32Array",
+        "name": "destination",
+        "rawName": "destination",
+        "optional": false,
+        "variadic": false,
+        "description": "Destination buffer."
+      }
+    ],
+    "properties": [],
+    "returns": {
+      "type": "number",
+      "description": "Number of scalar PCM samples copied."
+    },
+    "throws": [
+      {
+        "type": "Error",
+        "description": "If <code>destination</code> is not a <code>Float32Array</code> or is too small."
+      }
+    ],
+    "examples": [],
+    "sourceFiles": [],
+    "readonly": false,
+    "static": false,
+    "deprecated": false,
+    "worker": true,
+    "mainThread": false,
+    "cloneable": false,
+    "transferable": false,
+    "enumType": null,
+    "enumMembers": null,
+    "legacyEnumMarkup": false,
+    "source": {
+      "file": "js/foo_uie_jsplitter.js",
+      "line": 4034
     }
   },
   {
@@ -35280,7 +35399,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4018
+      "line": 4046
     }
   },
   {
@@ -35310,7 +35429,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4025
+      "line": 4053
     }
   },
   {
@@ -35340,7 +35459,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4032
+      "line": 4060
     }
   },
   {
@@ -35370,7 +35489,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4039
+      "line": 4067
     }
   },
   {
@@ -35400,7 +35519,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4046
+      "line": 4074
     }
   },
   {
@@ -35430,7 +35549,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4054
+      "line": 4082
     }
   },
   {
@@ -35462,7 +35581,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4061
+      "line": 4089
     }
   },
   {
@@ -35494,7 +35613,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4072
+      "line": 4100
     }
   },
   {
@@ -35524,7 +35643,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4082
+      "line": 4110
     }
   },
   {
@@ -35554,7 +35673,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4089
+      "line": 4117
     }
   },
   {
@@ -35584,7 +35703,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4098
+      "line": 4126
     }
   },
   {
@@ -35623,7 +35742,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4105
+      "line": 4133
     }
   },
   {
@@ -35662,7 +35781,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4111
+      "line": 4139
     }
   },
   {
@@ -35701,7 +35820,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4117
+      "line": 4145
     }
   },
   {
@@ -35740,7 +35859,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4123
+      "line": 4151
     }
   },
   {
@@ -35779,7 +35898,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4129
+      "line": 4157
     }
   },
   {
@@ -35809,7 +35928,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4135
+      "line": 4163
     }
   },
   {
@@ -35839,7 +35958,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4141
+      "line": 4169
     }
   },
   {
@@ -35883,7 +36002,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4148
+      "line": 4176
     }
   },
   {
@@ -35926,7 +36045,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4161
+      "line": 4189
     }
   },
   {
@@ -35956,7 +36075,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4169
+      "line": 4197
     }
   },
   {
@@ -35988,7 +36107,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4176
+      "line": 4204
     }
   },
   {
@@ -36020,7 +36139,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4190
+      "line": 4218
     }
   },
   {
@@ -36062,7 +36181,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4200
+      "line": 4228
     }
   },
   {
@@ -36104,7 +36223,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4207
+      "line": 4235
     }
   },
   {
@@ -36146,7 +36265,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4214
+      "line": 4242
     }
   },
   {
@@ -36188,7 +36307,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4221
+      "line": 4249
     }
   },
   {
@@ -36232,7 +36351,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4228
+      "line": 4256
     }
   },
   {
@@ -36282,7 +36401,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4243
+      "line": 4271
     }
   },
   {
@@ -36324,7 +36443,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4251
+      "line": 4279
     }
   },
   {
@@ -36363,7 +36482,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4261
+      "line": 4289
     }
   },
   {
@@ -36395,7 +36514,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4270
+      "line": 4298
     }
   },
   {
@@ -36439,7 +36558,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4281
+      "line": 4309
     }
   },
   {
@@ -36480,7 +36599,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4291
+      "line": 4319
     }
   },
   {
@@ -36534,7 +36653,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4300
+      "line": 4328
     }
   },
   {
@@ -36606,7 +36725,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4329
+      "line": 4357
     }
   },
   {
@@ -36648,7 +36767,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4360
+      "line": 4388
     }
   },
   {
@@ -36681,7 +36800,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4369
+      "line": 4397
     }
   },
   {
@@ -36714,7 +36833,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4375
+      "line": 4403
     }
   },
   {
@@ -36749,7 +36868,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4381
+      "line": 4409
     }
   },
   {
@@ -36784,7 +36903,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4390
+      "line": 4418
     }
   },
   {
@@ -36826,7 +36945,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4406
+      "line": 4434
     }
   },
   {
@@ -36861,7 +36980,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4415
+      "line": 4443
     }
   },
   {
@@ -36896,7 +37015,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4431
+      "line": 4459
     }
   },
   {
@@ -36945,7 +37064,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4445
+      "line": 4473
     }
   },
   {
@@ -36992,7 +37111,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4456
+      "line": 4484
     }
   },
   {
@@ -37033,7 +37152,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4463
+      "line": 4491
     }
   },
   {
@@ -37074,7 +37193,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4482
+      "line": 4510
     }
   },
   {
@@ -37115,7 +37234,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4500
+      "line": 4528
     }
   },
   {
@@ -37154,7 +37273,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4518
+      "line": 4546
     }
   },
   {
@@ -37203,7 +37322,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4528
+      "line": 4556
     }
   },
   {
@@ -37233,7 +37352,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4540
+      "line": 4568
     }
   },
   {
@@ -37263,7 +37382,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4548
+      "line": 4576
     }
   },
   {
@@ -37293,7 +37412,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4555
+      "line": 4583
     }
   },
   {
@@ -37332,7 +37451,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4562
+      "line": 4590
     }
   },
   {
@@ -37362,7 +37481,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4568
+      "line": 4596
     }
   },
   {
@@ -37402,7 +37521,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4574
+      "line": 4602
     }
   },
   {
@@ -37432,7 +37551,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4583
+      "line": 4611
     }
   },
   {
@@ -37473,7 +37592,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4592
+      "line": 4620
     }
   },
   {
@@ -37522,7 +37641,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4601
+      "line": 4629
     }
   },
   {
@@ -37552,7 +37671,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4611
+      "line": 4639
     }
   },
   {
@@ -37582,7 +37701,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4617
+      "line": 4645
     }
   },
   {
@@ -37621,7 +37740,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4623
+      "line": 4651
     }
   },
   {
@@ -37651,7 +37770,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4630
+      "line": 4658
     }
   },
   {
@@ -37692,7 +37811,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4638
+      "line": 4666
     }
   },
   {
@@ -37722,7 +37841,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4667
+      "line": 4695
     }
   },
   {
@@ -37752,7 +37871,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4676
+      "line": 4704
     }
   },
   {
@@ -37794,7 +37913,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4684
+      "line": 4712
     }
   },
   {
@@ -37836,7 +37955,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4692
+      "line": 4720
     }
   },
   {
@@ -37875,7 +37994,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4700
+      "line": 4728
     }
   },
   {
@@ -37914,7 +38033,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4707
+      "line": 4735
     }
   },
   {
@@ -37946,7 +38065,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4715
+      "line": 4743
     }
   },
   {
@@ -37976,7 +38095,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4730
+      "line": 4758
     }
   },
   {
@@ -38006,7 +38125,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4740
+      "line": 4768
     }
   },
   {
@@ -38036,7 +38155,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4749
+      "line": 4777
     }
   },
   {
@@ -38066,7 +38185,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4759
+      "line": 4787
     }
   },
   {
@@ -38096,7 +38215,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4767
+      "line": 4795
     }
   },
   {
@@ -38126,7 +38245,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4774
+      "line": 4802
     }
   },
   {
@@ -38156,7 +38275,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4783
+      "line": 4811
     }
   },
   {
@@ -38197,7 +38316,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4793
+      "line": 4821
     }
   },
   {
@@ -38227,7 +38346,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4806
+      "line": 4834
     }
   },
   {
@@ -38257,7 +38376,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4813
+      "line": 4841
     }
   },
   {
@@ -38308,7 +38427,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4819
+      "line": 4847
     }
   },
   {
@@ -38347,7 +38466,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4842
+      "line": 4870
     }
   },
   {
@@ -38392,7 +38511,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4853
+      "line": 4881
     }
   },
   {
@@ -38445,7 +38564,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4870
+      "line": 4898
     }
   },
   {
@@ -38489,7 +38608,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4882
+      "line": 4910
     }
   },
   {
@@ -38519,7 +38638,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4896
+      "line": 4924
     }
   },
   {
@@ -38551,7 +38670,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4901
+      "line": 4929
     }
   },
   {
@@ -38581,7 +38700,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4914
+      "line": 4942
     }
   },
   {
@@ -38613,7 +38732,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4917
+      "line": 4945
     }
   },
   {
@@ -38643,7 +38762,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4931
+      "line": 4959
     }
   },
   {
@@ -38685,7 +38804,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4934
+      "line": 4962
     }
   },
   {
@@ -38732,7 +38851,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4940
+      "line": 4968
     }
   },
   {
@@ -38789,7 +38908,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4946
+      "line": 4974
     }
   },
   {
@@ -38830,7 +38949,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4953
+      "line": 4981
     }
   },
   {
@@ -38877,7 +38996,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4965
+      "line": 4993
     }
   },
   {
@@ -38910,7 +39029,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 4975
+      "line": 5003
     }
   },
   {
@@ -38958,7 +39077,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5013
+      "line": 5041
     }
   },
   {
@@ -38988,7 +39107,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5032
+      "line": 5060
     }
   },
   {
@@ -39018,7 +39137,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5042
+      "line": 5070
     }
   },
   {
@@ -39057,7 +39176,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5053
+      "line": 5081
     }
   },
   {
@@ -39087,7 +39206,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5062
+      "line": 5090
     }
   },
   {
@@ -39117,7 +39236,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5069
+      "line": 5097
     }
   },
   {
@@ -39159,7 +39278,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5076
+      "line": 5104
     }
   },
   {
@@ -39200,7 +39319,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5083
+      "line": 5111
     }
   },
   {
@@ -39266,7 +39385,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5093
+      "line": 5121
     }
   },
   {
@@ -39299,7 +39418,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5103
+      "line": 5131
     }
   },
   {
@@ -39341,7 +39460,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5111
+      "line": 5139
     }
   },
   {
@@ -39385,7 +39504,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5123
+      "line": 5151
     }
   },
   {
@@ -39438,7 +39557,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5145
+      "line": 5173
     }
   },
   {
@@ -39485,7 +39604,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5169
+      "line": 5197
     }
   },
   {
@@ -39518,7 +39637,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5209
+      "line": 5237
     }
   },
   {
@@ -39563,7 +39682,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5217
+      "line": 5245
     }
   },
   {
@@ -39596,7 +39715,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5245
+      "line": 5273
     }
   },
   {
@@ -39635,7 +39754,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5253
+      "line": 5281
     }
   },
   {
@@ -39694,7 +39813,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5259
+      "line": 5287
     }
   },
   {
@@ -39733,7 +39852,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5268
+      "line": 5296
     }
   },
   {
@@ -39786,7 +39905,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5276
+      "line": 5304
     }
   },
   {
@@ -39828,7 +39947,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5295
+      "line": 5323
     }
   },
   {
@@ -39884,7 +40003,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5310
+      "line": 5338
     }
   },
   {
@@ -39916,7 +40035,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5324
+      "line": 5352
     }
   },
   {
@@ -39948,7 +40067,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5334
+      "line": 5362
     }
   },
   {
@@ -39980,7 +40099,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5344
+      "line": 5372
     }
   },
   {
@@ -40012,7 +40131,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5354
+      "line": 5382
     }
   },
   {
@@ -40042,7 +40161,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5366
+      "line": 5394
     }
   },
   {
@@ -40083,7 +40202,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5376
+      "line": 5404
     }
   },
   {
@@ -40113,7 +40232,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5388
+      "line": 5416
     }
   },
   {
@@ -40143,7 +40262,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5397
+      "line": 5425
     }
   },
   {
@@ -40190,7 +40309,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5406
+      "line": 5434
     }
   },
   {
@@ -40247,7 +40366,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5416
+      "line": 5444
     }
   },
   {
@@ -40313,7 +40432,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5427
+      "line": 5455
     }
   },
   {
@@ -40378,7 +40497,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5439
+      "line": 5467
     }
   },
   {
@@ -40408,7 +40527,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5451
+      "line": 5479
     }
   },
   {
@@ -40438,7 +40557,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5457
+      "line": 5485
     }
   },
   {
@@ -40473,7 +40592,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5463
+      "line": 5491
     }
   },
   {
@@ -40514,7 +40633,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5473
+      "line": 5501
     }
   },
   {
@@ -40544,7 +40663,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5483
+      "line": 5511
     }
   },
   {
@@ -40585,7 +40704,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5489
+      "line": 5517
     }
   },
   {
@@ -40615,7 +40734,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5500
+      "line": 5528
     }
   },
   {
@@ -40665,7 +40784,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5513
+      "line": 5541
     }
   },
   {
@@ -40724,7 +40843,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5524
+      "line": 5552
     }
   },
   {
@@ -40803,7 +40922,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5539
+      "line": 5567
     }
   },
   {
@@ -40924,7 +41043,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5550
+      "line": 5578
     }
   },
   {
@@ -41027,7 +41146,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5566
+      "line": 5594
     }
   },
   {
@@ -41106,7 +41225,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5582
+      "line": 5610
     }
   },
   {
@@ -41161,7 +41280,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5593
+      "line": 5621
     }
   },
   {
@@ -41216,7 +41335,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5603
+      "line": 5631
     }
   },
   {
@@ -41312,7 +41431,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5613
+      "line": 5641
     }
   },
   {
@@ -41391,7 +41510,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5628
+      "line": 5656
     }
   },
   {
@@ -41486,7 +41605,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5639
+      "line": 5667
     }
   },
   {
@@ -41544,7 +41663,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5652
+      "line": 5680
     }
   },
   {
@@ -41615,7 +41734,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5669
+      "line": 5697
     }
   },
   {
@@ -41711,7 +41830,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5679
+      "line": 5707
     }
   },
   {
@@ -41792,7 +41911,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5695
+      "line": 5723
     }
   },
   {
@@ -41847,7 +41966,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5709
+      "line": 5737
     }
   },
   {
@@ -41934,7 +42053,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5717
+      "line": 5745
     }
   },
   {
@@ -42005,7 +42124,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5729
+      "line": 5757
     }
   },
   {
@@ -42117,7 +42236,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5739
+      "line": 5767
     }
   },
   {
@@ -42220,7 +42339,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5754
+      "line": 5782
     }
   },
   {
@@ -42316,7 +42435,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5770
+      "line": 5798
     }
   },
   {
@@ -42412,7 +42531,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5795
+      "line": 5823
     }
   },
   {
@@ -42503,7 +42622,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5810
+      "line": 5838
     }
   },
   {
@@ -42566,7 +42685,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5825
+      "line": 5853
     }
   },
   {
@@ -42596,7 +42715,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5839
+      "line": 5867
     }
   },
   {
@@ -42643,7 +42762,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5847
+      "line": 5875
     }
   },
   {
@@ -42700,7 +42819,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5857
+      "line": 5885
     }
   },
   {
@@ -42766,7 +42885,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5868
+      "line": 5896
     }
   },
   {
@@ -42831,7 +42950,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5880
+      "line": 5908
     }
   },
   {
@@ -42861,7 +42980,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5892
+      "line": 5920
     }
   },
   {
@@ -42891,7 +43010,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5898
+      "line": 5926
     }
   },
   {
@@ -42926,7 +43045,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5904
+      "line": 5932
     }
   },
   {
@@ -42967,7 +43086,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5914
+      "line": 5942
     }
   },
   {
@@ -42997,7 +43116,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5924
+      "line": 5952
     }
   },
   {
@@ -43038,7 +43157,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5930
+      "line": 5958
     }
   },
   {
@@ -43070,7 +43189,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5940
+      "line": 5968
     }
   },
   {
@@ -43100,7 +43219,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5966
+      "line": 5994
     }
   },
   {
@@ -43130,7 +43249,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5973
+      "line": 6001
     }
   },
   {
@@ -43160,7 +43279,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5980
+      "line": 6008
     }
   },
   {
@@ -43190,7 +43309,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5987
+      "line": 6015
     }
   },
   {
@@ -43220,7 +43339,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 5994
+      "line": 6022
     }
   },
   {
@@ -43250,7 +43369,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6001
+      "line": 6029
     }
   },
   {
@@ -43290,7 +43409,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6009
+      "line": 6037
     }
   },
   {
@@ -43330,7 +43449,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6015
+      "line": 6043
     }
   },
   {
@@ -43370,7 +43489,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6021
+      "line": 6049
     }
   },
   {
@@ -43400,7 +43519,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6027
+      "line": 6055
     }
   },
   {
@@ -43430,7 +43549,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6034
+      "line": 6062
     }
   },
   {
@@ -43460,7 +43579,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6043
+      "line": 6071
     }
   },
   {
@@ -43490,7 +43609,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6050
+      "line": 6078
     }
   },
   {
@@ -43520,7 +43639,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6057
+      "line": 6085
     }
   },
   {
@@ -43550,7 +43669,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6065
+      "line": 6093
     }
   },
   {
@@ -43580,7 +43699,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6071
+      "line": 6099
     }
   },
   {
@@ -43610,7 +43729,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6074
+      "line": 6102
     }
   },
   {
@@ -43640,7 +43759,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6081
+      "line": 6109
     }
   },
   {
@@ -43670,7 +43789,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6091
+      "line": 6119
     }
   },
   {
@@ -43700,7 +43819,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6101
+      "line": 6129
     }
   },
   {
@@ -43730,7 +43849,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6108
+      "line": 6136
     }
   },
   {
@@ -43760,7 +43879,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6118
+      "line": 6146
     }
   },
   {
@@ -43816,7 +43935,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6123
+      "line": 6151
     }
   },
   {
@@ -43858,7 +43977,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6130
+      "line": 6158
     }
   },
   {
@@ -43897,7 +44016,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6136
+      "line": 6164
     }
   },
   {
@@ -43927,7 +44046,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6143
+      "line": 6171
     }
   },
   {
@@ -43957,7 +44076,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6149
+      "line": 6177
     }
   },
   {
@@ -43987,7 +44106,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6157
+      "line": 6185
     }
   },
   {
@@ -44042,7 +44161,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6162
+      "line": 6190
     }
   },
   {
@@ -44084,7 +44203,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6169
+      "line": 6197
     }
   },
   {
@@ -44123,7 +44242,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6175
+      "line": 6203
     }
   },
   {
@@ -44153,7 +44272,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6181
+      "line": 6209
     }
   },
   {
@@ -44208,7 +44327,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6187
+      "line": 6215
     }
   },
   {
@@ -44238,7 +44357,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6194
+      "line": 6222
     }
   },
   {
@@ -44293,7 +44412,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6197
+      "line": 6225
     }
   },
   {
@@ -44340,7 +44459,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6204
+      "line": 6232
     }
   },
   {
@@ -44395,7 +44514,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6210
+      "line": 6238
     }
   },
   {
@@ -44454,7 +44573,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6217
+      "line": 6245
     }
   },
   {
@@ -44484,7 +44603,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6226
+      "line": 6254
     }
   },
   {
@@ -44591,7 +44710,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6231
+      "line": 6259
     }
   },
   {
@@ -44633,7 +44752,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6244
+      "line": 6272
     }
   },
   {
@@ -44681,7 +44800,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6250
+      "line": 6278
     }
   },
   {
@@ -44711,7 +44830,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6259
+      "line": 6287
     }
   },
   {
@@ -44741,7 +44860,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6269
+      "line": 6297
     }
   },
   {
@@ -44771,7 +44890,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6281
+      "line": 6309
     }
   },
   {
@@ -44801,7 +44920,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6292
+      "line": 6320
     }
   },
   {
@@ -44831,7 +44950,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6303
+      "line": 6331
     }
   },
   {
@@ -44861,7 +44980,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6316
+      "line": 6344
     }
   },
   {
@@ -44893,7 +45012,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6330
+      "line": 6358
     }
   },
   {
@@ -44925,7 +45044,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6344
+      "line": 6372
     }
   },
   {
@@ -44957,7 +45076,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6357
+      "line": 6385
     }
   },
   {
@@ -44989,7 +45108,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6370
+      "line": 6398
     }
   },
   {
@@ -45021,7 +45140,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6383
+      "line": 6411
     }
   },
   {
@@ -45051,7 +45170,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6398
+      "line": 6426
     }
   },
   {
@@ -45083,7 +45202,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6408
+      "line": 6436
     }
   },
   {
@@ -45115,7 +45234,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6422
+      "line": 6450
     }
   },
   {
@@ -45159,7 +45278,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6435
+      "line": 6463
     }
   },
   {
@@ -45203,7 +45322,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6450
+      "line": 6478
     }
   },
   {
@@ -45247,7 +45366,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6466
+      "line": 6494
     }
   },
   {
@@ -45277,7 +45396,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6483
+      "line": 6511
     }
   },
   {
@@ -45309,7 +45428,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6493
+      "line": 6521
     }
   },
   {
@@ -45341,7 +45460,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6512
+      "line": 6540
     }
   },
   {
@@ -45373,7 +45492,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6526
+      "line": 6554
     }
   },
   {
@@ -45405,7 +45524,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6543
+      "line": 6571
     }
   },
   {
@@ -45435,7 +45554,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6560
+      "line": 6588
     }
   },
   {
@@ -45467,7 +45586,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6570
+      "line": 6598
     }
   },
   {
@@ -45499,7 +45618,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6584
+      "line": 6612
     }
   },
   {
@@ -45531,7 +45650,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6598
+      "line": 6626
     }
   },
   {
@@ -45563,7 +45682,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6621
+      "line": 6649
     }
   },
   {
@@ -45595,7 +45714,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6635
+      "line": 6663
     }
   },
   {
@@ -45639,7 +45758,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6651
+      "line": 6679
     }
   },
   {
@@ -45683,7 +45802,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6667
+      "line": 6695
     }
   },
   {
@@ -45727,7 +45846,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6684
+      "line": 6712
     }
   },
   {
@@ -45771,7 +45890,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6705
+      "line": 6733
     }
   },
   {
@@ -45815,7 +45934,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6724
+      "line": 6752
     }
   },
   {
@@ -45859,7 +45978,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6742
+      "line": 6770
     }
   },
   {
@@ -47995,7 +48114,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 1006
+      "line": 1009
     }
   },
   {
@@ -48037,7 +48156,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 1015
+      "line": 1018
     }
   },
   {
@@ -48079,7 +48198,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 1024
+      "line": 1027
     }
   },
   {
@@ -48094,7 +48213,7 @@
     ],
     "type": null,
     "value": null,
-    "description": "Runs JavaScript in a separate JSplitter Worker realm and Worker thread.<br>\nJSplitter Workers use a Web-Worker-inspired programming model, but this page describes the actual JSplitter behaviour and should be treated as the primary guide. A Worker has its own global scope and event loop, communicates with its parent panel through structured-clone messages, and has no direct access to the panel UI.\n\n<h2>Why use a Worker?</h2>\nA panel script shares its thread with panel/UI work. Expensive JavaScript, large metadata aggregation, image processing, or repeated frame preparation performed there can make the interface less responsive. A Worker moves suitable work to another thread and lets the panel remain focused on interaction and presentation.\n\n<div class=\"doc-article-diagram\">Panel realm                         Worker realm\nUI / callbacks                       own JS realm + event loop\n    |                                      |\n    | new Worker(source / { file })                   |\n    |------------------------------------->|\n    |                                      | script starts\n    | postMessage(data)                    |\n    |------------------------------------->| process / render / I/O\n    |                                      |\n    |                  postMessage(result) |\n    |<-------------------------------------|\n    | repaint / present result             |\n    |                                      |\n    | terminate()              close() ----|</div>\n\n<h2>Creating a Worker</h2>\nThe {@link Worker} constructor has two explicit startup forms:\n\n<ul class=\"doc-article-list\">\n<li><b><code>new Worker(source[, name])</code></b> — evaluates JavaScript <b><code>source</code></b> text supplied by the panel script.</li>\n<li><b><code>new Worker({ file: 'path/to/worker.js' }[, name])</code></b> — reads and evaluates a JavaScript file.</li>\n</ul>\n\nIn the file-backed form, <b><code>file</code></b> may be an absolute or relative path. Relative paths use the caller/package/component search roots, and the resolved file becomes the Worker's startup script origin. \n\nThe optional second <b><code>name</code></b> argument has the same meaning in both startup forms: it is the Worker's immutable identity for its lifetime. Supply it when the Worker is created; inside the Worker the same value is exposed through read-only {@link WorkerGlobalScope#name self.name}. JSplitter also uses this exact name in {@link window.JsMemoryStats} (<b><code>Workers[].Name</code></b>) and as the first diagnostic metadata line of every unhandled Worker exception (see below). Giving long-lived or multiple concurrent Workers short descriptive names therefore makes both memory inspection and failures much easier to identify.\n\nHere are the examples of Worker creation:\n\n```js\nconst inlineWorker = new Worker(`\n    include('workers/main.js');\n`,\n'inline-worker');\n\nconst fileWorker = new Worker(\n    { file: 'workers/main.js' },\n    'file-worker'\n);\n```\n\nThis also means an inline Worker based on source text can be any piece of executable JavaScript code or only a tiny bootstrap that {@link include include()}s ordinary files, while a file-backed Worker can start from the same file directly. Relative paths are resolved from the currently executing script file first when one exists, so a file-backed <b><code>workers/main.js</code></b> can <b><code>include('./helpers.js')</code></b>; otherwise the Worker's inherited script/package roots and component path are used.\n\nSource text passed to {@link Worker} is ordinary JavaScript. JSplitter evaluates it in a new Worker realm running on its own thread:\n\n```js\nconst worker = new Worker(`\n    const value = 21 * 2;\n    console.log('Worker result: ' + value);\n`, 'example-worker');\n```\n\nThe code inside the string runs in the Worker, not in the panel. It can use the APIs available to Worker code just as ordinary panel JavaScript can use panel APIs.\n\nThis example is intentionally not very useful: it performs one calculation and does not communicate with the panel. The next section explains an important consequence of this execution model: the Worker remains alive even after that startup code reaches its end. Later sections show how messaging turns it into a useful long-lived Worker.\n\n<h2>Worker lifetime and the event loop</h2>\nReaching the end of the Worker's initial source does <b>not</b> mean that the Worker has finished. In the example above, execution reaches the end immediately after <b><code>console.log()</code></b>, but the Worker itself remains alive. JSplitter keeps it running in its event loop. In this documentation, <b>event loop</b> simply means the Worker waits for the next unit of work and dispatches it when it arrives: a message from the panel, a timer, a Worker-capable asynchronous host completion, observer delivery, or Promise work associated with a task. When there is nothing to do, the Worker waits; it does not repeatedly execute the initial source and it does not need a user-written loop.\n\nThis also means that processing one message does not end the Worker. The same Worker can receive many later messages through the same {@link WorkerGlobalScope#onmessage onmessage} handler with one {@link MessageEvent} parameter. If the panel stays loaded and keeps the Worker alive, and neither side closes it, the Worker remains alive waiting for more work. It is therefore important to end Workers that are no longer needed rather than assuming that returning from the startup script or from a message handler stops them.\n\nThere are two normal ways to end a Worker:\n\n<ul class=\"doc-article-list\">\n<li>The parent panel calls {@link Worker#terminate terminate()} when it decides that the Worker is no longer needed.</li>\n<li>Worker code calls Worker-global {@link WorkerGlobalScope#close close()} when the Worker itself knows that its work is finished. New work is no longer accepted, the current task is allowed to finish, and then the event loop exits.</li>\n</ul>\n\nNext example shows typical <b>worker <-> panel</b> messaging:\n```js\nconst worker = new Worker(`\nonmessage = function (event) {\n    if (event.data === 'stop') {\n        // WORKER: the Worker decides that it has finished.\n        postMessage('finished');\n        close();\n        return;\n    }\n\n    postMessage('processed: ' + event.data);\n};\n`);\n\n// PANEL: receives messages sent by postMessage() inside the Worker here\nworker.onmessage = function (event) {\n    console.log('Worker says: ' + event.data);\n};\n\n// PANEL: sends message to worker\nworker.postMessage('hello');\n// -> Worker says: processed: hello\n\n// If Worker is no longer needed then:\n\n// Option A: ask the Worker to finish through its own message protocol\nworker.postMessage('stop');\n// -> Worker says: finished\n\n// Option B: stop Worker directly from the outside instead.\n// Calling terminate() here is also safe, after the Worker has already called close()\n// worker.terminate();\n```\n\nJSplitter automatically terminates all Workers still owned by a panel when that panel is unloaded, so explicit cleanup is not required merely for panel teardown. Explicit {@link Worker#terminate terminate()} is for ending a Worker <b>earlier</b>, while the panel continues to live. Conversely, while the panel remains loaded, a Worker that is still kept alive and is never closed or terminated will remain waiting in its event loop and will continue to hold its Worker realm and associated resources.\n\n<div class=\"doc-note warning\"><b>Do not treat a Worker as a one-shot function call.</b><br>\nIf the panel keeps a Worker alive after its useful work is finished, returning from the Worker source or from its last message handler does not dispose it. Call {@link Worker#terminate terminate()} when the panel is done with it, or design the Worker protocol so Worker-global {@link WorkerGlobalScope#close close()} is called when the Worker knows it is finished.</div>\n\n<h2>Handling Worker errors</h2>\n\nAn exception that is <strong>not caught by Worker code</strong> and escapes Worker startup code, a Worker message handler, a timer callback, or another Worker task is reported as an {@link ErrorEvent}. A normal <code>try...catch</code> handles the exception locally and prevents this error-reporting path from being used.\n\nFor uncaught exceptions, Worker-local handling comes first: if Worker-global {@link WorkerGlobalScope#onerror onerror} or an <strong><code>error</code></strong> listener is installed, the error is handled there and is not forwarded to the parent. Otherwise it is forwarded to the parent side, where {@link Worker#onerror Worker.onerror} or an <strong><code>error</code></strong> listener can handle it.\n\n```js\nworker.onerror = function (event) {\n    console.log('Worker error: ' + event.message);\n    console.log('Source: ' + event.filename);\n    console.log('Location: ' + event.lineno + ':' + event.colno);\n};\n```\n\nIf the error reaches the parent and no parent error handler is installed, JSplitter shows the normal panel-script error UI. A named inline Worker can produce a diagnostic like this:\n\n```text\nz is not defined\n\nWorker: spectrum-renderer\nFile: worker.js\nLine: 42, Column: 5\nStack trace:\n  scheduleNext@worker.js:42:5\n  onmessage@worker.js:68:3\n```\n\nRead it from top to bottom:\n\n<ul class=\"doc-article-list\">\n<li><b>Error message</b> — <b><code>z is not defined</code></b> is the exception text.</li>\n<li><b><code>Worker:</code></b> — the immutable Worker name supplied at construction time. An unnamed Worker shows <b><code>&lt;unnamed&gt;</code></b>.</li>\n<li><b><code>File:</code></b> — the Worker source name. Inline Workers use <b><code>worker.js</code></b>; file-backed Workers use the startup script basename.</li>\n<li><b><code>Line / Column:</code></b> — the original location of the exception in Worker code.</li>\n<li><b><code>Stack trace:</code></b> — the original Worker call chain when SpiderMonkey provides it.</li>\n</ul>\n\nThe resolved full path of a file-backed Worker is retained internally for relative file resolution, but diagnostics intentionally use the script basename to match ordinary panel-script diagnostics.\n\nA parent-side error handler can also deliberately turn a Worker failure into a normal panel-script exception by throwing. The <b><code>event</code></b> parameter below is the incoming {@link ErrorEvent}, so the original Worker location is available directly on that object:\n\n```js\nworker.onerror = function (event) {\n    console.log('Original Worker location: ' +\n        event.filename + ':' + event.lineno + ':' + event.colno);\n\n    throw new Error('Worker failed: ' + event.message);\n};\n```\n\n<h2>Sending structured data</h2>\nMessages are not limited to strings. {@link Worker#postMessage Worker.postMessage()} and Worker-global {@link WorkerGlobalScope#postMessage postMessage()} use structured-clone semantics: the sender serializes the value and the receiver reconstructs its own independent value. The two realms do not share the same JavaScript object.\n\n```js\nconst worker = new Worker(`\nonmessage = function (event) {\n    const request = event.data;\n\n    if (request.command === 'sum') {\n        const total = request.values.reduce((a, b) => a + b, 0);\n\n        // WORKER: send a structured result object back to the panel.\n        postMessage({\n            command: 'sum-result',\n            total: total\n        });\n    }\n};\n`);\n\nworker.onmessage = function (event) {\n    console.log(event.data.command); // sum-result\n    console.log(event.data.total);   // 10\n\n    // PANEL: this one-shot example has its result, so it no longer needs\n    // the Worker to remain alive waiting for more messages.\n    worker.terminate();\n};\n\n// PANEL: the object and nested array are cloned for the Worker.\nworker.postMessage({\n    command: 'sum',\n    values: [1, 2, 3, 4]\n});\n```\n\nOrdinary JavaScript objects, arrays, maps, sets, typed arrays, ArrayBuffers and other supported structured-clone values can be sent this way. Selected JSplitter host wrappers can also cross the message boundary; the exact types and their ownership rules are listed later under <b>Host objects in messages</b>.\n\n<h2>Broadcasting between panels and Workers</h2>\n{@link Worker#postMessage Worker.postMessage()} is a direct channel between one panel and one specific Worker. When several independent panels and/or Workers should publish and receive messages by a shared name, use {@link BroadcastChannel} instead. BroadcastChannel uses asynchronous structured-clone delivery and does not require the sender to keep references to every receiver.\n\n```js\nconst channel = new BroadcastChannel('playback-state');\nchannel.onmessage = event => console.log(event.data);\nchannel.postMessage({ playing: true, track: 12 });\n```\n\nThe same constructor and handlers are available in panel and Worker realms. One important difference from direct Worker messaging is ownership: <b>BroadcastChannel has no transfer list and never detaches the sender's objects.</b> Values are structured-cloned for its receivers. A broadcast can fan out to several independent destinations, so there is no single receiver that could take ownership of a transferred resource.\n\n```js\n// Broadcast: cloned for listeners; bitmap stays usable here.\nchannel.postMessage({ bitmap: bitmap });\n\n// Direct Worker message: ownership can be moved to this one Worker.\nworker.postMessage({ bitmap: bitmap }, [bitmap]);\n// bitmap is detached after a successful transfer.\n```\n\nIf you need publish/subscribe delivery, use {@link BroadcastChannel}. If you need to move a large transferable resource to one known Worker without retaining a usable source object, use the transfer-list form described below. See {@link BroadcastChannel} and its linked sample for the complete broadcast usage guide.\n\n<h2>Transferring ownership</h2>\nA transferable value uses the same message channel but a different ownership model.\nNormal structured clone leaves the source usable and creates a representation for the receiver.\nTransfer instead <b>moves ownership</b> of the underlying resource without cloning.\nAfter a successful transfer, the source wrapper is detached and <b>must not be used</b> again\nby the sender.\n\nThe syntax difference is the <b>transfer list</b> passed as the second argument.\nThe transfer list is separate from the message payload. It identifies transferable objects\ncontained anywhere in the payload that should have their ownership moved instead of being cloned.\n\n```js\n// Clone: both objects remain usable in the panel.\nworker.postMessage({\n    bitmap: bitmap,\n    chunk: audioChunk\n});\n\n// Transfer: the message payload is still the first argument.\n// The transfer list only specifies which transferable objects inside that\n// payload move to the Worker instead of being cloned.\nworker.postMessage(\n    {\n        bitmap: bitmap,\n        chunk: audioChunk,\n        values: [1, 2, 3, 4]\n    },\n    [bitmap, audioChunk]\n);\n\n// After a successful transfer, bitmap and audioChunk are detached in the\n// panel. Other values in the message, such as \"values\", are cloned normally.\n```\n\nTransfers are atomic with respect to the transfer list. A call to <b><code>postMessage(value, transferList)</code></b> either transfers every transferable object\nin the list or transfers none of them.\n\nIf the message cannot be serialized, or any object in the transfer list cannot be transferred,\n{@link Worker#postMessage postMessage()} fails and all source objects remain usable. No object in the list\nis detached.\n\nAfter {@link Worker#postMessage postMessage()} successfully serializes the message and commits the transfer,\nall objects listed in the transfer list are detached in the sender.\n\nA message is delivered only after it has been serialized successfully. If serialization and\ntransfer succeed but the receiving realm cannot reconstruct one of the message values, that\nendpoint receives a {@link Worker#onmessageerror messageerror} event and remains usable for\nlater messages. This is a receiver-side delivery failure: a completed transfer is\n<b>not rolled back</b>, and transferred source objects remain detached.\n\nJSplitter adds two diagnostic fields to that {@link MessageEvent}:\n{@link MessageEvent#errorMessage errorMessage} tells you why reconstruction failed, while\n{@link MessageEvent#direction direction} tells you whether the failed delivery was\n<b>panel-to-worker</b> or <b>worker-to-panel</b>. The original payload is not available because\nreconstruction did not complete, so {@link MessageEvent#data data} is <b>undefined</b>.\n\n```js\nworker.onmessageerror = function (event) {\n    // PANEL: a Worker result reached this panel but could not be reconstructed.\n    console.log('Failed direction: ' + event.direction);\n    console.log('Reason: ' + event.errorMessage);\n};\n```\n\nInside a Worker, Worker-global {@link WorkerGlobalScope#onmessageerror onmessageerror} exposes\nthe same fields; its direction is <b>panel-to-worker</b>. This is a delivery/structured-clone\nfailure, not an uncaught Worker exception, so it is separate from\n{@link Worker#onerror onerror}.\n\n<h2>Host objects in messages</h2>\nThe examples above cover normal structured data and transfer syntax. JSplitter also defines explicit messaging rules for its native host wrappers. The lists below are the reference for which wrappers may cross between the panel and Worker realms.\n\n<b>Cloneable host objects.</b> Sending one of these without a transfer list leaves the source object usable in the sender and creates an independent representation for the receiving realm.\n<details class=\"doc-capability-list\"><summary><b>Cloneable host objects</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link FbMetadbHandle}</li>\n<li>{@link FbMetadbHandleList}</li>\n<li>{@link FbFileInfo}</li>\n<li>{@link FbTitleFormat}</li>\n<li>{@link FbPlaybackQueueItem}</li>\n<li>{@link FbPlayingItemLocation}</li>\n<li>{@link FbAudioChunk}</li>\n<li>{@link DriveInfo}</li>\n<li>{@link RunResult}</li>\n<li>{@link GdiGraphics.MeasureStringInfo GDI MeasureStringInfo}</li>\n<li>{@link D2DGraphics.MeasureStringInfo D2D MeasureStringInfo}</li>\n<li>{@link D2DCompileInfo}</li>\n<li>{@link GdiBitmap}</li>\n<li>{@link GdiFont}</li>\n<li>{@link GdiBrush}</li>\n<li>{@link D2DBitmap}</li>\n<li>{@link D2DFont}</li>\n<li>{@link D2DBrush}</li>\n<li>{@link D2DStrokeStyle}</li>\n</ul>\n</details>\n\n<b>Transferable host objects.</b> These are the JSplitter host wrappers that support the transfer-list ownership model demonstrated above. After a successful transfer the source wrapper is detached and no longer usable on the sender side; if serialization itself fails, the transfer is rolled back and the source remains usable.\n\nTransfer support is intentionally limited to objects that own a significant dynamic resource whose ownership can be moved efficiently and unambiguously between realms. Smaller value-like objects are simply cloned, while shared or realm-bound resources are not made transferable.\n\n<details class=\"doc-capability-list\"><summary><b>Transferable host objects</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link FbAudioChunk}</li>\n<li>{@link GdiBitmap}</li>\n<li>{@link D2DBitmap}</li>\n</ul>\n<p>All three types are also cloneable. Choose ordinary cloning when both realms still need a usable object. Transfer moves bitmap pixel storage or the {@link FbAudioChunk} sample buffer to the receiving realm without keeping a usable source wrapper.</p>\n</details>\n\n<b>Realm-local host objects.</b> Other wrappers represent live services, graphics state or resources whose meaning is tied to the realm that created them. They can be used normally inside that realm, including inside a Worker when the relevant API is available there, but they cannot cross a structured-clone message boundary. Attempting to post one fails serialization rather than silently sharing the native object.\n\n<details class=\"doc-capability-list\"><summary><b>Realm-local host objects</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link FbProfiler}</li>\n<li>{@link FbUiSelectionHolder}</li>\n<li>{@link FbPlaylistRecycler}</li>\n<li>{@link HtmlDocument}</li>\n<li>{@link HtmlNode}</li>\n<li>{@link GdiRawBitmap}</li>\n<li>{@link GdiGraphics}</li>\n<li>{@link D2DGraphics}</li>\n<li>{@link D2DEffect}</li>\n</ul>\n<p>{@link MainMenuManager} and {@link ContextMenuManager} are additionally panel-only because their factories are not exposed in Workers.</p>\n</details>\n\n<h2>Panel realm versus Worker realm</h2>\nA Worker is not another panel. It has no panel HWND, no {@link window} object, no panel graphics render target, and no panel UI/input callbacks such as {@link module:Callbacks.on_paint on_paint}, {@link module:Callbacks.on_key_down on_key_down} or {@link module:Callbacks.on_mouse_move on_mouse_move}. This does not mean Worker code has no callbacks at all: message/event handlers and completion callbacks belonging to Worker-capable asynchronous host APIs remain available where documented. A Worker has its own {@link fb}, {@link plman}, {@link utils}, {@link gdi}, {@link console} and {@link performance} namespace objects. When Direct2D is initialized before the Worker is created, {@link d2d} is available as well.\n<div class=\"doc-note warning\"><b>Direct2D versions earlier than 1.1 are not supported in the Worker.</b><br>\nMinimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div>\n\nThese APIs are exposed in the Worker realm, but this does not mean that every operation runs on the Worker thread: methods marked <strong>MAIN THREAD</strong> cross to the main thread internally but, for example, GDI and Direct2D resources can be created and used by the Worker for offscreen rendering in its own thread.\n\nThe Worker environment implements the JSplitter subset of familiar Worker primitives: {@link EventTarget}, {@link Event}, {@link MessageEvent}, {@link ErrorEvent}, {@link PromiseRejectionEvent}, {@link WorkerGlobalScope}, timers and promises. The local JSplitter interface pages describe the supported surface and behaviour.\n\n<h2>Worker API coverage</h2>\nMost useful non-UI JSplitter API is available inside a Worker. Namespaces marked <b>mostly available</b> below expose the large majority of their normal surface; the relatively small set of exclusions is listed separately in <b>APIs intentionally unavailable in Workers</b>.\n\n<ul class=\"doc-article-list\">\n<li><b>Core Worker environment</b> — messaging, events, timers, promises, {@link include include()} are available.</li>\n<li>{@link fb} — <b>mostly available</b>. Playback, library/selection data, title formatting, DSP/output state and most non-modal host operations are exposed.</li>\n<li>{@link plman} — <b>mostly available</b>. Playlist manipulation, playback queue, sorting, undo/redo and the playlist recycler are exposed.</li>\n<li>{@link utils} — <b>mostly available</b>. Filesystem, hashing, text/binary/INI, package/system information, HTML parsing, drives, image/album-art loading, process, HTTP and download helpers are exposed.</li>\n<li>{@link gdi} — <b>fully available</b> as a DrawMode-aware Worker namespace. In GDI mode its factories create GDI+ resources; when the Worker is created from a Direct2D panel, the same <b><code>gdi.*</code></b> factories route to the Worker Direct2D backend and create the corresponding D2D resources.</li>\n<li>{@link d2d} — <b>fully available</b> as a Worker namespace when Direct2D is initialized before Worker creation, including effects, compile support and Worker-local offscreen rendering. Set {@link window.DrawMode} to <b>1</b> in the panel <b>before</b> creating a Worker that needs Direct2D.</li>\n<li>{@link console} — <b>fully available</b> inside a Worker.</li>\n<li>{@link performance} — <b>fully available</b> inside a Worker.</li>\n</ul>\n\n<h2>APIs intentionally unavailable in Workers</h2>\n<b>Panel and browser globals.</b> The panel {@link window} namespace, panel UI/input callbacks such as {@link module:Callbacks.on_paint on_paint}, {@link module:Callbacks.on_key_down on_key_down} and {@link module:Callbacks.on_mouse_move on_mouse_move}, tooltips, theme/HWND services and the panel graphics render target are not Worker concepts. In particular, the panel-provided {@link GdiGraphics} or {@link D2DGraphics} graphics context passed to UI painting callbacks is not available to Worker code. Also panel-only compatibility globals such as {@link ActiveXObject} and {@link Enumerator}, and nested {@link Worker} creation are also unavailable.\n\nThe mostly available namespaces listed above also omit a small number of operations that are modal, interactive, tied to live panel UI state, or otherwise unsuitable for a Worker:\n\n<details class=\"doc-capability-list\"><summary><b>fb</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link fb.AddDirectory}</li>\n<li>{@link fb.AddFiles}</li>\n<li>{@link fb.CreateContextMenuManager}</li>\n<li>{@link fb.CreateMainMenuManager}</li>\n<li>{@link fb.DoDragDrop}</li>\n<li>{@link fb.LoadPlaylist}</li>\n<li>{@link fb.RunContextCommand}</li>\n<li>{@link fb.RunContextCommandWithMetadb}</li>\n<li>{@link fb.RunMainMenuCommand}</li>\n<li>{@link fb.SavePlaylist}</li>\n</ul>\n</details>\n\n<details class=\"doc-capability-list\"><summary><b>plman</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link plman.ShowAutoPlaylistUI}</li>\n<li>{@link plman.ShowPlaylistLockUI}</li>\n</ul>\n</details>\n\n<details class=\"doc-capability-list\"><summary><b>utils</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link utils.ColourPicker}</li>\n<li>{@link utils.EditTextFile}</li>\n<li>{@link utils.FilePicker}</li>\n<li>{@link utils.FolderPicker}</li>\n<li>{@link utils.FontPicker}</li>\n<li>{@link utils.InputBox}</li>\n<li>{@link utils.MessageBox}</li>\n<li>{@link utils.ShowHtmlDialog}</li>\n</ul>\n</details>\n\n<h2>Main-thread host operations</h2>\nMany APIs are callable from Worker code but ultimately use foobar2000 services that can only execute on the main thread (this is a foobar2000 SDK requirement). When the Worker calls one of these APIs, it waits synchronously until that host operation finishes. Occasional calls are fine; a tight loop of them defeats much of the reason for moving work to a Worker.\n\n<div class=\"doc-article-diagram\">GOOD\npanel:  send one useful batch\n                   |\n                   v\nworker: process / aggregate / render\n                   |\n                   v\npanel:  receive compact result\n\nPOOR\nworker: main thread -> main thread -> main thread -> ...</div>\n\n<div class=\"doc-note warning\"><b>Avoid building a Worker around repeated main-thread calls.</b><br>\nIf most of a Worker consists of frequent synchronous host calls, moving that code to a Worker will usually provide no performance benefit and can make it slower because of repeated cross-thread synchronization. If the main thread is busy, the Worker waits too.</div>\n\nThe lists below show the Worker-accessible API that uses this synchronous main-thread bridge:\n\n<details class=\"doc-capability-list\"><summary><b>plman</b></summary>\n<p><b>EVERY</b> Worker-exposed {@link plman} function is main-thread bridged. These live properties also have main-thread accessors:</p>\n<ul class=\"doc-api-link-list\">\n<li>{@link plman.ActivePlaylist}</li>\n<li>{@link plman.PlaybackOrder}</li>\n<li>{@link plman.PlayingPlaylist}</li>\n<li>{@link plman.PlaylistCount}</li>\n</ul>\n<p>Reading {@link plman.PlaylistRecycler} itself only obtains the Worker-local {@link FbPlaylistRecycler} wrapper; its operations are main-thread bridged.</p>\n</details>\n\n<details class=\"doc-capability-list\"><summary><b>fb</b></summary>\n<h4>Functions</h4>\n<ul class=\"doc-api-link-list\">\n<li>{@link fb.AcquireUiSelectionHolder}</li>\n<li>{@link fb.AddLocationsAsync}</li>\n<li>{@link fb.CheckClipboardContents}</li>\n<li>{@link fb.ClearPlaylist}</li>\n<li>{@link fb.CopyHandleListToClipboard}</li>\n<li>{@link fb.Exit}</li>\n<li>{@link fb.EnumerateMainMenuCommands}</li>\n<li>{@link fb.GetActiveDSPs}</li>\n<li>{@link fb.GetClipboardContents}</li>\n<li>{@link fb.GetDSPPresets}</li>\n<li>{@link fb.GetFocusItem}</li>\n<li>{@link fb.GetLibraryItems}</li>\n<li>{@link fb.GetLibraryRelativePath}</li>\n<li>{@link fb.GetLibraryRoots}</li>\n<li>{@link fb.GetNowPlaying}</li>\n<li>{@link fb.GetSelection}</li>\n<li>{@link fb.GetSelections}</li>\n<li>{@link fb.GetSelectionType}</li>\n<li>{@link fb.IsLibraryEnabled}</li>\n<li>{@link fb.IsMainMenuCommandChecked}</li>\n<li>{@link fb.IsMetadbInMediaLibrary}</li>\n<li>{@link fb.Next}</li>\n<li>{@link fb.Pause}</li>\n<li>{@link fb.Play}</li>\n<li>{@link fb.PlayOrPause}</li>\n<li>{@link fb.Prev}</li>\n<li>{@link fb.Random}</li>\n<li>{@link fb.RegisterMainMenuCommand}</li>\n<li>{@link fb.Restart}</li>\n<li>{@link fb.SetDSPPreset}</li>\n<li>{@link fb.SetOutputDevice}</li>\n<li>{@link fb.ShowConsole}</li>\n<li>{@link fb.ShowLibrarySearchUI}</li>\n<li>{@link fb.ShowPictureViewer}</li>\n<li>{@link fb.ShowPlaylistSearchUI}</li>\n<li>{@link fb.ShowPreferences}</li>\n<li>{@link fb.Stop}</li>\n<li>{@link fb.UnregisterMainMenuCommand}</li>\n<li>{@link fb.VolumeDown}</li>\n<li>{@link fb.VolumeMute}</li>\n<li>{@link fb.VolumeUp}</li>\n</ul>\n<h4>Properties</h4>\n<ul class=\"doc-api-link-list\">\n<li>{@link fb.AlwaysOnTop}</li>\n<li>{@link fb.CursorFollowPlayback}</li>\n<li>{@link fb.CustomVolume}</li>\n<li>{@link fb.IsPaused}</li>\n<li>{@link fb.IsPlaying}</li>\n<li>{@link fb.PlaybackFollowCursor}</li>\n<li>{@link fb.PlaybackLength}</li>\n<li>{@link fb.PlaybackTime}</li>\n<li>{@link fb.ReplaygainMode}</li>\n<li>{@link fb.StopAfterCurrent}</li>\n<li>{@link fb.Volume}</li>\n</ul>\n</details>\n\n<details class=\"doc-capability-list\"><summary><b>utils / console</b></summary>\n<h4>utils</h4>\n<ul class=\"doc-api-link-list\">\n<li>{@link utils.CheckComponent}</li>\n<li>{@link utils.GetClipboardText}</li>\n<li>{@link utils.GetPackageInfo}</li>\n<li>{@link utils.GetPackagePath}</li>\n<li>{@link utils.RecyclePath}</li>\n<li>{@link utils.Run}</li>\n<li>{@link utils.SetClipboardText}</li>\n</ul>\n<h4>console</h4>\n<ul class=\"doc-api-link-list\">\n<li>{@link console.GetLines}</li>\n<li>{@link console.ClearBacklog}</li>\n</ul>\n<p>The console methods above use the foobar2000 main-thread console manager on foobar2000 2.0 and newer; the legacy JSplitter-owned console backlog path is thread-safe and direct.</p>\n</details>\n\n<details class=\"doc-capability-list\"><summary><b>Host wrapper methods</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link FbMetadbHandle#RefreshStats}</li>\n<li>{@link FbMetadbHandleList#GetLibraryRelativePaths}</li>\n<li>{@link FbMetadbHandleList#OptimiseFileLayout}</li>\n<li>{@link FbMetadbHandleList#OrderByRelativePath}</li>\n<li>{@link FbMetadbHandleList#RefreshStats}</li>\n<li>{@link FbMetadbHandleList#RemoveAttachedImage}</li>\n<li>{@link FbMetadbHandleList#RemoveAttachedImages}</li>\n<li>{@link FbMetadbHandleList#UpdateFileInfoFromJSON}</li>\n<li>{@link FbTitleFormat#Eval}</li>\n<li>{@link FbUiSelectionHolder#SetSelection}</li>\n<li>{@link FbUiSelectionHolder#SetPlaylistSelectionTracking}</li>\n<li>{@link FbUiSelectionHolder#SetPlaylistTracking}</li>\n<li>{@link FbPlaylistRecycler#Count}</li>\n<li>{@link FbPlaylistRecycler#GetName}</li>\n<li>{@link FbPlaylistRecycler#GetContent}</li>\n<li>{@link FbPlaylistRecycler#Purge}</li>\n<li>{@link FbPlaylistRecycler#Restore}</li>\n</ul>\n</details>\n\nA small note on {@link fb.GetAudioChunk fb.GetAudioChunk}: it's normally accesses the visualisation stream directly from the Worker but its first use may briefly synchronize with the main thread while that stream is initialized.\n\nA Worker waiting for a bridge call can normally be terminated cleanly. Once a main-thread callback has already begun executing, however, it cannot be interrupted halfway through; that in-progress host operation must return before it can be fully unwound. Blocking or modal host APIs are therefore deliberately excluded from the Worker surface.\n\n<h2>Capability badges and terms</h2>\nThe detailed API pages use four local badges for the concepts introduced above:\n\n<ul class=\"doc-article-list\">\n<li><span class=\"flag capability worker\">WORKER</span> — this API item is available from Worker code. Absence of this badge means the item is not part of the documented Worker surface.</li>\n<li><span class=\"flag capability main-thread\">MAIN THREAD</span> — as described in <b>Main-thread host operations</b> above, the item is callable from a Worker but its foobar2000 host operation executes synchronously on the main thread. The Worker waits for that operation to return, so repeated calls should be avoided in hot Worker loops.</li>\n<li><span class=\"flag capability cloneable\">CLONEABLE</span> — instances of this host type can be sent through {@link Worker#postMessage postMessage()} using structured clone while the source remains usable.</li>\n<li><span class=\"flag capability transferable\">TRANSFERABLE</span> — instances can additionally be placed in the transfer list so ownership moves to the receiver; after a successful transfer the source wrapper is detached and no longer usable on the sender side.</li>\n</ul>\n\n<h2>Samples</h2>\nThe samples are intentionally ordered. Start with lifecycle/messaging, then move through batch data processing, CPU-bound work, asynchronous image processing and finally a real-time audio/render pipeline.\n\n<b>1. Basic Messaging.</b> The smallest complete lifecycle example: create a named inline Worker, send a structured object, receive a result, install parent/Worker <b><code>messageerror</code></b> diagnostics and a parent error handler, then let the Worker finish with Worker-global {@link WorkerGlobalScope#close close()}. The unload handler also shows that parent {@link Worker#terminate terminate()} is safe during panel teardown.\n\n```js\n// PANEL: create and immediately start a named Worker from prepared source text.\nconst worker = new Worker(source, 'basic-messaging');\n\n// PANEL: values sent by Worker-global postMessage(...) arrive here as event.data.\nworker.onmessage = event => console.log(event.data);\n\n// PANEL: send one object to this Worker. JSplitter structured-clones it before\n// the Worker's onmessage handler receives its own reconstructed copy.\nworker.postMessage({ values: [1, 2, 3, 4] });\n```\n\n<b>2. Playlist Statistics.</b> Presents Media Library and the existing playlists as an interactive source list. The panel obtains one {@link FbMetadbHandleList}, then the <b>Main / Worker</b> switch runs the same metadata and {@link FbFileInfo} aggregation either synchronously in the panel realm or on the cloned list in the Worker. The detail view reports calculation and end-to-end time, making the responsiveness/overhead trade-off visible on large real-world batches.\n\n```js\n// Panel: obtain one source batch. Media Library uses fb.GetLibraryItems();\n// playlists use plman.GetPlaylistItems(...).\nconst handles = source.library ? fb.GetLibraryItems() : plman.GetPlaylistItems(source.index);\n\n// Worker mode: clone the complete list once and aggregate it off the panel thread.\nworker.postMessage({ requestId, handles });\n\n// Main mode runs the same analyseHandles(handles) function in the panel realm.\n```\n\n<b>3. Fractal Renderer.</b> Demonstrates a CPU-bound render job that belongs entirely in a Worker. Pan and zoom reuse one completed frame locally for immediate feedback; drag sends one final viewport on release, while wheel and resize bursts are coalesced for 80 ms. The Worker renders only the settled viewport, transfers the completed bitmap, and stale results are rejected by view id. The <b>GDI / D2D</b> switch recreates the Worker so the same <b><code>gdi.*</code></b> facade can be compared in both rendering modes.\n\n<b>4. Playlist Album Gallery.</b> A practical artwork-loading A/B test. <b>Main / Worker</b> runs the same visible-cover pipeline either in the panel or in the Worker. In Worker mode the panel sends one cloneable {@link FbMetadbHandleList}; the Worker deduplicates it into albums, loads artwork with {@link utils.GetAlbumArtAsyncV2 GetAlbumArtAsyncV2}, resizes each image and transfers completed bitmaps back individually. Only the covers that fit in the current viewport are requested, changing cover size intentionally reloads them, and the sample has no artwork cache. <b>Concurrency</b> controls how many artwork requests may be in flight, while <b>GDI / D2D</b> selects the rendering backend. Targeted <b><code>RepaintRect</code></b> updates and timing counters make first display, loading, delivery and paint cost visible.\n\n<b>5. Spectrum Analyzer.</b> The real-time A/B test. <b>Main / Worker</b> runs the same audio-read, FFT and offscreen-render pipeline on either thread. Both paths allow only one completed frame at a time; the next frame starts only after the previous bitmap reaches <b><code>on_paint</code></b>, so the counters measure work that can actually be presented. Additional switches select <b>GDI / D2D</b>, FFT size, and either a <b>120 FPS</b> limiter or <b>Max</b> mode. The overlay reports frame/paint rate plus audio, FFT, render and total processing time. <b>Max</b> is useful for exposing fixed per-frame overhead, but the sample is not intended as a general GDI-versus-D2D benchmark.\n\n```js\n// Worker: read a short audio window and turn it into spectrum data.\nconst chunk = fb.GetAudioChunk(0.06, -0.03);\nanalyse(chunk);\n\n// Render a complete offscreen frame, then transfer its ownership to the panel.\nconst frame = renderSpectrum();\npostMessage({ bitmap: frame, timing }, [frame]);\n// frame is detached here after a successful transfer and must not be reused.\n\n// Panel: keep one completed frame and request presentation. Do not acknowledge\n// it yet: the Worker remains paused until this exact frame reaches on_paint.\nworker.onmessage = function (event) {\n    frame = event.data.bitmap;\n    window.Repaint();\n};\n\nfunction on_paint(gr) {\n    gr.DrawImage(frame, 0, 0, window.Width, window.Height, 0, 0, frame.Width, frame.Height);\n    worker.postMessage({ type: 'next' });\n}\n```",
+    "description": "Runs JavaScript in a separate JSplitter Worker realm and Worker thread.<br>\nJSplitter Workers use a Web-Worker-inspired programming model, but this page describes the actual JSplitter behaviour and should be treated as the primary guide. A Worker has its own global scope and event loop, communicates with its parent panel through structured-clone messages, and has no direct access to the panel UI.\n\n<h2>Why use a Worker?</h2>\nA panel script shares its thread with panel/UI work. Expensive JavaScript, large metadata aggregation, image processing, or repeated frame preparation performed there can make the interface less responsive. A Worker moves suitable work to another thread and lets the panel remain focused on interaction and presentation.\n\n<div class=\"doc-article-diagram\">Panel realm                         Worker realm\nUI / callbacks                       own JS realm + event loop\n    |                                      |\n    | new Worker(source / { file })                   |\n    |------------------------------------->|\n    |                                      | script starts\n    | postMessage(data)                    |\n    |------------------------------------->| process / render / I/O\n    |                                      |\n    |                  postMessage(result) |\n    |<-------------------------------------|\n    | repaint / present result             |\n    |                                      |\n    | terminate()              close() ----|</div>\n\n<h2>Creating a Worker</h2>\nThe {@link Worker} constructor has two explicit startup forms:\n\n<ul class=\"doc-article-list\">\n<li><b><code>new Worker(source[, name])</code></b> — evaluates JavaScript <b><code>source</code></b> text supplied by the panel script.</li>\n<li><b><code>new Worker({ file: 'path/to/worker.js' }[, name])</code></b> — reads and evaluates a JavaScript file.</li>\n</ul>\n\nIn the file-backed form, <b><code>file</code></b> may be an absolute or relative path. Relative paths use the caller/package/component search roots, and the resolved file becomes the Worker's startup script origin. \n\nThe optional second <b><code>name</code></b> argument has the same meaning in both startup forms: it is the Worker's immutable identity for its lifetime. Supply it when the Worker is created; inside the Worker the same value is exposed through read-only {@link WorkerGlobalScope#name self.name}. JSplitter also uses this exact name in {@link window.JsMemoryStats} (<b><code>Workers[].Name</code></b>) and as the first diagnostic metadata line of every unhandled Worker exception (see below). Giving long-lived or multiple concurrent Workers short descriptive names therefore makes both memory inspection and failures much easier to identify.\n\nHere are the examples of Worker creation:\n\n```js\nconst inlineWorker = new Worker(`\n    include('workers/main.js');\n`,\n'inline-worker');\n\nconst fileWorker = new Worker(\n    { file: 'workers/main.js' },\n    'file-worker'\n);\n```\n\nThis also means an inline Worker based on source text can be any piece of executable JavaScript code or only a tiny bootstrap that {@link include include()}s ordinary files, while a file-backed Worker can start from the same file directly. Relative paths are resolved from the currently executing script file first when one exists, so a file-backed <b><code>workers/main.js</code></b> can <b><code>include('./helpers.js')</code></b>; otherwise the Worker's inherited script/package roots and component path are used.\n\nSource text passed to {@link Worker} is ordinary JavaScript. JSplitter evaluates it in a new Worker realm running on its own thread:\n\n```js\nconst worker = new Worker(`\n    const value = 21 * 2;\n    console.log('Worker result: ' + value);\n`, 'example-worker');\n```\n\nThe code inside the string runs in the Worker, not in the panel. It can use the APIs available to Worker code just as ordinary panel JavaScript can use panel APIs.\n\nThis example is intentionally not very useful: it performs one calculation and does not communicate with the panel. The next section explains an important consequence of this execution model: the Worker remains alive even after that startup code reaches its end. Later sections show how messaging turns it into a useful long-lived Worker.\n\n<h2>Worker lifetime and the event loop</h2>\nReaching the end of the Worker's initial source does <b>not</b> mean that the Worker has finished. In the example above, execution reaches the end immediately after <b><code>console.log()</code></b>, but the Worker itself remains alive. JSplitter keeps it running in its event loop. In this documentation, <b>event loop</b> simply means the Worker waits for the next unit of work and dispatches it when it arrives: a message from the panel, a timer, a Worker-capable asynchronous host completion, observer delivery, or Promise work associated with a task. When there is nothing to do, the Worker waits; it does not repeatedly execute the initial source and it does not need a user-written loop.\n\nThis also means that processing one message does not end the Worker. The same Worker can receive many later messages through the same {@link WorkerGlobalScope#onmessage onmessage} handler with one {@link MessageEvent} parameter. If the panel stays loaded and keeps the Worker alive, and neither side closes it, the Worker remains alive waiting for more work. It is therefore important to end Workers that are no longer needed rather than assuming that returning from the startup script or from a message handler stops them.\n\nThere are two normal ways to end a Worker:\n\n<ul class=\"doc-article-list\">\n<li>The parent panel calls {@link Worker#terminate terminate()} when it decides that the Worker is no longer needed.</li>\n<li>Worker code calls Worker-global {@link WorkerGlobalScope#close close()} when the Worker itself knows that its work is finished. New work is no longer accepted, the current task is allowed to finish, and then the event loop exits.</li>\n</ul>\n\nNext example shows typical <b>worker <-> panel</b> messaging:\n```js\nconst worker = new Worker(`\nonmessage = function (event) {\n    if (event.data === 'stop') {\n        // WORKER: the Worker decides that it has finished.\n        postMessage('finished');\n        close();\n        return;\n    }\n\n    postMessage('processed: ' + event.data);\n};\n`);\n\n// PANEL: receives messages sent by postMessage() inside the Worker here\nworker.onmessage = function (event) {\n    console.log('Worker says: ' + event.data);\n};\n\n// PANEL: sends message to worker\nworker.postMessage('hello');\n// -> Worker says: processed: hello\n\n// If Worker is no longer needed then:\n\n// Option A: ask the Worker to finish through its own message protocol\nworker.postMessage('stop');\n// -> Worker says: finished\n\n// Option B: stop Worker directly from the outside instead.\n// Calling terminate() here is also safe, after the Worker has already called close()\n// worker.terminate();\n```\n\nJSplitter automatically terminates all Workers still owned by a panel when that panel is unloaded, so explicit cleanup is not required merely for panel teardown. Explicit {@link Worker#terminate terminate()} is for ending a Worker <b>earlier</b>, while the panel continues to live. Conversely, while the panel remains loaded, a Worker that is still kept alive and is never closed or terminated will remain waiting in its event loop and will continue to hold its Worker realm and associated resources.\n\n<div class=\"doc-note warning\"><b>Do not treat a Worker as a one-shot function call.</b><br>\nIf the panel keeps a Worker alive after its useful work is finished, returning from the Worker source or from its last message handler does not dispose it. Call {@link Worker#terminate terminate()} when the panel is done with it, or design the Worker protocol so Worker-global {@link WorkerGlobalScope#close close()} is called when the Worker knows it is finished.</div>\n\n<h2>Handling Worker errors</h2>\n\nAn exception that is <strong>not caught by Worker code</strong> and escapes Worker startup code, a Worker message handler, a timer callback, or another Worker task is reported as an {@link ErrorEvent}. A normal <code>try...catch</code> handles the exception locally and prevents this error-reporting path from being used.\n\nFor uncaught exceptions, Worker-local handling comes first: if Worker-global {@link WorkerGlobalScope#onerror onerror} or an <strong><code>error</code></strong> listener is installed, the error is handled there and is not forwarded to the parent. Otherwise it is forwarded to the parent side, where {@link Worker#onerror Worker.onerror} or an <strong><code>error</code></strong> listener can handle it.\n\n```js\nworker.onerror = function (event) {\n    console.log('Worker error: ' + event.message);\n    console.log('Source: ' + event.filename);\n    console.log('Location: ' + event.lineno + ':' + event.colno);\n};\n```\n\nIf the error reaches the parent and no parent error handler is installed, JSplitter shows the normal panel-script error UI. A named inline Worker can produce a diagnostic like this:\n\n```text\nz is not defined\n\nWorker: spectrum-renderer\nFile: worker.js\nLine: 42, Column: 5\nStack trace:\n  scheduleNext@worker.js:42:5\n  onmessage@worker.js:68:3\n```\n\nRead it from top to bottom:\n\n<ul class=\"doc-article-list\">\n<li><b>Error message</b> — <b><code>z is not defined</code></b> is the exception text.</li>\n<li><b><code>Worker:</code></b> — the immutable Worker name supplied at construction time. An unnamed Worker shows <b><code>&lt;unnamed&gt;</code></b>.</li>\n<li><b><code>File:</code></b> — the Worker source name. Inline Workers use <b><code>worker.js</code></b>; file-backed Workers use the startup script basename.</li>\n<li><b><code>Line / Column:</code></b> — the original location of the exception in Worker code.</li>\n<li><b><code>Stack trace:</code></b> — the original Worker call chain when SpiderMonkey provides it.</li>\n</ul>\n\nThe resolved full path of a file-backed Worker is retained internally for relative file resolution, but diagnostics intentionally use the script basename to match ordinary panel-script diagnostics.\n\nA parent-side error handler can also deliberately turn a Worker failure into a normal panel-script exception by throwing. The <b><code>event</code></b> parameter below is the incoming {@link ErrorEvent}, so the original Worker location is available directly on that object:\n\n```js\nworker.onerror = function (event) {\n    console.log('Original Worker location: ' +\n        event.filename + ':' + event.lineno + ':' + event.colno);\n\n    throw new Error('Worker failed: ' + event.message);\n};\n```\n\n<h2>Sending structured data</h2>\nMessages are not limited to strings. {@link Worker#postMessage Worker.postMessage()} and Worker-global {@link WorkerGlobalScope#postMessage postMessage()} use structured-clone semantics: the sender serializes the value and the receiver reconstructs its own independent value. The two realms do not share the same JavaScript object.\n\n```js\nconst worker = new Worker(`\nonmessage = function (event) {\n    const request = event.data;\n\n    if (request.command === 'sum') {\n        const total = request.values.reduce((a, b) => a + b, 0);\n\n        // WORKER: send a structured result object back to the panel.\n        postMessage({\n            command: 'sum-result',\n            total: total\n        });\n    }\n};\n`);\n\nworker.onmessage = function (event) {\n    console.log(event.data.command); // sum-result\n    console.log(event.data.total);   // 10\n\n    // PANEL: this one-shot example has its result, so it no longer needs\n    // the Worker to remain alive waiting for more messages.\n    worker.terminate();\n};\n\n// PANEL: the object and nested array are cloned for the Worker.\nworker.postMessage({\n    command: 'sum',\n    values: [1, 2, 3, 4]\n});\n```\n\nOrdinary JavaScript objects, arrays, maps, sets, typed arrays, ArrayBuffers and other supported structured-clone values can be sent this way. Selected JSplitter host wrappers can also cross the message boundary; the exact types and their ownership rules are listed later under <b>Host objects in messages</b>.\n\n<h2>Broadcasting between panels and Workers</h2>\n{@link Worker#postMessage Worker.postMessage()} is a direct channel between one panel and one specific Worker. When several independent panels and/or Workers should publish and receive messages by a shared name, use {@link BroadcastChannel} instead. BroadcastChannel uses asynchronous structured-clone delivery and does not require the sender to keep references to every receiver.\n\n```js\nconst channel = new BroadcastChannel('playback-state');\nchannel.onmessage = event => console.log(event.data);\nchannel.postMessage({ playing: true, track: 12 });\n```\n\nThe same constructor and handlers are available in panel and Worker realms. One important difference from direct Worker messaging is ownership: <b>BroadcastChannel has no transfer list and never detaches the sender's objects.</b> Values are structured-cloned for its receivers. A broadcast can fan out to several independent destinations, so there is no single receiver that could take ownership of a transferred resource.\n\n```js\n// Broadcast: cloned for listeners; bitmap stays usable here.\nchannel.postMessage({ bitmap: bitmap });\n\n// Direct Worker message: ownership can be moved to this one Worker.\nworker.postMessage({ bitmap: bitmap }, [bitmap]);\n// bitmap is detached after a successful transfer.\n```\n\nIf you need publish/subscribe delivery, use {@link BroadcastChannel}. If you need to move a large transferable resource to one known Worker without retaining a usable source object, use the transfer-list form described below. See {@link BroadcastChannel} and its linked sample for the complete broadcast usage guide.\n\n<h2>Transferring ownership</h2>\nA transferable value uses the same message channel but a different ownership model.\nNormal structured clone leaves the source usable and creates a representation for the receiver.\nTransfer instead <b>moves ownership</b> of the underlying resource without cloning.\nAfter a successful transfer, the source wrapper is detached and <b>must not be used</b> again\nby the sender.\n\nThe syntax difference is the <b>transfer list</b> passed as the second argument.\nThe transfer list is separate from the message payload. It identifies transferable objects\ncontained anywhere in the payload that should have their ownership moved instead of being cloned.\n\n```js\n// Clone: both objects remain usable in the panel.\nworker.postMessage({\n    bitmap: bitmap,\n    chunk: audioChunk\n});\n\n// Transfer: the message payload is still the first argument.\n// The transfer list only specifies which transferable objects inside that\n// payload move to the Worker instead of being cloned.\nworker.postMessage(\n    {\n        bitmap: bitmap,\n        chunk: audioChunk,\n        values: [1, 2, 3, 4]\n    },\n    [bitmap, audioChunk]\n);\n\n// After a successful transfer, bitmap and audioChunk are detached in the\n// panel. Other values in the message, such as \"values\", are cloned normally.\n```\n\nTransfers are atomic with respect to the transfer list. A call to <b><code>postMessage(value, transferList)</code></b> either transfers every transferable object\nin the list or transfers none of them.\n\nIf the message cannot be serialized, or any object in the transfer list cannot be transferred,\n{@link Worker#postMessage postMessage()} fails <b>synchronously by throwing an exception in the sender</b>.\nThe message is not queued, all source objects remain usable, and no object in the transfer list is detached.\n\nAfter {@link Worker#postMessage postMessage()} successfully serializes the message and commits the transfer,\nall objects listed in the transfer list are detached in the sender.\n\nA message is delivered only after sender-side serialization and transfer have completed successfully.\nIf the receiving realm then cannot reconstruct one of the message values, that endpoint receives a\n{@link Worker#onmessageerror messageerror} event and remains usable for later messages. This is a\nreceiver-side delivery failure and is therefore separate from a synchronous exception thrown by\n<code>postMessage()</code> in the sender. A completed transfer is <b>not rolled back</b>, and transferred\nsource objects remain detached.\n\nJSplitter adds two diagnostic fields to that {@link MessageEvent}:\n{@link MessageEvent#errorMessage errorMessage} tells you why reconstruction failed, while\n{@link MessageEvent#direction direction} tells you whether the failed delivery was\n<b>panel-to-worker</b> or <b>worker-to-panel</b>. The original payload is not available because\nreconstruction did not complete, so {@link MessageEvent#data data} is <b>undefined</b>.\n\n```js\nworker.onmessageerror = function (event) {\n    // PANEL: a Worker result reached this panel but could not be reconstructed.\n    console.log('Failed direction: ' + event.direction);\n    console.log('Reason: ' + event.errorMessage);\n};\n```\n\nInside a Worker, Worker-global {@link WorkerGlobalScope#onmessageerror onmessageerror} exposes\nthe same fields; its direction is <b>panel-to-worker</b>. This is a delivery/structured-clone\nfailure, not an uncaught Worker exception, so it is separate from\n{@link Worker#onerror onerror}.\n\n<h2>Host objects in messages</h2>\nThe examples above cover normal structured data and transfer syntax. JSplitter also defines explicit messaging rules for its native host wrappers. The lists below are the reference for which wrappers may cross between the panel and Worker realms.\n\n<b>Cloneable host objects.</b> Sending one of these without a transfer list leaves the source object usable in the sender and creates an independent representation for the receiving realm.\n<details class=\"doc-capability-list\"><summary><b>Cloneable host objects</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link FbMetadbHandle}</li>\n<li>{@link FbMetadbHandleList}</li>\n<li>{@link FbFileInfo}</li>\n<li>{@link FbTitleFormat}</li>\n<li>{@link FbPlaybackQueueItem}</li>\n<li>{@link FbPlayingItemLocation}</li>\n<li>{@link FbAudioChunk}</li>\n<li>{@link DriveInfo}</li>\n<li>{@link RunResult}</li>\n<li>{@link GdiGraphics.MeasureStringInfo GDI MeasureStringInfo}</li>\n<li>{@link D2DGraphics.MeasureStringInfo D2D MeasureStringInfo}</li>\n<li>{@link D2DCompileInfo}</li>\n<li>{@link GdiBitmap}</li>\n<li>{@link GdiFont}</li>\n<li>{@link GdiBrush}</li>\n<li>{@link D2DBitmap}</li>\n<li>{@link D2DFont}</li>\n<li>{@link D2DBrush}</li>\n<li>{@link D2DStrokeStyle}</li>\n</ul>\n</details>\n\n<b>Transferable host objects.</b> These are the JSplitter host wrappers that support the transfer-list ownership model demonstrated above. After a successful transfer the source wrapper is detached and no longer usable on the sender side; if serialization itself fails, the transfer is rolled back and the source remains usable.\n\nTransfer support is intentionally limited to objects that own a significant dynamic resource whose ownership can be moved efficiently and unambiguously between realms. Smaller value-like objects are simply cloned, while shared or realm-bound resources are not made transferable.\n\n<details class=\"doc-capability-list\"><summary><b>Transferable host objects</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link FbAudioChunk}</li>\n<li>{@link GdiBitmap}</li>\n<li>{@link D2DBitmap}</li>\n</ul>\n<p>All three types are also cloneable. Choose ordinary cloning when both realms still need a usable object. Transfer moves bitmap pixel storage or the {@link FbAudioChunk} sample buffer to the receiving realm without keeping a usable source wrapper.</p>\n</details>\n\n<b>Realm-local host objects.</b> Other wrappers represent live services, graphics state or resources whose meaning is tied to the realm that created them. They can be used normally inside that realm, including inside a Worker when the relevant API is available there, but they cannot cross a structured-clone message boundary. Attempting to post one fails serialization rather than silently sharing the native object.\n\n<details class=\"doc-capability-list\"><summary><b>Realm-local host objects</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link FbProfiler}</li>\n<li>{@link FbUiSelectionHolder}</li>\n<li>{@link FbPlaylistRecycler}</li>\n<li>{@link HtmlDocument}</li>\n<li>{@link HtmlNode}</li>\n<li>{@link GdiRawBitmap}</li>\n<li>{@link GdiGraphics}</li>\n<li>{@link D2DGraphics}</li>\n<li>{@link D2DEffect}</li>\n</ul>\n<p>{@link MainMenuManager} and {@link ContextMenuManager} are additionally panel-only because their factories are not exposed in Workers.</p>\n</details>\n\n<h2>Panel realm versus Worker realm</h2>\nA Worker is not another panel. It has no panel HWND, no {@link window} object, no panel graphics render target, and no panel UI/input callbacks such as {@link module:Callbacks.on_paint on_paint}, {@link module:Callbacks.on_key_down on_key_down} or {@link module:Callbacks.on_mouse_move on_mouse_move}. This does not mean Worker code has no callbacks at all: message/event handlers and completion callbacks belonging to Worker-capable asynchronous host APIs remain available where documented. A Worker has its own {@link fb}, {@link plman}, {@link utils}, {@link gdi}, {@link console} and {@link performance} namespace objects. When Direct2D is initialized before the Worker is created, {@link d2d} is available as well.\n<div class=\"doc-note warning\"><b>Direct2D versions earlier than 1.1 are not supported in the Worker.</b><br>\nMinimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div>\n\nThese APIs are exposed in the Worker realm, but this does not mean that every operation runs on the Worker thread: methods marked <strong>MAIN THREAD</strong> cross to the main thread internally but, for example, GDI and Direct2D resources can be created and used by the Worker for offscreen rendering in its own thread.\n\nThe Worker environment implements the JSplitter subset of familiar Worker primitives: {@link EventTarget}, {@link Event}, {@link MessageEvent}, {@link ErrorEvent}, {@link PromiseRejectionEvent}, {@link WorkerGlobalScope}, timers and promises. The local JSplitter interface pages describe the supported surface and behaviour.\n\n<h2>Worker API coverage</h2>\nMost useful non-UI JSplitter API is available inside a Worker. Namespaces marked <b>mostly available</b> below expose the large majority of their normal surface; the relatively small set of exclusions is listed separately in <b>APIs intentionally unavailable in Workers</b>.\n\n<ul class=\"doc-article-list\">\n<li><b>Core Worker environment</b> — messaging, events, timers, promises, {@link include include()} are available.</li>\n<li>{@link fb} — <b>mostly available</b>. Playback, library/selection data, title formatting, DSP/output state and most non-modal host operations are exposed.</li>\n<li>{@link plman} — <b>mostly available</b>. Playlist manipulation, playback queue, sorting, undo/redo and the playlist recycler are exposed.</li>\n<li>{@link utils} — <b>mostly available</b>. Filesystem, hashing, text/binary/INI, package/system information, HTML parsing, drives, image/album-art loading, process, HTTP and download helpers are exposed.</li>\n<li>{@link gdi} — <b>fully available</b> as a DrawMode-aware Worker namespace. In GDI mode its factories create GDI+ resources; when the Worker is created from a Direct2D panel, the same <b><code>gdi.*</code></b> factories route to the Worker Direct2D backend and create the corresponding D2D resources.</li>\n<li>{@link d2d} — <b>fully available</b> as a Worker namespace when Direct2D is initialized before Worker creation, including effects, compile support and Worker-local offscreen rendering. Set {@link window.DrawMode} to <b>1</b> in the panel <b>before</b> creating a Worker that needs Direct2D.</li>\n<li>{@link console} — <b>fully available</b> inside a Worker.</li>\n<li>{@link performance} — <b>fully available</b> inside a Worker.</li>\n</ul>\n\n<h2>APIs intentionally unavailable in Workers</h2>\n<b>Panel and browser globals.</b> The panel {@link window} namespace, panel UI/input callbacks such as {@link module:Callbacks.on_paint on_paint}, {@link module:Callbacks.on_key_down on_key_down} and {@link module:Callbacks.on_mouse_move on_mouse_move}, tooltips, theme/HWND services and the panel graphics render target are not Worker concepts. In particular, the panel-provided {@link GdiGraphics} or {@link D2DGraphics} graphics context passed to UI painting callbacks is not available to Worker code. Also panel-only compatibility globals such as {@link ActiveXObject} and {@link Enumerator}, and nested {@link Worker} creation are also unavailable.\n\nThe mostly available namespaces listed above also omit a small number of operations that are modal, interactive, tied to live panel UI state, or otherwise unsuitable for a Worker:\n\n<details class=\"doc-capability-list\"><summary><b>fb</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link fb.AddDirectory}</li>\n<li>{@link fb.AddFiles}</li>\n<li>{@link fb.CreateContextMenuManager}</li>\n<li>{@link fb.CreateMainMenuManager}</li>\n<li>{@link fb.DoDragDrop}</li>\n<li>{@link fb.LoadPlaylist}</li>\n<li>{@link fb.RunContextCommand}</li>\n<li>{@link fb.RunContextCommandWithMetadb}</li>\n<li>{@link fb.RunMainMenuCommand}</li>\n<li>{@link fb.SavePlaylist}</li>\n</ul>\n</details>\n\n<details class=\"doc-capability-list\"><summary><b>plman</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link plman.ShowAutoPlaylistUI}</li>\n<li>{@link plman.ShowPlaylistLockUI}</li>\n</ul>\n</details>\n\n<details class=\"doc-capability-list\"><summary><b>utils</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link utils.ColourPicker}</li>\n<li>{@link utils.EditTextFile}</li>\n<li>{@link utils.FilePicker}</li>\n<li>{@link utils.FolderPicker}</li>\n<li>{@link utils.FontPicker}</li>\n<li>{@link utils.InputBox}</li>\n<li>{@link utils.MessageBox}</li>\n<li>{@link utils.ShowHtmlDialog}</li>\n</ul>\n</details>\n\n<h2>Main-thread host operations</h2>\nMany APIs are callable from Worker code but ultimately use foobar2000 services that can only execute on the main thread (this is a foobar2000 SDK requirement). When the Worker calls one of these APIs, it waits synchronously until that host operation finishes. Occasional calls are fine; a tight loop of them defeats much of the reason for moving work to a Worker.\n\n<div class=\"doc-article-diagram\">GOOD\npanel:  send one useful batch\n                   |\n                   v\nworker: process / aggregate / render\n                   |\n                   v\npanel:  receive compact result\n\nPOOR\nworker: main thread -> main thread -> main thread -> ...</div>\n\n<div class=\"doc-note warning\"><b>Avoid building a Worker around repeated main-thread calls.</b><br>\nIf most of a Worker consists of frequent synchronous host calls, moving that code to a Worker will usually provide no performance benefit and can make it slower because of repeated cross-thread synchronization. If the main thread is busy, the Worker waits too.</div>\n\nThe lists below show the Worker-accessible API that uses this synchronous main-thread bridge:\n\n<details class=\"doc-capability-list\"><summary><b>plman</b></summary>\n<p><b>EVERY</b> Worker-exposed {@link plman} function is main-thread bridged. These live properties also have main-thread accessors:</p>\n<ul class=\"doc-api-link-list\">\n<li>{@link plman.ActivePlaylist}</li>\n<li>{@link plman.PlaybackOrder}</li>\n<li>{@link plman.PlayingPlaylist}</li>\n<li>{@link plman.PlaylistCount}</li>\n</ul>\n<p>Reading {@link plman.PlaylistRecycler} itself only obtains the Worker-local {@link FbPlaylistRecycler} wrapper; its operations are main-thread bridged.</p>\n</details>\n\n<details class=\"doc-capability-list\"><summary><b>fb</b></summary>\n<h4>Functions</h4>\n<ul class=\"doc-api-link-list\">\n<li>{@link fb.AcquireUiSelectionHolder}</li>\n<li>{@link fb.AddLocationsAsync}</li>\n<li>{@link fb.CheckClipboardContents}</li>\n<li>{@link fb.ClearPlaylist}</li>\n<li>{@link fb.CopyHandleListToClipboard}</li>\n<li>{@link fb.Exit}</li>\n<li>{@link fb.EnumerateMainMenuCommands}</li>\n<li>{@link fb.GetActiveDSPs}</li>\n<li>{@link fb.GetClipboardContents}</li>\n<li>{@link fb.GetDSPPresets}</li>\n<li>{@link fb.GetFocusItem}</li>\n<li>{@link fb.GetLibraryItems}</li>\n<li>{@link fb.GetLibraryRelativePath}</li>\n<li>{@link fb.GetLibraryRoots}</li>\n<li>{@link fb.GetNowPlaying}</li>\n<li>{@link fb.GetSelection}</li>\n<li>{@link fb.GetSelections}</li>\n<li>{@link fb.GetSelectionType}</li>\n<li>{@link fb.IsLibraryEnabled}</li>\n<li>{@link fb.IsMainMenuCommandChecked}</li>\n<li>{@link fb.IsMetadbInMediaLibrary}</li>\n<li>{@link fb.Next}</li>\n<li>{@link fb.Pause}</li>\n<li>{@link fb.Play}</li>\n<li>{@link fb.PlayOrPause}</li>\n<li>{@link fb.Prev}</li>\n<li>{@link fb.Random}</li>\n<li>{@link fb.RegisterMainMenuCommand}</li>\n<li>{@link fb.Restart}</li>\n<li>{@link fb.SetDSPPreset}</li>\n<li>{@link fb.SetOutputDevice}</li>\n<li>{@link fb.ShowConsole}</li>\n<li>{@link fb.ShowLibrarySearchUI}</li>\n<li>{@link fb.ShowPictureViewer}</li>\n<li>{@link fb.ShowPlaylistSearchUI}</li>\n<li>{@link fb.ShowPreferences}</li>\n<li>{@link fb.Stop}</li>\n<li>{@link fb.UnregisterMainMenuCommand}</li>\n<li>{@link fb.VolumeDown}</li>\n<li>{@link fb.VolumeMute}</li>\n<li>{@link fb.VolumeUp}</li>\n</ul>\n<h4>Properties</h4>\n<ul class=\"doc-api-link-list\">\n<li>{@link fb.AlwaysOnTop}</li>\n<li>{@link fb.CursorFollowPlayback}</li>\n<li>{@link fb.CustomVolume}</li>\n<li>{@link fb.IsPaused}</li>\n<li>{@link fb.IsPlaying}</li>\n<li>{@link fb.PlaybackFollowCursor}</li>\n<li>{@link fb.PlaybackLength}</li>\n<li>{@link fb.PlaybackTime}</li>\n<li>{@link fb.ReplaygainMode}</li>\n<li>{@link fb.StopAfterCurrent}</li>\n<li>{@link fb.Volume}</li>\n</ul>\n</details>\n\n<details class=\"doc-capability-list\"><summary><b>utils / console</b></summary>\n<h4>utils</h4>\n<ul class=\"doc-api-link-list\">\n<li>{@link utils.CheckComponent}</li>\n<li>{@link utils.GetClipboardText}</li>\n<li>{@link utils.GetPackageInfo}</li>\n<li>{@link utils.GetPackagePath}</li>\n<li>{@link utils.RecyclePath}</li>\n<li>{@link utils.Run}</li>\n<li>{@link utils.SetClipboardText}</li>\n</ul>\n<h4>console</h4>\n<ul class=\"doc-api-link-list\">\n<li>{@link console.GetLines}</li>\n<li>{@link console.ClearBacklog}</li>\n</ul>\n<p>The console methods above use the foobar2000 main-thread console manager on foobar2000 2.0 and newer; the legacy JSplitter-owned console backlog path is thread-safe and direct.</p>\n</details>\n\n<details class=\"doc-capability-list\"><summary><b>Host wrapper methods</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link FbMetadbHandle#RefreshStats}</li>\n<li>{@link FbMetadbHandleList#GetLibraryRelativePaths}</li>\n<li>{@link FbMetadbHandleList#OptimiseFileLayout}</li>\n<li>{@link FbMetadbHandleList#OrderByRelativePath}</li>\n<li>{@link FbMetadbHandleList#RefreshStats}</li>\n<li>{@link FbMetadbHandleList#RemoveAttachedImage}</li>\n<li>{@link FbMetadbHandleList#RemoveAttachedImages}</li>\n<li>{@link FbMetadbHandleList#UpdateFileInfoFromJSON}</li>\n<li>{@link FbTitleFormat#Eval}</li>\n<li>{@link FbUiSelectionHolder#SetSelection}</li>\n<li>{@link FbUiSelectionHolder#SetPlaylistSelectionTracking}</li>\n<li>{@link FbUiSelectionHolder#SetPlaylistTracking}</li>\n<li>{@link FbPlaylistRecycler#Count}</li>\n<li>{@link FbPlaylistRecycler#GetName}</li>\n<li>{@link FbPlaylistRecycler#GetContent}</li>\n<li>{@link FbPlaylistRecycler#Purge}</li>\n<li>{@link FbPlaylistRecycler#Restore}</li>\n</ul>\n</details>\n\nA small note on {@link fb.GetAudioChunk fb.GetAudioChunk}: it's normally accesses the visualisation stream directly from the Worker but its first use may briefly synchronize with the main thread while that stream is initialized.\n\nA Worker waiting for a bridge call can normally be terminated cleanly. Once a main-thread callback has already begun executing, however, it cannot be interrupted halfway through; that in-progress host operation must return before it can be fully unwound. Blocking or modal host APIs are therefore deliberately excluded from the Worker surface.\n\n<h2>Capability badges and terms</h2>\nThe detailed API pages use four local badges for the concepts introduced above:\n\n<ul class=\"doc-article-list\">\n<li><span class=\"flag capability worker\">WORKER</span> — this API item is available from Worker code. Absence of this badge means the item is not part of the documented Worker surface.</li>\n<li><span class=\"flag capability main-thread\">MAIN THREAD</span> — as described in <b>Main-thread host operations</b> above, the item is callable from a Worker but its foobar2000 host operation executes synchronously on the main thread. The Worker waits for that operation to return, so repeated calls should be avoided in hot Worker loops.</li>\n<li><span class=\"flag capability cloneable\">CLONEABLE</span> — instances of this host type can be sent through {@link Worker#postMessage postMessage()} using structured clone while the source remains usable.</li>\n<li><span class=\"flag capability transferable\">TRANSFERABLE</span> — instances can additionally be placed in the transfer list so ownership moves to the receiver; after a successful transfer the source wrapper is detached and no longer usable on the sender side.</li>\n</ul>\n\n<h2>Samples</h2>\nThe samples are intentionally ordered. Start with lifecycle/messaging, then move through batch data processing, CPU-bound work, asynchronous image processing and finally a real-time audio/render pipeline.\n\n<b>1. Basic Messaging.</b> The smallest complete lifecycle example: create a named inline Worker, send a structured object, receive a result, install parent/Worker <b><code>messageerror</code></b> diagnostics and a parent error handler, then let the Worker finish with Worker-global {@link WorkerGlobalScope#close close()}. The unload handler also shows that parent {@link Worker#terminate terminate()} is safe during panel teardown.\n\n```js\n// PANEL: create and immediately start a named Worker from prepared source text.\nconst worker = new Worker(source, 'basic-messaging');\n\n// PANEL: values sent by Worker-global postMessage(...) arrive here as event.data.\nworker.onmessage = event => console.log(event.data);\n\n// PANEL: send one object to this Worker. JSplitter structured-clones it before\n// the Worker's onmessage handler receives its own reconstructed copy.\nworker.postMessage({ values: [1, 2, 3, 4] });\n```\n\n<b>2. Playlist Statistics.</b> Presents Media Library and the existing playlists as an interactive source list. The panel obtains one {@link FbMetadbHandleList}, then the <b>Main / Worker</b> switch runs the same metadata and {@link FbFileInfo} aggregation either synchronously in the panel realm or on the cloned list in the Worker. The detail view reports calculation and end-to-end time, making the responsiveness/overhead trade-off visible on large real-world batches.\n\n```js\n// Panel: obtain one source batch. Media Library uses fb.GetLibraryItems();\n// playlists use plman.GetPlaylistItems(...).\nconst handles = source.library ? fb.GetLibraryItems() : plman.GetPlaylistItems(source.index);\n\n// Worker mode: clone the complete list once and aggregate it off the panel thread.\nworker.postMessage({ requestId, handles });\n\n// Main mode runs the same analyseHandles(handles) function in the panel realm.\n```\n\n<b>3. Fractal Renderer.</b> Demonstrates a CPU-bound render job that belongs entirely in a Worker. Pan and zoom reuse one completed frame locally for immediate feedback; drag sends one final viewport on release, while wheel and resize bursts are coalesced for 80 ms. The Worker renders only the settled viewport, transfers the completed bitmap, and stale results are rejected by view id. The <b>GDI / D2D</b> switch recreates the Worker so the same <b><code>gdi.*</code></b> facade can be compared in both rendering modes.\n\n<b>4. Playlist Album Gallery.</b> A practical artwork-loading A/B test. <b>Main / Worker</b> runs the same visible-cover pipeline either in the panel or in the Worker. In Worker mode the panel sends one cloneable {@link FbMetadbHandleList}; the Worker deduplicates it into albums, loads artwork with {@link utils.GetAlbumArtAsyncV2 GetAlbumArtAsyncV2}, resizes each image and transfers completed bitmaps back individually. Only the covers that fit in the current viewport are requested, changing cover size intentionally reloads them, and the sample has no artwork cache. <b>Concurrency</b> controls how many artwork requests may be in flight, while <b>GDI / D2D</b> selects the rendering backend. Targeted <b><code>RepaintRect</code></b> updates and timing counters make first display, loading, delivery and paint cost visible.\n\n<b>5. Spectrum Analyzer.</b> The real-time A/B test. <b>Main / Worker</b> runs the same audio-read, FFT and offscreen-render pipeline on either thread. Both paths allow only one completed frame at a time; the next frame starts only after the previous bitmap reaches <b><code>on_paint</code></b>, so the counters measure work that can actually be presented. Additional switches select <b>GDI / D2D</b>, FFT size, and either a <b>120 FPS</b> limiter or <b>Max</b> mode. The overlay reports frame/paint rate plus audio, FFT, render and total processing time. <b>Max</b> is useful for exposing fixed per-frame overhead, but the sample is not intended as a general GDI-versus-D2D benchmark.\n\n```js\n// Worker: read a short audio window and turn it into spectrum data.\nconst chunk = fb.GetAudioChunk(0.06, -0.03);\nanalyse(chunk);\n\n// Render a complete offscreen frame, then transfer its ownership to the panel.\nconst frame = renderSpectrum();\npostMessage({ bitmap: frame, timing }, [frame]);\n// frame is detached here after a successful transfer and must not be reused.\n\n// Panel: keep one completed frame and request presentation. Do not acknowledge\n// it yet: the Worker remains paused until this exact frame reaches on_paint.\nworker.onmessage = function (event) {\n    frame = event.data.bitmap;\n    window.Repaint();\n};\n\nfunction on_paint(gr) {\n    gr.DrawImage(frame, 0, 0, window.Width, window.Height, 0, 0, frame.Width, frame.Height);\n    worker.postMessage({ type: 'next' });\n}\n```",
     "params": [
       {
         "type": "(string|Object)",
@@ -48172,7 +48291,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 636
+      "line": 637
     }
   },
   {
@@ -48202,7 +48321,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 643
+      "line": 644
     }
   },
   {
@@ -48232,7 +48351,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 652
+      "line": 653
     }
   },
   {
@@ -48243,7 +48362,7 @@
     "signature": "postMessage(data, transfer)",
     "type": null,
     "value": null,
-    "description": "Serializes and sends a value to the Worker.",
+    "description": "Serializes and sends a value to the Worker. Sender-side serialization and transfer-list validation are synchronous; successful delivery to the Worker is asynchronous.",
     "params": [
       {
         "type": "*",
@@ -48264,7 +48383,12 @@
     ],
     "properties": [],
     "returns": null,
-    "throws": [],
+    "throws": [
+      {
+        "type": "Error",
+        "description": "If the required data argument is omitted, the value cannot be structured-cloned, or the transfer list is invalid or cannot be committed. No message is queued and transferable source objects remain usable when this happens."
+      }
+    ],
     "examples": [],
     "sourceFiles": [],
     "readonly": false,
@@ -48279,7 +48403,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 660
+      "line": 661
     }
   },
   {
@@ -48309,7 +48433,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 668
+      "line": 670
     }
   },
   {
@@ -48339,7 +48463,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 676
+      "line": 678
     }
   },
   {
@@ -48394,7 +48518,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 683
+      "line": 685
     }
   },
   {
@@ -48449,7 +48573,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 692
+      "line": 694
     }
   },
   {
@@ -48491,7 +48615,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 701
+      "line": 703
     }
   },
   {
@@ -48538,7 +48662,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 710
+      "line": 712
     }
   },
   {
@@ -48568,7 +48692,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 719
+      "line": 721
     }
   },
   {
@@ -48598,7 +48722,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 727
+      "line": 729
     }
   },
   {
@@ -48628,7 +48752,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 735
+      "line": 737
     }
   },
   {
@@ -48658,7 +48782,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 743
+      "line": 745
     }
   },
   {
@@ -48688,7 +48812,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 751
+      "line": 753
     }
   },
   {
@@ -48718,7 +48842,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 759
+      "line": 761
     }
   },
   {
@@ -48748,7 +48872,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 767
+      "line": 769
     }
   },
   {
@@ -48778,7 +48902,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 769
+      "line": 771
     }
   },
   {
@@ -48808,7 +48932,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 771
+      "line": 773
     }
   },
   {
@@ -48855,7 +48979,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 775
+      "line": 777
     }
   },
   {
@@ -48885,7 +49009,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 784
+      "line": 786
     }
   },
   {
@@ -48915,7 +49039,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 792
+      "line": 794
     }
   },
   {
@@ -48945,7 +49069,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 800
+      "line": 802
     }
   },
   {
@@ -48975,7 +49099,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 808
+      "line": 810
     }
   },
   {
@@ -49005,7 +49129,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 816
+      "line": 818
     }
   },
   {
@@ -49035,7 +49159,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 824
+      "line": 826
     }
   },
   {
@@ -49065,7 +49189,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 833
+      "line": 835
     }
   },
   {
@@ -49112,7 +49236,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 843
+      "line": 845
     }
   },
   {
@@ -49142,7 +49266,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 852
+      "line": 854
     }
   },
   {
@@ -49172,7 +49296,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 860
+      "line": 862
     }
   },
   {
@@ -49202,7 +49326,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 868
+      "line": 870
     }
   },
   {
@@ -49232,7 +49356,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 876
+      "line": 878
     }
   },
   {
@@ -49262,7 +49386,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 884
+      "line": 886
     }
   },
   {
@@ -49309,7 +49433,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 893
+      "line": 895
     }
   },
   {
@@ -49339,7 +49463,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 902
+      "line": 904
     }
   },
   {
@@ -49369,7 +49493,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 910
+      "line": 912
     }
   },
   {
@@ -49399,7 +49523,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 919
+      "line": 921
     }
   },
   {
@@ -49429,7 +49553,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 927
+      "line": 929
     }
   },
   {
@@ -49459,7 +49583,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 935
+      "line": 937
     }
   },
   {
@@ -49470,7 +49594,7 @@
     "signature": "postMessage(data, transfer)",
     "type": null,
     "value": null,
-    "description": "Serializes and sends a value from the Worker to its parent.",
+    "description": "Serializes and sends a value from the Worker to its parent. Sender-side serialization and transfer-list validation are synchronous; successful delivery to the parent is asynchronous.",
     "params": [
       {
         "type": "*",
@@ -49491,7 +49615,12 @@
     ],
     "properties": [],
     "returns": null,
-    "throws": [],
+    "throws": [
+      {
+        "type": "Error",
+        "description": "If the required data argument is omitted, the value cannot be structured-cloned, or the transfer list is invalid or cannot be committed. No message is queued and transferable source objects remain usable when this happens."
+      }
+    ],
     "examples": [],
     "sourceFiles": [],
     "readonly": false,
@@ -49506,7 +49635,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 944
+      "line": 946
     }
   },
   {
@@ -49536,7 +49665,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 953
+      "line": 956
     }
   },
   {
@@ -49566,7 +49695,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 961
+      "line": 964
     }
   },
   {
@@ -49596,7 +49725,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 968
+      "line": 971
     }
   },
   {
@@ -49626,7 +49755,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 976
+      "line": 979
     }
   },
   {
@@ -49656,7 +49785,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 983
+      "line": 986
     }
   },
   {
@@ -49686,7 +49815,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 990
+      "line": 993
     }
   },
   {
@@ -49716,7 +49845,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 997
+      "line": 1000
     }
   },
   {

@@ -210,19 +210,19 @@
         </header>
         <pre class="source-code"><code><span class="tok-string">&#39;use strict&#39;</span>;
 
-<span class="tok-comment">// Worker sample 5: Spectrum Analyzer</span>
-<span class="tok-comment">// Demonstrates: the same real-time audio/FFT/render pipeline on the panel thread</span>
-<span class="tok-comment">// and in a Worker, offscreen GDI/Direct2D rendering and transferable Worker frames.</span>
-<span class="tok-comment">// Use the in-panel switches to compare execution mode, rendering backend, FFT size and rate limiting.</span>
-<span class="tok-comment">// Only one completed frame is allowed at a time; the next frame starts after the previous one is painted.</span>
-<span class="tok-comment">//</span>
-<span class="tok-comment">// GDI can show a higher maximum FPS than D2D in this sample. That is expected for this</span>
-<span class="tok-comment">// particular workload: every frame creates a small offscreen bitmap, draws only simple</span>
-<span class="tok-comment">// rectangles/lines, finishes it immediately and transfers it. GDI performs that tiny job</span>
-<span class="tok-comment">// directly in CPU memory, while D2D has additional per-frame resource, command-submission</span>
-<span class="tok-comment">// and synchronization overhead, so the fixed overhead can dominate. This is not a general</span>
-<span class="tok-comment">// GDI-vs-D2D benchmark; D2D benefits more from retained/reused resources and larger drawing</span>
-<span class="tok-comment">// or composition workloads. The difference is easiest to see in Max mode.</span>
+<span class="tok-comment">// Worker sample 5: Spectrum Analyzer</span>
+<span class="tok-comment">// Demonstrates: real-time audio/FFT analysis in a Worker, direct panel rendering and</span>
+<span class="tok-comment">// transferable Float32Array frame ping-pong. The Worker sends only spectrum levels/peaks;</span>
+<span class="tok-comment">// on_paint() draws them directly with the panel graphics object, so no offscreen bitmap is</span>
+<span class="tok-comment">// created per frame. After a frame has painted, the previous Float32Array is transferred back</span>
+<span class="tok-comment">// to the Worker and reused for a later frame. After the first two frames, the same two buffers</span>
+<span class="tok-comment">// ping-pong between Worker and panel.</span>
+<span class="tok-comment">//</span>
+<span class="tok-comment">// Main mode runs the same analysis engine on the panel thread for comparison. GDI/D2D selects</span>
+<span class="tok-comment">// the panel rendering backend only; both modes use the same spectrum data and direct paint path.</span>
+<span class="tok-comment">// Use the in-panel switches to compare execution mode, rendering backend, FFT size and rate limit.</span>
+<span class="tok-comment">// Only one completed Worker frame is allowed in flight at a time; the next frame starts after</span>
+<span class="tok-comment">// the previous one has been painted and acknowledged.</span>
 
 <span class="tok-keyword">let</span> engineMode = <span class="tok-string">&#39;worker&#39;</span>;
 <span class="tok-keyword">let</span> drawMode = <span class="tok-number">1</span>;
@@ -247,7 +247,9 @@ window.DrawMode = drawMode;
 <span class="tok-keyword">let</span> switchingRenderer = <span class="tok-literal">false</span>;
 
 <span class="tok-keyword">let</span> frame = <span class="tok-literal">null</span>;
-<span class="tok-keyword">let</span> timing = { audio: <span class="tok-number">0</span>, analysis: <span class="tok-number">0</span>, render: <span class="tok-number">0</span>, total: <span class="tok-number">0</span>, interval: <span class="tok-number">0</span> };
+<span class="tok-keyword">let</span> frameReturn = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> frameNeedsAck = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> timing = { audio: <span class="tok-number">0</span>, analysis: <span class="tok-number">0</span>, pack: <span class="tok-number">0</span>, total: <span class="tok-number">0</span>, interval: <span class="tok-number">0</span> };
 <span class="tok-keyword">let</span> frameSequence = <span class="tok-number">0</span>;
 <span class="tok-keyword">let</span> lastPaintedSequence = -<span class="tok-number">1</span>;
 <span class="tok-keyword">let</span> frameFps = <span class="tok-number">0</span>;
@@ -261,8 +263,6 @@ window.DrawMode = drawMode;
     <span class="tok-keyword">const</span> FFT_SIZE = currentFftSize;
     <span class="tok-keyword">const</span> FLOOR_LEVEL = <span class="tok-number">0.04</span>;
     <span class="tok-keyword">const</span> IDLE_LEVEL = <span class="tok-number">0.015</span>;
-    <span class="tok-keyword">let</span> width = <span class="tok-number">1</span>;
-    <span class="tok-keyword">let</span> height = <span class="tok-number">1</span>;
     <span class="tok-keyword">let</span> bandCount = <span class="tok-number">1</span>;
     <span class="tok-keyword">let</span> bandSampleRate = <span class="tok-number">0</span>;
     <span class="tok-keyword">let</span> windowLength = <span class="tok-number">0</span>;
@@ -270,6 +270,8 @@ window.DrawMode = drawMode;
     <span class="tok-keyword">const</span> real = <span class="tok-keyword">new</span> Float64Array(FFT_SIZE);
     <span class="tok-keyword">const</span> imag = <span class="tok-keyword">new</span> Float64Array(FFT_SIZE);
     <span class="tok-keyword">const</span> magnitudes = <span class="tok-keyword">new</span> Float64Array((FFT_SIZE &gt;&gt; <span class="tok-number">1</span>) + <span class="tok-number">1</span>);
+    <span class="tok-keyword">let</span> pcm = <span class="tok-keyword">new</span> Float32Array(<span class="tok-number">131072</span>);
+    <span class="tok-keyword">const</span> chunkInfo = { SampleCount: <span class="tok-number">0</span>, ChannelCount: <span class="tok-number">0</span>, SampleRate: <span class="tok-number">0</span>, ChannelConfig: <span class="tok-number">0</span> };
     <span class="tok-keyword">let</span> targets = <span class="tok-keyword">new</span> Float64Array(<span class="tok-number">1</span>);
     <span class="tok-keyword">let</span> smoothed = <span class="tok-keyword">new</span> Float64Array(<span class="tok-number">1</span>);
     <span class="tok-keyword">let</span> peaks = <span class="tok-keyword">new</span> Float64Array(<span class="tok-number">1</span>);
@@ -342,21 +344,6 @@ window.DrawMode = drawMode;
         }
     }
 
-    <span class="tok-keyword">function</span> configureLayout() {
-        <span class="tok-keyword">const</span> count = Math.max(<span class="tok-number">1</span>, Math.floor((width + BAR_GAP) / (BAR_WIDTH + BAR_GAP)));
-        <span class="tok-keyword">if</span> (count === bandCount) <span class="tok-keyword">return</span>;
-
-        bandCount = count;
-        targets = <span class="tok-keyword">new</span> Float64Array(bandCount);
-        smoothed = <span class="tok-keyword">new</span> Float64Array(bandCount);
-        peaks = <span class="tok-keyword">new</span> Float64Array(bandCount);
-        peakVelocity = <span class="tok-keyword">new</span> Float64Array(bandCount);
-        peakHold = <span class="tok-keyword">new</span> Float64Array(bandCount);
-        bandStart = <span class="tok-keyword">new</span> Int32Array(bandCount);
-        bandEnd = <span class="tok-keyword">new</span> Int32Array(bandCount);
-        bandSampleRate = <span class="tok-number">0</span>;
-    }
-
     <span class="tok-keyword">function</span> configureBands(sampleRate) {
         <span class="tok-keyword">if</span> (sampleRate === bandSampleRate) <span class="tok-keyword">return</span>;
         bandSampleRate = sampleRate;
@@ -414,25 +401,14 @@ window.DrawMode = drawMode;
         }
     }
 
-    <span class="tok-keyword">function</span> analyse(chunk, dt) {
-        <span class="tok-keyword">if</span> (!chunk || !chunk.ChannelCount || !chunk.SampleRate || !chunk.SampleCount) {
+    <span class="tok-keyword">function</span> analyse(data, sampleCount, channels, sampleRate, available, dt) {
+        <span class="tok-keyword">const</span> required = sampleCount * channels;
+        <span class="tok-keyword">if</span> (!data || !sampleCount || !channels || !sampleRate || available &lt; required) {
             targets.fill(IDLE_LEVEL);
             updateDynamics(dt, IDLE_LEVEL);
             <span class="tok-keyword">return</span>;
         }
 
-        <span class="tok-comment">// Data materializes the PCM samples as a JS array. Read it once for this frame</span>
-        <span class="tok-comment">// and then work only with that local array inside the hot loops below.</span>
-        <span class="tok-keyword">const</span> data = chunk.Data;
-        <span class="tok-keyword">if</span> (!data || !data.length) {
-            targets.fill(IDLE_LEVEL);
-            updateDynamics(dt, IDLE_LEVEL);
-            <span class="tok-keyword">return</span>;
-        }
-
-        <span class="tok-keyword">const</span> channels = chunk.ChannelCount;
-        <span class="tok-keyword">const</span> sampleRate = chunk.SampleRate;
-        <span class="tok-keyword">const</span> sampleCount = chunk.SampleCount;
         <span class="tok-keyword">const</span> used = Math.min(sampleCount, FFT_SIZE);
         <span class="tok-keyword">const</span> firstFrame = sampleCount - used;
         <span class="tok-keyword">const</span> window = ensureWindow(used);
@@ -478,61 +454,93 @@ window.DrawMode = drawMode;
         updateDynamics(dt, FLOOR_LEVEL);
     }
 
-    <span class="tok-keyword">function</span> renderSpectrum() {
-        <span class="tok-keyword">const</span> bitmap = gdi.CreateImage(width, height);
-        <span class="tok-keyword">const</span> gr = bitmap.GetGraphics();
-
-        gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, width, height, <span class="tok-number">0xFF101319</span>);
-
-        <span class="tok-keyword">const</span> plotTop = Math.min(Math.max(<span class="tok-number">0</span>, SPECTRUM_TOP), Math.max(<span class="tok-number">0</span>, height - <span class="tok-number">1</span>));
-        <span class="tok-keyword">const</span> marginBottom = Math.max(<span class="tok-number">8</span>, Math.round(height * <span class="tok-number">0.04</span>));
-        <span class="tok-keyword">const</span> plotBottom = Math.max(plotTop + <span class="tok-number">1</span>, height - marginBottom);
-        <span class="tok-keyword">const</span> usableHeight = Math.max(<span class="tok-number">1</span>, plotBottom - plotTop);
-        <span class="tok-keyword">const</span> barWidth = Math.min(BAR_WIDTH, width);
-        <span class="tok-keyword">const</span> totalWidth = bandCount * barWidth + (bandCount - <span class="tok-number">1</span>) * BAR_GAP;
-        <span class="tok-keyword">const</span> firstX = Math.floor((width - totalWidth) * <span class="tok-number">0.5</span>);
-
-        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; bandCount; ++i) {
-            <span class="tok-keyword">const</span> x = firstX + i * (barWidth + BAR_GAP);
-            <span class="tok-keyword">const</span> barHeight = Math.max(<span class="tok-number">1</span>, smoothed[i] * usableHeight);
-            <span class="tok-keyword">const</span> y = plotBottom - barHeight;
-
-            gr.FillSolidRect(x, y, barWidth, barHeight, BAR_COLOUR);
-
-            <span class="tok-keyword">const</span> peakY = plotBottom - peaks[i] * usableHeight;
-            gr.DrawLine(x, peakY, x + barWidth - <span class="tok-number">1</span>, peakY, <span class="tok-number">1</span>, <span class="tok-number">0xFFE8EDF2</span>);
+    <span class="tok-keyword">function</span> makeSpectrumFrame() {
+        <span class="tok-keyword">const</span> length = bandCount * <span class="tok-number">2</span>;
+        <span class="tok-keyword">if</span> (!(outputFrame <span class="tok-keyword">instanceof</span> Float32Array) || outputFrame.length !== length) {
+            outputFrame = <span class="tok-keyword">new</span> Float32Array(length);
         }
 
-        bitmap.ReleaseGraphics(gr);
-        <span class="tok-keyword">return</span> bitmap;
+        <span class="tok-keyword">const</span> frame = outputFrame;
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; bandCount; ++i) {
+            <span class="tok-keyword">const</span> at = i * <span class="tok-number">2</span>;
+            frame[at] = smoothed[i] || FLOOR_LEVEL;
+            frame[at + <span class="tok-number">1</span>] = peaks[i] || FLOOR_LEVEL;
+        }
+        <span class="tok-keyword">return</span> frame;
     }
 
+    <span class="tok-keyword">let</span> outputFrame = <span class="tok-literal">null</span>;
+
     <span class="tok-keyword">return</span> {
-        configure: <span class="tok-keyword">function</span> (newWidth, newHeight) {
-            width = Math.max(<span class="tok-number">1</span>, newWidth | <span class="tok-number">0</span>);
-            height = Math.max(<span class="tok-number">1</span>, newHeight | <span class="tok-number">0</span>);
-            configureLayout();
+        configure: <span class="tok-keyword">function</span> (count) {
+            <span class="tok-keyword">const</span> nextCount = Math.max(<span class="tok-number">1</span>, count | <span class="tok-number">0</span>);
+            <span class="tok-keyword">if</span> (nextCount === bandCount) <span class="tok-keyword">return</span>;
+            bandCount = nextCount;
+            targets = <span class="tok-keyword">new</span> Float64Array(bandCount);
+            smoothed = <span class="tok-keyword">new</span> Float64Array(bandCount);
+            peaks = <span class="tok-keyword">new</span> Float64Array(bandCount);
+            peakVelocity = <span class="tok-keyword">new</span> Float64Array(bandCount);
+            peakHold = <span class="tok-keyword">new</span> Float64Array(bandCount);
+            bandStart = <span class="tok-keyword">new</span> Int32Array(bandCount);
+            bandEnd = <span class="tok-keyword">new</span> Int32Array(bandCount);
+            bandSampleRate = <span class="tok-number">0</span>;
+            outputFrame = <span class="tok-literal">null</span>;
+        },
+
+        setOutputFrame: <span class="tok-keyword">function</span> (frame) {
+            <span class="tok-keyword">const</span> expectedLength = bandCount * <span class="tok-number">2</span>;
+            outputFrame = frame <span class="tok-keyword">instanceof</span> Float32Array &amp;&amp; frame.length === expectedLength
+                ? frame
+                : <span class="tok-literal">null</span>;
         },
 
         renderFrame: <span class="tok-keyword">function</span> (interval) {
             <span class="tok-keyword">const</span> dt = Math.max(<span class="tok-number">0.001</span>, Math.min(<span class="tok-number">0.2</span>, (interval &gt; <span class="tok-number">0</span> ? interval : FRAME_TIME) / <span class="tok-number">1000</span>));
             <span class="tok-keyword">const</span> audioStart = performance.now();
-            <span class="tok-keyword">const</span> chunk = fb.GetAudioChunk(<span class="tok-number">0.06</span>, -<span class="tok-number">0.03</span>);
+            <span class="tok-keyword">let</span> data = <span class="tok-literal">null</span>;
+            <span class="tok-keyword">let</span> sampleCount = <span class="tok-number">0</span>;
+            <span class="tok-keyword">let</span> channels = <span class="tok-number">0</span>;
+            <span class="tok-keyword">let</span> sampleRate = <span class="tok-number">0</span>;
+            <span class="tok-keyword">let</span> available = <span class="tok-number">0</span>;
+
+            <span class="tok-keyword">if</span> (<span class="tok-keyword">typeof</span> fb.GetAudioChunkTo === <span class="tok-string">&#39;function&#39;</span>) {
+                available = fb.GetAudioChunkTo(pcm, <span class="tok-number">0.06</span>, -<span class="tok-number">0.03</span>, chunkInfo);
+                data = pcm;
+                sampleCount = chunkInfo.SampleCount;
+                channels = chunkInfo.ChannelCount;
+                sampleRate = chunkInfo.SampleRate;
+            } <span class="tok-keyword">else</span> {
+                <span class="tok-keyword">const</span> chunk = fb.GetAudioChunk(<span class="tok-number">0.06</span>, -<span class="tok-number">0.03</span>);
+                <span class="tok-keyword">if</span> (chunk) {
+                    sampleCount = chunk.SampleCount;
+                    channels = chunk.ChannelCount;
+                    sampleRate = chunk.SampleRate;
+                    <span class="tok-keyword">const</span> required = sampleCount * channels;
+                    <span class="tok-keyword">if</span> (<span class="tok-keyword">typeof</span> chunk.CopyDataTo === <span class="tok-string">&#39;function&#39;</span>) {
+                        <span class="tok-keyword">if</span> (pcm.length &lt; required) pcm = <span class="tok-keyword">new</span> Float32Array(required);
+                        available = chunk.CopyDataTo(pcm);
+                        data = pcm;
+                    } <span class="tok-keyword">else</span> {
+                        data = chunk.Data;
+                        available = data ? data.length : <span class="tok-number">0</span>;
+                    }
+                }
+            }
             <span class="tok-keyword">const</span> audioEnd = performance.now();
 
-            analyse(chunk, dt);
+            analyse(data, sampleCount, channels, sampleRate, available, dt);
             <span class="tok-keyword">const</span> analysisEnd = performance.now();
 
-            <span class="tok-keyword">const</span> bitmap = renderSpectrum();
-            <span class="tok-keyword">const</span> renderEnd = performance.now();
+            <span class="tok-keyword">const</span> frame = makeSpectrumFrame();
+            <span class="tok-keyword">const</span> packEnd = performance.now();
 
             <span class="tok-keyword">return</span> {
-                bitmap,
+                frame,
                 timing: {
                     audio: audioEnd - audioStart,
                     analysis: analysisEnd - audioEnd,
-                    render: renderEnd - analysisEnd,
-                    total: renderEnd - audioStart,
+                    pack: packEnd - analysisEnd,
+                    total: packEnd - audioStart,
                     interval
                 }
             };
@@ -547,10 +555,6 @@ window.DrawMode = drawMode;
 const TARGET_FPS = ${TARGET_FPS};
 const FRAME_TIME = 1000 / TARGET_FPS;
 const UNCAPPED = ${uncapped};
-const BAR_WIDTH = ${BAR_WIDTH};
-const BAR_GAP = ${BAR_GAP};
-const BAR_COLOUR = ${BAR_COLOUR};
-const SPECTRUM_TOP = ${SPECTRUM_TOP};
 const createSpectrumEngine = ${createSpectrumEngine.toString()};
 const engine = createSpectrumEngine(${currentFftSize});
 
@@ -559,6 +563,7 @@ let waitingForPanel = false;
 let timerId = 0;
 let lastFrameStart = 0;
 let sequence = 0;
+const frameMessage = { frame: null, sequence: 0, timing: null };
 
 function scheduleNext() {
     if (!configured || waitingForPanel || timerId) return;
@@ -567,11 +572,11 @@ function scheduleNext() {
 
     timerId = setTimeout(function () {
         timerId = 0;
-        renderFrame();
+        produceFrame();
     }, delay);
 }
 
-function renderFrame() {
+function produceFrame() {
     if (!configured || waitingForPanel) return;
 
     const frameStart = performance.now();
@@ -579,20 +584,28 @@ function renderFrame() {
     lastFrameStart = frameStart;
 
     const result = engine.renderFrame(interval);
+    const frame = result.frame;
 
+    // Ownership of this ArrayBuffer moves to the panel. The Worker does not retain another
+    // output buffer; the panel returns its previous displayed frame with the ACK after paint.
+    engine.setOutputFrame(null);
     waitingForPanel = true;
-    postMessage({
-        bitmap: result.bitmap,
-        sequence: ++sequence,
-        timing: result.timing
-    }, [result.bitmap]);
+    frameMessage.frame = frame;
+    frameMessage.sequence = ++sequence;
+    frameMessage.timing = result.timing;
+    try {
+        postMessage(frameMessage, [frame.buffer]);
+    } finally {
+        frameMessage.frame = null;
+        frameMessage.timing = null;
+    }
 }
 
 onmessage = function (event) {
     const message = event.data;
 
     if (message.type === &#39;config&#39;) {
-        engine.configure(message.width, message.height);
+        engine.configure(message.count);
         configured = true;
         scheduleNext();
         return;
@@ -600,6 +613,7 @@ onmessage = function (event) {
 
     if (message.type === &#39;next&#39;) {
         waitingForPanel = false;
+        engine.setOutputFrame(message.frame || null);
         scheduleNext();
     }
 };
@@ -612,10 +626,13 @@ onmessage = function (event) {
 <span class="tok-keyword">let</span> mainLastFrameStart = <span class="tok-number">0</span>;
 <span class="tok-keyword">let</span> mainSequence = <span class="tok-number">0</span>;
 <span class="tok-keyword">let</span> mainWaitingForPaint = <span class="tok-literal">false</span>;
+<span class="tok-keyword">const</span> workerNextMessage = { type: <span class="tok-string">&#39;next&#39;</span>, frame: <span class="tok-literal">null</span> };
 
 <span class="tok-keyword">function</span> resetCounters() {
     frame = <span class="tok-literal">null</span>;
-    timing = { audio: <span class="tok-number">0</span>, analysis: <span class="tok-number">0</span>, render: <span class="tok-number">0</span>, total: <span class="tok-number">0</span>, interval: <span class="tok-number">0</span> };
+    frameReturn = <span class="tok-literal">null</span>;
+    frameNeedsAck = <span class="tok-literal">false</span>;
+    timing = { audio: <span class="tok-number">0</span>, analysis: <span class="tok-number">0</span>, pack: <span class="tok-number">0</span>, total: <span class="tok-number">0</span>, interval: <span class="tok-number">0</span> };
     frameSequence = <span class="tok-number">0</span>;
     lastPaintedSequence = -<span class="tok-number">1</span>;
     frameFps = <span class="tok-number">0</span>;
@@ -626,8 +643,11 @@ onmessage = function (event) {
     paintWindowStart = frameWindowStart;
 }
 
-<span class="tok-keyword">function</span> recordFrame(bitmap, sequence, nextTiming) {
-    frame = bitmap;
+<span class="tok-keyword">function</span> recordFrame(nextFrame, sequence, nextTiming) {
+    <span class="tok-keyword">const</span> previousFrame = frame;
+    frame = nextFrame <span class="tok-keyword">instanceof</span> Float32Array ? nextFrame : previousFrame;
+    frameReturn = frame !== previousFrame ? previousFrame : <span class="tok-literal">null</span>;
+    frameNeedsAck = engineMode === <span class="tok-string">&#39;worker&#39;</span>;
     frameSequence = sequence;
     timing = nextTiming;
 
@@ -678,7 +698,7 @@ onmessage = function (event) {
 
     <span class="tok-keyword">const</span> result = mainEngine.renderFrame(interval);
     mainWaitingForPaint = <span class="tok-literal">true</span>;
-    recordFrame(result.bitmap, ++mainSequence, result.timing);
+    recordFrame(result.frame, ++mainSequence, result.timing);
 }
 
 <span class="tok-keyword">function</span> startEngine() {
@@ -699,7 +719,7 @@ onmessage = function (event) {
 
         currentWorker.onmessage = <span class="tok-keyword">function</span> (event) {
             <span class="tok-keyword">if</span> (worker !== currentWorker) <span class="tok-keyword">return</span>;
-            recordFrame(event.data.bitmap, event.data.sequence, event.data.timing);
+            recordFrame(event.data.frame, event.data.sequence, event.data.timing);
         };
 
         currentWorker.onerror = <span class="tok-keyword">function</span> (event) {
@@ -715,14 +735,14 @@ onmessage = function (event) {
 
 <span class="tok-keyword">function</span> sendSize() {
     <span class="tok-keyword">const</span> width = Math.max(<span class="tok-number">1</span>, window.Width);
-    <span class="tok-keyword">const</span> height = Math.max(<span class="tok-number">1</span>, window.Height);
+    <span class="tok-keyword">const</span> count = Math.max(<span class="tok-number">1</span>, Math.floor((width + BAR_GAP) / (BAR_WIDTH + BAR_GAP)));
 
     <span class="tok-keyword">if</span> (engineMode === <span class="tok-string">&#39;worker&#39;</span>) {
         <span class="tok-keyword">if</span> (!worker) <span class="tok-keyword">return</span>;
-        worker.postMessage({ type: <span class="tok-string">&#39;config&#39;</span>, width, height });
+        worker.postMessage({ type: <span class="tok-string">&#39;config&#39;</span>, count });
     } <span class="tok-keyword">else</span> {
         <span class="tok-keyword">if</span> (!mainEngine) <span class="tok-keyword">return</span>;
-        mainEngine.configure(width, height);
+        mainEngine.configure(count);
         scheduleMain();
     }
 }
@@ -778,12 +798,40 @@ onmessage = function (event) {
     startEngine();
 }
 
+<span class="tok-keyword">function</span> drawSpectrumFrame(gr, spectrumFrame) {
+    <span class="tok-keyword">if</span> (!(spectrumFrame <span class="tok-keyword">instanceof</span> Float32Array) || spectrumFrame.length &lt; <span class="tok-number">2</span>) <span class="tok-keyword">return</span>;
+
+    <span class="tok-keyword">const</span> width = Math.max(<span class="tok-number">1</span>, window.Width);
+    <span class="tok-keyword">const</span> height = Math.max(<span class="tok-number">1</span>, window.Height);
+    <span class="tok-keyword">const</span> plotTop = Math.min(Math.max(<span class="tok-number">0</span>, SPECTRUM_TOP), Math.max(<span class="tok-number">0</span>, height - <span class="tok-number">1</span>));
+    <span class="tok-keyword">const</span> marginBottom = Math.max(<span class="tok-number">8</span>, Math.round(height * <span class="tok-number">0.04</span>));
+    <span class="tok-keyword">const</span> plotBottom = Math.max(plotTop + <span class="tok-number">1</span>, height - marginBottom);
+    <span class="tok-keyword">const</span> usableHeight = Math.max(<span class="tok-number">1</span>, plotBottom - plotTop);
+    <span class="tok-keyword">const</span> barWidth = Math.min(BAR_WIDTH, width);
+    <span class="tok-keyword">const</span> count = spectrumFrame.length &gt;&gt; <span class="tok-number">1</span>;
+    <span class="tok-keyword">const</span> totalWidth = count * barWidth + (count - <span class="tok-number">1</span>) * BAR_GAP;
+    <span class="tok-keyword">const</span> firstX = Math.floor((width - totalWidth) * <span class="tok-number">0.5</span>);
+
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; count; ++i) {
+        <span class="tok-keyword">const</span> x = firstX + i * (barWidth + BAR_GAP);
+        <span class="tok-keyword">const</span> level = spectrumFrame[i * <span class="tok-number">2</span>] || <span class="tok-number">0.04</span>;
+        <span class="tok-keyword">const</span> peak = spectrumFrame[i * <span class="tok-number">2</span> + <span class="tok-number">1</span>] || <span class="tok-number">0.04</span>;
+        <span class="tok-keyword">const</span> barHeight = Math.max(<span class="tok-number">1</span>, level * usableHeight);
+        <span class="tok-keyword">const</span> y = plotBottom - barHeight;
+
+        gr.FillSolidRect(x, y, barWidth, barHeight, BAR_COLOUR);
+
+        <span class="tok-keyword">const</span> peakY = plotBottom - peak * usableHeight;
+        gr.DrawLine(x, peakY, x + barWidth - <span class="tok-number">1</span>, peakY, <span class="tok-number">1</span>, <span class="tok-number">0xFFE8EDF2</span>);
+    }
+}
+
 <span class="tok-keyword">function</span> on_paint(gr) {
     gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, window.Width, window.Height, <span class="tok-number">0xFF101319</span>);
     <span class="tok-keyword">if</span> (switchingRenderer) <span class="tok-keyword">return</span>;
 
     <span class="tok-keyword">if</span> (frame) {
-        gr.DrawImage(frame, <span class="tok-number">0</span>, <span class="tok-number">0</span>, window.Width, window.Height, <span class="tok-number">0</span>, <span class="tok-number">0</span>, frame.Width, frame.Height);
+        drawSpectrumFrame(gr, frame);
 
         <span class="tok-keyword">if</span> (frameSequence !== lastPaintedSequence) {
             lastPaintedSequence = frameSequence;
@@ -796,9 +844,23 @@ onmessage = function (event) {
                 paintWindowStart = now;
             }
 
-            <span class="tok-keyword">if</span> (engineMode === <span class="tok-string">&#39;worker&#39;</span>) {
-                <span class="tok-keyword">if</span> (worker) worker.postMessage({ type: <span class="tok-string">&#39;next&#39;</span> });
-            } <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (mainWaitingForPaint) {
+            <span class="tok-keyword">if</span> (engineMode === <span class="tok-string">&#39;worker&#39;</span> &amp;&amp; frameNeedsAck) {
+                <span class="tok-keyword">const</span> returnFrame = frameReturn;
+                frameReturn = <span class="tok-literal">null</span>;
+                frameNeedsAck = <span class="tok-literal">false</span>;
+                <span class="tok-keyword">if</span> (worker) {
+                    workerNextMessage.frame = returnFrame || <span class="tok-literal">null</span>;
+                    <span class="tok-keyword">try</span> {
+                        <span class="tok-keyword">if</span> (returnFrame &amp;&amp; returnFrame.buffer) {
+                            worker.postMessage(workerNextMessage, [returnFrame.buffer]);
+                        } <span class="tok-keyword">else</span> {
+                            worker.postMessage(workerNextMessage);
+                        }
+                    } <span class="tok-keyword">finally</span> {
+                        workerNextMessage.frame = <span class="tok-literal">null</span>;
+                    }
+                }
+            } <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (engineMode === <span class="tok-string">&#39;main&#39;</span> &amp;&amp; mainWaitingForPaint) {
                 mainWaitingForPaint = <span class="tok-literal">false</span>;
                 scheduleMain();
             }
@@ -807,7 +869,7 @@ onmessage = function (event) {
 
     <span class="tok-keyword">const</span> engine = engineMode === <span class="tok-string">&#39;worker&#39;</span> ? <span class="tok-string">&#39;Worker&#39;</span> : <span class="tok-string">&#39;Main&#39;</span>;
     <span class="tok-keyword">const</span> backend = drawMode === <span class="tok-number">1</span> ? <span class="tok-string">&#39;D2D&#39;</span> : <span class="tok-string">&#39;GDI&#39;</span>;
-    <span class="tok-keyword">const</span> overlay = <span class="tok-string">`${engine}/${backend}   frame ${frameFps.toFixed(1)} FPS   paint ${paintFps.toFixed(1)} FPS   interval ${timing.interval.toFixed(1)} ms   audio ${timing.audio.toFixed(2)}   FFT ${timing.analysis.toFixed(2)}   render ${timing.render.toFixed(2)}   total ${timing.total.toFixed(2)} ms`</span>;
+    <span class="tok-keyword">const</span> overlay = <span class="tok-string">`${engine}/${backend}   frame ${frameFps.toFixed(1)} FPS   paint ${paintFps.toFixed(1)} FPS   interval ${timing.interval.toFixed(1)} ms   audio ${timing.audio.toFixed(2)}   FFT ${timing.analysis.toFixed(2)}   pack ${timing.pack.toFixed(2)}   total ${timing.total.toFixed(2)} ms`</span>;
     gr.FillSolidRect(<span class="tok-number">8</span>, <span class="tok-number">8</span>, Math.max(<span class="tok-number">1</span>, Math.min(window.Width - <span class="tok-number">16</span>, <span class="tok-number">760</span>)), <span class="tok-number">28</span>, <span class="tok-number">0xC0101319</span>);
     gr.DrawText(overlay, INFO_FONT, <span class="tok-number">0xFFE8EDF2</span>, <span class="tok-number">14</span>, <span class="tok-number">8</span>, Math.max(<span class="tok-number">1</span>, window.Width - <span class="tok-number">28</span>), <span class="tok-number">28</span>,
         DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);

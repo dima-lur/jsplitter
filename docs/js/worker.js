@@ -261,17 +261,18 @@
  * in the list or transfers none of them.
  *
  * If the message cannot be serialized, or any object in the transfer list cannot be transferred,
- * {@link Worker#postMessage postMessage()} fails and all source objects remain usable. No object in the list
- * is detached.
+ * {@link Worker#postMessage postMessage()} fails <b>synchronously by throwing an exception in the sender</b>.
+ * The message is not queued, all source objects remain usable, and no object in the transfer list is detached.
  *
  * After {@link Worker#postMessage postMessage()} successfully serializes the message and commits the transfer,
  * all objects listed in the transfer list are detached in the sender.
  *
- * A message is delivered only after it has been serialized successfully. If serialization and
- * transfer succeed but the receiving realm cannot reconstruct one of the message values, that
- * endpoint receives a {@link Worker#onmessageerror messageerror} event and remains usable for
- * later messages. This is a receiver-side delivery failure: a completed transfer is
- * <b>not rolled back</b>, and transferred source objects remain detached.
+ * A message is delivered only after sender-side serialization and transfer have completed successfully.
+ * If the receiving realm then cannot reconstruct one of the message values, that endpoint receives a
+ * {@link Worker#onmessageerror messageerror} event and remains usable for later messages. This is a
+ * receiver-side delivery failure and is therefore separate from a synchronous exception thrown by
+ * <code>postMessage()</code> in the sender. A completed transfer is <b>not rolled back</b>, and transferred
+ * source objects remain detached.
  *
  * JSplitter adds two diagnostic fields to that {@link MessageEvent}:
  * {@link MessageEvent#errorMessage errorMessage} tells you why reconstruction failed, while
@@ -658,10 +659,11 @@ function Worker(source, name) {
     this.onmessageerror = null;
 
     /**
-     * Serializes and sends a value to the Worker.
+     * Serializes and sends a value to the Worker. Sender-side serialization and transfer-list validation are synchronous; successful delivery to the Worker is asynchronous.
      *
      * @param {*} data Value to send.
      * @param {(Array<*>|Object)=} [transfer] Transfer list, either directly as an array or as an object containing <code>{ transfer: [...] }</code>.
+     * @throws {Error} If the required data argument is omitted, the value cannot be structured-cloned, or the transfer list is invalid or cannot be committed. No message is queued and transferable source objects remain usable when this happens.
      */
     this.postMessage = function (data, transfer) { };
 
@@ -942,10 +944,11 @@ function WorkerGlobalScope() {
     this.name = "";
 
     /**
-     * Serializes and sends a value from the Worker to its parent.
+     * Serializes and sends a value from the Worker to its parent. Sender-side serialization and transfer-list validation are synchronous; successful delivery to the parent is asynchronous.
      *
      * @param {*} data Value to send.
      * @param {(Array<*>|Object)=} [transfer] Transfer list, either directly as an array or as an object containing <code>{ transfer: [...] }</code>.
+     * @throws {Error} If the required data argument is omitted, the value cannot be structured-cloned, or the transfer list is invalid or cannot be committed. No message is queued and transferable source objects remain usable when this happens.
      * @worker
      */
     this.postMessage = function (data, transfer) { };
