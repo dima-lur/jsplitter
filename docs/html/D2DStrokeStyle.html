@@ -45,6 +45,9 @@
     </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
         <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
+        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="ButtonObject">
         <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -211,7 +214,7 @@
         </header>
         
         
-        <div class="description"><p>Reusable Direct2D stroke style describing line caps, joins and dash behaviour.<br> Create with <a href="d2d.html#StrokeStyle">d2d.StrokeStyle</a> and reuse it across drawing calls instead of rebuilding the same stroke configuration every frame.</p></div>
+        <div class="description"><p>Reusable Direct2D stroke style describing line caps, joins and dash behaviour.<br> Create with <a href="d2d.html#StrokeStyle">d2d.StrokeStyle</a> and reuse it across drawing calls instead of rebuilding the same stroke configuration every frame.<br><div class="doc-note"><b>Dotted strokes:</b> Direct2D defines the dot portions of <code>DashStyle.Dot</code>, <code>DashStyle.DashDot</code> and <code>DashStyle.DashDotDot</code> as zero-length dash segments. When <code>dashCap</code> is omitted, JSplitter automatically uses <code>CapStyle.Round</code> for those predefined styles, matching the numeric <code>DashStyle</code> shorthand used by D2D drawing methods. Specify <code>dashCap</code> explicitly to override this behaviour. See Microsoft documentation for <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_dash_style" target="_blank" rel="noreferrer">D2D1_DASH_STYLE</a> and <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_cap_style" target="_blank" rel="noreferrer">D2D1_CAP_STYLE</a>.</div></p></div>
         
         
         

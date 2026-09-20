@@ -45,6 +45,9 @@
     </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
         <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
+        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="ButtonObject">
         <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -484,7 +487,7 @@
         </header>
         
         
-        <div class="description"><p>Direct2D dash style. A value can be passed directly to D2D drawing methods as a shorthand, or used as the <code>dashStyle</code> option of <a href="globals.html#D2DStrokeStyleOptions">D2DStrokeStyleOptions</a> when creating a reusable <a href="D2DStrokeStyle.html#D2DStrokeStyle">D2DStrokeStyle</a>.<br> <b>Custom</b> requires a non-empty <code>dashes</code> array and is intended for <a href="d2d.html#StrokeStyle">d2d.StrokeStyle</a>; do not pass <b>DashStyle.Custom</b> directly to a drawing method.</p></div>
+        <div class="description"><p>Direct2D dash style. A value can be passed directly to D2D drawing methods as a shorthand, or used as the <code>dashStyle</code> option of <a href="globals.html#D2DStrokeStyleOptions">D2DStrokeStyleOptions</a> when creating a reusable <a href="D2DStrokeStyle.html#D2DStrokeStyle">D2DStrokeStyle</a>.<br><b>Dot visibility:</b> Direct2D uses zero-length dash segments for <b>Dot</b> and the dot portions of <b>DashDot</b>/<b>DashDotDot</b>. JSplitter therefore uses <code>CapStyle.Round</code> as the implicit dash cap for those predefined styles, both for the numeric drawing-method shorthand and for <a href="d2d.html#StrokeStyle">d2d.StrokeStyle</a> when <code>dashCap</code> is omitted. An explicit <code>dashCap</code> always overrides this default. See <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_dash_style" target="_blank" rel="noreferrer">Microsoft: D2D1_DASH_STYLE</a> and <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_cap_style" target="_blank" rel="noreferrer">Microsoft: D2D1_CAP_STYLE</a>.<br> <b>Custom</b> requires a non-empty <code>dashes</code> array and is intended for <a href="d2d.html#StrokeStyle">d2d.StrokeStyle</a>; do not pass <b>DashStyle.Custom</b> directly to a drawing method.</p></div>
         
         
         

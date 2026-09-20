@@ -33,7 +33,7 @@ const capStyles = [
     ["Triangle", d2d.StrokeStyle({ startCap: CapStyle.Triangle, endCap: CapStyle.Triangle })]
 ];
 
-const dashStyles = [
+const dashStyles = [ // Predefined dot styles automatically use a round dash cap when dashCap is omitted.
     ["Solid", d2d.StrokeStyle({ dashStyle: DashStyle.Solid })],
     ["Dash", d2d.StrokeStyle({ dashStyle: DashStyle.Dash })],
     ["Dot", d2d.StrokeStyle({ dashStyle: DashStyle.Dot })],
@@ -52,12 +52,10 @@ const shapeStyles = {
     }),
     roundRect: d2d.StrokeStyle({
         dashStyle: DashStyle.DashDot,
-        dashCap: CapStyle.Round,
         lineJoin: LineJoin.Round
     }),
     ellipse: d2d.StrokeStyle({
-        dashStyle: DashStyle.Dot,
-        dashCap: CapStyle.Round
+        dashStyle: DashStyle.Dot
     }),
     polygon: d2d.StrokeStyle({
         lineJoin: LineJoin.Round,

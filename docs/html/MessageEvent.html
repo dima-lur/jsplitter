@@ -45,6 +45,9 @@
     </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
         <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
+        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="ButtonObject">
         <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -207,11 +210,11 @@
                 <div class="eyebrow"><span class="kind kind-class">class</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#MessageEvent">MessageEvent</a></h2>
             </div>
-            <div class="source-location">js/worker.js:752</div>
+            <div class="source-location">js/worker.js:775</div>
         </header>
         <pre class="signature"><code>MessageEvent(type, options)</code></pre>
         
-        <div class="description"><p>Event carrying a structured-clone message payload.</p></div>
+        <div class="description"><p>Event carrying a structured-clone message payload. Used by direct Worker messaging and <a href="BroadcastChannel.html#BroadcastChannel">BroadcastChannel</a> in both panel and Worker realms.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -235,7 +238,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#data">data</a></h2>
             </div>
-            <div class="source-location">js/worker.js:761</div>
+            <div class="source-location">js/worker.js:784</div>
         </header>
         <pre class="signature"><code>data: *</code></pre>
         
@@ -256,11 +259,11 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#direction">direction</a></h2>
             </div>
-            <div class="source-location">js/worker.js:810</div>
+            <div class="source-location">js/worker.js:833</div>
         </header>
         <pre class="signature"><code>direction: string = &quot;&quot;</code></pre>
         
-        <div class="description"><p>Direction of a JSplitter Worker message: <b>panel-to-worker</b> or <b>worker-to-panel</b>. Manually constructed MessageEvent objects use an empty string unless a direction is supplied explicitly.</p></div>
+        <div class="description"><p>Direction of a JSplitter message: <b>panel-to-worker</b>, <b>worker-to-panel</b>, or <b>broadcast</b> for <a href="BroadcastChannel.html#BroadcastChannel">BroadcastChannel</a>. Manually constructed MessageEvent objects use an empty string unless a direction is supplied explicitly.</p></div>
         
         
         
@@ -277,7 +280,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#errorMessage">errorMessage</a></h2>
             </div>
-            <div class="source-location">js/worker.js:801</div>
+            <div class="source-location">js/worker.js:824</div>
         </header>
         <pre class="signature"><code>errorMessage: string = &quot;&quot;</code></pre>
         
@@ -298,7 +301,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#lastEventId">lastEventId</a></h2>
             </div>
-            <div class="source-location">js/worker.js:777</div>
+            <div class="source-location">js/worker.js:800</div>
         </header>
         <pre class="signature"><code>lastEventId: string = &quot;&quot;</code></pre>
         
@@ -319,11 +322,11 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#origin">origin</a></h2>
             </div>
-            <div class="source-location">js/worker.js:769</div>
+            <div class="source-location">js/worker.js:792</div>
         </header>
         <pre class="signature"><code>origin: string = &quot;&quot;</code></pre>
         
-        <div class="description"><p>Message origin. JSplitter Worker messages use an empty string because they are not URL-origin messages.</p></div>
+        <div class="description"><p>Message origin. JSplitter Worker and BroadcastChannel messages use an empty string because they are not URL-origin messages.</p></div>
         
         
         
@@ -340,11 +343,11 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#ports">ports</a></h2>
             </div>
-            <div class="source-location">js/worker.js:793</div>
+            <div class="source-location">js/worker.js:816</div>
         </header>
         <pre class="signature"><code>ports: Array = []</code></pre>
         
-        <div class="description"><p>Transferred message ports. JSplitter does not expose MessagePort objects, so this array is empty.</p></div>
+        <div class="description"><p>Transferred message ports. JSplitter does not expose MessagePort objects, so this array is empty. Trusted JSplitter messaging events expose it as an empty frozen array.</p></div>
         
         
         
@@ -361,11 +364,11 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#source">source</a></h2>
             </div>
-            <div class="source-location">js/worker.js:785</div>
+            <div class="source-location">js/worker.js:808</div>
         </header>
         <pre class="signature"><code>source: * = null</code></pre>
         
-        <div class="description"><p>Message source endpoint. JSplitter Worker messages do not expose a MessagePort-style source, so this is <code>null</code>.</p></div>
+        <div class="description"><p>Message source endpoint. JSplitter Worker and BroadcastChannel messages do not expose a MessagePort-style source, so this is <code>null</code>.</p></div>
         
         
         

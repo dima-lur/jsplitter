@@ -1219,7 +1219,7 @@ const UIInstanceType = {
 /**
  * Direct2D dash style. A value can be passed directly to D2D drawing methods as a shorthand,
  * or used as the <code>dashStyle</code> option of {@link D2DStrokeStyleOptions} when creating a reusable
- * {@link D2DStrokeStyle}.<br>
+ * {@link D2DStrokeStyle}.<br><b>Dot visibility:</b> Direct2D uses zero-length dash segments for <b>Dot</b> and the dot portions of <b>DashDot</b>/<b>DashDotDot</b>. JSplitter therefore uses <code>CapStyle.Round</code> as the implicit dash cap for those predefined styles, both for the numeric drawing-method shorthand and for {@link d2d.StrokeStyle d2d.StrokeStyle} when <code>dashCap</code> is omitted. An explicit <code>dashCap</code> always overrides this default. See {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_dash_style Microsoft: D2D1_DASH_STYLE} and {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_cap_style Microsoft: D2D1_CAP_STYLE}.<br>
  * <b>Custom</b> requires a non-empty <code>dashes</code> array and is intended for
  * {@link d2d.StrokeStyle d2d.StrokeStyle}; do not pass <b>DashStyle.Custom</b> directly to a drawing method.
  * @memberof module:Flags

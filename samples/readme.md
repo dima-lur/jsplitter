@@ -27,8 +27,8 @@
 Simply copy the text from a sample .js file into a panel's configuration dialog.
 
 - "basic":  
-         Some very simple samples that are referred to from "js_doc/Interfaces.js" and  
-         "Callbacks.js" in the "docs" folder.
+         Some very simple samples that are referred to from the API documentation.  
+         `BroadcastChannel.js` is a two-panel interactive example: load the same script in two or more JSplitter panels and click a panel to broadcast a structured message to the others. The sample also points out that BroadcastChannel clones messages and has no ownership-transfer list.
 - "complete":  
          Feature complete and feature rich samples created by [marc2003](https://github.com/marc2k3/smp_2003).
 - "d2d":  

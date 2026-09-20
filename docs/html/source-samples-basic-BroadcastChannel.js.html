@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>BroadcastChannel.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
+        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/basic/BroadcastChannel.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="BroadcastChannel.html#BroadcastChannel">BroadcastChannel</a></div>
+        </header>
+        <pre class="source-code"><code><span class="tok-string">&#39;use strict&#39;</span>;
+
+window.DefineScript(<span class="tok-string">&#39;BroadcastChannel demo&#39;</span>, {
+    author: <span class="tok-string">&#39;LUR&#39;</span>,
+    features: { drag_n_drop: <span class="tok-literal">true</span> }
+});
+include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
+include(<span class="tok-string">&#39;docs/Helpers.js&#39;</span>);
+
+<span class="tok-comment">/*
+    HOW TO USE THIS SAMPLE
+    ----------------------
+    1. Add this same script to two (or more) JSplitter panels.
+    2. Click the upper area in one panel to broadcast a simple structured message.
+    3. Drop one or more tracks into the lower area to broadcast an FbMetadbHandleList.
+       Every panel in the channel displays metadata for the first track and loads its
+       artwork locally from the cloned handle. The sender updates its own view directly,
+       because a BroadcastChannel never receives its own messages.
+    4. Change CHANNEL_NAME in all copies if you want a separate group.
+
+    BroadcastChannel is asynchronous and uses structured clone, so receivers get
+    their own copy of the message data and host wrappers. It has no transfer list:
+    broadcast messages clone data and never detach the sender&#39;s objects. Use
+    Worker.postMessage() when ownership of a transferable resource should move to
+    one specific Worker.
+*/</span>
+
+<span class="tok-keyword">const</span> CHANNEL_NAME = <span class="tok-string">&#39;jsplitter.broadcast-channel.demo&#39;</span>;
+<span class="tok-keyword">const</span> INSTANCE_ID = Math.random().toString(<span class="tok-number">36</span>).slice(<span class="tok-number">2</span>, <span class="tok-number">8</span>);
+
+<span class="tok-keyword">const</span> DROP_EFFECT = Object.freeze({
+    none: <span class="tok-number">0</span>,
+    copy: <span class="tok-number">1</span>,
+    link: <span class="tok-number">4</span>
+});
+
+<span class="tok-keyword">const</span> titleFont = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">15</span>, <span class="tok-number">1</span>);
+<span class="tok-keyword">const</span> headingFont = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">12</span>, <span class="tok-number">1</span>);
+<span class="tok-keyword">const</span> textFont = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">11</span>, <span class="tok-number">0</span>);
+
+<span class="tok-keyword">const</span> tfArtist = fb.TitleFormat(<span class="tok-string">&#39;$if2(%artist%,(unknown artist))&#39;</span>);
+<span class="tok-keyword">const</span> tfTitle = fb.TitleFormat(<span class="tok-string">&#39;$if2(%title%,%filename%)&#39;</span>);
+<span class="tok-keyword">const</span> tfAlbum = fb.TitleFormat(<span class="tok-string">&quot;$if2(%album%,(no album)) $if2(&#39;(&#39;%date%&#39;)&#39;,)&quot;</span>);
+
+<span class="tok-keyword">const</span> channel = <span class="tok-keyword">new</span> BroadcastChannel(CHANNEL_NAME);
+<span class="tok-keyword">let</span> sentCount = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> receivedCount = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> statusText = <span class="tok-string">&#39;Open this sample in another JSplitter panel.&#39;</span>;
+<span class="tok-keyword">let</span> dragOverDropZone = <span class="tok-literal">false</span>;
+
+<span class="tok-keyword">let</span> currentHandles = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> currentTrack = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> currentArtwork = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> currentArtist = <span class="tok-string">&#39;&#39;</span>;
+<span class="tok-keyword">let</span> currentTitle = <span class="tok-string">&#39;&#39;</span>;
+<span class="tok-keyword">let</span> currentAlbum = <span class="tok-string">&#39;&#39;</span>;
+<span class="tok-keyword">let</span> currentTrackCount = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> currentSourceText = <span class="tok-string">&#39;Drop one or more tracks here.&#39;</span>;
+<span class="tok-keyword">let</span> artworkGeneration = <span class="tok-number">0</span>;
+
+<span class="tok-keyword">function</span> layout() {
+    <span class="tok-keyword">const</span> w = window.Width;
+    <span class="tok-keyword">const</span> h = window.Height;
+    <span class="tok-keyword">const</span> margin = <span class="tok-number">16</span>;
+    <span class="tok-keyword">const</span> clickY = <span class="tok-number">48</span>;
+    <span class="tok-keyword">const</span> clickH = <span class="tok-number">92</span>;
+    <span class="tok-keyword">const</span> gap = <span class="tok-number">12</span>;
+    <span class="tok-keyword">const</span> dropY = clickY + clickH + gap;
+
+    <span class="tok-keyword">return</span> {
+        click: {
+            x: margin,
+            y: clickY,
+            w: Math.max(<span class="tok-number">0</span>, w - margin * <span class="tok-number">2</span>),
+            h: clickH
+        },
+        drop: {
+            x: margin,
+            y: dropY,
+            w: Math.max(<span class="tok-number">0</span>, w - margin * <span class="tok-number">2</span>),
+            h: Math.max(<span class="tok-number">0</span>, h - dropY - margin)
+        }
+    };
+}
+
+<span class="tok-keyword">function</span> contains(rect, x, y) {
+    <span class="tok-keyword">return</span> x &gt;= rect.x &amp;&amp; y &gt;= rect.y &amp;&amp; x &lt; rect.x + rect.w &amp;&amp; y &lt; rect.y + rect.h;
+}
+
+<span class="tok-keyword">function</span> chooseDropEffect(action, accepted) {
+    <span class="tok-keyword">if</span> (!accepted) {
+        action.Effect = DROP_EFFECT.none;
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">const</span> allowed = action.Effect;
+    <span class="tok-keyword">if</span> (allowed &amp; DROP_EFFECT.copy) {
+        action.Effect = DROP_EFFECT.copy;
+    } <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (allowed &amp; DROP_EFFECT.link) {
+        action.Effect = DROP_EFFECT.link;
+    } <span class="tok-keyword">else</span> {
+        action.Effect = DROP_EFFECT.none;
+    }
+}
+
+<span class="tok-keyword">function</span> readTrackInfo(handle) {
+    currentArtist = tfArtist.EvalWithMetadb(handle);
+    currentTitle = tfTitle.EvalWithMetadb(handle);
+    currentAlbum = tfAlbum.EvalWithMetadb(handle);
+}
+
+<span class="tok-keyword">function</span> showTracks(handles, sourceText) {
+    <span class="tok-keyword">if</span> (!handles || !handles.Count) {
+        <span class="tok-keyword">return</span>;
+    }
+
+    currentHandles = handles;
+    currentTrack = handles[<span class="tok-number">0</span>];
+    currentTrackCount = handles.Count;
+    currentSourceText = sourceText;
+    currentArtwork = <span class="tok-literal">null</span>;
+    readTrackInfo(currentTrack);
+
+    <span class="tok-keyword">const</span> generation = ++artworkGeneration;
+    window.Repaint();
+
+    utils.GetAlbumArtAsyncV2(<span class="tok-number">0</span>, currentTrack, AlbumArtId.front, <span class="tok-literal">true</span>, <span class="tok-literal">false</span>, <span class="tok-literal">false</span>).then(<span class="tok-keyword">function</span> (result) {
+        <span class="tok-keyword">if</span> (generation !== artworkGeneration) {
+            <span class="tok-keyword">return</span>;
+        }
+
+        currentArtwork = result &amp;&amp; result.image ? result.image : <span class="tok-literal">null</span>;
+        window.Repaint();
+    }, <span class="tok-keyword">function</span> (error) {
+        <span class="tok-keyword">if</span> (generation !== artworkGeneration) {
+            <span class="tok-keyword">return</span>;
+        }
+
+        currentArtwork = <span class="tok-literal">null</span>;
+        console.log(<span class="tok-string">&#39;BroadcastChannel demo ARTWORK ERROR&#39;</span>, String(error));
+        window.Repaint();
+    });
+}
+
+<span class="tok-keyword">function</span> broadcastHello() {
+    sentCount++;
+
+    <span class="tok-keyword">const</span> message = {
+        demo: <span class="tok-string">&#39;jsplitter-broadcast-channel&#39;</span>,
+        kind: <span class="tok-string">&#39;hello&#39;</span>,
+        from: INSTANCE_ID,
+        sequence: sentCount,
+        text: <span class="tok-string">&#39;Hello from another JSplitter panel&#39;</span>,
+        sentAt: Date.now()
+    };
+
+    channel.postMessage(message);
+    statusText = <span class="tok-string">`Sent message #${sentCount}.`</span>;
+
+    console.log(<span class="tok-string">&#39;BroadcastChannel demo SEND&#39;</span>, {
+        channel: channel.name,
+        thisPanel: INSTANCE_ID,
+        message: message
+    });
+
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> broadcastTracks(handles) {
+    sentCount++;
+
+    showTracks(
+        handles,
+        <span class="tok-string">`Dropped locally and broadcast as message #${sentCount}.`</span>
+    );
+
+    <span class="tok-keyword">const</span> message = {
+        demo: <span class="tok-string">&#39;jsplitter-broadcast-channel&#39;</span>,
+        kind: <span class="tok-string">&#39;tracks&#39;</span>,
+        from: INSTANCE_ID,
+        sequence: sentCount,
+        handles: handles
+    };
+
+    channel.postMessage(message);
+    statusText = <span class="tok-string">`Broadcast ${handles.Count} track${handles.Count === 1 ? &#39;&#39; : &#39;s&#39;} as message #${sentCount}.`</span>;
+
+    console.log(<span class="tok-string">&#39;BroadcastChannel demo SEND TRACKS&#39;</span>, {
+        channel: channel.name,
+        thisPanel: INSTANCE_ID,
+        sequence: sentCount,
+        count: handles.Count
+    });
+
+    window.Repaint();
+}
+
+channel.onmessage = <span class="tok-keyword">function</span> (event) {
+    <span class="tok-keyword">const</span> message = event.data;
+    <span class="tok-keyword">if</span> (!message || message.demo !== <span class="tok-string">&#39;jsplitter-broadcast-channel&#39;</span>) {
+        <span class="tok-keyword">return</span>;
+    }
+
+    receivedCount++;
+
+    <span class="tok-keyword">if</span> (message.kind === <span class="tok-string">&#39;tracks&#39;</span> &amp;&amp; message.handles &amp;&amp; message.handles.Count) {
+        showTracks(
+            message.handles,
+            <span class="tok-string">`Received ${message.handles.Count} track${message.handles.Count === 1 ? &#39;&#39; : &#39;s&#39;} from panel ${message.from}.`</span>
+        );
+        statusText = <span class="tok-string">`Received track message #${message.sequence} from panel ${message.from}.`</span>;
+    } <span class="tok-keyword">else</span> {
+        statusText = <span class="tok-string">`Received message #${message.sequence} from panel ${message.from}: ${message.text}`</span>;
+    }
+
+    console.log(<span class="tok-string">&#39;BroadcastChannel demo RECEIVE&#39;</span>, {
+        channel: channel.name,
+        thisPanel: INSTANCE_ID,
+        message: message
+    });
+
+    window.Repaint();
+};
+
+channel.onmessageerror = <span class="tok-keyword">function</span> (event) {
+    statusText = <span class="tok-string">&#39;Could not reconstruct an incoming message: &#39;</span> +
+        (event.errorMessage || <span class="tok-string">&#39;(no diagnostic text)&#39;</span>);
+    console.log(<span class="tok-string">&#39;BroadcastChannel demo MESSAGEERROR&#39;</span>, statusText);
+    window.Repaint();
+};
+
+<span class="tok-keyword">function</span> drawArtwork(gr, image, x, y, size) {
+    <span class="tok-keyword">if</span> (!image || size &lt;= <span class="tok-number">0</span>) {
+        gr.FillSolidRect(x, y, size, size, RGB(<span class="tok-number">224</span>, <span class="tok-number">224</span>, <span class="tok-number">224</span>));
+        gr.DrawRect(x, y, size, size, <span class="tok-number">1</span>, RGB(<span class="tok-number">185</span>, <span class="tok-number">185</span>, <span class="tok-number">185</span>));
+        gr.GdiDrawText(
+            <span class="tok-string">&#39;No artwork&#39;</span>,
+            textFont,
+            RGB(<span class="tok-number">110</span>, <span class="tok-number">110</span>, <span class="tok-number">110</span>),
+            x + <span class="tok-number">6</span>, y + <span class="tok-number">6</span>, Math.max(<span class="tok-number">0</span>, size - <span class="tok-number">12</span>), Math.max(<span class="tok-number">0</span>, size - <span class="tok-number">12</span>),
+            DT_CENTER | DT_VCENTER | DT_WORDBREAK | DT_NOPREFIX
+        );
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">let</span> sx = <span class="tok-number">0</span>;
+    <span class="tok-keyword">let</span> sy = <span class="tok-number">0</span>;
+    <span class="tok-keyword">let</span> sw = image.Width;
+    <span class="tok-keyword">let</span> sh = image.Height;
+
+    <span class="tok-keyword">if</span> (sw &gt; sh) {
+        sx = Math.floor((sw - sh) / <span class="tok-number">2</span>);
+        sw = sh;
+    } <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (sh &gt; sw) {
+        sy = Math.floor((sh - sw) / <span class="tok-number">2</span>);
+        sh = sw;
+    }
+
+    gr.DrawImage(image, x, y, size, size, sx, sy, sw, sh);
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_up(x, y) {
+    <span class="tok-keyword">const</span> areas = layout();
+    <span class="tok-keyword">if</span> (contains(areas.click, x, y)) {
+        broadcastHello();
+    }
+}
+
+<span class="tok-keyword">function</span> on_drag_enter(action, x, y) {
+    <span class="tok-keyword">const</span> inside = contains(layout().drop, x, y);
+    dragOverDropZone = inside;
+    chooseDropEffect(action, inside);
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> on_drag_over(action, x, y) {
+    <span class="tok-keyword">const</span> inside = contains(layout().drop, x, y);
+    <span class="tok-keyword">if</span> (inside !== dragOverDropZone) {
+        dragOverDropZone = inside;
+        window.Repaint();
+    }
+    chooseDropEffect(action, inside);
+}
+
+<span class="tok-keyword">function</span> on_drag_leave() {
+    <span class="tok-keyword">if</span> (dragOverDropZone) {
+        dragOverDropZone = <span class="tok-literal">false</span>;
+        window.Repaint();
+    }
+}
+
+<span class="tok-keyword">function</span> on_drag_drop(action, x, y) {
+    <span class="tok-keyword">const</span> inside = contains(layout().drop, x, y);
+    <span class="tok-keyword">const</span> handles = inside ? action.Handles : <span class="tok-literal">null</span>;
+    <span class="tok-keyword">const</span> accepted = !!(handles &amp;&amp; handles.Count);
+
+    dragOverDropZone = <span class="tok-literal">false</span>;
+    chooseDropEffect(action, accepted);
+
+    <span class="tok-keyword">if</span> (accepted) {
+        broadcastTracks(handles);
+    } <span class="tok-keyword">else</span> {
+        statusText = inside
+            ? <span class="tok-string">&#39;The dropped data did not contain any track handles.&#39;</span>
+            : <span class="tok-string">&#39;Drop cancelled.&#39;</span>;
+        window.Repaint();
+    }
+}
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    <span class="tok-keyword">const</span> w = window.Width;
+    <span class="tok-keyword">const</span> h = window.Height;
+    <span class="tok-keyword">const</span> areas = layout();
+
+    <span class="tok-keyword">const</span> background = RGB(<span class="tok-number">245</span>, <span class="tok-number">245</span>, <span class="tok-number">245</span>);
+    <span class="tok-keyword">const</span> card = RGB(<span class="tok-number">255</span>, <span class="tok-number">255</span>, <span class="tok-number">255</span>);
+    <span class="tok-keyword">const</span> border = RGB(<span class="tok-number">190</span>, <span class="tok-number">190</span>, <span class="tok-number">190</span>);
+    <span class="tok-keyword">const</span> text = RGB(<span class="tok-number">55</span>, <span class="tok-number">55</span>, <span class="tok-number">55</span>);
+    <span class="tok-keyword">const</span> secondary = RGB(<span class="tok-number">105</span>, <span class="tok-number">105</span>, <span class="tok-number">105</span>);
+    <span class="tok-keyword">const</span> accent = RGB(<span class="tok-number">70</span>, <span class="tok-number">125</span>, <span class="tok-number">190</span>);
+
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, w, h, background);
+
+    gr.GdiDrawText(
+        <span class="tok-string">&#39;BroadcastChannel demo&#39;</span>,
+        titleFont,
+        RGB(<span class="tok-number">35</span>, <span class="tok-number">35</span>, <span class="tok-number">35</span>),
+        <span class="tok-number">16</span>, <span class="tok-number">12</span>, Math.max(<span class="tok-number">0</span>, w - <span class="tok-number">32</span>), <span class="tok-number">28</span>,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX
+    );
+
+    <span class="tok-comment">// Upper click area: the original simple structured-message demo.</span>
+    gr.FillSolidRect(areas.click.x, areas.click.y, areas.click.w, areas.click.h, card);
+    gr.DrawRect(areas.click.x, areas.click.y, areas.click.w, areas.click.h, <span class="tok-number">1</span>, border);
+    gr.GdiDrawText(
+        <span class="tok-string">&#39;CLICK TO BROADCAST&#39;</span>,
+        headingFont,
+        accent,
+        areas.click.x + <span class="tok-number">12</span>, areas.click.y + <span class="tok-number">8</span>, Math.max(<span class="tok-number">0</span>, areas.click.w - <span class="tok-number">24</span>), <span class="tok-number">22</span>,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX
+    );
+
+    <span class="tok-keyword">const</span> topText =
+        <span class="tok-string">`Channel: ${CHANNEL_NAME}\n`</span> +
+        <span class="tok-string">`This panel: ${INSTANCE_ID}    Sent: ${sentCount}    Received: ${receivedCount}\n`</span> +
+        statusText;
+
+    gr.GdiDrawText(
+        topText,
+        textFont,
+        text,
+        areas.click.x + <span class="tok-number">12</span>, areas.click.y + <span class="tok-number">32</span>,
+        Math.max(<span class="tok-number">0</span>, areas.click.w - <span class="tok-number">24</span>), Math.max(<span class="tok-number">0</span>, areas.click.h - <span class="tok-number">40</span>),
+        DT_LEFT | DT_TOP | DT_WORDBREAK | DT_NOPREFIX
+    );
+
+    <span class="tok-comment">// Lower drop area: broadcasts real foobar2000 track handles.</span>
+    <span class="tok-keyword">const</span> dropFill = dragOverDropZone ? RGB(<span class="tok-number">235</span>, <span class="tok-number">243</span>, <span class="tok-number">252</span>) : card;
+    <span class="tok-keyword">const</span> dropBorder = dragOverDropZone ? accent : border;
+    gr.FillSolidRect(areas.drop.x, areas.drop.y, areas.drop.w, areas.drop.h, dropFill);
+    gr.DrawRect(areas.drop.x, areas.drop.y, areas.drop.w, areas.drop.h, dragOverDropZone ? <span class="tok-number">2</span> : <span class="tok-number">1</span>, dropBorder);
+
+    gr.GdiDrawText(
+        dragOverDropZone ? <span class="tok-string">&#39;DROP TRACKS&#39;</span> : <span class="tok-string">&#39;TRACK BROADCAST&#39;</span>,
+        headingFont,
+        dragOverDropZone ? accent : text,
+        areas.drop.x + <span class="tok-number">12</span>, areas.drop.y + <span class="tok-number">8</span>, Math.max(<span class="tok-number">0</span>, areas.drop.w - <span class="tok-number">24</span>), <span class="tok-number">22</span>,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX
+    );
+
+    <span class="tok-keyword">const</span> contentY = areas.drop.y + <span class="tok-number">38</span>;
+    <span class="tok-keyword">const</span> contentH = Math.max(<span class="tok-number">0</span>, areas.drop.h - <span class="tok-number">50</span>);
+
+    <span class="tok-keyword">if</span> (!currentTrack) {
+        gr.GdiDrawText(
+            <span class="tok-string">&#39;Drop one or more tracks here.\n\n&#39;</span> +
+            <span class="tok-string">&#39;The complete FbMetadbHandleList is sent through BroadcastChannel.\n&#39;</span> +
+            <span class="tok-string">&#39;Every subscribed panel reads the first track metadata and loads its artwork locally.&#39;</span>,
+            textFont,
+            secondary,
+            areas.drop.x + <span class="tok-number">16</span>, contentY,
+            Math.max(<span class="tok-number">0</span>, areas.drop.w - <span class="tok-number">32</span>), contentH,
+            DT_CENTER | DT_VCENTER | DT_WORDBREAK | DT_NOPREFIX
+        );
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">const</span> artSize = Math.max(<span class="tok-number">0</span>, Math.min(<span class="tok-number">150</span>, contentH, Math.floor(areas.drop.w * <span class="tok-number">0.36</span>)));
+    <span class="tok-keyword">const</span> artX = areas.drop.x + <span class="tok-number">14</span>;
+    <span class="tok-keyword">const</span> artY = contentY + Math.max(<span class="tok-number">0</span>, Math.floor((contentH - artSize) / <span class="tok-number">2</span>));
+    drawArtwork(gr, currentArtwork, artX, artY, artSize);
+
+    <span class="tok-keyword">const</span> infoX = artX + artSize + <span class="tok-number">16</span>;
+    <span class="tok-keyword">const</span> infoW = Math.max(<span class="tok-number">0</span>, areas.drop.x + areas.drop.w - <span class="tok-number">14</span> - infoX);
+    <span class="tok-keyword">const</span> infoY = contentY + <span class="tok-number">4</span>;
+
+    <span class="tok-keyword">const</span> trackCountLine = currentTrackCount &gt; <span class="tok-number">1</span>
+        ? <span class="tok-string">`${currentTrackCount} tracks received — showing the first track`</span>
+        : <span class="tok-string">&#39;1 track&#39;</span>;
+
+    <span class="tok-keyword">const</span> info =
+        <span class="tok-string">`${currentArtist}\n`</span> +
+        <span class="tok-string">`${currentTitle}\n`</span> +
+        <span class="tok-string">`${currentAlbum}\n\n`</span> +
+        <span class="tok-string">`${trackCountLine}\n`</span> +
+        currentSourceText;
+
+    gr.GdiDrawText(
+        info,
+        textFont,
+        text,
+        infoX, infoY, infoW, Math.max(<span class="tok-number">0</span>, contentH - <span class="tok-number">8</span>),
+        DT_LEFT | DT_TOP | DT_WORDBREAK | DT_NOPREFIX
+    );
+}
+
+<span class="tok-keyword">function</span> on_script_unload() {
+    <span class="tok-comment">// Panel reload/unload would clean the channel up automatically, but explicit</span>
+    <span class="tok-comment">// close() is the right pattern when a live script is simply done using it.</span>
+    channel.close();
+}
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

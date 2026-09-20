@@ -45,6 +45,9 @@
     </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
         <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
+        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="ButtonObject">
         <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -240,7 +243,7 @@ include(<span class="tok-string">`${fb.ComponentPath}\\docs\\Flags.js`</span>);
     [<span class="tok-string">&quot;Triangle&quot;</span>, d2d.StrokeStyle({ startCap: CapStyle.Triangle, endCap: CapStyle.Triangle })]
 ];
 
-<span class="tok-keyword">const</span> dashStyles = [
+<span class="tok-keyword">const</span> dashStyles = [ <span class="tok-comment">// Predefined dot styles automatically use a round dash cap when dashCap is omitted.</span>
     [<span class="tok-string">&quot;Solid&quot;</span>, d2d.StrokeStyle({ dashStyle: DashStyle.Solid })],
     [<span class="tok-string">&quot;Dash&quot;</span>, d2d.StrokeStyle({ dashStyle: DashStyle.Dash })],
     [<span class="tok-string">&quot;Dot&quot;</span>, d2d.StrokeStyle({ dashStyle: DashStyle.Dot })],
@@ -259,12 +262,10 @@ include(<span class="tok-string">`${fb.ComponentPath}\\docs\\Flags.js`</span>);
     }),
     roundRect: d2d.StrokeStyle({
         dashStyle: DashStyle.DashDot,
-        dashCap: CapStyle.Round,
         lineJoin: LineJoin.Round
     }),
     ellipse: d2d.StrokeStyle({
-        dashStyle: DashStyle.Dot,
-        dashCap: CapStyle.Round
+        dashStyle: DashStyle.Dot
     }),
     polygon: d2d.StrokeStyle({
         lineJoin: LineJoin.Round,

@@ -45,6 +45,9 @@
     </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
         <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
+        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="ButtonObject">
         <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -213,7 +216,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#ArtPromiseResult">ArtPromiseResult</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2318</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2393</div>
         </header>
         
         
@@ -229,6 +232,38 @@
         </section>
         
         
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="BroadcastChannelMessageCallback" data-kind="callback" data-name="broadcastchannelmessagecallback">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-callback">callback</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
+                <h2><a class="anchor" href="#BroadcastChannelMessageCallback">BroadcastChannelMessageCallback</a></h2>
+            </div>
+            <div class="source-location">js/broadcast_channel.js:1</div>
+        </header>
+        <pre class="signature"><code>BroadcastChannelMessageCallback(event)</code></pre>
+        
+        <div class="description"><p>Callback used by <a href="BroadcastChannel.html#onmessage">onmessage</a> and <a href="BroadcastChannel.html#onmessageerror">onmessageerror</a>.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>event</code></td><td><code><a class="type-link" href="MessageEvent.html#MessageEvent">MessageEvent</a></code></td><td><p>Broadcast message or reconstruction-error event.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>void</code></div>
+        </section>
         
         
         
@@ -308,7 +343,7 @@
             <h3>Properties</h3>
             <div class="table-wrap"><table>
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr id="startCap"><td><code>startCap = CapStyle.Flat</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#CapStyle">CapStyle</a></code></td><td><p>Cap at the start of an open stroke.</p></td></tr><tr id="endCap"><td><code>endCap = CapStyle.Flat</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#CapStyle">CapStyle</a></code></td><td><p>Cap at the end of an open stroke.</p></td></tr><tr id="dashCap"><td><code>dashCap = CapStyle.Flat</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#CapStyle">CapStyle</a></code></td><td><p>Cap applied to each dash segment.</p></td></tr><tr id="lineJoin"><td><code>lineJoin = LineJoin.Miter</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#LineJoin">LineJoin</a></code></td><td><p>Join used where consecutive line segments meet.</p></td></tr><tr id="miterLimit"><td><code>miterLimit = 10</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Positive miter limit used by miter-based joins.</p></td></tr><tr id="dashStyle"><td><code>dashStyle = DashStyle.Solid</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#DashStyle">DashStyle</a></code></td><td><p>Dash pattern. DashStyle.Custom requires a non-empty dashes array.</p></td></tr><tr id="dashOffset"><td><code>dashOffset = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Offset into the dash sequence.</p></td></tr><tr id="dashes"><td><code>dashes</code><span class="mini-flag">optional</span></td><td><code>Array&lt;number&gt;</code></td><td><p>Custom dash lengths expressed as multiples of the stroke width. Supplying this array selects DashStyle.Custom automatically.</p></td></tr></tbody>
+                <tbody><tr id="startCap"><td><code>startCap = CapStyle.Flat</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#CapStyle">CapStyle</a></code></td><td><p>Cap at the start of an open stroke.</p></td></tr><tr id="endCap"><td><code>endCap = CapStyle.Flat</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#CapStyle">CapStyle</a></code></td><td><p>Cap at the end of an open stroke.</p></td></tr><tr id="dashCap"><td><code>dashCap</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#CapStyle">CapStyle</a></code></td><td><p>Cap applied to each dash segment. If omitted, JSplitter uses CapStyle.Round for DashStyle.Dot, DashStyle.DashDot and DashStyle.DashDotDot so their zero-length dot segments are visible; other dash styles use CapStyle.Flat. An explicitly supplied dashCap is always used as-is.</p></td></tr><tr id="lineJoin"><td><code>lineJoin = LineJoin.Miter</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#LineJoin">LineJoin</a></code></td><td><p>Join used where consecutive line segments meet.</p></td></tr><tr id="miterLimit"><td><code>miterLimit = 10</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Positive miter limit used by miter-based joins.</p></td></tr><tr id="dashStyle"><td><code>dashStyle = DashStyle.Solid</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#DashStyle">DashStyle</a></code></td><td><p>Dash pattern. DashStyle.Custom requires a non-empty dashes array.</p></td></tr><tr id="dashOffset"><td><code>dashOffset = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Offset into the dash sequence.</p></td></tr><tr id="dashes"><td><code>dashes</code><span class="mini-flag">optional</span></td><td><code>Array&lt;number&gt;</code></td><td><p>Custom dash lengths expressed as multiples of the stroke width. Supplying this array selects DashStyle.Custom automatically.</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -378,7 +413,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#JsMemoryStats">JsMemoryStats</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3322</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3456</div>
         </header>
         
         
@@ -406,7 +441,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#JsPackageDirs">JsPackageDirs</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2473</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2548</div>
         </header>
         
         
@@ -434,7 +469,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#JsPackageInfo">JsPackageInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2483</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2558</div>
         </header>
         
         
@@ -462,7 +497,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#JsWorkerMemoryStats">JsWorkerMemoryStats</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3304</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3438</div>
         </header>
         
         
@@ -635,7 +670,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#ScriptInfo">ScriptInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3403</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3537</div>
         </header>
         
         
@@ -725,6 +760,91 @@
         </section>
     </article>
 
+    <article class="api-item" id="SystemInfo" data-kind="typedef" data-name="systeminfo">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
+                <h2><a class="anchor" href="#SystemInfo">SystemInfo</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2020</div>
+        </header>
+        
+        
+        <div class="description"><p>System-information snapshot returned by <a href="utils.html#SystemInfo">utils.SystemInfo</a>.</p></div>
+        
+        
+        <section class="member-section">
+            <h3>Properties</h3>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr id="OS"><td><code>OS</code></td><td><code>string</code></td><td><p>Human-readable Windows product name including the edition when available, for example <code>Windows 11 Home</code> or <code>Windows 11 Pro</code>.</p></td></tr><tr id="Build"><td><code>Build</code></td><td><code>number</code></td><td><p>Windows NT build number.</p></td></tr><tr id="IsOS64Bit"><td><code>IsOS64Bit</code></td><td><code>boolean</code></td><td><p>True when the operating system architecture is 64-bit. This describes Windows itself, not the foobar2000 process architecture.</p></td></tr><tr id="RAM"><td><code>RAM</code></td><td><code><a class="type-link" href="globals.html#SystemMemoryInfo">SystemMemoryInfo</a></code></td><td><p>Physical-memory and foobar2000 private-working-set information.</p></td></tr><tr id="VRAM"><td><code>VRAM</code></td><td><code><a class="type-link" href="globals.html#SystemVideoMemoryInfo">SystemVideoMemoryInfo</a>|null</code></td><td><p>Dedicated/local video-memory information for the selected graphics adapter, or null when the required video-memory query interface is unavailable.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="SystemMemoryInfo" data-kind="typedef" data-name="systemmemoryinfo">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
+                <h2><a class="anchor" href="#SystemMemoryInfo">SystemMemoryInfo</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:1991</div>
+        </header>
+        
+        
+        <div class="description"><p>Physical-memory information returned in <a href="utils.html#SystemInfo">utils.SystemInfo</a>.</p></div>
+        
+        
+        <section class="member-section">
+            <h3>Properties</h3>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr id="Total"><td><code>Total</code></td><td><code>number</code></td><td><p>Total physical memory visible to Windows, in bytes. This can be lower than the installed RAM amount because hardware-reserved memory is not included.</p></td></tr><tr id="Available"><td><code>Available</code></td><td><code>number</code></td><td><p>Physical memory currently available to the system, in bytes. This is Windows' available-memory value and includes reclaimable standby/cache memory; it is more useful for capacity decisions than strictly free pages.</p></td></tr><tr id="Process"><td><code>Process</code></td><td><code>number</code></td><td><p>Private working set of the foobar2000 process, in bytes. This corresponds closely to the <b>Memory (active private working set)</b> value shown for foobar2000 in Windows Task Manager.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="SystemVideoMemoryInfo" data-kind="typedef" data-name="systemvideomemoryinfo">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
+                <h2><a class="anchor" href="#SystemVideoMemoryInfo">SystemVideoMemoryInfo</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2003</div>
+        </header>
+        
+        
+        <div class="description"><p>Dedicated/local video-memory information returned in <a href="utils.html#SystemInfo">utils.SystemInfo</a>.</p>
+<p>The selected adapter is the adapter on which the foobar2000 process currently has the highest local video-memory usage. If the process has no local video-memory usage yet, the adapter with the largest dedicated-memory size is selected instead.</p></div>
+        
+        
+        <section class="member-section">
+            <h3>Properties</h3>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr id="Adapter"><td><code>Adapter</code></td><td><code>string</code></td><td><p>Display name of the selected graphics adapter.</p></td></tr><tr id="SystemVideoMemoryInfo.Total"><td><code>Total</code></td><td><code>number|null</code></td><td><p>Dedicated video-memory size of the selected adapter, in bytes. On 32-bit builds JSplitter avoids returning a truncated 32-bit value; if a safe 64-bit total cannot be obtained, this field is null.</p></td></tr><tr id="ProcessBudget"><td><code>ProcessBudget</code></td><td><code>number</code></td><td><p>Current local video-memory budget assigned to the foobar2000 process by Windows, in bytes. The budget is dynamic and is not a fixed hardware limit.</p></td></tr><tr id="SystemVideoMemoryInfo.Process"><td><code>Process</code></td><td><code>number</code></td><td><p>Current local video-memory usage attributed to the foobar2000 process, in bytes.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+    </article>
+
     <article class="api-item" id="unknown-168" data-kind="unknown" data-name="unknown@168">
         <header class="api-item-header">
             <div>
@@ -752,7 +872,7 @@
                 <div class="eyebrow"><span class="kind kind-callback">callback</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#WorkerErrorCallback">WorkerErrorCallback</a></h2>
             </div>
-            <div class="source-location">js/worker.js:992</div>
+            <div class="source-location">js/worker.js:1015</div>
         </header>
         <pre class="signature"><code>WorkerErrorCallback(event)</code></pre>
         
@@ -784,7 +904,7 @@
                 <div class="eyebrow"><span class="kind kind-callback">callback</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#WorkerMessageCallback">WorkerMessageCallback</a></h2>
             </div>
-            <div class="source-location">js/worker.js:983</div>
+            <div class="source-location">js/worker.js:1006</div>
         </header>
         <pre class="signature"><code>WorkerMessageCallback(event)</code></pre>
         
@@ -816,7 +936,7 @@
                 <div class="eyebrow"><span class="kind kind-callback">callback</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#WorkerPromiseRejectionCallback">WorkerPromiseRejectionCallback</a></h2>
             </div>
-            <div class="source-location">js/worker.js:1001</div>
+            <div class="source-location">js/worker.js:1024</div>
         </header>
         <pre class="signature"><code>WorkerPromiseRejectionCallback(event)</code></pre>
         
