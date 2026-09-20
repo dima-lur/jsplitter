@@ -1989,6 +1989,51 @@ let plman = {
 };
 
 /**
+ * Physical-memory information returned in {@link utils.SystemInfo}.
+ *
+ * @typedef {Object} SystemMemoryInfo
+ * @property {number} Total
+ *    Total physical memory visible to Windows, in bytes. This can be lower than the installed RAM amount because hardware-reserved memory is not included.
+ * @property {number} Available
+ *    Physical memory currently available to the system, in bytes. This is Windows' available-memory value and includes reclaimable standby/cache memory; it is more useful for capacity decisions than strictly free pages.
+ * @property {number} Process
+ *    Private working set of the foobar2000 process, in bytes. This corresponds closely to the <b>Memory (active private working set)</b> value shown for foobar2000 in Windows Task Manager.
+ */
+
+/**
+ * Dedicated/local video-memory information returned in {@link utils.SystemInfo}.
+ *
+ * The selected adapter is the adapter on which the foobar2000 process currently has the highest local video-memory usage.
+ * If the process has no local video-memory usage yet, the adapter with the largest dedicated-memory size is selected instead.
+ *
+ * @typedef {Object} SystemVideoMemoryInfo
+ * @property {string} Adapter
+ *    Display name of the selected graphics adapter.
+ * @property {number|null} Total
+ *    Dedicated video-memory size of the selected adapter, in bytes. On 32-bit builds JSplitter avoids returning a truncated 32-bit value; if a safe 64-bit total cannot be obtained, this field is null.
+ * @property {number} ProcessBudget
+ *    Current local video-memory budget assigned to the foobar2000 process by Windows, in bytes. The budget is dynamic and is not a fixed hardware limit.
+ * @property {number} Process
+ *    Current local video-memory usage attributed to the foobar2000 process, in bytes.
+ */
+
+/**
+ * System-information snapshot returned by {@link utils.SystemInfo}.
+ *
+ * @typedef {Object} SystemInfo
+ * @property {string} OS
+ *    Human-readable Windows product name including the edition when available, for example <code>Windows 11 Home</code> or <code>Windows 11 Pro</code>.
+ * @property {number} Build
+ *    Windows NT build number.
+ * @property {boolean} IsOS64Bit
+ *    True when the operating system architecture is 64-bit. This describes Windows itself, not the foobar2000 process architecture.
+ * @property {SystemMemoryInfo} RAM
+ *    Physical-memory and foobar2000 private-working-set information.
+ * @property {SystemVideoMemoryInfo|null} VRAM
+ *    Dedicated/local video-memory information for the selected graphics adapter, or null when the required video-memory query interface is unavailable.
+ */
+
+/**
  * Various utility functions.
  *
  * @namespace
@@ -2039,12 +2084,42 @@ let utils = {
     HighResolutionTimersEnabled: undefined, // (bool) (read)
 
     /**
-     * Indicates that current process architecture is 64-bit.
+     * Indicates whether the current foobar2000 process architecture is 64-bit.
+     * This does not describe the operating system architecture; use {@link utils.IsOS64Bit} for that.
      *
      * @type {boolean}
+     * @readonly
      * @worker
      */
     Is64Bit: undefined, // (bool) (read)
+
+    /**
+     * Indicates whether the operating system architecture is 64-bit.
+     * Unlike {@link utils.Is64Bit}, this value describes Windows itself and remains true when 32-bit foobar2000 runs on 64-bit Windows.
+     *
+     * @type {boolean}
+     * @readonly
+     * @worker
+     */
+    IsOS64Bit: undefined, // (bool) (read)
+
+    /**
+     * Returns a fresh snapshot of operating-system, physical-memory and dedicated/local video-memory information.
+     * All memory values are reported in bytes. See {@link SystemInfo} for the returned object properties.
+     *
+     * @type {SystemInfo}
+     * @readonly
+     * @worker
+     *
+     * @example
+     * const info = utils.SystemInfo;
+     * console.log(`${info.OS} (build ${info.Build})`);
+     * console.log(`RAM: ${utils.FormatFileSize(info.RAM.Process)} used by foobar2000`);
+     * if (info.VRAM) {
+     *     console.log(`${info.VRAM.Adapter}: ${utils.FormatFileSize(info.VRAM.Process)} VRAM used`);
+     * }
+     */
+    SystemInfo: undefined,
     
     /**
      * Checks the availability of foobar2000 component.
@@ -2529,6 +2604,65 @@ let utils = {
      * @worker
      */
     GetSystemMetrics: function (index) { }, // (int)
+
+    /**
+     * Decodes an audio track asynchronously and returns a fixed-size waveform amplitude envelope.<br>
+     * Each element of the returned <code>Float32Array</code> is a linear amplitude value in the range 0.0..1.0 for the corresponding part of the requested time range.<br>
+     * Each output point represents one time interval. The interval is divided into up to 8 local windows; for each non-empty window, the peak absolute sample value across all channels is measured, and those local peaks are averaged to produce the output value. This preserves short transients while avoiding the dense appearance produced by taking a single maximum peak over the entire output interval.<br>
+     * Values are not normalized to the loudest point of the track, so their amplitudes remain relative to the decoded audio signal.<br>
+     * Decoding and waveform calculation are performed asynchronously; decoded PCM data is not exposed to JavaScript.<br>
+     * If <code>duration</code> is 0, the requested range extends from <code>start</code> to the end of the track. If the track length cannot be determined, a non-zero duration must be specified.<br>
+     * A range that extends past a known track end is clipped. If <code>start</code> is at or beyond the known track end, a zero-filled array is returned.<br>
+     * Decoder or input-opening failures reject the returned Promise.
+     *
+     * @param {FbMetadbHandle} handle Track to decode.
+     * @param {number=} [points=2048] Number of output points. Valid range: 1..65536.
+     * @param {number=} [start=0] Start position in seconds. Must be finite and non-negative.
+     * @param {number=} [duration=0] Duration in seconds. Must be finite and non-negative. 0 means from <code>start</code> to the end of the track.
+     * @return {Promise.<Float32Array>} Promise resolved with exactly <code>points</code> linear amplitude values.
+     *
+     * @throws
+     * Throws synchronously if <code>handle</code> is null or if <code>points</code>, <code>start</code>, or <code>duration</code> is invalid.
+     *
+     * @example
+     * async function loadWaveform() {
+     *     const handle = fb.GetNowPlaying();
+     *     if (!handle) return;
+     *
+     *     try {
+     *         const waveform = await utils.GetWaveformAsync(handle);
+     *         console.log(`Full waveform: ${waveform.length} points`);
+     *
+     *         // 512 points for a 30-second range starting at 60 seconds.
+     *         const section = await utils.GetWaveformAsync(handle, 512, 60, 30);
+     *         console.log(section);
+     *     } catch (e) {
+     *         console.log(`GetWaveformAsync failed: ${e}`);
+     *     }
+     * }
+     * 
+     * loadWaveform();
+     * @example
+     *const handle = fb.GetNowPlaying();
+     * if (!handle) return;
+     * 
+     * utils.GetWaveformAsync(handle)
+     *     .then(waveform => {
+     *         console.log(`Full waveform: ${waveform.length} points`);
+     * 
+     *         // Return another Promise to continue the chain.
+     *         return utils.GetWaveformAsync(handle, 512, 60, 30);
+     *     })
+     *     .then(section => {
+     *         console.log(section);
+     *     })
+     *     .catch(e => {
+     *         console.log(`GetWaveformAsync failed: ${e}`);
+     *     });
+     * 
+     * @worker
+     */
+    GetWaveformAsync: function (handle, points, start, duration) { },
 
     /**
      * Retrieves filepaths that match the supplied pattern.
@@ -3600,8 +3734,10 @@ let window = {
     ImportProperties: function (fileName, reload_panel) { },
 
     /**
-     * This will trigger {@link module:Callbacks.on_notify_data on_notify_data}(name, info) in other panels.<br>
+     * This will <b>synchronously</b> trigger {@link module:Callbacks.on_notify_data on_notify_data}(name, info) in other panels.<br>
      * <b>!!! Beware !!!</b>: data passed via `info` argument must NOT be used or modified in the source panel after invoking this method.
+     * <div class="doc-note warning">
+     * <b>Legacy compatibility API</b><br>Existing scripts can keep using NotifyOthers unchanged. For new asynchronous structured-clone messaging between panels and Workers, prefer {@link BroadcastChannel}.<br></div>
      *
      * @param {string} name
      * @param {*} info

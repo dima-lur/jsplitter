@@ -615,7 +615,7 @@ function D2DBrush(arg) {
  * @typedef {Object} D2DStrokeStyleOptions
  * @property {CapStyle} [startCap=CapStyle.Flat] Cap at the start of an open stroke.
  * @property {CapStyle} [endCap=CapStyle.Flat] Cap at the end of an open stroke.
- * @property {CapStyle} [dashCap=CapStyle.Flat] Cap applied to each dash segment.
+ * @property {CapStyle} [dashCap] Cap applied to each dash segment. If omitted, JSplitter uses CapStyle.Round for DashStyle.Dot, DashStyle.DashDot and DashStyle.DashDotDot so their zero-length dot segments are visible; other dash styles use CapStyle.Flat. An explicitly supplied dashCap is always used as-is.
  * @property {LineJoin} [lineJoin=LineJoin.Miter] Join used where consecutive line segments meet.
  * @property {number} [miterLimit=10] Positive miter limit used by miter-based joins.
  * @property {DashStyle} [dashStyle=DashStyle.Solid] Dash pattern. DashStyle.Custom requires a non-empty dashes array.
@@ -626,7 +626,7 @@ function D2DBrush(arg) {
 
 /**
  * Reusable Direct2D stroke style describing line caps, joins and dash behaviour.<br>
- * Create with {@link d2d.StrokeStyle d2d.StrokeStyle} and reuse it across drawing calls instead of rebuilding the same stroke configuration every frame.
+ * Create with {@link d2d.StrokeStyle d2d.StrokeStyle} and reuse it across drawing calls instead of rebuilding the same stroke configuration every frame.<br><div class="doc-note"><b>Dotted strokes:</b> Direct2D defines the dot portions of <code>DashStyle.Dot</code>, <code>DashStyle.DashDot</code> and <code>DashStyle.DashDotDot</code> as zero-length dash segments. When <code>dashCap</code> is omitted, JSplitter automatically uses <code>CapStyle.Round</code> for those predefined styles, matching the numeric <code>DashStyle</code> shorthand used by D2D drawing methods. Specify <code>dashCap</code> explicitly to override this behaviour. See Microsoft documentation for {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_dash_style D2D1_DASH_STYLE} and {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_cap_style D2D1_CAP_STYLE}.</div>
  * @cloneable
  * @constructor
  * @hideconstructor
@@ -1302,9 +1302,9 @@ let d2d = {
     /**
      * Creates a reusable Direct2D stroke style for line and outline drawing.<br>
      * The style controls start/end/dash caps, line joins, miter limit, dash pattern and dash offset.<br>
-     * Performance note: create commonly used styles once and reuse them from <code>on_paint</code>.
+     * Performance note: create commonly used styles once and reuse them from <code>on_paint</code>.<br><div class="doc-note"><b>Dotted strokes:</b> when <code>dashCap</code> is omitted, <code>DashStyle.Dot</code>, <code>DashStyle.DashDot</code> and <code>DashStyle.DashDotDot</code> automatically use <code>CapStyle.Round</code>. This makes <code>d2d.StrokeStyle({ dashStyle: DashStyle.Dot })</code> match the <code>DashStyle.Dot</code> drawing-method shorthand. An explicitly supplied <code>dashCap</code> is preserved, including <code>CapStyle.Flat</code>. See {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_dash_style Microsoft: D2D1_DASH_STYLE} and {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_cap_style Microsoft: D2D1_CAP_STYLE}.</div>
      *
-     * @param {D2DStrokeStyleOptions=} [options={}] Stroke appearance options. Omitted properties use the Direct2D defaults documented by D2DStrokeStyleOptions.
+     * @param {D2DStrokeStyleOptions=} [options={}] Stroke appearance options. Omitted properties use the defaults documented by D2DStrokeStyleOptions.
      * @return {D2DStrokeStyle}
      * @sourceFile ../../component/samples/d2d/StrokeStyle.js
      * @worker

@@ -201,6 +201,28 @@
  *
  * Ordinary JavaScript objects, arrays, maps, sets, typed arrays, ArrayBuffers and other supported structured-clone values can be sent this way. Selected JSplitter host wrappers can also cross the message boundary; the exact types and their ownership rules are listed later under <b>Host objects in messages</b>.
  *
+ * <h2>Broadcasting between panels and Workers</h2>
+ * {@link Worker#postMessage Worker.postMessage()} is a direct channel between one panel and one specific Worker. When several independent panels and/or Workers should publish and receive messages by a shared name, use {@link BroadcastChannel} instead. BroadcastChannel uses asynchronous structured-clone delivery and does not require the sender to keep references to every receiver.
+ *
+ * ```js
+ * const channel = new BroadcastChannel('playback-state');
+ * channel.onmessage = event => console.log(event.data);
+ * channel.postMessage({ playing: true, track: 12 });
+ * ```
+ *
+ * The same constructor and handlers are available in panel and Worker realms. One important difference from direct Worker messaging is ownership: <b>BroadcastChannel has no transfer list and never detaches the sender's objects.</b> Values are structured-cloned for its receivers. A broadcast can fan out to several independent destinations, so there is no single receiver that could take ownership of a transferred resource.
+ *
+ * ```js
+ * // Broadcast: cloned for listeners; bitmap stays usable here.
+ * channel.postMessage({ bitmap: bitmap });
+ *
+ * // Direct Worker message: ownership can be moved to this one Worker.
+ * worker.postMessage({ bitmap: bitmap }, [bitmap]);
+ * // bitmap is detached after a successful transfer.
+ * ```
+ *
+ * If you need publish/subscribe delivery, use {@link BroadcastChannel}. If you need to move a large transferable resource to one known Worker without retaining a usable source object, use the transfer-list form described below. See {@link BroadcastChannel} and its linked sample for the complete broadcast usage guide.
+ *
  * <h2>Transferring ownership</h2>
  * A transferable value uses the same message channel but a different ownership model.
  * Normal structured clone leaves the source usable and creates a representation for the receiver.
@@ -602,7 +624,8 @@
  * @signature Worker({ file }[, name])
  * @param {(string|Object)} source JavaScript source text, or a file descriptor object such as <code>{ file: 'workers/main.js' }</code>.
  * @param {string=} [name=""] Optional immutable Worker identity exposed through read-only Worker-global {@link WorkerGlobalScope#name name}, reported by {@link window.JsMemoryStats}, and shown in unhandled Worker exception diagnostics.
- *
+ * @throws {Error} If the arguments are invalid, a file-backed Worker cannot resolve or read its startup file, or the Worker cannot be created or started.
+ * 
  * @sourceFile ../../component/samples/worker/01. Basic Messaging.js
  * @sourceFile ../../component/samples/worker/02. Playlist Statistics.js
  * @sourceFile ../../component/samples/worker/03. Fractal Renderer.js
@@ -651,7 +674,7 @@ function Worker(source, name) {
 }
 
 /**
- * Base event target used by Worker objects and Worker global scopes.
+ * Base event target used by Worker objects, Worker global scopes and {@link BroadcastChannel} objects.
  *
  * @constructor
  * @worker
@@ -750,7 +773,7 @@ function Event(type, options) {
 }
 
 /**
- * Event carrying a structured-clone message payload.
+ * Event carrying a structured-clone message payload. Used by direct Worker messaging and {@link BroadcastChannel} in both panel and Worker realms.
  *
  * @constructor
  * @worker
@@ -767,7 +790,7 @@ function MessageEvent(type, options) {
     this.data = undefined;
 
     /**
-     * Message origin. JSplitter Worker messages use an empty string because they are not URL-origin messages.
+     * Message origin. JSplitter Worker and BroadcastChannel messages use an empty string because they are not URL-origin messages.
      * @type {string}
      * @readonly
      * @worker
@@ -783,7 +806,7 @@ function MessageEvent(type, options) {
     this.lastEventId = "";
 
     /**
-     * Message source endpoint. JSplitter Worker messages do not expose a MessagePort-style source, so this is <code>null</code>.
+     * Message source endpoint. JSplitter Worker and BroadcastChannel messages do not expose a MessagePort-style source, so this is <code>null</code>.
      * @type {*}
      * @readonly
      * @worker
@@ -791,7 +814,7 @@ function MessageEvent(type, options) {
     this.source = null;
 
     /**
-     * Transferred message ports. JSplitter does not expose MessagePort objects, so this array is empty.
+     * Transferred message ports. JSplitter does not expose MessagePort objects, so this array is empty. Trusted JSplitter messaging events expose it as an empty frozen array.
      * @type {Array}
      * @readonly
      * @worker
@@ -808,7 +831,7 @@ function MessageEvent(type, options) {
     this.errorMessage = "";
 
     /**
-     * Direction of a JSplitter Worker message: <b>panel-to-worker</b> or <b>worker-to-panel</b>.
+     * Direction of a JSplitter message: <b>panel-to-worker</b>, <b>worker-to-panel</b>, or <b>broadcast</b> for {@link BroadcastChannel}.
      * Manually constructed MessageEvent objects use an empty string unless a direction is supplied explicitly.
      * @type {string}
      * @readonly

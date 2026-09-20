@@ -370,6 +370,7 @@ function on_mouse_wheel_h(step) { }
 
 /**
  * Called in other panels after {@link window.NotifyOthers} is executed.<br>
+ * This callback belongs to the legacy NotifyOthers compatibility path. New code that needs asynchronous structured-clone messaging between panels and/or Workers should prefer {@link BroadcastChannel}.<br>
  * <br>
  * <b>!!! Beware !!!</b><br>
  * 1. Data from `info` argument is only accessible inside `on_notify_data` callback:

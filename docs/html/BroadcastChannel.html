@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>WorkerGlobalScope — JSplitter API</title>
+    <title>BroadcastChannel — JSplitter API</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -46,7 +46,7 @@
         <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
-        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <a class="nav-link nav-page-link active" href="BroadcastChannel.html">BroadcastChannel</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="ButtonObject">
         <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
@@ -178,7 +178,7 @@
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
-        <a class="nav-link nav-page-link active" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
         <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
@@ -202,27 +202,120 @@
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
-        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>WorkerGlobalScope</b></div>
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>BroadcastChannel</b></div>
         
-    <article class="api-item" id="WorkerGlobalScope" data-kind="class" data-name="workerglobalscope">
+    <article class="api-item" id="BroadcastChannel" data-kind="class" data-name="broadcastchannel">
         <header class="api-item-header">
             <div>
                 <div class="eyebrow"><span class="kind kind-class">class</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
-                <h2><a class="anchor" href="#WorkerGlobalScope">WorkerGlobalScope</a></h2>
+                <h2><a class="anchor" href="#BroadcastChannel">BroadcastChannel</a></h2>
             </div>
-            <div class="source-location">js/worker.js:919</div>
+            <div class="source-location">js/broadcast_channel.js:9</div>
         </header>
+        <pre class="signature"><code>BroadcastChannel(name)</code></pre>
+        
+        <div class="description"><p>Named asynchronous messaging channel shared by JSplitter panel and Worker realms.<br></p>
+<p><b>BroadcastChannel</b> is the recommended API for new many-to-many communication between independent JSplitter panels and Workers. Every open channel with the same name participates in the same process-wide JSplitter namespace. A sender publishes a value with <a href="BroadcastChannel.html#postMessage">postMessage()</a>, and every other currently open channel with that name receives a <a href="MessageEvent.html#MessageEvent">MessageEvent</a>. The sending channel itself does not receive its own message.<br></p>
+<p>Unlike <a href="Worker.html#postMessage">Worker.postMessage()</a>, which addresses one specific Worker owned by one panel, BroadcastChannel is intentionally decoupled: the sender does not need to know which panels or Workers are listening.</p>
+<div class="doc-note warning">
+    <b>For new code, prefer BroadcastChannel over <code>window.NotifyOthers()</code>.</b><br>
+    The legacy <code>window.NotifyOthers()</code> mechanism is synchronous and exposes the same live JavaScript value to other panels. This tightly couples the sender and receivers: changes made to a shared object can be visible across panels, and notification handling can directly affect the sender's execution.<br>
+    <code>BroadcastChannel</code> avoids these limitations by delivering messages asynchronously and using structured clone, so each recipient receives its own independent copy of the transmitted data.<br>
+    <code>window.NotifyOthers()</code> remains available for compatibility with existing scripts.
+</div>
+<h2>Quick start</h2>
+<p>Create two JSplitter panels.</p>
+<p>In the first panel, create a channel and wait for messages:</p>
+<pre class="description-code language-js"><code><span class="tok-keyword">const</span> channel = <span class="tok-keyword">new</span> BroadcastChannel(<span class="tok-string">&#39;my-script-state&#39;</span>);
+
+channel.onmessage = <span class="tok-keyword">function</span> (event) {
+    console.log(<span class="tok-string">&#39;Panel A received:&#39;</span>, event.data);
+};</code></pre>
+<p>Then run this code in the second panel:</p>
+<pre class="description-code language-js"><code><span class="tok-keyword">const</span> channel = <span class="tok-keyword">new</span> BroadcastChannel(<span class="tok-string">&#39;my-script-state&#39;</span>);
+
+channel.postMessage({
+    type: <span class="tok-string">&#39;selection-changed&#39;</span>,
+    playlist: <span class="tok-number">3</span>,
+    index: <span class="tok-number">34</span>
+});</code></pre>
+<p>The other panel receives an independent structured-clone copy of the object. The sending <b>channel object</b> does not receive its own post. If the same realm (panel or worker) creates a second BroadcastChannel with the same name, that second channel is a separate receiver and can receive the message.</p>
+<h2>Panel and Worker use the same API</h2>
+<p>BroadcastChannel is also available inside Workers. This makes it useful when a Worker should publish state to panels or to other Workers without routing every message through its parent Worker object.</p>
+<pre class="description-code language-js"><code><span class="tok-comment">// PANEL</span>
+<span class="tok-keyword">const</span> channel = <span class="tok-keyword">new</span> BroadcastChannel(<span class="tok-string">&#39;analysis-results&#39;</span>);
+channel.onmessage = event =&gt; {
+    console.log(<span class="tok-string">&#39;Result:&#39;</span>, event.data);
+};
+
+<span class="tok-keyword">const</span> worker = <span class="tok-keyword">new</span> Worker(<span class="tok-string">`
+    const channel = new BroadcastChannel(&#39;analysis-results&#39;);
+
+    channel.postMessage({
+        type: &#39;ready&#39;,
+        worker: self.name
+    });
+`</span>, <span class="tok-string">&#39;analyser&#39;</span>);</code></pre>
+<p>Use direct <a href="Worker.html#postMessage">Worker.postMessage()</a> when the message belongs to one known parent/Worker pair. Use BroadcastChannel when the relationship is naturally publish/subscribe or when several panels and/or Workers may participate.</p>
+<h2>Channel names and scope</h2>
+<p>The constructor name is converted to a string. Use a stable, sufficiently specific name such as <b><code>my.package.playback-state</code></b> to avoid accidental collisions with unrelated scripts. Symbols cannot be converted to a channel name and throw a TypeError.<br></p>
+<p>JSplitter does not have browser origins or storage partitions. All live JSplitter panel and Worker realms inside the same foobar2000 process share one BroadcastChannel namespace. Channels do not cross process boundaries and are not persistent; closing foobar2000 destroys the namespace.</p>
+<h2>Messages and structured clone</h2>
+<p><a href="BroadcastChannel.html#postMessage">postMessage()</a> uses the same structured-clone infrastructure as Worker messaging. Ordinary supported JavaScript values are copied, and supported JSplitter host wrappers can be reconstructed in the destination realm. See the <b>Host objects in messages</b> section of <a href="Worker.html#Worker">Worker</a> for the current cloneable host-object list.<br></p>
+<h2>No ownership transfer</h2>
+<p>BroadcastChannel has <b>no transfer-list argument</b>. Its <code>postMessage()</code> accepts the message value only. This is different from direct <a href="Worker.html#postMessage">Worker.postMessage()</a> and Worker-global <a href="WorkerGlobalScope.html#postMessage">postMessage()</a>, where a second transfer-list argument can move ownership of selected transferable objects to one specific destination.<br></p>
+<p>A broadcast may have zero, one, or many receivers. There is no single receiver that can take ownership of a transferred resource, so BroadcastChannel always uses clone semantics. If a host object is cloneable, every receiver gets its own reconstructed representation and the sender's source object remains usable. No object is detached by BroadcastChannel.<br></p>
+<pre class="description-code language-js"><code><span class="tok-comment">// BroadcastChannel: clone. The sender keeps a usable bitmap.</span>
+<span class="tok-keyword">const</span> channel = <span class="tok-keyword">new</span> BroadcastChannel(<span class="tok-string">&#39;artwork&#39;</span>);
+channel.postMessage({ bitmap: bitmap });
+<span class="tok-comment">// bitmap is still usable here</span>
+
+<span class="tok-comment">// Direct Worker messaging: transfer ownership to one Worker.</span>
+worker.postMessage({ bitmap: bitmap }, [bitmap]);
+<span class="tok-comment">// bitmap is detached here after a successful transfer</span></code></pre>
+<p>Use BroadcastChannel when several independent panels and/or Workers should receive cloned data by channel name. Use direct Worker messaging when one known destination should take ownership of a transferable resource. See <b>Transferring ownership</b> in <a href="Worker.html#Worker">Worker</a> for the transfer model and the current transferable host-object list.<br></p>
+<p>Serialization is performed synchronously by <a href="BroadcastChannel.html#postMessage">postMessage()</a>. Before delivering the message, JSplitter first serializes it for all current receivers. If serialization fails for any receiver, postMessage() throws and no message is delivered, preventing a partial broadcast.</p>
+<p>Serialization is also performed when there are no receivers. This matches the Web API behaviour, where posting a value that cannot be cloned can still throw even if nobody is listening.</p>
+<div class="doc-note warning"><b>JSplitter implementation note:</b><br>
+JSplitter currently performs an independent structured serialization for each receiver because some native host-object snapshots are destination-owned. Consequently, side-effectful getters or Proxy traps in the value being serialized can run once per receiver. Avoid side effects in values passed to <code>postMessage()</code>.</div>
+<h2>Receiving messages</h2>
+<p>Use <a href="BroadcastChannel.html#onmessage">onmessage</a> or the inherited <a href="EventTarget.html#addEventListener">addEventListener(&#39;message&#39;, ...)</a> API. Delivery is asynchronous. Messages posted sequentially by one sender are queued in the same order for a given receiver.</p>
+<p>Trusted BroadcastChannel <b>message</b> events are <a href="MessageEvent.html#MessageEvent">MessageEvent</a> objects. In JSplitter they use:</p>
+<ul class="doc-article-list">
+<li><b><code>event.data</code></b> — the reconstructed payload.</li>
+<li><b><code>event.origin</code></b> — empty string.</li>
+<li><b><code>event.source</code></b> — <code>null</code>.</li>
+<li><b><code>event.ports</code></b> — empty frozen array.</li>
+<li><b><code>event.direction</code></b> — <code>"broadcast"</code>.</li>
+</ul>
+<p>If a receiver cannot reconstruct a serialized value, its <a href="BroadcastChannel.html#onmessageerror">onmessageerror</a> handler receives a MessageEvent whose <b><code>data</code></b> is <code>null</code>, <b><code>direction</code></b> is <code>"broadcast"</code>, and <a href="MessageEvent.html#errorMessage">errorMessage</a> contains a JSplitter diagnostic string.</p>
+<h2>Lifetime and close()</h2>
+<p>Call <a href="BroadcastChannel.html#close">close()</a> when a BroadcastChannel instance is no longer needed. This disconnects only that instance from the named channel: it can no longer send or receive messages, while other instances with the same name continue to work normally. Closing is idempotent. A queued delivery is ignored if the destination instance is closed before it runs.</p>
+<p>JSplitter automatically cleans up channels when a panel script is reloaded/unloaded or when a Worker terminates. An open channel with a <b>message</b> or <b>messageerror</b> listener is kept alive while its realm lives, matching the useful lifetime behaviour of the Web API; closing the channel releases that listener root. An unreachable open channel with no message listeners may be garbage-collected and removed automatically.</p>
+<p>For the browser API model, see <a href="https://html.spec.whatwg.org/multipage/web-messaging.html#broadcasting-to-other-browsing-contexts" target="_blank" rel="noreferrer">HTML Living Standard: BroadcastChannel</a>.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>name</code></td><td><code>*</code></td><td><p>Required channel name. The value is converted to a string; Symbol values throw TypeError.</p></td></tr></tbody>
+            </table></div>
+        </section>
         
         
-        <div class="description"><p>Global object available inside every JSplitter Worker.</p></div>
+        
+        
+        <section class="member-section compact-section">
+            <h3>Throws</h3>
+            <div><code>TypeError</code> — <p>If no name is supplied, if the constructor is called without <code>new</code>, or if the name cannot be converted to a string.</p></div>
+        </section>
         
         
         
-        
-        
-        
-        
-        
+        <section class="member-section">
+            <h3>Example source</h3>
+            <div class="source-links"><a class="source-link" href="source-samples-basic-BroadcastChannel.js.html"><span>samples/basic/BroadcastChannel.js</span><small>open source</small></a></div>
+        </section>
     </article>
         
     <article class="api-item" id="name" data-kind="property" data-name="name">
@@ -231,32 +324,11 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#name">name</a></h2>
             </div>
-            <div class="source-location">js/worker.js:935</div>
+            <div class="source-location">js/broadcast_channel.js:130</div>
         </header>
-        <pre class="signature"><code>name: string = &quot;&quot;</code></pre>
+        <pre class="signature"><code>name: string = &#39;&#39;</code></pre>
         
-        <div class="description"><p>Immutable Worker identity supplied through the Worker constructor. The value is fixed for the Worker's lifetime. JSplitter reports the same name in <a href="window.html#JsMemoryStats">window.JsMemoryStats</a> and in unhandled Worker exception diagnostics. If no name was supplied this value is an empty string; diagnostics display it as <code>&lt;unnamed&gt;</code>.</p></div>
-        
-        
-        
-        
-        
-        
-        
-        
-    </article>
-
-    <article class="api-item" id="onerror" data-kind="property" data-name="onerror">
-        <header class="api-item-header">
-            <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
-                <h2><a class="anchor" href="#onerror">onerror</a></h2>
-            </div>
-            <div class="source-location">js/worker.js:976</div>
-        </header>
-        <pre class="signature"><code>onerror: ?<a class="type-link" href="globals.html#WorkerErrorCallback">WorkerErrorCallback</a> = null</code></pre>
-        
-        <div class="description"><p>Global error handler for uncaught Worker task exceptions. The callback receives an <a href="ErrorEvent.html#ErrorEvent">ErrorEvent</a> with the error text and Worker source location. When this handler or a Worker-global <b><code>error</code></b> listener is installed, the error is handled locally and is not forwarded to the parent Worker.</p></div>
+        <div class="description"><p>Channel name after string conversion.</p></div>
         
         
         
@@ -273,11 +345,11 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#onmessage">onmessage</a></h2>
             </div>
-            <div class="source-location">js/worker.js:961</div>
+            <div class="source-location">js/broadcast_channel.js:138</div>
         </header>
-        <pre class="signature"><code>onmessage: ?<a class="type-link" href="globals.html#WorkerMessageCallback">WorkerMessageCallback</a> = null</code></pre>
+        <pre class="signature"><code>onmessage: ?<a class="type-link" href="globals.html#BroadcastChannelMessageCallback">BroadcastChannelMessageCallback</a> = null</code></pre>
         
-        <div class="description"><p>Receives messages sent by the parent through <a href="Worker.html#postMessage">Worker.postMessage()</a>.</p></div>
+        <div class="description"><p>Handler invoked asynchronously for successfully reconstructed broadcast messages. The callback receives a <a href="MessageEvent.html#MessageEvent">MessageEvent</a> whose <a href="MessageEvent.html#data">data</a> contains the cloned payload and whose <a href="MessageEvent.html#direction">direction</a> is <code>"broadcast"</code>.</p></div>
         
         
         
@@ -294,95 +366,11 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#onmessageerror">onmessageerror</a></h2>
             </div>
-            <div class="source-location">js/worker.js:968</div>
+            <div class="source-location">js/broadcast_channel.js:146</div>
         </header>
-        <pre class="signature"><code>onmessageerror: ?<a class="type-link" href="globals.html#WorkerMessageCallback">WorkerMessageCallback</a> = null</code></pre>
+        <pre class="signature"><code>onmessageerror: ?<a class="type-link" href="globals.html#BroadcastChannelMessageCallback">BroadcastChannelMessageCallback</a> = null</code></pre>
         
-        <div class="description"><p>Receives a <a href="MessageEvent.html#MessageEvent">MessageEvent</a> when a serialized parent message cannot be reconstructed by the Worker. <a href="MessageEvent.html#errorMessage">errorMessage</a> contains the reconstruction failure and <a href="MessageEvent.html#direction">direction</a> is <b>panel-to-worker</b>.</p></div>
-        
-        
-        
-        
-        
-        
-        
-        
-    </article>
-
-    <article class="api-item" id="onrejectionhandled" data-kind="property" data-name="onrejectionhandled">
-        <header class="api-item-header">
-            <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
-                <h2><a class="anchor" href="#onrejectionhandled">onrejectionhandled</a></h2>
-            </div>
-            <div class="source-location">js/worker.js:990</div>
-        </header>
-        <pre class="signature"><code>onrejectionhandled: ?<a class="type-link" href="globals.html#WorkerPromiseRejectionCallback">WorkerPromiseRejectionCallback</a> = null</code></pre>
-        
-        <div class="description"><p>Handler for Promise rejections that later become handled.</p></div>
-        
-        
-        
-        
-        
-        
-        
-        
-    </article>
-
-    <article class="api-item" id="onunhandledrejection" data-kind="property" data-name="onunhandledrejection">
-        <header class="api-item-header">
-            <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
-                <h2><a class="anchor" href="#onunhandledrejection">onunhandledrejection</a></h2>
-            </div>
-            <div class="source-location">js/worker.js:983</div>
-        </header>
-        <pre class="signature"><code>onunhandledrejection: ?<a class="type-link" href="globals.html#WorkerPromiseRejectionCallback">WorkerPromiseRejectionCallback</a> = null</code></pre>
-        
-        <div class="description"><p>Handler for newly unhandled Promise rejections.</p></div>
-        
-        
-        
-        
-        
-        
-        
-        
-    </article>
-
-    <article class="api-item" id="performance" data-kind="property" data-name="performance">
-        <header class="api-item-header">
-            <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
-                <h2><a class="anchor" href="#performance">performance</a></h2>
-            </div>
-            <div class="source-location">js/worker.js:997</div>
-        </header>
-        <pre class="signature"><code>performance: Object</code></pre>
-        
-        <div class="description"><p>Worker-local performance timeline.</p></div>
-        
-        
-        
-        
-        
-        
-        
-        
-    </article>
-
-    <article class="api-item" id="self" data-kind="property" data-name="self">
-        <header class="api-item-header">
-            <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
-                <h2><a class="anchor" href="#self">self</a></h2>
-            </div>
-            <div class="source-location">js/worker.js:927</div>
-        </header>
-        <pre class="signature"><code>self: <a class="type-link" href="WorkerGlobalScope.html#WorkerGlobalScope">WorkerGlobalScope</a></code></pre>
-        
-        <div class="description"><p>The Worker global object itself.</p></div>
+        <div class="description"><p>Handler invoked when this receiver cannot reconstruct an incoming broadcast message. The callback receives a <a href="MessageEvent.html#MessageEvent">MessageEvent</a> with <code>data === null</code>, <code>direction === "broadcast"</code>, and a JSplitter diagnostic in <a href="MessageEvent.html#errorMessage">errorMessage</a>.</p></div>
         
         
         
@@ -399,11 +387,11 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#close">close</a></h2>
             </div>
-            <div class="source-location">js/worker.js:953</div>
+            <div class="source-location">js/broadcast_channel.js:166</div>
         </header>
         <pre class="signature"><code>close()</code></pre>
         
-        <div class="description"><p>Requests Worker shutdown from inside the Worker after the current task completes. Use this when Worker code itself knows that no more event-loop work is needed.</p></div>
+        <div class="description"><p>Closes this channel object and releases its native endpoint. Future incoming messages are ignored and <a href="BroadcastChannel.html#postMessage">postMessage()</a> can no longer be used on it.<br> Calling <code>close()</code> more than once is safe.</p></div>
         
         
         
@@ -420,23 +408,28 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#postMessage">postMessage</a></h2>
             </div>
-            <div class="source-location">js/worker.js:944</div>
+            <div class="source-location">js/broadcast_channel.js:154</div>
         </header>
-        <pre class="signature"><code>postMessage(data, transfer)</code></pre>
+        <pre class="signature"><code>postMessage(message)</code></pre>
         
-        <div class="description"><p>Serializes and sends a value from the Worker to its parent.</p></div>
+        <div class="description"><p>Serializes and asynchronously broadcasts a value to every other currently open BroadcastChannel with the same <a href="BroadcastChannel.html#name">name</a>. The sending channel itself is excluded.<br></p>
+<p>There is no transfer-list argument and BroadcastChannel never transfers ownership. Cloneable values are reconstructed for receivers while the sender's source value remains usable. Use direct Worker messaging when transferable ownership semantics are required. Clone errors are reported synchronously and no destination receives the message if serialization fails for any current destination.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>data</code></td><td><code>*</code></td><td><p>Value to send.</p></td></tr><tr><td><code>transfer</code><span class="mini-flag">optional</span></td><td><code>(Array&lt;*&gt;|Object)</code></td><td><p>Transfer list, either directly as an array or as an object containing <code>{ transfer: [...] }</code>.</p></td></tr></tbody>
+                <tbody><tr><td><code>message</code></td><td><code>*</code></td><td><p>Value to broadcast. An explicit <code>undefined</code> is valid; omitting the argument is not.</p></td></tr></tbody>
             </table></div>
         </section>
         
         
         
         
+        <section class="member-section compact-section">
+            <h3>Throws</h3>
+            <div><code>TypeError</code> — <p>If the message argument is omitted.</p></div><div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If the channel is already closed or the value cannot be structured-cloned.</p></div>
+        </section>
         
         
         

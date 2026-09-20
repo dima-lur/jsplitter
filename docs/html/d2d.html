@@ -45,6 +45,9 @@
     </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
         <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
+        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="ButtonObject">
         <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -632,13 +635,13 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
         </header>
         <pre class="signature"><code>StrokeStyle(options)</code></pre>
         
-        <div class="description"><p>Creates a reusable Direct2D stroke style for line and outline drawing.<br> The style controls start/end/dash caps, line joins, miter limit, dash pattern and dash offset.<br> Performance note: create commonly used styles once and reuse them from <code>on_paint</code>.</p></div>
+        <div class="description"><p>Creates a reusable Direct2D stroke style for line and outline drawing.<br> The style controls start/end/dash caps, line joins, miter limit, dash pattern and dash offset.<br> Performance note: create commonly used styles once and reuse them from <code>on_paint</code>.<br><div class="doc-note"><b>Dotted strokes:</b> when <code>dashCap</code> is omitted, <code>DashStyle.Dot</code>, <code>DashStyle.DashDot</code> and <code>DashStyle.DashDotDot</code> automatically use <code>CapStyle.Round</code>. This makes <code>d2d.StrokeStyle({ dashStyle: DashStyle.Dot })</code> match the <code>DashStyle.Dot</code> drawing-method shorthand. An explicitly supplied <code>dashCap</code> is preserved, including <code>CapStyle.Flat</code>. See <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_dash_style" target="_blank" rel="noreferrer">Microsoft: D2D1_DASH_STYLE</a> and <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_cap_style" target="_blank" rel="noreferrer">Microsoft: D2D1_CAP_STYLE</a>.</div></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>options = {}</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="globals.html#D2DStrokeStyleOptions">D2DStrokeStyleOptions</a></code></td><td><p>Stroke appearance options. Omitted properties use the Direct2D defaults documented by D2DStrokeStyleOptions.</p></td></tr></tbody>
+                <tbody><tr><td><code>options = {}</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="globals.html#D2DStrokeStyleOptions">D2DStrokeStyleOptions</a></code></td><td><p>Stroke appearance options. Omitted properties use the defaults documented by D2DStrokeStyleOptions.</p></td></tr></tbody>
             </table></div>
         </section>
         
