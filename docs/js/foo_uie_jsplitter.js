@@ -550,8 +550,9 @@ let fb = {
     GetActiveDSPs: function () { }, 
     
     /**
-     * Returns PCM data from the foobar2000 visualisation stream.
-     * The stream is created lazily. A negative <code>offset</code> requests data before the current visualisation time; JSplitter automatically maintains the native backlog required for that offset. The first stream initialization may briefly synchronize with the foobar2000 main thread.
+     * Returns PCM data from the foobar2000 visualisation stream.<br>
+     * The stream is created lazily. A negative <code>offset</code> requests data before the current visualisation time; JSplitter automatically maintains the native backlog required for that offset. The first stream initialization may briefly synchronize with the foobar2000 main thread.<br>
+     * For repeated real-time processing, prefer {@link fb.GetAudioChunkTo} to write directly into a reusable <code>Float32Array</code> without creating a transient {@link FbAudioChunk}. {@link FbAudioChunk#CopyDataTo CopyDataTo()} remains useful when a chunk object is already required, while {@link FbAudioChunk#Data Data} preserves its legacy allocating <code>Array</code> behaviour for compatibility.
      *
      * @param {number} requested_length 
      * @param {number=} [offset=0] 
@@ -561,6 +562,21 @@ let fb = {
      * @worker
      */
     GetAudioChunk: function (requested_length, offset) { },
+
+    /**
+     * Writes interleaved PCM samples from the foobar2000 visualisation stream directly into an existing <code>Float32Array</code>.
+     * Unlike {@link fb.GetAudioChunk}, this method does not create an {@link FbAudioChunk}; after the first sufficiently large native scratch buffer has been established, repeated calls can reuse both the native scratch storage and the JavaScript destination buffer.<br>
+     * A negative <code>offset</code> has the same backlog semantics as {@link fb.GetAudioChunk}. If <code>info</code> is supplied, it is updated in place with <code>SampleCount</code>, <code>ChannelCount</code>, <code>SampleRate</code> and <code>ChannelConfig</code>.
+     *
+     * @param {Float32Array} destination Destination buffer. It must have room for all interleaved PCM sample values.
+     * @param {number} requested_length
+     * @param {number=} [offset=0]
+     * @param {Object=} info Reusable metadata object updated in place.
+     * @return {number} Number of scalar PCM samples written, or 0 when no chunk is currently available.
+     * @throws {Error} If <code>destination</code> is not a <code>Float32Array</code>, is too small, or <code>info</code> is not an object.
+     * @worker
+     */
+    GetAudioChunkTo: function (destination, requested_length, offset, info) { },
 
     /**
      * Note: clipboard contents can be handles copied to the clipboard in other components,
@@ -4015,6 +4031,18 @@ let window = {
  * @transferable
  */
 class FbAudioChunk {
+    /**
+     * Copies the chunk's interleaved PCM samples into an existing <code>Float32Array</code> without allocating a new JavaScript sample array.
+     * The destination must have room for at least <code>SampleCount * ChannelCount</code> values.
+     * This is useful for real-time visualizations that reuse the same buffer on every update; the legacy {@link FbAudioChunk#Data Data} property remains unchanged for compatibility.
+     *
+     * @param {Float32Array} destination Destination buffer.
+     * @return {number} Number of scalar PCM samples copied.
+     * @throws {Error} If <code>destination</code> is not a <code>Float32Array</code> or is too small.
+     * @worker
+     */
+    CopyDataTo(destination) {}
+        
      /**
      * @type {Array<float>}
      * @readonly

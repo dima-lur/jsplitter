@@ -210,7 +210,7 @@
                 <div class="eyebrow"><span class="kind kind-class">class</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability cloneable" title="Instances can be sent through postMessage() using structured clone.">CLONEABLE</span><span class="flag capability transferable" title="Instances can transfer ownership through the postMessage() transfer list.">TRANSFERABLE</span></div>
                 <h2><a class="anchor" href="#FbAudioChunk">FbAudioChunk</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4010</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4026</div>
         </header>
         
         
@@ -231,7 +231,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#ChannelConfig">ChannelConfig</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4025</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4053</div>
         </header>
         <pre class="signature"><code>ChannelConfig: number = 0</code></pre>
         
@@ -252,7 +252,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#ChannelCount">ChannelCount</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4032</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4060</div>
         </header>
         <pre class="signature"><code>ChannelCount: number = 0</code></pre>
         
@@ -273,7 +273,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#Data">Data</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4018</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4046</div>
         </header>
         <pre class="signature"><code>Data: Array&lt;<a class="type-link" href="globals.html#float">float</a>&gt; = 0</code></pre>
         
@@ -294,7 +294,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#SampleCount">SampleCount</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4046</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4074</div>
         </header>
         <pre class="signature"><code>SampleCount: number = 0</code></pre>
         
@@ -315,7 +315,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#SampleRate">SampleRate</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4039</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4067</div>
         </header>
         <pre class="signature"><code>SampleRate: number = 0</code></pre>
         
@@ -325,6 +325,42 @@
         
         
         
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="CopyDataTo" data-kind="method" data-name="copydatato">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
+                <h2><a class="anchor" href="#CopyDataTo">CopyDataTo</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4034</div>
+        </header>
+        <pre class="signature"><code>CopyDataTo(destination)</code></pre>
+        
+        <div class="description"><p>Copies the chunk's interleaved PCM samples into an existing <code>Float32Array</code> without allocating a new JavaScript sample array. The destination must have room for at least <code>SampleCount * ChannelCount</code> values. This is useful for real-time visualizations that reuse the same buffer on every update; the legacy <a href="FbAudioChunk.html#Data">Data</a> property remains unchanged for compatibility.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>destination</code></td><td><code>Float32Array</code></td><td><p>Destination buffer.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>number</code> — <p>Number of scalar PCM samples copied.</p></div>
+        </section>
+        
+        <section class="member-section compact-section">
+            <h3>Throws</h3>
+            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If <code>destination</code> is not a <code>Float32Array</code> or is too small.</p></div>
+        </section>
         
         
         
