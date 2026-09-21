@@ -17,7 +17,7 @@
 let engineMode = 'worker';
 let drawMode = 1;
 let fftSize = 4096;
-let rateMode = 'max';
+let rateMode = '120';
 window.DrawMode = drawMode;
 
 const TARGET_FPS = 120;
