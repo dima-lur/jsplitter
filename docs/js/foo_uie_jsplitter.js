@@ -1003,13 +1003,13 @@ let fb = {
     ShowLibrarySearchUI: function (query) { }, // (void)
 
     /**
-     * Opens the image viewer built in to `foobar2000` and shows image file specified by image_path
-     *
-     * @param {string} image_path path of image file
+     * Opens the image viewer built in to `foobar2000`. Pass an image file path, or an {@link FbMetadbHandle}; with a handle, {@link module:Flags.AlbumArtId AlbumArtId} defaults to `AlbumArtId.front`. Album art is resolved by foobar2000 and may be embedded or external.
+     * @param {(string|FbMetadbHandle)} image_path_or_handle Image file path or track handle.
+     * @param {AlbumArtId=} [art_id=AlbumArtId.front] Album art type. Used only when the first argument is an {@link FbMetadbHandle}.
      * @worker
      * @mainthread
      */
-    ShowPictureViewer(image_path) { }, // (void)
+    ShowPictureViewer(image_path_or_handle, art_id) { }, // (void) [, art_id]
 
     /**
      * Opens the "Playlist Search" window
@@ -2626,7 +2626,13 @@ let utils = {
      * Each element of the returned <code>Float32Array</code> is a linear amplitude value in the range 0.0..1.0 for the corresponding part of the requested time range.<br>
      * Each output point represents one time interval. The interval is divided into up to 8 local windows; for each non-empty window, the peak absolute sample value across all channels is measured, and those local peaks are averaged to produce the output value. This preserves short transients while avoiding the dense appearance produced by taking a single maximum peak over the entire output interval.<br>
      * Values are not normalized to the loudest point of the track, so their amplitudes remain relative to the decoded audio signal.<br>
-     * Decoding and waveform calculation are performed asynchronously; decoded PCM data is not exposed to JavaScript.<br>
+     * Decoding uses one sequential decoder pass. Decoded PCM data is not exposed to JavaScript.<br>
+     * <br>
+     * If <code>on_progress</code> is supplied, finalized contiguous ranges of the output envelope are delivered while decoding is still in progress. The callback receives a <code>Float32Array</code> containing the new values and the zero-based output index where that range begins. Progress chunk size and delivery frequency are implementation details and must not be relied on.<br>
+     * <b>For waveform UIs that should appear while decoding, this progressive form is the recommended approach.</b> Use one <code>GetWaveformAsync()</code> call for the whole requested range instead of splitting the track into repeated range calls. One decoder remains open for the sequential pass, avoiding repeated open/seek/decode overhead. For visually smooth rendering, store progress chunks immediately but animate a separate visible front toward the loaded front rather than exposing the native chunk boundaries directly.<br>
+     * Return <code>false</code> from <code>on_progress</code> to cancel the native decode. This is recommended when a progressive request becomes obsolete, for example after the focused or playing track changes. Cancellation rejects the returned Promise. Any other return value continues decoding.<br>
+     * The Promise still resolves with the complete <code>Float32Array</code> when decoding finishes normally, whether or not a progress callback is used.<br>
+     * <br>
      * If <code>duration</code> is 0, the requested range extends from <code>start</code> to the end of the track. If the track length cannot be determined, a non-zero duration must be specified.<br>
      * A range that extends past a known track end is clipped. If <code>start</code> is at or beyond the known track end, a zero-filled array is returned.<br>
      * Decoder or input-opening failures reject the returned Promise.
@@ -2635,50 +2641,82 @@ let utils = {
      * @param {number=} [points=2048] Number of output points. Valid range: 1..65536.
      * @param {number=} [start=0] Start position in seconds. Must be finite and non-negative.
      * @param {number=} [duration=0] Duration in seconds. Must be finite and non-negative. 0 means from <code>start</code> to the end of the track.
+     * @param {function(Float32Array, number)=} on_progress Optional progress callback. Receives <code>(values, start_index)</code>. Return <code>false</code> to cancel decoding.
      * @return {Promise.<Float32Array>} Promise resolved with exactly <code>points</code> linear amplitude values.
      *
      * @throws
-     * Throws synchronously if <code>handle</code> is null or if <code>points</code>, <code>start</code>, or <code>duration</code> is invalid.
+     * Throws synchronously if <code>handle</code> is null, if <code>points</code>, <code>start</code>, or <code>duration</code> is invalid, or if <code>on_progress</code> is not a function, null, or undefined.
      *
-     * @example
-     * async function loadWaveform() {
-     *     const handle = fb.GetNowPlaying();
+     * @example <caption>Decode a complete waveform</caption>
+     * const handle = fb.GetNowPlaying();
+     * if (handle) {
+     *     utils.GetWaveformAsync(handle, 2048)
+     *         .then(waveform => {
+     *             console.log(`Decoded ${waveform.length} waveform points`);
+     *         })
+     *         .catch(e => console.log(`GetWaveformAsync failed: ${e}`));
+     * }
+     *
+     * @example <caption>Recommended progressive UI pattern</caption>
+     * let requestId = 0;
+     * let waveform = null;
+     * let loaded = 0;
+     * let visible = 0;
+     * let producerRate = 0;
+     * let lastFrame = 0;
+     *
+     * const revealTimer = setInterval(() => {
+     *     if (!waveform || producerRate <= 0) return;
+     *
+     *     const now = performance.now();
+     *     const dt = lastFrame ? now - lastFrame : 0;
+     *     lastFrame = now;
+     *
+     *     // Smoothly follow what the decoder has really produced. Do not predict
+     *     // completion time from track duration and do not draw chunk boundaries directly.
+     *     visible = Math.min(loaded, visible + producerRate * dt);
+     *     window.Repaint();
+     * }, 16);
+     *
+     * async function loadFocusedWaveform() {
+     *     const id = ++requestId;
+     *     const handle = fb.GetFocusItem();
      *     if (!handle) return;
      *
-     *     try {
-     *         const waveform = await utils.GetWaveformAsync(handle);
-     *         console.log(`Full waveform: ${waveform.length} points`);
+     *     const points = 2048;
+     *     const started = performance.now();
+     *     waveform = new Float32Array(points);
+     *     loaded = 0;
+     *     visible = 0;
+     *     producerRate = 0;
+     *     lastFrame = 0;
      *
-     *         // 512 points for a 30-second range starting at 60 seconds.
-     *         const section = await utils.GetWaveformAsync(handle, 512, 60, 30);
-     *         console.log(section);
+     *     try {
+     *         const complete = await utils.GetWaveformAsync(handle, points, 0, 0, (values, start) => {
+     *             if (id !== requestId) return false; // cancel the obsolete native decode
+     *
+     *             waveform.set(values, start);
+     *             loaded = Math.max(loaded, start + values.length);
+     *
+     *             const elapsed = performance.now() - started;
+     *             if (elapsed > 0) producerRate = loaded / elapsed;
+     *             return true;
+     *         });
+     *
+     *         if (id !== requestId) return;
+     *         waveform = complete;
+     *         loaded = complete.length;
      *     } catch (e) {
-     *         console.log(`GetWaveformAsync failed: ${e}`);
+     *         if (id === requestId) console.log(`GetWaveformAsync failed: ${e}`);
      *     }
      * }
-     * 
-     * loadWaveform();
-     * @example
-     *const handle = fb.GetNowPlaying();
-     * if (!handle) return;
-     * 
-     * utils.GetWaveformAsync(handle)
-     *     .then(waveform => {
-     *         console.log(`Full waveform: ${waveform.length} points`);
-     * 
-     *         // Return another Promise to continue the chain.
-     *         return utils.GetWaveformAsync(handle, 512, 60, 30);
-     *     })
-     *     .then(section => {
-     *         console.log(section);
-     *     })
-     *     .catch(e => {
-     *         console.log(`GetWaveformAsync failed: ${e}`);
-     *     });
-     * 
+     *
+     * // See "Focus Track Waveform.js" for a complete rendering example.
+     *
      * @worker
+     * @sourceFile ../../component/samples/basic/Focus Track Waveform.js
      */
-    GetWaveformAsync: function (handle, points, start, duration) { },
+    GetWaveformAsync: function (handle, points, start, duration, on_progress) { },
 
     /**
      * Retrieves filepaths that match the supplied pattern.
@@ -2830,11 +2868,133 @@ let utils = {
     PathWildcardMatch: function (pattern, str) { }, // (boolean)
 
     /**
-     * Performance note: supply codepage argument if it is known, since codepage detection might take some time.
+     * Opens a binary file for incremental reading into a caller-provided <code>Uint8Array</code>.<br>
+     * The buffer is reused by the caller, so repeated reads do not allocate a new typed array for every chunk.
+     * This is intended for large files or other cases where whole-file {@link utils.ReadBinaryFile} would be inefficient.<br>
+     * Reading is synchronous. For one-shot large-file processing, use the reader inside {@link Worker.RunAsync}; for persistent pipelines, use it from a {@link Worker}. Both approaches keep blocking file I/O off the panel UI thread.
+     *
+     * @param {string} filename File to open.
+     * @return {?BinaryReader} Open streaming reader, or <code>null</code> if the reader could not be created.
+     *
+     * @example
+     * const reader = utils.OpenBinaryReader('E:\\large-file.bin');
+     * if (!reader) return;
+     *
+     * const buffer = new Uint8Array(1024 * 1024);
+     * try {
+     *     while (!reader.EOF) {
+     *         const bytesRead = reader.Read(buffer);
+     *         if (!bytesRead) break;
+     *
+     *         // Process buffer[0 .. bytesRead).
+     *     }
+     * } finally {
+     *     reader.Close();
+     * }
+     *
+     * @sourceFile ../../component/samples/basic/Streaming Binary IO.js
+     * @worker
+     */
+    OpenBinaryReader: function (filename) { },
+
+    /**
+     * Opens a binary file for incremental writing from a caller-provided <code>Uint8Array</code>.<br>
+     * The file is created or truncated when opened. The parent folder must already exist.<br>
+     * Reusing the same typed array avoids allocating temporary buffers for every chunk.
+     * Writing is synchronous. For long-running processing, use the writer from a {@link Worker} to avoid blocking the panel UI.
+     *
+     * @param {string} filename File to create or overwrite.
+     * @return {?BinaryWriter} Open streaming writer, or <code>null</code> if the writer could not be created.
+     *
+     * @example
+     * const writer = utils.OpenBinaryWriter('E:\\large-file.bin');
+     * if (!writer) return;
+     *
+     * const buffer = new Uint8Array(1024 * 1024);
+     * // Fill buffer...
+     * writer.Write(buffer);
+     * writer.Close();
+     *
+     * @sourceFile ../../component/samples/basic/Streaming Binary IO.js
+     * @worker
+     */
+    OpenBinaryWriter: function (filename) { },
+
+    /**
+     * Opens or creates a SQLite database for synchronous read/write access.<br>
+     * This is an optional host capability. <code>utils.OpenDatabase</code> is defined only when the SQLite library already loaded by foobar2000 exposes the required API. Scripts that need to support hosts without compatible SQLite can feature-detect it with <code>typeof utils.OpenDatabase === 'function'</code>.<br>
+     * Absolute paths are used as-is. Relative paths are resolved from the currently executing script file first, matching the script-relative behaviour of {@link include}. If the caller has no file origin, the panel/Worker script or package root is used; a fully in-memory panel falls back to the component directory.<br>
+     * The special filename <code>:memory:</code> creates an in-memory SQLite database and is not path-resolved. The parent folder of a file-backed database must already exist.<br>
+     * Database work is synchronous, so large imports or expensive queries should be run from a {@link Worker} to avoid blocking the panel UI thread.<br>
+     * SQL values should be passed through the optional parameter array instead of being concatenated into the SQL text. Supported parameter types are <code>null</code>, boolean, number, string, <code>ArrayBuffer</code>, and typed-array views.
+     *
+     * @param {string} filename Absolute or script-relative database filename, or <code>:memory:</code>.
+     * @return {SQLiteDatabase} Open database handle.
+     * @throws Throws if the database cannot be opened or created.
+     *
+     * @example
+     * const db = utils.OpenDatabase('example.db');
+     * try {
+     *     db.Exec('CREATE TABLE IF NOT EXISTS settings (name TEXT PRIMARY KEY, value TEXT)');
+     *     db.Exec('INSERT OR REPLACE INTO settings(name, value) VALUES (?, ?)', ['theme', 'dark']);
+     *
+     *     const rows = db.Query('SELECT value FROM settings WHERE name = ?', ['theme']);
+     *     console.log(rows.length ? rows[0].value : 'not found');
+     * } finally {
+     *     db.Close();
+     * }
+     *
+     * @sourceFile ../../component/samples/basic/SQLite Playback History.js
+     * @worker
+     */
+    OpenDatabase: function (filename) { },
+
+    /**
+     * Opens a text file for incremental, line-by-line reading.<br>
+     * Unlike {@link utils.ReadTextFile}, the whole file is not materialized as one JavaScript string. This makes it suitable for processing large text files incrementally, one line at a time, without requiring the entire file contents to fit in the JavaScript heap.<br>
+     * <code>ReadLine()</code> removes the line terminator and returns <code>null</code> at end of file. A UTF-8, UTF-16, or UTF-32 BOM matching the selected codepage, if present, is removed from the first line.<br>
+     * UTF-16LE/BE and UTF-32LE/BE are supported with codepages 1200/1201 and 12000/12001 respectively.<br>
+     * Pass codepage 0 to use automatic charset detection, matching {@link utils.ReadTextFile}.<br>
+     * Reading is synchronous. For long-running processing, use the reader from a {@link Worker} to avoid blocking the panel UI.
+     *
+     * @param {string} filename File to open.
+     * @param {number=} [codepage=65001] Windows codepage used to decode each line. UTF-16LE/BE use 1200/1201, UTF-32LE/BE use 12000/12001, and 0 enables automatic detection. See Codepages.js.
+     * @return {?TextReader} Open streaming reader, or <code>null</code> if the reader could not be created.
+     * This includes invalid or unsupported codepages, an empty filename, and ordinary file open failures.
+     *
+     * @example
+     * const reader = utils.OpenTextReader('E:\\large-file.txt');
+     * if (!reader) {
+     *     console.log('Unable to open file');
+     *     return;
+     * }
+     *
+     * try {
+     *     for (;;) {
+     *         const line = reader.ReadLine();
+     *         if (line === null) break;
+     *         if (!line.length) continue;
+     *
+     *         const item = JSON.parse(line);
+     *         console.log(item.id);
+     *     }
+     * } finally {
+     *     reader.Close();
+     * }
+     *
+     * @sourceFile ../../component/samples/basic/Streaming Text IO.js
+     * @worker
+     */
+    OpenTextReader: function (filename, codepage) { },
+
+    /**
+     * Performance note: supply codepage argument if it is known, since codepage detection might take some time.<br>
+     * UTF-8, UTF-16LE/BE, UTF-32LE/BE, and supported Windows codepages use the same decoding rules as {@link utils.OpenTextReader}. A matching BOM is removed for UTF encodings.<br>
+     * For large line-oriented files, consider {@link utils.OpenTextReader}; it avoids creating one JavaScript string containing the entire file.
      *
      * @param {string} filename
-     * @param {number=} [codepage=65001] See Codepages.js. If codepage is 0, then automatic detection is performed.
-     * @return {string}
+     * @param {number=} [codepage=65001] See Codepages.js. UTF-16LE/BE use 1200/1201, UTF-32LE/BE use 12000/12001. If codepage is 0, automatic detection is performed.
+     * @return {string} Decoded file contents, or an empty string if the file could not be read or decoded.
      *
      * @example
      * let text = utils.ReadTextFile("E:\\some text file.txt");
@@ -2891,7 +3051,8 @@ let utils = {
     ReplaceIllegalChars(str, strip_trailing_periods) { },
     
     /**
-     * Read a file as raw binary.
+     * Read a file as raw binary.<br>
+     * For large files, consider {@link utils.OpenBinaryReader}; it reads incrementally into a reusable caller-provided buffer instead of allocating one typed array for the whole file.
      * @param {string} path Absolute file path
      * @returns {Uint8Array} File bytes, or null if was an error
      * 
@@ -3142,7 +3303,8 @@ let utils = {
     SplitFilePath: function (path) { }, // (boolean)
 
     /**
-     * Write raw binary data to a file.
+     * Write raw binary data to a file.<br>
+     * For large output, consider {@link utils.OpenBinaryWriter}; it writes incrementally from a reusable caller-provided buffer.
      * @param {string} path Absolute file path
      * @param {Uint8Array} data Bytes to write
      * @returns {boolean} true on success
@@ -3178,27 +3340,467 @@ let utils = {
     WriteINI: function (filename, section, key, val) { }, // (boolean)
 
     /**
-     * Note: the parent folder must already exist.
-     * Note2: the file is written with UTF8 encoding.
+     * Opens a text file for incremental writing.<br>
+     * The file is created or truncated when opened. The parent folder must already exist.<br>
+     * UTF-8 is used by default. UTF-16LE (1200), UTF-16BE (1201), UTF-32LE (12000), UTF-32BE (12001), and other valid Windows codepages are also supported.<br>
+     * If <code>write_bom</code> is true, the matching BOM is written for UTF-8, UTF-16, and UTF-32. Other Windows codepages do not have a BOM and ignore this option.<br>
+     * Use <code>Write()</code> to append text without a line terminator or <code>WriteLine()</code> to append text followed by CRLF. This avoids building one large JavaScript string before writing a large file.<br>
+     * Writing is synchronous. For one-shot large-file generation, use the writer inside {@link Worker.RunAsync}; for persistent pipelines, use it from a {@link Worker}. Both approaches keep blocking file I/O off the panel UI thread.
+     *
+     * @param {string} filename File to create or overwrite.
+     * @param {boolean=} [write_bom=true] If true, writes a BOM for UTF-8/UTF-16/UTF-32.
+     * @param {number=} [codepage=65001] Output Windows codepage. Codepage 0 is not valid for writing. See Codepages.js.
+     * @return {?TextWriter} Open streaming writer, or <code>null</code> if the writer could not be created.
+     * This includes an empty filename, an invalid codepage, and ordinary file creation/open failures.
+     *
+     * @example
+     * const writer = utils.OpenTextWriter('E:\\large-file.txt', false);
+     * if (!writer) {
+     *     console.log('Unable to create file');
+     *     return;
+     * }
+     *
+     * try {
+     *     for (let i = 0; i < 100000; ++i) {
+     *         writer.WriteLine(JSON.stringify({ id: i, value: `item ${i}` }));
+     *     }
+     * } finally {
+     *     writer.Close();
+     * }
+     *
+     * @sourceFile ../../component/samples/basic/Streaming Text IO.js
+     * @worker
+     */
+    OpenTextWriter: function (filename, write_bom, codepage) { },
+
+    /**
+     * Note: the parent folder must already exist.<br>
+     * UTF-8 is used by default, matching {@link utils.OpenTextWriter}. UTF-16LE (1200), UTF-16BE (1201), UTF-32LE (12000), UTF-32BE (12001), and other valid Windows codepages are also supported.<br>
+     * If <code>write_bom</code> is true, the matching BOM is written for UTF-8, UTF-16, and UTF-32. Other Windows codepages do not have a BOM and ignore this option.<br>
+     * For large output, consider {@link utils.OpenTextWriter}; it writes incrementally and does not require one large JavaScript string containing the entire file.
      *
      * @param {string} filename
      * @param {string} content
      * @param {boolean=} [write_bom=true]
-     * @return {boolean}
+     * @param {number=} [codepage=65001] Output Windows codepage. Codepage 0 is not valid for writing. See Codepages.js.
+     * @return {boolean} true on success, false otherwise.
      *
-     * @example <caption>Default encoding</caption>
-     * // write_bom missing but defaults to true, resulting file is UTF8-BOM
+     * @example <caption>Default UTF-8 with BOM</caption>
      * utils.WriteTextFile("z:\\1.txt", "test");
      *
-     * @example <caption>UTF8 with BOM</caption>
-     * utils.WriteTextFile("z:\\2.txt", "test", true);
+     * @example <caption>UTF-8 without BOM</caption>
+     * utils.WriteTextFile("z:\\2.txt", "test", false);
      *
-     * @example <caption>UTF8 without BOM</caption>
-     * utils.WriteTextFile("z:\\3.txt", "test", false);
+     * @example <caption>UTF-16LE with BOM</caption>
+     * utils.WriteTextFile("z:\\3.txt", "test", true, 1200);
      * @worker
      */
-    WriteTextFile: function (filename, content, write_bom) { }, //(boolean)
+    WriteTextFile: function (filename, content, write_bom, codepage) { }, //(boolean)
 };
+
+
+/**
+ * Streaming binary reader returned by {@link utils.OpenBinaryReader}.
+ *
+ * @constructor
+ * @hideconstructor
+ * @worker
+ */
+function BinaryReader() {
+
+    /**
+     * Reads bytes into an existing <code>Uint8Array</code> without allocating a new buffer.<br>
+     * If <code>offset</code> is omitted, reading starts at index 0. If <code>count</code> is omitted, bytes are read up to the end of the buffer.<br>
+     * An explicitly supplied <code>offset + count</code> must fit inside the buffer.
+     *
+     * @param {Uint8Array} buffer Destination buffer.
+     * @param {number=} [offset=0] Destination offset in bytes.
+     * @param {number=} count Maximum number of bytes to read. Defaults to the remaining buffer size.
+     * @return {number} Number of bytes actually read. Returns 0 at end of file or if the read could not be performed.
+     * @throws Throws if the reader is closed.
+     * @worker
+     */
+    this.Read = function (buffer, offset, count) { };
+
+    /**
+     * Closes the file. Calling <code>Close()</code> more than once is allowed.
+     *
+     * @return {boolean} true if the reader is closed successfully.
+     * @worker
+     */
+    this.Close = function () { };
+
+    /**
+     * File size in bytes as observed when the reader was opened.
+     *
+     * @type {number}
+     * @readonly
+     * @worker
+     */
+    this.Length = 0;
+
+    /**
+     * Number of bytes successfully read from the file.
+     *
+     * @type {number}
+     * @readonly
+     * @worker
+     */
+    this.Position = 0;
+
+    /**
+     * Indicates that the reader has reached the end of the file or entered a terminal read-failure state. A closed reader also reports EOF.
+     *
+     * @type {boolean}
+     * @readonly
+     * @worker
+     */
+    this.EOF = false;
+
+    /**
+     * Indicates whether the reader has been closed.
+     *
+     * @type {boolean}
+     * @readonly
+     * @worker
+     */
+    this.Closed = false;
+}
+
+/**
+ * Streaming binary writer returned by {@link utils.OpenBinaryWriter}.
+ *
+ * @constructor
+ * @hideconstructor
+ * @worker
+ */
+function BinaryWriter() {
+
+    /**
+     * Writes bytes from an existing <code>Uint8Array</code> without creating a temporary typed array.<br>
+     * If <code>offset</code> is omitted, writing starts at index 0. If <code>count</code> is omitted, bytes are written up to the end of the buffer.<br>
+     * An explicitly supplied <code>offset + count</code> must fit inside the buffer.
+     *
+     * @param {Uint8Array} buffer Source buffer.
+     * @param {number=} [offset=0] Source offset in bytes.
+     * @param {number=} count Number of bytes to write. Defaults to the remaining buffer size.
+     * @return {boolean} true on success.
+     * @throws Throws if the writer is closed.
+     * @worker
+     */
+    this.Write = function (buffer, offset, count) { };
+
+    /**
+     * Flushes buffered output to the file.
+     *
+     * @return {boolean} true on success.
+     * @throws Throws if the writer is closed.
+     * @worker
+     */
+    this.Flush = function () { };
+
+    /**
+     * Closes the file. Calling <code>Close()</code> more than once is allowed.
+     *
+     * @return {boolean} true if the writer is closed successfully.
+     * @worker
+     */
+    this.Close = function () { };
+
+    /**
+     * Number of bytes successfully written to the file.
+     *
+     * @type {number}
+     * @readonly
+     * @worker
+     */
+    this.Position = 0;
+
+    /**
+     * Indicates whether the writer has been closed.
+     *
+     * @type {boolean}
+     * @readonly
+     * @worker
+     */
+    this.Closed = false;
+}
+
+/**
+ * SQLite database returned by {@link utils.OpenDatabase}.<br>
+ * All operations are synchronous. Use a {@link Worker} for large imports, maintenance, or expensive queries when blocking the panel UI would be undesirable.<br>
+ * Parameter arrays are positional and must contain exactly as many values as the SQL statement requires. Booleans are stored as SQLite integers 0/1. Query results map SQLite NULL to <code>null</code>, INTEGER/REAL to number, TEXT to string, and BLOB to <code>Uint8Array</code>.
+ *
+ * @constructor
+ * @hideconstructor
+ * @worker
+ */
+function SQLiteDatabase() {
+
+    /**
+     * Closes the database. Calling <code>Close()</code> more than once is allowed.
+     *
+     * @return {boolean} true after the database has been closed.
+     * @worker
+     */
+    this.Close = function () { };
+
+    /**
+     * Starts a deferred transaction.
+     *
+     * @example
+     * db.Exec('CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, name TEXT)');
+     * db.Begin();
+     * try {
+     *     db.Exec('INSERT INTO items(name) VALUES (?)', ['Alpha']);
+     *     db.Exec('INSERT INTO items(name) VALUES (?)', ['Beta']);
+     *     db.Commit();
+     * } catch (e) {
+     *     db.Rollback();
+     *     throw e;
+     * }
+     * @worker
+     */
+    this.Begin = function () { };
+
+    /**
+     * Commits the current transaction.
+     *
+     * @worker
+     */
+    this.Commit = function () { };
+
+    /**
+     * Rolls back the current transaction.
+     *
+     * @worker
+     */
+    this.Rollback = function () { };
+
+    /**
+     * Executes one or more SQL statements. Result rows, if any, are discarded.<br>
+     * When multiple statements are supplied, parameter values are consumed in SQLite parameter-index order across the statements. The total parameter count must match exactly.
+     *
+     * @param {string} sql SQL text to execute.
+     * @param {Array<*>=} [parameters] Positional parameter values. Supported element types: <code>null</code>, boolean, number, string, <code>ArrayBuffer</code>, and typed-array views.
+     * @throws Throws on SQL, binding, or database errors, or when the database is closed.
+     *
+     * @example
+     * db.Exec(
+     *     'CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, name TEXT);' +
+     *     'INSERT INTO items(name) VALUES (?);',
+     *     ['Example']
+     * );
+     * @worker
+     */
+    this.Exec = function (sql, parameters) { };
+
+    /**
+     * Executes exactly one SQL statement and returns all rows as plain JavaScript objects keyed by column name.<br>
+     * SQLite NULL becomes <code>null</code>, INTEGER/REAL become number, TEXT becomes string, and BLOB becomes <code>Uint8Array</code>. The query must produce unique column names; use SQL aliases when selecting duplicate names.
+     *
+     * @param {string} sql SQL query to execute.
+     * @param {Array<*>=} [parameters] Positional parameter values. Supported element types: <code>null</code>, boolean, number, string, <code>ArrayBuffer</code>, and typed-array views.
+     * @return {Array<Object>} Query rows. Returns an empty array when the query produces no rows.
+     * @throws Throws on SQL, binding, or database errors, when multiple SQL statements are supplied, or when the database is closed.
+     *
+     * @example
+     * const rows = db.Query(
+     *     'SELECT artist, COUNT(*) AS plays FROM history WHERE played_at >= ? GROUP BY artist ORDER BY plays DESC',
+     *     [Date.now() - 30 * 24 * 60 * 60 * 1000]
+     * );
+     * for (const row of rows) {
+     *     console.log(`${row.artist}: ${row.plays}`);
+     * }
+     * @worker
+     */
+    this.Query = function (sql, parameters) { };
+
+    /**
+     * Prepares exactly one SQL statement for repeated execution.
+     *
+     * @param {string} sql SQL statement to prepare.
+     * @return {SQLiteStatement} Prepared statement.
+     * @throws Throws if the SQL cannot be prepared, if more than one statement is supplied, or when the database is closed.
+     *
+     * @example
+     * const insert = db.Prepare('INSERT INTO items(name, score) VALUES (?, ?)');
+     * try {
+     *     insert.Run(['Alpha', 10]);
+     *     insert.Run(['Beta', 20]);
+     * } finally {
+     *     insert.Close();
+     * }
+     * @worker
+     */
+    this.Prepare = function (sql) { };
+
+    /**
+     * Indicates whether the database is open.
+     *
+     * @type {boolean}
+     * @readonly
+     * @worker
+     */
+    this.IsOpen = false;
+}
+
+/**
+ * Prepared SQLite statement returned by {@link SQLiteDatabase#Prepare}.<br>
+ * <code>Run()</code> and <code>Query()</code> automatically reset the statement and clear all parameter bindings before returning, so the same statement can be reused immediately with a new parameter array.
+ *
+ * @constructor
+ * @hideconstructor
+ * @worker
+ */
+function SQLiteStatement() {
+
+    /**
+     * Closes the prepared statement. Calling <code>Close()</code> more than once is allowed.
+     *
+     * @return {boolean} true after the statement has been closed.
+     * @worker
+     */
+    this.Close = function () { };
+
+    /**
+     * Executes the prepared statement and discards any result rows. The statement is reset and its bindings are cleared before returning.
+     *
+     * @param {Array<*>=} [parameters] Positional parameter values. The count must match the prepared statement exactly.
+     * @throws Throws on binding or execution errors, or when the statement is closed.
+     * @worker
+     */
+    this.Run = function (parameters) { };
+
+    /**
+     * Executes the prepared statement and returns all result rows. The statement is reset and its bindings are cleared before returning.
+     *
+     * @param {Array<*>=} [parameters] Positional parameter values. The count must match the prepared statement exactly.
+     * @return {Array<Object>} Query rows as plain JavaScript objects.
+     * @throws Throws on binding or execution errors, or when the statement is closed.
+     * @worker
+     */
+    this.Query = function (parameters) { };
+
+    /**
+     * Explicitly resets the statement and clears its current parameter bindings.<br>
+     * This is normally unnecessary after {@link SQLiteStatement#Run Run()} or {@link SQLiteStatement#Query Query()}, because both methods do it automatically.
+     *
+     * @throws Throws when the statement is closed.
+     * @worker
+     */
+    this.Reset = function () { };
+
+    /**
+     * Indicates whether the prepared statement is open.
+     *
+     * @type {boolean}
+     * @readonly
+     * @worker
+     */
+    this.IsOpen = false;
+}
+
+/**
+ * Streaming text reader returned by {@link utils.OpenTextReader}.
+ *
+ * @constructor
+ * @hideconstructor
+ * @worker
+ */
+function TextReader() {
+
+    /**
+     * Reads the next line and removes its line terminator.
+     *
+     * @return {?string} The next decoded line, or <code>null</code> at end of file or after a read/decoding failure. A read/decoding failure puts the reader into a terminal EOF state.
+     * @throws Throws if the reader is closed.
+     * @worker
+     */
+    this.ReadLine = function () { };
+
+    /**
+     * Closes the file. Calling <code>Close()</code> more than once is allowed.
+     *
+     * @return {boolean} true if the reader is closed successfully.
+     * @worker
+     */
+    this.Close = function () { };
+
+    /**
+     * Indicates that the underlying stream has reached end of file or entered a terminal read/decoding-failure state. A closed reader also reports EOF.
+     *
+     * @type {boolean}
+     * @readonly
+     * @worker
+     */
+    this.EOF = false;
+
+    /**
+     * Indicates whether the reader has been closed.
+     *
+     * @type {boolean}
+     * @readonly
+     * @worker
+     */
+    this.Closed = false;
+}
+
+/**
+ * Streaming text writer returned by {@link utils.OpenTextWriter}.
+ *
+ * @constructor
+ * @hideconstructor
+ * @worker
+ */
+function TextWriter() {
+
+    /**
+     * Writes text at the current file position without adding a line terminator.
+     *
+     * @param {string} content Text to write.
+     * @return {boolean} true on success.
+     * @throws Throws if the writer is closed.
+     * @worker
+     */
+    this.Write = function (content) { };
+
+    /**
+     * Writes text followed by a CRLF line terminator.
+     *
+     * @param {string} content Text to write.
+     * @return {boolean} true on success.
+     * @throws Throws if the writer is closed.
+     * @worker
+     */
+    this.WriteLine = function (content) { };
+
+    /**
+     * Flushes buffered output to the file.
+     *
+     * @return {boolean} true on success.
+     * @throws Throws if the writer is closed.
+     * @worker
+     */
+    this.Flush = function () { };
+
+    /**
+     * Closes the file. Calling <code>Close()</code> more than once is allowed.
+     *
+     * @return {boolean} true if the writer is closed successfully.
+     * @worker
+     */
+    this.Close = function () { };
+
+    /**
+     * Indicates whether the writer has been closed.
+     *
+     * @type {boolean}
+     * @readonly
+     * @worker
+     */
+    this.Closed = false;
+}
 
 
 /**

@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Focus Track Waveform.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryReader">
+        <a class="nav-link nav-page-link" href="BinaryReader.html">BinaryReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryWriter">
+        <a class="nav-link nav-page-link" href="BinaryWriter.html">BinaryWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
+        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteDatabase">
+        <a class="nav-link nav-page-link" href="SQLiteDatabase.html">SQLiteDatabase</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteStatement">
+        <a class="nav-link nav-page-link" href="SQLiteStatement.html">SQLiteStatement</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextReader">
+        <a class="nav-link nav-page-link" href="TextReader.html">TextReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextWriter">
+        <a class="nav-link nav-page-link" href="TextWriter.html">TextWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/basic/Focus Track Waveform.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="utils.html#GetWaveformAsync">utils.GetWaveformAsync</a></div>
+        </header>
+        <pre class="source-code"><code><span class="tok-comment">// JSplitter sample: Focus Track Waveform</span>
+<span class="tok-comment">//</span>
+<span class="tok-comment">// Recommended pattern for a waveform that should appear while decoding:</span>
+<span class="tok-comment">// 1. Call GetWaveformAsync() once for the whole requested range.</span>
+<span class="tok-comment">// 2. Store progress chunks immediately as they arrive.</span>
+<span class="tok-comment">// 3. Animate a separate visible front toward the loaded front instead of drawing</span>
+<span class="tok-comment">//    each native progress chunk as a visible step.</span>
+<span class="tok-comment">// 4. Return false from the progress callback when the request becomes obsolete;</span>
+<span class="tok-comment">//    this cancels the native decode.</span>
+<span class="tok-comment">//</span>
+<span class="tok-comment">// This keeps one decoder open for the whole pass and gives smooth progressive</span>
+<span class="tok-comment">// rendering without predicting completion time from track duration or codec speed.</span>
+<span class="tok-comment">//</span>
+<span class="tok-comment">// GetWaveformAsync returns a 0.0..1.0 amplitude envelope. Each value is a</span>
+<span class="tok-comment">// magnitude for one time interval, so the SAME value is mirrored above and</span>
+<span class="tok-comment">// below the center line.</span>
+
+<span class="tok-keyword">const</span> WAVEFORM_POINTS = <span class="tok-number">2048</span>;
+<span class="tok-keyword">const</span> REVEAL_INTERVAL_MS = <span class="tok-number">16</span>;
+<span class="tok-keyword">const</span> FOLLOW_SETTLE_POINTS = <span class="tok-number">0.5</span>;
+
+<span class="tok-keyword">const</span> BG_COLOR       = RGBA(<span class="tok-number">24</span>, <span class="tok-number">24</span>, <span class="tok-number">24</span>, <span class="tok-number">255</span>);
+<span class="tok-keyword">const</span> WAVEFORM_COLOR = RGBA(<span class="tok-number">160</span>, <span class="tok-number">185</span>, <span class="tok-number">90</span>, <span class="tok-number">255</span>);
+<span class="tok-keyword">const</span> CENTER_COLOR   = RGBA(<span class="tok-number">255</span>, <span class="tok-number">255</span>, <span class="tok-number">255</span>, <span class="tok-number">32</span>);
+<span class="tok-keyword">const</span> TEXT_COLOR     = RGBA(<span class="tok-number">220</span>, <span class="tok-number">220</span>, <span class="tok-number">220</span>, <span class="tok-number">255</span>);
+
+<span class="tok-keyword">const</span> DT_CENTER     = <span class="tok-number">0x00000001</span>;
+<span class="tok-keyword">const</span> DT_VCENTER    = <span class="tok-number">0x00000004</span>;
+<span class="tok-keyword">const</span> DT_SINGLELINE = <span class="tok-number">0x00000020</span>;
+
+<span class="tok-keyword">const</span> font = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">13</span>);
+
+<span class="tok-keyword">let</span> waveform = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> loadedPoints = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> visiblePosition = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> visiblePoints = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> followSpeed = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> loading = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> loadToken = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> decodeStartedMs = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> revealLastUpdateMs = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> revealTimer = <span class="tok-number">0</span>;
+
+<span class="tok-keyword">function</span> RGBA(r, g, b, a) {
+    <span class="tok-keyword">return</span> (a &lt;&lt; <span class="tok-number">24</span>) | (r &lt;&lt; <span class="tok-number">16</span>) | (g &lt;&lt; <span class="tok-number">8</span>) | b;
+}
+
+<span class="tok-keyword">function</span> stopRevealTimer() {
+    <span class="tok-keyword">if</span> (!revealTimer) <span class="tok-keyword">return</span>;
+    clearInterval(revealTimer);
+    revealTimer = <span class="tok-number">0</span>;
+}
+
+<span class="tok-keyword">function</span> updateReveal() {
+    <span class="tok-keyword">if</span> (!waveform) {
+        stopRevealTimer();
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">const</span> now = performance.now();
+    <span class="tok-keyword">const</span> last = revealLastUpdateMs || now;
+    <span class="tok-keyword">const</span> elapsed = Math.max(<span class="tok-number">0</span>, now - last);
+    revealLastUpdateMs = now;
+
+    <span class="tok-keyword">const</span> loaded = Math.max(<span class="tok-number">0</span>, Math.min(waveform.length, loadedPoints));
+    <span class="tok-keyword">const</span> gap = loaded - visiblePosition;
+
+    <span class="tok-keyword">if</span> (gap &lt;= FOLLOW_SETTLE_POINTS) {
+        visiblePosition = loaded;
+    }
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (elapsed &gt; <span class="tok-number">0</span> &amp;&amp; followSpeed &gt; <span class="tok-number">0</span>) {
+        <span class="tok-comment">// Follow the producer at its real cumulative decode rate. The visible</span>
+        <span class="tok-comment">// front remains smooth even though native progress arrives in chunks.</span>
+        visiblePosition = Math.min(
+            loaded,
+            visiblePosition + followSpeed * elapsed
+        );
+    }
+
+    visiblePoints = Math.min(loaded, Math.floor(visiblePosition));
+    window.Repaint();
+
+    <span class="tok-keyword">if</span> (!loading &amp;&amp; visiblePosition &gt;= waveform.length - FOLLOW_SETTLE_POINTS) {
+        visiblePosition = waveform.length;
+        visiblePoints = waveform.length;
+        stopRevealTimer();
+        window.Repaint();
+    }
+}
+
+<span class="tok-keyword">function</span> ensureRevealTimer() {
+    <span class="tok-keyword">if</span> (revealTimer || !waveform || loadedPoints &lt;= <span class="tok-number">0</span>) <span class="tok-keyword">return</span>;
+    revealLastUpdateMs = performance.now();
+    revealTimer = setInterval(updateReveal, REVEAL_INTERVAL_MS);
+}
+
+<span class="tok-keyword">async</span> <span class="tok-keyword">function</span> loadWaveform() {
+    <span class="tok-keyword">const</span> token = ++loadToken;
+    <span class="tok-keyword">const</span> handle = fb.GetFocusItem();
+
+    stopRevealTimer();
+    waveform = <span class="tok-literal">null</span>;
+    loadedPoints = <span class="tok-number">0</span>;
+    visiblePosition = <span class="tok-number">0</span>;
+    visiblePoints = <span class="tok-number">0</span>;
+    followSpeed = <span class="tok-number">0</span>;
+    loading = <span class="tok-literal">false</span>;
+
+    <span class="tok-keyword">if</span> (!handle) {
+        window.Repaint();
+        <span class="tok-keyword">return</span>;
+    }
+
+    waveform = <span class="tok-keyword">new</span> Float32Array(WAVEFORM_POINTS);
+    loading = <span class="tok-literal">true</span>;
+    decodeStartedMs = performance.now();
+    window.Repaint();
+
+    <span class="tok-keyword">try</span> {
+        <span class="tok-keyword">const</span> complete = <span class="tok-keyword">await</span> utils.GetWaveformAsync(
+            handle,
+            WAVEFORM_POINTS,
+            <span class="tok-number">0</span>,
+            <span class="tok-number">0</span>,
+            (values, start) =&gt; {
+                <span class="tok-comment">// Focus changed while this track was still decoding.</span>
+                <span class="tok-comment">// Returning false cancels the native decode.</span>
+                <span class="tok-keyword">if</span> (token !== loadToken) {
+                    <span class="tok-keyword">return</span> <span class="tok-literal">false</span>;
+                }
+
+                waveform.set(values, start);
+                loadedPoints = Math.max(loadedPoints, start + values.length);
+
+                <span class="tok-keyword">const</span> elapsedMs = Math.max(<span class="tok-number">0</span>, performance.now() - decodeStartedMs);
+                <span class="tok-keyword">if</span> (elapsedMs &gt; <span class="tok-number">0</span> &amp;&amp; loadedPoints &gt; <span class="tok-number">0</span>) {
+                    followSpeed = loadedPoints / elapsedMs;
+                }
+
+                ensureRevealTimer();
+                <span class="tok-keyword">return</span> <span class="tok-literal">true</span>;
+            }
+        );
+
+        <span class="tok-keyword">if</span> (token !== loadToken) {
+            <span class="tok-keyword">return</span>;
+        }
+
+        <span class="tok-comment">// The Promise still returns the complete envelope after progressive delivery.</span>
+        waveform = complete;
+        loadedPoints = complete.length;
+        loading = <span class="tok-literal">false</span>;
+
+        <span class="tok-keyword">const</span> elapsedMs = Math.max(<span class="tok-number">0</span>, performance.now() - decodeStartedMs);
+        <span class="tok-keyword">if</span> (elapsedMs &gt; <span class="tok-number">0</span> &amp;&amp; loadedPoints &gt; <span class="tok-number">0</span>) {
+            followSpeed = loadedPoints / elapsedMs;
+        }
+
+        ensureRevealTimer();
+        window.Repaint();
+    }
+    <span class="tok-keyword">catch</span> (e) {
+        <span class="tok-comment">// Cancellation of an obsolete request is expected.</span>
+        <span class="tok-keyword">if</span> (token !== loadToken) {
+            <span class="tok-keyword">return</span>;
+        }
+
+        loading = <span class="tok-literal">false</span>;
+        stopRevealTimer();
+        waveform = <span class="tok-literal">null</span>;
+        loadedPoints = <span class="tok-number">0</span>;
+        visiblePosition = <span class="tok-number">0</span>;
+        visiblePoints = <span class="tok-number">0</span>;
+        console.log(<span class="tok-string">`GetWaveformAsync failed: ${e}`</span>);
+        window.Repaint();
+    }
+}
+
+<span class="tok-keyword">function</span> displayValueAtColumn(x, width) {
+    <span class="tok-keyword">if</span> (!waveform || width &lt;= <span class="tok-number">0</span> || visiblePoints &lt;= <span class="tok-number">0</span>) <span class="tok-keyword">return</span> <span class="tok-number">0</span>;
+
+    <span class="tok-keyword">const</span> sourceCount = waveform.length;
+
+    <span class="tok-keyword">if</span> (width &lt;= sourceCount) {
+        <span class="tok-keyword">const</span> from = Math.floor(x * sourceCount / width);
+        <span class="tok-keyword">if</span> (from &gt;= visiblePoints) <span class="tok-keyword">return</span> <span class="tok-number">0</span>;
+
+        <span class="tok-keyword">const</span> to = Math.max(from + <span class="tok-number">1</span>, Math.ceil((x + <span class="tok-number">1</span>) * sourceCount / width));
+        <span class="tok-keyword">const</span> limit = Math.min(visiblePoints, to);
+        <span class="tok-keyword">let</span> sum = <span class="tok-number">0</span>;
+        <span class="tok-keyword">let</span> count = <span class="tok-number">0</span>;
+
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = from; i &lt; limit; ++i) {
+            sum += waveform[i] || <span class="tok-number">0</span>;
+            ++count;
+        }
+        <span class="tok-keyword">return</span> count ? sum / count : <span class="tok-number">0</span>;
+    }
+
+    <span class="tok-keyword">const</span> scale = sourceCount &gt; <span class="tok-number">1</span> ? (sourceCount - <span class="tok-number">1</span>) / Math.max(<span class="tok-number">1</span>, width - <span class="tok-number">1</span>) : <span class="tok-number">0</span>;
+    <span class="tok-keyword">const</span> at = x * scale;
+    <span class="tok-keyword">if</span> (at &gt;= visiblePoints) <span class="tok-keyword">return</span> <span class="tok-number">0</span>;
+
+    <span class="tok-keyword">const</span> lo = Math.min(visiblePoints - <span class="tok-number">1</span>, Math.floor(at));
+    <span class="tok-keyword">const</span> hi = Math.min(visiblePoints - <span class="tok-number">1</span>, lo + <span class="tok-number">1</span>);
+    <span class="tok-keyword">const</span> t = at - lo;
+    <span class="tok-keyword">return</span> (waveform[lo] || <span class="tok-number">0</span>) * (<span class="tok-number">1</span> - t) + (waveform[hi] || <span class="tok-number">0</span>) * t;
+}
+
+<span class="tok-keyword">function</span> drawWaveform(gr, w, h) {
+    <span class="tok-keyword">if</span> (!waveform || visiblePoints &lt;= <span class="tok-number">0</span> || w &lt;= <span class="tok-number">0</span> || h &lt;= <span class="tok-number">0</span>) {
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">const</span> centerY = h * <span class="tok-number">0.5</span>;
+    <span class="tok-keyword">const</span> maxAmplitude = h * <span class="tok-number">0.44</span>;
+    <span class="tok-keyword">const</span> visibleColumns = Math.min(
+        w,
+        Math.ceil(visiblePosition * w / waveform.length)
+    );
+
+    gr.DrawLine(<span class="tok-number">0</span>, centerY, w, centerY, <span class="tok-number">1</span>, CENTER_COLOR);
+
+    <span class="tok-comment">// Resample the native envelope to screen columns. Averaging when several</span>
+    <span class="tok-comment">// waveform points map to one pixel keeps the display clean and close to the</span>
+    <span class="tok-comment">// intended envelope instead of making transients unnaturally dense.</span>
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> x = <span class="tok-number">0</span>; x &lt; visibleColumns; ++x) {
+        <span class="tok-keyword">const</span> amplitude = displayValueAtColumn(x, w) * maxAmplitude;
+        gr.DrawLine(
+            x,
+            centerY - amplitude,
+            x,
+            centerY + amplitude,
+            <span class="tok-number">1</span>,
+            WAVEFORM_COLOR
+        );
+    }
+}
+
+<span class="tok-keyword">function</span> drawStatus(gr, w) {
+    <span class="tok-keyword">if</span> (!loading || !waveform) {
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">const</span> percent = Math.floor(loadedPoints * <span class="tok-number">100</span> / waveform.length);
+    gr.GdiDrawText(
+        <span class="tok-string">`Decoding waveform... ${percent}%`</span>,
+        font,
+        TEXT_COLOR,
+        <span class="tok-number">0</span>,
+        <span class="tok-number">8</span>,
+        w,
+        <span class="tok-number">24</span>,
+        DT_CENTER | DT_VCENTER | DT_SINGLELINE
+    );
+}
+
+<span class="tok-keyword">function</span> drawNoTrack(gr, w, h) {
+    gr.GdiDrawText(
+        <span class="tok-string">&#39;Select a track&#39;</span>,
+        font,
+        TEXT_COLOR,
+        <span class="tok-number">0</span>,
+        <span class="tok-number">0</span>,
+        w,
+        h,
+        DT_CENTER | DT_VCENTER | DT_SINGLELINE
+    );
+}
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    <span class="tok-keyword">const</span> w = window.Width;
+    <span class="tok-keyword">const</span> h = window.Height;
+
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, w, h, BG_COLOR);
+
+    <span class="tok-keyword">if</span> (waveform) {
+        drawWaveform(gr, w, h);
+        drawStatus(gr, w);
+    }
+    <span class="tok-keyword">else</span> {
+        drawNoTrack(gr, w, h);
+    }
+}
+
+<span class="tok-keyword">function</span> on_item_focus_change() {
+    loadWaveform();
+}
+
+<span class="tok-keyword">function</span> on_script_unload() {
+    <span class="tok-comment">// Makes the active progress callback return false if it is invoked again.</span>
+    ++loadToken;
+    stopRevealTimer();
+}
+
+loadWaveform();
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

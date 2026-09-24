@@ -45,6 +45,12 @@
     </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
         <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryReader">
+        <a class="nav-link nav-page-link" href="BinaryReader.html">BinaryReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryWriter">
+        <a class="nav-link nav-page-link" href="BinaryWriter.html">BinaryWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
         <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -170,6 +176,18 @@
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="RunResult">
         <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteDatabase">
+        <a class="nav-link nav-page-link" href="SQLiteDatabase.html">SQLiteDatabase</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteStatement">
+        <a class="nav-link nav-page-link" href="SQLiteStatement.html">SQLiteStatement</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextReader">
+        <a class="nav-link nav-page-link" href="TextReader.html">TextReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextWriter">
+        <a class="nav-link nav-page-link" href="TextWriter.html">TextWriter</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
@@ -2097,15 +2115,15 @@ fb.SetOutputDevice(arr[<span class="tok-number">4</span>].output_id, arr[<span c
             </div>
             <div class="source-location">js/foo_uie_jsplitter.js:1005</div>
         </header>
-        <pre class="signature"><code>ShowPictureViewer(image_path)</code></pre>
+        <pre class="signature"><code>ShowPictureViewer(image_path_or_handle, art_id)</code></pre>
         
-        <div class="description"><p>Opens the image viewer built in to <code>foobar2000</code> and shows image file specified by image_path</p></div>
+        <div class="description"><p>Opens the image viewer built in to <code>foobar2000</code>. Pass an image file path, or an <a href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a>; with a handle, <a href="module-Flags.html#AlbumArtId">AlbumArtId</a> defaults to <code>AlbumArtId.front</code>. Album art is resolved by foobar2000 and may be embedded or external.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>image_path</code></td><td><code>string</code></td><td><p>path of image file</p></td></tr></tbody>
+                <tbody><tr><td><code>image_path_or_handle</code></td><td><code>(string|<a class="type-link" href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a>)</code></td><td><p>Image file path or track handle.</p></td></tr><tr><td><code>art_id = AlbumArtId.front</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#AlbumArtId">AlbumArtId</a></code></td><td><p>Album art type. Used only when the first argument is an <a href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a>.</p></td></tr></tbody>
             </table></div>
         </section>
         

@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SQLite Playback History.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryReader">
+        <a class="nav-link nav-page-link" href="BinaryReader.html">BinaryReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryWriter">
+        <a class="nav-link nav-page-link" href="BinaryWriter.html">BinaryWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
+        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteDatabase">
+        <a class="nav-link nav-page-link" href="SQLiteDatabase.html">SQLiteDatabase</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteStatement">
+        <a class="nav-link nav-page-link" href="SQLiteStatement.html">SQLiteStatement</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextReader">
+        <a class="nav-link nav-page-link" href="TextReader.html">TextReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextWriter">
+        <a class="nav-link nav-page-link" href="TextWriter.html">TextWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/basic/SQLite Playback History.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="utils.html#OpenDatabase">utils.OpenDatabase</a></div>
+        </header>
+        <pre class="source-code"><code>window.DefineScript(<span class="tok-string">&#39;SQLite Playback History&#39;</span>);
+include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
+include(<span class="tok-string">&#39;docs/Helpers.js&#39;</span>);
+
+<span class="tok-comment">// A small persistent playback-history panel.</span>
+<span class="tok-comment">// The database is stored in the foobar2000 profile folder and survives restarts.</span>
+<span class="tok-comment">// It demonstrates schema creation, parameters, a reusable prepared statement,</span>
+<span class="tok-comment">// aggregate queries and explicit cleanup.</span>
+
+<span class="tok-keyword">const</span> DB_PATH = fb.ProfilePath + <span class="tok-string">&#39;jsplitter-playback-history.db&#39;</span>;
+<span class="tok-keyword">const</span> RECENT_LIMIT = <span class="tok-number">12</span>;
+<span class="tok-keyword">const</span> TOP_ARTISTS_LIMIT = <span class="tok-number">5</span>;
+<span class="tok-keyword">const</span> HISTORY_LIMIT = <span class="tok-number">1000</span>;
+<span class="tok-keyword">const</span> THIRTY_DAYS_MS = <span class="tok-number">30</span> * <span class="tok-number">24</span> * <span class="tok-number">60</span> * <span class="tok-number">60</span> * <span class="tok-number">1000</span>;
+
+<span class="tok-keyword">if</span> (<span class="tok-keyword">typeof</span> utils.OpenDatabase !== <span class="tok-string">&#39;function&#39;</span>) {
+    <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;SQLite API is not available in this foobar2000 version.&#39;</span>);
+}
+
+<span class="tok-keyword">const</span> fontTitle = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">16</span>, <span class="tok-number">1</span>);
+<span class="tok-keyword">const</span> fontText = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">12</span>, <span class="tok-number">0</span>);
+<span class="tok-keyword">const</span> fontSmall = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">10</span>, <span class="tok-number">0</span>);
+
+<span class="tok-keyword">const</span> tfArtist = fb.TitleFormat(<span class="tok-string">&#39;$if2(%album artist%,$if2(%artist%,Unknown artist))&#39;</span>);
+<span class="tok-keyword">const</span> tfTitle = fb.TitleFormat(<span class="tok-string">&#39;$if2(%title%,Unknown title)&#39;</span>);
+<span class="tok-keyword">const</span> tfAlbum = fb.TitleFormat(<span class="tok-string">&#39;[%album%]&#39;</span>);
+
+<span class="tok-keyword">const</span> db = utils.OpenDatabase(DB_PATH);
+
+db.Exec(<span class="tok-string">`
+    CREATE TABLE IF NOT EXISTS playback_history (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        played_at INTEGER NOT NULL,
+        artist TEXT NOT NULL,
+        title TEXT NOT NULL,
+        album TEXT NOT NULL,
+        path TEXT NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS playback_history_played_at
+        ON playback_history(played_at DESC);
+`</span>);
+
+<span class="tok-keyword">const</span> insertHistory = db.Prepare(<span class="tok-string">`
+    INSERT INTO playback_history(played_at, artist, title, album, path)
+    VALUES (?, ?, ?, ?, ?)
+`</span>);
+
+<span class="tok-keyword">let</span> recent = [];
+<span class="tok-keyword">let</span> topArtists = [];
+
+refreshView();
+
+<span class="tok-keyword">function</span> addPlayback(metadb) {
+    <span class="tok-keyword">if</span> (!metadb) <span class="tok-keyword">return</span>;
+
+    insertHistory.Run([
+        Date.now(),
+        tfArtist.EvalWithMetadb(metadb),
+        tfTitle.EvalWithMetadb(metadb),
+        tfAlbum.EvalWithMetadb(metadb),
+        metadb.Path
+    ]);
+
+    <span class="tok-comment">// Keep the demo database bounded without rebuilding the table.</span>
+    db.Exec(<span class="tok-string">`
+        DELETE FROM playback_history
+        WHERE id &lt;= (
+            SELECT id
+            FROM playback_history
+            ORDER BY id DESC
+            LIMIT 1 OFFSET ?
+        )
+    `</span>, [HISTORY_LIMIT - <span class="tok-number">1</span>]);
+
+    refreshView();
+}
+
+<span class="tok-keyword">function</span> refreshView() {
+    recent = db.Query(<span class="tok-string">`
+        SELECT played_at, artist, title, album
+        FROM playback_history
+        ORDER BY id DESC
+        LIMIT ?
+    `</span>, [RECENT_LIMIT]);
+
+    topArtists = db.Query(<span class="tok-string">`
+        SELECT artist, COUNT(*) AS plays
+        FROM playback_history
+        WHERE played_at &gt;= ?
+        GROUP BY artist
+        ORDER BY plays DESC, artist COLLATE NOCASE
+        LIMIT ?
+    `</span>, [Date.now() - THIRTY_DAYS_MS, TOP_ARTISTS_LIMIT]);
+
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> formatTime(timestamp) {
+    <span class="tok-keyword">return</span> <span class="tok-keyword">new</span> Date(timestamp).toLocaleString();
+}
+
+<span class="tok-keyword">function</span> drawLine(gr, text, x, y, w, h, font, colour) {
+    gr.GdiDrawText(
+        text,
+        font,
+        colour,
+        x,
+        y,
+        w,
+        h,
+        DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_END_ELLIPSIS | DT_NOPREFIX
+    );
+}
+
+<span class="tok-keyword">function</span> on_playback_new_track(metadb) {
+    addPlayback(metadb);
+}
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    <span class="tok-keyword">const</span> width = window.Width;
+    <span class="tok-keyword">const</span> height = window.Height;
+    <span class="tok-keyword">const</span> margin = <span class="tok-number">14</span>;
+    <span class="tok-keyword">const</span> text = RGB(<span class="tok-number">230</span>, <span class="tok-number">230</span>, <span class="tok-number">230</span>);
+    <span class="tok-keyword">const</span> muted = RGB(<span class="tok-number">155</span>, <span class="tok-number">155</span>, <span class="tok-number">155</span>);
+    <span class="tok-keyword">const</span> accent = RGB(<span class="tok-number">110</span>, <span class="tok-number">190</span>, <span class="tok-number">255</span>);
+
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, width, height, RGB(<span class="tok-number">28</span>, <span class="tok-number">30</span>, <span class="tok-number">34</span>));
+
+    <span class="tok-keyword">let</span> y = <span class="tok-number">10</span>;
+    drawLine(gr, <span class="tok-string">&#39;SQLite Playback History&#39;</span>, margin, y, width - margin * <span class="tok-number">2</span>, <span class="tok-number">28</span>, fontTitle, text);
+    y += <span class="tok-number">32</span>;
+
+    drawLine(gr, <span class="tok-string">&#39;Top artists — last 30 days&#39;</span>, margin, y, width - margin * <span class="tok-number">2</span>, <span class="tok-number">20</span>, fontSmall, muted);
+    y += <span class="tok-number">20</span>;
+
+    <span class="tok-keyword">if</span> (!topArtists.length) {
+        drawLine(gr, <span class="tok-string">&#39;Play a few tracks to populate the database.&#39;</span>, margin, y, width - margin * <span class="tok-number">2</span>, <span class="tok-number">22</span>, fontText, muted);
+        y += <span class="tok-number">28</span>;
+    } <span class="tok-keyword">else</span> {
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> row <span class="tok-keyword">of</span> topArtists) {
+            drawLine(gr, <span class="tok-string">`${row.artist}  —  ${row.plays}`</span>, margin, y, width - margin * <span class="tok-number">2</span>, <span class="tok-number">22</span>, fontText, accent);
+            y += <span class="tok-number">22</span>;
+        }
+        y += <span class="tok-number">8</span>;
+    }
+
+    drawLine(gr, <span class="tok-string">&#39;Recent plays&#39;</span>, margin, y, width - margin * <span class="tok-number">2</span>, <span class="tok-number">20</span>, fontSmall, muted);
+    y += <span class="tok-number">22</span>;
+
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> row <span class="tok-keyword">of</span> recent) {
+        <span class="tok-keyword">if</span> (y + <span class="tok-number">38</span> &gt; height) <span class="tok-keyword">break</span>;
+
+        drawLine(gr, <span class="tok-string">`${row.artist} — ${row.title}`</span>, margin, y, width - margin * <span class="tok-number">2</span>, <span class="tok-number">20</span>, fontText, text);
+        y += <span class="tok-number">19</span>;
+
+        <span class="tok-keyword">const</span> album = row.album ? <span class="tok-string">` • ${row.album}`</span> : <span class="tok-string">&#39;&#39;</span>;
+        drawLine(gr, <span class="tok-string">`${formatTime(row.played_at)}${album}`</span>, margin, y, width - margin * <span class="tok-number">2</span>, <span class="tok-number">17</span>, fontSmall, muted);
+        y += <span class="tok-number">23</span>;
+    }
+}
+
+<span class="tok-keyword">function</span> on_mouse_rbtn_up(x, y) {
+    <span class="tok-keyword">const</span> menu = window.CreatePopupMenu();
+    menu.AppendMenuItem(MF_STRING, <span class="tok-number">1</span>, <span class="tok-string">&#39;Clear history&#39;</span>);
+
+    <span class="tok-keyword">if</span> (menu.TrackPopupMenu(x, y) === <span class="tok-number">1</span>) {
+        db.Exec(<span class="tok-string">&#39;DELETE FROM playback_history&#39;</span>);
+        refreshView();
+    }
+}
+
+<span class="tok-keyword">function</span> on_script_unload() {
+    insertHistory.Close();
+    db.Close();
+}
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

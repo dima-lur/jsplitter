@@ -45,6 +45,12 @@
     </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
         <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryReader">
+        <a class="nav-link nav-page-link" href="BinaryReader.html">BinaryReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryWriter">
+        <a class="nav-link nav-page-link" href="BinaryWriter.html">BinaryWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
         <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -170,6 +176,18 @@
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="RunResult">
         <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteDatabase">
+        <a class="nav-link nav-page-link" href="SQLiteDatabase.html">SQLiteDatabase</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteStatement">
+        <a class="nav-link nav-page-link" href="SQLiteStatement.html">SQLiteStatement</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextReader">
+        <a class="nav-link nav-page-link" href="TextReader.html">TextReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextWriter">
+        <a class="nav-link nav-page-link" href="TextWriter.html">TextWriter</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
@@ -1582,15 +1600,15 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
             </div>
             <div class="source-location">js/foo_uie_jsplitter.js:2624</div>
         </header>
-        <pre class="signature"><code>GetWaveformAsync(handle, points, start, duration)</code></pre>
+        <pre class="signature"><code>GetWaveformAsync(handle, points, start, duration, on_progress)</code></pre>
         
-        <div class="description"><p>Decodes an audio track asynchronously and returns a fixed-size waveform amplitude envelope.<br> Each element of the returned <code>Float32Array</code> is a linear amplitude value in the range 0.0..1.0 for the corresponding part of the requested time range.<br> Each output point represents one time interval. The interval is divided into up to 8 local windows; for each non-empty window, the peak absolute sample value across all channels is measured, and those local peaks are averaged to produce the output value. This preserves short transients while avoiding the dense appearance produced by taking a single maximum peak over the entire output interval.<br> Values are not normalized to the loudest point of the track, so their amplitudes remain relative to the decoded audio signal.<br> Decoding and waveform calculation are performed asynchronously; decoded PCM data is not exposed to JavaScript.<br> If <code>duration</code> is 0, the requested range extends from <code>start</code> to the end of the track. If the track length cannot be determined, a non-zero duration must be specified.<br> A range that extends past a known track end is clipped. If <code>start</code> is at or beyond the known track end, a zero-filled array is returned.<br> Decoder or input-opening failures reject the returned Promise.</p></div>
+        <div class="description"><p>Decodes an audio track asynchronously and returns a fixed-size waveform amplitude envelope.<br> Each element of the returned <code>Float32Array</code> is a linear amplitude value in the range 0.0..1.0 for the corresponding part of the requested time range.<br> Each output point represents one time interval. The interval is divided into up to 8 local windows; for each non-empty window, the peak absolute sample value across all channels is measured, and those local peaks are averaged to produce the output value. This preserves short transients while avoiding the dense appearance produced by taking a single maximum peak over the entire output interval.<br> Values are not normalized to the loudest point of the track, so their amplitudes remain relative to the decoded audio signal.<br> Decoding uses one sequential decoder pass. Decoded PCM data is not exposed to JavaScript.<br> <br> If <code>on_progress</code> is supplied, finalized contiguous ranges of the output envelope are delivered while decoding is still in progress. The callback receives a <code>Float32Array</code> containing the new values and the zero-based output index where that range begins. Progress chunk size and delivery frequency are implementation details and must not be relied on.<br> <b>For waveform UIs that should appear while decoding, this progressive form is the recommended approach.</b> Use one <code>GetWaveformAsync()</code> call for the whole requested range instead of splitting the track into repeated range calls. One decoder remains open for the sequential pass, avoiding repeated open/seek/decode overhead. For visually smooth rendering, store progress chunks immediately but animate a separate visible front toward the loaded front rather than exposing the native chunk boundaries directly.<br> Return <code>false</code> from <code>on_progress</code> to cancel the native decode. This is recommended when a progressive request becomes obsolete, for example after the focused or playing track changes. Cancellation rejects the returned Promise. Any other return value continues decoding.<br> The Promise still resolves with the complete <code>Float32Array</code> when decoding finishes normally, whether or not a progress callback is used.<br> <br> If <code>duration</code> is 0, the requested range extends from <code>start</code> to the end of the track. If the track length cannot be determined, a non-zero duration must be specified.<br> A range that extends past a known track end is clipped. If <code>start</code> is at or beyond the known track end, a zero-filled array is returned.<br> Decoder or input-opening failures reject the returned Promise.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>handle</code></td><td><code><a class="type-link" href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a></code></td><td><p>Track to decode.</p></td></tr><tr><td><code>points = 2048</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Number of output points. Valid range: 1..65536.</p></td></tr><tr><td><code>start = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Start position in seconds. Must be finite and non-negative.</p></td></tr><tr><td><code>duration = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Duration in seconds. Must be finite and non-negative. 0 means from <code>start</code> to the end of the track.</p></td></tr></tbody>
+                <tbody><tr><td><code>handle</code></td><td><code><a class="type-link" href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a></code></td><td><p>Track to decode.</p></td></tr><tr><td><code>points = 2048</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Number of output points. Valid range: 1..65536.</p></td></tr><tr><td><code>start = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Start position in seconds. Must be finite and non-negative.</p></td></tr><tr><td><code>duration = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Duration in seconds. Must be finite and non-negative. 0 means from <code>start</code> to the end of the track.</p></td></tr><tr><td><code>on_progress</code><span class="mini-flag">optional</span></td><td><code>function(Float32Array, number)</code></td><td><p>Optional progress callback. Receives <code>(values, start_index)</code>. Return <code>false</code> to cancel decoding.</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -1603,46 +1621,79 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws synchronously if <code>handle</code> is null or if <code>points</code>, <code>start</code>, or <code>duration</code> is invalid.</p></div>
+            <div><code></code> — <p>Throws synchronously if <code>handle</code> is null, if <code>points</code>, <code>start</code>, or <code>duration</code> is invalid, or if <code>on_progress</code> is not a function, null, or undefined.</p></div>
         </section>
         
         
         <section class="member-section">
             <h3>Examples</h3>
-            <pre class="example"><code><span class="tok-keyword">async</span> <span class="tok-keyword">function</span> loadWaveform() {
-    <span class="tok-keyword">const</span> handle = fb.GetNowPlaying();
+            <div class="example-caption">Decode a complete waveform</div><pre class="example"><code><span class="tok-keyword">const</span> handle = fb.GetNowPlaying();
+<span class="tok-keyword">if</span> (handle) {
+    utils.GetWaveformAsync(handle, <span class="tok-number">2048</span>)
+        .then(waveform =&gt; {
+            console.log(<span class="tok-string">`Decoded ${waveform.length} waveform points`</span>);
+        })
+        .<span class="tok-keyword">catch</span>(e =&gt; console.log(<span class="tok-string">`GetWaveformAsync failed: ${e}`</span>));
+}</code></pre><div class="example-caption">Recommended progressive UI pattern</div><pre class="example"><code><span class="tok-keyword">let</span> requestId = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> waveform = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> loaded = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> visible = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> producerRate = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> lastFrame = <span class="tok-number">0</span>;
+
+<span class="tok-keyword">const</span> revealTimer = setInterval(() =&gt; {
+    <span class="tok-keyword">if</span> (!waveform || producerRate &lt;= <span class="tok-number">0</span>) <span class="tok-keyword">return</span>;
+
+    <span class="tok-keyword">const</span> now = performance.now();
+    <span class="tok-keyword">const</span> dt = lastFrame ? now - lastFrame : <span class="tok-number">0</span>;
+    lastFrame = now;
+
+    <span class="tok-comment">// Smoothly follow what the decoder has really produced. Do not predict</span>
+    <span class="tok-comment">// completion time from track duration and do not draw chunk boundaries directly.</span>
+    visible = Math.min(loaded, visible + producerRate * dt);
+    window.Repaint();
+}, <span class="tok-number">16</span>);
+
+<span class="tok-keyword">async</span> <span class="tok-keyword">function</span> loadFocusedWaveform() {
+    <span class="tok-keyword">const</span> id = ++requestId;
+    <span class="tok-keyword">const</span> handle = fb.GetFocusItem();
     <span class="tok-keyword">if</span> (!handle) <span class="tok-keyword">return</span>;
 
-    <span class="tok-keyword">try</span> {
-        <span class="tok-keyword">const</span> waveform = <span class="tok-keyword">await</span> utils.GetWaveformAsync(handle);
-        console.log(<span class="tok-string">`Full waveform: ${waveform.length} points`</span>);
+    <span class="tok-keyword">const</span> points = <span class="tok-number">2048</span>;
+    <span class="tok-keyword">const</span> started = performance.now();
+    waveform = <span class="tok-keyword">new</span> Float32Array(points);
+    loaded = <span class="tok-number">0</span>;
+    visible = <span class="tok-number">0</span>;
+    producerRate = <span class="tok-number">0</span>;
+    lastFrame = <span class="tok-number">0</span>;
 
-        <span class="tok-comment">// 512 points for a 30-second range starting at 60 seconds.</span>
-        <span class="tok-keyword">const</span> section = <span class="tok-keyword">await</span> utils.GetWaveformAsync(handle, <span class="tok-number">512</span>, <span class="tok-number">60</span>, <span class="tok-number">30</span>);
-        console.log(section);
+    <span class="tok-keyword">try</span> {
+        <span class="tok-keyword">const</span> complete = <span class="tok-keyword">await</span> utils.GetWaveformAsync(handle, points, <span class="tok-number">0</span>, <span class="tok-number">0</span>, (values, start) =&gt; {
+            <span class="tok-keyword">if</span> (id !== requestId) <span class="tok-keyword">return</span> <span class="tok-literal">false</span>; <span class="tok-comment">// cancel the obsolete native decode</span>
+
+            waveform.set(values, start);
+            loaded = Math.max(loaded, start + values.length);
+
+            <span class="tok-keyword">const</span> elapsed = performance.now() - started;
+            <span class="tok-keyword">if</span> (elapsed &gt; <span class="tok-number">0</span>) producerRate = loaded / elapsed;
+            <span class="tok-keyword">return</span> <span class="tok-literal">true</span>;
+        });
+
+        <span class="tok-keyword">if</span> (id !== requestId) <span class="tok-keyword">return</span>;
+        waveform = complete;
+        loaded = complete.length;
     } <span class="tok-keyword">catch</span> (e) {
-        console.log(<span class="tok-string">`GetWaveformAsync failed: ${e}`</span>);
+        <span class="tok-keyword">if</span> (id === requestId) console.log(<span class="tok-string">`GetWaveformAsync failed: ${e}`</span>);
     }
 }
 
-loadWaveform();</code></pre><pre class="example"><code><span class="tok-keyword">const</span> handle = fb.GetNowPlaying();
-<span class="tok-keyword">if</span> (!handle) <span class="tok-keyword">return</span>;
-
-utils.GetWaveformAsync(handle)
-    .then(waveform =&gt; {
-        console.log(<span class="tok-string">`Full waveform: ${waveform.length} points`</span>);
-
-        <span class="tok-comment">// Return another Promise to continue the chain.</span>
-        <span class="tok-keyword">return</span> utils.GetWaveformAsync(handle, <span class="tok-number">512</span>, <span class="tok-number">60</span>, <span class="tok-number">30</span>);
-    })
-    .then(section =&gt; {
-        console.log(section);
-    })
-    .<span class="tok-keyword">catch</span>(e =&gt; {
-        console.log(<span class="tok-string">`GetWaveformAsync failed: ${e}`</span>);
-    });</code></pre>
+<span class="tok-comment">// See &quot;Focus Track Waveform.js&quot; for a complete rendering example.</span></code></pre>
         </section>
         
+        <section class="member-section">
+            <h3>Example source</h3>
+            <div class="source-links"><a class="source-link" href="source-samples-basic-Focus-Track-Waveform.js.html"><span>samples/basic/Focus Track Waveform.js</span><small>open source</small></a></div>
+        </section>
     </article>
 
     <article class="api-item" id="Glob" data-kind="method" data-name="glob">
@@ -1651,7 +1702,7 @@ utils.GetWaveformAsync(handle)
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Glob">Glob</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2683</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2721</div>
         </header>
         <pre class="signature"><code>Glob(pattern, exc_mask, inc_mask)</code></pre>
         
@@ -1738,7 +1789,7 @@ utils.GetWaveformAsync(handle)
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#InputBox">InputBox</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2698</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2736</div>
         </header>
         <pre class="signature"><code>InputBox(window_id, prompt, caption, default_val, error_on_cancel, help_text)</code></pre>
         
@@ -1784,7 +1835,7 @@ utils.GetWaveformAsync(handle)
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#IsDirectory">IsDirectory</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2725</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2763</div>
         </header>
         <pre class="signature"><code>IsDirectory(path)</code></pre>
         
@@ -1816,7 +1867,7 @@ utils.GetWaveformAsync(handle)
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#IsFile">IsFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2732</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2770</div>
         </header>
         <pre class="signature"><code>IsFile(path)</code></pre>
         
@@ -1848,7 +1899,7 @@ utils.GetWaveformAsync(handle)
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#IsKeyPressed">IsKeyPressed</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2739</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2777</div>
         </header>
         <pre class="signature"><code>IsKeyPressed(vkey)</code></pre>
         
@@ -1880,7 +1931,7 @@ utils.GetWaveformAsync(handle)
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ListFonts">ListFonts</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2747</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2785</div>
         </header>
         <pre class="signature"><code>ListFonts(mode)</code></pre>
         
@@ -1912,7 +1963,7 @@ utils.GetWaveformAsync(handle)
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#MapString">MapString</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2755</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2793</div>
         </header>
         <pre class="signature"><code>MapString(text, lcid, flags)</code></pre>
         
@@ -1944,7 +1995,7 @@ utils.GetWaveformAsync(handle)
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#MD5">MD5</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2765</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2803</div>
         </header>
         <pre class="signature"><code>MD5(str)</code></pre>
         
@@ -1976,7 +2027,7 @@ utils.GetWaveformAsync(handle)
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#MD5FromFile">MD5FromFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2774</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2812</div>
         </header>
         <pre class="signature"><code>MD5FromFile(path)</code></pre>
         
@@ -2008,7 +2059,7 @@ utils.GetWaveformAsync(handle)
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#MessageBox">MessageBox</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2783</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2821</div>
         </header>
         <pre class="signature"><code>MessageBox(msg, title, buttons, icon, default_button, help_text, window_id)</code></pre>
         
@@ -2034,13 +2085,274 @@ utils.GetWaveformAsync(handle)
         
     </article>
 
+    <article class="api-item" id="OpenBinaryReader" data-kind="method" data-name="openbinaryreader">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
+                <h2><a class="anchor" href="#OpenBinaryReader">OpenBinaryReader</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2870</div>
+        </header>
+        <pre class="signature"><code>OpenBinaryReader(filename)</code></pre>
+        
+        <div class="description"><p>Opens a binary file for incremental reading into a caller-provided <code>Uint8Array</code>.<br> The buffer is reused by the caller, so repeated reads do not allocate a new typed array for every chunk. This is intended for large files or other cases where whole-file <a href="utils.html#ReadBinaryFile">utils.ReadBinaryFile</a> would be inefficient.<br> Reading is synchronous. For one-shot large-file processing, use the reader inside <a href="Worker.html#RunAsync">Worker.RunAsync</a>; for persistent pipelines, use it from a <a href="Worker.html#Worker">Worker</a>. Both approaches keep blocking file I/O off the panel UI thread.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>filename</code></td><td><code>string</code></td><td><p>File to open.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>?<a class="type-link" href="BinaryReader.html#BinaryReader">BinaryReader</a></code> — <p>Open streaming reader, or <code>null</code> if the reader could not be created.</p></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">const</span> reader = utils.OpenBinaryReader(<span class="tok-string">&#39;E:\\large-file.bin&#39;</span>);
+<span class="tok-keyword">if</span> (!reader) <span class="tok-keyword">return</span>;
+
+<span class="tok-keyword">const</span> buffer = <span class="tok-keyword">new</span> Uint8Array(<span class="tok-number">1024</span> * <span class="tok-number">1024</span>);
+<span class="tok-keyword">try</span> {
+    <span class="tok-keyword">while</span> (!reader.EOF) {
+        <span class="tok-keyword">const</span> bytesRead = reader.Read(buffer);
+        <span class="tok-keyword">if</span> (!bytesRead) <span class="tok-keyword">break</span>;
+
+        <span class="tok-comment">// Process buffer[0 .. bytesRead).</span>
+    }
+} <span class="tok-keyword">finally</span> {
+    reader.Close();
+}</code></pre>
+        </section>
+        
+        <section class="member-section">
+            <h3>Example source</h3>
+            <div class="source-links"><a class="source-link" href="source-samples-basic-Streaming-Binary-IO.js.html"><span>samples/basic/Streaming Binary IO.js</span><small>open source</small></a></div>
+        </section>
+    </article>
+
+    <article class="api-item" id="OpenBinaryWriter" data-kind="method" data-name="openbinarywriter">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
+                <h2><a class="anchor" href="#OpenBinaryWriter">OpenBinaryWriter</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2900</div>
+        </header>
+        <pre class="signature"><code>OpenBinaryWriter(filename)</code></pre>
+        
+        <div class="description"><p>Opens a binary file for incremental writing from a caller-provided <code>Uint8Array</code>.<br> The file is created or truncated when opened. The parent folder must already exist.<br> Reusing the same typed array avoids allocating temporary buffers for every chunk. Writing is synchronous. For long-running processing, use the writer from a <a href="Worker.html#Worker">Worker</a> to avoid blocking the panel UI.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>filename</code></td><td><code>string</code></td><td><p>File to create or overwrite.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>?<a class="type-link" href="BinaryWriter.html#BinaryWriter">BinaryWriter</a></code> — <p>Open streaming writer, or <code>null</code> if the writer could not be created.</p></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">const</span> writer = utils.OpenBinaryWriter(<span class="tok-string">&#39;E:\\large-file.bin&#39;</span>);
+<span class="tok-keyword">if</span> (!writer) <span class="tok-keyword">return</span>;
+
+<span class="tok-keyword">const</span> buffer = <span class="tok-keyword">new</span> Uint8Array(<span class="tok-number">1024</span> * <span class="tok-number">1024</span>);
+<span class="tok-comment">// Fill buffer...</span>
+writer.Write(buffer);
+writer.Close();</code></pre>
+        </section>
+        
+        <section class="member-section">
+            <h3>Example source</h3>
+            <div class="source-links"><a class="source-link" href="source-samples-basic-Streaming-Binary-IO.js.html"><span>samples/basic/Streaming Binary IO.js</span><small>open source</small></a></div>
+        </section>
+    </article>
+
+    <article class="api-item" id="OpenDatabase" data-kind="method" data-name="opendatabase">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
+                <h2><a class="anchor" href="#OpenDatabase">OpenDatabase</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2923</div>
+        </header>
+        <pre class="signature"><code>OpenDatabase(filename)</code></pre>
+        
+        <div class="description"><p>Opens or creates a SQLite database for synchronous read/write access.<br> This is an optional host capability. <code>utils.OpenDatabase</code> is defined only when the SQLite library already loaded by foobar2000 exposes the required API. Scripts that need to support hosts without compatible SQLite can feature-detect it with <code>typeof utils.OpenDatabase === 'function'</code>.<br> Absolute paths are used as-is. Relative paths are resolved from the currently executing script file first, matching the script-relative behaviour of <a href="globals.html#include">include</a>. If the caller has no file origin, the panel/Worker script or package root is used; a fully in-memory panel falls back to the component directory.<br> The special filename <code>:memory:</code> creates an in-memory SQLite database and is not path-resolved. The parent folder of a file-backed database must already exist.<br> Database work is synchronous, so large imports or expensive queries should be run from a <a href="Worker.html#Worker">Worker</a> to avoid blocking the panel UI thread.<br> SQL values should be passed through the optional parameter array instead of being concatenated into the SQL text. Supported parameter types are <code>null</code>, boolean, number, string, <code>ArrayBuffer</code>, and typed-array views.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>filename</code></td><td><code>string</code></td><td><p>Absolute or script-relative database filename, or <code>:memory:</code>.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code><a class="type-link" href="SQLiteDatabase.html#SQLiteDatabase">SQLiteDatabase</a></code> — <p>Open database handle.</p></div>
+        </section>
+        
+        <section class="member-section compact-section">
+            <h3>Throws</h3>
+            <div><code></code> — <p>Throws if the database cannot be opened or created.</p></div>
+        </section>
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">const</span> db = utils.OpenDatabase(<span class="tok-string">&#39;example.db&#39;</span>);
+<span class="tok-keyword">try</span> {
+    db.Exec(<span class="tok-string">&#39;CREATE TABLE IF NOT EXISTS settings (name TEXT PRIMARY KEY, value TEXT)&#39;</span>);
+    db.Exec(<span class="tok-string">&#39;INSERT OR REPLACE INTO settings(name, value) VALUES (?, ?)&#39;</span>, [<span class="tok-string">&#39;theme&#39;</span>, <span class="tok-string">&#39;dark&#39;</span>]);
+
+    <span class="tok-keyword">const</span> rows = db.Query(<span class="tok-string">&#39;SELECT value FROM settings WHERE name = ?&#39;</span>, [<span class="tok-string">&#39;theme&#39;</span>]);
+    console.log(rows.length ? rows[<span class="tok-number">0</span>].value : <span class="tok-string">&#39;not found&#39;</span>);
+} <span class="tok-keyword">finally</span> {
+    db.Close();
+}</code></pre>
+        </section>
+        
+        <section class="member-section">
+            <h3>Example source</h3>
+            <div class="source-links"><a class="source-link" href="source-samples-basic-SQLite-Playback-History.js.html"><span>samples/basic/SQLite Playback History.js</span><small>open source</small></a></div>
+        </section>
+    </article>
+
+    <article class="api-item" id="OpenTextReader" data-kind="method" data-name="opentextreader">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
+                <h2><a class="anchor" href="#OpenTextReader">OpenTextReader</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2952</div>
+        </header>
+        <pre class="signature"><code>OpenTextReader(filename, codepage)</code></pre>
+        
+        <div class="description"><p>Opens a text file for incremental, line-by-line reading.<br> Unlike <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>, the whole file is not materialized as one JavaScript string. This makes it suitable for processing large text files incrementally, one line at a time, without requiring the entire file contents to fit in the JavaScript heap.<br> <code>ReadLine()</code> removes the line terminator and returns <code>null</code> at end of file. A UTF-8, UTF-16, or UTF-32 BOM matching the selected codepage, if present, is removed from the first line.<br> UTF-16LE/BE and UTF-32LE/BE are supported with codepages 1200/1201 and 12000/12001 respectively.<br> Pass codepage 0 to use automatic charset detection, matching <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.<br> Reading is synchronous. For long-running processing, use the reader from a <a href="Worker.html#Worker">Worker</a> to avoid blocking the panel UI.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>filename</code></td><td><code>string</code></td><td><p>File to open.</p></td></tr><tr><td><code>codepage = 65001</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Windows codepage used to decode each line. UTF-16LE/BE use 1200/1201, UTF-32LE/BE use 12000/12001, and 0 enables automatic detection. See Codepages.js.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>?<a class="type-link" href="TextReader.html#TextReader">TextReader</a></code> — <p>Open streaming reader, or <code>null</code> if the reader could not be created. This includes invalid or unsupported codepages, an empty filename, and ordinary file open failures.</p></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">const</span> reader = utils.OpenTextReader(<span class="tok-string">&#39;E:\\large-file.txt&#39;</span>);
+<span class="tok-keyword">if</span> (!reader) {
+    console.log(<span class="tok-string">&#39;Unable to open file&#39;</span>);
+    <span class="tok-keyword">return</span>;
+}
+
+<span class="tok-keyword">try</span> {
+    <span class="tok-keyword">for</span> (;;) {
+        <span class="tok-keyword">const</span> line = reader.ReadLine();
+        <span class="tok-keyword">if</span> (line === <span class="tok-literal">null</span>) <span class="tok-keyword">break</span>;
+        <span class="tok-keyword">if</span> (!line.length) <span class="tok-keyword">continue</span>;
+
+        <span class="tok-keyword">const</span> item = JSON.parse(line);
+        console.log(item.id);
+    }
+} <span class="tok-keyword">finally</span> {
+    reader.Close();
+}</code></pre>
+        </section>
+        
+        <section class="member-section">
+            <h3>Example source</h3>
+            <div class="source-links"><a class="source-link" href="source-samples-basic-Streaming-Text-IO.js.html"><span>samples/basic/Streaming Text IO.js</span><small>open source</small></a></div>
+        </section>
+    </article>
+
+    <article class="api-item" id="OpenTextWriter" data-kind="method" data-name="opentextwriter">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
+                <h2><a class="anchor" href="#OpenTextWriter">OpenTextWriter</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3342</div>
+        </header>
+        <pre class="signature"><code>OpenTextWriter(filename, write_bom, codepage)</code></pre>
+        
+        <div class="description"><p>Opens a text file for incremental writing.<br> The file is created or truncated when opened. The parent folder must already exist.<br> UTF-8 is used by default. UTF-16LE (1200), UTF-16BE (1201), UTF-32LE (12000), UTF-32BE (12001), and other valid Windows codepages are also supported.<br> If <code>write_bom</code> is true, the matching BOM is written for UTF-8, UTF-16, and UTF-32. Other Windows codepages do not have a BOM and ignore this option.<br> Use <code>Write()</code> to append text without a line terminator or <code>WriteLine()</code> to append text followed by CRLF. This avoids building one large JavaScript string before writing a large file.<br> Writing is synchronous. For one-shot large-file generation, use the writer inside <a href="Worker.html#RunAsync">Worker.RunAsync</a>; for persistent pipelines, use it from a <a href="Worker.html#Worker">Worker</a>. Both approaches keep blocking file I/O off the panel UI thread.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>filename</code></td><td><code>string</code></td><td><p>File to create or overwrite.</p></td></tr><tr><td><code>write_bom = true</code><span class="mini-flag">optional</span></td><td><code>boolean</code></td><td><p>If true, writes a BOM for UTF-8/UTF-16/UTF-32.</p></td></tr><tr><td><code>codepage = 65001</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Output Windows codepage. Codepage 0 is not valid for writing. See Codepages.js.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>?<a class="type-link" href="TextWriter.html#TextWriter">TextWriter</a></code> — <p>Open streaming writer, or <code>null</code> if the writer could not be created. This includes an empty filename, an invalid codepage, and ordinary file creation/open failures.</p></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">const</span> writer = utils.OpenTextWriter(<span class="tok-string">&#39;E:\\large-file.txt&#39;</span>, <span class="tok-literal">false</span>);
+<span class="tok-keyword">if</span> (!writer) {
+    console.log(<span class="tok-string">&#39;Unable to create file&#39;</span>);
+    <span class="tok-keyword">return</span>;
+}
+
+<span class="tok-keyword">try</span> {
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; <span class="tok-number">100000</span>; ++i) {
+        writer.WriteLine(JSON.stringify({ id: i, value: <span class="tok-string">`item ${i}`</span> }));
+    }
+} <span class="tok-keyword">finally</span> {
+    writer.Close();
+}</code></pre>
+        </section>
+        
+        <section class="member-section">
+            <h3>Example source</h3>
+            <div class="source-links"><a class="source-link" href="source-samples-basic-Streaming-Text-IO.js.html"><span>samples/basic/Streaming Text IO.js</span><small>open source</small></a></div>
+        </section>
+    </article>
+
     <article class="api-item" id="ParseHtml" data-kind="method" data-name="parsehtml">
         <header class="api-item-header">
             <div>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ParseHtml">ParseHtml</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2797</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2835</div>
         </header>
         <pre class="signature"><code>ParseHtml(html)</code></pre>
         
@@ -2081,7 +2393,7 @@ utils.GetWaveformAsync(handle)
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#PathWildcardMatch">PathWildcardMatch</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2821</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2859</div>
         </header>
         <pre class="signature"><code>PathWildcardMatch(pattern, str)</code></pre>
         
@@ -2113,11 +2425,11 @@ utils.GetWaveformAsync(handle)
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ReadBinaryFile">ReadBinaryFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2893</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3053</div>
         </header>
         <pre class="signature"><code>ReadBinaryFile(path)</code></pre>
         
-        <div class="description"><p>Read a file as raw binary.</p></div>
+        <div class="description"><p>Read a file as raw binary.<br> For large files, consider <a href="utils.html#OpenBinaryReader">utils.OpenBinaryReader</a>; it reads incrementally into a reusable caller-provided buffer instead of allocating one typed array for the whole file.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2149,7 +2461,7 @@ utils.GetWaveformAsync(handle)
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ReadINI">ReadINI</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2903</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3064</div>
         </header>
         <pre class="signature"><code>ReadINI(filename, section, key, default_val)</code></pre>
         
@@ -2185,17 +2497,17 @@ utils.GetWaveformAsync(handle)
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ReadTextFile">ReadTextFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2832</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2990</div>
         </header>
         <pre class="signature"><code>ReadTextFile(filename, codepage)</code></pre>
         
-        <div class="description"><p>Performance note: supply codepage argument if it is known, since codepage detection might take some time.</p></div>
+        <div class="description"><p>Performance note: supply codepage argument if it is known, since codepage detection might take some time.<br> UTF-8, UTF-16LE/BE, UTF-32LE/BE, and supported Windows codepages use the same decoding rules as <a href="utils.html#OpenTextReader">utils.OpenTextReader</a>. A matching BOM is removed for UTF encodings.<br> For large line-oriented files, consider <a href="utils.html#OpenTextReader">utils.OpenTextReader</a>; it avoids creating one JavaScript string containing the entire file.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>filename</code></td><td><code>string</code></td><td></td></tr><tr><td><code>codepage = 65001</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>See Codepages.js. If codepage is 0, then automatic detection is performed.</p></td></tr></tbody>
+                <tbody><tr><td><code>filename</code></td><td><code>string</code></td><td></td></tr><tr><td><code>codepage = 65001</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>See Codepages.js. UTF-16LE/BE use 1200/1201, UTF-32LE/BE use 12000/12001. If codepage is 0, automatic detection is performed.</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -2203,7 +2515,7 @@ utils.GetWaveformAsync(handle)
         
         <section class="member-section compact-section">
             <h3>Returns</h3>
-            <div><code>string</code></div>
+            <div><code>string</code> — <p>Decoded file contents, or an empty string if the file could not be read or decoded.</p></div>
         </section>
         
         
@@ -2221,7 +2533,7 @@ utils.GetWaveformAsync(handle)
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ReadUTF8">ReadUTF8</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2845</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3005</div>
         </header>
         <pre class="signature"><code>ReadUTF8(path)</code></pre>
         
@@ -2253,7 +2565,7 @@ utils.GetWaveformAsync(handle)
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#RecyclePath">RecyclePath</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2854</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3014</div>
         </header>
         <pre class="signature"><code>RecyclePath(path)</code></pre>
         
@@ -2285,7 +2597,7 @@ utils.GetWaveformAsync(handle)
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#RemovePath">RemovePath</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2864</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3024</div>
         </header>
         <pre class="signature"><code>RemovePath(path)</code></pre>
         
@@ -2317,7 +2629,7 @@ utils.GetWaveformAsync(handle)
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#RenamePath">RenamePath</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2873</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3033</div>
         </header>
         <pre class="signature"><code>RenamePath(from, to)</code></pre>
         
@@ -2349,7 +2661,7 @@ utils.GetWaveformAsync(handle)
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ReplaceIllegalChars">ReplaceIllegalChars</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2883</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3043</div>
         </header>
         <pre class="signature"><code>ReplaceIllegalChars(str, strip_trailing_periods)</code></pre>
         
@@ -2381,7 +2693,7 @@ utils.GetWaveformAsync(handle)
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#Run">Run</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2918</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3079</div>
         </header>
         <pre class="signature"><code>Run(target, args, working_dir, verb, show, wait)</code></pre>
         
@@ -2442,7 +2754,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#RunCmdAsync">RunCmdAsync</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3001</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3162</div>
         </header>
         <pre class="signature"><code>RunCmdAsync(app, args, working_dir, show, timeout_ms)</code></pre>
         
@@ -2478,7 +2790,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#SetClipboardText">SetClipboardText</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3039</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3200</div>
         </header>
         <pre class="signature"><code>SetClipboardText(text)</code></pre>
         
@@ -2506,7 +2818,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#SHA1">SHA1</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3046</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3207</div>
         </header>
         <pre class="signature"><code>SHA1(str)</code></pre>
         
@@ -2538,7 +2850,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#SHA1FromFile">SHA1FromFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3055</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3216</div>
         </header>
         <pre class="signature"><code>SHA1FromFile(path)</code></pre>
         
@@ -2570,7 +2882,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#ShowHtmlDialog">ShowHtmlDialog</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3064</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3225</div>
         </header>
         <pre class="signature"><code>ShowHtmlDialog(window_id, code_or_path, options)</code></pre>
         
@@ -2638,7 +2950,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#SplitFilePath">SplitFilePath</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3131</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3292</div>
         </header>
         <pre class="signature"><code>SplitFilePath(path)</code></pre>
         
@@ -2677,11 +2989,11 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#WriteBinaryFile">WriteBinaryFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3144</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3305</div>
         </header>
         <pre class="signature"><code>WriteBinaryFile(path, data)</code></pre>
         
-        <div class="description"><p>Write raw binary data to a file.</p></div>
+        <div class="description"><p>Write raw binary data to a file.<br> For large output, consider <a href="utils.html#OpenBinaryWriter">utils.OpenBinaryWriter</a>; it writes incrementally from a reusable caller-provided buffer.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2725,7 +3037,7 @@ utils.WriteBinaryFile(<span class="tok-string">&quot;D:\\Field.bin&quot;</span>,
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#WriteINI">WriteINI</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3167</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3329</div>
         </header>
         <pre class="signature"><code>WriteINI(filename, section, key, val)</code></pre>
         
@@ -2761,17 +3073,17 @@ utils.WriteBinaryFile(<span class="tok-string">&quot;D:\\Field.bin&quot;</span>,
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#WriteTextFile">WriteTextFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3180</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3376</div>
         </header>
-        <pre class="signature"><code>WriteTextFile(filename, content, write_bom)</code></pre>
+        <pre class="signature"><code>WriteTextFile(filename, content, write_bom, codepage)</code></pre>
         
-        <div class="description"><p>Note: the parent folder must already exist. Note2: the file is written with UTF8 encoding.</p></div>
+        <div class="description"><p>Note: the parent folder must already exist.<br> UTF-8 is used by default, matching <a href="utils.html#OpenTextWriter">utils.OpenTextWriter</a>. UTF-16LE (1200), UTF-16BE (1201), UTF-32LE (12000), UTF-32BE (12001), and other valid Windows codepages are also supported.<br> If <code>write_bom</code> is true, the matching BOM is written for UTF-8, UTF-16, and UTF-32. Other Windows codepages do not have a BOM and ignore this option.<br> For large output, consider <a href="utils.html#OpenTextWriter">utils.OpenTextWriter</a>; it writes incrementally and does not require one large JavaScript string containing the entire file.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>filename</code></td><td><code>string</code></td><td></td></tr><tr><td><code>content</code></td><td><code>string</code></td><td></td></tr><tr><td><code>write_bom = true</code><span class="mini-flag">optional</span></td><td><code>boolean</code></td><td></td></tr></tbody>
+                <tbody><tr><td><code>filename</code></td><td><code>string</code></td><td></td></tr><tr><td><code>content</code></td><td><code>string</code></td><td></td></tr><tr><td><code>write_bom = true</code><span class="mini-flag">optional</span></td><td><code>boolean</code></td><td></td></tr><tr><td><code>codepage = 65001</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Output Windows codepage. Codepage 0 is not valid for writing. See Codepages.js.</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -2779,15 +3091,14 @@ utils.WriteBinaryFile(<span class="tok-string">&quot;D:\\Field.bin&quot;</span>,
         
         <section class="member-section compact-section">
             <h3>Returns</h3>
-            <div><code>boolean</code></div>
+            <div><code>boolean</code> — <p>true on success, false otherwise.</p></div>
         </section>
         
         
         
         <section class="member-section">
             <h3>Examples</h3>
-            <div class="example-caption">Default encoding</div><pre class="example"><code><span class="tok-comment">// write_bom missing but defaults to true, resulting file is UTF8-BOM</span>
-utils.WriteTextFile(<span class="tok-string">&quot;z:\\1.txt&quot;</span>, <span class="tok-string">&quot;test&quot;</span>);</code></pre><div class="example-caption">UTF8 with BOM</div><pre class="example"><code>utils.WriteTextFile(<span class="tok-string">&quot;z:\\2.txt&quot;</span>, <span class="tok-string">&quot;test&quot;</span>, <span class="tok-literal">true</span>);</code></pre><div class="example-caption">UTF8 without BOM</div><pre class="example"><code>utils.WriteTextFile(<span class="tok-string">&quot;z:\\3.txt&quot;</span>, <span class="tok-string">&quot;test&quot;</span>, <span class="tok-literal">false</span>);</code></pre>
+            <div class="example-caption">Default UTF-8 with BOM</div><pre class="example"><code>utils.WriteTextFile(<span class="tok-string">&quot;z:\\1.txt&quot;</span>, <span class="tok-string">&quot;test&quot;</span>);</code></pre><div class="example-caption">UTF-8 without BOM</div><pre class="example"><code>utils.WriteTextFile(<span class="tok-string">&quot;z:\\2.txt&quot;</span>, <span class="tok-string">&quot;test&quot;</span>, <span class="tok-literal">false</span>);</code></pre><div class="example-caption">UTF-16LE with BOM</div><pre class="example"><code>utils.WriteTextFile(<span class="tok-string">&quot;z:\\3.txt&quot;</span>, <span class="tok-string">&quot;test&quot;</span>, <span class="tok-literal">true</span>, <span class="tok-number">1200</span>);</code></pre>
         </section>
         
     </article></main>
