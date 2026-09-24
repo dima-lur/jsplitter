@@ -241,9 +241,7 @@ include(<span class="tok-string">&#39;docs/Helpers.js&#39;</span>);
 <span class="tok-keyword">const</span> HISTORY_LIMIT = <span class="tok-number">1000</span>;
 <span class="tok-keyword">const</span> THIRTY_DAYS_MS = <span class="tok-number">30</span> * <span class="tok-number">24</span> * <span class="tok-number">60</span> * <span class="tok-number">60</span> * <span class="tok-number">1000</span>;
 
-<span class="tok-keyword">if</span> (<span class="tok-keyword">typeof</span> utils.OpenDatabase !== <span class="tok-string">&#39;function&#39;</span>) {
-    <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;SQLite API is not available in this foobar2000 version.&#39;</span>);
-}
+<span class="tok-keyword">const</span> sqliteAvailable = <span class="tok-keyword">typeof</span> utils.OpenDatabase === <span class="tok-string">&#39;function&#39;</span>;
 
 <span class="tok-keyword">const</span> fontTitle = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">16</span>, <span class="tok-number">1</span>);
 <span class="tok-keyword">const</span> fontText = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">12</span>, <span class="tok-number">0</span>);
@@ -253,33 +251,35 @@ include(<span class="tok-string">&#39;docs/Helpers.js&#39;</span>);
 <span class="tok-keyword">const</span> tfTitle = fb.TitleFormat(<span class="tok-string">&#39;$if2(%title%,Unknown title)&#39;</span>);
 <span class="tok-keyword">const</span> tfAlbum = fb.TitleFormat(<span class="tok-string">&#39;[%album%]&#39;</span>);
 
-<span class="tok-keyword">const</span> db = utils.OpenDatabase(DB_PATH);
-
-db.Exec(<span class="tok-string">`
-    CREATE TABLE IF NOT EXISTS playback_history (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        played_at INTEGER NOT NULL,
-        artist TEXT NOT NULL,
-        title TEXT NOT NULL,
-        album TEXT NOT NULL,
-        path TEXT NOT NULL
-    );
-    CREATE INDEX IF NOT EXISTS playback_history_played_at
-        ON playback_history(played_at DESC);
-`</span>);
-
-<span class="tok-keyword">const</span> insertHistory = db.Prepare(<span class="tok-string">`
-    INSERT INTO playback_history(played_at, artist, title, album, path)
-    VALUES (?, ?, ?, ?, ?)
-`</span>);
-
+<span class="tok-keyword">const</span> db = sqliteAvailable ? utils.OpenDatabase(DB_PATH) : <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> insertHistory = <span class="tok-literal">null</span>;
 <span class="tok-keyword">let</span> recent = [];
 <span class="tok-keyword">let</span> topArtists = [];
 
-refreshView();
+<span class="tok-keyword">if</span> (db) {
+    db.Exec(<span class="tok-string">`
+        CREATE TABLE IF NOT EXISTS playback_history (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            played_at INTEGER NOT NULL,
+            artist TEXT NOT NULL,
+            title TEXT NOT NULL,
+            album TEXT NOT NULL,
+            path TEXT NOT NULL
+        );
+        CREATE INDEX IF NOT EXISTS playback_history_played_at
+            ON playback_history(played_at DESC);
+    `</span>);
+
+    insertHistory = db.Prepare(<span class="tok-string">`
+        INSERT INTO playback_history(played_at, artist, title, album, path)
+        VALUES (?, ?, ?, ?, ?)
+    `</span>);
+
+    refreshView();
+}
 
 <span class="tok-keyword">function</span> addPlayback(metadb) {
-    <span class="tok-keyword">if</span> (!metadb) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">if</span> (!db || !insertHistory || !metadb) <span class="tok-keyword">return</span>;
 
     insertHistory.Run([
         Date.now(),
@@ -304,6 +304,8 @@ refreshView();
 }
 
 <span class="tok-keyword">function</span> refreshView() {
+    <span class="tok-keyword">if</span> (!db) <span class="tok-keyword">return</span>;
+
     recent = db.Query(<span class="tok-string">`
         SELECT played_at, artist, title, album
         FROM playback_history
@@ -358,6 +360,14 @@ refreshView();
     drawLine(gr, <span class="tok-string">&#39;SQLite Playback History&#39;</span>, margin, y, width - margin * <span class="tok-number">2</span>, <span class="tok-number">28</span>, fontTitle, text);
     y += <span class="tok-number">32</span>;
 
+    <span class="tok-keyword">if</span> (!db) {
+        <span class="tok-keyword">const</span> message = sqliteAvailable
+            ? <span class="tok-string">&#39;Unable to open the playback history database.&#39;</span>
+            : <span class="tok-string">&#39;SQLite API is not available in this foobar2000 version.&#39;</span>;
+        drawLine(gr, message, margin, y, width - margin * <span class="tok-number">2</span>, <span class="tok-number">22</span>, fontText, muted);
+        <span class="tok-keyword">return</span>;
+    }
+
     drawLine(gr, <span class="tok-string">&#39;Top artists — last 30 days&#39;</span>, margin, y, width - margin * <span class="tok-number">2</span>, <span class="tok-number">20</span>, fontSmall, muted);
     y += <span class="tok-number">20</span>;
 
@@ -388,6 +398,8 @@ refreshView();
 }
 
 <span class="tok-keyword">function</span> on_mouse_rbtn_up(x, y) {
+    <span class="tok-keyword">if</span> (!db) <span class="tok-keyword">return</span>;
+
     <span class="tok-keyword">const</span> menu = window.CreatePopupMenu();
     menu.AppendMenuItem(MF_STRING, <span class="tok-number">1</span>, <span class="tok-string">&#39;Clear history&#39;</span>);
 
@@ -398,8 +410,8 @@ refreshView();
 }
 
 <span class="tok-keyword">function</span> on_script_unload() {
-    insertHistory.Close();
-    db.Close();
+    <span class="tok-keyword">if</span> (insertHistory) insertHistory.Close();
+    <span class="tok-keyword">if</span> (db) db.Close();
 }
 </code></pre></main>
     <script src="assets/search-data.js"></script><script src="assets/app.js"></script>

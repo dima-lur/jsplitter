@@ -2208,18 +2208,19 @@ reader.Close();</code></pre>
         
         <section class="member-section compact-section">
             <h3>Returns</h3>
-            <div><code><a class="type-link" href="SQLiteDatabase.html#SQLiteDatabase">SQLiteDatabase</a></code> — <p>Open database handle.</p></div>
+            <div><code>?<a class="type-link" href="SQLiteDatabase.html#SQLiteDatabase">SQLiteDatabase</a></code> — <p>Open database handle, or <code>null</code> if the database could not be opened or created. Ordinary open/create failures are reported as <code>null</code>, matching the other <code>Open*</code> resource factories. SQL and database-operation errors after a successful open are reported as exceptions.</p></div>
         </section>
         
-        <section class="member-section compact-section">
-            <h3>Throws</h3>
-            <div><code></code> — <p>Throws if the database cannot be opened or created.</p></div>
-        </section>
         
         
         <section class="member-section">
             <h3>Example</h3>
             <pre class="example"><code><span class="tok-keyword">const</span> db = utils.OpenDatabase(<span class="tok-string">&#39;example.db&#39;</span>);
+<span class="tok-keyword">if</span> (!db) {
+    console.log(<span class="tok-string">&#39;Unable to open database&#39;</span>);
+    <span class="tok-keyword">return</span>;
+}
+
 <span class="tok-keyword">try</span> {
     db.Exec(<span class="tok-string">&#39;CREATE TABLE IF NOT EXISTS settings (name TEXT PRIMARY KEY, value TEXT)&#39;</span>);
     db.Exec(<span class="tok-string">&#39;INSERT OR REPLACE INTO settings(name, value) VALUES (?, ?)&#39;</span>, [<span class="tok-string">&#39;theme&#39;</span>, <span class="tok-string">&#39;dark&#39;</span>]);
@@ -2243,7 +2244,7 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#OpenTextReader">OpenTextReader</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2953</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2957</div>
         </header>
         <pre class="signature"><code>OpenTextReader(filename, codepage)</code></pre>
         
@@ -2297,7 +2298,7 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#OpenTextWriter">OpenTextWriter</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3341</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3345</div>
         </header>
         <pre class="signature"><code>OpenTextWriter(filename, write_bom, codepage)</code></pre>
         
@@ -2422,7 +2423,7 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ReadBinaryFile">ReadBinaryFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3052</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3056</div>
         </header>
         <pre class="signature"><code>ReadBinaryFile(path)</code></pre>
         
@@ -2458,7 +2459,7 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ReadINI">ReadINI</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3063</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3067</div>
         </header>
         <pre class="signature"><code>ReadINI(filename, section, key, default_val)</code></pre>
         
@@ -2494,7 +2495,7 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ReadTextFile">ReadTextFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2989</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2993</div>
         </header>
         <pre class="signature"><code>ReadTextFile(filename, codepage)</code></pre>
         
@@ -2530,7 +2531,7 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ReadUTF8">ReadUTF8</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3004</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3008</div>
         </header>
         <pre class="signature"><code>ReadUTF8(path)</code></pre>
         
@@ -2562,7 +2563,7 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#RecyclePath">RecyclePath</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3013</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3017</div>
         </header>
         <pre class="signature"><code>RecyclePath(path)</code></pre>
         
@@ -2594,7 +2595,7 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#RemovePath">RemovePath</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3023</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3027</div>
         </header>
         <pre class="signature"><code>RemovePath(path)</code></pre>
         
@@ -2626,7 +2627,7 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#RenamePath">RenamePath</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3032</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3036</div>
         </header>
         <pre class="signature"><code>RenamePath(from, to)</code></pre>
         
@@ -2658,7 +2659,7 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ReplaceIllegalChars">ReplaceIllegalChars</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3042</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3046</div>
         </header>
         <pre class="signature"><code>ReplaceIllegalChars(str, strip_trailing_periods)</code></pre>
         
@@ -2690,7 +2691,7 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#Run">Run</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3078</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3082</div>
         </header>
         <pre class="signature"><code>Run(target, args, working_dir, verb, show, wait)</code></pre>
         
@@ -2751,7 +2752,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#RunCmdAsync">RunCmdAsync</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3161</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3165</div>
         </header>
         <pre class="signature"><code>RunCmdAsync(app, args, working_dir, show, timeout_ms)</code></pre>
         
@@ -2787,7 +2788,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#SetClipboardText">SetClipboardText</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3199</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3203</div>
         </header>
         <pre class="signature"><code>SetClipboardText(text)</code></pre>
         
@@ -2815,7 +2816,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#SHA1">SHA1</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3206</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3210</div>
         </header>
         <pre class="signature"><code>SHA1(str)</code></pre>
         
@@ -2847,7 +2848,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#SHA1FromFile">SHA1FromFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3215</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3219</div>
         </header>
         <pre class="signature"><code>SHA1FromFile(path)</code></pre>
         
@@ -2879,7 +2880,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#ShowHtmlDialog">ShowHtmlDialog</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3224</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3228</div>
         </header>
         <pre class="signature"><code>ShowHtmlDialog(window_id, code_or_path, options)</code></pre>
         
@@ -2947,7 +2948,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#SplitFilePath">SplitFilePath</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3291</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3295</div>
         </header>
         <pre class="signature"><code>SplitFilePath(path)</code></pre>
         
@@ -2986,7 +2987,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#WriteBinaryFile">WriteBinaryFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3304</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3308</div>
         </header>
         <pre class="signature"><code>WriteBinaryFile(path, data)</code></pre>
         
@@ -3034,7 +3035,7 @@ utils.WriteBinaryFile(<span class="tok-string">&quot;D:\\Field.bin&quot;</span>,
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#WriteINI">WriteINI</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3328</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3332</div>
         </header>
         <pre class="signature"><code>WriteINI(filename, section, key, val)</code></pre>
         
@@ -3070,7 +3071,7 @@ utils.WriteBinaryFile(<span class="tok-string">&quot;D:\\Field.bin&quot;</span>,
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#WriteTextFile">WriteTextFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3375</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3379</div>
         </header>
         <pre class="signature"><code>WriteTextFile(filename, content, write_bom, codepage)</code></pre>
         

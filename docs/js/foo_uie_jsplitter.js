@@ -2930,11 +2930,15 @@ let utils = {
      * SQL values should be passed through the optional parameter array instead of being concatenated into the SQL text. Supported parameter types are <code>null</code>, boolean, number, string, <code>ArrayBuffer</code>, and typed-array views.
      *
      * @param {string} filename Absolute or script-relative database filename, or <code>:memory:</code>.
-     * @return {SQLiteDatabase} Open database handle.
-     * @throws Throws if the database cannot be opened or created.
+     * @return {?SQLiteDatabase} Open database handle, or <code>null</code> if the database could not be opened or created. Ordinary open/create failures are reported as <code>null</code>, matching the other <code>Open*</code> resource factories. SQL and database-operation errors after a successful open are reported as exceptions.
      *
      * @example
      * const db = utils.OpenDatabase('example.db');
+     * if (!db) {
+     *     console.log('Unable to open database');
+     *     return;
+     * }
+     *
      * try {
      *     db.Exec('CREATE TABLE IF NOT EXISTS settings (name TEXT PRIMARY KEY, value TEXT)');
      *     db.Exec('INSERT OR REPLACE INTO settings(name, value) VALUES (?, ?)', ['theme', 'dark']);
