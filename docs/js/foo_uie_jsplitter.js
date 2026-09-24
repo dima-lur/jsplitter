@@ -2871,26 +2871,27 @@ let utils = {
      * Opens a binary file for incremental reading into a caller-provided <code>Uint8Array</code>.<br>
      * The buffer is reused by the caller, so repeated reads do not allocate a new typed array for every chunk.
      * This is intended for large files or other cases where whole-file {@link utils.ReadBinaryFile} would be inefficient.<br>
-     * Reading is synchronous. For one-shot large-file processing, use the reader inside {@link Worker.RunAsync}; for persistent pipelines, use it from a {@link Worker}. Both approaches keep blocking file I/O off the panel UI thread.
+     * Reading is synchronous. For one-shot large-file processing, use the reader inside {@link Worker.RunAsync}; for persistent pipelines, use it from a {@link Worker}. Both approaches keep blocking file I/O off the panel UI thread.<br>
+     * Ordinary read failures are reported through <code>Read()</code> and <code>EOF</code>; they are not thrown as exceptions.
      *
      * @param {string} filename File to open.
-     * @return {?BinaryReader} Open streaming reader, or <code>null</code> if the reader could not be created.
+     * @return {?BinaryReader} Open streaming reader, or <code>null</code> if the reader could not be created. Ordinary file open/setup failures are reported as <code>null</code>, not exceptions.
      *
      * @example
      * const reader = utils.OpenBinaryReader('E:\\large-file.bin');
      * if (!reader) return;
      *
      * const buffer = new Uint8Array(1024 * 1024);
-     * try {
-     *     while (!reader.EOF) {
-     *         const bytesRead = reader.Read(buffer);
-     *         if (!bytesRead) break;
-     *
-     *         // Process buffer[0 .. bytesRead).
+     * for (;;) {
+     *     const bytesRead = reader.Read(buffer);
+     *     if (!bytesRead) {
+     *         if (!reader.EOF) console.log('Read failed');
+     *         break;
      *     }
-     * } finally {
-     *     reader.Close();
+     *
+     *     // Process buffer[0 .. bytesRead).
      * }
+     * reader.Close();
      *
      * @sourceFile ../../component/samples/basic/Streaming Binary IO.js
      * @worker
@@ -2900,11 +2901,11 @@ let utils = {
     /**
      * Opens a binary file for incremental writing from a caller-provided <code>Uint8Array</code>.<br>
      * The file is created or truncated when opened. The parent folder must already exist.<br>
-     * Reusing the same typed array avoids allocating temporary buffers for every chunk.
-     * Writing is synchronous. For long-running processing, use the writer from a {@link Worker} to avoid blocking the panel UI.
+     * Reusing the same typed array avoids allocating temporary buffers for every chunk.<br>
+     * Write, flush, and close failures are reported through boolean return values. Writing is synchronous. For long-running processing, use the writer from a {@link Worker} to avoid blocking the panel UI.
      *
      * @param {string} filename File to create or overwrite.
-     * @return {?BinaryWriter} Open streaming writer, or <code>null</code> if the writer could not be created.
+     * @return {?BinaryWriter} Open streaming writer, or <code>null</code> if the writer could not be created. Ordinary file creation/open failures are reported as <code>null</code>, not exceptions.
      *
      * @example
      * const writer = utils.OpenBinaryWriter('E:\\large-file.bin');
@@ -2912,8 +2913,8 @@ let utils = {
      *
      * const buffer = new Uint8Array(1024 * 1024);
      * // Fill buffer...
-     * writer.Write(buffer);
-     * writer.Close();
+     * if (!writer.Write(buffer)) console.log('Write failed');
+     * if (!writer.Close()) console.log('Close failed');
      *
      * @sourceFile ../../component/samples/basic/Streaming Binary IO.js
      * @worker
@@ -2952,10 +2953,11 @@ let utils = {
     /**
      * Opens a text file for incremental, line-by-line reading.<br>
      * Unlike {@link utils.ReadTextFile}, the whole file is not materialized as one JavaScript string. This makes it suitable for processing large text files incrementally, one line at a time, without requiring the entire file contents to fit in the JavaScript heap.<br>
-     * <code>ReadLine()</code> removes the line terminator and returns <code>null</code> at end of file. A UTF-8, UTF-16, or UTF-32 BOM matching the selected codepage, if present, is removed from the first line.<br>
+     * <code>ReadLine()</code> removes the line terminator and returns <code>null</code> when no next line can be returned. Check {@link TextReader#EOF EOF}: <code>true</code> means clean end of file, while <code>false</code> means a read or decoding failure. A UTF-8, UTF-16, or UTF-32 BOM matching the selected codepage, if present, is removed from the first line.<br>
      * UTF-16LE/BE and UTF-32LE/BE are supported with codepages 1200/1201 and 12000/12001 respectively.<br>
      * Pass codepage 0 to use automatic charset detection, matching {@link utils.ReadTextFile}.<br>
-     * Reading is synchronous. For long-running processing, use the reader from a {@link Worker} to avoid blocking the panel UI.
+     * Reading is synchronous. For long-running processing, use the reader from a {@link Worker} to avoid blocking the panel UI.<br>
+     * Ordinary read and decoding failures are reported through <code>ReadLine()</code> and <code>EOF</code>; they are not thrown as exceptions.
      *
      * @param {string} filename File to open.
      * @param {number=} [codepage=65001] Windows codepage used to decode each line. UTF-16LE/BE use 1200/1201, UTF-32LE/BE use 12000/12001, and 0 enables automatic detection. See Codepages.js.
@@ -2969,18 +2971,15 @@ let utils = {
      *     return;
      * }
      *
-     * try {
-     *     for (;;) {
-     *         const line = reader.ReadLine();
-     *         if (line === null) break;
-     *         if (!line.length) continue;
-     *
-     *         const item = JSON.parse(line);
-     *         console.log(item.id);
+     * for (;;) {
+     *     const line = reader.ReadLine();
+     *     if (line === null) {
+     *         if (!reader.EOF) console.log('Read or decoding failed');
+     *         break;
      *     }
-     * } finally {
-     *     reader.Close();
+     *     console.log(line);
      * }
+     * reader.Close();
      *
      * @sourceFile ../../component/samples/basic/Streaming Text IO.js
      * @worker
@@ -3344,7 +3343,7 @@ let utils = {
      * The file is created or truncated when opened. The parent folder must already exist.<br>
      * UTF-8 is used by default. UTF-16LE (1200), UTF-16BE (1201), UTF-32LE (12000), UTF-32BE (12001), and other valid Windows codepages are also supported.<br>
      * If <code>write_bom</code> is true, the matching BOM is written for UTF-8, UTF-16, and UTF-32. Other Windows codepages do not have a BOM and ignore this option.<br>
-     * Use <code>Write()</code> to append text without a line terminator or <code>WriteLine()</code> to append text followed by CRLF. This avoids building one large JavaScript string before writing a large file.<br>
+     * Use <code>Write()</code> to append text without a line terminator or <code>WriteLine()</code> to append text followed by CRLF. Encoding and I/O failures are reported through boolean return values. This avoids building one large JavaScript string before writing a large file.<br>
      * Writing is synchronous. For one-shot large-file generation, use the writer inside {@link Worker.RunAsync}; for persistent pipelines, use it from a {@link Worker}. Both approaches keep blocking file I/O off the panel UI thread.
      *
      * @param {string} filename File to create or overwrite.
@@ -3360,13 +3359,13 @@ let utils = {
      *     return;
      * }
      *
-     * try {
-     *     for (let i = 0; i < 100000; ++i) {
-     *         writer.WriteLine(JSON.stringify({ id: i, value: `item ${i}` }));
+     * for (let i = 0; i < 100000; ++i) {
+     *     if (!writer.WriteLine(JSON.stringify({ id: i, value: `item ${i}` }))) {
+     *         console.log('Write failed');
+     *         break;
      *     }
-     * } finally {
-     *     writer.Close();
      * }
+     * if (!writer.Close()) console.log('Close failed');
      *
      * @sourceFile ../../component/samples/basic/Streaming Text IO.js
      * @worker
@@ -3416,8 +3415,8 @@ function BinaryReader() {
      * @param {Uint8Array} buffer Destination buffer.
      * @param {number=} [offset=0] Destination offset in bytes.
      * @param {number=} count Maximum number of bytes to read. Defaults to the remaining buffer size.
-     * @return {number} Number of bytes actually read. Returns 0 at end of file or if the read could not be performed.
-     * @throws Throws if the reader is closed.
+     * @return {number} Number of bytes actually read. A nonzero request returning 0 means that no bytes were read: {@link BinaryReader#EOF EOF} is <code>true</code> at clean end of file and <code>false</code> if the read could not be performed. A zero-length request also returns 0.
+     * @throws Throws only if the reader is closed.
      * @worker
      */
     this.Read = function (buffer, offset, count) { };
@@ -3425,7 +3424,7 @@ function BinaryReader() {
     /**
      * Closes the file. Calling <code>Close()</code> more than once is allowed.
      *
-     * @return {boolean} true if the reader is closed successfully.
+     * @return {boolean} true if the reader is closed successfully; false if closing the file fails. Calling it again after a successful close returns true.
      * @worker
      */
     this.Close = function () { };
@@ -3449,7 +3448,8 @@ function BinaryReader() {
     this.Position = 0;
 
     /**
-     * Indicates that the reader has reached the end of the file or entered a terminal read-failure state. A closed reader also reports EOF.
+     * Indicates that the current read position has reached the file length recorded when the reader was opened.<br>
+     * This property does not report a closed reader or a read failure. Use the return value of {@link BinaryReader#Read Read()} to drive the read loop; <code>EOF</code> is status information used to distinguish a clean end of file from a failed read.
      *
      * @type {boolean}
      * @readonly
@@ -3484,8 +3484,8 @@ function BinaryWriter() {
      * @param {Uint8Array} buffer Source buffer.
      * @param {number=} [offset=0] Source offset in bytes.
      * @param {number=} count Number of bytes to write. Defaults to the remaining buffer size.
-     * @return {boolean} true on success.
-     * @throws Throws if the writer is closed.
+     * @return {boolean} true on success; false if the buffer/range is invalid or the write fails.
+     * @throws Throws only if the writer is closed.
      * @worker
      */
     this.Write = function (buffer, offset, count) { };
@@ -3493,8 +3493,8 @@ function BinaryWriter() {
     /**
      * Flushes buffered output to the file.
      *
-     * @return {boolean} true on success.
-     * @throws Throws if the writer is closed.
+     * @return {boolean} true on success; false if flushing fails.
+     * @throws Throws only if the writer is closed.
      * @worker
      */
     this.Flush = function () { };
@@ -3502,7 +3502,7 @@ function BinaryWriter() {
     /**
      * Closes the file. Calling <code>Close()</code> more than once is allowed.
      *
-     * @return {boolean} true if the writer is closed successfully.
+     * @return {boolean} true if the writer is closed successfully; false if closing/flushing the file fails. Calling it again after a successful close returns true.
      * @worker
      */
     this.Close = function () { };
@@ -3713,8 +3713,8 @@ function TextReader() {
     /**
      * Reads the next line and removes its line terminator.
      *
-     * @return {?string} The next decoded line, or <code>null</code> at end of file or after a read/decoding failure. A read/decoding failure puts the reader into a terminal EOF state.
-     * @throws Throws if the reader is closed.
+     * @return {?string} The next decoded line, or <code>null</code> when no line can be returned. When <code>null</code> is returned, {@link TextReader#EOF EOF} is <code>true</code> for clean end of file and <code>false</code> for a read or decoding failure.
+     * @throws Throws only if the reader is closed.
      * @worker
      */
     this.ReadLine = function () { };
@@ -3722,13 +3722,14 @@ function TextReader() {
     /**
      * Closes the file. Calling <code>Close()</code> more than once is allowed.
      *
-     * @return {boolean} true if the reader is closed successfully.
+     * @return {boolean} true if the reader is closed successfully; false if closing the file fails. Calling it again after a successful close returns true.
      * @worker
      */
     this.Close = function () { };
 
     /**
-     * Indicates that the underlying stream has reached end of file or entered a terminal read/decoding-failure state. A closed reader also reports EOF.
+     * Indicates that a clean end of file has been observed while reading.<br>
+     * This property does not report a closed reader or a read/decoding failure. Do not use it as a pre-read loop condition; use the return value of {@link TextReader#ReadLine ReadLine()} to drive the loop, then inspect <code>EOF</code> when <code>ReadLine()</code> returns <code>null</code>.
      *
      * @type {boolean}
      * @readonly
@@ -3759,8 +3760,8 @@ function TextWriter() {
      * Writes text at the current file position without adding a line terminator.
      *
      * @param {string} content Text to write.
-     * @return {boolean} true on success.
-     * @throws Throws if the writer is closed.
+     * @return {boolean} true on success; false if the text cannot be encoded in the selected codepage or the write fails.
+     * @throws Throws only if the writer is closed.
      * @worker
      */
     this.Write = function (content) { };
@@ -3769,8 +3770,8 @@ function TextWriter() {
      * Writes text followed by a CRLF line terminator.
      *
      * @param {string} content Text to write.
-     * @return {boolean} true on success.
-     * @throws Throws if the writer is closed.
+     * @return {boolean} true on success; false if the text cannot be encoded in the selected codepage or the write fails.
+     * @throws Throws only if the writer is closed.
      * @worker
      */
     this.WriteLine = function (content) { };
@@ -3778,8 +3779,8 @@ function TextWriter() {
     /**
      * Flushes buffered output to the file.
      *
-     * @return {boolean} true on success.
-     * @throws Throws if the writer is closed.
+     * @return {boolean} true on success; false if flushing fails.
+     * @throws Throws only if the writer is closed.
      * @worker
      */
     this.Flush = function () { };
@@ -3787,7 +3788,7 @@ function TextWriter() {
     /**
      * Closes the file. Calling <code>Close()</code> more than once is allowed.
      *
-     * @return {boolean} true if the writer is closed successfully.
+     * @return {boolean} true if the writer is closed successfully; false if closing/flushing the file fails. Calling it again after a successful close returns true.
      * @worker
      */
     this.Close = function () { };

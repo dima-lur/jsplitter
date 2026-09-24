@@ -228,7 +228,7 @@
                 <div class="eyebrow"><span class="kind kind-class">class</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#TextWriter">TextWriter</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3749</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3750</div>
         </header>
         
         
@@ -249,7 +249,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#Closed">Closed</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3795</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3796</div>
         </header>
         <pre class="signature"><code>Closed: boolean = false</code></pre>
         
@@ -270,7 +270,7 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Close">Close</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3787</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3788</div>
         </header>
         <pre class="signature"><code>Close()</code></pre>
         
@@ -281,7 +281,7 @@
         
         <section class="member-section compact-section">
             <h3>Returns</h3>
-            <div><code>boolean</code> — <p>true if the writer is closed successfully.</p></div>
+            <div><code>boolean</code> — <p>true if the writer is closed successfully; false if closing/flushing the file fails. Calling it again after a successful close returns true.</p></div>
         </section>
         
         
@@ -295,7 +295,7 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Flush">Flush</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3778</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3779</div>
         </header>
         <pre class="signature"><code>Flush()</code></pre>
         
@@ -306,12 +306,12 @@
         
         <section class="member-section compact-section">
             <h3>Returns</h3>
-            <div><code>boolean</code> — <p>true on success.</p></div>
+            <div><code>boolean</code> — <p>true on success; false if flushing fails.</p></div>
         </section>
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws if the writer is closed.</p></div>
+            <div><code></code> — <p>Throws only if the writer is closed.</p></div>
         </section>
         
         
@@ -324,7 +324,7 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Write">Write</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3758</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3759</div>
         </header>
         <pre class="signature"><code>Write(content)</code></pre>
         
@@ -342,12 +342,12 @@
         
         <section class="member-section compact-section">
             <h3>Returns</h3>
-            <div><code>boolean</code> — <p>true on success.</p></div>
+            <div><code>boolean</code> — <p>true on success; false if the text cannot be encoded in the selected codepage or the write fails.</p></div>
         </section>
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws if the writer is closed.</p></div>
+            <div><code></code> — <p>Throws only if the writer is closed.</p></div>
         </section>
         
         
@@ -360,7 +360,7 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#WriteLine">WriteLine</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3768</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3769</div>
         </header>
         <pre class="signature"><code>WriteLine(content)</code></pre>
         
@@ -378,12 +378,12 @@
         
         <section class="member-section compact-section">
             <h3>Returns</h3>
-            <div><code>boolean</code> — <p>true on success.</p></div>
+            <div><code>boolean</code> — <p>true on success; false if the text cannot be encoded in the selected codepage or the write fails.</p></div>
         </section>
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws if the writer is closed.</p></div>
+            <div><code></code> — <p>Throws only if the writer is closed.</p></div>
         </section>
         
         

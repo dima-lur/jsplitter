@@ -228,7 +228,7 @@
                 <div class="eyebrow"><span class="kind kind-class">class</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#BinaryReader">BinaryReader</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3402</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3401</div>
         </header>
         
         
@@ -270,11 +270,11 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#EOF">EOF</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3451</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3450</div>
         </header>
         <pre class="signature"><code>EOF: boolean = false</code></pre>
         
-        <div class="description"><p>Indicates that the reader has reached the end of the file or entered a terminal read-failure state. A closed reader also reports EOF.</p></div>
+        <div class="description"><p>Indicates that the current read position has reached the file length recorded when the reader was opened.<br> This property does not report a closed reader or a read failure. Use the return value of <a href="BinaryReader.html#Read">Read()</a> to drive the read loop; <code>EOF</code> is status information used to distinguish a clean end of file from a failed read.</p></div>
         
         
         
@@ -291,7 +291,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#Length">Length</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3433</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3432</div>
         </header>
         <pre class="signature"><code>Length: number = 0</code></pre>
         
@@ -312,7 +312,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#Position">Position</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3442</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3441</div>
         </header>
         <pre class="signature"><code>Position: number = 0</code></pre>
         
@@ -333,7 +333,7 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Close">Close</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3425</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3424</div>
         </header>
         <pre class="signature"><code>Close()</code></pre>
         
@@ -344,7 +344,7 @@
         
         <section class="member-section compact-section">
             <h3>Returns</h3>
-            <div><code>boolean</code> — <p>true if the reader is closed successfully.</p></div>
+            <div><code>boolean</code> — <p>true if the reader is closed successfully; false if closing the file fails. Calling it again after a successful close returns true.</p></div>
         </section>
         
         
@@ -358,7 +358,7 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Read">Read</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3411</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3410</div>
         </header>
         <pre class="signature"><code>Read(buffer, offset, count)</code></pre>
         
@@ -376,12 +376,12 @@
         
         <section class="member-section compact-section">
             <h3>Returns</h3>
-            <div><code>number</code> — <p>Number of bytes actually read. Returns 0 at end of file or if the read could not be performed.</p></div>
+            <div><code>number</code> — <p>Number of bytes actually read. A nonzero request returning 0 means that no bytes were read: <a href="BinaryReader.html#EOF">EOF</a> is <code>true</code> at clean end of file and <code>false</code> if the read could not be performed. A zero-length request also returns 0.</p></div>
         </section>
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws if the reader is closed.</p></div>
+            <div><code></code> — <p>Throws only if the reader is closed.</p></div>
         </section>
         
         

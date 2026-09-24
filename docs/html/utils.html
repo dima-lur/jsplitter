@@ -2095,7 +2095,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
         </header>
         <pre class="signature"><code>OpenBinaryReader(filename)</code></pre>
         
-        <div class="description"><p>Opens a binary file for incremental reading into a caller-provided <code>Uint8Array</code>.<br> The buffer is reused by the caller, so repeated reads do not allocate a new typed array for every chunk. This is intended for large files or other cases where whole-file <a href="utils.html#ReadBinaryFile">utils.ReadBinaryFile</a> would be inefficient.<br> Reading is synchronous. For one-shot large-file processing, use the reader inside <a href="Worker.html#RunAsync">Worker.RunAsync</a>; for persistent pipelines, use it from a <a href="Worker.html#Worker">Worker</a>. Both approaches keep blocking file I/O off the panel UI thread.</p></div>
+        <div class="description"><p>Opens a binary file for incremental reading into a caller-provided <code>Uint8Array</code>.<br> The buffer is reused by the caller, so repeated reads do not allocate a new typed array for every chunk. This is intended for large files or other cases where whole-file <a href="utils.html#ReadBinaryFile">utils.ReadBinaryFile</a> would be inefficient.<br> Reading is synchronous. For one-shot large-file processing, use the reader inside <a href="Worker.html#RunAsync">Worker.RunAsync</a>; for persistent pipelines, use it from a <a href="Worker.html#Worker">Worker</a>. Both approaches keep blocking file I/O off the panel UI thread.<br> Ordinary read failures are reported through <code>Read()</code> and <code>EOF</code>; they are not thrown as exceptions.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2109,7 +2109,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
         
         <section class="member-section compact-section">
             <h3>Returns</h3>
-            <div><code>?<a class="type-link" href="BinaryReader.html#BinaryReader">BinaryReader</a></code> — <p>Open streaming reader, or <code>null</code> if the reader could not be created.</p></div>
+            <div><code>?<a class="type-link" href="BinaryReader.html#BinaryReader">BinaryReader</a></code> — <p>Open streaming reader, or <code>null</code> if the reader could not be created. Ordinary file open/setup failures are reported as <code>null</code>, not exceptions.</p></div>
         </section>
         
         
@@ -2120,16 +2120,16 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
 <span class="tok-keyword">if</span> (!reader) <span class="tok-keyword">return</span>;
 
 <span class="tok-keyword">const</span> buffer = <span class="tok-keyword">new</span> Uint8Array(<span class="tok-number">1024</span> * <span class="tok-number">1024</span>);
-<span class="tok-keyword">try</span> {
-    <span class="tok-keyword">while</span> (!reader.EOF) {
-        <span class="tok-keyword">const</span> bytesRead = reader.Read(buffer);
-        <span class="tok-keyword">if</span> (!bytesRead) <span class="tok-keyword">break</span>;
-
-        <span class="tok-comment">// Process buffer[0 .. bytesRead).</span>
+<span class="tok-keyword">for</span> (;;) {
+    <span class="tok-keyword">const</span> bytesRead = reader.Read(buffer);
+    <span class="tok-keyword">if</span> (!bytesRead) {
+        <span class="tok-keyword">if</span> (!reader.EOF) console.log(<span class="tok-string">&#39;Read failed&#39;</span>);
+        <span class="tok-keyword">break</span>;
     }
-} <span class="tok-keyword">finally</span> {
-    reader.Close();
-}</code></pre>
+
+    <span class="tok-comment">// Process buffer[0 .. bytesRead).</span>
+}
+reader.Close();</code></pre>
         </section>
         
         <section class="member-section">
@@ -2144,11 +2144,11 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#OpenBinaryWriter">OpenBinaryWriter</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2900</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2901</div>
         </header>
         <pre class="signature"><code>OpenBinaryWriter(filename)</code></pre>
         
-        <div class="description"><p>Opens a binary file for incremental writing from a caller-provided <code>Uint8Array</code>.<br> The file is created or truncated when opened. The parent folder must already exist.<br> Reusing the same typed array avoids allocating temporary buffers for every chunk. Writing is synchronous. For long-running processing, use the writer from a <a href="Worker.html#Worker">Worker</a> to avoid blocking the panel UI.</p></div>
+        <div class="description"><p>Opens a binary file for incremental writing from a caller-provided <code>Uint8Array</code>.<br> The file is created or truncated when opened. The parent folder must already exist.<br> Reusing the same typed array avoids allocating temporary buffers for every chunk.<br> Write, flush, and close failures are reported through boolean return values. Writing is synchronous. For long-running processing, use the writer from a <a href="Worker.html#Worker">Worker</a> to avoid blocking the panel UI.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2162,7 +2162,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
         
         <section class="member-section compact-section">
             <h3>Returns</h3>
-            <div><code>?<a class="type-link" href="BinaryWriter.html#BinaryWriter">BinaryWriter</a></code> — <p>Open streaming writer, or <code>null</code> if the writer could not be created.</p></div>
+            <div><code>?<a class="type-link" href="BinaryWriter.html#BinaryWriter">BinaryWriter</a></code> — <p>Open streaming writer, or <code>null</code> if the writer could not be created. Ordinary file creation/open failures are reported as <code>null</code>, not exceptions.</p></div>
         </section>
         
         
@@ -2174,8 +2174,8 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
 
 <span class="tok-keyword">const</span> buffer = <span class="tok-keyword">new</span> Uint8Array(<span class="tok-number">1024</span> * <span class="tok-number">1024</span>);
 <span class="tok-comment">// Fill buffer...</span>
-writer.Write(buffer);
-writer.Close();</code></pre>
+<span class="tok-keyword">if</span> (!writer.Write(buffer)) console.log(<span class="tok-string">&#39;Write failed&#39;</span>);
+<span class="tok-keyword">if</span> (!writer.Close()) console.log(<span class="tok-string">&#39;Close failed&#39;</span>);</code></pre>
         </section>
         
         <section class="member-section">
@@ -2190,7 +2190,7 @@ writer.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#OpenDatabase">OpenDatabase</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2923</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2924</div>
         </header>
         <pre class="signature"><code>OpenDatabase(filename)</code></pre>
         
@@ -2243,11 +2243,11 @@ writer.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#OpenTextReader">OpenTextReader</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2952</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2953</div>
         </header>
         <pre class="signature"><code>OpenTextReader(filename, codepage)</code></pre>
         
-        <div class="description"><p>Opens a text file for incremental, line-by-line reading.<br> Unlike <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>, the whole file is not materialized as one JavaScript string. This makes it suitable for processing large text files incrementally, one line at a time, without requiring the entire file contents to fit in the JavaScript heap.<br> <code>ReadLine()</code> removes the line terminator and returns <code>null</code> at end of file. A UTF-8, UTF-16, or UTF-32 BOM matching the selected codepage, if present, is removed from the first line.<br> UTF-16LE/BE and UTF-32LE/BE are supported with codepages 1200/1201 and 12000/12001 respectively.<br> Pass codepage 0 to use automatic charset detection, matching <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.<br> Reading is synchronous. For long-running processing, use the reader from a <a href="Worker.html#Worker">Worker</a> to avoid blocking the panel UI.</p></div>
+        <div class="description"><p>Opens a text file for incremental, line-by-line reading.<br> Unlike <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>, the whole file is not materialized as one JavaScript string. This makes it suitable for processing large text files incrementally, one line at a time, without requiring the entire file contents to fit in the JavaScript heap.<br> <code>ReadLine()</code> removes the line terminator and returns <code>null</code> when no next line can be returned. Check <a href="TextReader.html#EOF">EOF</a>: <code>true</code> means clean end of file, while <code>false</code> means a read or decoding failure. A UTF-8, UTF-16, or UTF-32 BOM matching the selected codepage, if present, is removed from the first line.<br> UTF-16LE/BE and UTF-32LE/BE are supported with codepages 1200/1201 and 12000/12001 respectively.<br> Pass codepage 0 to use automatic charset detection, matching <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.<br> Reading is synchronous. For long-running processing, use the reader from a <a href="Worker.html#Worker">Worker</a> to avoid blocking the panel UI.<br> Ordinary read and decoding failures are reported through <code>ReadLine()</code> and <code>EOF</code>; they are not thrown as exceptions.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2274,18 +2274,15 @@ writer.Close();</code></pre>
     <span class="tok-keyword">return</span>;
 }
 
-<span class="tok-keyword">try</span> {
-    <span class="tok-keyword">for</span> (;;) {
-        <span class="tok-keyword">const</span> line = reader.ReadLine();
-        <span class="tok-keyword">if</span> (line === <span class="tok-literal">null</span>) <span class="tok-keyword">break</span>;
-        <span class="tok-keyword">if</span> (!line.length) <span class="tok-keyword">continue</span>;
-
-        <span class="tok-keyword">const</span> item = JSON.parse(line);
-        console.log(item.id);
+<span class="tok-keyword">for</span> (;;) {
+    <span class="tok-keyword">const</span> line = reader.ReadLine();
+    <span class="tok-keyword">if</span> (line === <span class="tok-literal">null</span>) {
+        <span class="tok-keyword">if</span> (!reader.EOF) console.log(<span class="tok-string">&#39;Read or decoding failed&#39;</span>);
+        <span class="tok-keyword">break</span>;
     }
-} <span class="tok-keyword">finally</span> {
-    reader.Close();
-}</code></pre>
+    console.log(line);
+}
+reader.Close();</code></pre>
         </section>
         
         <section class="member-section">
@@ -2300,11 +2297,11 @@ writer.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#OpenTextWriter">OpenTextWriter</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3342</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3341</div>
         </header>
         <pre class="signature"><code>OpenTextWriter(filename, write_bom, codepage)</code></pre>
         
-        <div class="description"><p>Opens a text file for incremental writing.<br> The file is created or truncated when opened. The parent folder must already exist.<br> UTF-8 is used by default. UTF-16LE (1200), UTF-16BE (1201), UTF-32LE (12000), UTF-32BE (12001), and other valid Windows codepages are also supported.<br> If <code>write_bom</code> is true, the matching BOM is written for UTF-8, UTF-16, and UTF-32. Other Windows codepages do not have a BOM and ignore this option.<br> Use <code>Write()</code> to append text without a line terminator or <code>WriteLine()</code> to append text followed by CRLF. This avoids building one large JavaScript string before writing a large file.<br> Writing is synchronous. For one-shot large-file generation, use the writer inside <a href="Worker.html#RunAsync">Worker.RunAsync</a>; for persistent pipelines, use it from a <a href="Worker.html#Worker">Worker</a>. Both approaches keep blocking file I/O off the panel UI thread.</p></div>
+        <div class="description"><p>Opens a text file for incremental writing.<br> The file is created or truncated when opened. The parent folder must already exist.<br> UTF-8 is used by default. UTF-16LE (1200), UTF-16BE (1201), UTF-32LE (12000), UTF-32BE (12001), and other valid Windows codepages are also supported.<br> If <code>write_bom</code> is true, the matching BOM is written for UTF-8, UTF-16, and UTF-32. Other Windows codepages do not have a BOM and ignore this option.<br> Use <code>Write()</code> to append text without a line terminator or <code>WriteLine()</code> to append text followed by CRLF. Encoding and I/O failures are reported through boolean return values. This avoids building one large JavaScript string before writing a large file.<br> Writing is synchronous. For one-shot large-file generation, use the writer inside <a href="Worker.html#RunAsync">Worker.RunAsync</a>; for persistent pipelines, use it from a <a href="Worker.html#Worker">Worker</a>. Both approaches keep blocking file I/O off the panel UI thread.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2331,13 +2328,13 @@ writer.Close();</code></pre>
     <span class="tok-keyword">return</span>;
 }
 
-<span class="tok-keyword">try</span> {
-    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; <span class="tok-number">100000</span>; ++i) {
-        writer.WriteLine(JSON.stringify({ id: i, value: <span class="tok-string">`item ${i}`</span> }));
+<span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; <span class="tok-number">100000</span>; ++i) {
+    <span class="tok-keyword">if</span> (!writer.WriteLine(JSON.stringify({ id: i, value: <span class="tok-string">`item ${i}`</span> }))) {
+        console.log(<span class="tok-string">&#39;Write failed&#39;</span>);
+        <span class="tok-keyword">break</span>;
     }
-} <span class="tok-keyword">finally</span> {
-    writer.Close();
-}</code></pre>
+}
+<span class="tok-keyword">if</span> (!writer.Close()) console.log(<span class="tok-string">&#39;Close failed&#39;</span>);</code></pre>
         </section>
         
         <section class="member-section">
@@ -2425,7 +2422,7 @@ writer.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ReadBinaryFile">ReadBinaryFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3053</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3052</div>
         </header>
         <pre class="signature"><code>ReadBinaryFile(path)</code></pre>
         
@@ -2461,7 +2458,7 @@ writer.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ReadINI">ReadINI</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3064</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3063</div>
         </header>
         <pre class="signature"><code>ReadINI(filename, section, key, default_val)</code></pre>
         
@@ -2497,7 +2494,7 @@ writer.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ReadTextFile">ReadTextFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2990</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2989</div>
         </header>
         <pre class="signature"><code>ReadTextFile(filename, codepage)</code></pre>
         
@@ -2533,7 +2530,7 @@ writer.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ReadUTF8">ReadUTF8</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3005</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3004</div>
         </header>
         <pre class="signature"><code>ReadUTF8(path)</code></pre>
         
@@ -2565,7 +2562,7 @@ writer.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#RecyclePath">RecyclePath</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3014</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3013</div>
         </header>
         <pre class="signature"><code>RecyclePath(path)</code></pre>
         
@@ -2597,7 +2594,7 @@ writer.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#RemovePath">RemovePath</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3024</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3023</div>
         </header>
         <pre class="signature"><code>RemovePath(path)</code></pre>
         
@@ -2629,7 +2626,7 @@ writer.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#RenamePath">RenamePath</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3033</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3032</div>
         </header>
         <pre class="signature"><code>RenamePath(from, to)</code></pre>
         
@@ -2661,7 +2658,7 @@ writer.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ReplaceIllegalChars">ReplaceIllegalChars</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3043</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3042</div>
         </header>
         <pre class="signature"><code>ReplaceIllegalChars(str, strip_trailing_periods)</code></pre>
         
@@ -2693,7 +2690,7 @@ writer.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#Run">Run</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3079</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3078</div>
         </header>
         <pre class="signature"><code>Run(target, args, working_dir, verb, show, wait)</code></pre>
         
@@ -2754,7 +2751,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#RunCmdAsync">RunCmdAsync</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3162</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3161</div>
         </header>
         <pre class="signature"><code>RunCmdAsync(app, args, working_dir, show, timeout_ms)</code></pre>
         
@@ -2790,7 +2787,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#SetClipboardText">SetClipboardText</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3200</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3199</div>
         </header>
         <pre class="signature"><code>SetClipboardText(text)</code></pre>
         
@@ -2818,7 +2815,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#SHA1">SHA1</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3207</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3206</div>
         </header>
         <pre class="signature"><code>SHA1(str)</code></pre>
         
@@ -2850,7 +2847,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#SHA1FromFile">SHA1FromFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3216</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3215</div>
         </header>
         <pre class="signature"><code>SHA1FromFile(path)</code></pre>
         
@@ -2882,7 +2879,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#ShowHtmlDialog">ShowHtmlDialog</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3225</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3224</div>
         </header>
         <pre class="signature"><code>ShowHtmlDialog(window_id, code_or_path, options)</code></pre>
         
@@ -2950,7 +2947,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#SplitFilePath">SplitFilePath</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3292</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3291</div>
         </header>
         <pre class="signature"><code>SplitFilePath(path)</code></pre>
         
@@ -2989,7 +2986,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#WriteBinaryFile">WriteBinaryFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3305</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3304</div>
         </header>
         <pre class="signature"><code>WriteBinaryFile(path, data)</code></pre>
         
@@ -3037,7 +3034,7 @@ utils.WriteBinaryFile(<span class="tok-string">&quot;D:\\Field.bin&quot;</span>,
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#WriteINI">WriteINI</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3329</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3328</div>
         </header>
         <pre class="signature"><code>WriteINI(filename, section, key, val)</code></pre>
         
@@ -3073,7 +3070,7 @@ utils.WriteBinaryFile(<span class="tok-string">&quot;D:\\Field.bin&quot;</span>,
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#WriteTextFile">WriteTextFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3376</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3375</div>
         </header>
         <pre class="signature"><code>WriteTextFile(filename, content, write_bom, codepage)</code></pre>
         

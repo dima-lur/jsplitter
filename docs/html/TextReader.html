@@ -249,7 +249,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#Closed">Closed</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3739</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3740</div>
         </header>
         <pre class="signature"><code>Closed: boolean = false</code></pre>
         
@@ -274,7 +274,7 @@
         </header>
         <pre class="signature"><code>EOF: boolean = false</code></pre>
         
-        <div class="description"><p>Indicates that the underlying stream has reached end of file or entered a terminal read/decoding-failure state. A closed reader also reports EOF.</p></div>
+        <div class="description"><p>Indicates that a clean end of file has been observed while reading.<br> This property does not report a closed reader or a read/decoding failure. Do not use it as a pre-read loop condition; use the return value of <a href="TextReader.html#ReadLine">ReadLine()</a> to drive the loop, then inspect <code>EOF</code> when <code>ReadLine()</code> returns <code>null</code>.</p></div>
         
         
         
@@ -302,7 +302,7 @@
         
         <section class="member-section compact-section">
             <h3>Returns</h3>
-            <div><code>boolean</code> — <p>true if the reader is closed successfully.</p></div>
+            <div><code>boolean</code> — <p>true if the reader is closed successfully; false if closing the file fails. Calling it again after a successful close returns true.</p></div>
         </section>
         
         
@@ -327,12 +327,12 @@
         
         <section class="member-section compact-section">
             <h3>Returns</h3>
-            <div><code>?string</code> — <p>The next decoded line, or <code>null</code> at end of file or after a read/decoding failure. A read/decoding failure puts the reader into a terminal EOF state.</p></div>
+            <div><code>?string</code> — <p>The next decoded line, or <code>null</code> when no line can be returned. When <code>null</code> is returned, <a href="TextReader.html#EOF">EOF</a> is <code>true</code> for clean end of file and <code>false</code> for a read or decoding failure.</p></div>
         </section>
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws if the reader is closed.</p></div>
+            <div><code></code> — <p>Throws only if the reader is closed.</p></div>
         </section>
         
         
