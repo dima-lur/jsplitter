@@ -1,9 +1,9 @@
 {
   "stats": {
     "files": 12,
-    "items": 1133,
-    "sourceFiles": 69,
-    "uniqueSourceFiles": 30
+    "items": 1178,
+    "sourceFiles": 76,
+    "uniqueSourceFiles": 34
   },
   "duplicateCanonicalNames": [],
   "brokenSourceFiles": [],
@@ -28,6 +28,10 @@
     {
       "symbol": "fb.GetOutputDevices",
       "lines": 39
+    },
+    {
+      "symbol": "utils.GetWaveformAsync",
+      "lines": 55
     },
     {
       "symbol": "window.EraseOnRepaint",

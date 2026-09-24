@@ -45,6 +45,12 @@
     </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
         <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryReader">
+        <a class="nav-link nav-page-link" href="BinaryReader.html">BinaryReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryWriter">
+        <a class="nav-link nav-page-link" href="BinaryWriter.html">BinaryWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
         <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -170,6 +176,18 @@
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="RunResult">
         <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteDatabase">
+        <a class="nav-link nav-page-link" href="SQLiteDatabase.html">SQLiteDatabase</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteStatement">
+        <a class="nav-link nav-page-link" href="SQLiteStatement.html">SQLiteStatement</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextReader">
+        <a class="nav-link nav-page-link" href="TextReader.html">TextReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextWriter">
+        <a class="nav-link nav-page-link" href="TextWriter.html">TextWriter</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
@@ -298,8 +316,8 @@ worker.postMessage(<span class="tok-string">&#39;stop&#39;</span>);
 <span class="tok-comment">// Calling terminate() here is also safe, after the Worker has already called close()</span>
 <span class="tok-comment">// worker.terminate();</span></code></pre>
 <p>JSplitter automatically terminates all Workers still owned by a panel when that panel is unloaded, so explicit cleanup is not required merely for panel teardown. Explicit <a href="Worker.html#terminate">terminate()</a> is for ending a Worker <b>earlier</b>, while the panel continues to live. Conversely, while the panel remains loaded, a Worker that is still kept alive and is never closed or terminated will remain waiting in its event loop and will continue to hold its Worker realm and associated resources.</p>
-<div class="doc-note warning"><b>Do not treat a Worker as a one-shot function call.</b><br>
-If the panel keeps a Worker alive after its useful work is finished, returning from the Worker source or from its last message handler does not dispose it. Call <a href="Worker.html#terminate">terminate()</a> when the panel is done with it, or design the Worker protocol so Worker-global <a href="WorkerGlobalScope.html#close">close()</a> is called when the Worker knows it is finished.</div>
+<div class="doc-note warning"><b>Do not treat a Worker created with <code>new Worker(...)</code> as a one-shot function call.</b><br>
+If the panel keeps an ordinary Worker alive after its useful work is finished, returning from the Worker source or from its last message handler does not dispose it. Call <a href="Worker.html#terminate">terminate()</a> when the panel is done with it, design the Worker protocol so Worker-global <a href="WorkerGlobalScope.html#close">close()</a> is called when the Worker knows it is finished, or use <a href="Worker.html#RunAsync">Worker.RunAsync()</a> when the task is naturally one-shot.</div>
 <h2>Handling Worker errors</h2>
 <p>An exception that is <strong>not caught by Worker code</strong> and escapes Worker startup code, a Worker message handler, a timer callback, or another Worker task is reported as an <a href="ErrorEvent.html#ErrorEvent">ErrorEvent</a>. A normal <code>try...catch</code> handles the exception locally and prevents this error-reporting path from being used.</p>
 <p>For uncaught exceptions, Worker-local handling comes first: if Worker-global <a href="WorkerGlobalScope.html#onerror">onerror</a> or an <strong><code>error</code></strong> listener is installed, the error is handled there and is not forwarded to the parent. Otherwise it is forwarded to the parent side, where <a href="Worker.html#onerror">Worker.onerror</a> or an <strong><code>error</code></strong> listener can handle it.</p>
@@ -652,6 +670,65 @@ If most of a Worker consists of frequent synchronous host calls, moving that cod
 <li><span class="flag capability cloneable">CLONEABLE</span> — instances of this host type can be sent through <a href="Worker.html#postMessage">postMessage()</a> using structured clone while the source remains usable.</li>
 <li><span class="flag capability transferable">TRANSFERABLE</span> — instances can additionally be placed in the transfer list so ownership moves to the receiver; after a successful transfer the source wrapper is detached and no longer usable on the sender side.</li>
 </ul>
+<h2>One-shot work with Worker.RunAsync()</h2>
+<p>When work naturally has one input and one result, <a href="Worker.html#RunAsync">Worker.RunAsync()</a> avoids building a message protocol around a short-lived Worker. Each call creates a normal temporary Worker realm and Worker thread with the same Worker-side API surface as <a href="Worker.html#Worker">Worker</a> code. The callback arguments are structured-cloned into that realm, and the callback's return value (or the resolved value of its Promise) is structured-cloned back to the panel. The temporary Worker is terminated automatically after success or failure.</p>
+<p>Both synchronous and asynchronous callbacks are supported:</p>
+<pre class="description-code language-js"><code><span class="tok-keyword">const</span> result = <span class="tok-keyword">await</span> Worker.RunAsync(
+    <span class="tok-keyword">async</span> (arg1, arg2) =&gt; {
+        <span class="tok-comment">// Runs in a separate Worker realm/thread.</span>
+        <span class="tok-keyword">return</span> arg1 + arg2;
+    },
+    <span class="tok-number">20</span>,
+    <span class="tok-number">22</span>
+);
+
+console.log(result); <span class="tok-comment">// 42</span></code></pre>
+<p>The callback is recreated from its JavaScript source in the Worker realm. Although the call syntax looks like an ordinary local callback, it therefore does <b>not</b> capture lexical variables from the panel. This is incorrect:</p>
+<pre class="description-code language-js"><code><span class="tok-keyword">const</span> factor = <span class="tok-number">10</span>;
+
+<span class="tok-comment">// Wrong: factor exists only in the panel realm.</span>
+<span class="tok-keyword">const</span> result = <span class="tok-keyword">await</span> Worker.RunAsync(
+    value =&gt; value * factor,
+    <span class="tok-number">5</span>
+);
+<span class="tok-comment">// Rejects with ReferenceError: factor is not defined</span></code></pre>
+<p>Pass every required value explicitly as an argument instead:</p>
+<pre class="description-code language-js"><code><span class="tok-keyword">const</span> factor = <span class="tok-number">10</span>;
+
+<span class="tok-comment">// Correct: factor crosses the realm boundary through structured clone.</span>
+<span class="tok-keyword">const</span> result = <span class="tok-keyword">await</span> Worker.RunAsync(
+    (value, factor) =&gt; value * factor,
+    <span class="tok-number">5</span>,
+    factor
+);</code></pre>
+<p>User-defined normal, arrow and <b><code>async</code></b> functions are supported. Native and bound functions cannot be recreated from source and are rejected. If the callback throws, returns a rejected Promise, or an argument/result cannot be structured-cloned, the Promise returned by <b><code>RunAsync()</code></b> rejects, so ordinary <b><code>try...catch</code></b> around <b><code>await</code></b> can handle the failure. Relative <a href="globals.html#include">include()</a> calls inside the callback keep the caller's script/package roots.</p>
+<p><b><code>RunAsync()</code></b> currently uses structured clone only and has no transfer-list parameter. Use an ordinary long-lived <a href="Worker.html#Worker">Worker</a> with <a href="Worker.html#postMessage">postMessage()</a> when explicit ownership transfer, repeated requests, persistent Worker state, or a custom message protocol is required. Each <b><code>RunAsync()</code></b> call creates a fresh full Worker, so it is intended for reasonably coarse one-shot jobs rather than tiny operations in a hot loop.</p>
+<p>Streaming text I/O is a practical RunAsync() example for larger or longer-running file operations: the work can be performed in a Worker while the panel remains responsive.</p>
+<pre class="description-code language-js"><code><span class="tok-keyword">const</span> summary = <span class="tok-keyword">await</span> Worker.RunAsync((input, output) =&gt; {
+    <span class="tok-keyword">const</span> reader = utils.OpenTextReader(input);
+    <span class="tok-keyword">if</span> (!reader) <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;Unable to open input file&#39;</span>);
+
+    <span class="tok-keyword">const</span> writer = utils.OpenTextWriter(output, <span class="tok-literal">false</span>);
+    <span class="tok-keyword">if</span> (!writer) {
+        reader.Close();
+        <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;Unable to create output file&#39;</span>);
+    }
+
+    <span class="tok-keyword">let</span> lines = <span class="tok-number">0</span>;
+    <span class="tok-keyword">try</span> {
+        <span class="tok-keyword">for</span> (;;) {
+            <span class="tok-keyword">const</span> line = reader.ReadLine();
+            <span class="tok-keyword">if</span> (line === <span class="tok-literal">null</span>) <span class="tok-keyword">break</span>;
+            writer.WriteLine(line);
+            ++lines;
+        }
+    } <span class="tok-keyword">finally</span> {
+        reader.Close();
+        writer.Close();
+    }
+
+    <span class="tok-keyword">return</span> { lines };
+}, inputPath, outputPath);</code></pre>
 <h2>Samples</h2>
 <p>The samples are intentionally ordered. Start with lifecycle/messaging, then move through batch data processing, CPU-bound work, asynchronous image processing and finally a real-time audio/render pipeline.</p>
 <p><b>1. Basic Messaging.</b> The smallest complete lifecycle example: create a named inline Worker, send a structured object, receive a result, install parent/Worker <b><code>messageerror</code></b> diagnostics and a parent error handler, then let the Worker finish with Worker-global <a href="WorkerGlobalScope.html#close">close()</a>. The unload handler also shows that parent <a href="Worker.html#terminate">terminate()</a> is safe during panel teardown.</p>
@@ -727,7 +804,7 @@ worker.onmessage = <span class="tok-keyword">function</span> (event) {
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#onerror">onerror</a></h2>
             </div>
-            <div class="source-location">js/worker.js:644</div>
+            <div class="source-location">js/worker.js:748</div>
         </header>
         <pre class="signature"><code>onerror: ?<a class="type-link" href="globals.html#WorkerErrorCallback">WorkerErrorCallback</a> = null</code></pre>
         
@@ -748,7 +825,7 @@ worker.onmessage = <span class="tok-keyword">function</span> (event) {
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#onmessage">onmessage</a></h2>
             </div>
-            <div class="source-location">js/worker.js:637</div>
+            <div class="source-location">js/worker.js:741</div>
         </header>
         <pre class="signature"><code>onmessage: ?<a class="type-link" href="globals.html#WorkerMessageCallback">WorkerMessageCallback</a> = null</code></pre>
         
@@ -769,7 +846,7 @@ worker.onmessage = <span class="tok-keyword">function</span> (event) {
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#onmessageerror">onmessageerror</a></h2>
             </div>
-            <div class="source-location">js/worker.js:653</div>
+            <div class="source-location">js/worker.js:757</div>
         </header>
         <pre class="signature"><code>onmessageerror: ?<a class="type-link" href="globals.html#WorkerMessageCallback">WorkerMessageCallback</a> = null</code></pre>
         
@@ -790,7 +867,7 @@ worker.onmessage = <span class="tok-keyword">function</span> (event) {
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#postMessage">postMessage</a></h2>
             </div>
-            <div class="source-location">js/worker.js:661</div>
+            <div class="source-location">js/worker.js:765</div>
         </header>
         <pre class="signature"><code>postMessage(data, transfer)</code></pre>
         
@@ -816,13 +893,64 @@ worker.onmessage = <span class="tok-keyword">function</span> (event) {
         
     </article>
 
+    <article class="api-item" id="RunAsync" data-kind="method" data-name="runasync">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
+                <h2><a class="anchor" href="#RunAsync">RunAsync</a></h2>
+            </div>
+            <div class="source-location">js/worker.js:715</div>
+        </header>
+        <pre class="signature"><code>RunAsync(callback, ...args)</code></pre>
+        
+        <div class="description"><p>Runs a user-defined JavaScript callback once in a temporary Worker and returns a Promise for its result.<br> A fresh full Worker realm/thread is created for every call. Arguments are structured-cloned into the Worker; a synchronous return value or the resolved value of an asynchronous callback is structured-cloned back. The temporary Worker is terminated automatically when the operation settles.<br> The callback is recreated from its source and does not capture lexical variables from the caller. Pass required values explicitly through <code>args</code>. Native and bound functions are not supported. Relative <a href="globals.html#include">include()</a> calls keep the caller's script/package roots.<br> This API does not currently expose a transfer list. For repeated requests, persistent Worker state, or explicit ownership transfer, use a normal <a href="Worker.html#Worker">Worker</a> and <a href="Worker.html#postMessage">postMessage()</a>.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>callback</code></td><td><code>function()</code></td><td><p>User-defined JavaScript function to execute in the temporary Worker. The function may return a value or a Promise.</p></td></tr><tr><td><code>args</code></td><td><code>...*</code></td><td><p>Values passed to <code>callback</code> through structured clone.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Promise.&lt;*&gt;</code> — <p>Promise resolved with the structured-cloned callback result. It rejects if the callback throws or rejects, the callback cannot be recreated, Worker startup fails, or an argument/result cannot be structured-cloned.</p></div>
+        </section>
+        
+        <section class="member-section compact-section">
+            <h3>Throws</h3>
+            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If <code>callback</code> is not callable or the RunAsync helper itself cannot be initialized.</p></div>
+        </section>
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">const</span> result = <span class="tok-keyword">await</span> Worker.RunAsync(
+    <span class="tok-keyword">async</span> (a, b) =&gt; {
+        <span class="tok-keyword">return</span> a + b;
+    },
+    <span class="tok-number">20</span>,
+    <span class="tok-number">22</span>
+);
+console.log(result); <span class="tok-comment">// 42</span></code></pre>
+        </section>
+        
+        <section class="member-section">
+            <h3>Example source</h3>
+            <div class="source-links"><a class="source-link" href="source-samples-basic-Streaming-Text-IO.js.html"><span>samples/basic/Streaming Text IO.js</span><small>open source</small></a></div>
+        </section>
+    </article>
+
     <article class="api-item" id="terminate" data-kind="method" data-name="terminate">
         <header class="api-item-header">
             <div>
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#terminate">terminate</a></h2>
             </div>
-            <div class="source-location">js/worker.js:670</div>
+            <div class="source-location">js/worker.js:774</div>
         </header>
         <pre class="signature"><code>terminate()</code></pre>
         

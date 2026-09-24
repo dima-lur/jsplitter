@@ -110,8 +110,8 @@
  *
  * JSplitter automatically terminates all Workers still owned by a panel when that panel is unloaded, so explicit cleanup is not required merely for panel teardown. Explicit {@link Worker#terminate terminate()} is for ending a Worker <b>earlier</b>, while the panel continues to live. Conversely, while the panel remains loaded, a Worker that is still kept alive and is never closed or terminated will remain waiting in its event loop and will continue to hold its Worker realm and associated resources.
  *
- * <div class="doc-note warning"><b>Do not treat a Worker as a one-shot function call.</b><br>
- * If the panel keeps a Worker alive after its useful work is finished, returning from the Worker source or from its last message handler does not dispose it. Call {@link Worker#terminate terminate()} when the panel is done with it, or design the Worker protocol so Worker-global {@link WorkerGlobalScope#close close()} is called when the Worker knows it is finished.</div>
+ * <div class="doc-note warning"><b>Do not treat a Worker created with <code>new Worker(...)</code> as a one-shot function call.</b><br>
+ * If the panel keeps an ordinary Worker alive after its useful work is finished, returning from the Worker source or from its last message handler does not dispose it. Call {@link Worker#terminate terminate()} when the panel is done with it, design the Worker protocol so Worker-global {@link WorkerGlobalScope#close close()} is called when the Worker knows it is finished, or use {@link Worker.RunAsync Worker.RunAsync()} when the task is naturally one-shot.</div>
  *
  * <h2>Handling Worker errors</h2>
  * 
@@ -561,6 +561,84 @@
  * <li><span class="flag capability transferable">TRANSFERABLE</span> — instances can additionally be placed in the transfer list so ownership moves to the receiver; after a successful transfer the source wrapper is detached and no longer usable on the sender side.</li>
  * </ul>
  *
+ * <h2>One-shot work with Worker.RunAsync()</h2>
+ * When work naturally has one input and one result, {@link Worker.RunAsync Worker.RunAsync()} avoids building a message protocol around a short-lived Worker. Each call creates a normal temporary Worker realm and Worker thread with the same Worker-side API surface as {@link Worker} code. The callback arguments are structured-cloned into that realm, and the callback's return value (or the resolved value of its Promise) is structured-cloned back to the panel. The temporary Worker is terminated automatically after success or failure.
+ *
+ * Both synchronous and asynchronous callbacks are supported:
+ *
+ * ```js
+ * const result = await Worker.RunAsync(
+ *     async (arg1, arg2) => {
+ *         // Runs in a separate Worker realm/thread.
+ *         return arg1 + arg2;
+ *     },
+ *     20,
+ *     22
+ * );
+ *
+ * console.log(result); // 42
+ * ```
+ *
+ * The callback is recreated from its JavaScript source in the Worker realm. Although the call syntax looks like an ordinary local callback, it therefore does <b>not</b> capture lexical variables from the panel. This is incorrect:
+ *
+ * ```js
+ * const factor = 10;
+ *
+ * // Wrong: factor exists only in the panel realm.
+ * const result = await Worker.RunAsync(
+ *     value => value * factor,
+ *     5
+ * );
+ * // Rejects with ReferenceError: factor is not defined
+ * ```
+ *
+ * Pass every required value explicitly as an argument instead:
+ *
+ * ```js
+ * const factor = 10;
+ *
+ * // Correct: factor crosses the realm boundary through structured clone.
+ * const result = await Worker.RunAsync(
+ *     (value, factor) => value * factor,
+ *     5,
+ *     factor
+ * );
+ * ```
+ *
+ * User-defined normal, arrow and <b><code>async</code></b> functions are supported. Native and bound functions cannot be recreated from source and are rejected. If the callback throws, returns a rejected Promise, or an argument/result cannot be structured-cloned, the Promise returned by <b><code>RunAsync()</code></b> rejects, so ordinary <b><code>try...catch</code></b> around <b><code>await</code></b> can handle the failure. Relative {@link include include()} calls inside the callback keep the caller's script/package roots.
+ *
+ * <b><code>RunAsync()</code></b> currently uses structured clone only and has no transfer-list parameter. Use an ordinary long-lived {@link Worker} with {@link Worker#postMessage postMessage()} when explicit ownership transfer, repeated requests, persistent Worker state, or a custom message protocol is required. Each <b><code>RunAsync()</code></b> call creates a fresh full Worker, so it is intended for reasonably coarse one-shot jobs rather than tiny operations in a hot loop.
+ *
+ * Streaming text I/O is a practical RunAsync() example for larger or longer-running file operations: the work can be performed in a Worker while the panel remains responsive. 
+ *
+ * ```js
+ * const summary = await Worker.RunAsync((input, output) => {
+ *     const reader = utils.OpenTextReader(input);
+ *     if (!reader) throw new Error('Unable to open input file');
+ *
+ *     const writer = utils.OpenTextWriter(output, false);
+ *     if (!writer) {
+ *         reader.Close();
+ *         throw new Error('Unable to create output file');
+ *     }
+ *
+ *     let lines = 0;
+ *     try {
+ *         for (;;) {
+ *             const line = reader.ReadLine();
+ *             if (line === null) break;
+ *             writer.WriteLine(line);
+ *             ++lines;
+ *         }
+ *     } finally {
+ *         reader.Close();
+ *         writer.Close();
+ *     }
+ *
+ *     return { lines };
+ * }, inputPath, outputPath);
+ * ```
+ *
  * <h2>Samples</h2>
  * The samples are intentionally ordered. Start with lifecycle/messaging, then move through batch data processing, CPU-bound work, asynchronous image processing and finally a real-time audio/render pipeline.
  *
@@ -634,6 +712,32 @@
  * @sourceFile ../../component/samples/worker/05. Spectrum Analyzer.js
  */
 function Worker(source, name) {
+    /**
+     * Runs a user-defined JavaScript callback once in a temporary Worker and returns a Promise for its result.<br>
+     * A fresh full Worker realm/thread is created for every call. Arguments are structured-cloned into the Worker; a synchronous return value or the resolved value of an asynchronous callback is structured-cloned back. The temporary Worker is terminated automatically when the operation settles.<br>
+     * The callback is recreated from its source and does not capture lexical variables from the caller. Pass required values explicitly through <code>args</code>. Native and bound functions are not supported. Relative {@link include include()} calls keep the caller's script/package roots.<br>
+     * This API does not currently expose a transfer list. For repeated requests, persistent Worker state, or explicit ownership transfer, use a normal {@link Worker} and {@link Worker#postMessage postMessage()}.
+     *
+     * @static
+     * @param {function()} callback User-defined JavaScript function to execute in the temporary Worker. The function may return a value or a Promise.
+     * @param {...*} args Values passed to <code>callback</code> through structured clone.
+     * @return {Promise.<*>} Promise resolved with the structured-cloned callback result. It rejects if the callback throws or rejects, the callback cannot be recreated, Worker startup fails, or an argument/result cannot be structured-cloned.
+     * @throws {Error} If <code>callback</code> is not callable or the RunAsync helper itself cannot be initialized.
+     *
+     * @example
+     * const result = await Worker.RunAsync(
+     *     async (a, b) => {
+     *         return a + b;
+     *     },
+     *     20,
+     *     22
+     * );
+     * console.log(result); // 42
+     *
+     * @sourceFile ../../component/samples/basic/Streaming Text IO.js
+     */
+    this.RunAsync = function (callback, ...args) { };
+
     /**
      * Receives messages sent from the Worker through Worker-global {@link WorkerGlobalScope#postMessage postMessage()}.
      *
