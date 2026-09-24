@@ -13,9 +13,7 @@ const TOP_ARTISTS_LIMIT = 5;
 const HISTORY_LIMIT = 1000;
 const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
 
-if (typeof utils.OpenDatabase !== 'function') {
-    throw new Error('SQLite API is not available in this foobar2000 version.');
-}
+const sqliteAvailable = typeof utils.OpenDatabase === 'function';
 
 const fontTitle = gdi.Font('Segoe UI', 16, 1);
 const fontText = gdi.Font('Segoe UI', 12, 0);
@@ -25,33 +23,35 @@ const tfArtist = fb.TitleFormat('$if2(%album artist%,$if2(%artist%,Unknown artis
 const tfTitle = fb.TitleFormat('$if2(%title%,Unknown title)');
 const tfAlbum = fb.TitleFormat('[%album%]');
 
-const db = utils.OpenDatabase(DB_PATH);
-
-db.Exec(`
-    CREATE TABLE IF NOT EXISTS playback_history (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        played_at INTEGER NOT NULL,
-        artist TEXT NOT NULL,
-        title TEXT NOT NULL,
-        album TEXT NOT NULL,
-        path TEXT NOT NULL
-    );
-    CREATE INDEX IF NOT EXISTS playback_history_played_at
-        ON playback_history(played_at DESC);
-`);
-
-const insertHistory = db.Prepare(`
-    INSERT INTO playback_history(played_at, artist, title, album, path)
-    VALUES (?, ?, ?, ?, ?)
-`);
-
+const db = sqliteAvailable ? utils.OpenDatabase(DB_PATH) : null;
+let insertHistory = null;
 let recent = [];
 let topArtists = [];
 
-refreshView();
+if (db) {
+    db.Exec(`
+        CREATE TABLE IF NOT EXISTS playback_history (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            played_at INTEGER NOT NULL,
+            artist TEXT NOT NULL,
+            title TEXT NOT NULL,
+            album TEXT NOT NULL,
+            path TEXT NOT NULL
+        );
+        CREATE INDEX IF NOT EXISTS playback_history_played_at
+            ON playback_history(played_at DESC);
+    `);
+
+    insertHistory = db.Prepare(`
+        INSERT INTO playback_history(played_at, artist, title, album, path)
+        VALUES (?, ?, ?, ?, ?)
+    `);
+
+    refreshView();
+}
 
 function addPlayback(metadb) {
-    if (!metadb) return;
+    if (!db || !insertHistory || !metadb) return;
 
     insertHistory.Run([
         Date.now(),
@@ -76,6 +76,8 @@ function addPlayback(metadb) {
 }
 
 function refreshView() {
+    if (!db) return;
+
     recent = db.Query(`
         SELECT played_at, artist, title, album
         FROM playback_history
@@ -130,6 +132,14 @@ function on_paint(gr) {
     drawLine(gr, 'SQLite Playback History', margin, y, width - margin * 2, 28, fontTitle, text);
     y += 32;
 
+    if (!db) {
+        const message = sqliteAvailable
+            ? 'Unable to open the playback history database.'
+            : 'SQLite API is not available in this foobar2000 version.';
+        drawLine(gr, message, margin, y, width - margin * 2, 22, fontText, muted);
+        return;
+    }
+
     drawLine(gr, 'Top artists — last 30 days', margin, y, width - margin * 2, 20, fontSmall, muted);
     y += 20;
 
@@ -160,6 +170,8 @@ function on_paint(gr) {
 }
 
 function on_mouse_rbtn_up(x, y) {
+    if (!db) return;
+
     const menu = window.CreatePopupMenu();
     menu.AppendMenuItem(MF_STRING, 1, 'Clear history');
 
@@ -170,6 +182,6 @@ function on_mouse_rbtn_up(x, y) {
 }
 
 function on_script_unload() {
-    insertHistory.Close();
-    db.Close();
+    if (insertHistory) insertHistory.Close();
+    if (db) db.Close();
 }
