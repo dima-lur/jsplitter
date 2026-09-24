@@ -302,7 +302,7 @@
         
         <section class="member-section compact-section">
             <h3>Returns</h3>
-            <div><code>boolean</code> — <p>true if the writer is closed successfully.</p></div>
+            <div><code>boolean</code> — <p>true if the writer is closed successfully; false if closing/flushing the file fails. Calling it again after a successful close returns true.</p></div>
         </section>
         
         
@@ -327,12 +327,12 @@
         
         <section class="member-section compact-section">
             <h3>Returns</h3>
-            <div><code>boolean</code> — <p>true on success.</p></div>
+            <div><code>boolean</code> — <p>true on success; false if flushing fails.</p></div>
         </section>
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws if the writer is closed.</p></div>
+            <div><code></code> — <p>Throws only if the writer is closed.</p></div>
         </section>
         
         
@@ -363,12 +363,12 @@
         
         <section class="member-section compact-section">
             <h3>Returns</h3>
-            <div><code>boolean</code> — <p>true on success.</p></div>
+            <div><code>boolean</code> — <p>true on success; false if the buffer/range is invalid or the write fails.</p></div>
         </section>
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws if the writer is closed.</p></div>
+            <div><code></code> — <p>Throws only if the writer is closed.</p></div>
         </section>
         
         

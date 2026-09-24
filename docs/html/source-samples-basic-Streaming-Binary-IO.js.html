@@ -243,19 +243,34 @@
         console.log(<span class="tok-string">`Unable to create: ${copyPath}`</span>);
     } <span class="tok-keyword">else</span> {
         <span class="tok-keyword">try</span> {
-            <span class="tok-keyword">while</span> (!reader.EOF) {
+            <span class="tok-keyword">let</span> failed = <span class="tok-literal">false</span>;
+
+            <span class="tok-keyword">for</span> (;;) {
                 <span class="tok-keyword">const</span> bytesRead = reader.Read(buffer);
-                <span class="tok-keyword">if</span> (!bytesRead) <span class="tok-keyword">break</span>;
+                <span class="tok-keyword">if</span> (!bytesRead) {
+                    <span class="tok-keyword">if</span> (!reader.EOF) {
+                        console.log(<span class="tok-string">&#39;Read failed&#39;</span>);
+                        failed = <span class="tok-literal">true</span>;
+                    }
+                    <span class="tok-keyword">break</span>;
+                }
 
                 <span class="tok-comment">// Only the first bytesRead bytes contain newly read data.</span>
                 <span class="tok-keyword">if</span> (!writer.Write(buffer, <span class="tok-number">0</span>, bytesRead)) {
                     console.log(<span class="tok-string">&#39;Write failed&#39;</span>);
+                    failed = <span class="tok-literal">true</span>;
                     <span class="tok-keyword">break</span>;
                 }
             }
 
-            writer.Flush();
-            console.log(<span class="tok-string">`Copied ${writer.Position} bytes`</span>);
+            <span class="tok-keyword">if</span> (!failed &amp;&amp; !writer.Flush()) {
+                console.log(<span class="tok-string">&#39;Flush failed&#39;</span>);
+                failed = <span class="tok-literal">true</span>;
+            }
+
+            <span class="tok-keyword">if</span> (!failed) {
+                console.log(<span class="tok-string">`Copied ${writer.Position} bytes`</span>);
+            }
         } <span class="tok-keyword">finally</span> {
             reader.Close();
             writer.Close();

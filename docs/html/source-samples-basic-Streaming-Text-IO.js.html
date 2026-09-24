@@ -252,10 +252,12 @@
 
             <span class="tok-keyword">try</span> {
                 <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; recordCount; ++i) {
-                    sourceWriter.WriteLine(JSON.stringify({
+                    <span class="tok-keyword">if</span> (!sourceWriter.WriteLine(JSON.stringify({
                         id: i,
                         value: <span class="tok-string">`item ${i}`</span>
-                    }));
+                    }))) {
+                        <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;Failed to write the source file&#39;</span>);
+                    }
                 }
             }
             <span class="tok-keyword">finally</span> {
@@ -276,12 +278,14 @@
 
             <span class="tok-keyword">let</span> read = <span class="tok-number">0</span>;
             <span class="tok-keyword">let</span> written = <span class="tok-number">0</span>;
-            <span class="tok-keyword">let</span> outputBytes = <span class="tok-number">0</span>;
 
             <span class="tok-keyword">try</span> {
                 <span class="tok-keyword">for</span> (;;) {
                     <span class="tok-keyword">const</span> line = reader.ReadLine();
                     <span class="tok-keyword">if</span> (line === <span class="tok-literal">null</span>) {
+                        <span class="tok-keyword">if</span> (!reader.EOF) {
+                            <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;Failed to read or decode the source file&#39;</span>);
+                        }
                         <span class="tok-keyword">break</span>;
                     }
                     <span class="tok-keyword">if</span> (!line.length) {
@@ -293,12 +297,12 @@
 
                     <span class="tok-comment">// Keep every 1000th record as a visible result.</span>
                     <span class="tok-keyword">if</span> (item.id % <span class="tok-number">1000</span> === <span class="tok-number">0</span>) {
-                        writer.WriteLine(<span class="tok-string">`${item.id}\t${item.value}`</span>);
+                        <span class="tok-keyword">if</span> (!writer.WriteLine(<span class="tok-string">`${item.id}\t${item.value}`</span>)) {
+                            <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;Failed to write the result file&#39;</span>);
+                        }
                         ++written;
                     }
                 }
-
-                outputBytes = writer.Position;
             }
             <span class="tok-keyword">finally</span> {
                 reader.Close();
@@ -308,14 +312,13 @@
             <span class="tok-keyword">return</span> {
                 read,
                 written,
-                outputBytes,
                 elapsedMs: performance.now() - started
             };
         }, sourcePath, resultPath);
 
         console.log(
             <span class="tok-string">`Worker.RunAsync finished: read ${result.read}, wrote ${result.written} `</span> +
-            <span class="tok-string">`records (${result.outputBytes} bytes) in ${result.elapsedMs.toFixed(1)} ms`</span>
+            <span class="tok-string">`records in ${result.elapsedMs.toFixed(1)} ms`</span>
         );
         console.log(<span class="tok-string">`Output: ${resultPath}`</span>);
     }

@@ -24,10 +24,12 @@ async function runExample() {
 
             try {
                 for (let i = 0; i < recordCount; ++i) {
-                    sourceWriter.WriteLine(JSON.stringify({
+                    if (!sourceWriter.WriteLine(JSON.stringify({
                         id: i,
                         value: `item ${i}`
-                    }));
+                    }))) {
+                        throw new Error('Failed to write the source file');
+                    }
                 }
             }
             finally {
@@ -48,12 +50,14 @@ async function runExample() {
 
             let read = 0;
             let written = 0;
-            let outputBytes = 0;
 
             try {
                 for (;;) {
                     const line = reader.ReadLine();
                     if (line === null) {
+                        if (!reader.EOF) {
+                            throw new Error('Failed to read or decode the source file');
+                        }
                         break;
                     }
                     if (!line.length) {
@@ -65,12 +69,12 @@ async function runExample() {
 
                     // Keep every 1000th record as a visible result.
                     if (item.id % 1000 === 0) {
-                        writer.WriteLine(`${item.id}\t${item.value}`);
+                        if (!writer.WriteLine(`${item.id}\t${item.value}`)) {
+                            throw new Error('Failed to write the result file');
+                        }
                         ++written;
                     }
                 }
-
-                outputBytes = writer.Position;
             }
             finally {
                 reader.Close();
@@ -80,14 +84,13 @@ async function runExample() {
             return {
                 read,
                 written,
-                outputBytes,
                 elapsedMs: performance.now() - started
             };
         }, sourcePath, resultPath);
 
         console.log(
             `Worker.RunAsync finished: read ${result.read}, wrote ${result.written} ` +
-            `records (${result.outputBytes} bytes) in ${result.elapsedMs.toFixed(1)} ms`
+            `records in ${result.elapsedMs.toFixed(1)} ms`
         );
         console.log(`Output: ${resultPath}`);
     }

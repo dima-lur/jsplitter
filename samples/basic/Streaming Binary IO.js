@@ -15,19 +15,34 @@ if (!reader) {
         console.log(`Unable to create: ${copyPath}`);
     } else {
         try {
-            while (!reader.EOF) {
+            let failed = false;
+
+            for (;;) {
                 const bytesRead = reader.Read(buffer);
-                if (!bytesRead) break;
+                if (!bytesRead) {
+                    if (!reader.EOF) {
+                        console.log('Read failed');
+                        failed = true;
+                    }
+                    break;
+                }
 
                 // Only the first bytesRead bytes contain newly read data.
                 if (!writer.Write(buffer, 0, bytesRead)) {
                     console.log('Write failed');
+                    failed = true;
                     break;
                 }
             }
 
-            writer.Flush();
-            console.log(`Copied ${writer.Position} bytes`);
+            if (!failed && !writer.Flush()) {
+                console.log('Flush failed');
+                failed = true;
+            }
+
+            if (!failed) {
+                console.log(`Copied ${writer.Position} bytes`);
+            }
         } finally {
             reader.Close();
             writer.Close();
