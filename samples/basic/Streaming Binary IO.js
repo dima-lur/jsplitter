@@ -1,51 +1,56 @@
 ﻿// Streaming binary I/O with a reusable Uint8Array buffer.
 // Read() fills the supplied buffer instead of allocating a new typed array for each chunk.
+// The complete copy operation runs in a temporary Worker so the panel UI remains responsive.
 
 const sourcePath = `${fb.ProfilePath}streaming-source.bin`;
 const copyPath = `${fb.ProfilePath}streaming-copy.bin`;
-const buffer = new Uint8Array(1024 * 1024);
 
-const reader = utils.OpenBinaryReader(sourcePath);
-if (!reader) {
-    console.log(`Unable to open: ${sourcePath}`);
-} else {
-    const writer = utils.OpenBinaryWriter(copyPath);
-    if (!writer) {
-        reader.Close();
-        console.log(`Unable to create: ${copyPath}`);
-    } else {
-        try {
-            let failed = false;
+async function copyFile() {
+    try {
+        const bytesCopied = await Worker.RunAsync((sourcePath, copyPath) => {
+            const buffer = new Uint8Array(1024 * 1024);
 
-            for (;;) {
-                const bytesRead = reader.Read(buffer);
-                if (!bytesRead) {
-                    if (!reader.EOF) {
-                        console.log('Read failed');
-                        failed = true;
+            const reader = utils.OpenBinaryReader(sourcePath);
+            if (!reader) {
+                throw new Error(`Unable to open: ${sourcePath}`);
+            }
+
+            const writer = utils.OpenBinaryWriter(copyPath);
+            if (!writer) {
+                reader.Close();
+                throw new Error(`Unable to create: ${copyPath}`);
+            }
+
+            try {
+                while (!reader.EOF) {
+                    const bytesRead = reader.Read(buffer);
+                    if (!bytesRead) {
+                        break;
                     }
-                    break;
+
+                    // Only the first bytesRead bytes contain newly read data.
+                    if (!writer.Write(buffer, 0, bytesRead)) {
+                        throw new Error('Write failed');
+                    }
                 }
 
-                // Only the first bytesRead bytes contain newly read data.
-                if (!writer.Write(buffer, 0, bytesRead)) {
-                    console.log('Write failed');
-                    failed = true;
-                    break;
+                if (!writer.Flush()) {
+                    throw new Error('Flush failed');
                 }
-            }
 
-            if (!failed && !writer.Flush()) {
-                console.log('Flush failed');
-                failed = true;
+                return writer.Position;
             }
+            finally {
+                reader.Close();
+                writer.Close();
+            }
+        }, sourcePath, copyPath);
 
-            if (!failed) {
-                console.log(`Copied ${writer.Position} bytes`);
-            }
-        } finally {
-            reader.Close();
-            writer.Close();
-        }
+        console.log(`Copied ${bytesCopied} bytes`);
+    }
+    catch (error) {
+        console.log(`Copy failed: ${error.name}: ${error.message}`);
     }
 }
+
+copyFile();
