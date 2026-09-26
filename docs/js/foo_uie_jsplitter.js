@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @typedef {number} float
  */
 
@@ -200,6 +200,231 @@ let console = {
 };
 
 /**
+ * Controls the main foobar2000 application window.
+ * 
+ * <b>Global state:</b> every JSplitter panel accesses the same native foobar2000 window through {@link fb.Window}</code>.
+ * Window geometry {@link FbWindow#X X}, {@link FbWindow#Y Y}, {@link FbWindow#Width Width}, {@link FbWindow#Height Height}, the numeric {@link FbWindow#MinWidth MinWidth}, {@link FbWindow#MinHeight MinHeight}, {@link FbWindow#MaxWidth MaxWidth}, {@link FbWindow#MaxHeight MaxHeight}, and the numeric pseudo-caption rectangle defined by {@link FbWindow#SetPseudoCaption SetPseudoCaption} are global host state.
+ * These numeric values are not automatically restored when a panel reloads or unloads. The pseudo-caption active state itself is tracked per panel, like {@link FbWindow#MinSize MinSize} and {@link FbWindow#MaxSize MaxSize}: unloading or reloading a panel removes its request, while the last rectangle coordinates remain stored globally.
+ * 
+ * Window modes such as {@link FbWindow#FrameStyle FrameStyle}, {@link FbWindow#Fullscreen Fullscreen}, {@link FbWindow#MainMenuHidden MainMenuHidden}, {@link FbWindow#StatusBarHidden StatusBarHidden}, {@link FbWindow#MinSize MinSize}, {@link FbWindow#MaxSize MaxSize}, and pseudo-caption activation are tracked per panel. 
+ * The most recent explicit assignment made by any live panel becomes the effective global value. When that panel reloads or unloads, its request is removed and the previous request from another live panel, if any, becomes effective again. 
+ * If no panel has a request, {@link FbWindow#FrameStyle FrameStyle} defaults to {@link module:Flags.FrameStyle FrameStyle.Default} and the boolean modes default to <b>false</b>.
+ * 
+ * So getters return the effective global value, not the last value assigned by the current panel.
+ *
+ * If both minimum and maximum limits are enabled for the same axis, keep the nonzero minimum less than or equal to the nonzero maximum. Contradictory limits are not a supported configuration.
+ * <div class="doc-note warning"> 
+ * <b>WARNING!</b><br>
+ * Using the most methods described here (beyond simply changing the window's position and size) is incompatible with plugins that provide similar functionality, e.g. {@link https://github.com/The-Wizardium/UI-Wizard foo_ui_wizard}, {@link https://github.com/ttsping/foo_openhacks foo_openhacks} or {@link https://foobar2000.club/forum/viewtopic.php?t=1911 foo_ui_hacks}.
+ * Therefore, if you intend to make active use of these methods, it is strongly recommended to uninstall the specified components.
+ * </div>
+ * <div class="doc-note warning"> 
+ * <b>Legacy geometry API:</b> {@link window.FoobarWindowX}, {@link window.FoobarWindowY}, {@link window.FoobarWindowWidth}, {@link window.FoobarWindowHeight} and {@link window.MoveFoobarWindow} are deprecated compatibility APIs and will be removed in a future release. New code should use {@link fb.Window} geometry properties and {@link FbWindow#Move Move()} instead.
+ * </div>
+ *
+ * @hideconstructor
+ *
+ * @example <caption>Borderless window with size limits</caption>
+ * fb.Window.MinWidth = 500;
+ * fb.Window.MinHeight = 300;
+ * fb.Window.MinSize = true;
+ *
+ * fb.Window.MaxWidth = 1600;
+ * fb.Window.MaxHeight = 1000;
+ * fb.Window.MaxSize = true;
+ *
+ * fb.Window.FrameStyle = FrameStyle.NoBorder;
+ *
+ * @example <caption>Window mode state is shared between panels</caption>
+ * // Panel A:
+ * fb.Window.FrameStyle = FrameStyle.NoBorder;
+ *
+ * // Panel B, executed later:
+ * fb.Window.FrameStyle = FrameStyle.Default;
+ * // FrameStyle.Default is now effective globally. If Panel B reloads or unloads,
+ * // Panel A's still-live FrameStyle.NoBorder request becomes effective again.
+ */
+function FbWindow() {
+    /**
+     * X coordinate of the outer main-window rectangle in screen coordinates.
+     *
+     * @type {number}
+     */
+    this.X = 0;
+
+    /**
+     * Y coordinate of the outer main-window rectangle in screen coordinates.
+     *
+     * @type {number}
+     */
+    this.Y = 0;
+
+    /**
+     * Width of the outer main-window rectangle, including the non-client frame when present.
+     *
+     * @type {number}
+     */
+    this.Width = 0;
+
+    /**
+     * Height of the outer main-window rectangle, including the non-client frame when present.
+     *
+     * @type {number}
+     */
+    this.Height = 0;
+
+    /**
+     * Controls the native frame style of the main window.
+     * <br><br>
+     * Use {@link module:Flags.FrameStyle FrameStyle}:
+     * <ul>
+     * <li>{@link module:Flags.FrameStyle FrameStyle.Default} - use the normal foobar2000 window frame.</li>
+     * <li>{@link module:Flags.FrameStyle FrameStyle.NoCaption} - remove the caption while keeping the native resizable frame. Windows continues to handle resizing, including the thin top resize grip.</li>
+     * <li>{@link module:Flags.FrameStyle FrameStyle.NoBorder} - remove both the caption and resizable frame. JSplitter restores edge/corner resizing itself.</li>
+     * </ul>
+     * In <b>No border</b> mode with Default User Interface, a visible native status bar owns its bottom-right size grip. That grip may interfere with resizing from the bottom-right corner; hiding the status bar avoids this limitation.
+     *
+     * @type {FrameStyle}
+     * @throws {Error} If the value is not a valid {@link module:Flags.FrameStyle FrameStyle} value.
+     */
+    this.FrameStyle = FrameStyle.Default;
+
+    /**
+     * Enables fullscreen mode on the monitor containing the main window. The window covers the full monitor area, including the taskbar.
+     * 
+     * The previous window placement is restored when fullscreen is disabled, then the current effective {@link FbWindow#FrameStyle FrameStyle} is reapplied.
+     * Minimum and maximum size limits do not clamp the window while fullscreen is active.
+     * 
+     * If fullscreen is changed while a modal JSplitter/foobar2000 dialog is open, the native transition is deferred until the modal dialog closes. The property still reports the current effective requested state during that time.
+     *
+     * @type {boolean}
+     */
+    this.Fullscreen = false;
+
+    /**
+     * Hides the foobar2000 main menu bar.
+     * <br><br>
+     * Available only with Default User Interface (DUI). Reading or writing this property with Columns UI throws an error.
+     *
+     * @type {boolean}
+     * @throws {Error} When Columns UI is active.
+     */
+    this.MainMenuHidden = false;
+
+    /**
+     * Hides the foobar2000 status bar.
+     * <br><br>
+     * Available only with Default User Interface (DUI). Reading or writing this property with Columns UI throws an error.
+     *
+     * @type {boolean}
+     * @throws {Error} When Columns UI is active.
+     */
+    this.StatusBarHidden = false;
+
+    /**
+     * Enables the minimum main-window size defined by {@link FbWindow#MinWidth MinWidth} and {@link FbWindow#MinHeight MinHeight}.
+     * Setting this property to <code>true</code> immediately clamps the current window size when needed. Changing an active minimum width or height also clamps the current size immediately.
+     * A limit value of 0 means that the corresponding axis is not constrained.
+     *
+     * @type {boolean}
+     */
+    this.MinSize = false;
+
+    /**
+     * Minimum width of the outer main-window rectangle when {@link FbWindow#MinSize MinSize} is enabled.
+     * A value of 0 disables the minimum-width constraint while leaving the minimum-height constraint independent.
+     *
+     * @type {number}
+     */
+    this.MinWidth = 0;
+
+    /**
+     * Minimum height of the outer main-window rectangle when {@link FbWindow#MinSize MinSize} is enabled.
+     * A value of <b>0</b> disables the minimum-height constraint while leaving the minimum-width constraint independent.
+     *
+     * @type {number}
+     */
+    this.MinHeight = 0;
+
+    /**
+     * Enables the maximum main-window size defined by {@link FbWindow#MaxWidth MaxWidth} and {@link FbWindow#MaxHeight MaxHeight}.
+     * Setting this property to <b>true</b> immediately clamps the current window size when needed. Changing an active maximum width or height also clamps the current size immediately.
+     * A limit value of <b>0</b> means that the corresponding axis is not constrained.
+     *
+     * @type {boolean}
+     */
+    this.MaxSize = false;
+
+    /**
+     * Maximum width of the outer main-window rectangle when {@link FbWindow#MaxSize MaxSize} is enabled.
+     * A value of <b>0</b> disables the maximum-width constraint while leaving the maximum-height constraint independent.
+     *
+     * @type {number}
+     */
+    this.MaxWidth = 0;
+
+    /**
+     * Maximum height of the outer main-window rectangle when {@link FbWindow#MaxSize MaxSize} is enabled.
+     * A value of <b>0</b> disables the maximum-height constraint while leaving the maximum-width constraint independent.
+     *
+     * @type {number}
+     */
+    this.MaxHeight = 0;
+
+    /**
+     * Moves and resizes the main foobar2000 window in one operation.
+     * The arguments describe the outer window rectangle in screen coordinates.
+     * If called during early startup, the requested geometry is retained and applied when the main window becomes available.
+     *
+     * @param {number} x X coordinate in screen coordinates.
+     * @param {number} y Y coordinate in screen coordinates.
+     * @param {number} width Outer window width.
+     * @param {number} height Outer window height.
+     */
+    this.Move = function (x, y, width, height) { };
+
+    /**
+     * Starts the native Windows move operation for the main foobar2000 window, as if the user had started dragging its caption.
+     * This is useful when the script needs to decide dynamically whether a mouse action should start moving the window. For a fixed draggable area, {@link FbWindow#SetPseudoCaption SetPseudoCaption} is usually simpler.
+     * The move loop is started asynchronously, so the JavaScript callback is not kept running for the duration of the drag.
+     *
+     * @example
+     * function on_mouse_lbtn_down(x, y) {
+     *     if (y < 30) {
+     *         fb.Window.MoveStart();
+     *     }
+     * }
+     */
+    this.MoveStart = function () { };
+
+    /**
+     * Defines a rectangular pseudo-caption area for the main foobar2000 window. Pressing the left mouse button anywhere inside this area starts the native Windows move operation, including when the pointer is over a child window such as a JSplitter panel.
+     * This provides a persistent alternative to calling {@link FbWindow#MoveStart MoveStart} from a mouse callback and is especially useful with {@link FbWindow#FrameStyle FrameStyle} set to {@link module:Flags.FrameStyle FrameStyle.NoCaption} or {@link module:Flags.FrameStyle FrameStyle.NoBorder}.
+     * 
+     * The coordinates are pixel offsets from the top-left corner of the outer main-window rectangle. Calling this method again replaces the stored global rectangle and enables pseudo-caption for the current panel. The rectangle values remain stored globally, but the active request belongs to the panel and is automatically removed when that panel reloads or unloads. If another live panel has an active pseudo-caption request, it becomes effective again using the current stored rectangle.
+     * 
+     * With {@link module:Flags.FrameStyle FrameStyle.NoBorder}, resize edges take precedence over the pseudo-caption area. The pseudo-caption does not start a move operation while the main window is fullscreen or maximized. A left click inside the rectangle is consumed for window dragging, so interactive controls should not be placed inside it.
+     *
+     * @param {number} x Horizontal offset from the left edge of the outer main-window rectangle.
+     * @param {number} y Vertical offset from the top edge of the outer main-window rectangle.
+     * @param {number} width Width of the pseudo-caption rectangle. Must be greater than 0.
+     * @param {number} height Height of the pseudo-caption rectangle. Must be greater than 0.
+     * @throws {Error} If <code>width</code> or <code>height</code> is not greater than 0.
+     *
+     * @example
+     * fb.Window.FrameStyle = FrameStyle.NoBorder;
+     * fb.Window.SetPseudoCaption(8, 8, 400, 32);
+     */
+    this.SetPseudoCaption = function (x, y, width, height) { };
+
+    /**
+     * Removes the current panel's pseudo-caption request previously enabled by {@link FbWindow#SetPseudoCaption SetPseudoCaption}.
+     * The stored rectangle coordinates are not cleared. The request is also removed automatically when the panel reloads or unloads; if another live panel has an active request, pseudo-caption remains enabled for that panel.
+     */
+    this.ClearPseudoCaption = function () { };
+}
+
+/**
  * Functions for controlling foobar2000 and accessing it's data.
  *
  * @namespace
@@ -215,6 +440,15 @@ let fb = {
      * @mainthread
      */
     AlwaysOnTop: undefined, //(boolean) (read, write)
+
+    /**
+     * Access to the main foobar2000 application window.
+     * See {@link FbWindow} for global state, multi-panel ownership and UI-specific behavior.
+     *
+     * @type {FbWindow}
+     * @readonly
+     */
+    Window: undefined, // (FbWindow) (read)
 
     /**
      * @type {string}
@@ -2152,10 +2386,11 @@ let utils = {
     CheckComponent: function (name, is_dll) { }, //(boolean)
 
     /**
-     * Check if the font is installed.<br>
+     * Checks whether a font family is available to the current foobar2000 process.
+     * This includes system-installed fonts and fonts loaded with {@link utils.LoadFont}.<br>
      * Note: it cannot detect fonts loaded by `foo_ui_hacks`. However, {@link gdi.Font} can use those fonts.
      *
-     * @param {string} name Can be either in English or the localised name in your OS.
+     * @param {string} name Font family name. Can be either in English or the localised name in your OS.
      * @return {boolean}
      * @worker
      */
@@ -2783,7 +3018,39 @@ let utils = {
     IsKeyPressed: function (vkey) { }, // (boolean)
 
     /**
-     * Gets system font collection array filled up by font families' names.
+     * Loads a font file for private use by the current foobar2000 process.
+     * The font is not installed in Windows and is not made available to other processes.
+     * 
+     * After a successful call the font becomes available to the foobar2000 process. It can be used by {@link gdi.Font} and {@link d2d.Font} and is visible to other JSplitter panels and Workers.
+     * The font is registered privately for the foobar2000 process rather than for JSplitter alone. As a result, it may also become available to native foobar2000 UI and other components that use the Windows font APIs, depending on when they enumerate or create their fonts.
+     *
+     * Relative paths are resolved from the file containing the <b>LoadFont</b> call. 
+     * For the main script, they are relative to the main script directory; when called from an included script or a file-backed Worker, they are relative to that file.
+     * Absolute paths are used as-is.
+     *
+     * The file is registered once by its normalised absolute path. Calling <b>LoadFont</b> again with the
+     * same file returns <b>true</b> without registering it again. Loaded fonts remain available for the
+     * lifetime of the foobar2000 process; there is no corresponding unload operation.
+     *
+     * A font may expose different legacy/GDI and typographic/DirectWrite family names. 
+     * {@link utils.CheckFont} can be used to verify a family name after loading, while {@link utils.ListFonts} shows the names reported by the GDI and DirectWrite backends.
+     *
+     * @param {string} path Path to a font file, typically a `.ttf` or `.otf` file.
+     * @return {boolean} `true` if the font is already loaded or was loaded successfully; `false` if the
+     * file does not exist, cannot be read as a font, contains no usable family, or cannot be registered.
+     * @worker
+     *
+     * @example
+     * if (utils.LoadFont('fonts/Rain Tungsten Medium.ttf')) {
+     *     const gdiFont = gdi.Font('Rain Tungsten Medium', 16);
+     *     ...
+     * }
+     */
+    LoadFont: function (path) { },
+
+    /**
+     * Gets an array of available font family names. Fonts loaded with {@link utils.LoadFont} are included.
+     * GDI and DirectWrite can expose different family names for the same font file.
      * @param {number} [mode=0] 0 - Auto, 1 - GDI fonts, 2 - DirectWrite fonts
      * @return {Array<string>} array of font family names
      * @worker
@@ -2957,11 +3224,11 @@ let utils = {
     /**
      * Opens a text file for incremental, line-by-line reading.<br>
      * Unlike {@link utils.ReadTextFile}, the whole file is not materialized as one JavaScript string. This makes it suitable for processing large text files incrementally, one line at a time, without requiring the entire file contents to fit in the JavaScript heap.<br>
-     * <code>ReadLine()</code> removes the line terminator and returns <code>null</code> when no next line can be returned. Check {@link TextReader#EOF EOF}: <code>true</code> means clean end of file, while <code>false</code> means a read or decoding failure. A UTF-8, UTF-16, or UTF-32 BOM matching the selected codepage, if present, is removed from the first line.<br>
+     * {@link TextReader#ReadLine ReadLine()} removes the line terminator. A return value of <b>null</b> means that no next line could be returned; in that case, {@link TextReader#EOF EOF} is <b>true</b> for a clean end of file and <b>false</b> for a read or decoding failure.
      * UTF-16LE/BE and UTF-32LE/BE are supported with codepages 1200/1201 and 12000/12001 respectively.<br>
      * Pass codepage 0 to use automatic charset detection, matching {@link utils.ReadTextFile}.<br>
      * Reading is synchronous. For long-running processing, use the reader from a {@link Worker} to avoid blocking the panel UI.<br>
-     * Ordinary read and decoding failures are reported through <code>ReadLine()</code> and <code>EOF</code>; they are not thrown as exceptions.
+     * Ordinary read and decoding failures are reported through <b>ReadLine()</b>> and <b>EOF</b>; they are not thrown as exceptions.
      *
      * @param {string} filename File to open.
      * @param {number=} [codepage=65001] Windows codepage used to decode each line. UTF-16LE/BE use 1200/1201, UTF-32LE/BE use 12000/12001, and 0 enables automatic detection. See Codepages.js.
@@ -4010,6 +4277,7 @@ let window = {
      * Therefore, the developer should create all drawing objects only after changing the mode.<br>
      * Ideally, the mode change should be made in the VERY first line of the main script to avoid accidentally creating objects of the wrong type.<br>
      * Also, calling any of d2d.* methods for creating objects like fonts, bitmaps or effects, will cause a script crash until the DrawMode is set to 1 at least once (in this case, the resources required for D2D operation are initialized).
+     * D2D rendering may differ from GDI and methods for both backends can not be expected to be 100% pixel equivalent.
      * @type {number}
      */
     DrawMode: 0, // (read, write)
@@ -4574,6 +4842,17 @@ let window = {
     RemoveButton: function (button) { }, // (void)
 
     /**
+     * Deprecated compatibility API. It will be removed in a future release. Use {@link FbWindow#Move fb.Window.Move} for new code.
+     *
+     * @deprecated
+     * @param {number} x
+     * @param {number} y
+     * @param {number} width
+     * @param {number} height
+     */
+    MoveFoobarWindow: function (x, y, width, height) { }, // (void)
+
+    /**
      * Switches the mouse cursor for all buttons either to the hand or to the arrow. 
      * This property also affects all subsequently created buttons. 
      * This property can be changed individually for each button (see {@link ButtonObject} class).
@@ -4602,29 +4881,33 @@ let window = {
      TrackMouseMoveOnPanels: false, // (boolean) (read, write)
 
      /**
-     * Change X position of main foobar2000 window
+     * Deprecated compatibility API. It will be removed in a future release. Use {@link FbWindow#X fb.Window.X} for new code.
      *
+     * @deprecated
      * @type {number}
      */
     FoobarWindowX: 0, // (int) (read, write)
 
     /**
-     * Change Y position of main foobar2000 window
+     * Deprecated compatibility API. It will be removed in a future release. Use {@link FbWindow#Y fb.Window.Y} for new code.
      *
+     * @deprecated
      * @type {number}
      */
     FoobarWindowY: 0, // (int) (read, write)
 
     /**
-     * Change width of main foobar2000 window
+     * Deprecated compatibility API. It will be removed in a future release. Use {@link FbWindow#Width fb.Window.Width} for new code.
      *
+     * @deprecated
      * @type {number}
      */
     FoobarWindowWidth: 0, // (int) (read, write)
 
     /**
-     * Change height of main foobar2000 window
+     * Deprecated compatibility API. It will be removed in a future release. Use {@link FbWindow#Height fb.Window.Height} for new code.
      *
+     * @deprecated
      * @type {number}
      */
     FoobarWindowHeight: 0, // (int) (read, write)    
