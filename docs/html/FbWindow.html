@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>FbWindow — JSplitter API</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryReader">
+        <a class="nav-link nav-page-link" href="BinaryReader.html">BinaryReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryWriter">
+        <a class="nav-link nav-page-link" href="BinaryWriter.html">BinaryWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
+        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbWindow">
+        <a class="nav-link nav-page-link active" href="FbWindow.html">FbWindow</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteDatabase">
+        <a class="nav-link nav-page-link" href="SQLiteDatabase.html">SQLiteDatabase</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteStatement">
+        <a class="nav-link nav-page-link" href="SQLiteStatement.html">SQLiteStatement</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextReader">
+        <a class="nav-link nav-page-link" href="TextReader.html">TextReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextWriter">
+        <a class="nav-link nav-page-link" href="TextWriter.html">TextWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>FbWindow</b></div>
+        
+    <article class="api-item" id="FbWindow" data-kind="class" data-name="fbwindow">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-class">class</span></div>
+                <h2><a class="anchor" href="#FbWindow">FbWindow</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:202</div>
+        </header>
+        
+        
+        <div class="description"><p>Controls the main foobar2000 application window.</p>
+<p><b>Global state:</b> every JSplitter panel accesses the same native foobar2000 window through <a href="fb.html#Window">fb.Window</a></code>. Window geometry <a href="FbWindow.html#X">X</a>, <a href="FbWindow.html#Y">Y</a>, <a href="FbWindow.html#Width">Width</a>, <a href="FbWindow.html#Height">Height</a>, the numeric <a href="FbWindow.html#MinWidth">MinWidth</a>, <a href="FbWindow.html#MinHeight">MinHeight</a>, <a href="FbWindow.html#MaxWidth">MaxWidth</a>, <a href="FbWindow.html#MaxHeight">MaxHeight</a>, and the numeric pseudo-caption rectangle defined by <a href="FbWindow.html#SetPseudoCaption">SetPseudoCaption</a> are global host state. These numeric values are not automatically restored when a panel reloads or unloads. The pseudo-caption active state itself is tracked per panel, like <a href="FbWindow.html#MinSize">MinSize</a> and <a href="FbWindow.html#MaxSize">MaxSize</a>: unloading or reloading a panel removes its request, while the last rectangle coordinates remain stored globally.</p>
+<p>Window modes such as <a href="FbWindow.html#FrameStyle">FrameStyle</a>, <a href="FbWindow.html#Fullscreen">Fullscreen</a>, <a href="FbWindow.html#MainMenuHidden">MainMenuHidden</a>, <a href="FbWindow.html#StatusBarHidden">StatusBarHidden</a>, <a href="FbWindow.html#MinSize">MinSize</a>, <a href="FbWindow.html#MaxSize">MaxSize</a>, and pseudo-caption activation are tracked per panel. The most recent explicit assignment made by any live panel becomes the effective global value. When that panel reloads or unloads, its request is removed and the previous request from another live panel, if any, becomes effective again. If no panel has a request, <a href="FbWindow.html#FrameStyle">FrameStyle</a> defaults to <a href="module-Flags.html#FrameStyle">FrameStyle.Default</a> and the boolean modes default to <b>false</b>.</p>
+<p>So getters return the effective global value, not the last value assigned by the current panel.</p>
+<p>If both minimum and maximum limits are enabled for the same axis, keep the nonzero minimum less than or equal to the nonzero maximum. Contradictory limits are not a supported configuration.</p>
+<div class="doc-note warning"> 
+<b>WARNING!</b><br>
+Using the most methods described here (beyond simply changing the window's position and size) is incompatible with plugins that provide similar functionality, e.g. <a href="https://github.com/The-Wizardium/UI-Wizard" target="_blank" rel="noreferrer">foo_ui_wizard</a>, <a href="https://github.com/ttsping/foo_openhacks" target="_blank" rel="noreferrer">foo_openhacks</a> or <a href="https://foobar2000.club/forum/viewtopic.php?t=1911" target="_blank" rel="noreferrer">foo_ui_hacks</a>.
+Therefore, if you intend to make active use of these methods, it is strongly recommended to uninstall the specified components.
+</div>
+<div class="doc-note warning"> 
+<b>Legacy geometry API:</b> <a href="window.html#FoobarWindowX">window.FoobarWindowX</a>, <a href="window.html#FoobarWindowY">window.FoobarWindowY</a>, <a href="window.html#FoobarWindowWidth">window.FoobarWindowWidth</a>, <a href="window.html#FoobarWindowHeight">window.FoobarWindowHeight</a> and <a href="window.html#MoveFoobarWindow">window.MoveFoobarWindow</a> are deprecated compatibility APIs and will be removed in a future release. New code should use <a href="fb.html#Window">fb.Window</a> geometry properties and <a href="FbWindow.html#Move">Move()</a> instead.
+</div></div>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Examples</h3>
+            <div class="example-caption">Borderless window with size limits</div><pre class="example"><code>fb.Window.MinWidth = <span class="tok-number">500</span>;
+fb.Window.MinHeight = <span class="tok-number">300</span>;
+fb.Window.MinSize = <span class="tok-literal">true</span>;
+
+fb.Window.MaxWidth = <span class="tok-number">1600</span>;
+fb.Window.MaxHeight = <span class="tok-number">1000</span>;
+fb.Window.MaxSize = <span class="tok-literal">true</span>;
+
+fb.Window.FrameStyle = FrameStyle.NoBorder;</code></pre><div class="example-caption">Window mode state is shared between panels</div><pre class="example"><code><span class="tok-comment">// Panel A:</span>
+fb.Window.FrameStyle = FrameStyle.NoBorder;
+
+<span class="tok-comment">// Panel B, executed later:</span>
+fb.Window.FrameStyle = FrameStyle.Default;
+<span class="tok-comment">// FrameStyle.Default is now effective globally. If Panel B reloads or unloads,</span>
+<span class="tok-comment">// Panel A&#39;s still-live FrameStyle.NoBorder request becomes effective again.</span></code></pre>
+        </section>
+        
+    </article>
+        
+    <article class="api-item" id="FrameStyle" data-kind="property" data-name="framestyle">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#FrameStyle">FrameStyle</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:276</div>
+        </header>
+        <pre class="signature"><code>FrameStyle: <a class="type-link" href="module-Flags.html#FrameStyle">FrameStyle</a> = FrameStyle.Default</code></pre>
+        
+        <div class="description"><p>Controls the native frame style of the main window. <br><br> Use <a href="module-Flags.html#FrameStyle">FrameStyle</a>:</p>
+<ul>
+<li><a href="module-Flags.html#FrameStyle">FrameStyle.Default</a> - use the normal foobar2000 window frame.</li>
+<li><a href="module-Flags.html#FrameStyle">FrameStyle.NoCaption</a> - remove the caption while keeping the native resizable frame. Windows continues to handle resizing, including the thin top resize grip.</li>
+<li><a href="module-Flags.html#FrameStyle">FrameStyle.NoBorder</a> - remove both the caption and resizable frame. JSplitter restores edge/corner resizing itself.</li>
+</ul>
+<p>In <b>No border</b> mode with Default User Interface, a visible native status bar owns its bottom-right size grip. That grip may interfere with resizing from the bottom-right corner; hiding the status bar avoids this limitation.</p></div>
+        
+        
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Throws</h3>
+            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If the value is not a valid <a href="module-Flags.html#FrameStyle">FrameStyle</a> value.</p></div>
+        </section>
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Fullscreen" data-kind="property" data-name="fullscreen">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#Fullscreen">Fullscreen</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:292</div>
+        </header>
+        <pre class="signature"><code>Fullscreen: boolean = false</code></pre>
+        
+        <div class="description"><p>Enables fullscreen mode on the monitor containing the main window. The window covers the full monitor area, including the taskbar.</p>
+<p>The previous window placement is restored when fullscreen is disabled, then the current effective <a href="FbWindow.html#FrameStyle">FrameStyle</a> is reapplied. Minimum and maximum size limits do not clamp the window while fullscreen is active.</p>
+<p>If fullscreen is changed while a modal JSplitter/foobar2000 dialog is open, the native transition is deferred until the modal dialog closes. The property still reports the current effective requested state during that time.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Height" data-kind="property" data-name="height">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#Height">Height</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:269</div>
+        </header>
+        <pre class="signature"><code>Height: number = 0</code></pre>
+        
+        <div class="description"><p>Height of the outer main-window rectangle, including the non-client frame when present.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="MainMenuHidden" data-kind="property" data-name="mainmenuhidden">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#MainMenuHidden">MainMenuHidden</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:304</div>
+        </header>
+        <pre class="signature"><code>MainMenuHidden: boolean = false</code></pre>
+        
+        <div class="description"><p>Hides the foobar2000 main menu bar. <br><br> Available only with Default User Interface (DUI). Reading or writing this property with Columns UI throws an error.</p></div>
+        
+        
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Throws</h3>
+            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>When Columns UI is active.</p></div>
+        </section>
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="MaxHeight" data-kind="property" data-name="maxheight">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#MaxHeight">MaxHeight</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:366</div>
+        </header>
+        <pre class="signature"><code>MaxHeight: number = 0</code></pre>
+        
+        <div class="description"><p>Maximum height of the outer main-window rectangle when <a href="FbWindow.html#MaxSize">MaxSize</a> is enabled. A value of <b>0</b> disables the maximum-height constraint while leaving the maximum-width constraint independent.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="MaxSize" data-kind="property" data-name="maxsize">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#MaxSize">MaxSize</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:349</div>
+        </header>
+        <pre class="signature"><code>MaxSize: boolean = false</code></pre>
+        
+        <div class="description"><p>Enables the maximum main-window size defined by <a href="FbWindow.html#MaxWidth">MaxWidth</a> and <a href="FbWindow.html#MaxHeight">MaxHeight</a>. Setting this property to <b>true</b> immediately clamps the current window size when needed. Changing an active maximum width or height also clamps the current size immediately. A limit value of <b>0</b> means that the corresponding axis is not constrained.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="MaxWidth" data-kind="property" data-name="maxwidth">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#MaxWidth">MaxWidth</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:358</div>
+        </header>
+        <pre class="signature"><code>MaxWidth: number = 0</code></pre>
+        
+        <div class="description"><p>Maximum width of the outer main-window rectangle when <a href="FbWindow.html#MaxSize">MaxSize</a> is enabled. A value of <b>0</b> disables the maximum-width constraint while leaving the maximum-height constraint independent.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="MinHeight" data-kind="property" data-name="minheight">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#MinHeight">MinHeight</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:341</div>
+        </header>
+        <pre class="signature"><code>MinHeight: number = 0</code></pre>
+        
+        <div class="description"><p>Minimum height of the outer main-window rectangle when <a href="FbWindow.html#MinSize">MinSize</a> is enabled. A value of <b>0</b> disables the minimum-height constraint while leaving the minimum-width constraint independent.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="MinSize" data-kind="property" data-name="minsize">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#MinSize">MinSize</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:324</div>
+        </header>
+        <pre class="signature"><code>MinSize: boolean = false</code></pre>
+        
+        <div class="description"><p>Enables the minimum main-window size defined by <a href="FbWindow.html#MinWidth">MinWidth</a> and <a href="FbWindow.html#MinHeight">MinHeight</a>. Setting this property to <code>true</code> immediately clamps the current window size when needed. Changing an active minimum width or height also clamps the current size immediately. A limit value of 0 means that the corresponding axis is not constrained.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="MinWidth" data-kind="property" data-name="minwidth">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#MinWidth">MinWidth</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:333</div>
+        </header>
+        <pre class="signature"><code>MinWidth: number = 0</code></pre>
+        
+        <div class="description"><p>Minimum width of the outer main-window rectangle when <a href="FbWindow.html#MinSize">MinSize</a> is enabled. A value of 0 disables the minimum-width constraint while leaving the minimum-height constraint independent.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="StatusBarHidden" data-kind="property" data-name="statusbarhidden">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#StatusBarHidden">StatusBarHidden</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:314</div>
+        </header>
+        <pre class="signature"><code>StatusBarHidden: boolean = false</code></pre>
+        
+        <div class="description"><p>Hides the foobar2000 status bar. <br><br> Available only with Default User Interface (DUI). Reading or writing this property with Columns UI throws an error.</p></div>
+        
+        
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Throws</h3>
+            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>When Columns UI is active.</p></div>
+        </section>
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Width" data-kind="property" data-name="width">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#Width">Width</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:262</div>
+        </header>
+        <pre class="signature"><code>Width: number = 0</code></pre>
+        
+        <div class="description"><p>Width of the outer main-window rectangle, including the non-client frame when present.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="X" data-kind="property" data-name="x">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#X">X</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:248</div>
+        </header>
+        <pre class="signature"><code>X: number = 0</code></pre>
+        
+        <div class="description"><p>X coordinate of the outer main-window rectangle in screen coordinates.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Y" data-kind="property" data-name="y">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#Y">Y</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:255</div>
+        </header>
+        <pre class="signature"><code>Y: number = 0</code></pre>
+        
+        <div class="description"><p>Y coordinate of the outer main-window rectangle in screen coordinates.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="ClearPseudoCaption" data-kind="method" data-name="clearpseudocaption">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#ClearPseudoCaption">ClearPseudoCaption</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:420</div>
+        </header>
+        <pre class="signature"><code>ClearPseudoCaption()</code></pre>
+        
+        <div class="description"><p>Removes the current panel's pseudo-caption request previously enabled by <a href="FbWindow.html#SetPseudoCaption">SetPseudoCaption</a>. The stored rectangle coordinates are not cleared. The request is also removed automatically when the panel reloads or unloads; if another live panel has an active request, pseudo-caption remains enabled for that panel.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Move" data-kind="method" data-name="move">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#Move">Move</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:374</div>
+        </header>
+        <pre class="signature"><code>Move(x, y, width, height)</code></pre>
+        
+        <div class="description"><p>Moves and resizes the main foobar2000 window in one operation. The arguments describe the outer window rectangle in screen coordinates. If called during early startup, the requested geometry is retained and applied when the main window becomes available.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>x</code></td><td><code>number</code></td><td><p>X coordinate in screen coordinates.</p></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td><p>Y coordinate in screen coordinates.</p></td></tr><tr><td><code>width</code></td><td><code>number</code></td><td><p>Outer window width.</p></td></tr><tr><td><code>height</code></td><td><code>number</code></td><td><p>Outer window height.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="MoveStart" data-kind="method" data-name="movestart">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#MoveStart">MoveStart</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:386</div>
+        </header>
+        <pre class="signature"><code>MoveStart()</code></pre>
+        
+        <div class="description"><p>Starts the native Windows move operation for the main foobar2000 window, as if the user had started dragging its caption. This is useful when the script needs to decide dynamically whether a mouse action should start moving the window. For a fixed draggable area, <a href="FbWindow.html#SetPseudoCaption">SetPseudoCaption</a> is usually simpler. The move loop is started asynchronously, so the JavaScript callback is not kept running for the duration of the drag.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">function</span> on_mouse_lbtn_down(x, y) {
+    <span class="tok-keyword">if</span> (y &lt; <span class="tok-number">30</span>) {
+        fb.Window.MoveStart();
+    }
+}</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="SetPseudoCaption" data-kind="method" data-name="setpseudocaption">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#SetPseudoCaption">SetPseudoCaption</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:400</div>
+        </header>
+        <pre class="signature"><code>SetPseudoCaption(x, y, width, height)</code></pre>
+        
+        <div class="description"><p>Defines a rectangular pseudo-caption area for the main foobar2000 window. Pressing the left mouse button anywhere inside this area starts the native Windows move operation, including when the pointer is over a child window such as a JSplitter panel. This provides a persistent alternative to calling <a href="FbWindow.html#MoveStart">MoveStart</a> from a mouse callback and is especially useful with <a href="FbWindow.html#FrameStyle">FrameStyle</a> set to <a href="module-Flags.html#FrameStyle">FrameStyle.NoCaption</a> or <a href="module-Flags.html#FrameStyle">FrameStyle.NoBorder</a>.</p>
+<p>The coordinates are pixel offsets from the top-left corner of the outer main-window rectangle. Calling this method again replaces the stored global rectangle and enables pseudo-caption for the current panel. The rectangle values remain stored globally, but the active request belongs to the panel and is automatically removed when that panel reloads or unloads. If another live panel has an active pseudo-caption request, it becomes effective again using the current stored rectangle.</p>
+<p>With <a href="module-Flags.html#FrameStyle">FrameStyle.NoBorder</a>, resize edges take precedence over the pseudo-caption area. The pseudo-caption does not start a move operation while the main window is fullscreen or maximized. A left click inside the rectangle is consumed for window dragging, so interactive controls should not be placed inside it.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>x</code></td><td><code>number</code></td><td><p>Horizontal offset from the left edge of the outer main-window rectangle.</p></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td><p>Vertical offset from the top edge of the outer main-window rectangle.</p></td></tr><tr><td><code>width</code></td><td><code>number</code></td><td><p>Width of the pseudo-caption rectangle. Must be greater than 0.</p></td></tr><tr><td><code>height</code></td><td><code>number</code></td><td><p>Height of the pseudo-caption rectangle. Must be greater than 0.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Throws</h3>
+            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If <code>width</code> or <code>height</code> is not greater than 0.</p></div>
+        </section>
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code>fb.Window.FrameStyle = FrameStyle.NoBorder;
+fb.Window.SetPseudoCaption(<span class="tok-number">8</span>, <span class="tok-number">8</span>, <span class="tok-number">400</span>, <span class="tok-number">32</span>);</code></pre>
+        </section>
+        
+    </article></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

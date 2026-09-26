@@ -1207,6 +1207,17 @@ const LCMAP_SIMPLIFIED_CHINESE =  0x02000000; // map traditional chinese to simp
 const LCMAP_TRADITIONAL_CHINESE = 0x04000000; // map simplified chinese to traditional chinese
 
 /**
+ * Native frame style used by {@link FbWindow#FrameStyle fb.Window.FrameStyle}.
+ * @memberof module:Flags
+ * @enum {number}
+ */
+const FrameStyle = {
+    Default: 0,
+    NoCaption: 1,
+    NoBorder: 2
+};
+
+/**
  * Used as a result of {@link window.InstanceType}
  * @memberof module:Flags
  * @enum {number}
