@@ -431,7 +431,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
         </header>
         <pre class="signature"><code>CheckFont(name)</code></pre>
         
-        <div class="description"><p>Checks whether a font family is available to the current foobar2000 process. This includes system-installed fonts and fonts loaded with <a href="utils.html#LoadFont">utils.LoadFont</a>.<br> Note: it cannot detect fonts loaded by <code>foo_ui_hacks</code>. However, <a href="gdi.html#Font">gdi.Font</a> can use those fonts.</p></div>
+        <div class="description"><p>Checks whether a font family is available to the current foobar2000 process. This includes system-installed fonts and fonts loaded with <a href="utils.html#LoadFont">utils.LoadFont</a>.<br></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -459,7 +459,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#ColourPicker">ColourPicker</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2399</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2398</div>
         </header>
         <pre class="signature"><code>ColourPicker(window_id, default_colour)</code></pre>
         
@@ -496,7 +496,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ConvertToAscii">ConvertToAscii</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2413</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2412</div>
         </header>
         <pre class="signature"><code>ConvertToAscii(str)</code></pre>
         
@@ -528,11 +528,12 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#CopyFile">CopyFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2422</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2421</div>
         </header>
         <pre class="signature"><code>CopyFile(from, to, overwrite)</code></pre>
         
-        <div class="description"><p>Copies a file.</p></div>
+        <div class="description"><p>Copies a file.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -560,11 +561,12 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#CopyFolder">CopyFolder</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2433</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2434</div>
         </header>
         <pre class="signature"><code>CopyFolder(from, to, overwrite, recur)</code></pre>
         
-        <div class="description"><p>Copies a folder.</p></div>
+        <div class="description"><p>Copies a folder.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -592,7 +594,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#CRC32">CRC32</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2454</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2459</div>
         </header>
         <pre class="signature"><code>CRC32(str)</code></pre>
         
@@ -624,11 +626,12 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#CRC32FromFile">CRC32FromFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2463</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2468</div>
         </header>
         <pre class="signature"><code>CRC32FromFile(path)</code></pre>
         
-        <div class="description"><p>Calculates CRC32 value for file content</p></div>
+        <div class="description"><p>Calculates CRC32 value for file content</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -656,11 +659,12 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#CreateFolder">CreateFolder</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2445</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2448</div>
         </header>
         <pre class="signature"><code>CreateFolder(path)</code></pre>
         
-        <div class="description"><p>Creates a folder.</p></div>
+        <div class="description"><p>Creates a folder.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -688,11 +692,13 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#DetectCharset">DetectCharset</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2472</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2479</div>
         </header>
         <pre class="signature"><code>DetectCharset(path)</code></pre>
         
-        <div class="description"><p>Detect the codepage of the file.<br> Note: detection algorithm is probability based (unless there is a UTF BOM), i.e. even though the returned codepage is the most likely one, there's no 100% guarantee it's the correct one.\n Performance note: detection algorithm is quite slow, so results should be cached as much as possible.</p></div>
+        <div class="description"><p>Detect the codepage of the file.<br> Note: detection algorithm is probability based (unless there is a UTF BOM), i.e. even though the returned codepage is the most likely one, there's no 100% guarantee it's the correct one.</p>
+<p>Performance note: detection algorithm is quite slow, so results should be cached as much as possible.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -720,11 +726,12 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#DownloadFileAsync">DownloadFileAsync</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2486</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2496</div>
         </header>
         <pre class="signature"><code>DownloadFileAsync(url, path)</code></pre>
         
-        <div class="description"><p>Downloads file from specified URL to save file path. Result of asyncronous operation can be found in callback <a href="module-Callbacks.html#on_download_file_done">on_download_file_done</a></p></div>
+        <div class="description"><p>Downloads file from specified URL to save file path. Result of asyncronous operation can be found in callback <a href="module-Callbacks.html#on_download_file_done">on_download_file_done</a></p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -756,11 +763,12 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#EditTextFile">EditTextFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2535</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2547</div>
         </header>
         <pre class="signature"><code>EditTextFile(path)</code></pre>
         
-        <div class="description"><p>Edit a text file with the default text editor. <br> Default text editor can be changed via <code>Edit</code> button on the main tab of <a href="window.html#ShowConfigureV2">window.ShowConfigureV2</a>.</p></div>
+        <div class="description"><p>Edit a text file with the default text editor. <br> Default text editor can be changed via <code>Edit</code> button on the main tab of <a href="window.html#ShowConfigureV2">window.ShowConfigureV2</a>.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -784,11 +792,11 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#FileExists">FileExists</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2543</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2557</div>
         </header>
         <pre class="signature"><code>FileExists(path)</code></pre>
         
-        <div class="description"></div>
+        <div class="description"><p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -816,11 +824,12 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#FilePicker">FilePicker</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2550</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2566</div>
         </header>
         <pre class="signature"><code>FilePicker(title, default_path, filter, mode, window_id)</code></pre>
         
-        <div class="description"><p>Opens system file picker dialog window</p></div>
+        <div class="description"><p>Opens system file picker dialog window</p>
+<p>Relative <code>defaultPath</code> values are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -848,10 +857,10 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag deprecated">deprecated</span></div>
                 <h2><a class="anchor" href="#FileTest">FileTest</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2562</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2580</div>
         </header>
         <pre class="signature"><code>FileTest(path, mode)</code></pre>
-        <div class="notice notice-deprecated"><b>Deprecated.</b></div>
+        <div class="notice notice-deprecated"><b>Deprecated.</b> <p>For modes that access the filesystem, relative paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>; <code>split</code> remains purely lexical.</p></div>
         <div class="description"><p>Various utility functions for working with file.<br> <br> Deprecated: use <a href="utils.html#DetectCharset">utils.DetectCharset</a>, <a href="utils.html#FileExists">utils.FileExists</a>, <a href="utils.html#GetFileSize">utils.GetFileSize</a>, <a href="utils.html#IsDirectory">utils.IsDirectory</a>, <a href="utils.html#IsFile">utils.IsFile</a> and <a href="utils.html#SplitFilePath">utils.SplitFilePath</a> instead.</p></div>
         
         <section class="member-section">
@@ -887,11 +896,12 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#FolderPicker">FolderPicker</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2588</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2608</div>
         </header>
         <pre class="signature"><code>FolderPicker(title, default_path, window_id)</code></pre>
         
-        <div class="description"><p>Opens system folder picker dialog window</p></div>
+        <div class="description"><p>Opens system folder picker dialog window</p>
+<p>Relative <code>defaultPath</code> values are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -919,7 +929,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#FontPicker">FontPicker</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2598</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2620</div>
         </header>
         <pre class="signature"><code>FontPicker(default_font, window_id)</code></pre>
         
@@ -955,7 +965,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#FormatDuration">FormatDuration</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2609</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2631</div>
         </header>
         <pre class="signature"><code>FormatDuration(seconds)</code></pre>
         
@@ -991,7 +1001,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#FormatFileSize">FormatFileSize</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2619</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2641</div>
         </header>
         <pre class="signature"><code>FormatFileSize(bytes)</code></pre>
         
@@ -1027,7 +1037,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#GetAlbumArtAsync">GetAlbumArtAsync</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2629</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2651</div>
         </header>
         <pre class="signature"><code>GetAlbumArtAsync(window_id, handle, art_id, need_stub, only_embed, no_load)</code></pre>
         
@@ -1059,7 +1069,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#GetAlbumArtAsyncV2">GetAlbumArtAsyncV2</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2650</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2672</div>
         </header>
         <pre class="signature"><code>GetAlbumArtAsyncV2(window_id, handle, art_id, need_stub, only_embed, no_load)</code></pre>
         
@@ -1095,7 +1105,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#GetAlbumArtEmbedded">GetAlbumArtEmbedded</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2667</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2689</div>
         </header>
         <pre class="signature"><code>GetAlbumArtEmbedded(rawpath, art_id)</code></pre>
         
@@ -1131,7 +1141,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#GetAlbumArtV2">GetAlbumArtV2</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2682</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2704</div>
         </header>
         <pre class="signature"><code>GetAlbumArtV2(handle, art_id, need_stub)</code></pre>
         
@@ -1167,7 +1177,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#GetClipboardText">GetClipboardText</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2697</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2719</div>
         </header>
         <pre class="signature"><code>GetClipboardText()</code></pre>
         
@@ -1192,7 +1202,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#GetCountryFlag">GetCountryFlag</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2704</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2726</div>
         </header>
         <pre class="signature"><code>GetCountryFlag(country_or_code)</code></pre>
         
@@ -1228,11 +1238,12 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#GetDriveInfo">GetDriveInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2717</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2739</div>
         </header>
         <pre class="signature"><code>GetDriveInfo(path)</code></pre>
         
-        <div class="description"><p>Returns information about a logical drive or volume containing the supplied path.<br> The method also works with drive roots returned by <a href="utils.html#GetDrives">utils.GetDrives</a>.<br> Unready removable/CD drives still return an object with <code>IsReady == false</code> when the drive itself exists.</p></div>
+        <div class="description"><p>Returns information about a logical drive or volume containing the supplied path.<br> The method also works with drive roots returned by <a href="utils.html#GetDrives">utils.GetDrives</a>.<br> Unready removable/CD drives still return an object with <code>IsReady == false</code> when the drive itself exists.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1264,7 +1275,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#GetDrives">GetDrives</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2730</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2754</div>
         </header>
         <pre class="signature"><code>GetDrives()</code></pre>
         
@@ -1293,11 +1304,11 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#GetFileSize">GetFileSize</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2741</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2765</div>
         </header>
         <pre class="signature"><code>GetFileSize(path)</code></pre>
         
-        <div class="description"></div>
+        <div class="description"><p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1325,11 +1336,12 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#GetFolderSize">GetFolderSize</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2748</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2774</div>
         </header>
         <pre class="signature"><code>GetFolderSize(path)</code></pre>
         
-        <div class="description"><p>Calculates the total size of files contained in a directory and its subdirectories.<br> Directory reparse points are not followed. Entries that cannot be accessed are skipped.<br> This is a synchronous operation and may take time for large directory trees.</p></div>
+        <div class="description"><p>Calculates the total size of files contained in a directory and its subdirectories.<br> Directory reparse points are not followed. Entries that cannot be accessed are skipped.<br> This is a synchronous operation and may take time for large directory trees.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1361,11 +1373,12 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#GetFolderSizeAsync">GetFolderSizeAsync</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2761</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2789</div>
         </header>
         <pre class="signature"><code>GetFolderSizeAsync(path)</code></pre>
         
-        <div class="description"><p>Calculates the total size of files contained in a directory and its subdirectories asynchronously.<br> For synchronous calculation, use <a href="utils.html#GetFolderSize">utils.GetFolderSize</a>.<br> Directory reparse points are not followed. Entries that cannot be accessed are skipped.<br> The method returns a task id immediately, and the result is delivered later to <a href="module-Callbacks.html#on_get_folder_size_done">on_get_folder_size_done</a>.<br> Use the returned task id to match the result with the original call.</p></div>
+        <div class="description"><p>Calculates the total size of files contained in a directory and its subdirectories asynchronously.<br> For synchronous calculation, use <a href="utils.html#GetFolderSize">utils.GetFolderSize</a>.<br> Directory reparse points are not followed. Entries that cannot be accessed are skipped.<br> The method returns a task id immediately, and the result is delivered later to <a href="module-Callbacks.html#on_get_folder_size_done">on_get_folder_size_done</a>.<br> Use the returned task id to match the result with the original call.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1401,11 +1414,11 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#GetLastModified">GetLastModified</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2779</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2809</div>
         </header>
         <pre class="signature"><code>GetLastModified(path)</code></pre>
         
-        <div class="description"><p>Gets "last modified" attribute for file</p></div>
+        <div class="description"><p>Gets "last modified" attribute for file Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1433,7 +1446,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#GetPackageInfo">GetPackageInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2817</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2851</div>
         </header>
         <pre class="signature"><code>GetPackageInfo(package_id)</code></pre>
         
@@ -1465,7 +1478,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span><span class="flag deprecated">deprecated</span></div>
                 <h2><a class="anchor" href="#GetPackagePath">GetPackagePath</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2827</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2861</div>
         </header>
         <pre class="signature"><code>GetPackagePath(package_id)</code></pre>
         <div class="notice notice-deprecated"><b>Deprecated.</b></div>
@@ -1497,11 +1510,12 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#GetShortPath">GetShortPath</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2787</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2819</div>
         </header>
         <pre class="signature"><code>GetShortPath(path)</code></pre>
         
-        <div class="description"><p>Converts an existing path to its Windows short (8.3) form.<br> Returns an empty string if the path does not exist, the conversion fails, or short-name generation is unavailable for the path.</p></div>
+        <div class="description"><p>Converts an existing path to its Windows short (8.3) form.<br> Returns an empty string if the path does not exist, the conversion fails, or short-name generation is unavailable for the path.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1533,7 +1547,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#GetSysColour">GetSysColour</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2842</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2876</div>
         </header>
         <pre class="signature"><code>GetSysColour(index)</code></pre>
         
@@ -1569,7 +1583,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#GetSystemMetrics">GetSystemMetrics</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2852</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2886</div>
         </header>
         <pre class="signature"><code>GetSystemMetrics(index)</code></pre>
         
@@ -1601,7 +1615,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#GetWaveformAsync">GetWaveformAsync</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2859</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2893</div>
         </header>
         <pre class="signature"><code>GetWaveformAsync(handle, points, start, duration, on_progress)</code></pre>
         
@@ -1705,11 +1719,12 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Glob">Glob</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2956</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2990</div>
         </header>
         <pre class="signature"><code>Glob(pattern, exc_mask, inc_mask)</code></pre>
         
-        <div class="description"><p>Retrieves filepaths that match the supplied pattern.</p></div>
+        <div class="description"><p>Retrieves filepaths that match the supplied pattern.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1742,7 +1757,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#HTTPRequestAsync">HTTPRequestAsync</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2504</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2516</div>
         </header>
         <pre class="signature"><code>HTTPRequestAsync(type, url, user_agent_or_headers, post_data)</code></pre>
         
@@ -1792,7 +1807,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#InputBox">InputBox</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2971</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3007</div>
         </header>
         <pre class="signature"><code>InputBox(window_id, prompt, caption, default_val, error_on_cancel, help_text)</code></pre>
         
@@ -1838,11 +1853,11 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#IsDirectory">IsDirectory</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2998</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3034</div>
         </header>
         <pre class="signature"><code>IsDirectory(path)</code></pre>
         
-        <div class="description"></div>
+        <div class="description"><p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1870,11 +1885,11 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#IsFile">IsFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3005</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3043</div>
         </header>
         <pre class="signature"><code>IsFile(path)</code></pre>
         
-        <div class="description"></div>
+        <div class="description"><p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1902,7 +1917,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#IsKeyPressed">IsKeyPressed</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3012</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3052</div>
         </header>
         <pre class="signature"><code>IsKeyPressed(vkey)</code></pre>
         
@@ -1934,7 +1949,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ListFonts">ListFonts</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3051</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3093</div>
         </header>
         <pre class="signature"><code>ListFonts(mode)</code></pre>
         
@@ -1966,7 +1981,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#LoadFont">LoadFont</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3020</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3060</div>
         </header>
         <pre class="signature"><code>LoadFont(path)</code></pre>
         
@@ -1974,7 +1989,8 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
 <p>After a successful call the font becomes available to the foobar2000 process. It can be used by <a href="gdi.html#Font">gdi.Font</a> and <a href="d2d.html#Font">d2d.Font</a> and is visible to other JSplitter panels and Workers. The font is registered privately for the foobar2000 process rather than for JSplitter alone. As a result, it may also become available to native foobar2000 UI and other components that use the Windows font APIs, depending on when they enumerate or create their fonts.</p>
 <p>Relative paths are resolved from the file containing the <b>LoadFont</b> call. For the main script, they are relative to the main script directory; when called from an included script or a file-backed Worker, they are relative to that file. Absolute paths are used as-is.</p>
 <p>The file is registered once by its normalised absolute path. Calling <b>LoadFont</b> again with the same file returns <b>true</b> without registering it again. Loaded fonts remain available for the lifetime of the foobar2000 process; there is no corresponding unload operation.</p>
-<p>A font may expose different legacy/GDI and typographic/DirectWrite family names. <a href="utils.html#CheckFont">utils.CheckFont</a> can be used to verify a family name after loading, while <a href="utils.html#ListFonts">utils.ListFonts</a> shows the names reported by the GDI and DirectWrite backends.</p></div>
+<p>A font may expose different legacy/GDI and typographic/DirectWrite family names. <a href="utils.html#CheckFont">utils.CheckFont</a> can be used to verify a family name after loading, while <a href="utils.html#ListFonts">utils.ListFonts</a> shows the names reported by the GDI and DirectWrite backends.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2009,7 +2025,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#MapString">MapString</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3060</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3102</div>
         </header>
         <pre class="signature"><code>MapString(text, lcid, flags)</code></pre>
         
@@ -2041,7 +2057,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#MD5">MD5</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3070</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3112</div>
         </header>
         <pre class="signature"><code>MD5(str)</code></pre>
         
@@ -2073,11 +2089,12 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#MD5FromFile">MD5FromFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3079</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3121</div>
         </header>
         <pre class="signature"><code>MD5FromFile(path)</code></pre>
         
-        <div class="description"><p>Calculates MD5 value for file content</p></div>
+        <div class="description"><p>Calculates MD5 value for file content</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2105,7 +2122,7 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#MessageBox">MessageBox</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3088</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3132</div>
         </header>
         <pre class="signature"><code>MessageBox(msg, title, buttons, icon, default_button, help_text, window_id)</code></pre>
         
@@ -2137,11 +2154,12 @@ console.log(<span class="tok-string">`RAM: ${utils.FormatFileSize(info.RAM.Proce
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#OpenBinaryReader">OpenBinaryReader</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3137</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3181</div>
         </header>
         <pre class="signature"><code>OpenBinaryReader(filename)</code></pre>
         
-        <div class="description"><p>Opens a binary file for incremental reading into a caller-provided <code>Uint8Array</code>.<br> The buffer is reused by the caller, so repeated reads do not allocate a new typed array for every chunk. This is intended for large files or other cases where whole-file <a href="utils.html#ReadBinaryFile">utils.ReadBinaryFile</a> would be inefficient.<br> Reading is synchronous. For one-shot large-file processing, use the reader inside <a href="Worker.html#RunAsync">Worker.RunAsync</a>; for persistent pipelines, use it from a <a href="Worker.html#Worker">Worker</a>. Both approaches keep blocking file I/O off the panel UI thread.<br> Ordinary read failures are reported through <code>Read()</code> and <code>EOF</code>; they are not thrown as exceptions.</p></div>
+        <div class="description"><p>Opens a binary file for incremental reading into a caller-provided <code>Uint8Array</code>.<br> The buffer is reused by the caller, so repeated reads do not allocate a new typed array for every chunk. This is intended for large files or other cases where whole-file <a href="utils.html#ReadBinaryFile">utils.ReadBinaryFile</a> would be inefficient.<br> Reading is synchronous. For one-shot large-file processing, use the reader inside <a href="Worker.html#RunAsync">Worker.RunAsync</a>; for persistent pipelines, use it from a <a href="Worker.html#Worker">Worker</a>. Both approaches keep blocking file I/O off the panel UI thread.<br> Ordinary read failures are reported through <code>Read()</code> and <code>EOF</code>; they are not thrown as exceptions.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2190,11 +2208,12 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#OpenBinaryWriter">OpenBinaryWriter</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3168</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3214</div>
         </header>
         <pre class="signature"><code>OpenBinaryWriter(filename)</code></pre>
         
-        <div class="description"><p>Opens a binary file for incremental writing from a caller-provided <code>Uint8Array</code>.<br> The file is created or truncated when opened. The parent folder must already exist.<br> Reusing the same typed array avoids allocating temporary buffers for every chunk.<br> Write, flush, and close failures are reported through boolean return values. Writing is synchronous. For long-running processing, use the writer from a <a href="Worker.html#Worker">Worker</a> to avoid blocking the panel UI.</p></div>
+        <div class="description"><p>Opens a binary file for incremental writing from a caller-provided <code>Uint8Array</code>.<br> The file is created or truncated when opened. The parent folder must already exist.<br> Reusing the same typed array avoids allocating temporary buffers for every chunk.<br> Write, flush, and close failures are reported through boolean return values. Writing is synchronous. For long-running processing, use the writer from a <a href="Worker.html#Worker">Worker</a> to avoid blocking the panel UI.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2236,11 +2255,12 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#OpenDatabase">OpenDatabase</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3191</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3239</div>
         </header>
         <pre class="signature"><code>OpenDatabase(filename)</code></pre>
         
-        <div class="description"><p>Opens or creates a SQLite database for synchronous read/write access.<br> This is an optional host capability. <code>utils.OpenDatabase</code> is defined only when the SQLite library already loaded by foobar2000 exposes the required API. Scripts that need to support hosts without compatible SQLite can feature-detect it with <code>typeof utils.OpenDatabase === 'function'</code>.<br> Absolute paths are used as-is. Relative paths are resolved from the currently executing script file first, matching the script-relative behaviour of <a href="globals.html#include">include</a>. If the caller has no file origin, the panel/Worker script or package root is used; a fully in-memory panel falls back to the component directory.<br> The special filename <code>:memory:</code> creates an in-memory SQLite database and is not path-resolved. The parent folder of a file-backed database must already exist.<br> Database work is synchronous, so large imports or expensive queries should be run from a <a href="Worker.html#Worker">Worker</a> to avoid blocking the panel UI thread.<br> SQL values should be passed through the optional parameter array instead of being concatenated into the SQL text. Supported parameter types are <code>null</code>, boolean, number, string, <code>ArrayBuffer</code>, and typed-array views.</p></div>
+        <div class="description"><p>Opens or creates a SQLite database for synchronous read/write access.<br> This is an optional host capability. <code>utils.OpenDatabase</code> is defined only when the SQLite library already loaded by foobar2000 exposes the required API. Scripts that need to support hosts without compatible SQLite can feature-detect it with <code>typeof utils.OpenDatabase === 'function'</code>.<br> The special filename <code>:memory:</code> creates an in-memory SQLite database and is not path-resolved. The parent folder of a file-backed database must already exist.<br> Database work is synchronous, so large imports or expensive queries should be run from a <a href="Worker.html#Worker">Worker</a> to avoid blocking the panel UI thread.<br> SQL values should be passed through the optional parameter array instead of being concatenated into the SQL text. Supported parameter types are <code>null</code>, boolean, number, string, <code>ArrayBuffer</code>, and typed-array views.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2290,11 +2310,12 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#OpenTextReader">OpenTextReader</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3224</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3273</div>
         </header>
         <pre class="signature"><code>OpenTextReader(filename, codepage)</code></pre>
         
-        <div class="description"><p>Opens a text file for incremental, line-by-line reading.<br> Unlike <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>, the whole file is not materialized as one JavaScript string. This makes it suitable for processing large text files incrementally, one line at a time, without requiring the entire file contents to fit in the JavaScript heap.<br> <a href="TextReader.html#ReadLine">ReadLine()</a> removes the line terminator. A return value of <b>null</b> means that no next line could be returned; in that case, <a href="TextReader.html#EOF">EOF</a> is <b>true</b> for a clean end of file and <b>false</b> for a read or decoding failure. UTF-16LE/BE and UTF-32LE/BE are supported with codepages 1200/1201 and 12000/12001 respectively.<br> Pass codepage 0 to use automatic charset detection, matching <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.<br> Reading is synchronous. For long-running processing, use the reader from a <a href="Worker.html#Worker">Worker</a> to avoid blocking the panel UI.<br> Ordinary read and decoding failures are reported through <b>ReadLine()</b>> and <b>EOF</b>; they are not thrown as exceptions.</p></div>
+        <div class="description"><p>Opens a text file for incremental, line-by-line reading.<br> Unlike <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>, the whole file is not materialized as one JavaScript string. This makes it suitable for processing large text files incrementally, one line at a time, without requiring the entire file contents to fit in the JavaScript heap.<br> <a href="TextReader.html#ReadLine">ReadLine</a> removes the line terminator. A return value of <b>null</b> means that no next line could be returned; in that case, <a href="TextReader.html#EOF">EOF</a> is <b>true</b> for a clean end of file and <b>false</b> for a read or decoding failure. UTF-16LE/BE and UTF-32LE/BE are supported with codepages 1200/1201 and 12000/12001 respectively.<br> Pass codepage 0 to use automatic charset detection, matching <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.<br> Reading is synchronous. For long-running processing, use the reader from a <a href="Worker.html#Worker">Worker</a> to avoid blocking the panel UI.<br> Ordinary read and decoding failures are reported through <a href="TextReader.html#ReadLine">ReadLine</a> and <a href="TextReader.html#EOF">EOF</a>; they are not thrown as exceptions.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2344,11 +2365,12 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#OpenTextWriter">OpenTextWriter</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3612</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3685</div>
         </header>
         <pre class="signature"><code>OpenTextWriter(filename, write_bom, codepage)</code></pre>
         
-        <div class="description"><p>Opens a text file for incremental writing.<br> The file is created or truncated when opened. The parent folder must already exist.<br> UTF-8 is used by default. UTF-16LE (1200), UTF-16BE (1201), UTF-32LE (12000), UTF-32BE (12001), and other valid Windows codepages are also supported.<br> If <code>write_bom</code> is true, the matching BOM is written for UTF-8, UTF-16, and UTF-32. Other Windows codepages do not have a BOM and ignore this option.<br> Use <code>Write()</code> to append text without a line terminator or <code>WriteLine()</code> to append text followed by CRLF. Encoding and I/O failures are reported through boolean return values. This avoids building one large JavaScript string before writing a large file.<br> Writing is synchronous. For one-shot large-file generation, use the writer inside <a href="Worker.html#RunAsync">Worker.RunAsync</a>; for persistent pipelines, use it from a <a href="Worker.html#Worker">Worker</a>. Both approaches keep blocking file I/O off the panel UI thread.</p></div>
+        <div class="description"><p>Opens a text file for incremental writing.<br> The file is created or truncated when opened. The parent folder must already exist.<br> UTF-8 is used by default. UTF-16LE (1200), UTF-16BE (1201), UTF-32LE (12000), UTF-32BE (12001), and other valid Windows codepages are also supported.<br> If <code>write_bom</code> is true, the matching BOM is written for UTF-8, UTF-16, and UTF-32. Other Windows codepages do not have a BOM and ignore this option.<br> Use <code>Write()</code> to append text without a line terminator or <code>WriteLine()</code> to append text followed by CRLF. Encoding and I/O failures are reported through boolean return values. This avoids building one large JavaScript string before writing a large file.<br> Writing is synchronous. For one-shot large-file generation, use the writer inside <a href="Worker.html#RunAsync">Worker.RunAsync</a>; for persistent pipelines, use it from a <a href="Worker.html#Worker">Worker</a>. Both approaches keep blocking file I/O off the panel UI thread.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2396,7 +2418,7 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ParseHtml">ParseHtml</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3102</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3146</div>
         </header>
         <pre class="signature"><code>ParseHtml(html)</code></pre>
         
@@ -2437,7 +2459,7 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#PathWildcardMatch">PathWildcardMatch</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3126</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3170</div>
         </header>
         <pre class="signature"><code>PathWildcardMatch(pattern, str)</code></pre>
         
@@ -2469,11 +2491,11 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ReadBinaryFile">ReadBinaryFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3323</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3384</div>
         </header>
         <pre class="signature"><code>ReadBinaryFile(path)</code></pre>
         
-        <div class="description"><p>Read a file as raw binary.<br> For large files, consider <a href="utils.html#OpenBinaryReader">utils.OpenBinaryReader</a>; it reads incrementally into a reusable caller-provided buffer instead of allocating one typed array for the whole file.</p></div>
+        <div class="description"><p>Read a file as raw binary.<br> For large files, consider <a href="utils.html#OpenBinaryReader">utils.OpenBinaryReader</a>; it reads incrementally into a reusable caller-provided buffer instead of allocating one typed array for the whole file. Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2505,11 +2527,12 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ReadINI">ReadINI</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3334</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3397</div>
         </header>
         <pre class="signature"><code>ReadINI(filename, section, key, default_val)</code></pre>
         
-        <div class="description"><p>Note: this only returns up to 255 characters per value.</p></div>
+        <div class="description"><p>Note: this only returns up to 255 characters per value.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2541,11 +2564,12 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ReadTextFile">ReadTextFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3260</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3311</div>
         </header>
         <pre class="signature"><code>ReadTextFile(filename, codepage)</code></pre>
         
-        <div class="description"><p>Performance note: supply codepage argument if it is known, since codepage detection might take some time.<br> UTF-8, UTF-16LE/BE, UTF-32LE/BE, and supported Windows codepages use the same decoding rules as <a href="utils.html#OpenTextReader">utils.OpenTextReader</a>. A matching BOM is removed for UTF encodings.<br> For large line-oriented files, consider <a href="utils.html#OpenTextReader">utils.OpenTextReader</a>; it avoids creating one JavaScript string containing the entire file.</p></div>
+        <div class="description"><p>Performance note: supply codepage argument if it is known, since codepage detection might take some time.<br> UTF-8, UTF-16LE/BE, UTF-32LE/BE, and supported Windows codepages use the same decoding rules as <a href="utils.html#OpenTextReader">utils.OpenTextReader</a>. A matching BOM is removed for UTF encodings.<br> For large line-oriented files, consider <a href="utils.html#OpenTextReader">utils.OpenTextReader</a>; it avoids creating one JavaScript string containing the entire file.</p>
+<p>Filesystem path resolution: absolute paths are used as-is. Relative paths are resolved against the file containing the current call. For the main script this is the main script directory; for an included script or a file-backed Worker it is that script's own directory. If there is no file-backed caller, the existing host fallback is used (the Worker's relative-path root, or the component directory for an in-memory panel script).</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2577,11 +2601,11 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ReadUTF8">ReadUTF8</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3275</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3328</div>
         </header>
         <pre class="signature"><code>ReadUTF8(path)</code></pre>
         
-        <div class="description"><p>Returns a string. Will be empty if path doesn't exist or there was an error opening it.<br> For UTF8 files with or without BOM. If you're unsure about the file encoding, continue to use <a href="utils.html#ReadTextFile">utils.ReadTextFile</a></p></div>
+        <div class="description"><p>Returns a string. Will be empty if path doesn't exist or there was an error opening it.<br> For UTF8 files with or without BOM. If you're unsure about the file encoding, continue to use <a href="utils.html#ReadTextFile">utils.ReadTextFile</a> Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2609,11 +2633,12 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#RecyclePath">RecyclePath</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3284</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3339</div>
         </header>
         <pre class="signature"><code>RecyclePath(path)</code></pre>
         
-        <div class="description"><p>Moves a file or directory to the Recycle Bin.</p></div>
+        <div class="description"><p>Moves a file or directory to the Recycle Bin.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2641,11 +2666,11 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#RemovePath">RemovePath</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3294</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3351</div>
         </header>
         <pre class="signature"><code>RemovePath(path)</code></pre>
         
-        <div class="description"><p>Returns a number to indicate how many files/folders were removed.<br> May be 0 if the path did not exist or -1 if some other internal error occurred.</p></div>
+        <div class="description"><p>Returns a number to indicate how many files/folders were removed.<br> May be 0 if the path did not exist or -1 if some other internal error occurred. Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2673,11 +2698,12 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#RenamePath">RenamePath</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3303</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3362</div>
         </header>
         <pre class="signature"><code>RenamePath(from, to)</code></pre>
         
-        <div class="description"><p>Renames file or folder path.</p></div>
+        <div class="description"><p>Renames file or folder path.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2705,7 +2731,7 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#ReplaceIllegalChars">ReplaceIllegalChars</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3313</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3374</div>
         </header>
         <pre class="signature"><code>ReplaceIllegalChars(str, strip_trailing_periods)</code></pre>
         
@@ -2737,11 +2763,11 @@ reader.Close();</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#Run">Run</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3349</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3414</div>
         </header>
         <pre class="signature"><code>Run(target, args, working_dir, verb, show, wait)</code></pre>
         
-        <div class="description"><p>Runs a file, executable, URL, or document through the Windows shell.<br> This method uses ShellExecuteEx, so it supports shell verbs, file associations, URLs, and elevation through "runas".<br> Unlike <a href="utils.html#RunCmdAsync">RunCmdAsync</a>, this method does not capture stdout or stderr and does not provide timeout handling.<br> If wait is true, the call blocks until the launched process exits, when a process handle is available.<br></p></div>
+        <div class="description"><p>Runs a file, executable, URL, or document through the Windows shell.<br> This method uses ShellExecuteEx, so it supports shell verbs, file associations, URLs, and elevation through "runas".<br> Unlike <a href="utils.html#RunCmdAsync">RunCmdAsync</a>, this method does not capture stdout or stderr and does not provide timeout handling.<br> If wait is true, the call blocks until the launched process exits, when a process handle is available.<br> Relative <code>working_dir</code> values are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>. The <code>target</code> argument is not path-resolved.<br></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2798,11 +2824,11 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#RunCmdAsync">RunCmdAsync</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3432</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3498</div>
         </header>
         <pre class="signature"><code>RunCmdAsync(app, args, working_dir, show, timeout_ms)</code></pre>
         
-        <div class="description"><p>Runs an external process asynchronously.<br> Standard output and standard error are captured separately.<br> The method returns a task id immediately, and the result is delivered later to on_run_cmd_async_done.<br> Completion callbacks may arrive in a different order than the RunCmdAsync calls were made.<br> Use the returned task id to match the result with the original RunCmdAsync call.<br> If the process does not finish before timeout_ms, the whole process tree is terminated.<br> Pass 0 as timeout_ms to wait indefinitely.<br></p></div>
+        <div class="description"><p>Runs an external process asynchronously.<br> Standard output and standard error are captured separately.<br> The method returns a task id immediately, and the result is delivered later to on_run_cmd_async_done.<br> Completion callbacks may arrive in a different order than the RunCmdAsync calls were made.<br> Use the returned task id to match the result with the original RunCmdAsync call.<br> If the process does not finish before timeout_ms, the whole process tree is terminated.<br> Pass 0 as timeout_ms to wait indefinitely.<br> Relative <code>working_dir</code> values are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>. The <code>app</code> argument is not path-resolved.<br></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2834,7 +2860,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#SetClipboardText">SetClipboardText</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3470</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3537</div>
         </header>
         <pre class="signature"><code>SetClipboardText(text)</code></pre>
         
@@ -2862,7 +2888,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#SHA1">SHA1</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3477</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3544</div>
         </header>
         <pre class="signature"><code>SHA1(str)</code></pre>
         
@@ -2894,11 +2920,12 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#SHA1FromFile">SHA1FromFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3486</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3553</div>
         </header>
         <pre class="signature"><code>SHA1FromFile(path)</code></pre>
         
-        <div class="description"><p>Calculates SHA1 value for file content</p></div>
+        <div class="description"><p>Calculates SHA1 value for file content</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2926,7 +2953,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#ShowHtmlDialog">ShowHtmlDialog</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3495</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3564</div>
         </header>
         <pre class="signature"><code>ShowHtmlDialog(window_id, code_or_path, options)</code></pre>
         
@@ -2994,7 +3021,7 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#SplitFilePath">SplitFilePath</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3562</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3631</div>
         </header>
         <pre class="signature"><code>SplitFilePath(path)</code></pre>
         
@@ -3033,11 +3060,11 @@ console.log(result.Win32Error); <span class="tok-comment">// 0: process was star
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#WriteBinaryFile">WriteBinaryFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3575</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3644</div>
         </header>
         <pre class="signature"><code>WriteBinaryFile(path, data)</code></pre>
         
-        <div class="description"><p>Write raw binary data to a file.<br> For large output, consider <a href="utils.html#OpenBinaryWriter">utils.OpenBinaryWriter</a>; it writes incrementally from a reusable caller-provided buffer.</p></div>
+        <div class="description"><p>Write raw binary data to a file.<br> For large output, consider <a href="utils.html#OpenBinaryWriter">utils.OpenBinaryWriter</a>; it writes incrementally from a reusable caller-provided buffer. Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -3081,11 +3108,11 @@ utils.WriteBinaryFile(<span class="tok-string">&quot;D:\\Field.bin&quot;</span>,
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#WriteINI">WriteINI</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3599</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3670</div>
         </header>
         <pre class="signature"><code>WriteINI(filename, section, key, val)</code></pre>
         
-        <div class="description"></div>
+        <div class="description"><p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -3117,11 +3144,12 @@ utils.WriteBinaryFile(<span class="tok-string">&quot;D:\\Field.bin&quot;</span>,
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#WriteTextFile">WriteTextFile</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3646</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3721</div>
         </header>
         <pre class="signature"><code>WriteTextFile(filename, content, write_bom, codepage)</code></pre>
         
-        <div class="description"><p>Note: the parent folder must already exist.<br> UTF-8 is used by default, matching <a href="utils.html#OpenTextWriter">utils.OpenTextWriter</a>. UTF-16LE (1200), UTF-16BE (1201), UTF-32LE (12000), UTF-32BE (12001), and other valid Windows codepages are also supported.<br> If <code>write_bom</code> is true, the matching BOM is written for UTF-8, UTF-16, and UTF-32. Other Windows codepages do not have a BOM and ignore this option.<br> For large output, consider <a href="utils.html#OpenTextWriter">utils.OpenTextWriter</a>; it writes incrementally and does not require one large JavaScript string containing the entire file.</p></div>
+        <div class="description"><p>Note: the parent folder must already exist.<br> UTF-8 is used by default, matching <a href="utils.html#OpenTextWriter">utils.OpenTextWriter</a>. UTF-16LE (1200), UTF-16BE (1201), UTF-32LE (12000), UTF-32BE (12001), and other valid Windows codepages are also supported.<br> If <code>write_bom</code> is true, the matching BOM is written for UTF-8, UTF-16, and UTF-32. Other Windows codepages do not have a BOM and ignore this option.<br> For large output, consider <a href="utils.html#OpenTextWriter">utils.OpenTextWriter</a>; it writes incrementally and does not require one large JavaScript string containing the entire file.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>

@@ -2387,8 +2387,7 @@ let utils = {
 
     /**
      * Checks whether a font family is available to the current foobar2000 process.
-     * This includes system-installed fonts and fonts loaded with {@link utils.LoadFont}.<br>
-     * Note: it cannot detect fonts loaded by `foo_ui_hacks`. However, {@link gdi.Font} can use those fonts.
+     * This includes system-installed fonts and fonts loaded with {@link utils.LoadFont}.<br>     
      *
      * @param {string} name Font family name. Can be either in English or the localised name in your OS.
      * @return {boolean}
@@ -2422,6 +2421,8 @@ let utils = {
     /**
      * Copies a file.
      *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} from
      * @param {string} to
      * @param {boolean} [overwrite=true]
@@ -2432,6 +2433,8 @@ let utils = {
 
     /**
      * Copies a folder.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string} from
      * @param {string} to
@@ -2444,6 +2447,8 @@ let utils = {
 
     /**
      * Creates a folder.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string} path
      * @return {boolean}
@@ -2463,6 +2468,8 @@ let utils = {
     /**
      * Calculates CRC32 value for file content
      *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} path input file path
      * @return {number} CRC32 value for input file content. If it was an error while reading file or file is empty returns 0
      * @worker
@@ -2473,8 +2480,11 @@ let utils = {
      * Detect the codepage of the file.<br>
      * Note: detection algorithm is probability based (unless there is a UTF BOM),
      * i.e. even though the returned codepage is the most likely one, 
-     * there's no 100% guarantee it's the correct one.\n
+     * there's no 100% guarantee it's the correct one.
+     * 
      * Performance note: detection algorithm is quite slow, so results should be cached as much as possible.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {number} path Path to file
      * @return {number} Codepage number on success, 0 if codepage detection failed
@@ -2487,6 +2497,8 @@ let utils = {
      * Downloads file from specified URL to save file path.
      * Result of asyncronous operation can be found in callback {@link module:Callbacks.on_download_file_done on_download_file_done}
      * 
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} url File URL
      * @param {string} path Save file path
      * 
@@ -2536,11 +2548,15 @@ let utils = {
      * Edit a text file with the default text editor. <br>
      * Default text editor can be changed via `Edit` button on the main tab of {@link window.ShowConfigureV2}.
      *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {number} path Path to file
      */
     EditTextFile: function (path) { }, // (uint)
 
     /**
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {number} path Path to file
      * @return {boolean} true, if file exists.
      * @worker
@@ -2549,6 +2565,8 @@ let utils = {
 
     /**
      * Opens system file picker dialog window
+     *
+     * Relative <code>defaultPath</code> values are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string=} [title=undefined] Title of dialog. If empty it will be the title by system default
      * @param {string=} [default_path=undefined] Default file path to choose. If only path without file name is specified it will open specified folder
@@ -2567,6 +2585,8 @@ let utils = {
      *
      * @deprecated
      * 
+     * For modes that access the filesystem, relative paths are resolved as described in {@link utils.ReadTextFile}; <code>split</code> remains purely lexical.
+     *
      * @param {string} path
      * @param {string} mode
      *     "chardet" - Detects the codepage of the given file. Returns a corresponding codepage number on success, 0 if codepage detection failed.<br>
@@ -2587,6 +2607,8 @@ let utils = {
 
     /**
      * Opens system folder picker dialog window
+     *
+     * Relative <code>defaultPath</code> values are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string=} [title=undefined] Title of dialog. If empty it will be the title by system default
      * @param {string=} [default_path=undefined] Default folder path to choose
@@ -2719,6 +2741,8 @@ let utils = {
      * The method also works with drive roots returned by {@link utils.GetDrives}.<br>
      * Unready removable/CD drives still return an object with <code>IsReady == false</code> when the drive itself exists.
      *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} path Drive root or path on the drive
      * @return {?DriveInfo} Drive information, or null if the path cannot be resolved to a drive
      * 
@@ -2739,6 +2763,8 @@ let utils = {
     GetDrives: function () { },
 
     /**
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} path
      * @return {number} File size, in bytes
      * @worker
@@ -2749,6 +2775,8 @@ let utils = {
      * Calculates the total size of files contained in a directory and its subdirectories.<br>
      * Directory reparse points are not followed. Entries that cannot be accessed are skipped.<br>
      * This is a synchronous operation and may take time for large directory trees.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string} path Directory path
      * @return {number} Total size in bytes, or 0 if the path is not a directory
@@ -2765,6 +2793,8 @@ let utils = {
      * The method returns a task id immediately, and the result is delivered later to {@link module:Callbacks.on_get_folder_size_done on_get_folder_size_done}.<br>
      * Use the returned task id to match the result with the original call.
      *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} path Directory path
      * @return {number} Task id of the asynchronous operation
      *
@@ -2778,6 +2808,8 @@ let utils = {
 
     /**
      * Gets "last modified" attribute for file
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} path
      * @return {number} UNIX-time (seconds)
      * @worker
@@ -2787,6 +2819,8 @@ let utils = {
     /**
      * Converts an existing path to its Windows short (8.3) form.<br>
      * Returns an empty string if the path does not exist, the conversion fails, or short-name generation is unavailable for the path.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string} path File or directory path
      * @return {string} Short path or an empty string on failure
@@ -2956,6 +2990,8 @@ let utils = {
     /**
      * Retrieves filepaths that match the supplied pattern.
      *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} pattern For the path, you can use the * and ? wildcards for any intermediate directory and for the file name.
      * @param {number=} [exc_mask=0x10] Mask to exclude files. Default is {@link module:Flags.FILE_ATTRIBUTE_DIRECTORY FILE_ATTRIBUTE_DIRECTORY}. See flags like {@link module:Flags.FILE_ATTRIBUTE_NORMAL FILE_ATTRIBUTE_NORMAL} etc.
      * @param {number=} [inc_mask=0xffffffff] Mask to include files
@@ -2996,6 +3032,8 @@ let utils = {
     InputBox: function (window_id, prompt, caption, default_val, error_on_cancel, help_text) { }, // (string)
 
     /**
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} path
      * @return {boolean} true, if location exists and it's a directory
      * @worker
@@ -3003,6 +3041,8 @@ let utils = {
     IsDirectory: function (path) { },
 
     /**
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} path
      * @return {boolean} true, if location exists and it's a file
      * @worker
@@ -3034,6 +3074,8 @@ let utils = {
      *
      * A font may expose different legacy/GDI and typographic/DirectWrite family names. 
      * {@link utils.CheckFont} can be used to verify a family name after loading, while {@link utils.ListFonts} shows the names reported by the GDI and DirectWrite backends.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string} path Path to a font file, typically a `.ttf` or `.otf` file.
      * @return {boolean} `true` if the font is already loaded or was loaded successfully; `false` if the
@@ -3078,6 +3120,8 @@ let utils = {
 
     /**
      * Calculates MD5 value for file content
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string} path input file path
      * @return {string} MD5 value for input file content in hex format string. If it was an error while reading file returns empty string. If file is empty returns "d41d8cd98f00b204e9800998ecf8427e"
@@ -3141,6 +3185,8 @@ let utils = {
      * Reading is synchronous. For one-shot large-file processing, use the reader inside {@link Worker.RunAsync}; for persistent pipelines, use it from a {@link Worker}. Both approaches keep blocking file I/O off the panel UI thread.<br>
      * Ordinary read failures are reported through <code>Read()</code> and <code>EOF</code>; they are not thrown as exceptions.
      *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} filename File to open.
      * @return {?BinaryReader} Open streaming reader, or <code>null</code> if the reader could not be created. Ordinary file open/setup failures are reported as <code>null</code>, not exceptions.
      *
@@ -3171,6 +3217,8 @@ let utils = {
      * Reusing the same typed array avoids allocating temporary buffers for every chunk.<br>
      * Write, flush, and close failures are reported through boolean return values. Writing is synchronous. For long-running processing, use the writer from a {@link Worker} to avoid blocking the panel UI.
      *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} filename File to create or overwrite.
      * @return {?BinaryWriter} Open streaming writer, or <code>null</code> if the writer could not be created. Ordinary file creation/open failures are reported as <code>null</code>, not exceptions.
      *
@@ -3191,10 +3239,11 @@ let utils = {
     /**
      * Opens or creates a SQLite database for synchronous read/write access.<br>
      * This is an optional host capability. <code>utils.OpenDatabase</code> is defined only when the SQLite library already loaded by foobar2000 exposes the required API. Scripts that need to support hosts without compatible SQLite can feature-detect it with <code>typeof utils.OpenDatabase === 'function'</code>.<br>
-     * Absolute paths are used as-is. Relative paths are resolved from the currently executing script file first, matching the script-relative behaviour of {@link include}. If the caller has no file origin, the panel/Worker script or package root is used; a fully in-memory panel falls back to the component directory.<br>
      * The special filename <code>:memory:</code> creates an in-memory SQLite database and is not path-resolved. The parent folder of a file-backed database must already exist.<br>
      * Database work is synchronous, so large imports or expensive queries should be run from a {@link Worker} to avoid blocking the panel UI thread.<br>
      * SQL values should be passed through the optional parameter array instead of being concatenated into the SQL text. Supported parameter types are <code>null</code>, boolean, number, string, <code>ArrayBuffer</code>, and typed-array views.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string} filename Absolute or script-relative database filename, or <code>:memory:</code>.
      * @return {?SQLiteDatabase} Open database handle, or <code>null</code> if the database could not be opened or created. Ordinary open/create failures are reported as <code>null</code>, matching the other <code>Open*</code> resource factories. SQL and database-operation errors after a successful open are reported as exceptions.
@@ -3224,11 +3273,13 @@ let utils = {
     /**
      * Opens a text file for incremental, line-by-line reading.<br>
      * Unlike {@link utils.ReadTextFile}, the whole file is not materialized as one JavaScript string. This makes it suitable for processing large text files incrementally, one line at a time, without requiring the entire file contents to fit in the JavaScript heap.<br>
-     * {@link TextReader#ReadLine ReadLine()} removes the line terminator. A return value of <b>null</b> means that no next line could be returned; in that case, {@link TextReader#EOF EOF} is <b>true</b> for a clean end of file and <b>false</b> for a read or decoding failure.
+     * {@link TextReader#ReadLine ReadLine} removes the line terminator. A return value of <b>null</b> means that no next line could be returned; in that case, {@link TextReader#EOF EOF} is <b>true</b> for a clean end of file and <b>false</b> for a read or decoding failure.
      * UTF-16LE/BE and UTF-32LE/BE are supported with codepages 1200/1201 and 12000/12001 respectively.<br>
      * Pass codepage 0 to use automatic charset detection, matching {@link utils.ReadTextFile}.<br>
      * Reading is synchronous. For long-running processing, use the reader from a {@link Worker} to avoid blocking the panel UI.<br>
-     * Ordinary read and decoding failures are reported through <b>ReadLine()</b>> and <b>EOF</b>; they are not thrown as exceptions.
+     * Ordinary read and decoding failures are reported through {@link TextReader#ReadLine ReadLine} and {@link TextReader#EOF EOF}; they are not thrown as exceptions.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string} filename File to open.
      * @param {number=} [codepage=65001] Windows codepage used to decode each line. UTF-16LE/BE use 1200/1201, UTF-32LE/BE use 12000/12001, and 0 enables automatic detection. See Codepages.js.
@@ -3262,6 +3313,8 @@ let utils = {
      * UTF-8, UTF-16LE/BE, UTF-32LE/BE, and supported Windows codepages use the same decoding rules as {@link utils.OpenTextReader}. A matching BOM is removed for UTF encodings.<br>
      * For large line-oriented files, consider {@link utils.OpenTextReader}; it avoids creating one JavaScript string containing the entire file.
      *
+     * Filesystem path resolution: absolute paths are used as-is. Relative paths are resolved against the file containing the current call. For the main script this is the main script directory; for an included script or a file-backed Worker it is that script's own directory. If there is no file-backed caller, the existing host fallback is used (the Worker's relative-path root, or the component directory for an in-memory panel script).
+     *
      * @param {string} filename
      * @param {number=} [codepage=65001] See Codepages.js. UTF-16LE/BE use 1200/1201, UTF-32LE/BE use 12000/12001. If codepage is 0, automatic detection is performed.
      * @return {string} Decoded file contents, or an empty string if the file could not be read or decoded.
@@ -3275,6 +3328,8 @@ let utils = {
     /**
      * Returns a string. Will be empty if path doesn't exist or there was an error opening it.<br>
      * For UTF8 files with or without BOM. If you're unsure about the file encoding, continue to use {@link utils.ReadTextFile}
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} path
      * @return {string}
      * @worker
@@ -3283,6 +3338,8 @@ let utils = {
 
     /**
      * Moves a file or directory to the Recycle Bin.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string} path path to a file or directory
      * @returns {boolean} true on success, false otherwise
@@ -3294,6 +3351,8 @@ let utils = {
     /**
      * Returns a number to indicate how many files/folders were removed.<br>
      * May be 0 if the path did not exist or -1 if some other internal error occurred.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} path
      * @return {number}
      * @worker
@@ -3303,6 +3362,8 @@ let utils = {
     /**
      * Renames file or folder path.
      * 
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} from
      * @param {string} to
      * @return {boolean}
@@ -3323,6 +3384,8 @@ let utils = {
     /**
      * Read a file as raw binary.<br>
      * For large files, consider {@link utils.OpenBinaryReader}; it reads incrementally into a reusable caller-provided buffer instead of allocating one typed array for the whole file.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} path Absolute file path
      * @returns {Uint8Array} File bytes, or null if was an error
      * 
@@ -3333,6 +3396,8 @@ let utils = {
 
     /**
      * Note: this only returns up to 255 characters per value.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string} filename
      * @param {string} section
@@ -3351,6 +3416,7 @@ let utils = {
      * This method uses ShellExecuteEx, so it supports shell verbs, file associations, URLs, and elevation through "runas".<br>
      * Unlike {@link utils.RunCmdAsync RunCmdAsync}, this method does not capture stdout or stderr and does not provide timeout handling.<br>
      * If wait is true, the call blocks until the launched process exits, when a process handle is available.<br>
+     * Relative <code>working_dir</code> values are resolved as described in {@link utils.ReadTextFile}. The <code>target</code> argument is not path-resolved.<br>
      *
      * @param {string} target
      * File, executable, URL, or document to run/open.<br>
@@ -3437,6 +3503,7 @@ let utils = {
      * Use the returned task id to match the result with the original RunCmdAsync call.<br>
      * If the process does not finish before timeout_ms, the whole process tree is terminated.<br>
      * Pass 0 as timeout_ms to wait indefinitely.<br>
+     * Relative <code>working_dir</code> values are resolved as described in {@link utils.ReadTextFile}. The <code>app</code> argument is not path-resolved.<br>
      *
      * @param {string} app
      * Full path or executable name to run.<br>
@@ -3485,6 +3552,8 @@ let utils = {
 
     /**
      * Calculates SHA1 value for file content
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string} path input file path
      * @return {string} SHA1 value for input file content in hex format string. If it was an error while reading file returns empty string. If file is empty returns "da39a3ee5e6b4b0d3255bfef95601890afd80709"
@@ -3575,6 +3644,8 @@ let utils = {
     /**
      * Write raw binary data to a file.<br>
      * For large output, consider {@link utils.OpenBinaryWriter}; it writes incrementally from a reusable caller-provided buffer.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} path Absolute file path
      * @param {Uint8Array} data Bytes to write
      * @returns {boolean} true on success
@@ -3597,6 +3668,8 @@ let utils = {
     WriteBinaryFile: function(path, data) { },
 
     /**
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} filename
      * @param {string} section
      * @param {string} key
@@ -3616,6 +3689,8 @@ let utils = {
      * If <code>write_bom</code> is true, the matching BOM is written for UTF-8, UTF-16, and UTF-32. Other Windows codepages do not have a BOM and ignore this option.<br>
      * Use <code>Write()</code> to append text without a line terminator or <code>WriteLine()</code> to append text followed by CRLF. Encoding and I/O failures are reported through boolean return values. This avoids building one large JavaScript string before writing a large file.<br>
      * Writing is synchronous. For one-shot large-file generation, use the writer inside {@link Worker.RunAsync}; for persistent pipelines, use it from a {@link Worker}. Both approaches keep blocking file I/O off the panel UI thread.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string} filename File to create or overwrite.
      * @param {boolean=} [write_bom=true] If true, writes a BOM for UTF-8/UTF-16/UTF-32.
@@ -3648,6 +3723,8 @@ let utils = {
      * UTF-8 is used by default, matching {@link utils.OpenTextWriter}. UTF-16LE (1200), UTF-16BE (1201), UTF-32LE (12000), UTF-32BE (12001), and other valid Windows codepages are also supported.<br>
      * If <code>write_bom</code> is true, the matching BOM is written for UTF-8, UTF-16, and UTF-32. Other Windows codepages do not have a BOM and ignore this option.<br>
      * For large output, consider {@link utils.OpenTextWriter}; it writes incrementally and does not require one large JavaScript string containing the entire file.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string} filename
      * @param {string} content
