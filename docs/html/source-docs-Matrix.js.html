@@ -566,7 +566,7 @@
      */</span>
     <span class="tok-keyword">static</span> RotationArbitraryAxis(x, y, z, degree)
     {
-        <span class="tok-comment">// Normalize the vector represented by x, y, and z</span>
+        <span class="tok-comment">// Normalize the vector represented by x, y, and z</span>
         <span class="tok-keyword">const</span> magnitude = Math.sqrt(x*x + y*y + z*z);
         x /= magnitude;
         y /= magnitude;
@@ -636,17 +636,17 @@
                 a[<span class="tok-number">12</span>] * b[<span class="tok-number">2</span>] + a[<span class="tok-number">13</span>] * b[<span class="tok-number">6</span>] + a[<span class="tok-number">14</span>] * b[<span class="tok-number">10</span>] + a[<span class="tok-number">15</span>] * b[<span class="tok-number">14</span>],
                 a[<span class="tok-number">12</span>] * b[<span class="tok-number">3</span>] + a[<span class="tok-number">13</span>] * b[<span class="tok-number">7</span>] + a[<span class="tok-number">14</span>] * b[<span class="tok-number">11</span>] + a[<span class="tok-number">15</span>] * b[<span class="tok-number">15</span>]
             ]);            
-            <span class="tok-comment">// const result = new Float32Array(16);</span>
-            <span class="tok-comment">// for (let i = 0; i &lt; 4; i++) {</span>
-            <span class="tok-comment">//     for (let j = 0; j &lt; 4; j++) {</span>
-            <span class="tok-comment">//         let sum = 0;</span>
-            <span class="tok-comment">//         for (let k = 0; k &lt; 4; k++) {</span>
-            <span class="tok-comment">//             sum += a[i * 4 + k] * b[k * 4 + j];</span>
-            <span class="tok-comment">//         }</span>
-            <span class="tok-comment">//         result[i * 4 + j] = sum;</span>
-            <span class="tok-comment">//     }</span>
-            <span class="tok-comment">// }</span>
-            <span class="tok-comment">// return result;</span>
+            <span class="tok-comment">// const result = new Float32Array(16);</span>
+            <span class="tok-comment">// for (let i = 0; i &lt; 4; i++) {</span>
+            <span class="tok-comment">//     for (let j = 0; j &lt; 4; j++) {</span>
+            <span class="tok-comment">//         let sum = 0;</span>
+            <span class="tok-comment">//         for (let k = 0; k &lt; 4; k++) {</span>
+            <span class="tok-comment">//             sum += a[i * 4 + k] * b[k * 4 + j];</span>
+            <span class="tok-comment">//         }</span>
+            <span class="tok-comment">//         result[i * 4 + j] = sum;</span>
+            <span class="tok-comment">//     }</span>
+            <span class="tok-comment">// }</span>
+            <span class="tok-comment">// return result;</span>
         }
 
         <span class="tok-keyword">let</span> result = matrices[<span class="tok-number">0</span>];

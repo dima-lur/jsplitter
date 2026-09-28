@@ -229,22 +229,22 @@
             <h1>samples/basic/Focus Track Waveform.js</h1>
             <div class="source-references"><b>Referenced by:</b><a href="utils.html#GetWaveformAsync">utils.GetWaveformAsync</a></div>
         </header>
-        <pre class="source-code"><code><span class="tok-comment">// JSplitter sample: Focus Track Waveform</span>
-<span class="tok-comment">//</span>
-<span class="tok-comment">// Recommended pattern for a waveform that should appear while decoding:</span>
-<span class="tok-comment">// 1. Call GetWaveformAsync() once for the whole requested range.</span>
-<span class="tok-comment">// 2. Store progress chunks immediately as they arrive.</span>
-<span class="tok-comment">// 3. Animate a separate visible front toward the loaded front instead of drawing</span>
-<span class="tok-comment">//    each native progress chunk as a visible step.</span>
-<span class="tok-comment">// 4. Return false from the progress callback when the request becomes obsolete;</span>
-<span class="tok-comment">//    this cancels the native decode.</span>
-<span class="tok-comment">//</span>
-<span class="tok-comment">// This keeps one decoder open for the whole pass and gives smooth progressive</span>
-<span class="tok-comment">// rendering without predicting completion time from track duration or codec speed.</span>
-<span class="tok-comment">//</span>
-<span class="tok-comment">// GetWaveformAsync returns a 0.0..1.0 amplitude envelope. Each value is a</span>
-<span class="tok-comment">// magnitude for one time interval, so the SAME value is mirrored above and</span>
-<span class="tok-comment">// below the center line.</span>
+        <pre class="source-code"><code><span class="tok-comment">// JSplitter sample: Focus Track Waveform</span>
+<span class="tok-comment">//</span>
+<span class="tok-comment">// Recommended pattern for a waveform that should appear while decoding:</span>
+<span class="tok-comment">// 1. Call GetWaveformAsync() once for the whole requested range.</span>
+<span class="tok-comment">// 2. Store progress chunks immediately as they arrive.</span>
+<span class="tok-comment">// 3. Animate a separate visible front toward the loaded front instead of drawing</span>
+<span class="tok-comment">//    each native progress chunk as a visible step.</span>
+<span class="tok-comment">// 4. Return false from the progress callback when the request becomes obsolete;</span>
+<span class="tok-comment">//    this cancels the native decode.</span>
+<span class="tok-comment">//</span>
+<span class="tok-comment">// This keeps one decoder open for the whole pass and gives smooth progressive</span>
+<span class="tok-comment">// rendering without predicting completion time from track duration or codec speed.</span>
+<span class="tok-comment">//</span>
+<span class="tok-comment">// GetWaveformAsync returns a 0.0..1.0 amplitude envelope. Each value is a</span>
+<span class="tok-comment">// magnitude for one time interval, so the SAME value is mirrored above and</span>
+<span class="tok-comment">// below the center line.</span>
 
 <span class="tok-keyword">const</span> WAVEFORM_POINTS = <span class="tok-number">2048</span>;
 <span class="tok-keyword">const</span> REVEAL_INTERVAL_MS = <span class="tok-number">16</span>;
@@ -300,8 +300,8 @@
         visiblePosition = loaded;
     }
     <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (elapsed &gt; <span class="tok-number">0</span> &amp;&amp; followSpeed &gt; <span class="tok-number">0</span>) {
-        <span class="tok-comment">// Follow the producer at its real cumulative decode rate. The visible</span>
-        <span class="tok-comment">// front remains smooth even though native progress arrives in chunks.</span>
+        <span class="tok-comment">// Follow the producer at its real cumulative decode rate. The visible</span>
+        <span class="tok-comment">// front remains smooth even though native progress arrives in chunks.</span>
         visiblePosition = Math.min(
             loaded,
             visiblePosition + followSpeed * elapsed
@@ -354,8 +354,8 @@
             <span class="tok-number">0</span>,
             <span class="tok-number">0</span>,
             (values, start) =&gt; {
-                <span class="tok-comment">// Focus changed while this track was still decoding.</span>
-                <span class="tok-comment">// Returning false cancels the native decode.</span>
+                <span class="tok-comment">// Focus changed while this track was still decoding.</span>
+                <span class="tok-comment">// Returning false cancels the native decode.</span>
                 <span class="tok-keyword">if</span> (token !== loadToken) {
                     <span class="tok-keyword">return</span> <span class="tok-literal">false</span>;
                 }
@@ -377,7 +377,7 @@
             <span class="tok-keyword">return</span>;
         }
 
-        <span class="tok-comment">// The Promise still returns the complete envelope after progressive delivery.</span>
+        <span class="tok-comment">// The Promise still returns the complete envelope after progressive delivery.</span>
         waveform = complete;
         loadedPoints = complete.length;
         loading = <span class="tok-literal">false</span>;
@@ -391,7 +391,7 @@
         window.Repaint();
     }
     <span class="tok-keyword">catch</span> (e) {
-        <span class="tok-comment">// Cancellation of an obsolete request is expected.</span>
+        <span class="tok-comment">// Cancellation of an obsolete request is expected.</span>
         <span class="tok-keyword">if</span> (token !== loadToken) {
             <span class="tok-keyword">return</span>;
         }
@@ -452,9 +452,9 @@
 
     gr.DrawLine(<span class="tok-number">0</span>, centerY, w, centerY, <span class="tok-number">1</span>, CENTER_COLOR);
 
-    <span class="tok-comment">// Resample the native envelope to screen columns. Averaging when several</span>
-    <span class="tok-comment">// waveform points map to one pixel keeps the display clean and close to the</span>
-    <span class="tok-comment">// intended envelope instead of making transients unnaturally dense.</span>
+    <span class="tok-comment">// Resample the native envelope to screen columns. Averaging when several</span>
+    <span class="tok-comment">// waveform points map to one pixel keeps the display clean and close to the</span>
+    <span class="tok-comment">// intended envelope instead of making transients unnaturally dense.</span>
     <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> x = <span class="tok-number">0</span>; x &lt; visibleColumns; ++x) {
         <span class="tok-keyword">const</span> amplitude = displayValueAtColumn(x, w) * maxAmplitude;
         gr.DrawLine(
@@ -519,7 +519,7 @@
 }
 
 <span class="tok-keyword">function</span> on_script_unload() {
-    <span class="tok-comment">// Makes the active progress callback return false if it is invoked again.</span>
+    <span class="tok-comment">// Makes the active progress callback return false if it is invoked again.</span>
     ++loadToken;
     stopRevealTimer();
 }

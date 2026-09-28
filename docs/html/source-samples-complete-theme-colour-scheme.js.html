@@ -306,15 +306,15 @@
     };
 }
 
-<span class="tok-comment">// playingBackgroundColor contains the Playing accent RGB together with the</span>
-<span class="tok-comment">// recommended alpha for the row highlight. Reuse the same RGB at full opacity</span>
-<span class="tok-comment">// when a solid Playing indicator is needed.</span>
+<span class="tok-comment">// playingBackgroundColor contains the Playing accent RGB together with the</span>
+<span class="tok-comment">// recommended alpha for the row highlight. Reuse the same RGB at full opacity</span>
+<span class="tok-comment">// when a solid Playing indicator is needed.</span>
 <span class="tok-keyword">function</span> opaque(color) {
     <span class="tok-keyword">return</span> <span class="tok-number">0xFF000000</span> | (color &amp; <span class="tok-number">0x00FFFFFF</span>);
 }
 
-<span class="tok-comment">// Same muted text treatment used by Materialize Playlist: preserve the selected</span>
-<span class="tok-comment">// Text RGB and reduce only its alpha.</span>
+<span class="tok-comment">// Same muted text treatment used by Materialize Playlist: preserve the selected</span>
+<span class="tok-comment">// Text RGB and reduce only its alpha.</span>
 <span class="tok-keyword">function</span> mutedText(color, strength = <span class="tok-number">0.40</span>) {
     <span class="tok-keyword">const</span> sourceAlpha = (color &gt;&gt;&gt; <span class="tok-number">24</span>) &amp; <span class="tok-number">0xFF</span>;
     <span class="tok-keyword">const</span> alpha = Math.max(<span class="tok-number">0</span>, Math.min(<span class="tok-number">255</span>, Math.round(sourceAlpha * strength)));

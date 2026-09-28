@@ -281,7 +281,7 @@
         </header>
         <pre class="signature"><code>clearMarks(name)</code></pre>
         
-        <div class="description"><p>Removes mark entries from the performance timeline.<br> If <code>name</code> is supplied, all marks with that name are removed. If omitted, all mark entries are removed. Clearing a mark also removes it from subsequent named-mark lookup by <a href="performance.html#measure">performance.measure</a>.</p></div>
+        <div class="description"><p>Removes mark entries from the performance timeline.<br> If <b>name</b> is supplied, all marks with that name are removed. If omitted, all mark entries are removed. Clearing a mark also removes it from subsequent named-mark lookup by <a href="performance.html#measure">performance.measure</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -313,7 +313,7 @@
         </header>
         <pre class="signature"><code>clearMeasures(name)</code></pre>
         
-        <div class="description"><p>Removes measure entries from the performance timeline.<br> If <code>name</code> is supplied, all measures with that name are removed. If omitted, all measure entries are removed.</p></div>
+        <div class="description"><p>Removes measure entries from the performance timeline.<br> If <b>name</b> is supplied, all measures with that name are removed. If omitted, all measure entries are removed.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -434,7 +434,7 @@
         </header>
         <pre class="signature"><code>mark(name, markOptions)</code></pre>
         
-        <div class="description"><p>Creates a named <a href="globals.html#PerformanceEntry">PerformanceEntry</a> with <code>entryType</code> "mark" and adds it to the performance timeline.<br> Multiple marks may use the same name. All marks remain in the timeline until cleared; when a mark name is later used by <a href="performance.html#measure">performance.measure</a>, the most recently created matching mark is used.</p></div>
+        <div class="description"><p>Creates a named <a href="globals.html#PerformanceEntry">PerformanceEntry</a> with <b>entryType</b> "mark" and adds it to the performance timeline.<br> Multiple marks may use the same name. All marks remain in the timeline until cleared; when a mark name is later used by <a href="performance.html#measure">performance.measure</a>, the most recently created matching mark is used.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -453,7 +453,7 @@
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If <code>startTime</code> is not a finite non-negative number.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>startTime</b> is not a finite non-negative number.</p></div>
         </section>
         
         
@@ -485,16 +485,16 @@ performance.clearMeasures();</code></pre>
         </header>
         <pre class="signature"><code>measure(measureName, startOrMeasureOptions, endMark, legacyMeasureOptions)</code></pre>
         
-        <div class="description"><p>Creates a named <a href="globals.html#PerformanceEntry">PerformanceEntry</a> with <code>entryType</code> "measure" and adds it to the performance timeline.<br></p>
-<p>Standard forms supported by JSplitter:<br> <code>performance.measure(name)</code> - measures from timestamp 0 to <a href="performance.html#now">performance.now</a>.<br> <code>performance.measure(name, startMark)</code> - measures from the most recent named start mark to now.<br> <code>performance.measure(name, startMark, endMark)</code> - measures between the most recent matching named marks.<br> <code>performance.measure(name, options)</code> - derives start/end times from <a href="globals.html#PerformanceMeasureOptions">PerformanceMeasureOptions</a>.<br> <code>performance.measure(name, {}, endMark)</code> - measures from timestamp 0 to the named end mark.<br></p>
-<p>In <code>options</code>, <code>start</code> and <code>end</code> may be either mark names or finite non-negative timestamps. <code>duration</code> may be supplied with exactly one of <code>start</code> or <code>end</code>. If an explicitly named mark does not exist, an error is thrown.<br> Multiple measures may use the same name. Named mark lookup always uses the most recently created matching mark.<br></p>
-<p><b>Compatibility note:</b> for historical JSplitter compatibility, a fourth <code>legacyMeasureOptions</code> argument is also accepted. This form preserves the previous JSplitter precedence rules: existing explicit <code>startMark</code>/<code>endMark</code> values take precedence, while numeric <code>start</code>, <code>end</code>, or <code>duration</code> options fill missing values. New code should prefer the standard forms above.<br> For backward compatibility, an empty positional mark name (<code>""</code>) is treated as omitted rather than as a mark named with an empty string.</p></div>
+        <div class="description"><p>Creates a named <a href="globals.html#PerformanceEntry">PerformanceEntry</a> with <b>entryType</b> "measure" and adds it to the performance timeline.<br></p>
+<p>Standard forms supported by JSplitter:<br> <b>performance.measure(name)</b> - measures from timestamp 0 to <a href="performance.html#now">performance.now</a>.<br> <b>performance.measure(name, startMark)</b> - measures from the most recent named start mark to now.<br> <b>performance.measure(name, startMark, endMark)</b> - measures between the most recent matching named marks.<br> <b>performance.measure(name, options)</b> - derives start/end times from <a href="globals.html#PerformanceMeasureOptions">PerformanceMeasureOptions</a>.<br> <b>performance.measure(name, {}, endMark)</b> - measures from timestamp 0 to the named end mark.<br></p>
+<p>In <b>options</b>, <b>start</b> and <b>end</b> may be either mark names or finite non-negative timestamps. <b>duration</b> may be supplied with exactly one of <b>start</b> or <b>end</b>. If an explicitly named mark does not exist, an error is thrown.<br> Multiple measures may use the same name. Named mark lookup always uses the most recently created matching mark.<br></p>
+<p><b>Compatibility note:</b> for historical JSplitter compatibility, a fourth <b>legacyMeasureOptions</b> argument is also accepted. This form preserves the previous JSplitter precedence rules: existing explicit <b>startMark</b>/<b>endMark</b> values take precedence, while numeric <b>start</b>, <b>end</b>, or <b>duration</b> options fill missing values. New code should prefer the standard forms above.<br> For backward compatibility, an empty positional mark name (<b>""</b>) is treated as omitted rather than as a mark named with an empty string.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>measureName</code></td><td><code>string</code></td><td><p>Measure name.</p></td></tr><tr><td><code>startOrMeasureOptions</code><span class="mini-flag">optional</span></td><td><code>(string|<a class="type-link" href="globals.html#PerformanceMeasureOptions">PerformanceMeasureOptions</a>)</code></td><td><p>Start mark name or standard measure options.</p></td></tr><tr><td><code>endMark</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>End mark name.</p></td></tr><tr><td><code>legacyMeasureOptions</code><span class="mini-flag">optional</span></td><td><code>Object</code></td><td><p>JSplitter legacy four-argument options object. Supports numeric <code>start</code>, <code>end</code>, <code>duration</code>, and arbitrary <code>detail</code>.</p></td></tr></tbody>
+                <tbody><tr><td><code>measureName</code></td><td><code>string</code></td><td><p>Measure name.</p></td></tr><tr><td><code>startOrMeasureOptions</code><span class="mini-flag">optional</span></td><td><code>(string|<a class="type-link" href="globals.html#PerformanceMeasureOptions">PerformanceMeasureOptions</a>)</code></td><td><p>Start mark name or standard measure options.</p></td></tr><tr><td><code>endMark</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>End mark name.</p></td></tr><tr><td><code>legacyMeasureOptions</code><span class="mini-flag">optional</span></td><td><code>Object</code></td><td><p>JSplitter legacy four-argument options object. Supports numeric <b>start</b>, <b>end</b>, <b>duration</b>, and arbitrary <b>detail</b>.</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -507,7 +507,7 @@ performance.clearMeasures();</code></pre>
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If a named mark cannot be resolved, a numeric timestamp/duration is invalid, or the standard options contain an invalid combination.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If a named mark cannot be resolved, a numeric timestamp/duration is invalid, or the standard options contain an invalid combination.</p></div>
         </section>
         
         
@@ -536,7 +536,7 @@ console.log(byTimestamp.duration);</code></pre>
         </header>
         <pre class="signature"><code>now()</code></pre>
         
-        <div class="description"><p>Returns a monotonically increasing high-resolution timestamp in milliseconds relative to <a href="performance.html#timeOrigin">performance.timeOrigin</a>. The value may contain a fractional part; actual resolution depends on the underlying system clock.<br> Unlike <code>Date.now()</code>, this timestamp is intended for measuring elapsed time and is not affected by wall-clock adjustments.</p></div>
+        <div class="description"><p>Returns a monotonically increasing high-resolution timestamp in milliseconds relative to <a href="performance.html#timeOrigin">performance.timeOrigin</a>. The value may contain a fractional part; actual resolution depends on the underlying system clock.<br> Unlike <b>Date.now()</b>, this timestamp is intended for measuring elapsed time and is not affected by wall-clock adjustments.</p></div>
         
         
         
@@ -568,7 +568,7 @@ console.log(<span class="tok-string">`Call to doSomething took ${t1 - t0} millis
         </header>
         <pre class="signature"><code>Observer(callback)</code></pre>
         
-        <div class="description"><p>JSplitter compatibility factory that creates a <a href="PerformanceObserver.html#PerformanceObserver">PerformanceObserver</a>.<br> New code may use the standard <code>new PerformanceObserver(callback)</code> form instead.</p></div>
+        <div class="description"><p>JSplitter compatibility factory that creates a <a href="PerformanceObserver.html#PerformanceObserver">PerformanceObserver</a>.<br> New code may use the standard <b>new PerformanceObserver(callback)</b> form instead.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>

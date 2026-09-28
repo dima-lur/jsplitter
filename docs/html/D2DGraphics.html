@@ -235,7 +235,7 @@
         </header>
         
         
-        <div class="description"><p>Typically used inside <code>on_paint</code>.<br> Use on_paint(dgr) for D2DGraphics members hints in auto-completion list.<br> Note: there are many different ways to get colours: window.GetColourDUI/window.GetColourCUI, RGB function from Helpers.js, utils.ColourPicker and etc.</p></div>
+        <div class="description"><p>Typically used inside <b>on_paint</b>.<br> Use on_paint(dgr) for D2DGraphics members hints in auto-completion list.<br> Note: there are many different ways to get colours: window.GetColourDUI/window.GetColourCUI, RGB function from Helpers.js, utils.ColourPicker and etc.</p></div>
         
         
         
@@ -893,7 +893,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         </header>
         <pre class="signature"><code>DrawText(str, font, colour_or_brush, x, y, w, h, format)</code></pre>
         
-        <div class="description"><p>Provides faster and better rendering than <a href="D2DGraphics.html#DrawString">DrawString</a>.<br> <br> Do not use this to draw text on transparent background or with D2DGraphics other than the one passed in <a href="module-Callbacks.html#on_paint">on_paint</a> callback: this will result in visual artifacts caused by ClearType hinting.<br> Use <a href="D2DGraphics.html#DrawString">DrawString</a> instead in such cases.<br> <br> To calculate text dimensions use <a href="D2DGraphics.html#CalcTextHeight">CalcTextHeight</a>, <a href="D2DGraphics.html#CalcTextWidth">CalcTextWidth</a>.<br> <br> Note: uses special rules for <code>&</code> character by default, which consumes the <code>&</code> and causes the next character to be underscored. This behaviour can be changed (or disabled) via <code>format</code> parameter.</p></div>
+        <div class="description"><p>Provides faster and better rendering than <a href="D2DGraphics.html#DrawString">DrawString</a>.<br> <br> Do not use this to draw text on transparent background or with D2DGraphics other than the one passed in <a href="module-Callbacks.html#on_paint">on_paint</a> callback: this will result in visual artifacts caused by ClearType hinting.<br> Use <a href="D2DGraphics.html#DrawString">DrawString</a> instead in such cases.<br> <br> To calculate text dimensions use <a href="D2DGraphics.html#CalcTextHeight">CalcTextHeight</a>, <a href="D2DGraphics.html#CalcTextWidth">CalcTextWidth</a>.<br> <br> Note: uses special rules for <b>&</b> character by default, which consumes the <b>&</b> and causes the next character to be underscored. This behaviour can be changed (or disabled) via <b>format</b> parameter.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>

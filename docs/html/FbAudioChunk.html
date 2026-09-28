@@ -361,7 +361,7 @@
         </header>
         <pre class="signature"><code>CopyDataTo(destination)</code></pre>
         
-        <div class="description"><p>Copies the chunk's interleaved PCM samples into an existing <code>Float32Array</code> without allocating a new JavaScript sample array. The destination must have room for at least <code>SampleCount * ChannelCount</code> values. This is useful for real-time visualizations that reuse the same buffer on every update; the legacy <a href="FbAudioChunk.html#Data">Data</a> property remains unchanged for compatibility.</p></div>
+        <div class="description"><p>Copies the chunk's interleaved PCM samples into an existing <b>Float32Array</b> without allocating a new JavaScript sample array. The destination must have room for at least <b>SampleCount * ChannelCount</b> values. This is useful for real-time visualizations that reuse the same buffer on every update; the legacy <a href="FbAudioChunk.html#Data">Data</a> property remains unchanged for compatibility.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -380,7 +380,7 @@
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If <code>destination</code> is not a <code>Float32Array</code> or is too small.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>destination</b> is not a <b>Float32Array</b> or is too small.</p></div>
         </section>
         
         

@@ -231,19 +231,19 @@
         </header>
         <pre class="source-code"><code>window.DefineScript(<span class="tok-string">&#39;LoadImageAsyncV2&#39;</span>, { author: <span class="tok-string">&#39;TheQwertiest&#39;</span> });
 
-<span class="tok-comment">// Get a list of jpg files from a folder</span>
+<span class="tok-comment">// Get a list of jpg files from a folder</span>
 <span class="tok-keyword">const</span> g_image_list = utils.Glob(<span class="tok-string">`${fb.ComponentPath}samples/basic/images/*.jpg`</span>);
 <span class="tok-keyword">let</span> ww = <span class="tok-number">0</span>, wh = <span class="tok-number">0</span>;
 <span class="tok-keyword">let</span> g_img = <span class="tok-literal">null</span>;
 
-<span class="tok-comment">// Trigger every 5 seconds.</span>
+<span class="tok-comment">// Trigger every 5 seconds.</span>
 <span class="tok-keyword">let</span> g_timer = window.SetInterval(<span class="tok-keyword">function</span> () {
     load_random_image_async();
 }, <span class="tok-number">5000</span>);
 
 <span class="tok-keyword">const</span> load_random_image_async = <span class="tok-keyword">async</span> (metadb, art_id) =&gt;
 {
-    <span class="tok-comment">// Load a random image from the list</span>
+    <span class="tok-comment">// Load a random image from the list</span>
     <span class="tok-keyword">let</span> path = g_image_list[Math.floor(Math.random() * g_image_list.length)];
     g_img = <span class="tok-keyword">await</span> gdi.LoadImageAsyncV2(<span class="tok-number">0</span>, path);
     window.Repaint();

@@ -248,8 +248,8 @@ include(<span class="tok-string">`${fb.ComponentPath}\\docs\\Flags.js`</span>);
 <span class="tok-keyword">const</span> fontLabel = gdi.Font(<span class="tok-string">&quot;Segoe UI&quot;</span>, <span class="tok-number">12</span>, <span class="tok-number">0</span>);
 <span class="tok-keyword">const</span> fontSmall = gdi.Font(<span class="tok-string">&quot;Segoe UI&quot;</span>, <span class="tok-number">10</span>, <span class="tok-number">0</span>);
 
-<span class="tok-comment">// StrokeStyle objects are device-independent resources. Create them once and</span>
-<span class="tok-comment">// reuse them from on_paint instead of rebuilding a style every frame.</span>
+<span class="tok-comment">// StrokeStyle objects are device-independent resources. Create them once and</span>
+<span class="tok-comment">// reuse them from on_paint instead of rebuilding a style every frame.</span>
 <span class="tok-keyword">const</span> joinStyles = [
     [<span class="tok-string">&quot;Miter&quot;</span>, d2d.StrokeStyle({ lineJoin: LineJoin.Miter })],
     [<span class="tok-string">&quot;Bevel&quot;</span>, d2d.StrokeStyle({ lineJoin: LineJoin.Bevel })],
@@ -264,7 +264,7 @@ include(<span class="tok-string">`${fb.ComponentPath}\\docs\\Flags.js`</span>);
     [<span class="tok-string">&quot;Triangle&quot;</span>, d2d.StrokeStyle({ startCap: CapStyle.Triangle, endCap: CapStyle.Triangle })]
 ];
 
-<span class="tok-keyword">const</span> dashStyles = [ <span class="tok-comment">// Predefined dot styles automatically use a round dash cap when dashCap is omitted.</span>
+<span class="tok-keyword">const</span> dashStyles = [ <span class="tok-comment">// Predefined dot styles automatically use a round dash cap when dashCap is omitted.</span>
     [<span class="tok-string">&quot;Solid&quot;</span>, d2d.StrokeStyle({ dashStyle: DashStyle.Solid })],
     [<span class="tok-string">&quot;Dash&quot;</span>, d2d.StrokeStyle({ dashStyle: DashStyle.Dash })],
     [<span class="tok-string">&quot;Dot&quot;</span>, d2d.StrokeStyle({ dashStyle: DashStyle.Dot })],
@@ -359,7 +359,7 @@ include(<span class="tok-string">`${fb.ComponentPath}\\docs\\Flags.js`</span>);
         <span class="tok-keyword">const</span> x1 = cx + Math.max(<span class="tok-number">30</span>, cw * <span class="tok-number">0.24</span>);
         <span class="tok-keyword">const</span> x2 = cx + cw - Math.max(<span class="tok-number">30</span>, cw * <span class="tok-number">0.24</span>);
 
-        <span class="tok-comment">// Guides make the amount by which each cap extends past the endpoints visible.</span>
+        <span class="tok-comment">// Guides make the amount by which each cap extends past the endpoints visible.</span>
         gr.DrawLine(x1, cy - <span class="tok-number">22</span>, x1, cy + <span class="tok-number">22</span>, <span class="tok-number">1</span>, GUIDE);
         gr.DrawLine(x2, cy - <span class="tok-number">22</span>, x2, cy + <span class="tok-number">22</span>, <span class="tok-number">1</span>, GUIDE);
         gr.DrawLine(x1, cy, x2, cy, <span class="tok-number">14</span>, ACCENT, capStyles[i][<span class="tok-number">1</span>]);
@@ -435,9 +435,9 @@ include(<span class="tok-string">`${fb.ComponentPath}\\docs\\Flags.js`</span>);
 
     <span class="tok-keyword">const</span> margin = <span class="tok-number">18</span>;
 
-    <span class="tok-comment">// Keep the sample readable at small panel sizes: the layout may grow with the</span>
-    <span class="tok-comment">// panel, but it never shrinks below this canvas. If the panel is smaller, the</span>
-    <span class="tok-comment">// normal window clipping simply hides the part that is outside the viewport.</span>
+    <span class="tok-comment">// Keep the sample readable at small panel sizes: the layout may grow with the</span>
+    <span class="tok-comment">// panel, but it never shrinks below this canvas. If the panel is smaller, the</span>
+    <span class="tok-comment">// normal window clipping simply hides the part that is outside the viewport.</span>
     <span class="tok-keyword">const</span> contentW = Math.max(<span class="tok-number">900</span>, ww - margin * <span class="tok-number">2</span>);
 
     gr.DrawText(<span class="tok-string">&quot;Direct2D StrokeStyle&quot;</span>, fontTitle, TEXT,

@@ -403,6 +403,34 @@
         
     </article>
 
+    <article class="api-item" id="Error" data-kind="typedef" data-name="error">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
+                <h2><a class="anchor" href="#Error">Error</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:7915</div>
+        </header>
+        
+        
+        <div class="description"><p>Standard JavaScript error object thrown by JSplitter API methods. Catch it with a regular JavaScript <code>try...catch</code> statement.</p></div>
+        
+        
+        <section class="member-section">
+            <h3>Properties</h3>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr id="name"><td><code>name</code></td><td><code>string</code></td><td><p>Error type name.</p></td></tr><tr id="message"><td><code>message</code></td><td><code>string</code></td><td><p>Human-readable error message.</p></td></tr><tr id="stack"><td><code>stack</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>JavaScript stack trace when available.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+    </article>
+
     <article class="api-item" id="float" data-kind="typedef" data-name="float">
         <header class="api-item-header">
             <div>
@@ -434,7 +462,7 @@
         </header>
         <pre class="signature"><code>include(path, options)</code></pre>
         
-        <div class="description"><p>Evaluates JavaScript from a file in the current panel or Worker realm.<br> Similar to <code>eval(<a href="utils.html#ReadTextFile">utils.ReadTextFile</a>(path))</code>, but provides more features:<br> - Has <code>include guards</code> - a file is evaluated only once per realm unless <code>always_evaluate</code> is used.<br> - Panel-side includes also use compiled-script caching; Worker includes keep their own per-Worker include guard.<br> - Has better error reporting.<br> <br> Relative paths are resolved from the currently executing script file first when available.<br> For a file-backed Worker, this makes its own directory the natural root for nested relative <code>include()</code> calls.<br> Configured panel/package script roots are then considered where applicable.<br> <code>${fb.ComponentPath}</code> is the final fallback.</p></div>
+        <div class="description"><p>Evaluates JavaScript from a file in the current panel or Worker realm.<br> Similar to <b>eval(<a href="utils.html#ReadTextFile">utils.ReadTextFile</a>(path))</b>, but provides more features:<br> - Has <b>include guards</b> - a file is evaluated only once per realm unless <b>always_evaluate</b> is used.<br> - Panel-side includes also use compiled-script caching; Worker includes keep their own per-Worker include guard.<br> - Has better error reporting.<br> <br> Relative paths are resolved from the currently executing script file first when available.<br> For a file-backed Worker, this makes its own directory the natural root for nested relative <b>include()</b> calls.<br> Configured panel/package script roots are then considered where applicable.<br> <b>${fb.ComponentPath}</b> is the final fallback.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -466,14 +494,14 @@
         </header>
         
         
-        <div class="description"><p>Return value of <a href="window.html#JsMemoryStats">window.JsMemoryStats</a>.<br> <br> Panel scripts run on the main thread and share one SpiderMonkey heap. Per-panel heap usage is therefore not available. Native/external memory is tracked separately for the current panel. Each Worker has its own SpiderMonkey context and is reported separately in <a href="globals.html#JsMemoryStats-Workers"><code>JsMemoryStats.Workers</code></a>.<br> <br> Related GC settings are under <b>Advanced &gt; JSplitter &gt; Performance: restart is required &gt; GC</b>.</p></div>
+        <div class="description"><p>Return value of <a href="window.html#JsMemoryStats">window.JsMemoryStats</a>.<br> <br> Panel scripts run on the main thread and share one SpiderMonkey heap. Per-panel heap usage is therefore not available. Native/external memory is tracked separately for the current panel. Each Worker has its own SpiderMonkey context and is reported separately in <a href="globals.html#JsMemoryStats-Workers"><b>JsMemoryStats.Workers</b></a>.<br> <br> Related GC settings are under <b>Advanced &gt; JSplitter &gt; Performance: restart is required &gt; GC</b>.</p></div>
         
         
         <section class="member-section">
             <h3>Properties</h3>
             <div class="table-wrap"><table>
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr id="MainThreadHeapUsage"><td><code>MainThreadHeapUsage</code></td><td><code>number</code></td><td><p>SpiderMonkey heap usage shared by all JSplitter panel scripts running on the main thread (in bytes). The maximum is configured by <b>Main thread maximum heap size (in MB)</b>; see <code>MainThreadHeapLimit</code>. Automatic GC based on heap growth is controlled by <b>Heap growth before GC (in MB)</b>.</p></td></tr><tr id="MainThreadHeapLimit"><td><code>MainThreadHeapLimit</code></td><td><code>number</code></td><td><p>Maximum SpiderMonkey heap size for main-thread panel scripts (in bytes). External memory does not count toward this limit. This value reflects <b>Main thread maximum heap size (in MB)</b>.</p></td></tr><tr id="WorkerHeapLimit"><td><code>WorkerHeapLimit</code></td><td><code>number</code></td><td><p><span id="JsMemoryStats-WorkerHeapLimit"></span>Maximum SpiderMonkey heap size for each Worker (in bytes). The limit is shared as one setting value by all Workers, but applies independently to each Worker. This value reflects <b>Worker maximum heap size (in MB, per Worker)</b>.</p></td></tr><tr id="CurrentPanelExternalUsage"><td><code>CurrentPanelExternalUsage</code></td><td><code>number</code></td><td><p>Tracked native/external memory retained by the current panel (in bytes). This is an accounting estimate, not process working set or physical RAM/VRAM residency. Automatic GC based on external-memory growth is controlled by <b>External memory growth before GC (in MB)</b>.</p></td></tr><tr id="Workers"><td><code>Workers</code></td><td><code><a class="type-link" href="globals.html#JsWorkerMemoryStats">JsWorkerMemoryStats</a>[]</code></td><td><p><span id="JsMemoryStats-Workers"></span>Memory snapshots for Workers created by the current panel. Worker snapshots are published by each Worker thread without blocking the panel and may lag while a Worker is executing a long-running task.</p></td></tr></tbody>
+                <tbody><tr id="MainThreadHeapUsage"><td><code>MainThreadHeapUsage</code></td><td><code>number</code></td><td><p>SpiderMonkey heap usage shared by all JSplitter panel scripts running on the main thread (in bytes). The maximum is configured by <b>Main thread maximum heap size (in MB)</b>; see <b>MainThreadHeapLimit</b>. Automatic GC based on heap growth is controlled by <b>Heap growth before GC (in MB)</b>.</p></td></tr><tr id="MainThreadHeapLimit"><td><code>MainThreadHeapLimit</code></td><td><code>number</code></td><td><p>Maximum SpiderMonkey heap size for main-thread panel scripts (in bytes). External memory does not count toward this limit. This value reflects <b>Main thread maximum heap size (in MB)</b>.</p></td></tr><tr id="WorkerHeapLimit"><td><code>WorkerHeapLimit</code></td><td><code>number</code></td><td><p><span id="JsMemoryStats-WorkerHeapLimit"></span>Maximum SpiderMonkey heap size for each Worker (in bytes). The limit is shared as one setting value by all Workers, but applies independently to each Worker. This value reflects <b>Worker maximum heap size (in MB, per Worker)</b>.</p></td></tr><tr id="CurrentPanelExternalUsage"><td><code>CurrentPanelExternalUsage</code></td><td><code>number</code></td><td><p>Tracked native/external memory retained by the current panel (in bytes). This is an accounting estimate, not process working set or physical RAM/VRAM residency. Automatic GC based on external-memory growth is controlled by <b>External memory growth before GC (in MB)</b>.</p></td></tr><tr id="Workers"><td><code>Workers</code></td><td><code><a class="type-link" href="globals.html#JsWorkerMemoryStats">JsWorkerMemoryStats</a>[]</code></td><td><p><span id="JsMemoryStats-Workers"></span>Memory snapshots for Workers created by the current panel. Worker snapshots are published by each Worker thread without blocking the panel and may lag while a Worker is executing a long-running task.</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -558,7 +586,7 @@
             <h3>Properties</h3>
             <div class="table-wrap"><table>
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr id="Name"><td><code>Name</code></td><td><code>string</code></td><td><p>The Worker's immutable constructor name, identical to Worker-global <code>self.name</code>. The value is an empty string if no name was supplied. The same identity is used by unhandled Worker exception diagnostics, where an empty name is displayed as <code>&lt;unnamed&gt;</code>.</p></td></tr><tr id="HeapUsage"><td><code>HeapUsage</code></td><td><code>number</code></td><td><p>SpiderMonkey heap usage of this Worker (in bytes). The per-Worker heap limit is configured by <b>Worker maximum heap size (in MB, per Worker)</b>; see <a href="globals.html#JsMemoryStats-WorkerHeapLimit"><code>JsMemoryStats.WorkerHeapLimit</code></a>. Automatic GC based on heap growth is controlled by <b>Heap growth before GC (in MB)</b>.</p></td></tr><tr id="ExternalUsage"><td><code>ExternalUsage</code></td><td><code>number</code></td><td><p>Tracked native/external memory retained by this Worker (in bytes). This is an accounting estimate, not process working set or physical RAM/VRAM residency. Automatic GC based on external-memory growth is controlled by <b>External memory growth before GC (in MB)</b>.</p></td></tr></tbody>
+                <tbody><tr id="Name"><td><code>Name</code></td><td><code>string</code></td><td><p>The Worker's immutable constructor name, identical to Worker-global <b>self.name</b>. The value is an empty string if no name was supplied. The same identity is used by unhandled Worker exception diagnostics, where an empty name is displayed as <b>&lt;unnamed&gt;</b>.</p></td></tr><tr id="HeapUsage"><td><code>HeapUsage</code></td><td><code>number</code></td><td><p>SpiderMonkey heap usage of this Worker (in bytes). The per-Worker heap limit is configured by <b>Worker maximum heap size (in MB, per Worker)</b>; see <a href="globals.html#JsMemoryStats-WorkerHeapLimit"><b>JsMemoryStats.WorkerHeapLimit</b></a>. Automatic GC based on heap growth is controlled by <b>Heap growth before GC (in MB)</b>.</p></td></tr><tr id="ExternalUsage"><td><code>ExternalUsage</code></td><td><code>number</code></td><td><p>Tracked native/external memory retained by this Worker (in bytes). This is an accounting estimate, not process working set or physical RAM/VRAM residency. Automatic GC based on external-memory growth is controlled by <b>External memory growth before GC (in MB)</b>.</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -586,7 +614,7 @@
             <h3>Properties</h3>
             <div class="table-wrap"><table>
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr id="entryType"><td><code>entryType</code></td><td><code>string</code></td><td><p>Entry type. JSplitter currently supports "mark" and "measure".</p></td></tr><tr id="name"><td><code>name</code></td><td><code>string</code></td><td><p>User-defined entry name.</p></td></tr><tr id="startTime"><td><code>startTime</code></td><td><code>number</code></td><td><p>Start timestamp in milliseconds relative to <a href="performance.html#timeOrigin">performance.timeOrigin</a>.</p></td></tr><tr id="duration"><td><code>duration</code></td><td><code>number</code></td><td><p>Entry duration in milliseconds. Always 0 for marks; for measures it is <code>endTime - startTime</code> and may be negative.</p></td></tr><tr id="detail"><td><code>detail</code></td><td><code>*</code></td><td><p>Optional metadata associated with the entry. Defaults to null.<br> <b>JSplitter note:</b> unlike the Web User Timing specification, <code>detail</code> is currently retained as the original JavaScript value and is not structured-cloned.</p></td></tr></tbody>
+                <tbody><tr id="entryType"><td><code>entryType</code></td><td><code>string</code></td><td><p>Entry type. JSplitter currently supports "mark" and "measure".</p></td></tr><tr id="PerformanceEntry.name"><td><code>name</code></td><td><code>string</code></td><td><p>User-defined entry name.</p></td></tr><tr id="startTime"><td><code>startTime</code></td><td><code>number</code></td><td><p>Start timestamp in milliseconds relative to <a href="performance.html#timeOrigin">performance.timeOrigin</a>.</p></td></tr><tr id="duration"><td><code>duration</code></td><td><code>number</code></td><td><p>Entry duration in milliseconds. Always 0 for marks; for measures it is <b>endTime - startTime</b> and may be negative.</p></td></tr><tr id="detail"><td><code>detail</code></td><td><code>*</code></td><td><p>Optional metadata associated with the entry. Defaults to null.<br> <b>JSplitter note:</b> unlike the Web User Timing specification, <b>detail</b> is currently retained as the original JavaScript value and is not structured-cloned.</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -642,7 +670,7 @@
             <h3>Properties</h3>
             <div class="table-wrap"><table>
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr id="PerformanceMeasureOptions.detail"><td><code>detail = null</code><span class="mini-flag">optional</span></td><td><code>*</code></td><td><p>Arbitrary metadata associated with the measure.<br> <b>JSplitter note:</b> the value is not structured-cloned.</p></td></tr><tr id="start"><td><code>start</code><span class="mini-flag">optional</span></td><td><code>(string|number)</code></td><td><p>Start mark name or finite non-negative timestamp in milliseconds.</p></td></tr><tr id="PerformanceMeasureOptions.duration"><td><code>duration</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Finite non-negative duration in milliseconds. May be used together with <code>start</code> or <code>end</code>, but not together with both.</p></td></tr><tr id="end"><td><code>end</code><span class="mini-flag">optional</span></td><td><code>(string|number)</code></td><td><p>End mark name or finite non-negative timestamp in milliseconds.</p></td></tr></tbody>
+                <tbody><tr id="PerformanceMeasureOptions.detail"><td><code>detail = null</code><span class="mini-flag">optional</span></td><td><code>*</code></td><td><p>Arbitrary metadata associated with the measure.<br> <b>JSplitter note:</b> the value is not structured-cloned.</p></td></tr><tr id="start"><td><code>start</code><span class="mini-flag">optional</span></td><td><code>(string|number)</code></td><td><p>Start mark name or finite non-negative timestamp in milliseconds.</p></td></tr><tr id="PerformanceMeasureOptions.duration"><td><code>duration</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Finite non-negative duration in milliseconds. May be used together with <b>start</b> or <b>end</b>, but not together with both.</p></td></tr><tr id="end"><td><code>end</code><span class="mini-flag">optional</span></td><td><code>(string|number)</code></td><td><p>End mark name or finite non-negative timestamp in milliseconds.</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -702,7 +730,7 @@
             <h3>Properties</h3>
             <div class="table-wrap"><table>
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr id="entryTypes"><td><code>entryTypes</code><span class="mini-flag">optional</span></td><td><code>Array&lt;string&gt;</code></td><td><p>Entry types to observe. Unsupported types are ignored. Use either <code>entryTypes</code> or <code>type</code> for an observer, not both.</p></td></tr><tr id="type"><td><code>type</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>A single entry type to observe. Unsupported types are ignored. Use either <code>type</code> or <code>entryTypes</code> for an observer, not both.</p></td></tr></tbody>
+                <tbody><tr id="entryTypes"><td><code>entryTypes</code><span class="mini-flag">optional</span></td><td><code>Array&lt;string&gt;</code></td><td><p>Entry types to observe. Unsupported types are ignored. Use either <b>entryTypes</b> or <b>type</b> for an observer, not both.</p></td></tr><tr id="type"><td><code>type</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>A single entry type to observe. Unsupported types are ignored. Use either <b>type</b> or <b>entryTypes</b> for an observer, not both.</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -826,7 +854,7 @@
             <h3>Properties</h3>
             <div class="table-wrap"><table>
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr id="OS"><td><code>OS</code></td><td><code>string</code></td><td><p>Human-readable Windows product name including the edition when available, for example <code>Windows 11 Home</code> or <code>Windows 11 Pro</code>.</p></td></tr><tr id="Build"><td><code>Build</code></td><td><code>number</code></td><td><p>Windows NT build number.</p></td></tr><tr id="IsOS64Bit"><td><code>IsOS64Bit</code></td><td><code>boolean</code></td><td><p>True when the operating system architecture is 64-bit. This describes Windows itself, not the foobar2000 process architecture.</p></td></tr><tr id="RAM"><td><code>RAM</code></td><td><code><a class="type-link" href="globals.html#SystemMemoryInfo">SystemMemoryInfo</a></code></td><td><p>Physical-memory and foobar2000 private-working-set information.</p></td></tr><tr id="VRAM"><td><code>VRAM</code></td><td><code><a class="type-link" href="globals.html#SystemVideoMemoryInfo">SystemVideoMemoryInfo</a>|null</code></td><td><p>Dedicated/local video-memory information for the selected graphics adapter, or null when the required video-memory query interface is unavailable.</p></td></tr></tbody>
+                <tbody><tr id="OS"><td><code>OS</code></td><td><code>string</code></td><td><p>Human-readable Windows product name including the edition when available, for example <b>Windows 11 Home</b> or <b>Windows 11 Pro</b>.</p></td></tr><tr id="Build"><td><code>Build</code></td><td><code>number</code></td><td><p>Windows NT build number.</p></td></tr><tr id="IsOS64Bit"><td><code>IsOS64Bit</code></td><td><code>boolean</code></td><td><p>True when the operating system architecture is 64-bit. This describes Windows itself, not the foobar2000 process architecture.</p></td></tr><tr id="RAM"><td><code>RAM</code></td><td><code><a class="type-link" href="globals.html#SystemMemoryInfo">SystemMemoryInfo</a></code></td><td><p>Physical-memory and foobar2000 private-working-set information.</p></td></tr><tr id="VRAM"><td><code>VRAM</code></td><td><code><a class="type-link" href="globals.html#SystemVideoMemoryInfo">SystemVideoMemoryInfo</a>|null</code></td><td><p>Dedicated/local video-memory information for the selected graphics adapter, or null when the required video-memory query interface is unavailable.</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -904,7 +932,7 @@
         </header>
         
         
-        <div class="description"><p>Frozen array of entry types supported by <a href="PerformanceObserver.html#PerformanceObserver">PerformanceObserver</a>.<br> JSplitter currently returns <code>["mark", "measure"]</code>. Repeated reads return the same frozen array object.</p></div>
+        <div class="description"><p>Frozen array of entry types supported by <a href="PerformanceObserver.html#PerformanceObserver">PerformanceObserver</a>.<br> JSplitter currently returns <b>["mark", "measure"]</b>. Repeated reads return the same frozen array object.</p></div>
         
         
         
@@ -957,7 +985,7 @@
         </header>
         <pre class="signature"><code>WorkerMessageCallback(event)</code></pre>
         
-        <div class="description"><p>Callback used for Worker <code>message</code> and <code>messageerror</code> handlers.</p></div>
+        <div class="description"><p>Callback used for Worker <b>message</b> and <b>messageerror</b> handlers.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>

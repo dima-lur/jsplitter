@@ -233,7 +233,7 @@
 include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
 include(<span class="tok-string">&#39;docs/Helpers.js&#39;</span>);
 
-<span class="tok-comment">// Nothing will show until you start playing a new track</span>
+<span class="tok-comment">// Nothing will show until you start playing a new track</span>
 
 <span class="tok-keyword">let</span> g_img = <span class="tok-literal">null</span>;
 <span class="tok-keyword">let</span> path = <span class="tok-string">&#39;&#39;</span>;
@@ -246,7 +246,7 @@ include(<span class="tok-string">&#39;docs/Helpers.js&#39;</span>);
         <span class="tok-keyword">return</span>;
     }
 
-    <span class="tok-comment">// Keep aspect ratio</span>
+    <span class="tok-comment">// Keep aspect ratio</span>
     <span class="tok-keyword">let</span> scale_w = ww / g_img.Width;
     <span class="tok-keyword">let</span> scale_h = wh / g_img.Height;
     <span class="tok-keyword">let</span> scale = Math.min(scale_w, scale_h);
@@ -276,7 +276,7 @@ include(<span class="tok-string">&#39;docs/Helpers.js&#39;</span>);
 }
 
 <span class="tok-keyword">function</span> on_mouse_lbtn_dblclk(x, y) {
-    <span class="tok-comment">//double click panel to show path in popup window</span>
+    <span class="tok-comment">//double click panel to show path in popup window</span>
     <span class="tok-keyword">if</span> (path) {
         fb.ShowPopupMessage(path);
     }

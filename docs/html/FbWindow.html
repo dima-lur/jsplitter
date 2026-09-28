@@ -236,7 +236,7 @@
         
         
         <div class="description"><p>Controls the main foobar2000 application window.</p>
-<p><b>Global state:</b> every JSplitter panel accesses the same native foobar2000 window through <a href="fb.html#Window">fb.Window</a></code>. Window geometry <a href="FbWindow.html#X">X</a>, <a href="FbWindow.html#Y">Y</a>, <a href="FbWindow.html#Width">Width</a>, <a href="FbWindow.html#Height">Height</a>, the numeric <a href="FbWindow.html#MinWidth">MinWidth</a>, <a href="FbWindow.html#MinHeight">MinHeight</a>, <a href="FbWindow.html#MaxWidth">MaxWidth</a>, <a href="FbWindow.html#MaxHeight">MaxHeight</a>, and the numeric pseudo-caption rectangle defined by <a href="FbWindow.html#SetPseudoCaption">SetPseudoCaption</a> are global host state. These numeric values are not automatically restored when a panel reloads or unloads.</p>
+<p><b>Global state:</b> every JSplitter panel accesses the same native foobar2000 window through <a href="fb.html#Window">fb.Window</a></b>. Window geometry <a href="FbWindow.html#X">X</a>, <a href="FbWindow.html#Y">Y</a>, <a href="FbWindow.html#Width">Width</a>, <a href="FbWindow.html#Height">Height</a>, the numeric <a href="FbWindow.html#MinWidth">MinWidth</a>, <a href="FbWindow.html#MinHeight">MinHeight</a>, <a href="FbWindow.html#MaxWidth">MaxWidth</a>, <a href="FbWindow.html#MaxHeight">MaxHeight</a>, and the numeric pseudo-caption rectangle defined by <a href="FbWindow.html#SetPseudoCaption">SetPseudoCaption</a> are global host state. These numeric values are not automatically restored when a panel reloads or unloads.</p>
 <p>Window UI settings such as <a href="FbWindow.html#FrameStyle">FrameStyle</a>, <a href="FbWindow.html#Fullscreen">Fullscreen</a>, <a href="FbWindow.html#MainMenuHidden">MainMenuHidden</a>, <a href="FbWindow.html#StatusBarHidden">StatusBarHidden</a>, <a href="FbWindow.html#MinSize">MinSize</a>, <a href="FbWindow.html#MaxSize">MaxSize</a>, and pseudo-caption activation are tracked per panel. The most recent explicit assignment made by any live panel becomes the effective global value. When that panel reloads or unloads, its request is removed and the previous request from another live panel, if any, becomes effective again.</p>
 <p>If no panel has a request, <a href="FbWindow.html#FrameStyle">FrameStyle</a> defaults to <a href="module-Flags.html#FrameStyle">FrameStyle.Default</a>, and the boolean settings default to <b>false</b>.</p>
 <p>So getters return the effective global value, not the last value assigned by the current panel.</p>
@@ -305,7 +305,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If the value is not a valid <a href="module-Flags.html#FrameStyle">FrameStyle</a> value.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the value is not a valid <a href="module-Flags.html#FrameStyle">FrameStyle</a> value.</p></div>
         </section>
         
         
@@ -374,7 +374,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>When Columns UI is active.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>When Columns UI is active.</p></div>
         </section>
         
         
@@ -475,7 +475,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         </header>
         <pre class="signature"><code>MinSize: boolean = false</code></pre>
         
-        <div class="description"><p>Enables the minimum main-window size defined by <a href="FbWindow.html#MinWidth">MinWidth</a> and <a href="FbWindow.html#MinHeight">MinHeight</a>. Setting this property to <code>true</code> immediately clamps the current window size when needed. Changing an active minimum width or height also clamps the current size immediately. A limit value of 0 means that the corresponding axis is not constrained.</p></div>
+        <div class="description"><p>Enables the minimum main-window size defined by <a href="FbWindow.html#MinWidth">MinWidth</a> and <a href="FbWindow.html#MinHeight">MinHeight</a>. Setting this property to <b>true</b> immediately clamps the current window size when needed. Changing an active minimum width or height also clamps the current size immediately. A limit value of 0 means that the corresponding axis is not constrained.</p></div>
         
         
         
@@ -525,7 +525,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>When Columns UI is active.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>When Columns UI is active.</p></div>
         </section>
         
         
@@ -701,7 +701,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If <code>width</code> or <code>height</code> is not greater than 0.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>width</b> or <b>height</b> is not greater than 0.</p></div>
         </section>
         
         

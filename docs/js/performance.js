@@ -9,10 +9,10 @@
  * @property {number} startTime
  * Start timestamp in milliseconds relative to {@link performance.timeOrigin}.
  * @property {number} duration
- * Entry duration in milliseconds. Always 0 for marks; for measures it is <code>endTime - startTime</code> and may be negative.
+ * Entry duration in milliseconds. Always 0 for marks; for measures it is <b>endTime - startTime</b> and may be negative.
  * @property {*} detail
  * Optional metadata associated with the entry. Defaults to null.<br>
- * <b>JSplitter note:</b> unlike the Web User Timing specification, <code>detail</code> is currently retained as the original JavaScript value and is not structured-cloned.
+ * <b>JSplitter note:</b> unlike the Web User Timing specification, <b>detail</b> is currently retained as the original JavaScript value and is not structured-cloned.
  * @worker
  */
 
@@ -38,7 +38,7 @@
  * @property {(string|number)} [start]
  * Start mark name or finite non-negative timestamp in milliseconds.
  * @property {number} [duration]
- * Finite non-negative duration in milliseconds. May be used together with <code>start</code> or <code>end</code>, but not together with both.
+ * Finite non-negative duration in milliseconds. May be used together with <b>start</b> or <b>end</b>, but not together with both.
  * @property {(string|number)} [end]
  * End mark name or finite non-negative timestamp in milliseconds.
  * @worker
@@ -49,9 +49,9 @@
  * @typedef {Object} PerformanceObserverOptions
  *
  * @property {Array<string>} [entryTypes]
- * Entry types to observe. Unsupported types are ignored. Use either <code>entryTypes</code> or <code>type</code> for an observer, not both.
+ * Entry types to observe. Unsupported types are ignored. Use either <b>entryTypes</b> or <b>type</b> for an observer, not both.
  * @property {string} [type]
- * A single entry type to observe. Unsupported types are ignored. Use either <code>type</code> or <code>entryTypes</code> for an observer, not both.
+ * A single entry type to observe. Unsupported types are ignored. Use either <b>type</b> or <b>entryTypes</b> for an observer, not both.
  * @worker
  */
 
@@ -103,7 +103,7 @@ function PerformanceObserverEntryList() {
  * Creates a new observer for entries added to the JSplitter performance timeline.<br>
  *
  * The callback is invoked asynchronously when {@link performance.mark performance.mark} or {@link performance.measure performance.measure} records an entry whose type is currently observed. Entries created in the same event-loop burst may be delivered together in one callback.<br>
- * JSplitter currently supports only the "mark" and "measure" entry types. The Web Performance Timeline <code>buffered</code> option is not implemented.
+ * JSplitter currently supports only the "mark" and "measure" entry types. The Web Performance Timeline <b>buffered</b> option is not implemented.
  * @sourceFile ../../component/samples/basic/Performance.js
  * @constructor
  * @param {PerformanceObserverCallback} callback Callback invoked when matching entries are delivered.
@@ -122,12 +122,12 @@ function PerformanceObserver(callback) {
     /**
      * Registers performance entry types to observe.<br>
      *
-     * Use either <code>entryTypes</code> or <code>type</code> for a given observer until {@link PerformanceObserver.disconnect disconnect} is called. Switching between the two modes throws an error.<br>
+     * Use either <b>entryTypes</b> or <b>type</b> for a given observer until {@link PerformanceObserver.disconnect disconnect} is called. Switching between the two modes throws an error.<br>
      * Repeated calls using the same mode add supported types to the observer's current set. Unsupported entry types are ignored.<br>
-     * JSplitter currently supports only <code>entryTypes</code> and <code>type</code>; the Web Performance Timeline <code>buffered</code> option is not implemented.
+     * JSplitter currently supports only <b>entryTypes</b> and <b>type</b>; the Web Performance Timeline <b>buffered</b> option is not implemented.
      * @method
      * @param {PerformanceObserverOptions} options Observer options.
-     * @throws {Error} If <code>options</code> is not an object or if the observer switches between <code>entryTypes</code> and <code>type</code> modes without first calling {@link PerformanceObserver.disconnect disconnect}.
+     * @throws {Error} If <b>options</b> is not an object or if the observer switches between <b>entryTypes</b> and <b>type</b> modes without first calling {@link PerformanceObserver.disconnect disconnect}.
      *
      * @example
      * function perfObserver(list, observer) {
@@ -167,7 +167,7 @@ function PerformanceObserver(callback) {
 
 /**
  * Frozen array of entry types supported by {@link PerformanceObserver PerformanceObserver}.<br>
- * JSplitter currently returns <code>["mark", "measure"]</code>. Repeated reads return the same frozen array object.
+ * JSplitter currently returns <b>["mark", "measure"]</b>. Repeated reads return the same frozen array object.
  * @type {Array<string>}
  * @readonly
  * @static
@@ -187,7 +187,7 @@ let performance = {
 
     /**
      * Returns a monotonically increasing high-resolution timestamp in milliseconds relative to {@link performance.timeOrigin}. The value may contain a fractional part; actual resolution depends on the underlying system clock.<br>
-     * Unlike <code>Date.now()</code>, this timestamp is intended for measuring elapsed time and is not affected by wall-clock adjustments.
+     * Unlike <b>Date.now()</b>, this timestamp is intended for measuring elapsed time and is not affected by wall-clock adjustments.
      * @return {number}
      * @example
      * const t0 = performance.now();
@@ -199,13 +199,13 @@ let performance = {
     now: function () { },
 
     /**
-     * Creates a named {@link PerformanceEntry} with <code>entryType</code> "mark" and adds it to the performance timeline.<br>
+     * Creates a named {@link PerformanceEntry} with <b>entryType</b> "mark" and adds it to the performance timeline.<br>
      * Multiple marks may use the same name. All marks remain in the timeline until cleared; when a mark name is later used by {@link performance.measure performance.measure}, the most recently created matching mark is used.
      *
      * @param {string} name Mark name.
      * @param {PerformanceMarkOptions} [markOptions] Optional mark timestamp and metadata.
      * @return {PerformanceEntry} The created mark entry.
-     * @throws {Error} If <code>startTime</code> is not a finite non-negative number.
+     * @throws {Error} If <b>startTime</b> is not a finite non-negative number.
      * @example
      * const beginMark = performance.mark("work-begin", {
      *   detail: { description: "Begin of some important work", id: 777 }
@@ -224,25 +224,25 @@ let performance = {
     mark: function (name, markOptions) { },
 
     /**
-     * Creates a named {@link PerformanceEntry} with <code>entryType</code> "measure" and adds it to the performance timeline.<br>
+     * Creates a named {@link PerformanceEntry} with <b>entryType</b> "measure" and adds it to the performance timeline.<br>
      *
      * Standard forms supported by JSplitter:<br>
-     * <code>performance.measure(name)</code> - measures from timestamp 0 to {@link performance.now performance.now}.<br>
-     * <code>performance.measure(name, startMark)</code> - measures from the most recent named start mark to now.<br>
-     * <code>performance.measure(name, startMark, endMark)</code> - measures between the most recent matching named marks.<br>
-     * <code>performance.measure(name, options)</code> - derives start/end times from {@link PerformanceMeasureOptions}.<br>
-     * <code>performance.measure(name, {}, endMark)</code> - measures from timestamp 0 to the named end mark.<br>
+     * <b>performance.measure(name)</b> - measures from timestamp 0 to {@link performance.now performance.now}.<br>
+     * <b>performance.measure(name, startMark)</b> - measures from the most recent named start mark to now.<br>
+     * <b>performance.measure(name, startMark, endMark)</b> - measures between the most recent matching named marks.<br>
+     * <b>performance.measure(name, options)</b> - derives start/end times from {@link PerformanceMeasureOptions}.<br>
+     * <b>performance.measure(name, {}, endMark)</b> - measures from timestamp 0 to the named end mark.<br>
      *
-     * In <code>options</code>, <code>start</code> and <code>end</code> may be either mark names or finite non-negative timestamps. <code>duration</code> may be supplied with exactly one of <code>start</code> or <code>end</code>. If an explicitly named mark does not exist, an error is thrown.<br>
+     * In <b>options</b>, <b>start</b> and <b>end</b> may be either mark names or finite non-negative timestamps. <b>duration</b> may be supplied with exactly one of <b>start</b> or <b>end</b>. If an explicitly named mark does not exist, an error is thrown.<br>
      * Multiple measures may use the same name. Named mark lookup always uses the most recently created matching mark.<br>
      *
-     * <b>Compatibility note:</b> for historical JSplitter compatibility, a fourth <code>legacyMeasureOptions</code> argument is also accepted. This form preserves the previous JSplitter precedence rules: existing explicit <code>startMark</code>/<code>endMark</code> values take precedence, while numeric <code>start</code>, <code>end</code>, or <code>duration</code> options fill missing values. New code should prefer the standard forms above.<br>
-     * For backward compatibility, an empty positional mark name (<code>""</code>) is treated as omitted rather than as a mark named with an empty string.
+     * <b>Compatibility note:</b> for historical JSplitter compatibility, a fourth <b>legacyMeasureOptions</b> argument is also accepted. This form preserves the previous JSplitter precedence rules: existing explicit <b>startMark</b>/<b>endMark</b> values take precedence, while numeric <b>start</b>, <b>end</b>, or <b>duration</b> options fill missing values. New code should prefer the standard forms above.<br>
+     * For backward compatibility, an empty positional mark name (<b>""</b>) is treated as omitted rather than as a mark named with an empty string.
      *
      * @param {string} measureName Measure name.
      * @param {(string|PerformanceMeasureOptions)} [startOrMeasureOptions] Start mark name or standard measure options.
      * @param {string} [endMark] End mark name.
-     * @param {Object} [legacyMeasureOptions] JSplitter legacy four-argument options object. Supports numeric <code>start</code>, <code>end</code>, <code>duration</code>, and arbitrary <code>detail</code>.
+     * @param {Object} [legacyMeasureOptions] JSplitter legacy four-argument options object. Supports numeric <b>start</b>, <b>end</b>, <b>duration</b>, and arbitrary <b>detail</b>.
      * @return {PerformanceEntry} The created measure entry.
      * @throws {Error} If a named mark cannot be resolved, a numeric timestamp/duration is invalid, or the standard options contain an invalid combination.
      * @example
@@ -285,7 +285,7 @@ let performance = {
 
     /**
      * Removes mark entries from the performance timeline.<br>
-     * If <code>name</code> is supplied, all marks with that name are removed. If omitted, all mark entries are removed. Clearing a mark also removes it from subsequent named-mark lookup by {@link performance.measure performance.measure}.
+     * If <b>name</b> is supplied, all marks with that name are removed. If omitted, all mark entries are removed. Clearing a mark also removes it from subsequent named-mark lookup by {@link performance.measure performance.measure}.
      * @param {string} [name] Mark name to clear.
      * @return {undefined}
      * @worker
@@ -294,7 +294,7 @@ let performance = {
 
     /**
      * Removes measure entries from the performance timeline.<br>
-     * If <code>name</code> is supplied, all measures with that name are removed. If omitted, all measure entries are removed.
+     * If <b>name</b> is supplied, all measures with that name are removed. If omitted, all measure entries are removed.
      * @param {string} [name] Measure name to clear.
      * @return {undefined}
      * @worker
@@ -310,7 +310,7 @@ let performance = {
 
     /**
      * JSplitter compatibility factory that creates a {@link PerformanceObserver PerformanceObserver}.<br>
-     * New code may use the standard <code>new PerformanceObserver(callback)</code> form instead.
+     * New code may use the standard <b>new PerformanceObserver(callback)</b> form instead.
      * @param {PerformanceObserverCallback} callback Callback invoked when matching entries are delivered.
      * @return {PerformanceObserver}
      * @worker

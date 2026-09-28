@@ -229,9 +229,9 @@
             <h1>samples/basic/ParseHtml.js</h1>
             <div class="source-references"><b>Referenced by:</b><a href="utils.html#ParseHtml">utils.ParseHtml</a></div>
         </header>
-        <pre class="source-code"><code><span class="tok-comment">//</span>
-<span class="tok-comment">// Demonstrates utils.ParseHtml(), HtmlDocument, and HtmlNode.</span>
-<span class="tok-comment">//</span>
+        <pre class="source-code"><code><span class="tok-comment">//</span>
+<span class="tok-comment">// Demonstrates utils.ParseHtml(), HtmlDocument, and HtmlNode.</span>
+<span class="tok-comment">//</span>
 
 <span class="tok-keyword">function</span> log_section(title) {
     console.log(<span class="tok-string">&quot;&quot;</span>);
@@ -242,8 +242,8 @@
     <span class="tok-keyword">return</span> (s || <span class="tok-string">&quot;&quot;</span>).replace(/\s+/g, <span class="tok-string">&quot; &quot;</span>).trim();
 }
 
-<span class="tok-comment">// This example uses the same structure as samples/basic/html/parse_test.html.</span>
-<span class="tok-comment">// const html = utils.ReadUTF8(`${fb.ComponentPath}\\samples\\basic\\html\\parse_test.html`);</span>
+<span class="tok-comment">// This example uses the same structure as samples/basic/html/parse_test.html.</span>
+<span class="tok-comment">// const html = utils.ReadUTF8(`${fb.ComponentPath}\\samples\\basic\\html\\parse_test.html`);</span>
 <span class="tok-keyword">const</span> html = <span class="tok-string">`
 &lt;!doctype html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -315,8 +315,8 @@
 } <span class="tok-keyword">else</span> {
     log_section(<span class="tok-string">&quot;Document basics&quot;</span>);
 
-    console.log(<span class="tok-string">&quot;documentElement tag:&quot;</span>, doc.documentElement.tagName); <span class="tok-comment">// html</span>
-    console.log(<span class="tok-string">&quot;root tag:&quot;</span>, doc.root.tagName);                       <span class="tok-comment">// html</span>
+    console.log(<span class="tok-string">&quot;documentElement tag:&quot;</span>, doc.documentElement.tagName); <span class="tok-comment">// html</span>
+    console.log(<span class="tok-string">&quot;root tag:&quot;</span>, doc.root.tagName);                       <span class="tok-comment">// html</span>
     console.log(<span class="tok-string">&quot;head innerHTML:&quot;</span>, normalize_text(doc.head.innerHTML));
     console.log(<span class="tok-string">&quot;body text:&quot;</span>, normalize_text(doc.body.textContent));
 
@@ -330,14 +330,14 @@
 
     <span class="tok-keyword">const</span> wiki = doc.querySelector(<span class="tok-string">&quot;.wiki-content&quot;</span>);
     <span class="tok-keyword">if</span> (wiki) {
-        console.log(<span class="tok-string">&quot;wiki source:&quot;</span>, wiki.getAttribute(<span class="tok-string">&quot;data-source&quot;</span>)); <span class="tok-comment">// lastfm</span>
+        console.log(<span class="tok-string">&quot;wiki source:&quot;</span>, wiki.getAttribute(<span class="tok-string">&quot;data-source&quot;</span>)); <span class="tok-comment">// lastfm</span>
         console.log(<span class="tok-string">&quot;wiki text:&quot;</span>, normalize_text(wiki.textContent));
     }
 
     log_section(<span class="tok-string">&quot;querySelectorAll&quot;</span>);
 
     <span class="tok-keyword">const</span> albums = doc.querySelectorAll(<span class="tok-string">&quot;.album&quot;</span>);
-    console.log(<span class="tok-string">&quot;albums count:&quot;</span>, albums.length); <span class="tok-comment">// 3</span>
+    console.log(<span class="tok-string">&quot;albums count:&quot;</span>, albums.length); <span class="tok-comment">// 3</span>
 
     <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; albums.length; i++) {
         <span class="tok-keyword">const</span> album = albums[i];
@@ -384,8 +384,8 @@
     console.log(<span class="tok-string">&quot;p.children.length:&quot;</span>, p.children.length);
     console.log(<span class="tok-string">&quot;p.childNodes.length:&quot;</span>, p.childNodes.length);
 
-    <span class="tok-comment">// firstChild is a text node here. JSON.stringify() is used intentionally</span>
-    <span class="tok-comment">// to show that original whitespace and line breaks are preserved.</span>
+    <span class="tok-comment">// firstChild is a text node here. JSON.stringify() is used intentionally</span>
+    <span class="tok-comment">// to show that original whitespace and line breaks are preserved.</span>
     console.log(<span class="tok-string">&quot;p.firstChild text:&quot;</span>, JSON.stringify(p.firstChild.textContent));
 
     log_section(<span class="tok-string">&quot;Safe link extraction&quot;</span>);
@@ -395,8 +395,8 @@
     <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; externalItems.length; i++) {
         <span class="tok-keyword">const</span> li = externalItems[i];
 
-        <span class="tok-comment">// Do not use li.firstChild.getAttribute(&quot;href&quot;):</span>
-        <span class="tok-comment">// firstChild can be a text node or a comment.</span>
+        <span class="tok-comment">// Do not use li.firstChild.getAttribute(&quot;href&quot;):</span>
+        <span class="tok-comment">// firstChild can be a text node or a comment.</span>
         <span class="tok-keyword">const</span> a = li.querySelector(<span class="tok-string">&quot;a[href]&quot;</span>);
 
         <span class="tok-keyword">if</span> (!a) {
@@ -414,8 +414,8 @@
 
     log_section(<span class="tok-string">&quot;Missing nodes&quot;</span>);
 
-    console.log(<span class="tok-string">&quot;missing node:&quot;</span>, doc.querySelector(<span class="tok-string">&quot;.missing&quot;</span>));          <span class="tok-comment">// null</span>
-    console.log(<span class="tok-string">&quot;missing list length:&quot;</span>, doc.querySelectorAll(<span class="tok-string">&quot;.missing&quot;</span>).length); <span class="tok-comment">// 0</span>
+    console.log(<span class="tok-string">&quot;missing node:&quot;</span>, doc.querySelector(<span class="tok-string">&quot;.missing&quot;</span>));          <span class="tok-comment">// null</span>
+    console.log(<span class="tok-string">&quot;missing list length:&quot;</span>, doc.querySelectorAll(<span class="tok-string">&quot;.missing&quot;</span>).length); <span class="tok-comment">// 0</span>
 }
 </code></pre></main>
     <script src="assets/search-data.js"></script><script src="assets/app.js"></script>

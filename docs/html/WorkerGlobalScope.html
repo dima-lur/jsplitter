@@ -256,7 +256,7 @@
         </header>
         <pre class="signature"><code>name: string = &quot;&quot;</code></pre>
         
-        <div class="description"><p>Immutable Worker identity supplied through the Worker constructor. The value is fixed for the Worker's lifetime. JSplitter reports the same name in <a href="window.html#JsMemoryStats">window.JsMemoryStats</a> and in unhandled Worker exception diagnostics. If no name was supplied this value is an empty string; diagnostics display it as <code>&lt;unnamed&gt;</code>.</p></div>
+        <div class="description"><p>Immutable Worker identity supplied through the Worker constructor. The value is fixed for the Worker's lifetime. JSplitter reports the same name in <a href="window.html#JsMemoryStats">window.JsMemoryStats</a> and in unhandled Worker exception diagnostics. If no name was supplied this value is an empty string; diagnostics display it as <b>&lt;unnamed&gt;</b>.</p></div>
         
         
         
@@ -298,7 +298,7 @@
         </header>
         <pre class="signature"><code>onmessage: ?<a class="type-link" href="globals.html#WorkerMessageCallback">WorkerMessageCallback</a> = null</code></pre>
         
-        <div class="description"><p>Receives messages sent by the parent through <a href="Worker.html#postMessage">Worker.postMessage()</a>.</p></div>
+        <div class="description"><p>Receives messages sent by the parent through <a href="Worker.html#postMessage">Worker.postMessage</a>.</p></div>
         
         
         
@@ -451,7 +451,7 @@
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>data</code></td><td><code>*</code></td><td><p>Value to send.</p></td></tr><tr><td><code>transfer</code><span class="mini-flag">optional</span></td><td><code>(Array&lt;*&gt;|Object)</code></td><td><p>Transfer list, either directly as an array or as an object containing <code>{ transfer: [...] }</code>.</p></td></tr></tbody>
+                <tbody><tr><td><code>data</code></td><td><code>*</code></td><td><p>Value to send.</p></td></tr><tr><td><code>transfer</code><span class="mini-flag">optional</span></td><td><code>(Array&lt;*&gt;|Object)</code></td><td><p>Transfer list, either directly as an array or as an object containing <b><code>{ transfer: [...] }</code></b>.</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -460,7 +460,7 @@
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If the required data argument is omitted, the value cannot be structured-cloned, or the transfer list is invalid or cannot be committed. No message is queued and transferable source objects remain usable when this happens.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the required data argument is omitted, the value cannot be structured-cloned, or the transfer list is invalid or cannot be committed. No message is queued and transferable source objects remain usable when this happens.</p></div>
         </section>
         
         
