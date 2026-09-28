@@ -1020,7 +1020,7 @@
         </header>
         <pre class="signature"><code>on_main_menu_dynamic(command_id)</code></pre>
         
-        <div class="description"><p>Called when one of the commands corresponding to this panel from <code>main menu</code>><code>File</code>><code>Spider Monkey Panel</code>><code>Script commands</code> is executed.<br> <br> Related methods: <a href="fb.html#RegisterMainMenuCommand">fb.RegisterMainMenuCommand</a>, <a href="fb.html#UnregisterMainMenuCommand">fb.UnregisterMainMenuCommand</a></p></div>
+        <div class="description"><p>Called when one of the commands corresponding to this panel from <b>main menu</b>><b>File</b>><b>Spider Monkey Panel</b>><b>Script commands</b> is executed.<br> <br> Related methods: <a href="fb.html#RegisterMainMenuCommand">fb.RegisterMainMenuCommand</a>, <a href="fb.html#UnregisterMainMenuCommand">fb.UnregisterMainMenuCommand</a></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1437,7 +1437,7 @@
         </header>
         <pre class="signature"><code>on_notify_data(name, info)</code></pre>
         
-        <div class="description"><p>Called in other panels after <a href="window.html#NotifyOthers">window.NotifyOthers</a> is executed.<br> This callback belongs to the legacy NotifyOthers compatibility path. New code that needs asynchronous structured-clone messaging between panels and/or Workers should prefer <a href="BroadcastChannel.html#BroadcastChannel">BroadcastChannel</a>.<br> <br> <b>!!! Beware !!!</b><br> 1. Data from <code>info</code> argument is only accessible inside <code>on_notify_data</code> callback: if stored and accessed outside of the callback it will throw JS error.<br> This also applies to the data produced from that <code>info</code>: e.g. storing <code>info.Path</code> directly (if <code>info</code> is FbMetadbHandle).<br> 2. If you want to store the data from <code>info</code> you have to perform a deep copy:<br> - <code>String(info)</code> for strings.<br> - <code>JSON.parse(JSON.stringify(info))</code> for serializable objects.<br> - <code>new ObjectType(info)</code> for objects that have an approppriate constructor available, e.g. <code>new GdiBitmap(info)</code> or <code>new FbMetadbHandleList(info)</code>.<br> 3. <code>info</code> argument is shared between panels, so it should NOT be modified in any way.</p></div>
+        <div class="description"><p>Called in other panels after <a href="window.html#NotifyOthers">window.NotifyOthers</a> is executed.<br> This callback belongs to the legacy NotifyOthers compatibility path. New code that needs asynchronous structured-clone messaging between panels and/or Workers should prefer <a href="BroadcastChannel.html#BroadcastChannel">BroadcastChannel</a>.<br> <br> <b>!!! Beware !!!</b><br> 1. Data from <b>info</b> argument is only accessible inside <b>on_notify_data</b> callback: if stored and accessed outside of the callback it will throw JS error.<br> This also applies to the data produced from that <b>info</b>: e.g. storing <b>info.Path</b> directly (if <b>info</b> is FbMetadbHandle).<br> 2. If you want to store the data from <b>info</b> you have to perform a deep copy:<br> - <b>String(info)</b> for strings.<br> - <b>JSON.parse(JSON.stringify(info))</b> for serializable objects.<br> - <b>new ObjectType(info)</b> for objects that have an approppriate constructor available, e.g. <b>new GdiBitmap(info)</b> or <b>new FbMetadbHandleList(info)</b>.<br> 3. <b>info</b> argument is shared between panels, so it should NOT be modified in any way.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2102,7 +2102,7 @@
         </header>
         <pre class="signature"><code>on_playlists_changed()</code></pre>
         
-        <div class="description"><p>Called when:<br> - Playlists are added/removed/reordered/renamed.<br> - A playlist's lock status changes through the use of <a href="plman.html#SetPlaylistLockedActions">plman.SetPlaylistLockedActions</a> or components such as <code>foo_utils</code> or <code>foo_playlist_attributes</code>.</p></div>
+        <div class="description"><p>Called when:<br> - Playlists are added/removed/reordered/renamed.<br> - A playlist's lock status changes through the use of <a href="plman.html#SetPlaylistLockedActions">plman.SetPlaylistLockedActions</a> or components such as <b>foo_utils</b> or <b>foo_playlist_attributes</b>.</p></div>
         
         
         

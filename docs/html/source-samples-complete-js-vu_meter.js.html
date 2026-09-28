@@ -338,14 +338,14 @@
 		}
 	}
 
-<span class="tok-comment">// callbacks begin</span>
+<span class="tok-comment">// callbacks begin</span>
 	<span class="tok-keyword">this</span>.paint = <span class="tok-keyword">function</span> (gr) {
 		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.w &lt; <span class="tok-number">1</span> || <span class="tok-keyword">this</span>.h &lt; <span class="tok-number">1</span>)
 			<span class="tok-keyword">return</span>;
 
 		<span class="tok-keyword">var</span> smooth_mode = <span class="tok-keyword">this</span>.properties.meter_style.value == <span class="tok-number">0</span>;
 
-		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.w &gt; <span class="tok-keyword">this</span>.h) { <span class="tok-comment">// horizontal</span>
+		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.w &gt; <span class="tok-keyword">this</span>.h) { <span class="tok-comment">// horizontal</span>
 			<span class="tok-keyword">var</span> bar_width = <span class="tok-keyword">this</span>.w;
 			<span class="tok-keyword">var</span> bar_height = Math.floor(<span class="tok-keyword">this</span>.h / <span class="tok-keyword">this</span>.channels.count);
 
@@ -382,7 +382,7 @@
 					}
 				}
 			}
-		} <span class="tok-keyword">else</span> { <span class="tok-comment">// vertical</span>
+		} <span class="tok-keyword">else</span> { <span class="tok-comment">// vertical</span>
 			<span class="tok-keyword">var</span> bar_width = Math.floor(<span class="tok-keyword">this</span>.w / <span class="tok-keyword">this</span>.channels.count);
 			<span class="tok-keyword">var</span> bar_height = <span class="tok-keyword">this</span>.h;
 
@@ -518,15 +518,15 @@
 
 		<span class="tok-keyword">return</span> <span class="tok-literal">true</span>;
 	}
-<span class="tok-comment">// callbacks end</span>
+<span class="tok-comment">// callbacks end</span>
 
 	<span class="tok-keyword">this</span>.x = x;
 	<span class="tok-keyword">this</span>.y = y;
 	<span class="tok-keyword">this</span>.w = w;
 	<span class="tok-keyword">this</span>.h = h;
 
-	<span class="tok-keyword">this</span>.minDB = -<span class="tok-number">60</span>; <span class="tok-comment">// minimum dB on the meter (meter range)</span>
-	<span class="tok-keyword">this</span>.maxDB = <span class="tok-number">5</span>; <span class="tok-comment">// maximum dB on the meter (meter range)</span>
+	<span class="tok-keyword">this</span>.minDB = -<span class="tok-number">60</span>; <span class="tok-comment">// minimum dB on the meter (meter range)</span>
+	<span class="tok-keyword">this</span>.maxDB = <span class="tok-number">5</span>; <span class="tok-comment">// maximum dB on the meter (meter range)</span>
 
 	<span class="tok-keyword">this</span>.rms_block_dbs = [<span class="tok-number">0.3125</span>, <span class="tok-number">0.625</span>, <span class="tok-number">1.25</span>, <span class="tok-number">2.5</span>];
 	<span class="tok-keyword">this</span>.RMS_levels = [];
@@ -543,8 +543,8 @@
 	<span class="tok-keyword">this</span>.properties = {
 		custom_background : <span class="tok-keyword">new</span> _p(<span class="tok-string">&quot;2K3.METER.BACKGROUND.COLOUR&quot;</span>, _RGB(<span class="tok-number">30</span>, <span class="tok-number">30</span>, <span class="tok-number">30</span>)),
 		custom_bar : <span class="tok-keyword">new</span> _p(<span class="tok-string">&quot;2K3.METER.BAR.COLOUR&quot;</span>, _RGB(<span class="tok-number">200</span>, <span class="tok-number">200</span>, <span class="tok-number">200</span>)),
-		custom_peak : <span class="tok-keyword">new</span> _p(<span class="tok-string">&quot;2K3.METER.PEAK.COLOUR&quot;</span>, _RGB(<span class="tok-number">255</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>)), <span class="tok-comment">// no default</span>
-		meter_style : <span class="tok-keyword">new</span> _p(<span class="tok-string">&quot;2K3.METER.STYLE&quot;</span>, <span class="tok-number">1</span>), <span class="tok-comment">// 0: smooth, 1: blocks</span>
+		custom_peak : <span class="tok-keyword">new</span> _p(<span class="tok-string">&quot;2K3.METER.PEAK.COLOUR&quot;</span>, _RGB(<span class="tok-number">255</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>)), <span class="tok-comment">// no default</span>
+		meter_style : <span class="tok-keyword">new</span> _p(<span class="tok-string">&quot;2K3.METER.STYLE&quot;</span>, <span class="tok-number">1</span>), <span class="tok-comment">// 0: smooth, 1: blocks</span>
 		rms_block_db : <span class="tok-keyword">new</span> _p(<span class="tok-string">&quot;2K3.METER.BLOCK.DB&quot;</span>, <span class="tok-number">0.625</span>),
 	};
 }

@@ -229,14 +229,14 @@
             <h1>samples/basic/DragnDrop.js</h1>
             <div class="source-references"><b>Referenced by:</b><a href="module-Callbacks.html#on_drag_drop">module:Callbacks.on_drag_drop</a><a href="module-Callbacks.html#on_drag_enter">module:Callbacks.on_drag_enter</a><a href="module-Callbacks.html#on_drag_leave">module:Callbacks.on_drag_leave</a><a href="module-Callbacks.html#on_drag_over">module:Callbacks.on_drag_over</a><a href="fb.html#DoDragDrop">fb.DoDragDrop</a></div>
         </header>
-        <pre class="source-code"><code><span class="tok-comment">// This sample demonstrates a basic drag-n-drop implementation.</span>
-<span class="tok-comment">// Don&#39;t forget to open some playlist viewer to see all the performed actions.</span>
-<span class="tok-comment">//</span>
-<span class="tok-comment">// CTRL, SHIFT, ALT and their combination will modify the action</span>
-<span class="tok-comment">// that will be performed on item (you can try that by moving file in Windows Explorer).</span>
-<span class="tok-comment">//</span>
-<span class="tok-comment">// Warning: drag-n-drop is an advanced technique, so beware!</span>
-<span class="tok-comment">//</span>
+        <pre class="source-code"><code><span class="tok-comment">// This sample demonstrates a basic drag-n-drop implementation.</span>
+<span class="tok-comment">// Don&#39;t forget to open some playlist viewer to see all the performed actions.</span>
+<span class="tok-comment">//</span>
+<span class="tok-comment">// CTRL, SHIFT, ALT and their combination will modify the action</span>
+<span class="tok-comment">// that will be performed on item (you can try that by moving file in Windows Explorer).</span>
+<span class="tok-comment">//</span>
+<span class="tok-comment">// Warning: drag-n-drop is an advanced technique, so beware!</span>
+<span class="tok-comment">//</span>
 
 window.DefineScript(<span class="tok-string">&#39;Drag n drop&#39;</span>, { author: <span class="tok-string">&#39;TheQwertiest&#39;</span>, features: { drag_n_drop: <span class="tok-literal">true</span> } });
 
@@ -267,9 +267,9 @@ include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
 <span class="tok-keyword">let</span> status_text_2 = <span class="tok-string">&#39;&#39;</span>;
 
 
-<span class="tok-comment">////////////////////////////</span>
-<span class="tok-comment">// Callbacks</span>
-<span class="tok-comment">////////////////////////////</span>
+<span class="tok-comment">////////////////////////////</span>
+<span class="tok-comment">// Callbacks</span>
+<span class="tok-comment">////////////////////////////</span>
 
 <span class="tok-keyword">function</span> on_paint(gr) {
     gr.SetTextRenderingHint(TextRenderingHint.ClearTypeGridFit);
@@ -380,7 +380,7 @@ include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
 }
 
 <span class="tok-keyword">function</span> on_drag_drop(action, x, y, m) {
-    <span class="tok-keyword">this</span>.mouse_down = <span class="tok-literal">false</span>; <span class="tok-comment">///&lt; because on_drag_drop suppresses on_mouse_lbtn_up call</span>
+    <span class="tok-keyword">this</span>.mouse_down = <span class="tok-literal">false</span>; <span class="tok-comment">///&lt; because on_drag_drop suppresses on_mouse_lbtn_up call</span>
 
     <span class="tok-keyword">if</span> (!is_dragging || !trace_end_zone(x, y)) {
         is_dragging = <span class="tok-literal">false</span>;
@@ -395,7 +395,7 @@ include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
         <span class="tok-keyword">let</span> copy_drop = ctrl_pressed &amp;&amp; ((action.Effect &amp; <span class="tok-number">1</span>) || (action.Effect &amp; <span class="tok-number">4</span>));
         drop(copy_drop);
 
-        <span class="tok-comment">// Suppress native drop, since we&#39;ve handled it ourselves</span>
+        <span class="tok-comment">// Suppress native drop, since we&#39;ve handled it ourselves</span>
         action.Effect = g_drop_effect.none;
                 
         status_text_2 = <span class="tok-string">&#39;Item from playlist was dropped and &#39;</span>;
@@ -419,9 +419,9 @@ include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
     }
 }
 
-<span class="tok-comment">////////////////////////////</span>
-<span class="tok-comment">// Methods</span>
-<span class="tok-comment">////////////////////////////</span>
+<span class="tok-comment">////////////////////////////</span>
+<span class="tok-comment">// Methods</span>
+<span class="tok-comment">////////////////////////////</span>
 
 <span class="tok-keyword">function</span> trace_start_zone(x,y) {
     <span class="tok-keyword">return</span> x &gt;= <span class="tok-number">0</span> &amp;&amp; x &lt; ww/<span class="tok-number">2</span> &amp;&amp; y &gt;= <span class="tok-number">60</span> &amp;&amp; y &lt; wh;
@@ -447,22 +447,22 @@ include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
     <span class="tok-keyword">let</span> effect = fb.DoDragDrop(<span class="tok-number">0</span>, cur_playlist_selection, g_drop_effect.copy | g_drop_effect.move | g_drop_effect.link);
 
     <span class="tok-keyword">if</span> (is_dragging) {
-        <span class="tok-comment">// If drag operation was not cancelled, then it means that nor on_drag_drop, nor on_drag_leave event handlers</span>
-        <span class="tok-comment">// were triggered, which means that the items were most likely dropped inside the panel</span>
-        <span class="tok-comment">// (and relevant methods were not called because of async event processing)        </span>
+        <span class="tok-comment">// If drag operation was not cancelled, then it means that nor on_drag_drop, nor on_drag_leave event handlers</span>
+        <span class="tok-comment">// were triggered, which means that the items were most likely dropped inside the panel</span>
+        <span class="tok-comment">// (and relevant methods were not called because of async event processing)        </span>
         <span class="tok-keyword">return</span>;
     }
 
     <span class="tok-keyword">function</span> can_handle_move_drop() {
-        <span class="tok-comment">// We can handle the &#39;move drop&#39; properly only when playlist is still in the same state</span>
+        <span class="tok-comment">// We can handle the &#39;move drop&#39; properly only when playlist is still in the same state</span>
         <span class="tok-keyword">return</span> cur_playlist_size === plman.PlaylistItemCount(cur_playlist_idx)
             &amp;&amp; plman.IsPlaylistItemSelected(cur_playlist_idx, cur_selected_index);
     }
 
     <span class="tok-keyword">if</span> (g_drop_effect.none === effect &amp;&amp; can_handle_move_drop()) {
-        <span class="tok-comment">// DROPEFFECT_NONE needs special handling, because on NT it</span>
-        <span class="tok-comment">// is returned for some move operations, instead of DROPEFFECT_MOVE.</span>
-        <span class="tok-comment">// See Q182219 for the details.</span>
+        <span class="tok-comment">// DROPEFFECT_NONE needs special handling, because on NT it</span>
+        <span class="tok-comment">// is returned for some move operations, instead of DROPEFFECT_MOVE.</span>
+        <span class="tok-comment">// See Q182219 for the details.</span>
 
         <span class="tok-keyword">let</span> items_to_remove = [];
         <span class="tok-keyword">let</span> playlist_items = plman.GetPlaylistItems(cur_playlist_idx);
@@ -537,21 +537,21 @@ include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
 
     <span class="tok-keyword">if</span> (ctrl_pressed &amp;&amp; shift_pressed &amp;&amp; !alt_pressed
         || alt_pressed &amp;&amp; !ctrl_pressed &amp;&amp; !shift_pressed) {
-        <span class="tok-comment">// Link only</span>
+        <span class="tok-comment">// Link only</span>
         <span class="tok-keyword">return</span> (effect &amp; g_drop_effect.link);
     }
 
     <span class="tok-keyword">if</span> (ctrl_pressed &amp;&amp; !shift_pressed &amp;&amp; !alt_pressed) {
-        <span class="tok-comment">// Copy (also via link)        </span>
+        <span class="tok-comment">// Copy (also via link)        </span>
         <span class="tok-keyword">return</span> (effect &amp; g_drop_effect.copy) || (effect &amp; g_drop_effect.link);
     }
 
     <span class="tok-keyword">if</span> (shift_pressed) {
-        <span class="tok-comment">// Move only</span>
+        <span class="tok-comment">// Move only</span>
         <span class="tok-keyword">return</span> (effect &amp; g_drop_effect.move);
     }
 
-    <span class="tok-comment">// Move &gt; Copy &gt; Link    </span>
+    <span class="tok-comment">// Move &gt; Copy &gt; Link    </span>
     <span class="tok-keyword">return</span> (effect &amp; g_drop_effect.move) || (effect &amp; g_drop_effect.copy) || (effect &amp; g_drop_effect.link);
 }
 

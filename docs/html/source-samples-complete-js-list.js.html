@@ -230,7 +230,7 @@
             <div class="source-references"><b>Referenced by:</b><a href="utils.html#HTTPRequestAsync">utils.HTTPRequestAsync</a></div>
         </header>
         <pre class="source-code"><code><span class="tok-string">&#39;use strict&#39;</span>;
-<span class="tok-comment">//14/09/26</span>
+<span class="tok-comment">//14/09/26</span>
 
 _.mixin({
 	nest(collection, keys) {
@@ -255,7 +255,7 @@ _.mixin({
 	<span class="tok-keyword">this</span>.size = () =&gt; {
 		<span class="tok-keyword">this</span>.index = <span class="tok-number">0</span>;
 		<span class="tok-keyword">this</span>.offset = <span class="tok-number">0</span>;
-		<span class="tok-keyword">this</span>.rows = Math.floor((<span class="tok-keyword">this</span>.h - _scale(<span class="tok-number">24</span>)) / (panel.row_height || <span class="tok-number">1</span>)); <span class="tok-comment">// Regorxxx &lt;- Fix overflow -&gt;</span>
+		<span class="tok-keyword">this</span>.rows = Math.floor((<span class="tok-keyword">this</span>.h - _scale(<span class="tok-number">24</span>)) / (panel.row_height || <span class="tok-number">1</span>)); <span class="tok-comment">// Regorxxx &lt;- Fix overflow -&gt;</span>
 		<span class="tok-keyword">this</span>.up_btn.x = <span class="tok-keyword">this</span>.x + Math.round((<span class="tok-keyword">this</span>.w - _scale(<span class="tok-number">12</span>)) / <span class="tok-number">2</span>);
 		<span class="tok-keyword">this</span>.down_btn.x = <span class="tok-keyword">this</span>.up_btn.x;
 		<span class="tok-keyword">this</span>.up_btn.y = <span class="tok-keyword">this</span>.y;
@@ -271,11 +271,11 @@ _.mixin({
 			<span class="tok-keyword">return</span>;
 		}
 		<span class="tok-keyword">switch</span> (<span class="tok-literal">true</span>) {
-			<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.mode == <span class="tok-string">&#39;lastfm_info&#39;</span> &amp;&amp; <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">1</span>: { <span class="tok-comment">// charts</span>
+			<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.mode == <span class="tok-string">&#39;lastfm_info&#39;</span> &amp;&amp; <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">1</span>: { <span class="tok-comment">// charts</span>
 				<span class="tok-keyword">this</span>.text_x = <span class="tok-keyword">this</span>.spacer_w + <span class="tok-number">5</span>;
 				<span class="tok-keyword">this</span>.text_width = Math.round(<span class="tok-keyword">this</span>.w / <span class="tok-number">2</span>) + <span class="tok-number">30</span>;
 				<span class="tok-keyword">const</span> lastfm_charts_bar_x = <span class="tok-keyword">this</span>.x + <span class="tok-keyword">this</span>.text_x + <span class="tok-keyword">this</span>.text_width + <span class="tok-number">10</span>;
-				<span class="tok-keyword">const</span> unit_width = (<span class="tok-keyword">this</span>.w - lastfm_charts_bar_x - _scale(<span class="tok-number">50</span>)) / (<span class="tok-keyword">this</span>.data[<span class="tok-number">0</span>].playcount || <span class="tok-number">1</span>); <span class="tok-comment">// Regorxxx &lt;- Fix overflow -&gt;</span>
+				<span class="tok-keyword">const</span> unit_width = (<span class="tok-keyword">this</span>.w - lastfm_charts_bar_x - _scale(<span class="tok-number">50</span>)) / (<span class="tok-keyword">this</span>.data[<span class="tok-number">0</span>].playcount || <span class="tok-number">1</span>); <span class="tok-comment">// Regorxxx &lt;- Fix overflow -&gt;</span>
 				<span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; Math.min(<span class="tok-keyword">this</span>.items, <span class="tok-keyword">this</span>.rows); i++) {
 					<span class="tok-keyword">let</span> bar_width = Math.ceil(unit_width * <span class="tok-keyword">this</span>.data[i + <span class="tok-keyword">this</span>.offset].playcount);
 					gr.GdiDrawText(<span class="tok-keyword">this</span>.data[i + <span class="tok-keyword">this</span>.offset].rank + <span class="tok-string">&#39;.&#39;</span>, panel.fonts.normal, panel.colours.highlight, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y + _scale(<span class="tok-number">12</span>) + (i * panel.row_height), <span class="tok-keyword">this</span>.text_x - <span class="tok-number">5</span>, panel.row_height, RIGHT);
@@ -285,7 +285,7 @@ _.mixin({
 				}
 				<span class="tok-keyword">break</span>;
 			}
-			<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.mode == <span class="tok-string">&#39;musicbrainz&#39;</span> &amp;&amp; <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">0</span>: {<span class="tok-comment">// releases</span>
+			<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.mode == <span class="tok-string">&#39;musicbrainz&#39;</span> &amp;&amp; <span class="tok-keyword">this</span>.properties.mode.value == <span class="tok-number">0</span>: {<span class="tok-comment">// releases</span>
 				<span class="tok-keyword">this</span>.text_width = <span class="tok-keyword">this</span>.w - <span class="tok-keyword">this</span>.spacer_w - <span class="tok-number">10</span>;
 				<span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; Math.min(<span class="tok-keyword">this</span>.items, <span class="tok-keyword">this</span>.rows); i++) {
 					gr.GdiDrawText(<span class="tok-keyword">this</span>.data[i + <span class="tok-keyword">this</span>.offset].name, panel.fonts.normal, <span class="tok-keyword">this</span>.data[i + <span class="tok-keyword">this</span>.offset].width == <span class="tok-number">0</span> ? panel.colours.highlight : panel.colours.text, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y + _scale(<span class="tok-number">12</span>) + (i * panel.row_height), <span class="tok-keyword">this</span>.text_width, panel.row_height, LEFT);
@@ -297,11 +297,11 @@ _.mixin({
 				<span class="tok-keyword">this</span>.text_width = <span class="tok-keyword">this</span>.w - <span class="tok-keyword">this</span>.text_x;
 				<span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; Math.min(<span class="tok-keyword">this</span>.items, <span class="tok-keyword">this</span>.rows); i++) {
 					gr.GdiDrawText(<span class="tok-keyword">this</span>.data[i + <span class="tok-keyword">this</span>.offset].name, panel.fonts.normal, panel.colours.highlight, <span class="tok-keyword">this</span>.x, <span class="tok-keyword">this</span>.y + _scale(<span class="tok-number">12</span>) + (i * panel.row_height), <span class="tok-keyword">this</span>.text_x - <span class="tok-number">10</span>, panel.row_height, LEFT);
-					gr.GdiDrawText(<span class="tok-keyword">this</span>.data[i + <span class="tok-keyword">this</span>.offset].value, panel.fonts.normal, panel.colours.text, <span class="tok-keyword">this</span>.x + <span class="tok-keyword">this</span>.text_x, <span class="tok-keyword">this</span>.y + _scale(<span class="tok-number">12</span>) + (i * panel.row_height), <span class="tok-keyword">this</span>.text_width, panel.row_height, LEFT ^ DT_CALCRECT | DT_WORD_ELLIPSIS ); <span class="tok-comment">// Regorxxx &lt;- Properly display non-compliant multi-line text -&gt;</span>
+					gr.GdiDrawText(<span class="tok-keyword">this</span>.data[i + <span class="tok-keyword">this</span>.offset].value, panel.fonts.normal, panel.colours.text, <span class="tok-keyword">this</span>.x + <span class="tok-keyword">this</span>.text_x, <span class="tok-keyword">this</span>.y + _scale(<span class="tok-number">12</span>) + (i * panel.row_height), <span class="tok-keyword">this</span>.text_width, panel.row_height, LEFT ^ DT_CALCRECT | DT_WORD_ELLIPSIS ); <span class="tok-comment">// Regorxxx &lt;- Properly display non-compliant multi-line text -&gt;</span>
 				}
 				<span class="tok-keyword">break</span>;
 			}
-			<span class="tok-keyword">default</span>: {<span class="tok-comment">// autoplaylists / last.fm similar artists / last.fm recent tracks / musicbrainz links / queue viewer</span>
+			<span class="tok-keyword">default</span>: {<span class="tok-comment">// autoplaylists / last.fm similar artists / last.fm recent tracks / musicbrainz links / queue viewer</span>
 				<span class="tok-keyword">this</span>.text_x = <span class="tok-number">0</span>;
 				<span class="tok-keyword">this</span>.text_width = <span class="tok-keyword">this</span>.w;
 				<span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; Math.min(<span class="tok-keyword">this</span>.items, <span class="tok-keyword">this</span>.rows); i++) {
@@ -402,7 +402,7 @@ _.mixin({
 		<span class="tok-keyword">this</span>.my = y;
 		window.SetCursor(IDC_ARROW);
 		<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.trace(x, y)) {
-			<span class="tok-keyword">this</span>.index = Math.floor((y - <span class="tok-keyword">this</span>.y - _scale(<span class="tok-number">12</span>)) / (panel.row_height || <span class="tok-number">1</span>)) + <span class="tok-keyword">this</span>.offset; <span class="tok-comment">// Regorxxx &lt;- Fix overflow -&gt;</span>
+			<span class="tok-keyword">this</span>.index = Math.floor((y - <span class="tok-keyword">this</span>.y - _scale(<span class="tok-number">12</span>)) / (panel.row_height || <span class="tok-number">1</span>)) + <span class="tok-keyword">this</span>.offset; <span class="tok-comment">// Regorxxx &lt;- Fix overflow -&gt;</span>
 			<span class="tok-keyword">this</span>.in_range = <span class="tok-keyword">this</span>.index &gt;= <span class="tok-keyword">this</span>.offset &amp;&amp; <span class="tok-keyword">this</span>.index &lt; <span class="tok-keyword">this</span>.offset + Math.min(<span class="tok-keyword">this</span>.rows, <span class="tok-keyword">this</span>.items);
 			<span class="tok-keyword">switch</span> (<span class="tok-literal">true</span>) {
 				<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.up_btn.move(x, y):
@@ -411,12 +411,12 @@ _.mixin({
 				<span class="tok-keyword">case</span> !<span class="tok-keyword">this</span>.in_range:
 					<span class="tok-keyword">break</span>;
 				<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.mode == <span class="tok-string">&#39;autoplaylists&#39;</span>:
-					<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.index !== -<span class="tok-number">1</span> &amp;&amp; x &gt; <span class="tok-keyword">this</span>.x &amp;&amp; x &lt; <span class="tok-keyword">this</span>.x + Math.min(<span class="tok-keyword">this</span>.data[<span class="tok-keyword">this</span>.index].width, <span class="tok-keyword">this</span>.text_width)) { <span class="tok-comment">// Regorxxx &lt;- Fix overflow -&gt;</span>
+					<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.index !== -<span class="tok-number">1</span> &amp;&amp; x &gt; <span class="tok-keyword">this</span>.x &amp;&amp; x &lt; <span class="tok-keyword">this</span>.x + Math.min(<span class="tok-keyword">this</span>.data[<span class="tok-keyword">this</span>.index].width, <span class="tok-keyword">this</span>.text_width)) { <span class="tok-comment">// Regorxxx &lt;- Fix overflow -&gt;</span>
 						window.SetCursor(IDC_HAND);
 						_tt(<span class="tok-string">&#39;Autoplaylist: &#39;</span> + <span class="tok-keyword">this</span>.data[<span class="tok-keyword">this</span>.index].name);
 					} <span class="tok-keyword">else</span> { _tt(<span class="tok-string">&#39;&#39;</span>); }
 					<span class="tok-keyword">break</span>;
-				<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.index !== -<span class="tok-number">1</span> &amp;&amp; x &gt; <span class="tok-keyword">this</span>.x + <span class="tok-keyword">this</span>.text_x &amp;&amp; x &lt; <span class="tok-keyword">this</span>.x + <span class="tok-keyword">this</span>.text_x + Math.min(<span class="tok-keyword">this</span>.data[<span class="tok-keyword">this</span>.index].width, <span class="tok-keyword">this</span>.text_width): <span class="tok-comment">// Regorxxx &lt;- Fix overflow -&gt;</span>
+				<span class="tok-keyword">case</span> <span class="tok-keyword">this</span>.index !== -<span class="tok-number">1</span> &amp;&amp; x &gt; <span class="tok-keyword">this</span>.x + <span class="tok-keyword">this</span>.text_x &amp;&amp; x &lt; <span class="tok-keyword">this</span>.x + <span class="tok-keyword">this</span>.text_x + Math.min(<span class="tok-keyword">this</span>.data[<span class="tok-keyword">this</span>.index].width, <span class="tok-keyword">this</span>.text_width): <span class="tok-comment">// Regorxxx &lt;- Fix overflow -&gt;</span>
 					window.SetCursor(IDC_HAND);
 					<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.data[<span class="tok-keyword">this</span>.index].url.startsWith(<span class="tok-string">&#39;http&#39;</span>)) {
 						_tt(<span class="tok-keyword">this</span>.data[<span class="tok-keyword">this</span>.index].url);
@@ -542,20 +542,20 @@ _.mixin({
 				panel.m.CheckMenuItem(<span class="tok-number">1302</span>, <span class="tok-keyword">this</span>.properties.tech.enabled);
 				panel.m.AppendMenuItem(<span class="tok-keyword">this</span>.foo_playcount ? MF_STRING : MF_GRAYED, <span class="tok-number">1303</span>, <span class="tok-string">&#39;Playback Statistics (foo_playcount)&#39;</span>);
 				panel.m.CheckMenuItem(<span class="tok-number">1303</span>, <span class="tok-keyword">this</span>.foo_playcount &amp;&amp; <span class="tok-keyword">this</span>.properties.playcount.enabled);
-				<span class="tok-comment">// Regorxxx &lt;- Support both JS hosts</span>
+				<span class="tok-comment">// Regorxxx &lt;- Support both JS hosts</span>
 				<span class="tok-keyword">const</span> jsHost = fb.ComponentPath.includes(<span class="tok-string">&#39;foo_uie_jsplitter&#39;</span>)
 					? <span class="tok-string">&#39;JSplitter&#39;</span>
 					: <span class="tok-string">&#39;SMP&#39;</span>;
 				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1304</span>, jsHost + <span class="tok-string">&#39; Stats&#39;</span>);
-				<span class="tok-comment">// Regorxxx -&gt;</span>
+				<span class="tok-comment">// Regorxxx -&gt;</span>
 				panel.m.CheckMenuItem(<span class="tok-number">1304</span>, <span class="tok-keyword">this</span>.properties.stats.enabled);
 				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1305</span>, <span class="tok-string">&#39;Replaygain&#39;</span>);
 				panel.m.CheckMenuItem(<span class="tok-number">1305</span>, <span class="tok-keyword">this</span>.properties.rg.enabled);
 				panel.m.AppendMenuSeparator();
-				<span class="tok-comment">// Regorxxx &lt;- Full properties</span>
+				<span class="tok-comment">// Regorxxx &lt;- Full properties</span>
 				panel.m.AppendMenuItem(MF_STRING, <span class="tok-number">1306</span>, <span class="tok-string">&#39;Retrieve full metadata&#39;</span>);
 				panel.m.CheckMenuItem(<span class="tok-number">1306</span>, <span class="tok-keyword">this</span>.properties.fullV2.enabled);
-				<span class="tok-comment">// Regorxxx -&gt;</span>
+				<span class="tok-comment">// Regorxxx -&gt;</span>
 				panel.m.AppendMenuSeparator();
 				<span class="tok-keyword">break</span>;
 			}
@@ -668,12 +668,12 @@ _.mixin({
 				<span class="tok-keyword">this</span>.properties.rg.toggle();
 				panel.item_focus_change();
 				<span class="tok-keyword">break</span>;
-			<span class="tok-comment">// Regorxxx &lt;- Full properties</span>
+			<span class="tok-comment">// Regorxxx &lt;- Full properties</span>
 			<span class="tok-keyword">case</span> <span class="tok-number">1306</span>:
 				<span class="tok-keyword">this</span>.properties.fullV2.toggle();
 				panel.item_focus_change();
 				<span class="tok-keyword">break</span>;
-			<span class="tok-comment">// Regorxxx -&gt;</span>
+			<span class="tok-comment">// Regorxxx -&gt;</span>
 			<span class="tok-keyword">case</span> <span class="tok-number">1400</span>: {
 				<span class="tok-keyword">let</span> tmp = utils.InputBox(window.ID, <span class="tok-string">&#39;Enter title formatting&#39;</span>, window.ScriptInfo.Name, <span class="tok-keyword">this</span>.properties.tf.value);
 				<span class="tok-keyword">this</span>.properties.tf.value = tmp || <span class="tok-keyword">this</span>.properties.tf.default_;
@@ -911,7 +911,7 @@ _.mixin({
 			<span class="tok-keyword">case</span> <span class="tok-string">&#39;properties&#39;</span>: {
 				<span class="tok-keyword">this</span>.text_x = <span class="tok-number">0</span>;
 				<span class="tok-keyword">this</span>.filename = panel.metadb.Path;
-				<span class="tok-keyword">let</span> fileinfo = panel.metadb.GetFileInfo(<span class="tok-keyword">this</span>.properties.fullV2.enabled); <span class="tok-comment">// Regorxxx &lt;- Full properties -&gt;</span>
+				<span class="tok-keyword">let</span> fileinfo = panel.metadb.GetFileInfo(<span class="tok-keyword">this</span>.properties.fullV2.enabled); <span class="tok-comment">// Regorxxx &lt;- Full properties -&gt;</span>
 				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.meta.enabled) {
 					<span class="tok-keyword">this</span>.add_meta(fileinfo);
 				}
@@ -1222,12 +1222,12 @@ _.mixin({
 				<span class="tok-keyword">this</span>.filenames = {};
 
 				<span class="tok-keyword">this</span>.properties = {
-					mode: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.LASTFM.MODE&#39;</span>, <span class="tok-number">0</span>), <span class="tok-comment">// 0 artist 1 charts 2 recent tracks</span>
-					artist_method: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.LASTFM.ARTIST.METHOD&#39;</span>, <span class="tok-number">0</span>), <span class="tok-comment">// 0 similar artists 1 top tracks 2 top tags</span>
+					mode: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.LASTFM.MODE&#39;</span>, <span class="tok-number">0</span>), <span class="tok-comment">// 0 artist 1 charts 2 recent tracks</span>
+					artist_method: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.LASTFM.ARTIST.METHOD&#39;</span>, <span class="tok-number">0</span>), <span class="tok-comment">// 0 similar artists 1 top tracks 2 top tags</span>
 					method: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.LASTFM.CHARTS.METHOD&#39;</span>, <span class="tok-number">0</span>),
 					period: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.LASTFM.CHARTS.PERIOD&#39;</span>, <span class="tok-number">0</span>),
 					colour: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.LASTFM.CHARTS.BAR.COLOUR&#39;</span>, _RGB(<span class="tok-number">60</span>, <span class="tok-number">60</span>, <span class="tok-number">60</span>)),
-					link: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.LASTFM.LINK&#39;</span>, <span class="tok-number">0</span>) <span class="tok-comment">// 0 last.fm website 1 autoplaylist</span>
+					link: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.LASTFM.LINK&#39;</span>, <span class="tok-number">0</span>) <span class="tok-comment">// 0 last.fm website 1 autoplaylist</span>
 				};
 
 				<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.properties.mode.value &gt; <span class="tok-number">0</span>) {
@@ -1254,7 +1254,7 @@ _.mixin({
 						<span class="tok-keyword">return</span>;
 					}
 
-					<span class="tok-comment">// MusicBrainz allows at most one API request per second.</span>
+					<span class="tok-comment">// MusicBrainz allows at most one API request per second.</span>
 					<span class="tok-keyword">const</span> delay = Math.max(<span class="tok-number">0</span>, <span class="tok-keyword">this</span>.mb_request_interval - (_.now() - <span class="tok-keyword">this</span>.mb_last_request));
 					<span class="tok-keyword">if</span> (delay) {
 						setTimeout(() =&gt; <span class="tok-keyword">this</span>.mb_request(request), delay);
@@ -1369,7 +1369,7 @@ _.mixin({
 				});
 				<span class="tok-keyword">this</span>.mb_id = <span class="tok-string">&#39;&#39;</span>;
 				<span class="tok-keyword">this</span>.properties = {
-					mode: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.MUSICBRAINZ.MODE&#39;</span>, <span class="tok-number">0</span>) <span class="tok-comment">// 0 releases 1 links</span>
+					mode: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.MUSICBRAINZ.MODE&#39;</span>, <span class="tok-number">0</span>) <span class="tok-comment">// 0 releases 1 links</span>
 				};
 
 				_createFolder(folders.data);
@@ -1425,7 +1425,7 @@ _.mixin({
 							});
 						}
 					}
-					<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.data.length) { <span class="tok-comment">// only add blank line if there is some metadata</span>
+					<span class="tok-keyword">if</span> (<span class="tok-keyword">this</span>.data.length) { <span class="tok-comment">// only add blank line if there is some metadata</span>
 						<span class="tok-keyword">this</span>.add();
 					}
 				}
@@ -1505,7 +1505,7 @@ _.mixin({
 					playcount: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.PROPERTIES.PLAYCOUNT&#39;</span>, <span class="tok-literal">true</span>),
 					stats: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.PROPERTIES.STATS&#39;</span>, <span class="tok-literal">true</span>),
 					rg: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.PROPERTIES.RG&#39;</span>, <span class="tok-literal">true</span>),
-					fullV2: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.PROPERTIES.FULLV2&#39;</span>, <span class="tok-literal">true</span>) <span class="tok-comment">// Regorxxx &lt;- Full properties -&gt;</span>
+					fullV2: <span class="tok-keyword">new</span> _p(<span class="tok-string">&#39;2K3.LIST.PROPERTIES.FULLV2&#39;</span>, <span class="tok-literal">true</span>) <span class="tok-comment">// Regorxxx &lt;- Full properties -&gt;</span>
 				};
 
 				<span class="tok-keyword">this</span>.foo_playcount = _cc(<span class="tok-string">&#39;foo_playcount&#39;</span>);

@@ -236,7 +236,7 @@
         <pre class="signature"><code>PerformanceObserver(callback)</code></pre>
         
         <div class="description"><p>Creates a new observer for entries added to the JSplitter performance timeline.<br></p>
-<p>The callback is invoked asynchronously when <a href="performance.html#mark">performance.mark</a> or <a href="performance.html#measure">performance.measure</a> records an entry whose type is currently observed. Entries created in the same event-loop burst may be delivered together in one callback.<br> JSplitter currently supports only the "mark" and "measure" entry types. The Web Performance Timeline <code>buffered</code> option is not implemented.</p></div>
+<p>The callback is invoked asynchronously when <a href="performance.html#mark">performance.mark</a> or <a href="performance.html#measure">performance.measure</a> records an entry whose type is currently observed. Entries created in the same event-loop burst may be delivered together in one callback.<br> JSplitter currently supports only the "mark" and "measure" entry types. The Web Performance Timeline <b>buffered</b> option is not implemented.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -311,7 +311,7 @@
         <pre class="signature"><code>observe(options)</code></pre>
         
         <div class="description"><p>Registers performance entry types to observe.<br></p>
-<p>Use either <code>entryTypes</code> or <code>type</code> for a given observer until <a href="PerformanceObserver.html#disconnect">disconnect</a> is called. Switching between the two modes throws an error.<br> Repeated calls using the same mode add supported types to the observer's current set. Unsupported entry types are ignored.<br> JSplitter currently supports only <code>entryTypes</code> and <code>type</code>; the Web Performance Timeline <code>buffered</code> option is not implemented.</p></div>
+<p>Use either <b>entryTypes</b> or <b>type</b> for a given observer until <a href="PerformanceObserver.html#disconnect">disconnect</a> is called. Switching between the two modes throws an error.<br> Repeated calls using the same mode add supported types to the observer's current set. Unsupported entry types are ignored.<br> JSplitter currently supports only <b>entryTypes</b> and <b>type</b>; the Web Performance Timeline <b>buffered</b> option is not implemented.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -326,7 +326,7 @@
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If <code>options</code> is not an object or if the observer switches between <code>entryTypes</code> and <code>type</code> modes without first calling <a href="PerformanceObserver.html#disconnect">disconnect</a>.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>options</b> is not an object or if the observer switches between <b>entryTypes</b> and <b>type</b> modes without first calling <a href="PerformanceObserver.html#disconnect">disconnect</a>.</p></div>
         </section>
         
         

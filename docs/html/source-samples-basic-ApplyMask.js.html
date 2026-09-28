@@ -247,7 +247,7 @@ include(<span class="tok-string">&#39;docs/Helpers.js&#39;</span>);
 
 <span class="tok-keyword">function</span> on_paint(gr) {
     <span class="tok-keyword">if</span> (g_img) {
-        <span class="tok-comment">// Keep aspect ratio</span>
+        <span class="tok-comment">// Keep aspect ratio</span>
         <span class="tok-keyword">let</span> scale_w = ww / g_img.Width;
         <span class="tok-keyword">let</span> scale_h = wh / g_img.Height;
         <span class="tok-keyword">let</span> scale = Math.min(scale_w, scale_h);
@@ -272,9 +272,9 @@ include(<span class="tok-string">&#39;docs/Helpers.js&#39;</span>);
 
 <span class="tok-keyword">function</span> apply() {
     <span class="tok-keyword">let</span> g_img_mask = g_mask;
-    <span class="tok-comment">// mask *MUST* be the same size as g_img</span>
+    <span class="tok-comment">// mask *MUST* be the same size as g_img</span>
     <span class="tok-keyword">let</span> mask = g_img_mask.Resize(g_img.Width, g_img.Height);
-    <span class="tok-comment">// Apply mask image to g_img</span>
+    <span class="tok-comment">// Apply mask image to g_img</span>
     g_img.ApplyMask(mask);
     applied = <span class="tok-literal">true</span>;
     window.Repaint();

@@ -231,19 +231,19 @@
         </header>
         <pre class="source-code"><code><span class="tok-string">&#39;use strict&#39;</span>;
 
-<span class="tok-comment">// Worker sample 5: Spectrum Analyzer</span>
-<span class="tok-comment">// Demonstrates: real-time audio/FFT analysis in a Worker, direct panel rendering and</span>
-<span class="tok-comment">// transferable Float32Array frame ping-pong. The Worker sends only spectrum levels/peaks;</span>
-<span class="tok-comment">// on_paint() draws them directly with the panel graphics object, so no offscreen bitmap is</span>
-<span class="tok-comment">// created per frame. After a frame has painted, the previous Float32Array is transferred back</span>
-<span class="tok-comment">// to the Worker and reused for a later frame. After the first two frames, the same two buffers</span>
-<span class="tok-comment">// ping-pong between Worker and panel.</span>
-<span class="tok-comment">//</span>
-<span class="tok-comment">// Main mode runs the same analysis engine on the panel thread for comparison. GDI/D2D selects</span>
-<span class="tok-comment">// the panel rendering backend only; both modes use the same spectrum data and direct paint path.</span>
-<span class="tok-comment">// Use the in-panel switches to compare execution mode, rendering backend, FFT size and rate limit.</span>
-<span class="tok-comment">// Only one completed Worker frame is allowed in flight at a time; the next frame starts after</span>
-<span class="tok-comment">// the previous one has been painted and acknowledged.</span>
+<span class="tok-comment">// Worker sample 5: Spectrum Analyzer</span>
+<span class="tok-comment">// Demonstrates: real-time audio/FFT analysis in a Worker, direct panel rendering and</span>
+<span class="tok-comment">// transferable Float32Array frame ping-pong. The Worker sends only spectrum levels/peaks;</span>
+<span class="tok-comment">// on_paint() draws them directly with the panel graphics object, so no offscreen bitmap is</span>
+<span class="tok-comment">// created per frame. After a frame has painted, the previous Float32Array is transferred back</span>
+<span class="tok-comment">// to the Worker and reused for a later frame. After the first two frames, the same two buffers</span>
+<span class="tok-comment">// ping-pong between Worker and panel.</span>
+<span class="tok-comment">//</span>
+<span class="tok-comment">// Main mode runs the same analysis engine on the panel thread for comparison. GDI/D2D selects</span>
+<span class="tok-comment">// the panel rendering backend only; both modes use the same spectrum data and direct paint path.</span>
+<span class="tok-comment">// Use the in-panel switches to compare execution mode, rendering backend, FFT size and rate limit.</span>
+<span class="tok-comment">// Only one completed Worker frame is allowed in flight at a time; the next frame starts after</span>
+<span class="tok-comment">// the previous one has been painted and acknowledged.</span>
 
 <span class="tok-keyword">let</span> engineMode = <span class="tok-string">&#39;worker&#39;</span>;
 <span class="tok-keyword">let</span> drawMode = <span class="tok-number">1</span>;

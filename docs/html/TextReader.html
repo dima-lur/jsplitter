@@ -277,7 +277,7 @@
         </header>
         <pre class="signature"><code>EOF: boolean = false</code></pre>
         
-        <div class="description"><p>Indicates that a clean end of file has been observed while reading.<br> This property does not report a closed reader or a read/decoding failure. Do not use it as a pre-read loop condition; use the return value of <a href="TextReader.html#ReadLine">ReadLine()</a> to drive the loop, then inspect <code>EOF</code> when <code>ReadLine()</code> returns <code>null</code>.</p></div>
+        <div class="description"><p>Indicates that a clean end of file has been observed while reading.<br> This property does not report a closed reader or a read/decoding failure. Do not use it as a pre-read loop condition; use the return value of <a href="TextReader.html#ReadLine">ReadLine</a> to drive the loop, then inspect <b>EOF</b> when <b>ReadLine()</b> returns <b>null</b>.</p></div>
         
         
         
@@ -298,7 +298,7 @@
         </header>
         <pre class="signature"><code>Close()</code></pre>
         
-        <div class="description"><p>Closes the file. Calling <code>Close()</code> more than once is allowed.</p></div>
+        <div class="description"><p>Closes the file. Calling <b>Close()</b> more than once is allowed.</p></div>
         
         
         
@@ -330,12 +330,12 @@
         
         <section class="member-section compact-section">
             <h3>Returns</h3>
-            <div><code>?string</code> — <p>The next decoded line, or <code>null</code> when no line can be returned. When <code>null</code> is returned, <a href="TextReader.html#EOF">EOF</a> is <code>true</code> for clean end of file and <code>false</code> for a read or decoding failure.</p></div>
+            <div><code>?string</code> — <p>The next decoded line, or <b>null</b> when no line can be returned. When <b>null</b> is returned, <a href="TextReader.html#EOF">EOF</a> is <b>true</b> for clean end of file and <b>false</b> for a read or decoding failure.</p></div>
         </section>
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws only if the reader is closed.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the reader is closed.</p></div>
         </section>
         
         

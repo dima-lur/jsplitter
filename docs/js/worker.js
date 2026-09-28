@@ -111,11 +111,11 @@
  * JSplitter automatically terminates all Workers still owned by a panel when that panel is unloaded, so explicit cleanup is not required merely for panel teardown. Explicit {@link Worker#terminate terminate()} is for ending a Worker <b>earlier</b>, while the panel continues to live. Conversely, while the panel remains loaded, a Worker that is still kept alive and is never closed or terminated will remain waiting in its event loop and will continue to hold its Worker realm and associated resources.
  *
  * <div class="doc-note warning"><b>Do not treat a Worker created with <code>new Worker(...)</code> as a one-shot function call.</b><br>
- * If the panel keeps an ordinary Worker alive after its useful work is finished, returning from the Worker source or from its last message handler does not dispose it. Call {@link Worker#terminate terminate()} when the panel is done with it, design the Worker protocol so Worker-global {@link WorkerGlobalScope#close close()} is called when the Worker knows it is finished, or use {@link Worker.RunAsync Worker.RunAsync()} when the task is naturally one-shot.</div>
+ * If the panel keeps an ordinary Worker alive after its useful work is finished, returning from the Worker source or from its last message handler does not dispose it. Call {@link Worker#terminate terminate()} when the panel is done with it, design the Worker protocol so Worker-global {@link WorkerGlobalScope#close close()} is called when the Worker knows it is finished, or use {@link Worker.RunAsync Worker.RunAsync} when the task is naturally one-shot.</div>
  *
  * <h2>Handling Worker errors</h2>
  * 
- * An exception that is <strong>not caught by Worker code</strong> and escapes Worker startup code, a Worker message handler, a timer callback, or another Worker task is reported as an {@link ErrorEvent}. A normal <code>try...catch</code> handles the exception locally and prevents this error-reporting path from being used.
+ * An exception that is <strong>not caught by Worker code</strong> and escapes Worker startup code, a Worker message handler, a timer callback, or another Worker task is reported as an {@link ErrorEvent}. A normal <b>try...catch</b> handles the exception locally and prevents this error-reporting path from being used.
  * 
  * For uncaught exceptions, Worker-local handling comes first: if Worker-global {@link WorkerGlobalScope#onerror onerror} or an <strong><code>error</code></strong> listener is installed, the error is handled there and is not forwarded to the parent. Otherwise it is forwarded to the parent side, where {@link Worker#onerror Worker.onerror} or an <strong><code>error</code></strong> listener can handle it.
  * 
@@ -164,7 +164,7 @@
  * ```
  *
  * <h2>Sending structured data</h2>
- * Messages are not limited to strings. {@link Worker#postMessage Worker.postMessage()} and Worker-global {@link WorkerGlobalScope#postMessage postMessage()} use structured-clone semantics: the sender serializes the value and the receiver reconstructs its own independent value. The two realms do not share the same JavaScript object.
+ * Messages are not limited to strings. {@link Worker#postMessage Worker.postMessage} and Worker-global {@link WorkerGlobalScope#postMessage postMessage} use structured-clone semantics: the sender serializes the value and the receiver reconstructs its own independent value. The two realms do not share the same JavaScript object.
  *
  * ```js
  * const worker = new Worker(`
@@ -202,7 +202,7 @@
  * Ordinary JavaScript objects, arrays, maps, sets, typed arrays, ArrayBuffers and other supported structured-clone values can be sent this way. Selected JSplitter host wrappers can also cross the message boundary; the exact types and their ownership rules are listed later under <b>Host objects in messages</b>.
  *
  * <h2>Broadcasting between panels and Workers</h2>
- * {@link Worker#postMessage Worker.postMessage()} is a direct channel between one panel and one specific Worker. When several independent panels and/or Workers should publish and receive messages by a shared name, use {@link BroadcastChannel} instead. BroadcastChannel uses asynchronous structured-clone delivery and does not require the sender to keep references to every receiver.
+ * {@link Worker#postMessage Worker.postMessage} is a direct channel between one panel and one specific Worker. When several independent panels and/or Workers should publish and receive messages by a shared name, use {@link BroadcastChannel} instead. BroadcastChannel uses asynchronous structured-clone delivery and does not require the sender to keep references to every receiver.
  *
  * ```js
  * const channel = new BroadcastChannel('playback-state');
@@ -261,17 +261,17 @@
  * in the list or transfers none of them.
  *
  * If the message cannot be serialized, or any object in the transfer list cannot be transferred,
- * {@link Worker#postMessage postMessage()} fails <b>synchronously by throwing an exception in the sender</b>.
+ * {@link Worker#postMessage postMessage} fails <b>synchronously by throwing an exception in the sender</b>.
  * The message is not queued, all source objects remain usable, and no object in the transfer list is detached.
  *
- * After {@link Worker#postMessage postMessage()} successfully serializes the message and commits the transfer,
+ * After {@link Worker#postMessage postMessage} successfully serializes the message and commits the transfer,
  * all objects listed in the transfer list are detached in the sender.
  *
  * A message is delivered only after sender-side serialization and transfer have completed successfully.
  * If the receiving realm then cannot reconstruct one of the message values, that endpoint receives a
  * {@link Worker#onmessageerror messageerror} event and remains usable for later messages. This is a
  * receiver-side delivery failure and is therefore separate from a synchronous exception thrown by
- * <code>postMessage()</code> in the sender. A completed transfer is <b>not rolled back</b>, and transferred
+ * <b>postMessage</b> in the sender. A completed transfer is <b>not rolled back</b>, and transferred
  * source objects remain detached.
  *
  * JSplitter adds two diagnostic fields to that {@link MessageEvent}:
@@ -557,12 +557,12 @@
  * <ul class="doc-article-list">
  * <li><span class="flag capability worker">WORKER</span> — this API item is available from Worker code. Absence of this badge means the item is not part of the documented Worker surface.</li>
  * <li><span class="flag capability main-thread">MAIN THREAD</span> — as described in <b>Main-thread host operations</b> above, the item is callable from a Worker but its foobar2000 host operation executes synchronously on the main thread. The Worker waits for that operation to return, so repeated calls should be avoided in hot Worker loops.</li>
- * <li><span class="flag capability cloneable">CLONEABLE</span> — instances of this host type can be sent through {@link Worker#postMessage postMessage()} using structured clone while the source remains usable.</li>
+ * <li><span class="flag capability cloneable">CLONEABLE</span> — instances of this host type can be sent through {@link Worker#postMessage postMessage} using structured clone while the source remains usable.</li>
  * <li><span class="flag capability transferable">TRANSFERABLE</span> — instances can additionally be placed in the transfer list so ownership moves to the receiver; after a successful transfer the source wrapper is detached and no longer usable on the sender side.</li>
  * </ul>
  *
  * <h2>One-shot work with Worker.RunAsync()</h2>
- * When work naturally has one input and one result, {@link Worker.RunAsync Worker.RunAsync()} avoids building a message protocol around a short-lived Worker. Each call creates a normal temporary Worker realm and Worker thread with the same Worker-side API surface as {@link Worker} code. The callback arguments are structured-cloned into that realm, and the callback's return value (or the resolved value of its Promise) is structured-cloned back to the panel. The temporary Worker is terminated automatically after success or failure.
+ * When work naturally has one input and one result, {@link Worker.RunAsync Worker.RunAsync} avoids building a message protocol around a short-lived Worker. Each call creates a normal temporary Worker realm and Worker thread with the same Worker-side API surface as {@link Worker} code. The callback arguments are structured-cloned into that realm, and the callback's return value (or the resolved value of its Promise) is structured-cloned back to the panel. The temporary Worker is terminated automatically after success or failure.
  *
  * Both synchronous and asynchronous callbacks are supported:
  *
@@ -607,7 +607,7 @@
  *
  * User-defined normal, arrow and <b><code>async</code></b> functions are supported. Native and bound functions cannot be recreated from source and are rejected. If the callback throws, returns a rejected Promise, or an argument/result cannot be structured-cloned, the Promise returned by <b><code>RunAsync()</code></b> rejects, so ordinary <b><code>try...catch</code></b> around <b><code>await</code></b> can handle the failure. Relative {@link include include()} calls inside the callback keep the caller's script/package roots.
  *
- * <b><code>RunAsync()</code></b> currently uses structured clone only and has no transfer-list parameter. Use an ordinary long-lived {@link Worker} with {@link Worker#postMessage postMessage()} when explicit ownership transfer, repeated requests, persistent Worker state, or a custom message protocol is required. Each <b><code>RunAsync()</code></b> call creates a fresh full Worker, so it is intended for reasonably coarse one-shot jobs rather than tiny operations in a hot loop.
+ * <b><code>RunAsync()</code></b> currently uses structured clone only and has no transfer-list parameter. Use an ordinary long-lived {@link Worker} with {@link Worker#postMessage postMessage} when explicit ownership transfer, repeated requests, persistent Worker state, or a custom message protocol is required. Each <b><code>RunAsync()</code></b> call creates a fresh full Worker, so it is intended for reasonably coarse one-shot jobs rather than tiny operations in a hot loop.
  *
  * Streaming text I/O is a practical RunAsync() example for larger or longer-running file operations: the work can be performed in a Worker while the panel remains responsive. 
  *
@@ -701,7 +701,7 @@
  * @constructor
  * @signature Worker(source[, name])
  * @signature Worker({ file }[, name])
- * @param {(string|Object)} source JavaScript source text, or a file descriptor object such as <code>{ file: 'workers/main.js' }</code>.
+ * @param {(string|Object)} source JavaScript source text, or a file descriptor object such as <b><code>{ file: 'workers/main.js' }</code></b>.
  * @param {string=} [name=""] Optional immutable Worker identity exposed through read-only Worker-global {@link WorkerGlobalScope#name name}, reported by {@link window.JsMemoryStats}, and shown in unhandled Worker exception diagnostics.
  * @throws {Error} If the arguments are invalid, a file-backed Worker cannot resolve or read its startup file, or the Worker cannot be created or started.
  * 
@@ -715,14 +715,14 @@ function Worker(source, name) {
     /**
      * Runs a user-defined JavaScript callback once in a temporary Worker and returns a Promise for its result.<br>
      * A fresh full Worker realm/thread is created for every call. Arguments are structured-cloned into the Worker; a synchronous return value or the resolved value of an asynchronous callback is structured-cloned back. The temporary Worker is terminated automatically when the operation settles.<br>
-     * The callback is recreated from its source and does not capture lexical variables from the caller. Pass required values explicitly through <code>args</code>. Native and bound functions are not supported. Relative {@link include include()} calls keep the caller's script/package roots.<br>
-     * This API does not currently expose a transfer list. For repeated requests, persistent Worker state, or explicit ownership transfer, use a normal {@link Worker} and {@link Worker#postMessage postMessage()}.
+     * The callback is recreated from its source and does not capture lexical variables from the caller. Pass required values explicitly through <b>args</b>. Native and bound functions are not supported. Relative {@link include include()} calls keep the caller's script/package roots.<br>
+     * This API does not currently expose a transfer list. For repeated requests, persistent Worker state, or explicit ownership transfer, use a normal {@link Worker} and {@link Worker#postMessage postMessage}.
      *
      * @static
      * @param {function()} callback User-defined JavaScript function to execute in the temporary Worker. The function may return a value or a Promise.
-     * @param {...*} args Values passed to <code>callback</code> through structured clone.
+     * @param {...*} args Values passed to <b>callback</b> through structured clone.
      * @return {Promise.<*>} Promise resolved with the structured-cloned callback result. It rejects if the callback throws or rejects, the callback cannot be recreated, Worker startup fails, or an argument/result cannot be structured-cloned.
-     * @throws {Error} If <code>callback</code> is not callable or the RunAsync helper itself cannot be initialized.
+     * @throws {Error} If <b>callback</b> is not callable or the RunAsync helper itself cannot be initialized.
      *
      * @example
      * const result = await Worker.RunAsync(
@@ -739,7 +739,7 @@ function Worker(source, name) {
     this.RunAsync = function (callback, ...args) { };
 
     /**
-     * Receives messages sent from the Worker through Worker-global {@link WorkerGlobalScope#postMessage postMessage()}.
+     * Receives messages sent from the Worker through Worker-global {@link WorkerGlobalScope#postMessage postMessage}.
      *
      * @type {?WorkerMessageCallback}
      */
@@ -766,7 +766,7 @@ function Worker(source, name) {
      * Serializes and sends a value to the Worker. Sender-side serialization and transfer-list validation are synchronous; successful delivery to the Worker is asynchronous.
      *
      * @param {*} data Value to send.
-     * @param {(Array<*>|Object)=} [transfer] Transfer list, either directly as an array or as an object containing <code>{ transfer: [...] }</code>.
+     * @param {(Array<*>|Object)=} [transfer] Transfer list, either directly as an array or as an object containing <b><code>{ transfer: [...] }</code></b>.
      * @throws {Error} If the required data argument is omitted, the value cannot be structured-cloned, or the transfer list is invalid or cannot be committed. No message is queued and transferable source objects remain usable when this happens.
      */
     this.postMessage = function (data, transfer) { };
@@ -789,7 +789,7 @@ function EventTarget() {
     /**
      * Registers an event listener.
      * @param {string} type
-     * @param {(function|Object)} callback Function or object with a <code>handleEvent()</code> method.
+     * @param {(function|Object)} callback Function or object with a <b>handleEvent()</b> method.
      * @param {(boolean|Object)=} [options]
      * @worker
      */
@@ -823,7 +823,7 @@ function EventTarget() {
  */
 function Event(type, options) {
     /**
-     * Event type supplied when the event was created, for example <code>message</code> or <code>error</code>.
+     * Event type supplied when the event was created, for example <b>message</b> or <b>error</b>.
      * @type {string}
      * @readonly
      * @worker
@@ -831,7 +831,7 @@ function Event(type, options) {
     this.type = "";
 
     /**
-     * Event target on which the event was originally dispatched. It is <code>null</code> before dispatch.
+     * Event target on which the event was originally dispatched. It is <b>null</b> before dispatch.
      * @type {?EventTarget}
      * @readonly
      * @worker
@@ -839,7 +839,7 @@ function Event(type, options) {
     this.target = null;
 
     /**
-     * Event target whose listener is currently being invoked. It is <code>null</code> outside listener dispatch.
+     * Event target whose listener is currently being invoked. It is <b>null</b> outside listener dispatch.
      * @type {?EventTarget}
      * @readonly
      * @worker
@@ -847,7 +847,7 @@ function Event(type, options) {
     this.currentTarget = null;
 
     /**
-     * <code>true</code> when {@link Event#preventDefault preventDefault()} successfully canceled the event's default action.
+     * <b>true</b> when {@link Event#preventDefault preventDefault} successfully canceled the event's default action.
      * @type {boolean}
      * @readonly
      * @worker
@@ -855,7 +855,7 @@ function Event(type, options) {
     this.defaultPrevented = false;
 
     /**
-     * Whether {@link Event#preventDefault preventDefault()} can cancel this event.
+     * Whether {@link Event#preventDefault preventDefault} can cancel this event.
      * @type {boolean}
      * @readonly
      * @worker
@@ -888,7 +888,7 @@ function Event(type, options) {
  */
 function MessageEvent(type, options) {
     /**
-     * Structured-clone payload carried by a <code>message</code> event.
+     * Structured-clone payload carried by a <b>message</b> event.
      * @type {*}
      * @readonly
      * @worker
@@ -912,7 +912,7 @@ function MessageEvent(type, options) {
     this.lastEventId = "";
 
     /**
-     * Message source endpoint. JSplitter Worker and BroadcastChannel messages do not expose a MessagePort-style source, so this is <code>null</code>.
+     * Message source endpoint. JSplitter Worker and BroadcastChannel messages do not expose a MessagePort-style source, so this is <b>null</b>.
      * @type {*}
      * @readonly
      * @worker
@@ -972,7 +972,7 @@ function ErrorEvent(type, options) {
     this.filename = "";
 
     /**
-     * One-based source line associated with the error, or <code>0</code> when unavailable.
+     * One-based source line associated with the error, or <b>0</b> when unavailable.
      * @type {number}
      * @readonly
      * @worker
@@ -980,7 +980,7 @@ function ErrorEvent(type, options) {
     this.lineno = 0;
 
     /**
-     * Source column associated with the error, or <code>0</code> when unavailable.
+     * Source column associated with the error, or <b>0</b> when unavailable.
      * @type {number}
      * @readonly
      * @worker
@@ -1040,7 +1040,7 @@ function WorkerGlobalScope() {
 
     /**
      * Immutable Worker identity supplied through the Worker constructor. The value is fixed for the Worker's lifetime.
-     * JSplitter reports the same name in {@link window.JsMemoryStats} and in unhandled Worker exception diagnostics. If no name was supplied this value is an empty string; diagnostics display it as <code>&lt;unnamed&gt;</code>.
+     * JSplitter reports the same name in {@link window.JsMemoryStats} and in unhandled Worker exception diagnostics. If no name was supplied this value is an empty string; diagnostics display it as <b>&lt;unnamed&gt;</b>.
      * @type {string}
      * @readonly
      * @worker
@@ -1051,7 +1051,7 @@ function WorkerGlobalScope() {
      * Serializes and sends a value from the Worker to its parent. Sender-side serialization and transfer-list validation are synchronous; successful delivery to the parent is asynchronous.
      *
      * @param {*} data Value to send.
-     * @param {(Array<*>|Object)=} [transfer] Transfer list, either directly as an array or as an object containing <code>{ transfer: [...] }</code>.
+     * @param {(Array<*>|Object)=} [transfer] Transfer list, either directly as an array or as an object containing <b><code>{ transfer: [...] }</code></b>.
      * @throws {Error} If the required data argument is omitted, the value cannot be structured-cloned, or the transfer list is invalid or cannot be committed. No message is queued and transferable source objects remain usable when this happens.
      * @worker
      */
@@ -1066,7 +1066,7 @@ function WorkerGlobalScope() {
     this.close = function () { };
 
     /**
-     * Receives messages sent by the parent through {@link Worker#postMessage Worker.postMessage()}.
+     * Receives messages sent by the parent through {@link Worker#postMessage Worker.postMessage}.
      * @type {?WorkerMessageCallback}
      * @worker
      */
@@ -1111,7 +1111,7 @@ function WorkerGlobalScope() {
 }
 
 /**
- * Callback used for Worker <code>message</code> and <code>messageerror</code> handlers.
+ * Callback used for Worker <b>message</b> and <b>messageerror</b> handlers.
  *
  * @callback WorkerMessageCallback
  * @param {MessageEvent} event

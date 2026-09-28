@@ -235,7 +235,7 @@
         </header>
         
         
-        <div class="description"><p>DrawMode-aware graphics facade. With <code>window.DrawMode == 0</code> its resource factories use GDI+; with <code>window.DrawMode == 1</code> they create the corresponding Direct2D resources instead. A Worker uses the DrawMode captured when that Worker is created, so the same <code>gdi.*</code> calls match the parent panel graphics backend.</p></div>
+        <div class="description"><p>DrawMode-aware graphics facade. With <b>window.DrawMode == 0</b> its resource factories use GDI+; with <b>window.DrawMode == 1</b> they create the corresponding Direct2D resources instead. A Worker uses the DrawMode captured when that Worker is created, so the same <b>gdi.*</b> calls match the parent panel graphics backend.</p></div>
         
         
         
@@ -275,7 +275,7 @@
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If the brush parameters are invalid, including malformed points, radius values, gradient stops, or bitmap input.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the brush parameters are invalid, including malformed points, radius values, gradient stops, or bitmap input.</p></div>
         </section>
         
         
@@ -347,7 +347,7 @@
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If <code>data</code> is not a non-empty <code>Uint8Array</code>.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>data</b> is not a non-empty <b>Uint8Array</b>.</p></div>
         </section>
         
         
@@ -368,7 +368,7 @@
         </header>
         <pre class="signature"><code>Font(name, size_px, style)</code></pre>
         
-        <div class="description"><p>Performance note: avoid using inside <code>on_paint</code>.<br> Performance note II: try caching and reusing <code>GdiFont</code> objects, since the maximum amount of such objects is hard-limited by Windows. <code>GdiFont</code> creation will fail after reaching this limit.</p></div>
+        <div class="description"><p>Performance note: avoid using inside <b>on_paint</b>.<br> Performance note II: try caching and reusing <b>GdiFont</b> objects, since the maximum amount of such objects is hard-limited by Windows. <b>GdiFont</b> creation will fail after reaching this limit.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -455,7 +455,7 @@
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If the panel host is unavailable or foobar2000 is not fully initialized.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the panel host is unavailable or foobar2000 is not fully initialized.</p></div>
         </section>
         
         
@@ -476,7 +476,7 @@
         </header>
         <pre class="signature"><code>LoadImageAsyncV2(window_id, path)</code></pre>
         
-        <div class="description"><p>Load image from file asynchronously. Returns a <code>Promise</code> object, which will be resolved when image loading is done.</p></div>
+        <div class="description"><p>Load image from file asynchronously. Returns a <b>Promise</b> object, which will be resolved when image loading is done.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -495,7 +495,7 @@
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If the panel host is unavailable or foobar2000 is not fully initialized.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the panel host is unavailable or foobar2000 is not fully initialized.</p></div>
         </section>
         
         

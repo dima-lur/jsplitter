@@ -231,13 +231,13 @@
         </header>
         <pre class="source-code"><code>window.DefineScript(<span class="tok-string">&#39;LoadImageAsync&#39;</span>, { author: <span class="tok-string">&#39;T.P Wang&#39;</span> });
 
-<span class="tok-comment">// Get a list of jpg files from a folder</span>
+<span class="tok-comment">// Get a list of jpg files from a folder</span>
 <span class="tok-keyword">const</span> g_image_list = utils.Glob(<span class="tok-string">`${fb.ComponentPath}samples/basic/images/*.jpg`</span>);
 <span class="tok-keyword">let</span> ww = <span class="tok-number">0</span>, wh = <span class="tok-number">0</span>;
 <span class="tok-keyword">let</span> g_img = <span class="tok-literal">null</span>;
 <span class="tok-keyword">let</span> g_valid_tid = <span class="tok-number">0</span>;
 
-<span class="tok-comment">// Trigger every 5 seconds.</span>
+<span class="tok-comment">// Trigger every 5 seconds.</span>
 <span class="tok-keyword">let</span> g_timer = setInterval(<span class="tok-keyword">function</span> () {
     load_random_image_async();
 }, <span class="tok-number">5000</span>);
@@ -245,9 +245,9 @@
 load_random_image_async();
 
 <span class="tok-keyword">function</span> load_random_image_async() {
-    <span class="tok-comment">// Load a random image from the list</span>
+    <span class="tok-comment">// Load a random image from the list</span>
     <span class="tok-keyword">let</span> path = g_image_list[Math.floor(Math.random() * g_image_list.length)];
-    <span class="tok-comment">// on_load_image_done will be triggered when the image has been loaded</span>
+    <span class="tok-comment">// on_load_image_done will be triggered when the image has been loaded</span>
     g_valid_tid = gdi.LoadImageAsync(<span class="tok-number">0</span>, path);
 }
 
@@ -274,7 +274,7 @@ load_random_image_async();
     gr.DrawImage(g_img, pos_x, pos_y, g_img.Width * scale, g_img.Height * scale, <span class="tok-number">0</span>, <span class="tok-number">0</span>, g_img.Width, g_img.Height);
 }
 
-<span class="tok-comment">// After loading image is done in the background, this callback will be invoked</span>
+<span class="tok-comment">// After loading image is done in the background, this callback will be invoked</span>
 <span class="tok-keyword">function</span> on_load_image_done(tid, image, image_path) {
     <span class="tok-keyword">if</span> (g_valid_tid === tid) {
         g_img = image;

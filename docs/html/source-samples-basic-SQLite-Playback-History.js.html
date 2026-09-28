@@ -233,10 +233,10 @@
 include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
 include(<span class="tok-string">&#39;docs/Helpers.js&#39;</span>);
 
-<span class="tok-comment">// A small persistent playback-history panel.</span>
-<span class="tok-comment">// The database is stored in the foobar2000 profile folder and survives restarts.</span>
-<span class="tok-comment">// It demonstrates schema creation, parameters, a reusable prepared statement,</span>
-<span class="tok-comment">// aggregate queries, SQLite exception handling and explicit cleanup.</span>
+<span class="tok-comment">// A small persistent playback-history panel.</span>
+<span class="tok-comment">// The database is stored in the foobar2000 profile folder and survives restarts.</span>
+<span class="tok-comment">// It demonstrates schema creation, parameters, a reusable prepared statement,</span>
+<span class="tok-comment">// aggregate queries, SQLite exception handling and explicit cleanup.</span>
 
 <span class="tok-keyword">const</span> DB_PATH = fb.ProfilePath + <span class="tok-string">&#39;jsplitter-playback-history.db&#39;</span>;
 <span class="tok-keyword">const</span> RECENT_LIMIT = <span class="tok-number">12</span>;
@@ -311,7 +311,7 @@ include(<span class="tok-string">&#39;docs/Helpers.js&#39;</span>);
             metadb.Path
         ]);
 
-        <span class="tok-comment">// Keep the demo database bounded without rebuilding the table.</span>
+        <span class="tok-comment">// Keep the demo database bounded without rebuilding the table.</span>
         db.Exec(<span class="tok-string">`
             DELETE FROM playback_history
             WHERE id &lt;= (

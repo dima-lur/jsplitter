@@ -4,15 +4,15 @@
 
 /**
  * Evaluates JavaScript from a file in the current panel or Worker realm.<br>
- * Similar to `eval({@link utils.ReadTextFile}(path))`, but provides more features:<br>
- * - Has `include guards` - a file is evaluated only once per realm unless `always_evaluate` is used.<br>
+ * Similar to <b>eval({@link utils.ReadTextFile}(path))</b>, but provides more features:<br>
+ * - Has <b>include guards</b> - a file is evaluated only once per realm unless <b>always_evaluate</b> is used.<br>
  * - Panel-side includes also use compiled-script caching; Worker includes keep their own per-Worker include guard.<br>
  * - Has better error reporting.<br>
  * <br>
  * Relative paths are resolved from the currently executing script file first when available.<br>
- * For a file-backed Worker, this makes its own directory the natural root for nested relative `include()` calls.<br>
+ * For a file-backed Worker, this makes its own directory the natural root for nested relative <b>include()</b> calls.<br>
  * Configured panel/package script roots are then considered where applicable.<br>
- * `${fb.ComponentPath}` is the final fallback.
+ * <b>${fb.ComponentPath}</b> is the final fallback.
  * @worker
  * @param {string} path Absolute or relative path to JavaScript file.
  * @param {object=} [options=undefined]
@@ -72,7 +72,7 @@ function setTimeout(func, delay, ...func_args) { } // (uint)
 function ActiveXObject(name) {
 
     /**
-     * Creates an `ActiveXObject` that contains an object of type (VT_ARRAY|SOME_TYPE).
+     * Creates an <b>ActiveXObject</b> that contains an object of type (VT_ARRAY|SOME_TYPE).
      *
      * @static
      * 
@@ -123,7 +123,7 @@ function ActiveXObject(name) {
 }
 
 /**
- * Deprecated: use `for ... of` loop instead.
+ * Deprecated: use <b>for ... of</b> loop instead.
  * 
  * @deprecated
  * 
@@ -202,7 +202,7 @@ let console = {
 /**
  * Controls the main foobar2000 application window.
  * 
- * <b>Global state:</b> every JSplitter panel accesses the same native foobar2000 window through {@link fb.Window}</code>.
+ * <b>Global state:</b> every JSplitter panel accesses the same native foobar2000 window through {@link fb.Window}</b>.
  * Window geometry {@link FbWindow#X X}, {@link FbWindow#Y Y}, {@link FbWindow#Width Width}, {@link FbWindow#Height Height}, the numeric {@link FbWindow#MinWidth MinWidth}, {@link FbWindow#MinHeight MinHeight}, {@link FbWindow#MaxWidth MaxWidth}, {@link FbWindow#MaxHeight MaxHeight}, and the numeric pseudo-caption rectangle defined by {@link FbWindow#SetPseudoCaption SetPseudoCaption} are global host state.
  * These numeric values are not automatically restored when a panel reloads or unloads.
  * 
@@ -335,7 +335,7 @@ function FbWindow() {
 
     /**
      * Enables the minimum main-window size defined by {@link FbWindow#MinWidth MinWidth} and {@link FbWindow#MinHeight MinHeight}.
-     * Setting this property to <code>true</code> immediately clamps the current window size when needed. Changing an active minimum width or height also clamps the current size immediately.
+     * Setting this property to <b>true</b> immediately clamps the current window size when needed. Changing an active minimum width or height also clamps the current size immediately.
      * A limit value of 0 means that the corresponding axis is not constrained.
      *
      * @type {boolean}
@@ -422,7 +422,7 @@ function FbWindow() {
      * @param {number} y Vertical offset from the top edge of the outer main-window rectangle.
      * @param {number} width Width of the pseudo-caption rectangle. Must be greater than 0.
      * @param {number} height Height of the pseudo-caption rectangle. Must be greater than 0.
-     * @throws {Error} If <code>width</code> or <code>height</code> is not greater than 0.
+     * @throws {Error} If <b>width</b> or <b>height</b> is not greater than 0.
      *
      * @example
      * fb.Window.FrameStyle = FrameStyle.NoBorder;
@@ -671,7 +671,7 @@ let fb = {
      * @param {FbMetadbHandleList} handle_list
      * @return {boolean}
      *
-     * @throws {Error} If <code>handle_list</code> is null.
+     * @throws {Error} If <b>handle_list</b> is null.
      * @example <caption>Copy playlist items</caption>
      * let handle_list = plman.GetPlaylistSelectedItems(plman.ActivePlaylist);
      * fb.CopyHandleListToClipboard(handle_list);
@@ -729,7 +729,7 @@ let fb = {
      * - If you need only to drag from your panel with copy (i.e. without physically moving them):
      *      use only fb.DoDragDrop(handles, DROPEFFECT_COPY | DROPEFFECT_LINK).<br>
      * - If you need only to receive drop to your panel with copy:
-     *      handle `on_drop_*()` callbacks, while setting action.effect argument to (DROPEFFECT_COPY | DROPEFFECT_LINK).<br>
+     *      handle <b>on_drop_*()</b> callbacks, while setting action.effect argument to (DROPEFFECT_COPY | DROPEFFECT_LINK).<br>
      * <br>
      * Full drag-n-drop interface description:<br>
      * - Drag-n-drop interface is based on Microsoft IDropSource and IDropTarget interfaces, so a lot of info (including examples) could be gathered from MSDN (IDropSource, IDropTarget, DoDragDrop, DROPEFFECT).<br>
@@ -743,8 +743,8 @@ let fb = {
      * - DROPEFFECT_LINK should be used as fallback in case effect argument does not have DROPEFFECT_COPY (===1), since some external drops only allow DROPEFFECT_LINK effect.<br>
      * - Changing effect on key modifiers is nice (to be in line with native Windows behaviour): see the example below.<br>
      * <br>
-     * Note: due to the asynchronous nature of event handling, `fb.DoDragDrop()` might exit before `on_drag_drop` callback is triggered
-     * when dropping data on the same panel as the one that had a call to `fb.DoDragDrop()`.<br>
+     * Note: due to the asynchronous nature of event handling, <b>fb.DoDragDrop()</b> might exit before <b>on_drag_drop</b> callback is triggered
+     * when dropping data on the same panel as the one that had a call to <b>fb.DoDragDrop()</b>.<br>
      * <br>
      * Related callbacks: {@link module:Callbacks.on_drag_enter on_drag_enter}, {@link module:Callbacks.on_drag_drop on_drag_drop},
      * {@link module:Callbacks.on_drag_over on_drag_over}, {@link module:Callbacks.on_drag_leave on_drag_leave}
@@ -759,7 +759,7 @@ let fb = {
      * @param {GdiBitmap=} [options.custom_image=undefined] (or {@link D2DBitmap} if {@link window.DrawMode} == 1). Custom dragging image. Will be also displayed if use_album_art is true, but there is no album art available.
      * @return {number} Effect that was returned in {@link module:Callbacks.on_drag_drop on_drag_drop}.
      *
-     * @throws {Error} If <code>handle_list</code> is null, <code>options</code> is not an object, or the panel host is not fully initialized.
+     * @throws {Error} If <b>handle_list</b> is null, <b>options</b> is not an object, or the panel host is not fully initialized.
      * @sourceFile ../../component/samples/basic/DragnDrop.js
      */
     DoDragDrop: function (window_id, handle_list, effect, options) { }, // (uint),
@@ -822,7 +822,7 @@ let fb = {
      * @param {FbMetadbHandle} handle
      * @return {Array<AudioStreamInfo>}
      *
-     * @throws {Error} If <code>handle</code> is null or foobar2000&apos;s input stream selector is unavailable.
+     * @throws {Error} If <b>handle</b> is null or foobar2000&apos;s input stream selector is unavailable.
      * @example
      * const handle = fb.GetFocusItem();
      * if (handle) {
@@ -841,8 +841,8 @@ let fb = {
     
     /**
      * Returns PCM data from the foobar2000 visualisation stream.<br>
-     * The stream is created lazily. A negative <code>offset</code> requests data before the current visualisation time; JSplitter automatically maintains the native backlog required for that offset. The first stream initialization may briefly synchronize with the foobar2000 main thread.<br>
-     * For repeated real-time processing, prefer {@link fb.GetAudioChunkTo} to write directly into a reusable <code>Float32Array</code> without creating a transient {@link FbAudioChunk}. {@link FbAudioChunk#CopyDataTo CopyDataTo()} remains useful when a chunk object is already required, while {@link FbAudioChunk#Data Data} preserves its legacy allocating <code>Array</code> behaviour for compatibility.
+     * The stream is created lazily. A negative <b>offset</b> requests data before the current visualisation time; JSplitter automatically maintains the native backlog required for that offset. The first stream initialization may briefly synchronize with the foobar2000 main thread.<br>
+     * For repeated real-time processing, prefer {@link fb.GetAudioChunkTo} to write directly into a reusable <b>Float32Array</b> without creating a transient {@link FbAudioChunk}. {@link FbAudioChunk#CopyDataTo CopyDataTo} remains useful when a chunk object is already required, while {@link FbAudioChunk#Data Data} preserves its legacy allocating <b>Array</b> behaviour for compatibility.
      *
      * @param {number} requested_length 
      * @param {number=} [offset=0] 
@@ -855,16 +855,16 @@ let fb = {
     GetAudioChunk: function (requested_length, offset) { },
 
     /**
-     * Writes interleaved PCM samples from the foobar2000 visualisation stream directly into an existing <code>Float32Array</code>.
+     * Writes interleaved PCM samples from the foobar2000 visualisation stream directly into an existing <b>Float32Array</b>.
      * Unlike {@link fb.GetAudioChunk}, this method does not create an {@link FbAudioChunk}; after the first sufficiently large native scratch buffer has been established, repeated calls can reuse both the native scratch storage and the JavaScript destination buffer.<br>
-     * A negative <code>offset</code> has the same backlog semantics as {@link fb.GetAudioChunk}. If <code>info</code> is supplied, it is updated in place with <code>SampleCount</code>, <code>ChannelCount</code>, <code>SampleRate</code> and <code>ChannelConfig</code>.
+     * A negative <b>offset</b> has the same backlog semantics as {@link fb.GetAudioChunk}. If <b>info</b> is supplied, it is updated in place with <b>SampleCount</b>, <b>ChannelCount</b>, <b>SampleRate</b> and <b>ChannelConfig</b>.
      *
      * @param {Float32Array} destination Destination buffer. It must have room for all interleaved PCM sample values.
      * @param {number} requested_length
      * @param {number=} [offset=0]
      * @param {Object=} info Reusable metadata object updated in place.
      * @return {number} Number of scalar PCM samples written, or 0 when no chunk is currently available.
-     * @throws {Error} If the foobar2000 visualisation stream cannot be created, <code>destination</code> is not a <code>Float32Array</code> or is too small, or <code>info</code> is not an object.
+     * @throws {Error} If the foobar2000 visualisation stream cannot be created, <b>destination</b> is not a <b>Float32Array</b> or is too small, or <b>info</b> is not an object.
      * @worker
      */
     GetAudioChunkTo: function (destination, requested_length, offset, info) { },
@@ -952,7 +952,7 @@ let fb = {
      * @param {FbMetadbHandle} handle
      * @return {string}
      *
-     * @throws {Error} If <code>handle</code> is null.
+     * @throws {Error} If <b>handle</b> is null.
      * @example
      * // The foobar2000 Media Library is configured to watch "D:\Music" and the
      * // path of the now playing item is "D:\Music\Albums\Artist\Some Album\Some Song.flac"
@@ -1043,7 +1043,7 @@ let fb = {
      * @param {string} query
      * @return {FbMetadbHandleList} Unsorted results.
      *
-     * @throws {Error} If <code>handles</code> is null or the query cannot be parsed or processed.
+     * @throws {Error} If <b>handles</b> is null or the query cannot be parsed or processed.
      * @example
      * let a = fb.GetQueryItems(plman.GetPlaylistItems(plman.ActivePlaylist), "rating IS 5");
      *
@@ -1104,7 +1104,7 @@ let fb = {
     IsLibraryInitialised: function () { }, // (boolean)
     
     /**
-     * Performance note: don't use in `on_paint`.
+     * Performance note: don't use in <b>on_paint</b>.
      *
      * @param {string} command Path to main menu item
      * @return {boolean} true, if the item is checked.
@@ -1120,7 +1120,7 @@ let fb = {
      * @param {FbMetadbHandle} handle
      * @return {boolean}
      *
-     * @throws {Error} If <code>handle</code> is null.
+     * @throws {Error} If <b>handle</b> is null.
      * @example
      * let np = fb.GetNowplaying();
      * console.log(fb.IsMetadbInMediaLibrary(np)); // If false, playing track is not in Media Library.
@@ -1130,7 +1130,7 @@ let fb = {
     IsMetadbInMediaLibrary: function (handle) { }, // (boolean)
 
     /**
-     * Loads playlist from file. Equivalent to `File`>`Load Playlist...`.
+     * Loads playlist from file. Equivalent to <b>File</b>><b>Load Playlist...</b>.
      *
      * @method
      */
@@ -1228,7 +1228,7 @@ let fb = {
      * @param {FbMetadbHandle|FbMetadbHandleList} handle_or_handle_list Handles on which to apply context menu
      * @param {number=} flags Same flags as {@link fb.RunContextCommand}
      * @return {boolean}
-     * @throws {Error} If <code>handle_or_handle_list</code> is not an <code>FbMetadbHandle</code> or <code>FbMetadbHandleList</code> object.
+     * @throws {Error} If <b>handle_or_handle_list</b> is not an <b>FbMetadbHandle</b> or <b>FbMetadbHandleList</b> object.
      */
     RunContextCommandWithMetadb: function (command, handle_or_handle_list, flags) { }, // (boolean) [, flags]
 
@@ -1251,7 +1251,7 @@ let fb = {
      *
      * @param {number} idx
      *
-     * @throws {Error} If <code>idx</code> is out of bounds.
+     * @throws {Error} If <b>idx</b> is out of bounds.
      * @example
      * let str = fb.GetDSPPresets();
      * let arr = JSON.parse(str);
@@ -1271,7 +1271,7 @@ let fb = {
      *
      * @param {FbMetadbHandle} handle
      * @param {number} index Zero-based stream index returned by {@link fb.GetAudioStreams}.
-     * @throws {Error} If <code>handle</code> is null, foobar2000 2.0 stream selection is unavailable, the file does not support audio stream selection, or <code>index</code> is out of bounds.
+     * @throws {Error} If <b>handle</b> is null, foobar2000 2.0 stream selection is unavailable, the file does not support audio stream selection, or <b>index</b> is out of bounds.
      * @example
      * const handle = fb.GetFocusItem();
      * if (handle) {
@@ -1324,7 +1324,7 @@ let fb = {
     ShowLibrarySearchUI: function (query) { }, // (void)
 
     /**
-     * Opens the image viewer built in to `foobar2000`. Pass an image file path, or an {@link FbMetadbHandle}; with a handle, {@link module:Flags.AlbumArtId AlbumArtId} defaults to `AlbumArtId.front`. Album art is resolved by foobar2000 and may be embedded or external.
+     * Opens the image viewer built in to <b>foobar2000</b>. Pass an image file path, or an {@link FbMetadbHandle}; with a handle, {@link module:Flags.AlbumArtId AlbumArtId} defaults to <b>AlbumArtId.front</b>. Album art is resolved by foobar2000 and may be embedded or external.
      * @param {(string|FbMetadbHandle)} image_path_or_handle Image file path or track handle.
      * @param {AlbumArtId=} [art_id=AlbumArtId.front] Album art type. Used only when the first argument is an {@link FbMetadbHandle}.
      * @throws {Error} If the track handle is invalid, the foobar2000 image viewer API is unavailable, or an image file path cannot be read.
@@ -1379,7 +1379,7 @@ let fb = {
      * Related methods: {@link fb.RegisterMainMenuCommand}
      *
      * @param {number} id
-     * @throws {Error} If the panel host is not fully initialized or <code>id</code> is not a registered dynamic main-menu command.
+     * @throws {Error} If the panel host is not fully initialized or <b>id</b> is not a registered dynamic main-menu command.
      * @worker
      * @mainthread
      */
@@ -1408,7 +1408,7 @@ let fb = {
 };
 
 /**
- * DrawMode-aware graphics facade. With <code>window.DrawMode == 0</code> its resource factories use GDI+; with <code>window.DrawMode == 1</code> they create the corresponding Direct2D resources instead. A Worker uses the DrawMode captured when that Worker is created, so the same <code>gdi.*</code> calls match the parent panel graphics backend.
+ * DrawMode-aware graphics facade. With <b>window.DrawMode == 0</b> its resource factories use GDI+; with <b>window.DrawMode == 1</b> they create the corresponding Direct2D resources instead. A Worker uses the DrawMode captured when that Worker is created, so the same <b>gdi.*</b> calls match the parent panel graphics backend.
  *
  * @namespace
  * @worker
@@ -1468,17 +1468,17 @@ let gdi = {
      *   "rgb24"   24bpp RGB<br>
      * @returns {GdiBitmap} null if was an error (for example pixelData array length is not suitable for the specified parameters)
      * 
-     * @throws {Error} If <code>data</code> is not a non-empty <code>Uint8Array</code>.
+     * @throws {Error} If <b>data</b> is not a non-empty <b>Uint8Array</b>.
      * @sourceFile ../../component/samples/basic/CreateImageFromPixelData.js
      * @worker
      */
     CreateImageFromPixelData: function(pixelData, width, height, format = "bgra32") { }, // (GdiBitmap)
 
     /**
-     * Performance note: avoid using inside `on_paint`.<br>
-     * Performance note II: try caching and reusing `GdiFont` objects,
+     * Performance note: avoid using inside <b>on_paint</b>.<br>
+     * Performance note II: try caching and reusing <b>GdiFont</b> objects,
      * since the maximum amount of such objects is hard-limited by Windows.
-     * `GdiFont` creation will fail after reaching this limit.
+     * <b>GdiFont</b> creation will fail after reaching this limit.
      *
      * @param {string} name
      * @param {number} size_px See {@link module:Helpers.Point2Pixel Point2Pixel} function for conversions
@@ -1518,7 +1518,7 @@ let gdi = {
 
     /**
      * Load image from file asynchronously.
-     * Returns a `Promise` object, which will be resolved when image loading is done.
+     * Returns a <b>Promise</b> object, which will be resolved when image loading is done.
      *
      * @param {number} window_id unused
      * @param {string} path
@@ -1633,7 +1633,7 @@ let plman = {
      *        If true, the active playlist will be set to the playlistIndex, the items will
      *        be selected and focus will be set to the first new item.
      *
-     * @throws {Error} If <code>playlistIndex</code> is invalid or a playlist lock prevents adding items.
+     * @throws {Error} If <b>playlistIndex</b> is invalid or a playlist lock prevents adding items.
      * @example
      * plman.AddLocations(plman.ActivePlaylist, ["e:\\1.mp3"]);
      * // This operation is asynchronous, so any code in your script directly
@@ -1700,7 +1700,7 @@ let plman = {
      * @param {number} playlistIndex
      * @param {?string=} [name] A name for the new playlist. If the name is "" or undefined, the name of the source playlist will be used.
      * @return {number} Index of the created playlist.
-     * @throws {Error} If <code>from</code> is out of bounds.
+     * @throws {Error} If <b>from</b> is out of bounds.
      * @worker
      * @mainthread
      */
@@ -1813,7 +1813,7 @@ let plman = {
      *   - 'RenamePlaylist'<br>
      *   - 'RemovePlaylist'<br>
      *   - 'ExecuteDefaultAction'
-     * @throws {Error} If <code>playlistIndex</code> is out of bounds.
+     * @throws {Error} If <b>playlistIndex</b> is out of bounds.
      * @worker
      * @mainthread
      */
@@ -1822,7 +1822,7 @@ let plman = {
     /**
      * @param {number} playlistIndex
      * @return {?string} name of lock owner if there is a lock, null otherwise
-     * @throws {Error} If <code>playlistIndex</code> is out of bounds or the playlist lock name cannot be queried.
+     * @throws {Error} If <b>playlistIndex</b> is out of bounds or the playlist lock name cannot be queried.
      * @worker
      * @mainthread
      */
@@ -1843,7 +1843,7 @@ let plman = {
      * @param {number} playlistIndex
      * @return {Array<number>}
      *
-     * @throws {Error} If <code>playlistIndex</code> is invalid.
+     * @throws {Error} If <b>playlistIndex</b> is invalid.
      * @example
      * let selected_indexes = plman.GetPlaylistSelectedIndexes(plman.ActivePlaylist);
      * @worker
@@ -1868,7 +1868,7 @@ let plman = {
      * @param {FbMetadbHandleList} handle_list Items to insert
      * @param {boolean=} [select=false] If true then inserted items will be selected
      *
-     * @throws {Error} If <code>handles</code> is null.
+     * @throws {Error} If <b>handles</b> is null.
      * @example <caption>Add all library tracks to the beginning of playlist.</caption>
      * let ap = plman.ActivePlaylist;
      * plman.InsertPlaylistItems(ap, 0, fb.GetLibraryItems());
@@ -1888,7 +1888,7 @@ let plman = {
      * @param {number} base Position in playlist
      * @param {FbMetadbHandleList} handle_list Items to insert
      * @param {boolean=} [select=false] If true then inserted items will be selected
-     * @throws {Error} If <code>handles</code> is null.
+     * @throws {Error} If <b>handles</b> is null.
      * @worker
      * @mainthread
      */
@@ -1896,7 +1896,7 @@ let plman = {
 
     /**
      * @param {number} playlistIndex
-     * @throws {Error} If <code>playlistIndex</code> is invalid.
+     * @throws {Error} If <b>playlistIndex</b> is invalid.
      * @worker
      * @mainthread
      */
@@ -1905,7 +1905,7 @@ let plman = {
     /**
      * @param {number} playlistIndex
      * @return {boolean}
-     * @throws {Error} If <code>playlistIndex</code> is out of bounds.
+     * @throws {Error} If <b>playlistIndex</b> is out of bounds.
      * @worker
      * @mainthread
      */
@@ -1922,11 +1922,11 @@ let plman = {
 
     /**
      * Note: returns true, if the playlist is an autoplaylist. To determine if a playlist is not an autoplaylist,
-     * but locked with something like `foo_utils` or `foo_playlist_attributes`, use with conjunction of {@link plman.IsAutoPlaylist}.
+     * but locked with something like <b>foo_utils</b> or <b>foo_playlist_attributes</b>, use with conjunction of {@link plman.IsAutoPlaylist}.
      * <br>
      * Deprecated: use {@link plman.GetPlaylistLockedActions}.
      *
-     * @throws {Error} If <code>playlistIndex</code> is out of bounds.
+     * @throws {Error} If <b>playlistIndex</b> is out of bounds.
      * @deprecated
      * 
      * @param {number} playlistIndex
@@ -1943,7 +1943,7 @@ let plman = {
      *
      * @param {number} playlistIndex
      * @return {boolean}
-     * @throws {Error} If <code>playlistIndex</code> is out of bounds.
+     * @throws {Error} If <b>playlistIndex</b> is out of bounds.
      * @worker
      * @mainthread
      */
@@ -1956,7 +1956,7 @@ let plman = {
      *
      * @param {number} playlistIndex
      * @return {boolean}
-     * @throws {Error} If <code>playlistIndex</code> is out of bounds.
+     * @throws {Error} If <b>playlistIndex</b> is out of bounds.
      * @worker
      * @mainthread
      */
@@ -1989,7 +1989,7 @@ let plman = {
      * 
      * @param {number} playlistIndex
      * @param {number} new_pos
-     * @throws {Error} If <code>playlistIndex</code> is invalid.
+     * @throws {Error} If <b>playlistIndex</b> is invalid.
      * @worker
      * @mainthread
      */
@@ -2014,7 +2014,7 @@ let plman = {
      * Related methods: {@link plman.IsRedoAvailable}, {@link plman.IsUndoAvailable}, {@link plman.Undo}, {@link plman.UndoBackup}
      *
      * @param {number} playlistIndex
-     * @throws {Error} If <code>playlistIndex</code> is out of bounds or redo is not available.
+     * @throws {Error} If <b>playlistIndex</b> is out of bounds or redo is not available.
      * @worker
      * @mainthread
      */
@@ -2077,7 +2077,7 @@ let plman = {
      * @param {number} playlistIndex zero-based playlist index
      * @param {Array<number>} order permutation describing the new playlist item order
      * @returns {boolean} <b>true</b> if the playlist was reordered successfully
-     * @throws {Error} If <code>playlistIndex</code> is invalid or <code>order</code> is not a valid permutation of the playlist items.
+     * @throws {Error} If <b>playlistIndex</b> is invalid or <b>order</b> is not a valid permutation of the playlist items.
      * @example
      * // Changes the order from [A, B, C] to [C, A, B]
      * const success = ReorderPlaylistItems(0, [2, 0, 1])
@@ -2090,7 +2090,7 @@ let plman = {
      * @param {number} playlistIndex
      * @param {number} playlistItemIndex
      * @param {FbMetadbHandle|FbMetadbHandleList} handle_or_handles
-     * @throws {Error} If <code>handle</code>, <code>playlistIndex</code>, or <code>playlistItemIndex</code> is invalid.
+     * @throws {Error} If <b>handle</b>, <b>playlistIndex</b>, or <b>playlistItemIndex</b> is invalid.
      * @worker
      * @mainthread
      */
@@ -2102,7 +2102,7 @@ let plman = {
      * @param {number} playlistIndex
      * @param {string} query
      * @return {Array<number>} Array of selected indexes
-     * @throws {Error} If <code>playlistIndex</code> is invalid or the query cannot be parsed.
+     * @throws {Error} If <b>playlistIndex</b> is invalid or the query cannot be parsed.
      * @worker
      * @mainthread
      */
@@ -2140,7 +2140,7 @@ let plman = {
      * @param {number} playlistIndex
      * @param {FbMetadbHandle} handle
      *
-     * @throws {Error} If <code>handle</code> is null.
+     * @throws {Error} If <b>handle</b> is null.
      * @example
      * let ap = plman.ActivePlaylist;
      * let handle = plman.GetPlaylistItems(ap)[1]; // 2nd item in playlist
@@ -2152,7 +2152,7 @@ let plman = {
 
     /**
      * Blocks requested actions.<br>
-     * Note: the lock can be changed only if there is no lock or if it's owned by `foo_uie_jsplitter`.
+     * Note: the lock can be changed only if there is no lock or if it's owned by <b>foo_uie_jsplitter</b>.
      * The owner of the lock can be checked via {@link plman.GetPlaylistLockName}.
      * 
      * @param {number} playlistIndex
@@ -2164,7 +2164,7 @@ let plman = {
      *   - 'RenamePlaylist'<br>
      *   - 'RemovePlaylist'<br>
      *   - 'ExecuteDefaultAction'
-     * @throws {Error} If <code>lockedActions</code> is invalid, <code>playlistIndex</code> is out of bounds, the lock belongs to another component, or an action name is unknown.
+     * @throws {Error} If <b>lockedActions</b> is invalid, <b>playlistIndex</b> is out of bounds, the lock belongs to another component, or an action name is unknown.
      * @worker
      * @mainthread
     */
@@ -2208,7 +2208,7 @@ let plman = {
      * @param {number} playlistIndex
      * @return {boolean}
      *
-     * @throws {Error} If <code>playlistIndex</code> is out of bounds.
+     * @throws {Error} If <b>playlistIndex</b> is out of bounds.
      * @example
      * fb.ShowAutoPlaylistUI(plman.ActivePlaylist);
      */
@@ -2220,7 +2220,7 @@ let plman = {
      * @param {number} playlistIndex
      * @param {number} [window_id=0] Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window.
      *
-     * @throws {Error} If <code>playlistIndex</code> is invalid or the panel host is not fully initialized.
+     * @throws {Error} If <b>playlistIndex</b> is invalid or the panel host is not fully initialized.
      * @example
      * fb.ShowPlaylistLockUI(plman.ActivePlaylist);
      */
@@ -2265,20 +2265,20 @@ let plman = {
      * Related methods: {@link plman.IsRedoAvailable}, {@link plman.IsUndoAvailable}, {@link plman.Redo}, {@link plman.UndoBackup}
      *
      * @param {number} playlistIndex
-     * @throws {Error} If <code>playlistIndex</code> is out of bounds or undo is not available.
+     * @throws {Error} If <b>playlistIndex</b> is out of bounds or undo is not available.
      * @worker
      * @mainthread
      */
     Undo: function (playlistIndex) { }, // (void)
 
     /**
-     * Creates an undo restore point for the specified playlist. This will enable `Edit`>`Undo` menu item after calling other {@link plman} methods that change playlist content.<br>
+     * Creates an undo restore point for the specified playlist. This will enable <b>Edit</b>><b>Undo</b> menu item after calling other {@link plman} methods that change playlist content.<br>
      * Note: this method should be called before performing modification to the playlist.<br>
      * <br>
      * Related methods: {@link plman.IsRedoAvailable}, {@link plman.IsUndoAvailable}, {@link plman.Redo}, {@link plman.Undo}
      * 
      * @param {number} playlistIndex
-     * @throws {Error} If <code>playlistIndex</code> is out of bounds.
+     * @throws {Error} If <b>playlistIndex</b> is out of bounds.
      * @worker
      * @mainthread
      */
@@ -2286,7 +2286,7 @@ let plman = {
 
     /**
      * @param {FbMetadbHandle} handle
-     * @throws {Error} If <code>handle</code> is null.
+     * @throws {Error} If <b>handle</b> is null.
      * @worker
      * @mainthread
      */
@@ -2305,7 +2305,7 @@ let plman = {
      * @param {number} playlistIndex
      * @param {number} playlistItemIndex
      * @return {number} Returns position in queue on success, -1 if track is not in queue.
-     * @throws {Error} If <code>handle</code> is null.
+     * @throws {Error} If <b>handle</b> is null.
      * @worker
      * @mainthread
      */
@@ -2394,7 +2394,7 @@ let plman = {
  *
  * @typedef {Object} SystemInfo
  * @property {string} OS
- *    Human-readable Windows product name including the edition when available, for example <code>Windows 11 Home</code> or <code>Windows 11 Pro</code>.
+ *    Human-readable Windows product name including the edition when available, for example <b>Windows 11 Home</b> or <b>Windows 11 Pro</b>.
  * @property {number} Build
  *    Windows NT build number.
  * @property {boolean} IsOS64Bit
@@ -2672,7 +2672,7 @@ let utils = {
 
     /**
      * Edit a text file with the default text editor. <br>
-     * Default text editor can be changed via `Edit` button on the main tab of {@link window.ShowConfigureV2}.
+     * Default text editor can be changed via <b>Edit</b> button on the main tab of {@link window.ShowConfigureV2}.
      *
      * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
@@ -2693,7 +2693,7 @@ let utils = {
     /**
      * Opens system file picker dialog window
      *
-     * Relative <code>defaultPath</code> values are resolved as described in {@link utils.ReadTextFile}.
+     * Relative <b>defaultPath</b> values are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string=} [title=undefined] Title of dialog. If empty it will be the title by system default
      * @param {string=} [default_path=undefined] Default file path to choose. If only path without file name is specified it will open specified folder
@@ -2711,10 +2711,10 @@ let utils = {
      * Deprecated: use {@link utils.DetectCharset}, {@link utils.FileExists}, {@link utils.GetFileSize},
      * {@link utils.IsDirectory}, {@link utils.IsFile} and {@link utils.SplitFilePath} instead.
      *
-     * @throws {Error} If <code>mode</code> is not one of the supported values.
+     * @throws {Error} If <b>mode</b> is not one of the supported values.
      * @deprecated
      * 
-     * For modes that access the filesystem, relative paths are resolved as described in {@link utils.ReadTextFile}; <code>split</code> remains purely lexical.
+     * For modes that access the filesystem, relative paths are resolved as described in {@link utils.ReadTextFile}; <b>split</b> remains purely lexical.
      *
      * @param {string} path
      * @param {string} mode
@@ -2737,7 +2737,7 @@ let utils = {
     /**
      * Opens system folder picker dialog window
      *
-     * Relative <code>defaultPath</code> values are resolved as described in {@link utils.ReadTextFile}.
+     * Relative <b>defaultPath</b> values are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string=} [title=undefined] Title of dialog. If empty it will be the title by system default
      * @param {string=} [default_path=undefined] Default folder path to choose
@@ -2754,7 +2754,7 @@ let utils = {
      * @param {number=} [window_id=0] Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window.
      * @return {?GdiFont} (or D2DFont if window.DrawMode=1) Chosen font or default_font if cancelled (if default_font is undefined returns null)
      *
-     * @throws {Error} If no valid owner window is supplied and the panel host is not fully initialized, or <code>default_font</code> is not compatible with the current draw mode.
+     * @throws {Error} If no valid owner window is supplied and the panel host is not fully initialized, or <b>default_font</b> is not compatible with the current draw mode.
      * @sourceFile ../../component/samples/basic/FontPicker.js
      */
     FontPicker: function (default_font, window_id) { },
@@ -2789,7 +2789,7 @@ let utils = {
      * @param {boolean=} [only_embed=false]
      * @param {boolean=} [no_load=false]  If true, "image" parameter will be null in {@link module:Callbacks.on_get_album_art_done on_get_album_art_done} callback.
      *
-     * @throws {Error} If <code>handle</code> is null or the panel host is not fully initialized.
+     * @throws {Error} If <b>handle</b> is null or the panel host is not fully initialized.
      * @sourceFile ../../component/samples/basic/GetAlbumArtAsync.js
      * @worker
      */
@@ -2803,17 +2803,17 @@ let utils = {
 
     /**
      * Load art image for the track asynchronously.<br>
-     * Returns a `Promise` object, which will be resolved when art loading is done.
+     * Returns a <b>Promise</b> object, which will be resolved when art loading is done.
      *
      * @param {number} window_id unused
      * @param {FbMetadbHandle} handle
      * @param {number=} [art_id=0] See {@link module:Flags.AlbumArtId AlbumArtId} enum
-     * @param {boolean=} [need_stub=true] If true, will return a stub image from `Preferences`>`Display`>`Stub image path` when there is no art image available.
+     * @param {boolean=} [need_stub=true] If true, will return a stub image from <b>Preferences</b>><b>Display</b>><b>Stub image path</b> when there is no art image available.
      * @param {boolean=} [only_embed=false] If true, will only try to load the embedded image.
      * @param {boolean=} [no_load=false] If true, then no art loading will be performed and only path to art will be returned in {@link ArtPromiseResult}.
      * @return {Promise.<ArtPromiseResult>}
      *
-     * @throws {Error} If <code>handle</code> is null, the panel host is not fully initialized, or Worker promise setup fails.
+     * @throws {Error} If <b>handle</b> is null, the panel host is not fully initialized, or Worker promise setup fails.
      * @sourceFile ../../component/samples/basic/GetAlbumArtAsyncV2.js
      * @worker
      */
@@ -2844,7 +2844,7 @@ let utils = {
      * @param {boolean=} [need_stub=true]
      * @return {GdiBitmap} (or {@link D2DBitmap} if {@link window.DrawMode} == 1)
      *
-     * @throws {Error} If <code>handle</code> is null.
+     * @throws {Error} If <b>handle</b> is null.
      * @sourceFile ../../component/samples/basic/GetAlbumArtV2.js
      * @worker
      */
@@ -2873,7 +2873,7 @@ let utils = {
     /**
      * Returns information about a logical drive or volume containing the supplied path.<br>
      * The method also works with drive roots returned by {@link utils.GetDrives}.<br>
-     * Unready removable/CD drives still return an object with <code>IsReady == false</code> when the drive itself exists.
+     * Unready removable/CD drives still return an object with <b>IsReady == false</b> when the drive itself exists.
      *
      * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
@@ -2889,7 +2889,7 @@ let utils = {
      * Returns logical drive roots known to Windows, including mapped network drives and removable drives.<br>
      * A returned removable/CD drive may not currently be ready; use {@link utils.GetDriveInfo} to query its state.
      *
-     * @return {Array<string>} Drive root paths, for example <code>["C:\\", "D:\\"]</code>
+     * @return {Array<string>} Drive root paths, for example <b>["C:\\", "D:\\"]</b>
      * 
      * @sourceFile ../../component/samples/basic/FilesystemUtils.js
      * @worker
@@ -2996,7 +2996,7 @@ let utils = {
      * <br>
      * Deprecated: use {@link utils.GetPackageInfo} instead.
      * 
-     * @throws {Error} If no package with <code>package_id</code> exists.
+     * @throws {Error} If no package with <b>package_id</b> exists.
      * @deprecated
      * 
      * @param {string} package_id Can be obtained by {@link window.ScriptInfo}
@@ -3010,7 +3010,7 @@ let utils = {
      * @param {number} index {@link https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsyscolor}
      * @return {number} 0 if failed
      *
-     * @throws {Error} If <code>index</code> is not a valid system colour index.
+     * @throws {Error} If <b>index</b> is not a valid system colour index.
      * @example
      * let splitter_colour = utils.GetSysColour(15);
      * @worker
@@ -3026,28 +3026,28 @@ let utils = {
 
     /**
      * Decodes an audio track asynchronously and returns a fixed-size waveform amplitude envelope.<br>
-     * Each element of the returned <code>Float32Array</code> is a linear amplitude value in the range 0.0..1.0 for the corresponding part of the requested time range.<br>
+     * Each element of the returned <b>Float32Array</b> is a linear amplitude value in the range 0.0..1.0 for the corresponding part of the requested time range.<br>
      * Each output point represents one time interval. The interval is divided into up to 8 local windows; for each non-empty window, the peak absolute sample value across all channels is measured, and those local peaks are averaged to produce the output value. This preserves short transients while avoiding the dense appearance produced by taking a single maximum peak over the entire output interval.<br>
      * Values are not normalized to the loudest point of the track, so their amplitudes remain relative to the decoded audio signal.<br>
      * Decoding uses one sequential decoder pass. Decoded PCM data is not exposed to JavaScript.<br>
      * <br>
-     * If <code>on_progress</code> is supplied, finalized contiguous ranges of the output envelope are delivered while decoding is still in progress. The callback receives a <code>Float32Array</code> containing the new values and the zero-based output index where that range begins. Progress chunk size and delivery frequency are implementation details and must not be relied on.<br>
-     * <b>For waveform UIs that should appear while decoding, this progressive form is the recommended approach.</b> Use one <code>GetWaveformAsync()</code> call for the whole requested range instead of splitting the track into repeated range calls. One decoder remains open for the sequential pass, avoiding repeated open/seek/decode overhead. For visually smooth rendering, store progress chunks immediately but animate a separate visible front toward the loaded front rather than exposing the native chunk boundaries directly.<br>
-     * Return <code>false</code> from <code>on_progress</code> to cancel the native decode. This is recommended when a progressive request becomes obsolete, for example after the focused or playing track changes. Cancellation rejects the returned Promise. Any other return value continues decoding.<br>
-     * The Promise still resolves with the complete <code>Float32Array</code> when decoding finishes normally, whether or not a progress callback is used.<br>
+     * If <b>on_progress</b> is supplied, finalized contiguous ranges of the output envelope are delivered while decoding is still in progress. The callback receives a <b>Float32Array</b> containing the new values and the zero-based output index where that range begins. Progress chunk size and delivery frequency are implementation details and must not be relied on.<br>
+     * <b>For waveform UIs that should appear while decoding, this progressive form is the recommended approach.</b> Use one <b>GetWaveformAsync()</b> call for the whole requested range instead of splitting the track into repeated range calls. One decoder remains open for the sequential pass, avoiding repeated open/seek/decode overhead. For visually smooth rendering, store progress chunks immediately but animate a separate visible front toward the loaded front rather than exposing the native chunk boundaries directly.<br>
+     * Return <b>false</b> from <b>on_progress</b> to cancel the native decode. This is recommended when a progressive request becomes obsolete, for example after the focused or playing track changes. Cancellation rejects the returned Promise. Any other return value continues decoding.<br>
+     * The Promise still resolves with the complete <b>Float32Array</b> when decoding finishes normally, whether or not a progress callback is used.<br>
      * <br>
-     * If <code>duration</code> is 0, the requested range extends from <code>start</code> to the end of the track. If the track length cannot be determined, a non-zero duration must be specified.<br>
-     * A range that extends past a known track end is clipped. If <code>start</code> is at or beyond the known track end, a zero-filled array is returned.<br>
+     * If <b>duration</b> is 0, the requested range extends from <b>start</b> to the end of the track. If the track length cannot be determined, a non-zero duration must be specified.<br>
+     * A range that extends past a known track end is clipped. If <b>start</b> is at or beyond the known track end, a zero-filled array is returned.<br>
      * Decoder or input-opening failures reject the returned Promise.
      *
      * @param {FbMetadbHandle} handle Track to decode.
      * @param {number=} [points=2048] Number of output points. Valid range: 1..65536.
      * @param {number=} [start=0] Start position in seconds. Must be finite and non-negative.
-     * @param {number=} [duration=0] Duration in seconds. Must be finite and non-negative. 0 means from <code>start</code> to the end of the track.
-     * @param {function(Float32Array, number)=} on_progress Optional progress callback. Receives <code>(values, start_index)</code>. Return <code>false</code> to cancel decoding.
-     * @return {Promise.<Float32Array>} Promise resolved with exactly <code>points</code> linear amplitude values.
+     * @param {number=} [duration=0] Duration in seconds. Must be finite and non-negative. 0 means from <b>start</b> to the end of the track.
+     * @param {function(Float32Array, number)=} on_progress Optional progress callback. Receives <b>(values, start_index)</b>. Return <b>false</b> to cancel decoding.
+     * @return {Promise.<Float32Array>} Promise resolved with exactly <b>points</b> linear amplitude values.
      *
-     * @throws {Error} If <code>handle</code> is null; <code>points</code>, <code>start</code>, or <code>duration</code> is invalid; or <code>on_progress</code> is not a function, null, or undefined.
+     * @throws {Error} If <b>handle</b> is null; <b>points</b>, <b>start</b>, or <b>duration</b> is invalid; or <b>on_progress</b> is not a function, null, or undefined.
      * @example <caption>Decode a complete waveform</caption>
      * const handle = fb.GetNowPlaying();
      * if (handle) {
@@ -3145,7 +3145,7 @@ let utils = {
      * @param {string=} [help_text=''] If not empty, a Help button will show in the dialog. If <b>help_text</b> begins with "http://" or "https://", it will launch a web browser otherwise it will open a popup window containing the text
      * @return {string}
      *
-     * @throws {Error} If no valid owner window is supplied and the panel host is not fully initialized, or the dialog is cancelled while <code>error_on_cancel</code> is true.
+     * @throws {Error} If no valid owner window is supplied and the panel host is not fully initialized, or the dialog is cancelled while <b>error_on_cancel</b> is true.
      * @example
      * // With "error_on_cancel" not set (or set to false), cancelling the dialog will return "default_val".
      * let username = utils.InputBox(0, "Enter your username", "Spider Monkey Panel", "");
@@ -3206,8 +3206,8 @@ let utils = {
      * A font may expose different legacy/GDI and typographic/DirectWrite family names. 
      * {@link utils.CheckFont} can be used to verify a family name after loading, while {@link utils.ListFonts} shows the names reported by the GDI and DirectWrite backends.
      *
-     * @param {string} path Path to a font file, typically a `.ttf` or `.otf` file.
-     * @return {boolean} `true` if the font is already loaded or was loaded successfully; `false` if the
+     * @param {string} path Path to a font file, typically a <b>.ttf</b> or <b>.otf</b> file.
+     * @return {boolean} <b>true</b> if the font is already loaded or was loaded successfully; <b>false</b> if the
      * file does not exist, cannot be read as a font, contains no usable family, or cannot be registered.
      * @worker
      *
@@ -3318,7 +3318,7 @@ let utils = {
      * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string} filename File to open.
-     * @return {?BinaryReader} Open streaming reader, or <code>null</code> if the reader could not be created. Ordinary file open/setup failures are reported as <code>null</code>, not exceptions.
+     * @return {?BinaryReader} Open streaming reader, or <b>null</b> if the reader could not be created. Ordinary file open/setup failures are reported as <b>null</b>, not exceptions.
      *
      * @example
      * const reader = utils.OpenBinaryReader('E:\\large-file.bin');
@@ -3352,7 +3352,7 @@ let utils = {
      * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string} filename File to create or overwrite.
-     * @return {?BinaryWriter} Open streaming writer, or <code>null</code> if the writer could not be created. Ordinary file creation/open failures are reported as <code>null</code>, not exceptions.
+     * @return {?BinaryWriter} Open streaming writer, or <b>null</b> if the writer could not be created. Ordinary file creation/open failures are reported as <b>null</b>, not exceptions.
      *
      * @example
      * const writer = utils.OpenBinaryWriter('E:\\large-file.bin');
@@ -3376,8 +3376,8 @@ let utils = {
      *
      * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
-     * @param {string} filename Absolute or script-relative database filename, or <code>:memory:</code>.
-     * @return {?SQLiteDatabase} Open database handle, or <code>null</code> if the database could not be opened or created. Ordinary open/create failures are reported as <code>null</code>, matching the other <code>Open*</code> resource factories. SQL and database-operation errors after a successful open are reported as exceptions.
+     * @param {string} filename Absolute or script-relative database filename, or <b>:memory:</b>.
+     * @return {?SQLiteDatabase} Open database handle, or <b>null</b> if the database could not be opened or created. Ordinary open/create failures are reported as <b>null</b>, matching the other <b>Open*</b> resource factories. SQL and database-operation errors after a successful open are reported as exceptions.
      *
      * @example
      * const db = utils.OpenDatabase('example.db');
@@ -3414,7 +3414,7 @@ let utils = {
      *
      * @param {string} filename File to open.
      * @param {number=} [codepage=65001] Windows codepage used to decode each line. UTF-16LE/BE use 1200/1201, UTF-32LE/BE use 12000/12001, and 0 enables automatic detection. See Codepages.js.
-     * @return {?TextReader} Open streaming reader, or <code>null</code> if the reader could not be created.
+     * @return {?TextReader} Open streaming reader, or <b>null</b> if the reader could not be created.
      * This includes invalid or unsupported codepages, an empty filename, and ordinary file open failures.
      *
      * @example
@@ -3551,7 +3551,7 @@ let utils = {
      * This method uses ShellExecuteEx, so it supports shell verbs, file associations, URLs, and elevation through "runas".<br>
      * Unlike {@link utils.RunCmdAsync RunCmdAsync}, this method does not capture stdout or stderr and does not provide timeout handling.<br>
      * If wait is true, the call blocks until the launched process exits, when a process handle is available.<br>
-     * Relative <code>working_dir</code> values are resolved as described in {@link utils.ReadTextFile}. The <code>target</code> argument is not path-resolved.<br>
+     * Relative <b>working_dir</b> values are resolved as described in {@link utils.ReadTextFile}. The <b>target</b> argument is not path-resolved.<br>
      *
      * @param {string} target
      * File, executable, URL, or document to run/open.<br>
@@ -3638,7 +3638,7 @@ let utils = {
      * Use the returned task id to match the result with the original RunCmdAsync call.<br>
      * If the process does not finish before timeout_ms, the whole process tree is terminated.<br>
      * Pass 0 as timeout_ms to wait indefinitely.<br>
-     * Relative <code>working_dir</code> values are resolved as described in {@link utils.ReadTextFile}. The <code>app</code> argument is not path-resolved.<br>
+     * Relative <b>working_dir</b> values are resolved as described in {@link utils.ReadTextFile}. The <b>app</b> argument is not path-resolved.<br>
      *
      * @param {string} app
      * Full path or executable name to run.<br>
@@ -3663,7 +3663,7 @@ let utils = {
      * @returns {number}
      * Task id of the asynchronous operation.<br>
      *
-     * @throws {Error} If <code>args</code> is invalid, the panel host is not fully initialized, or the worker thread cannot be started.
+     * @throws {Error} If <b>args</b> is invalid, the panel host is not fully initialized, or the worker thread cannot be started.
       * @worker
      */
     RunCmdAsync(app, args, working_dir, show, timeout_ms) { },
@@ -3703,32 +3703,32 @@ let utils = {
      * Html code and JavaScript executed inside the dialog must be IE compatible
      * (see {@link https://www.w3schools.com/js/js_versions.asp}).<br>
      * <br>
-     * <code>options.data</code> is exposed inside the html dialog through
-     * <code>window.external.dialogArguments</code>. The bridge supports the following values:
+     * <b>options.data</b> is exposed inside the html dialog through
+     * <b>window.external.dialogArguments</b>. The bridge supports the following values:
      * <ul>
      *   <li>Basic types: number, string, boolean, null, undefined</li>
      *   <li>
-     *     Arrays: call <code>window.external.dialogArguments.toArray()</code> inside html to obtain
-     *     a JavaScript array. Each element has the same type limitations as <code>options.data</code>.
+     *     Arrays: call <b>window.external.dialogArguments.toArray()</b> inside html to obtain
+     *     a JavaScript array. Each element has the same type limitations as <b>options.data</b>.
      *   </li>
      *   <li>
      *     Functions: callable from html as callbacks into panel JavaScript. A callback may have a
-     *     maximum of 7 arguments, and each argument has the same type limitations as <code>options.data</code>.
+     *     maximum of 7 arguments, and each argument has the same type limitations as <b>options.data</b>.
      *   </li>
      *   <li>
-     *     Objects are not transferred directly. Serialize them with <code>JSON.stringify()</code> before
-     *     passing them and restore them with <code>JSON.parse()</code> inside html.
+     *     Objects are not transferred directly. Serialize them with <b>JSON.stringify()</b> before
+     *     passing them and restore them with <b>JSON.parse()</b> inside html.
      *   </li>
      * </ul>
-     * JSplitter objects such as <code>FbMetadbHandle</code>, <code>GdiBitmap</code> and <code>D2DBitmap</code>
+     * JSplitter objects such as <b>FbMetadbHandle</b>, <b>GdiBitmap</b> and <b>D2DBitmap</b>
      * cannot be passed through this bridge.<br>
      * <br>
-     * The following properties are available through <code>window.external</code> inside the html dialog:<br>
+     * The following properties are available through <b>window.external</b> inside the html dialog:<br>
      * <ul>
-     *   <li><code>dialogArguments</code> - read-only value containing <code>options.data</code></li>
+     *   <li><b>dialogArguments</b> - read-only value containing <b>options.data</b></li>
      *   <li>
-     *     <code>dialogWindow</code> - read-only native window handle (HWND) of the html dialog, represented as a number.<br>
-     *     It can be passed as <code>window_id</code> to JSplitter modal dialog functions to make the html dialog their owner, e.g.<br>
+     *     <b>dialogWindow</b> - read-only native window handle (HWND) of the html dialog, represented as a number.<br>
+     *     It can be passed as <b>window_id</b> to JSplitter modal dialog functions to make the html dialog their owner, e.g.<br>
      *     {@link utils.ColourPicker}<br>
      *     {@link utils.FontPicker}<br>
      *     {@link utils.InputBox}<br>
@@ -3742,7 +3742,7 @@ let utils = {
      * </ul>
      *
      * @param {number} window_id native window handle (HWND) to use as the dialog owner; pass 0 to use the default foobar2000 window
-     * @param {string} code_or_path Html code or file path. File path must begin with <code>file://</code> prefix.
+     * @param {string} code_or_path Html code or file path. File path must begin with <b>file://</b> prefix.
      * @param {object=} [options=undefined]
      * @param {number=} [options.width=250] Window width
      * @param {number=} [options.height=100] Window height
@@ -3753,7 +3753,7 @@ let utils = {
      * @param {boolean=} [options.resizable=false] If true, will allow to resize the window.
      * @param {boolean=} [options.selection=false] If true, will allow to select everything (label texts, buttons and etc).
      * @param {boolean=} [options.scroll=false] If true, will display scrollbars.
-     * @param {*=} [options.data=undefined] Read-only data exposed through <code>window.external.dialogArguments</code>. For multiple values, pass an array and call <code>.toArray()</code> inside html. Has type limitations described above.
+     * @param {*=} [options.data=undefined] Read-only data exposed through <b>window.external.dialogArguments</b>. For multiple values, pass an array and call <b>.toArray()</b> inside html. Has type limitations described above.
      *
      * @throws {Error} If no valid owner window is supplied and the panel host is not fully initialized, or the dialog cannot be created.
      * @sourceFile ../../component/samples/basic/HtmlDialogWithCheckBox.js
@@ -3784,7 +3784,7 @@ let utils = {
      * @param {string} path Absolute file path
      * @param {Uint8Array} data Bytes to write
      * @returns {boolean} true on success
-     * @throws {Error} If <code>data</code> is not a <code>Uint8Array</code>.
+     * @throws {Error} If <b>data</b> is not a <b>Uint8Array</b>.
      * @example
      * const img = gdi.Image(`${fb.ComponentPath}\\samples\\d2d\\images\\Field.jpg`);
      * 
@@ -3831,7 +3831,7 @@ let utils = {
      * @param {string} filename File to create or overwrite.
      * @param {boolean=} [write_bom=true] If true, writes a BOM for UTF-8/UTF-16/UTF-32.
      * @param {number=} [codepage=65001] Output Windows codepage. Codepage 0 is not valid for writing. See Codepages.js.
-     * @return {?TextWriter} Open streaming writer, or <code>null</code> if the writer could not be created.
+     * @return {?TextWriter} Open streaming writer, or <b>null</b> if the writer could not be created.
      * This includes an empty filename, an invalid codepage, and ordinary file creation/open failures.
      *
      * @example
@@ -3857,7 +3857,7 @@ let utils = {
     /**
      * Note: the parent folder must already exist.<br>
      * UTF-8 is used by default, matching {@link utils.OpenTextWriter}. UTF-16LE (1200), UTF-16BE (1201), UTF-32LE (12000), UTF-32BE (12001), and other valid Windows codepages are also supported.<br>
-     * If <code>write_bom</code> is true, the matching BOM is written for UTF-8, UTF-16, and UTF-32. Other Windows codepages do not have a BOM and ignore this option.<br>
+     * If <b>write_bom</b> is true, the matching BOM is written for UTF-8, UTF-16, and UTF-32. Other Windows codepages do not have a BOM and ignore this option.<br>
      * For large output, consider {@link utils.OpenTextWriter}; it writes incrementally and does not require one large JavaScript string containing the entire file.
      *
      * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
@@ -3892,21 +3892,21 @@ let utils = {
 function BinaryReader() {
 
     /**
-     * Reads bytes into an existing <code>Uint8Array</code> without allocating a new buffer.<br>
-     * If <code>offset</code> is omitted, reading starts at index 0. If <code>count</code> is omitted, bytes are read up to the end of the buffer.<br>
-     * An explicitly supplied <code>offset + count</code> must fit inside the buffer.
+     * Reads bytes into an existing <b>Uint8Array</b> without allocating a new buffer.<br>
+     * If <b>offset</b> is omitted, reading starts at index 0. If <b>count</b> is omitted, bytes are read up to the end of the buffer.<br>
+     * An explicitly supplied <b>offset + count</b> must fit inside the buffer.
      *
      * @param {Uint8Array} buffer Destination buffer.
      * @param {number=} [offset=0] Destination offset in bytes.
      * @param {number=} count Maximum number of bytes to read. Defaults to the remaining buffer size.
-     * @return {number} Number of bytes actually read. A nonzero request returning 0 means that no bytes were read: {@link BinaryReader#EOF EOF} is <code>true</code> at clean end of file and <code>false</code> if the read could not be performed. A zero-length request also returns 0.
-     * @throws Throws only if the reader is closed.
+     * @return {number} Number of bytes actually read. A nonzero request returning 0 means that no bytes were read: {@link BinaryReader#EOF EOF} is <b>true</b> at clean end of file and <b>false</b> if the read could not be performed. A zero-length request also returns 0.
+     * @throws {Error} If the reader is closed.
      * @worker
      */
     this.Read = function (buffer, offset, count) { };
 
     /**
-     * Closes the file. Calling <code>Close()</code> more than once is allowed.
+     * Closes the file. Calling <b>Close()</b> more than once is allowed.
      *
      * @return {boolean} true if the reader is closed successfully; false if closing the file fails. Calling it again after a successful close returns true.
      * @worker
@@ -3933,7 +3933,7 @@ function BinaryReader() {
 
     /**
      * Indicates that the current read position has reached the file length recorded when the reader was opened.<br>
-     * This property does not report a closed reader or a read failure. Use the return value of {@link BinaryReader#Read Read()} to drive the read loop; <code>EOF</code> is status information used to distinguish a clean end of file from a failed read.
+     * This property does not report a closed reader or a read failure. Use the return value of {@link BinaryReader#Read Read} to drive the read loop; <b>EOF</b> is status information used to distinguish a clean end of file from a failed read.
      *
      * @type {boolean}
      * @readonly
@@ -3961,15 +3961,15 @@ function BinaryReader() {
 function BinaryWriter() {
 
     /**
-     * Writes bytes from an existing <code>Uint8Array</code> without creating a temporary typed array.<br>
-     * If <code>offset</code> is omitted, writing starts at index 0. If <code>count</code> is omitted, bytes are written up to the end of the buffer.<br>
-     * An explicitly supplied <code>offset + count</code> must fit inside the buffer.
+     * Writes bytes from an existing <b>Uint8Array</b> without creating a temporary typed array.<br>
+     * If <b>offset</b> is omitted, writing starts at index 0. If <b>count</b> is omitted, bytes are written up to the end of the buffer.<br>
+     * An explicitly supplied <b>offset + count</b> must fit inside the buffer.
      *
      * @param {Uint8Array} buffer Source buffer.
      * @param {number=} [offset=0] Source offset in bytes.
      * @param {number=} count Number of bytes to write. Defaults to the remaining buffer size.
      * @return {boolean} true on success; false if the buffer/range is invalid or the write fails.
-     * @throws Throws only if the writer is closed.
+     * @throws {Error} If the writer is closed.
      * @worker
      */
     this.Write = function (buffer, offset, count) { };
@@ -3978,13 +3978,13 @@ function BinaryWriter() {
      * Flushes buffered output to the file.
      *
      * @return {boolean} true on success; false if flushing fails.
-     * @throws Throws only if the writer is closed.
+     * @throws {Error} If the writer is closed.
      * @worker
      */
     this.Flush = function () { };
 
     /**
-     * Closes the file. Calling <code>Close()</code> more than once is allowed.
+     * Closes the file. Calling <b>Close()</b> more than once is allowed.
      *
      * @return {boolean} true if the writer is closed successfully; false if closing/flushing the file fails. Calling it again after a successful close returns true.
      * @worker
@@ -4013,8 +4013,8 @@ function BinaryWriter() {
 /**
  * SQLite database returned by {@link utils.OpenDatabase}.<br>
  * All operations are synchronous. Use a {@link Worker} for large imports, maintenance, or expensive queries when blocking the panel UI would be undesirable.<br>
- * Parameter arrays are positional and must contain exactly as many values as the SQL statement requires. Booleans are stored as SQLite integers 0/1. Query results map SQLite NULL to <code>null</code>, INTEGER/REAL to number, TEXT to string, and BLOB to <code>Uint8Array</code>.<br>
- * Database operations report SQL, binding, transaction-state, and closed-handle errors as JavaScript exceptions. {@link SQLiteDatabase#Close Close()} is idempotent and does not throw.
+ * Parameter arrays are positional and must contain exactly as many values as the SQL statement requires. Booleans are stored as SQLite integers 0/1. Query results map SQLite NULL to <b>null</b>, INTEGER/REAL to number, TEXT to string, and BLOB to <b>Uint8Array</b>.<br>
+ * Database operations report SQL, binding, transaction-state, and closed-handle errors as JavaScript exceptions. {@link SQLiteDatabase#Close Close} is idempotent and does not throw.
  *
  * @constructor
  * @hideconstructor
@@ -4023,7 +4023,7 @@ function BinaryWriter() {
 function SQLiteDatabase() {
 
     /**
-     * Closes the database. Calling <code>Close()</code> more than once is allowed.<br>
+     * Closes the database. Calling <b>Close()</b> more than once is allowed.<br>
      * This method does not throw; any SQLite close status is not exposed to script code.
      *
      * @return {boolean} true after the database has been closed.
@@ -4032,9 +4032,9 @@ function SQLiteDatabase() {
     this.Close = function () { };
 
     /**
-     * Starts a deferred transaction by executing <code>BEGIN TRANSACTION</code>.
+     * Starts a deferred transaction by executing <b>BEGIN TRANSACTION</b>.
      *
-     * @throws Throws on SQLite/database errors, including when the database is closed or the transaction cannot be started.
+     * @throws {Error} On SQLite/database errors, including when the database is closed or the transaction cannot be started.
      *
      * @example
      * db.Exec('CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, name TEXT)');
@@ -4056,17 +4056,17 @@ function SQLiteDatabase() {
     this.Begin = function () { };
 
     /**
-     * Commits the current transaction by executing <code>COMMIT</code>.
+     * Commits the current transaction by executing <b>COMMIT</b>.
      *
-     * @throws Throws on SQLite/database errors, including when the database is closed or no transaction can be committed.
+     * @throws {Error} On SQLite/database errors, including when the database is closed or no transaction can be committed.
      * @worker
      */
     this.Commit = function () { };
 
     /**
-     * Rolls back the current transaction by executing <code>ROLLBACK</code>.
+     * Rolls back the current transaction by executing <b>ROLLBACK</b>.
      *
-     * @throws Throws on SQLite/database errors, including when the database is closed or no transaction can be rolled back.
+     * @throws {Error} On SQLite/database errors, including when the database is closed or no transaction can be rolled back.
      * @worker
      */
     this.Rollback = function () { };
@@ -4076,8 +4076,8 @@ function SQLiteDatabase() {
      * When multiple statements are supplied, parameter values are consumed in SQLite parameter-index order across the statements. The total parameter count must match exactly.
      *
      * @param {string} sql SQL text to execute.
-     * @param {Array<*>=} [parameters] Positional parameter values. Supported element types: <code>null</code>, boolean, number, string, <code>ArrayBuffer</code>, and typed-array views.
-     * @throws Throws on SQL, parameter, binding, or database errors, including an invalid parameter array/count or when the database is closed.
+     * @param {Array<*>=} [parameters] Positional parameter values. Supported element types: <b>null</b>, boolean, number, string, <b>ArrayBuffer</b>, and typed-array views.
+     * @throws {Error} On SQL, parameter, binding, or database errors, including an invalid parameter array/count or when the database is closed.
      *
      * @example
      * db.Exec(
@@ -4091,12 +4091,12 @@ function SQLiteDatabase() {
 
     /**
      * Executes exactly one SQL statement and returns all rows as plain JavaScript objects keyed by column name.<br>
-     * SQLite NULL becomes <code>null</code>, INTEGER/REAL become number, TEXT becomes string, and BLOB becomes <code>Uint8Array</code>. The query must produce unique column names; use SQL aliases when selecting duplicate names.
+     * SQLite NULL becomes <b>null</b>, INTEGER/REAL become number, TEXT becomes string, and BLOB becomes <b>Uint8Array</b>. The query must produce unique column names; use SQL aliases when selecting duplicate names.
      *
      * @param {string} sql SQL query to execute.
-     * @param {Array<*>=} [parameters] Positional parameter values. Supported element types: <code>null</code>, boolean, number, string, <code>ArrayBuffer</code>, and typed-array views.
+     * @param {Array<*>=} [parameters] Positional parameter values. Supported element types: <b>null</b>, boolean, number, string, <b>ArrayBuffer</b>, and typed-array views.
      * @return {Array<Object>} Query rows. Returns an empty array when the query produces no rows.
-     * @throws Throws on SQL, parameter, binding, result-conversion, or database errors; when multiple SQL statements are supplied; when result column names are duplicated; or when the database is closed.
+     * @throws {Error} On SQL, parameter, binding, result-conversion, or database errors; when multiple SQL statements are supplied; when result column names are duplicated; or when the database is closed.
      *
      * @example
      * const rows = db.Query(
@@ -4112,11 +4112,11 @@ function SQLiteDatabase() {
 
     /**
      * Prepares exactly one SQL statement for repeated execution.
-     * The returned statement owns its native SQLite handle. It is finalized automatically when the JavaScript object is destroyed, so calling {@link SQLiteStatement#Close Close()} is not required for normal use. Call <code>Close()</code> only when the native statement should be released immediately.
+     * The returned statement owns its native SQLite handle. It is finalized automatically when the JavaScript object is destroyed, so calling {@link SQLiteStatement#Close Close} is not required for normal use. Call <b>Close()</b> only when the native statement should be released immediately.
      *
      * @param {string} sql SQL statement to prepare.
      * @return {SQLiteStatement} Prepared statement.
-     * @throws Throws if the SQL cannot be prepared, if the input does not contain exactly one SQL statement, or when the database is closed.
+     * @throws {Error} If the SQL cannot be prepared, if the input does not contain exactly one SQL statement, or when the database is closed.
      *
      * @example
      * const insert = db.Prepare('INSERT INTO items(name, score) VALUES (?, ?)');
@@ -4162,7 +4162,7 @@ function SQLiteStatement() {
      * Executes the prepared statement and discards any result rows. The statement is reset and its bindings are cleared before returning.
      *
      * @param {Array<*>=} [parameters] Positional parameter values. The count must match the prepared statement exactly.
-     * @throws Throws on parameter, binding, or execution errors, including an invalid parameter array/count or when the statement is closed.
+     * @throws {Error} On parameter, binding, or execution errors, including an invalid parameter array/count or when the statement is closed.
      * @worker
      */
     this.Run = function (parameters) { };
@@ -4172,7 +4172,7 @@ function SQLiteStatement() {
      *
      * @param {Array<*>=} [parameters] Positional parameter values. The count must match the prepared statement exactly.
      * @return {Array<Object>} Query rows as plain JavaScript objects.
-     * @throws Throws on parameter, binding, execution, or result-conversion errors, including an invalid parameter array/count, duplicate result column names, or when the statement is closed.
+     * @throws {Error} On parameter, binding, execution, or result-conversion errors, including an invalid parameter array/count, duplicate result column names, or when the statement is closed.
      * @worker
      */
     this.Query = function (parameters) { };
@@ -4181,7 +4181,7 @@ function SQLiteStatement() {
      * Explicitly resets the statement and clears its current parameter bindings.<br>
      * This is normally unnecessary after {@link SQLiteStatement#Run Run} or {@link SQLiteStatement#Query Query}, because both methods do it automatically.
      *
-     * @throws Throws when the statement is closed or SQLite fails to clear its parameter bindings.
+     * @throws {Error} If the statement is closed or SQLite fails to clear its parameter bindings.
      * @worker
      */
     this.Reset = function () { };
@@ -4209,14 +4209,14 @@ function TextReader() {
     /**
      * Reads the next line and removes its line terminator.
      *
-     * @return {?string} The next decoded line, or <code>null</code> when no line can be returned. When <code>null</code> is returned, {@link TextReader#EOF EOF} is <code>true</code> for clean end of file and <code>false</code> for a read or decoding failure.
-     * @throws Throws only if the reader is closed.
+     * @return {?string} The next decoded line, or <b>null</b> when no line can be returned. When <b>null</b> is returned, {@link TextReader#EOF EOF} is <b>true</b> for clean end of file and <b>false</b> for a read or decoding failure.
+     * @throws {Error} If the reader is closed.
      * @worker
      */
     this.ReadLine = function () { };
 
     /**
-     * Closes the file. Calling <code>Close()</code> more than once is allowed.
+     * Closes the file. Calling <b>Close()</b> more than once is allowed.
      *
      * @return {boolean} true if the reader is closed successfully; false if closing the file fails. Calling it again after a successful close returns true.
      * @worker
@@ -4225,7 +4225,7 @@ function TextReader() {
 
     /**
      * Indicates that a clean end of file has been observed while reading.<br>
-     * This property does not report a closed reader or a read/decoding failure. Do not use it as a pre-read loop condition; use the return value of {@link TextReader#ReadLine ReadLine()} to drive the loop, then inspect <code>EOF</code> when <code>ReadLine()</code> returns <code>null</code>.
+     * This property does not report a closed reader or a read/decoding failure. Do not use it as a pre-read loop condition; use the return value of {@link TextReader#ReadLine ReadLine} to drive the loop, then inspect <b>EOF</b> when <b>ReadLine()</b> returns <b>null</b>.
      *
      * @type {boolean}
      * @readonly
@@ -4257,7 +4257,7 @@ function TextWriter() {
      *
      * @param {string} content Text to write.
      * @return {boolean} true on success; false if the text cannot be encoded in the selected codepage or the write fails.
-     * @throws Throws only if the writer is closed.
+     * @throws {Error} If the writer is closed.
      * @worker
      */
     this.Write = function (content) { };
@@ -4267,7 +4267,7 @@ function TextWriter() {
      *
      * @param {string} content Text to write.
      * @return {boolean} true on success; false if the text cannot be encoded in the selected codepage or the write fails.
-     * @throws Throws only if the writer is closed.
+     * @throws {Error} If the writer is closed.
      * @worker
      */
     this.WriteLine = function (content) { };
@@ -4276,13 +4276,13 @@ function TextWriter() {
      * Flushes buffered output to the file.
      *
      * @return {boolean} true on success; false if flushing fails.
-     * @throws Throws only if the writer is closed.
+     * @throws {Error} If the writer is closed.
      * @worker
      */
     this.Flush = function () { };
 
     /**
-     * Closes the file. Calling <code>Close()</code> more than once is allowed.
+     * Closes the file. Calling <b>Close()</b> more than once is allowed.
      *
      * @return {boolean} true if the writer is closed successfully; false if closing/flushing the file fails. Calling it again after a successful close returns true.
      * @worker
@@ -4302,7 +4302,7 @@ function TextWriter() {
 
 /**
  * Object returned by {@link utils.GetDriveInfo}.<br>
- * Property names and semantics follow the Microsoft Scripting Runtime <code>Drive</code> object where applicable.
+ * Property names and semantics follow the Microsoft Scripting Runtime <b>Drive</b> object where applicable.
  *
  * @constructor
  * @hideconstructor
@@ -4312,7 +4312,7 @@ function TextWriter() {
 function DriveInfo() {
 
     /**
-     * Drive path, for example <code>C:</code>. For a mapped network drive this is still the mapped drive path.
+     * Drive path, for example <b>C:</b>. For a mapped network drive this is still the mapped drive path.
      *
      * @type {string}
      * @readonly
@@ -4321,7 +4321,7 @@ function DriveInfo() {
     this.Path = "";
 
     /**
-     * Root folder path, for example <code>C:\</code>.
+     * Root folder path, for example <b>C:\</b>.
      *
      * @type {string}
      * @readonly
@@ -4340,7 +4340,7 @@ function DriveInfo() {
 
     /**
      * Drive type.<br>
-     * Values are compatible with <code>Scripting.FileSystemObject</code>:<br>
+     * Values are compatible with <b>Scripting.FileSystemObject</b>:<br>
      * 0 - unknown, 1 - removable, 2 - fixed, 3 - network, 4 - CD-ROM, 5 - RAM disk.
      *
      * @type {number}
@@ -4558,10 +4558,10 @@ let window = {
     *
     * @typedef {Object} JsWorkerMemoryStats
     * @property {string} Name
-    *    The Worker's immutable constructor name, identical to Worker-global <code>self.name</code>. The value is an empty string if no name was supplied. The same identity is used by unhandled Worker exception diagnostics, where an empty name is displayed as <code>&lt;unnamed&gt;</code>.
+    *    The Worker's immutable constructor name, identical to Worker-global <b>self.name</b>. The value is an empty string if no name was supplied. The same identity is used by unhandled Worker exception diagnostics, where an empty name is displayed as <b>&lt;unnamed&gt;</b>.
     * @property {number} HeapUsage
     *    SpiderMonkey heap usage of this Worker (in bytes). The per-Worker heap limit is configured by
-    *    <b>Worker maximum heap size (in MB, per Worker)</b>; see <a href="globals.html#JsMemoryStats-WorkerHeapLimit"><code>JsMemoryStats.WorkerHeapLimit</code></a>.
+    *    <b>Worker maximum heap size (in MB, per Worker)</b>; see <a href="globals.html#JsMemoryStats-WorkerHeapLimit"><b>JsMemoryStats.WorkerHeapLimit</b></a>.
     *    Automatic GC based on heap growth is controlled by <b>Heap growth before GC (in MB)</b>.
     * @property {number} ExternalUsage
     *    Tracked native/external memory retained by this Worker (in bytes). This is an accounting estimate,
@@ -4574,14 +4574,14 @@ let window = {
     * <br>
     * Panel scripts run on the main thread and share one SpiderMonkey heap. Per-panel heap usage is therefore
     * not available. Native/external memory is tracked separately for the current panel. Each Worker has its own
-    * SpiderMonkey context and is reported separately in <a href="globals.html#JsMemoryStats-Workers"><code>JsMemoryStats.Workers</code></a>.<br>
+    * SpiderMonkey context and is reported separately in <a href="globals.html#JsMemoryStats-Workers"><b>JsMemoryStats.Workers</b></a>.<br>
     * <br>
     * Related GC settings are under <b>Advanced &gt; JSplitter &gt; Performance: restart is required &gt; GC</b>.
     *
     * @typedef {Object} JsMemoryStats
     * @property {number} MainThreadHeapUsage
     *    SpiderMonkey heap usage shared by all JSplitter panel scripts running on the main thread (in bytes).
-    *    The maximum is configured by <b>Main thread maximum heap size (in MB)</b>; see <code>MainThreadHeapLimit</code>.
+    *    The maximum is configured by <b>Main thread maximum heap size (in MB)</b>; see <b>MainThreadHeapLimit</b>.
     *    Automatic GC based on heap growth is controlled by <b>Heap growth before GC (in MB)</b>.
     * @property {number} MainThreadHeapLimit
     *    Maximum SpiderMonkey heap size for main-thread panel scripts (in bytes). External memory does not count
@@ -4712,7 +4712,7 @@ let window = {
      * Deprecated: use {@link window.DefineScript} instead.
      * Panel name can be changed via {@link window.ShowConfigureV2}.
      *
-     * @throws {Error} If called for a package script, called more than once, or <code>options</code> / <code>options.features</code> is not an object.
+     * @throws {Error} If called for a package script, called more than once, or <b>options</b> / <b>options.features</b> is not an object.
      * @deprecated
      *
      * @param {string} name Script name and panel name
@@ -4735,13 +4735,13 @@ let window = {
      * @param {object=} [options.features=undefined] Additional script features
      * @param {boolean=} [options.features.drag_n_drop=false] Indicates if drag_n_drop functionality should be enabled
      * @param {boolean=} [options.features.grab_focus=true] Indicates if panel should grab mouse focus
-     * @throws {Error} If called for a package script, called more than once, or <code>options</code> / <code>options.features</code> is not an object.
+     * @throws {Error} If called for a package script, called more than once, or <b>options</b> / <b>options.features</b> is not an object.
      */
     DefineScript: function (name, options) { }, // (void)
 
      /**
      * Open the current panel script in the default text editor.<br>
-     * Default text editor can be changed via `Edit` button on the main tab of {@link window.ShowConfigureV2}.
+     * Default text editor can be changed via <b>Edit</b> button on the main tab of {@link window.ShowConfigureV2}.
      */
     EditScript: function () { },
 
@@ -4857,7 +4857,7 @@ let window = {
 
     /**
      * This will <b>synchronously</b> trigger {@link module:Callbacks.on_notify_data on_notify_data}(name, info) in other panels.<br>
-     * <b>!!! Beware !!!</b>: data passed via `info` argument must NOT be used or modified in the source panel after invoking this method.
+     * <b>!!! Beware !!!</b>: data passed via <b>info</b> argument must NOT be used or modified in the source panel after invoking this method.
      * <div class="doc-note warning">
      * <b>Legacy compatibility API</b><br>Existing scripts can keep using NotifyOthers unchanged. For new asynchronous structured-clone messaging between panels and Workers, prefer {@link BroadcastChannel}.<br></div>
      *
@@ -4920,7 +4920,7 @@ let window = {
      * @param {number} delay
      *
      * @return {number}
-     * @throws {Error} If <code>func</code> is not callable or <code>delay</code> is zero.
+     * @throws {Error} If <b>func</b> is not callable or <b>delay</b> is zero.
      */
     SetInterval: function (func, delay) { }, // (uint)
 
@@ -4966,7 +4966,7 @@ let window = {
      * @param {number} delay
      *
      * @return {number}
-     * @throws {Error} If <code>func</code> is not callable.
+     * @throws {Error} If <b>func</b> is not callable.
      */
     SetTimeout: function (func, delay) { }, // (uint)
 
@@ -5019,7 +5019,7 @@ let window = {
      * Get an object for accessing the panel by index. the order depends on the position in the window stack: the bottommost window will have index 0.
      * @param {number} index
      * @return {PanelObject}
-     * @throws {Error} If no child panel exists at <code>index</code>.
+     * @throws {Error} If no child panel exists at <b>index</b>.
      */
     GetPanelByIndex: function (index) { }, // (PanelObject)
 
@@ -5061,7 +5061,7 @@ let window = {
      * Creates a group of radio buttons. Takes an array of buttons as an argument. 
      * Each button must have at least two states, otherwise the function will fail.
      * @param {Array<ButtonObject>} buttons
-     * @throws {Error} If <code>buttons</code> contains an invalid button object.
+     * @throws {Error} If <b>buttons</b> contains an invalid button object.
      * @example
      * var a = window.CreateButton(0 , 0, [path, hpath], null);
      * var b = window.CreateButton(30 ,0 , [path, hpath], null);
@@ -5158,13 +5158,13 @@ let window = {
  */
 class FbAudioChunk {
     /**
-     * Copies the chunk's interleaved PCM samples into an existing <code>Float32Array</code> without allocating a new JavaScript sample array.
-     * The destination must have room for at least <code>SampleCount * ChannelCount</code> values.
+     * Copies the chunk's interleaved PCM samples into an existing <b>Float32Array</b> without allocating a new JavaScript sample array.
+     * The destination must have room for at least <b>SampleCount * ChannelCount</b> values.
      * This is useful for real-time visualizations that reuse the same buffer on every update; the legacy {@link FbAudioChunk#Data Data} property remains unchanged for compatibility.
      *
      * @param {Float32Array} destination Destination buffer.
      * @return {number} Number of scalar PCM samples copied.
-     * @throws {Error} If <code>destination</code> is not a <code>Float32Array</code> or is too small.
+     * @throws {Error} If <b>destination</b> is not a <b>Float32Array</b> or is too small.
      * @worker
      */
     CopyDataTo(destination) {}
@@ -5673,7 +5673,7 @@ function FbMetadbHandleList(arg) {
      * @param {boolean} minimise
      *
      * This provides the same functionality as the native context menu items
-     * under `Utilities` except there are no prompts.
+     * under <b>Utilities</b> except there are no prompts.
      * @worker
      * @mainthread
      */
@@ -6464,9 +6464,9 @@ function GdiBitmap(arg) {
 /**
  * Constructor may fail if font is not present.<br>
  *
- * Performance note: try caching and reusing `GdiFont` objects,
+ * Performance note: try caching and reusing <b>GdiFont</b> objects,
  * since the maximum amount of such objects is hard-limited by Windows.
- * `GdiFont` creation will fail after reaching this limit.
+ * <b>GdiFont</b> creation will fail after reaching this limit.
  * @cloneable
  * @constructor
  * @param {string} name
@@ -6652,7 +6652,7 @@ function GdiBrush(arg) {
 }
 
 /**
- * Typically used inside `on_paint`.<br>
+ * Typically used inside <b>on_paint</b>.<br>
  *
  * Note: there are many different ways to get colours:
  * window.GetColourDUI/window.GetColourCUI,
@@ -6931,8 +6931,8 @@ function GdiGraphics() {
      * <br>
      * To calculate text dimensions use {@link GdiGraphics#CalcTextHeight CalcTextHeight}, {@link GdiGraphics#CalcTextWidth CalcTextWidth}.<br>
      * <br>
-     * Note: uses special rules for `&` character by default, which consumes the `&` and causes the next character to be underscored.
-     * This behaviour can be changed (or disabled) via `format` parameter.
+     * Note: uses special rules for <b>&</b> character by default, which consumes the <b>&</b> and causes the next character to be underscored.
+     * This behaviour can be changed (or disabled) via <b>format</b> parameter.
      *
      * @param {string} str
      * @param {GdiFont} font
@@ -7591,7 +7591,7 @@ class HtmlDocument {
      * 
      * @method
      * @param {string} selector CSS selector.
-     * @return {?HtmlNode} First matching node, or `null` if nothing matches.
+     * @return {?HtmlNode} First matching node, or <b>null</b> if nothing matches.
      *
      * @example
      * let doc = utils.ParseHtml("<html><body><p class='name'>Test Artist</p></body></html>");
@@ -7861,7 +7861,7 @@ class HtmlNode {
      * 
      * @method
      * @param {string} selector CSS selector.
-     * @return {?HtmlNode} First matching node, or `null` if nothing matches.
+     * @return {?HtmlNode} First matching node, or <b>null</b> if nothing matches.
      *
      * @example
      * const doc = utils.ParseHtml("<li>text <a href='https://example.com'>Link</a></li>");
@@ -7911,3 +7911,13 @@ class HtmlNode {
      */
     getElementsByTagName = function (tagName) { }; //
 }
+
+/**
+ * Standard JavaScript error object thrown by JSplitter API methods.
+ * Catch it with a regular JavaScript <code>try...catch</code> statement.
+ *
+ * @typedef {Object} Error
+ * @property {string} name Error type name.
+ * @property {string} message Human-readable error message.
+ * @property {string=} stack JavaScript stack trace when available.
+ */

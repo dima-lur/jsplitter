@@ -511,7 +511,7 @@
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If the assigned value is not a valid replay gain mode.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the assigned value is not a valid replay gain mode.</p></div>
         </section>
         
         
@@ -711,7 +711,7 @@
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If called before foobar2000 is fully initialized.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If called before foobar2000 is fully initialized.</p></div>
         </section>
         
         
@@ -806,7 +806,7 @@
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If <code>handle_list</code> is null.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>handle_list</b> is null.</p></div>
         </section>
         
         
@@ -950,7 +950,7 @@ fb.CopyHandleListToClipboard(handle_list);</code></pre><div class="example-capti
         </header>
         <pre class="signature"><code>DoDragDrop(window_id, handle_list, effect, options)</code></pre>
         
-        <div class="description"><p>Invokes drag-n-drop operation (see <a href="https://docs.microsoft.com/en-us/windows/win32/api/ole2/nf-ole2-dodragdrop" target="_blank" rel="noreferrer">https://docs.microsoft.com/en-us/windows/win32/api/ole2/nf-ole2-dodragdrop</a>).<br> <br> Quick tips:<br> - If you need only to drag from your panel with copy (i.e. without physically moving them): use only fb.DoDragDrop(handles, DROPEFFECT_COPY | DROPEFFECT_LINK).<br> - If you need only to receive drop to your panel with copy: handle <code>on_drop_*()</code> callbacks, while setting action.effect argument to (DROPEFFECT_COPY | DROPEFFECT_LINK).<br> <br> Full drag-n-drop interface description:<br> - Drag-n-drop interface is based on Microsoft IDropSource and IDropTarget interfaces, so a lot of info (including examples) could be gathered from MSDN (IDropSource, IDropTarget, DoDragDrop, DROPEFFECT).<br> - Drag operation is started with DoDragDrop (whether it is called by your panel, or externally) with okEffects argument supplied.<br> - DoDragDrop blocks code execution until the drag operation is finished (callbacks will be called properly though). It returns effect from Action.Effect from on_drag_drop after completion.<br> - (Spider Monkey Panel specific) Drag operation is canceled when any mouse button is pressed.<br> - (Spider Monkey Panel specific) All mouse callbacks are suppressed during drag operation (including on_mouse_lbtn_up, but excluding on_mouse_mbtn_up and on_mouse_rbtn_up).<br> - Every drag callback receives Action argument. Action.Effect contains okEffects from DoDragDrop call. Action.Effect should be changed to the desired effect in the callback. If the returned Action.Effect was not in okEffects or is equal to DROPEFFECT_NONE (=== 0), then drop will be denied: cursor icon will be changed, on_drag_drop won't be called after releasing lmbtn, on_drag_leave will be called instead.<br> - DROPEFFECT_LINK should be used as fallback in case effect argument does not have DROPEFFECT_COPY (===1), since some external drops only allow DROPEFFECT_LINK effect.<br> - Changing effect on key modifiers is nice (to be in line with native Windows behaviour): see the example below.<br> <br> Note: due to the asynchronous nature of event handling, <code>fb.DoDragDrop()</code> might exit before <code>on_drag_drop</code> callback is triggered when dropping data on the same panel as the one that had a call to <code>fb.DoDragDrop()</code>.<br> <br> Related callbacks: <a href="module-Callbacks.html#on_drag_enter">on_drag_enter</a>, <a href="module-Callbacks.html#on_drag_drop">on_drag_drop</a>, <a href="module-Callbacks.html#on_drag_over">on_drag_over</a>, <a href="module-Callbacks.html#on_drag_leave">on_drag_leave</a></p></div>
+        <div class="description"><p>Invokes drag-n-drop operation (see <a href="https://docs.microsoft.com/en-us/windows/win32/api/ole2/nf-ole2-dodragdrop" target="_blank" rel="noreferrer">https://docs.microsoft.com/en-us/windows/win32/api/ole2/nf-ole2-dodragdrop</a>).<br> <br> Quick tips:<br> - If you need only to drag from your panel with copy (i.e. without physically moving them): use only fb.DoDragDrop(handles, DROPEFFECT_COPY | DROPEFFECT_LINK).<br> - If you need only to receive drop to your panel with copy: handle <b>on_drop_*()</b> callbacks, while setting action.effect argument to (DROPEFFECT_COPY | DROPEFFECT_LINK).<br> <br> Full drag-n-drop interface description:<br> - Drag-n-drop interface is based on Microsoft IDropSource and IDropTarget interfaces, so a lot of info (including examples) could be gathered from MSDN (IDropSource, IDropTarget, DoDragDrop, DROPEFFECT).<br> - Drag operation is started with DoDragDrop (whether it is called by your panel, or externally) with okEffects argument supplied.<br> - DoDragDrop blocks code execution until the drag operation is finished (callbacks will be called properly though). It returns effect from Action.Effect from on_drag_drop after completion.<br> - (Spider Monkey Panel specific) Drag operation is canceled when any mouse button is pressed.<br> - (Spider Monkey Panel specific) All mouse callbacks are suppressed during drag operation (including on_mouse_lbtn_up, but excluding on_mouse_mbtn_up and on_mouse_rbtn_up).<br> - Every drag callback receives Action argument. Action.Effect contains okEffects from DoDragDrop call. Action.Effect should be changed to the desired effect in the callback. If the returned Action.Effect was not in okEffects or is equal to DROPEFFECT_NONE (=== 0), then drop will be denied: cursor icon will be changed, on_drag_drop won't be called after releasing lmbtn, on_drag_leave will be called instead.<br> - DROPEFFECT_LINK should be used as fallback in case effect argument does not have DROPEFFECT_COPY (===1), since some external drops only allow DROPEFFECT_LINK effect.<br> - Changing effect on key modifiers is nice (to be in line with native Windows behaviour): see the example below.<br> <br> Note: due to the asynchronous nature of event handling, <b>fb.DoDragDrop()</b> might exit before <b>on_drag_drop</b> callback is triggered when dropping data on the same panel as the one that had a call to <b>fb.DoDragDrop()</b>.<br> <br> Related callbacks: <a href="module-Callbacks.html#on_drag_enter">on_drag_enter</a>, <a href="module-Callbacks.html#on_drag_drop">on_drag_drop</a>, <a href="module-Callbacks.html#on_drag_over">on_drag_over</a>, <a href="module-Callbacks.html#on_drag_leave">on_drag_leave</a></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -969,7 +969,7 @@ fb.CopyHandleListToClipboard(handle_list);</code></pre><div class="example-capti
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If <code>handle_list</code> is null, <code>options</code> is not an object, or the panel host is not fully initialized.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>handle_list</b> is null, <b>options</b> is not an object, or the panel host is not fully initialized.</p></div>
         </section>
         
         
@@ -1091,7 +1091,7 @@ menuCommands
         </header>
         <pre class="signature"><code>GetAudioChunk(requested_length, offset)</code></pre>
         
-        <div class="description"><p>Returns PCM data from the foobar2000 visualisation stream.<br> The stream is created lazily. A negative <code>offset</code> requests data before the current visualisation time; JSplitter automatically maintains the native backlog required for that offset. The first stream initialization may briefly synchronize with the foobar2000 main thread.<br> For repeated real-time processing, prefer <a href="fb.html#GetAudioChunkTo">fb.GetAudioChunkTo</a> to write directly into a reusable <code>Float32Array</code> without creating a transient <a href="FbAudioChunk.html#FbAudioChunk">FbAudioChunk</a>. <a href="FbAudioChunk.html#CopyDataTo">CopyDataTo()</a> remains useful when a chunk object is already required, while <a href="FbAudioChunk.html#Data">Data</a> preserves its legacy allocating <code>Array</code> behaviour for compatibility.</p></div>
+        <div class="description"><p>Returns PCM data from the foobar2000 visualisation stream.<br> The stream is created lazily. A negative <b>offset</b> requests data before the current visualisation time; JSplitter automatically maintains the native backlog required for that offset. The first stream initialization may briefly synchronize with the foobar2000 main thread.<br> For repeated real-time processing, prefer <a href="fb.html#GetAudioChunkTo">fb.GetAudioChunkTo</a> to write directly into a reusable <b>Float32Array</b> without creating a transient <a href="FbAudioChunk.html#FbAudioChunk">FbAudioChunk</a>. <a href="FbAudioChunk.html#CopyDataTo">CopyDataTo</a> remains useful when a chunk object is already required, while <a href="FbAudioChunk.html#Data">Data</a> preserves its legacy allocating <b>Array</b> behaviour for compatibility.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1110,7 +1110,7 @@ menuCommands
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If the foobar2000 visualisation stream cannot be created.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the foobar2000 visualisation stream cannot be created.</p></div>
         </section>
         
         
@@ -1131,7 +1131,7 @@ menuCommands
         </header>
         <pre class="signature"><code>GetAudioChunkTo(destination, requested_length, offset, info)</code></pre>
         
-        <div class="description"><p>Writes interleaved PCM samples from the foobar2000 visualisation stream directly into an existing <code>Float32Array</code>. Unlike <a href="fb.html#GetAudioChunk">fb.GetAudioChunk</a>, this method does not create an <a href="FbAudioChunk.html#FbAudioChunk">FbAudioChunk</a>; after the first sufficiently large native scratch buffer has been established, repeated calls can reuse both the native scratch storage and the JavaScript destination buffer.<br> A negative <code>offset</code> has the same backlog semantics as <a href="fb.html#GetAudioChunk">fb.GetAudioChunk</a>. If <code>info</code> is supplied, it is updated in place with <code>SampleCount</code>, <code>ChannelCount</code>, <code>SampleRate</code> and <code>ChannelConfig</code>.</p></div>
+        <div class="description"><p>Writes interleaved PCM samples from the foobar2000 visualisation stream directly into an existing <b>Float32Array</b>. Unlike <a href="fb.html#GetAudioChunk">fb.GetAudioChunk</a>, this method does not create an <a href="FbAudioChunk.html#FbAudioChunk">FbAudioChunk</a>; after the first sufficiently large native scratch buffer has been established, repeated calls can reuse both the native scratch storage and the JavaScript destination buffer.<br> A negative <b>offset</b> has the same backlog semantics as <a href="fb.html#GetAudioChunk">fb.GetAudioChunk</a>. If <b>info</b> is supplied, it is updated in place with <b>SampleCount</b>, <b>ChannelCount</b>, <b>SampleRate</b> and <b>ChannelConfig</b>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1150,7 +1150,7 @@ menuCommands
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If the foobar2000 visualisation stream cannot be created, <code>destination</code> is not a <code>Float32Array</code> or is too small, or <code>info</code> is not an object.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the foobar2000 visualisation stream cannot be created, <b>destination</b> is not a <b>Float32Array</b> or is too small, or <b>info</b> is not an object.</p></div>
         </section>
         
         
@@ -1186,7 +1186,7 @@ menuCommands
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If <code>handle</code> is null or foobar2000&apos;s input stream selector is unavailable.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>handle</b> is null or foobar2000&apos;s input stream selector is unavailable.</p></div>
         </section>
         
         
@@ -1239,7 +1239,7 @@ menuCommands
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If called before foobar2000 is fully initialized.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If called before foobar2000 is fully initialized.</p></div>
         </section>
         
         
@@ -1391,7 +1391,7 @@ console.log(JSON.stringify(arr, <span class="tok-literal">null</span>, <span cla
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If <code>handle</code> is null.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>handle</b> is null.</p></div>
         </section>
         
         
@@ -1551,7 +1551,7 @@ console.log(JSON.stringify(arr, <span class="tok-literal">null</span>, <span cla
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If <code>handles</code> is null or the query cannot be parsed or processed.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>handles</b> is null or the query cannot be parsed or processed.</p></div>
         </section>
         
         
@@ -1704,7 +1704,7 @@ console.log(JSON.stringify(arr, <span class="tok-literal">null</span>, <span cla
         </header>
         <pre class="signature"><code>IsMainMenuCommandChecked(command)</code></pre>
         
-        <div class="description"><p>Performance note: don't use in <code>on_paint</code>.</p></div>
+        <div class="description"><p>Performance note: don't use in <b>on_paint</b>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1759,7 +1759,7 @@ console.log(JSON.stringify(arr, <span class="tok-literal">null</span>, <span cla
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If <code>handle</code> is null.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>handle</b> is null.</p></div>
         </section>
         
         
@@ -1781,7 +1781,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
         </header>
         <pre class="signature"><code>LoadPlaylist()</code></pre>
         
-        <div class="description"><p>Loads playlist from file. Equivalent to <code>File</code>><code>Load Playlist...</code>.</p></div>
+        <div class="description"><p>Loads playlist from file. Equivalent to <b>File</b>><b>Load Playlist...</b>.</p></div>
         
         
         
@@ -1943,7 +1943,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If the panel host is not fully initialized, the command id is already registered, or the command cannot be registered.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the panel host is not fully initialized, the command id is already registered, or the command cannot be registered.</p></div>
         </section>
         
         
@@ -2036,7 +2036,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If <code>handle_or_handle_list</code> is not an <code>FbMetadbHandle</code> or <code>FbMetadbHandleList</code> object.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>handle_or_handle_list</b> is not an <b>FbMetadbHandle</b> or <b>FbMetadbHandleList</b> object.</p></div>
         </section>
         
         
@@ -2110,7 +2110,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
         </header>
         <pre class="signature"><code>SetAudioStream(handle, index)</code></pre>
         
-        <div class="description"><p>Selects an audio stream for <b>handle</b> and stores it as the user's stream preference.<br> <b>Available only in foobar2000 v2.0 and above</b>. Throws an <a href="D2DCompileInfo.html#Error">Error</a> when API is unavailable, the file does not support stream selection, or <b>index</b> is out of bounds.<br> If the file is currently playing and the effective selection changes, playback is restarted so the new stream is applied immediately.<br> <br> Related methods: <a href="fb.html#GetAudioStreams">fb.GetAudioStreams</a>.</p></div>
+        <div class="description"><p>Selects an audio stream for <b>handle</b> and stores it as the user's stream preference.<br> <b>Available only in foobar2000 v2.0 and above</b>. Throws an <a href="globals.html#Error">Error</a> when API is unavailable, the file does not support stream selection, or <b>index</b> is out of bounds.<br> If the file is currently playing and the effective selection changes, playback is restarted so the new stream is applied immediately.<br> <br> Related methods: <a href="fb.html#GetAudioStreams">fb.GetAudioStreams</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2125,7 +2125,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If <code>handle</code> is null, foobar2000 2.0 stream selection is unavailable, the file does not support audio stream selection, or <code>index</code> is out of bounds.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>handle</b> is null, foobar2000 2.0 stream selection is unavailable, the file does not support audio stream selection, or <b>index</b> is out of bounds.</p></div>
         </section>
         
         
@@ -2167,7 +2167,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If <code>idx</code> is out of bounds.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>idx</b> is out of bounds.</p></div>
         </section>
         
         
@@ -2284,7 +2284,7 @@ fb.SetOutputDevice(arr[<span class="tok-number">4</span>].output_id, arr[<span c
         </header>
         <pre class="signature"><code>ShowPictureViewer(image_path_or_handle, art_id)</code></pre>
         
-        <div class="description"><p>Opens the image viewer built in to <code>foobar2000</code>. Pass an image file path, or an <a href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a>; with a handle, <a href="module-Flags.html#AlbumArtId">AlbumArtId</a> defaults to <code>AlbumArtId.front</code>. Album art is resolved by foobar2000 and may be embedded or external.</p></div>
+        <div class="description"><p>Opens the image viewer built in to <b>foobar2000</b>. Pass an image file path, or an <a href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a>; with a handle, <a href="module-Flags.html#AlbumArtId">AlbumArtId</a> defaults to <b>AlbumArtId.front</b>. Album art is resolved by foobar2000 and may be embedded or external.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2299,7 +2299,7 @@ fb.SetOutputDevice(arr[<span class="tok-number">4</span>].output_id, arr[<span c
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If the track handle is invalid, the foobar2000 image viewer API is unavailable, or an image file path cannot be read.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the track handle is invalid, the foobar2000 image viewer API is unavailable, or an image file path cannot be read.</p></div>
         </section>
         
         
@@ -2454,7 +2454,7 @@ fb.SetOutputDevice(arr[<span class="tok-number">4</span>].output_id, arr[<span c
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#Error">Error</a></code> — <p>If the panel host is not fully initialized or <code>id</code> is not a registered dynamic main-menu command.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the panel host is not fully initialized or <b>id</b> is not a registered dynamic main-menu command.</p></div>
         </section>
         
         

@@ -277,7 +277,7 @@
         </header>
         <pre class="signature"><code>EOF: boolean = false</code></pre>
         
-        <div class="description"><p>Indicates that the current read position has reached the file length recorded when the reader was opened.<br> This property does not report a closed reader or a read failure. Use the return value of <a href="BinaryReader.html#Read">Read()</a> to drive the read loop; <code>EOF</code> is status information used to distinguish a clean end of file from a failed read.</p></div>
+        <div class="description"><p>Indicates that the current read position has reached the file length recorded when the reader was opened.<br> This property does not report a closed reader or a read failure. Use the return value of <a href="BinaryReader.html#Read">Read</a> to drive the read loop; <b>EOF</b> is status information used to distinguish a clean end of file from a failed read.</p></div>
         
         
         
@@ -340,7 +340,7 @@
         </header>
         <pre class="signature"><code>Close()</code></pre>
         
-        <div class="description"><p>Closes the file. Calling <code>Close()</code> more than once is allowed.</p></div>
+        <div class="description"><p>Closes the file. Calling <b>Close()</b> more than once is allowed.</p></div>
         
         
         
@@ -365,7 +365,7 @@
         </header>
         <pre class="signature"><code>Read(buffer, offset, count)</code></pre>
         
-        <div class="description"><p>Reads bytes into an existing <code>Uint8Array</code> without allocating a new buffer.<br> If <code>offset</code> is omitted, reading starts at index 0. If <code>count</code> is omitted, bytes are read up to the end of the buffer.<br> An explicitly supplied <code>offset + count</code> must fit inside the buffer.</p></div>
+        <div class="description"><p>Reads bytes into an existing <b>Uint8Array</b> without allocating a new buffer.<br> If <b>offset</b> is omitted, reading starts at index 0. If <b>count</b> is omitted, bytes are read up to the end of the buffer.<br> An explicitly supplied <b>offset + count</b> must fit inside the buffer.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -379,12 +379,12 @@
         
         <section class="member-section compact-section">
             <h3>Returns</h3>
-            <div><code>number</code> — <p>Number of bytes actually read. A nonzero request returning 0 means that no bytes were read: <a href="BinaryReader.html#EOF">EOF</a> is <code>true</code> at clean end of file and <code>false</code> if the read could not be performed. A zero-length request also returns 0.</p></div>
+            <div><code>number</code> — <p>Number of bytes actually read. A nonzero request returning 0 means that no bytes were read: <a href="BinaryReader.html#EOF">EOF</a> is <b>true</b> at clean end of file and <b>false</b> if the read could not be performed. A zero-length request also returns 0.</p></div>
         </section>
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws only if the reader is closed.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the reader is closed.</p></div>
         </section>
         
         

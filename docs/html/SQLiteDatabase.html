@@ -235,7 +235,7 @@
         </header>
         
         
-        <div class="description"><p>SQLite database returned by <a href="utils.html#OpenDatabase">utils.OpenDatabase</a>.<br> All operations are synchronous. Use a <a href="Worker.html#Worker">Worker</a> for large imports, maintenance, or expensive queries when blocking the panel UI would be undesirable.<br> Parameter arrays are positional and must contain exactly as many values as the SQL statement requires. Booleans are stored as SQLite integers 0/1. Query results map SQLite NULL to <code>null</code>, INTEGER/REAL to number, TEXT to string, and BLOB to <code>Uint8Array</code>.<br> Database operations report SQL, binding, transaction-state, and closed-handle errors as JavaScript exceptions. <a href="SQLiteDatabase.html#Close">Close()</a> is idempotent and does not throw.</p></div>
+        <div class="description"><p>SQLite database returned by <a href="utils.html#OpenDatabase">utils.OpenDatabase</a>.<br> All operations are synchronous. Use a <a href="Worker.html#Worker">Worker</a> for large imports, maintenance, or expensive queries when blocking the panel UI would be undesirable.<br> Parameter arrays are positional and must contain exactly as many values as the SQL statement requires. Booleans are stored as SQLite integers 0/1. Query results map SQLite NULL to <b>null</b>, INTEGER/REAL to number, TEXT to string, and BLOB to <b>Uint8Array</b>.<br> Database operations report SQL, binding, transaction-state, and closed-handle errors as JavaScript exceptions. <a href="SQLiteDatabase.html#Close">Close</a> is idempotent and does not throw.</p></div>
         
         
         
@@ -277,7 +277,7 @@
         </header>
         <pre class="signature"><code>Begin()</code></pre>
         
-        <div class="description"><p>Starts a deferred transaction by executing <code>BEGIN TRANSACTION</code>.</p></div>
+        <div class="description"><p>Starts a deferred transaction by executing <b>BEGIN TRANSACTION</b>.</p></div>
         
         
         
@@ -285,7 +285,7 @@
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws on SQLite/database errors, including when the database is closed or the transaction cannot be started.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>On SQLite/database errors, including when the database is closed or the transaction cannot be started.</p></div>
         </section>
         
         
@@ -319,7 +319,7 @@ db.Begin();
         </header>
         <pre class="signature"><code>Close()</code></pre>
         
-        <div class="description"><p>Closes the database. Calling <code>Close()</code> more than once is allowed.<br> This method does not throw; any SQLite close status is not exposed to script code.</p></div>
+        <div class="description"><p>Closes the database. Calling <b>Close()</b> more than once is allowed.<br> This method does not throw; any SQLite close status is not exposed to script code.</p></div>
         
         
         
@@ -344,7 +344,7 @@ db.Begin();
         </header>
         <pre class="signature"><code>Commit()</code></pre>
         
-        <div class="description"><p>Commits the current transaction by executing <code>COMMIT</code>.</p></div>
+        <div class="description"><p>Commits the current transaction by executing <b>COMMIT</b>.</p></div>
         
         
         
@@ -352,7 +352,7 @@ db.Begin();
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws on SQLite/database errors, including when the database is closed or no transaction can be committed.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>On SQLite/database errors, including when the database is closed or no transaction can be committed.</p></div>
         </section>
         
         
@@ -375,7 +375,7 @@ db.Begin();
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>sql</code></td><td><code>string</code></td><td><p>SQL text to execute.</p></td></tr><tr><td><code>parameters</code><span class="mini-flag">optional</span></td><td><code>Array&lt;*&gt;</code></td><td><p>Positional parameter values. Supported element types: <code>null</code>, boolean, number, string, <code>ArrayBuffer</code>, and typed-array views.</p></td></tr></tbody>
+                <tbody><tr><td><code>sql</code></td><td><code>string</code></td><td><p>SQL text to execute.</p></td></tr><tr><td><code>parameters</code><span class="mini-flag">optional</span></td><td><code>Array&lt;*&gt;</code></td><td><p>Positional parameter values. Supported element types: <b>null</b>, boolean, number, string, <b>ArrayBuffer</b>, and typed-array views.</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -384,7 +384,7 @@ db.Begin();
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws on SQL, parameter, binding, or database errors, including an invalid parameter array/count or when the database is closed.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>On SQL, parameter, binding, or database errors, including an invalid parameter array/count or when the database is closed.</p></div>
         </section>
         
         
@@ -409,7 +409,7 @@ db.Begin();
         </header>
         <pre class="signature"><code>Prepare(sql)</code></pre>
         
-        <div class="description"><p>Prepares exactly one SQL statement for repeated execution. The returned statement owns its native SQLite handle. It is finalized automatically when the JavaScript object is destroyed, so calling <a href="SQLiteStatement.html#Close">Close()</a> is not required for normal use. Call <code>Close()</code> only when the native statement should be released immediately.</p></div>
+        <div class="description"><p>Prepares exactly one SQL statement for repeated execution. The returned statement owns its native SQLite handle. It is finalized automatically when the JavaScript object is destroyed, so calling <a href="SQLiteStatement.html#Close">Close</a> is not required for normal use. Call <b>Close()</b> only when the native statement should be released immediately.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -428,7 +428,7 @@ db.Begin();
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws if the SQL cannot be prepared, if the input does not contain exactly one SQL statement, or when the database is closed.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the SQL cannot be prepared, if the input does not contain exactly one SQL statement, or when the database is closed.</p></div>
         </section>
         
         
@@ -451,13 +451,13 @@ insert.Run([<span class="tok-string">&#39;Beta&#39;</span>, <span class="tok-num
         </header>
         <pre class="signature"><code>Query(sql, parameters)</code></pre>
         
-        <div class="description"><p>Executes exactly one SQL statement and returns all rows as plain JavaScript objects keyed by column name.<br> SQLite NULL becomes <code>null</code>, INTEGER/REAL become number, TEXT becomes string, and BLOB becomes <code>Uint8Array</code>. The query must produce unique column names; use SQL aliases when selecting duplicate names.</p></div>
+        <div class="description"><p>Executes exactly one SQL statement and returns all rows as plain JavaScript objects keyed by column name.<br> SQLite NULL becomes <b>null</b>, INTEGER/REAL become number, TEXT becomes string, and BLOB becomes <b>Uint8Array</b>. The query must produce unique column names; use SQL aliases when selecting duplicate names.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>sql</code></td><td><code>string</code></td><td><p>SQL query to execute.</p></td></tr><tr><td><code>parameters</code><span class="mini-flag">optional</span></td><td><code>Array&lt;*&gt;</code></td><td><p>Positional parameter values. Supported element types: <code>null</code>, boolean, number, string, <code>ArrayBuffer</code>, and typed-array views.</p></td></tr></tbody>
+                <tbody><tr><td><code>sql</code></td><td><code>string</code></td><td><p>SQL query to execute.</p></td></tr><tr><td><code>parameters</code><span class="mini-flag">optional</span></td><td><code>Array&lt;*&gt;</code></td><td><p>Positional parameter values. Supported element types: <b>null</b>, boolean, number, string, <b>ArrayBuffer</b>, and typed-array views.</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -470,7 +470,7 @@ insert.Run([<span class="tok-string">&#39;Beta&#39;</span>, <span class="tok-num
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws on SQL, parameter, binding, result-conversion, or database errors; when multiple SQL statements are supplied; when result column names are duplicated; or when the database is closed.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>On SQL, parameter, binding, result-conversion, or database errors; when multiple SQL statements are supplied; when result column names are duplicated; or when the database is closed.</p></div>
         </section>
         
         
@@ -497,7 +497,7 @@ insert.Run([<span class="tok-string">&#39;Beta&#39;</span>, <span class="tok-num
         </header>
         <pre class="signature"><code>Rollback()</code></pre>
         
-        <div class="description"><p>Rolls back the current transaction by executing <code>ROLLBACK</code>.</p></div>
+        <div class="description"><p>Rolls back the current transaction by executing <b>ROLLBACK</b>.</p></div>
         
         
         
@@ -505,7 +505,7 @@ insert.Run([<span class="tok-string">&#39;Beta&#39;</span>, <span class="tok-num
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws on SQLite/database errors, including when the database is closed or no transaction can be rolled back.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>On SQLite/database errors, including when the database is closed or no transaction can be rolled back.</p></div>
         </section>
         
         
