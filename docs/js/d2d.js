@@ -1294,6 +1294,7 @@ let d2d = {
      * @param {*=} [param4=undefined]
      * @return {D2DBrush} Brush object used in Draw/Fill methods
      * 
+     * @throws {Error} If the Direct2D host is unavailable, Direct2D resources have not been initialized, or the brush parameters are invalid.
      * @sourceFile ../../component/samples/basic/Brushes.js
      * @worker
      */
@@ -1306,6 +1307,7 @@ let d2d = {
      *
      * @param {D2DStrokeStyleOptions=} [options={}] Stroke appearance options. Omitted properties use the defaults documented by D2DStrokeStyleOptions.
      * @return {D2DStrokeStyle}
+     * @throws {Error} If the Direct2D host is unavailable, Direct2D resources have not been initialized, or the stroke-style options are invalid.
      * @sourceFile ../../component/samples/d2d/StrokeStyle.js
      * @worker
      */
@@ -1315,6 +1317,7 @@ let d2d = {
      * @param {number} w
      * @param {number} h
      * @return {D2DBitmap}
+     * @throws {Error} If the Direct2D host is unavailable or Direct2D resources have not been initialized.
      * @worker
      */
     CreateImage: function (w, h) { }, // (D2DBitmap)
@@ -1333,6 +1336,7 @@ let d2d = {
      *   "rgb24"   24bpp RGB<br>
      * @returns {D2DBitmap} null if was an error (for example pixelData array length is not suitable for the specified parameters)
      * 
+     * @throws {Error} If the Direct2D host is unavailable, Direct2D resources have not been initialized, or <code>data</code> is not a non-empty <code>Uint8Array</code>.
      * @sourceFile ../../component/samples/basic/CreateImageFromPixelData.js
      * @worker
      */
@@ -1348,6 +1352,7 @@ let d2d = {
      * @param {number} size_px See {@link module:Helpers.Point2Pixel Point2Pixel} function for conversions
      * @param {number=} [style=0] See {@link module:Flags.FontStyle FontStyle} flags
      * @return {?D2DFont} null, if font is not present.
+     * @throws {Error} If the Direct2D host is unavailable or Direct2D resources have not been initialized.
      * @worker
      */
     Font: function (name, size_px, style) { }, // (D2DFont) [, style]
@@ -1361,6 +1366,7 @@ let d2d = {
      * @param {string} path
      * @return {?D2DBitmap} null, if image failed to load.
      *
+     * @throws {Error} If the Direct2D host is unavailable or Direct2D resources have not been initialized.
      * @example
      * let img = d2d.Image('e:\\images folder\\my_image.png');
      * @worker
@@ -1374,6 +1380,7 @@ let d2d = {
      * @param {string} path
      * @return {number} a unique id, which is used in {@link module:Callbacks.on_load_image_done on_load_image_done}.
      *
+     * @throws {Error} If the panel host is unavailable, Direct2D resources have not been initialized, or foobar2000 is not fully initialized.
      * @sourceFile ../../component/samples/basic/LoadImageAsync.js
      * @worker
      */
@@ -1387,6 +1394,7 @@ let d2d = {
      * @param {string} path
      * @return {Promise.<?D2DBitmap>}
      *
+     * @throws {Error} If the panel host is unavailable, Direct2D resources have not been initialized, or foobar2000 is not fully initialized.
      * @sourceFile ../../component/samples/basic/LoadImageAsyncV2.js
      * @worker
      */
@@ -1399,6 +1407,7 @@ let d2d = {
      * @param {number=} [max_width=0] If specified rasterizes with width = max_width and height according to the proportions, otherwise uses "width" and "height" attributes in SVG header if exist
      * @return {?D2DBitmap} Rasterized bitmap, null in case of error
      * 
+     * @throws {Error} If the Direct2D host is unavailable or Direct2D resources have not been initialized.
      * @example
      * const svg_file = fb.ComponentPath + 'samples\\svg\\android.svg';
      * 
@@ -1419,6 +1428,7 @@ let d2d = {
      * Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div>
      * @param {string} CLSID CLSID of Direct2D effect. See {@link module:Effects Effects} for effects' CLSID.
      * @return {D2DEffect}
+     * @throws {Error} If the Direct2D host is unavailable or Direct2D resources have not been initialized.
      * @worker
      */
     Effect: function (CLSID) { },
@@ -1436,6 +1446,7 @@ let d2d = {
      * <b>Default value</b>: D3DCOMPILE_OPTIMIZATION_LEVEL3 | D3DCOMPILE_IEEE_STRICTNESS | D3DCOMPILE_WARNINGS_ARE_ERRORS | D3DCOMPILE_PACK_MATRIX_ROW_MAJOR<br>
      * <b>Example for debug build</b>: D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION | D3DCOMPILE_ALL_RESOURCES_BOUND | D3DCOMPILE_PACK_MATRIX_ROW_MAJOR
      * @return {D2DCompileInfo} Result of compiling shader source
+     * @throws {Error} If the Direct2D host is unavailable or Direct2D resources have not been initialized.
      * @example
      * include(`${fb.ComponentPath}\\docs\\Effects.js`);
      * 
