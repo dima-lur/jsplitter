@@ -629,6 +629,7 @@ let fb = {
      * @param {Array<string>} locations must be an array of strings and it can contain file paths, playlists or urls.
      * @return {number} task id (see first parameter of {@link module:Callbacks.on_locations_added on_locations_added})
      * 
+     * @throws {Error}
      * @example
      * function on_mouse_lbtn_dblclk() {
      *     var files = ["z:\\1.mp3", "z:\\2.flac"];
@@ -669,6 +670,7 @@ let fb = {
      * @param {FbMetadbHandleList} handle_list
      * @return {boolean}
      *
+     * @throws {Error}
      * @example <caption>Copy playlist items</caption>
      * let handle_list = plman.GetPlaylistSelectedItems(plman.ActivePlaylist);
      * fb.CopyHandleListToClipboard(handle_list);
@@ -715,6 +717,7 @@ let fb = {
     /**
      * @param {string=} [name=''] Will be shown in console when used with {@link FbProfiler#Print Print} method.
      * @return {FbProfiler}
+     * @throws {Error}
      * @worker
      */
     CreateProfiler: function (name) { }, // (FbProfiler) [name]
@@ -756,6 +759,7 @@ let fb = {
      * @param {GdiBitmap=} [options.custom_image=undefined] (or {@link D2DBitmap} if {@link window.DrawMode} == 1). Custom dragging image. Will be also displayed if use_album_art is true, but there is no album art available.
      * @return {number} Effect that was returned in {@link module:Callbacks.on_drag_drop on_drag_drop}.
      *
+     * @throws {Error}
      * @sourceFile ../../component/samples/basic/DragnDrop.js
      */
     DoDragDrop: function (window_id, handle_list, effect, options) { }, // (uint),
@@ -818,6 +822,7 @@ let fb = {
      * @param {FbMetadbHandle} handle
      * @return {Array<AudioStreamInfo>}
      *
+     * @throws {Error}
      * @example
      * const handle = fb.GetFocusItem();
      * if (handle) {
@@ -843,6 +848,7 @@ let fb = {
      * @param {number=} [offset=0] 
      * @return {FbAudioChunk}
      * 
+     * @throws {Error}
      * @sourceFile ../../component/samples/complete/js/vu_meter.js
      * @worker
      */
@@ -872,6 +878,7 @@ let fb = {
      * @param {number=} [window_id=0] unused
      * @return {FbMetadbHandleList}
      *
+     * @throws {Error}
      * @example
      * function on_mouse_rbtn_up(x, y) {
      *    let ap = plman.ActivePlaylist;
@@ -923,6 +930,7 @@ let fb = {
     /**
      * @param {boolean=} [force=true] When true, it will use the first item of the active playlist if it is unable to get the focus item.
      * @return {FbMetadbHandle}
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -945,6 +953,7 @@ let fb = {
      * @param {FbMetadbHandle} handle
      * @return {string}
      *
+     * @throws {Error}
      * @example
      * // The foobar2000 Media Library is configured to watch "D:\Music" and the
      * // path of the now playing item is "D:\Music\Albums\Artist\Some Album\Some Song.flac"
@@ -1035,6 +1044,7 @@ let fb = {
      * @param {string} query
      * @return {FbMetadbHandleList} Unsorted results.
      *
+     * @throws {Error}
      * @example
      * let a = fb.GetQueryItems(plman.GetPlaylistItems(plman.ActivePlaylist), "rating IS 5");
      *
@@ -1058,6 +1068,7 @@ let fb = {
      *
      * @param {number=} [flags=0] 1 - no now playing
      * @return {FbMetadbHandleList}
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -1111,6 +1122,7 @@ let fb = {
      * @param {FbMetadbHandle} handle
      * @return {boolean}
      *
+     * @throws {Error}
      * @example
      * let np = fb.GetNowplaying();
      * console.log(fb.IsMetadbInMediaLibrary(np)); // If false, playing track is not in Media Library.
@@ -1182,6 +1194,7 @@ let fb = {
      * @param {number} id
      * @param {string} name
      * @param {string=} [description='']
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -1205,6 +1218,7 @@ let fb = {
      *         using File>Preferences>Display>Context Menu<br>
      * @return {boolean}
      *
+     * @throws {Error}
      * @example
      * fb.RunContextCommand("Properties");
      */
@@ -1217,6 +1231,7 @@ let fb = {
      * @param {FbMetadbHandle|FbMetadbHandleList} handle_or_handle_list Handles on which to apply context menu
      * @param {number=} flags Same flags as {@link fb.RunContextCommand}
      * @return {boolean}
+     * @throws {Error}
      */
     RunContextCommandWithMetadb: function (command, handle_or_handle_list, flags) { }, // (boolean) [, flags]
 
@@ -1239,6 +1254,7 @@ let fb = {
      *
      * @param {number} idx
      *
+     * @throws {Error}
      * @example
      * let str = fb.GetDSPPresets();
      * let arr = JSON.parse(str);
@@ -1297,6 +1313,7 @@ let fb = {
      * Shows foobar2000 console window or close it (if show=false).
      *
      * @param {boolean=} [show=true]
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -1315,6 +1332,7 @@ let fb = {
      * Opens the image viewer built in to `foobar2000`. Pass an image file path, or an {@link FbMetadbHandle}; with a handle, {@link module:Flags.AlbumArtId AlbumArtId} defaults to `AlbumArtId.front`. Album art is resolved by foobar2000 and may be embedded or external.
      * @param {(string|FbMetadbHandle)} image_path_or_handle Image file path or track handle.
      * @param {AlbumArtId=} [art_id=AlbumArtId.front] Album art type. Used only when the first argument is an {@link FbMetadbHandle}.
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -1330,6 +1348,7 @@ let fb = {
     /**
      * @param {string} message
      * @param {string=} [title='JSplitter']
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -1366,6 +1385,7 @@ let fb = {
      * Related methods: {@link fb.RegisterMainMenuCommand}
      *
      * @param {number} id
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -1426,6 +1446,7 @@ let gdi = {
      * @param {*=} [param4=undefined]
      * @return {GdiBrush} Brush object used in Draw/Fill methods
      * 
+     * @throws {Error}
      * @sourceFile ../../component/samples/basic/Brushes.js
      * @worker
      */
@@ -1453,6 +1474,7 @@ let gdi = {
      *   "rgb24"   24bpp RGB<br>
      * @returns {GdiBitmap} null if was an error (for example pixelData array length is not suitable for the specified parameters)
      * 
+     * @throws {Error}
      * @sourceFile ../../component/samples/basic/CreateImageFromPixelData.js
      * @worker
      */
@@ -1468,6 +1490,7 @@ let gdi = {
      * @param {number} size_px See {@link module:Helpers.Point2Pixel Point2Pixel} function for conversions
      * @param {number=} [style=0] See {@link module:Flags.FontStyle FontStyle} flags
      * @return {?GdiFont} null, if font is not present.
+     * @throws {Error}
      * @worker
      */
     Font: function (name, size_px, style) { }, // (GdiFont) [, style]
@@ -1494,6 +1517,7 @@ let gdi = {
      * @param {string} path
      * @return {number} a unique id, which is used in {@link module:Callbacks.on_load_image_done on_load_image_done}.
      *
+     * @throws {Error}
      * @sourceFile ../../component/samples/basic/LoadImageAsync.js
      * @worker
      */
@@ -1507,6 +1531,7 @@ let gdi = {
      * @param {string} path
      * @return {Promise.<?GdiBitmap>}
      *
+     * @throws {Error}
      * @sourceFile ../../component/samples/basic/LoadImageAsyncV2.js
      * @worker
      */
@@ -1519,6 +1544,7 @@ let gdi = {
      * @param {number=} [max_width=0] If specified rasterizes with width = max_width and height according to the proportions, otherwise uses "width" and "height" attributes in SVG header if exist
      * @return {?GdiBitmap} Rasterized bitmap, null in case of error
      * 
+     * @throws {Error}
      * @example
      * const svg_file = fb.ComponentPath + 'samples\\svg\\android.svg';
      * 
@@ -1612,6 +1638,7 @@ let plman = {
      *        If true, the active playlist will be set to the playlistIndex, the items will
      *        be selected and focus will be set to the first new item.
      *
+     * @throws {Error}
      * @example
      * plman.AddLocations(plman.ActivePlaylist, ["e:\\1.mp3"]);
      * // This operation is asynchronous, so any code in your script directly
@@ -1648,6 +1675,7 @@ let plman = {
      * @param {string=} [sort=''] Title formatting pattern for sorting.
      * @param {number=} [flags=0] 1 - when set, will keep the autoplaylist sorted and prevent user from reordering it.
      * @return {number} Index of the created playlist.
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -1677,6 +1705,7 @@ let plman = {
      * @param {number} playlistIndex
      * @param {?string=} [name] A name for the new playlist. If the name is "" or undefined, the name of the source playlist will be used.
      * @return {number} Index of the created playlist.
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -1728,6 +1757,7 @@ let plman = {
     * @param {number} playlistIndex
     * @return {string}
     *
+     * @throws {Error}
     * @example
     * console.log(plman.GetGUID(plman.ActivePlaylist));
      * @worker
@@ -1738,6 +1768,7 @@ let plman = {
     /**
      * @param {string} guid String representing GUID.
      * @return {number} Index of the found playlist on success, -1 on failure.
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -1787,6 +1818,7 @@ let plman = {
      *   - 'RenamePlaylist'<br>
      *   - 'RemovePlaylist'<br>
      *   - 'ExecuteDefaultAction'
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -1795,6 +1827,7 @@ let plman = {
     /**
      * @param {number} playlistIndex
      * @return {?string} name of lock owner if there is a lock, null otherwise
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -1815,6 +1848,7 @@ let plman = {
      * @param {number} playlistIndex
      * @return {Array<number>}
      *
+     * @throws {Error}
      * @example
      * let selected_indexes = plman.GetPlaylistSelectedIndexes(plman.ActivePlaylist);
      * @worker
@@ -1839,6 +1873,7 @@ let plman = {
      * @param {FbMetadbHandleList} handle_list Items to insert
      * @param {boolean=} [select=false] If true then inserted items will be selected
      *
+     * @throws {Error}
      * @example <caption>Add all library tracks to the beginning of playlist.</caption>
      * let ap = plman.ActivePlaylist;
      * plman.InsertPlaylistItems(ap, 0, fb.GetLibraryItems());
@@ -1858,6 +1893,7 @@ let plman = {
      * @param {number} base Position in playlist
      * @param {FbMetadbHandleList} handle_list Items to insert
      * @param {boolean=} [select=false] If true then inserted items will be selected
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -1865,6 +1901,7 @@ let plman = {
 
     /**
      * @param {number} playlistIndex
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -1873,6 +1910,7 @@ let plman = {
     /**
      * @param {number} playlistIndex
      * @return {boolean}
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -1897,6 +1935,7 @@ let plman = {
      * 
      * @param {number} playlistIndex
      * @return {boolean}
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -1909,6 +1948,7 @@ let plman = {
      *
      * @param {number} playlistIndex
      * @return {boolean}
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -1921,6 +1961,7 @@ let plman = {
      *
      * @param {number} playlistIndex
      * @return {boolean}
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -1953,6 +1994,7 @@ let plman = {
      * 
      * @param {number} playlistIndex
      * @param {number} new_pos
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -1977,6 +2019,7 @@ let plman = {
      * Related methods: {@link plman.IsRedoAvailable}, {@link plman.IsUndoAvailable}, {@link plman.Undo}, {@link plman.UndoBackup}
      *
      * @param {number} playlistIndex
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -1998,6 +2041,7 @@ let plman = {
      * @param {number} playlistIndex
      * @param {boolean=} [crop=false] If true, then removes items that are NOT selected.
      *
+     * @throws {Error}
      * @example <Remove selected items from playlist>
      * plman.RemovePlaylistSelection(plman.ActivePlaylist);
      *
@@ -2053,6 +2097,7 @@ let plman = {
      * @param {number} playlistIndex
      * @param {number} playlistItemIndex
      * @param {FbMetadbHandle|FbMetadbHandleList} handle_or_handles
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -2064,6 +2109,7 @@ let plman = {
      * @param {number} playlistIndex
      * @param {string} query
      * @return {Array<number>} Array of selected indexes
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -2101,6 +2147,7 @@ let plman = {
      * @param {number} playlistIndex
      * @param {FbMetadbHandle} handle
      *
+     * @throws {Error}
      * @example
      * let ap = plman.ActivePlaylist;
      * let handle = plman.GetPlaylistItems(ap)[1]; // 2nd item in playlist
@@ -2124,6 +2171,7 @@ let plman = {
      *   - 'RenamePlaylist'<br>
      *   - 'RemovePlaylist'<br>
      *   - 'ExecuteDefaultAction'
+     * @throws {Error}
      * @worker
      * @mainthread
     */
@@ -2167,6 +2215,7 @@ let plman = {
      * @param {number} playlistIndex
      * @return {boolean}
      *
+     * @throws {Error}
      * @example
      * fb.ShowAutoPlaylistUI(plman.ActivePlaylist);
      */
@@ -2178,6 +2227,7 @@ let plman = {
      * @param {number} playlistIndex
      * @param {number} [window_id=0] Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window.
      *
+     * @throws {Error}
      * @example
      * fb.ShowPlaylistLockUI(plman.ActivePlaylist);
      */
@@ -2188,6 +2238,7 @@ let plman = {
      * @param {string} pattern Title formatting pattern to sort by. Set to "" to randomise the order of items.
      * @param {boolean=} [selected_items_only=false]
      * @return {boolean} true on success, false on failure (playlist locked etc).
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -2200,6 +2251,7 @@ let plman = {
      *     1 - ascending<br>
      *     -1 - descending<br>
      * @return {boolean}
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -2209,6 +2261,7 @@ let plman = {
      * @param {number=} [direction=1]
      *     1 - ascending<br>
      *     -1 - descending<br>
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -2222,6 +2275,7 @@ let plman = {
      * Related methods: {@link plman.IsRedoAvailable}, {@link plman.IsUndoAvailable}, {@link plman.Redo}, {@link plman.UndoBackup}
      *
      * @param {number} playlistIndex
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -2234,6 +2288,7 @@ let plman = {
      * Related methods: {@link plman.IsRedoAvailable}, {@link plman.IsUndoAvailable}, {@link plman.Redo}, {@link plman.Undo}
      * 
      * @param {number} playlistIndex
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -2241,6 +2296,7 @@ let plman = {
 
     /**
      * @param {FbMetadbHandle} handle
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -2259,6 +2315,7 @@ let plman = {
      * @param {number} playlistIndex
      * @param {number} playlistItemIndex
      * @return {number} Returns position in queue on success, -1 if track is not in queue.
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -2453,6 +2510,7 @@ let utils = {
      * @param {boolean=} [is_dll=true] If true, method checks filename as well as the internal name.
      * @return {boolean}
      *
+     * @throws {Error}
      * @example
      * console.log(utils.CheckComponent("foo_playcount", true));
      * @worker
@@ -2466,6 +2524,7 @@ let utils = {
      *
      * @param {string} name Font family name. Can be either in English or the localised name in your OS.
      * @return {boolean}
+     * @throws {Error}
      * @worker
      */
     CheckFont: function (name) { }, // (boolean)
@@ -2481,6 +2540,7 @@ let utils = {
      * @param {number} window_id Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window.
      * @param {number} default_colour Color in ARGB format
      * @return {number} Chosen color in ARGB format or default_colour if cancelled
+     * @throws {Error}
      */
     ColourPicker: function (window_id, default_colour) { },
 
@@ -2502,6 +2562,7 @@ let utils = {
      * @param {string} to
      * @param {boolean} [overwrite=true]
      * @return {boolean}
+     * @throws {Error}
      * @worker
      */
     CopyFile: function (from, to, overwrite) { },
@@ -2516,6 +2577,7 @@ let utils = {
      * @param {boolean} [overwrite=true]
      * @param {boolean} [recur=true]
      * @return {boolean}
+     * @throws {Error}
      * @worker
      */
     CopyFolder: function (from, to, overwrite, recur) { },
@@ -2577,6 +2639,7 @@ let utils = {
      * @param {string} url File URL
      * @param {string} path Save file path
      * 
+     * @throws {Error}
      * @example
      * utils.DownloadFileAsync("https://lastfm.freetls.fastly.net/i/u/770x0/0be145cbf80930684d41ad524fe53768.jpg", "z:\\blah.jpg");
      * 
@@ -2599,6 +2662,7 @@ let utils = {
      * @return {number} a unique task_id which is used as the first argument in the {@link module:Callbacks.on_http_request_done on_http_request_done} callback.<br>
      * When making a POST request, you should set a Content-Type header. Valid values could be application/json or application/x-www-form-urlencoded.
      * 
+     * @throws {Error}
      * @sourceFile ../../component/samples/complete/js/thumbs.js
      * @sourceFile ../../component/samples/complete/js/list.js
      * 
@@ -2626,6 +2690,7 @@ let utils = {
      * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {number} path Path to file
+     * @throws {Error}
      */
     EditTextFile: function (path) { }, // (uint)
 
@@ -2649,6 +2714,7 @@ let utils = {
      * @param {string=} [mode=0] File dialog mode. 0 - open, 1 - save
      * @param {number} [window_id=0] Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window.
      * @return {string} Chosen file path. If dialog is cancelled returns empty string
+     * @throws {Error}
      */
     FilePicker: function (title, default_path, filter, mode, window_id) { },
 
@@ -2671,6 +2737,7 @@ let utils = {
      *     "split" - Returns an array of [directory, filename, filename_extension].
      * @return {*}
      *
+     * @throws {Error}
      * @example
      * let arr = utils.FileTest("D:\\Somedir\\Somefile.txt", "split");
      * // arr[0] <= "D:\\Somedir\\" (always includes backslash at the end)
@@ -2689,6 +2756,7 @@ let utils = {
      * @param {string=} [default_path=undefined] Default folder path to choose
      * @param {number=} [window_id=0] Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window.
      * @return {string} Chosen folder path. If dialog is cancelled returns empty string
+     * @throws {Error}
      */
     FolderPicker: function (title, default_path, window_id) { },
 
@@ -2699,6 +2767,7 @@ let utils = {
      * @param {number=} [window_id=0] Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window.
      * @return {?GdiFont} (or D2DFont if window.DrawMode=1) Chosen font or default_font if cancelled (if default_font is undefined returns null)
      *
+     * @throws {Error}
      * @sourceFile ../../component/samples/basic/FontPicker.js
      */
     FontPicker: function (default_font, window_id) { },
@@ -2733,6 +2802,7 @@ let utils = {
      * @param {boolean=} [only_embed=false]
      * @param {boolean=} [no_load=false]  If true, "image" parameter will be null in {@link module:Callbacks.on_get_album_art_done on_get_album_art_done} callback.
      *
+     * @throws {Error}
      * @sourceFile ../../component/samples/basic/GetAlbumArtAsync.js
      * @worker
      */
@@ -2756,6 +2826,7 @@ let utils = {
      * @param {boolean=} [no_load=false] If true, then no art loading will be performed and only path to art will be returned in {@link ArtPromiseResult}.
      * @return {Promise.<ArtPromiseResult>}
      *
+     * @throws {Error}
      * @sourceFile ../../component/samples/basic/GetAlbumArtAsyncV2.js
      * @worker
      */
@@ -2770,6 +2841,7 @@ let utils = {
      * @param {number=} [art_id=0] See {@link module:Flags.AlbumArtId AlbumArtId} enum
      * @return {GdiBitmap} (or {@link D2DBitmap} if {@link window.DrawMode} == 1) 
      *
+     * @throws {Error}
      * @example
      * let img = utils.GetAlbumArtEmbedded(fb.GetNowPlaying().RawPath, 0);
      * @worker
@@ -2786,6 +2858,7 @@ let utils = {
      * @param {boolean=} [need_stub=true]
      * @return {GdiBitmap} (or {@link D2DBitmap} if {@link window.DrawMode} == 1)
      *
+     * @throws {Error}
      * @sourceFile ../../component/samples/basic/GetAlbumArtV2.js
      * @worker
      */
@@ -2943,6 +3016,7 @@ let utils = {
      * 
      * @param {string} package_id Can be obtained by {@link window.ScriptInfo}
      * @return {string}
+     * @throws {Error}
      * @worker
      * @mainthread
      */
@@ -2952,6 +3026,7 @@ let utils = {
      * @param {number} index {@link https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsyscolor}
      * @return {number} 0 if failed
      *
+     * @throws {Error}
      * @example
      * let splitter_colour = utils.GetSysColour(15);
      * @worker
@@ -3072,6 +3147,7 @@ let utils = {
      * @param {number=} [inc_mask=0xffffffff] Mask to include files
      * @return {Array<string>}
      *
+     * @throws {Error}
      * @example
      * let arr = utils.Glob("C:\\*.*");
      * let arr2 = utils.Glob(fb.ProfilePath + 'image*\\album?\\*.jpg');
@@ -3088,6 +3164,7 @@ let utils = {
      * @param {string=} [help_text=''] If not empty, a Help button will show in the dialog. If <b>help_text</b> begins with "http://" or "https://", it will launch a web browser otherwise it will open a popup window containing the text
      * @return {string}
      *
+     * @throws {Error}
      * @example
      * // With "error_on_cancel" not set (or set to false), cancelling the dialog will return "default_val".
      * let username = utils.InputBox(0, "Enter your username", "Spider Monkey Panel", "");
@@ -3166,6 +3243,7 @@ let utils = {
      * GDI and DirectWrite can expose different family names for the same font file.
      * @param {number} [mode=0] 0 - Auto, 1 - GDI fonts, 2 - DirectWrite fonts
      * @return {Array<string>} array of font family names
+     * @throws {Error}
      * @worker
      */
     ListFonts: function (mode) { },
@@ -3211,6 +3289,7 @@ let utils = {
      * @param {string=} [help_text=""] If not empty, a Help button will show in the dialog. If <b>help_text</b> begins with "http://" or "https://", it will launch a web browser otherwise it will open a popup window containing the text
      * @param {number=} [window_id=0] Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window.
      * @return {number} Result of message box. See {@link module:Flags.DialogResult DialogResult}
+     * @throws {Error}
      */
     MessageBox: function (msg, title, buttons, icon, default_button, help_text, window_id) { }, // (string)
 
@@ -3358,6 +3437,7 @@ let utils = {
      * @return {?TextReader} Open streaming reader, or <code>null</code> if the reader could not be created.
      * This includes invalid or unsupported codepages, an empty filename, and ordinary file open failures.
      *
+     * @throws {Error}
      * @example
      * const reader = utils.OpenTextReader('E:\\large-file.txt');
      * if (!reader) {
@@ -3393,6 +3473,7 @@ let utils = {
      * @param {number=} [codepage=65001] See Codepages.js. UTF-16LE/BE use 1200/1201, UTF-32LE/BE use 12000/12001. If codepage is 0, automatic detection is performed.
      * @return {string} Decoded file contents, or an empty string if the file could not be read or decoded.
      *
+     * @throws {Error}
      * @example
      * let text = utils.ReadTextFile("E:\\some text file.txt");
      * @worker
@@ -3453,6 +3534,7 @@ let utils = {
      * @param {string} str
      * @param {boolean} [strip_trailing_periods=false] Set to true if str is a folder name.
      * @return {boolean}
+     * @throws {Error}
      * @worker
      */
     ReplaceIllegalChars(str, strip_trailing_periods) { },
@@ -3481,6 +3563,7 @@ let utils = {
      * @param {string=} [default_val]
      * @return {string}
      *
+     * @throws {Error}
      * @example
      * let username = utils.ReadINI("e:\\my_file.ini", "Last.fm", "username");
      * @worker
@@ -3533,6 +3616,7 @@ let utils = {
      * @returns {RunResult}
      * Result object.<br>
      *
+     * @throws {Error}
      * @example
      * // Open a URL with the default browser.
      * const result = utils.Run("https://www.foobar2000.org");
@@ -3697,6 +3781,7 @@ let utils = {
      * @param {boolean=} [options.scroll=false] If true, will display scrollbars.
      * @param {*=} [options.data=undefined] Read-only data exposed through <code>window.external.dialogArguments</code>. For multiple values, pass an array and call <code>.toArray()</code> inside html. Has type limitations described above.
      *
+     * @throws {Error}
      * @sourceFile ../../component/samples/basic/HtmlDialogWithCheckBox.js
      *
      * @example <caption>Dialog from file</caption>
@@ -3725,6 +3810,7 @@ let utils = {
      * @param {string} path Absolute file path
      * @param {Uint8Array} data Bytes to write
      * @returns {boolean} true on success
+     * @throws {Error}
      * @example
      * const img = gdi.Image(`${fb.ComponentPath}\\samples\\d2d\\images\\Field.jpg`);
      * 
@@ -3774,6 +3860,7 @@ let utils = {
      * @return {?TextWriter} Open streaming writer, or <code>null</code> if the writer could not be created.
      * This includes an empty filename, an invalid codepage, and ordinary file creation/open failures.
      *
+     * @throws {Error}
      * @example
      * const writer = utils.OpenTextWriter('E:\\large-file.txt', false);
      * if (!writer) {
@@ -3808,6 +3895,7 @@ let utils = {
      * @param {number=} [codepage=65001] Output Windows codepage. Codepage 0 is not valid for writing. See Codepages.js.
      * @return {boolean} true on success, false otherwise.
      *
+     * @throws {Error}
      * @example <caption>Default UTF-8 with BOM</caption>
      * utils.WriteTextFile("z:\\1.txt", "test");
      *
@@ -4627,6 +4715,7 @@ let window = {
      * Clears all current panel properties set by {@link window.SetProperty}, {@link window.SetProperties} or {@link window.ImportProperties}
      *
      * @param {boolean=} [reload_panel=false] If true, reloads panel script after clearing
+     * @throws {Error}
      */
     ClearProperties: function (reload_panel) { }, // (void)
 
@@ -4660,6 +4749,7 @@ let window = {
      * @param {string=} [options.version=''] Script version
      * @param {object=} [options.features=undefined] Additional script features
      * @param {boolean=} [options.features.drag_n_drop=false] Indicates if drag_n_drop functionality should be enabled
+     * @throws {Error}
      */
     DefinePanel: function (name, options) { }, // (void)
 
@@ -4674,6 +4764,7 @@ let window = {
      * @param {object=} [options.features=undefined] Additional script features
      * @param {boolean=} [options.features.drag_n_drop=false] Indicates if drag_n_drop functionality should be enabled
      * @param {boolean=} [options.features.grab_focus=true] Indicates if panel should grab mouse focus
+     * @throws {Error}
      */
     DefineScript: function (name, options) { }, // (void)
 
@@ -4717,6 +4808,7 @@ let window = {
      * @param {number=} [font_size_px=12]
      * @param {number=} [font_style=0] See {@link module:Flags.FontStyle FontStyle} flags
      * @return {FbTooltip}
+     * @throws {Error}
      */
     CreateTooltip: function (font_name, font_size_px, font_style) { }, // (FbTooltip) [font_name][, font_size_px][, font_style]
 
@@ -4724,12 +4816,14 @@ let window = {
      * @param {number} type See {@link module:Flags.ColourTypeCUI ColourTypeCUI} enum
      * @param {string=} client_guid Client GUID
      * @return {number} returns black colour if the requested one is not available.
+     * @throws {Error}
      */
     GetColourCUI: function (type, client_guid) { }, // (uint) [, client_guid]
 
     /**
      * @param {number} type See {@link module:Flags.ColourTypeDUI ColourTypeDUI} enum
      * @return {number} returns black colour if the requested one is not available.
+     * @throws {Error}
      */
     GetColourDUI: function (type) { }, // (uint)
 
@@ -4739,6 +4833,7 @@ let window = {
      * @param {number} type See {@link module:Flags.FontTypeCUI FontTypeCUI} enum
      * @param {string=} client_guid Client GUID
      * @return {?GdiFont} returns null if the requested font was not found.
+     * @throws {Error}
      */
     GetFontCUI: function (type, client_guid) { }, // (GdiFont) [, client_guid]
 
@@ -4746,6 +4841,7 @@ let window = {
      * @param {number} type See {@link module:Flags.FontTypeDUI FontTypeDUI} enum
      * @return {?GdiFont} returns null if the requested font was not found.
      *
+     * @throws {Error}
      * @example
      * // To avoid errors when trying to use the font or access its properties, you
      * // should use code something like this...
@@ -4777,6 +4873,7 @@ let window = {
      * @param {string} name
      * @param {*=} default_val
      * @return {*}
+     * @throws {Error}
      */
     GetProperty: function (name, default_val) { }, // (VARIANT) [, default_val]
 
@@ -4786,6 +4883,7 @@ let window = {
      * @param {string} fileName
      * @param {boolean=} [reload_panel=false] If true, reloads panel script
      * @return {boolean} If false, then an error occurred during import. Also, if an error occurs during import, the panel does not reload.
+     * @throws {Error}
      */
     ImportProperties: function (fileName, reload_panel) { },
 
@@ -4812,6 +4910,7 @@ let window = {
     /**
      * Reloads panel.
      * @param {boolean=} [clear_properties=false] If true, all panel properties will be cleared before reload
+     * @throws {Error}
      */
     Reload: function (clear_properties) { }, // (void)
 
@@ -4821,6 +4920,7 @@ let window = {
      * thus reducing the amount of {@link module:Callbacks.on_paint on_paint} calls.
      *
      * @param {boolean=} [force=false] If true, will repaint immediately, otherwise a repaint task will be *scheduled*.
+     * @throws {Error}
      */
     Repaint: function (force) { }, // (void) [force]
 
@@ -4836,6 +4936,7 @@ let window = {
      * @param {number} w
      * @param {number} h
      * @param {boolean=} [force=false] If true, will repaint immediately, otherwise a repaint task will be *scheduled*.
+     * @throws {Error}
      */
     RepaintRect: function (x, y, w, h, force) { }, // (void) [force]
 
@@ -4854,6 +4955,7 @@ let window = {
      * @param {number} delay
      *
      * @return {number}
+     * @throws {Error}
      */
     SetInterval: function (func, delay) { }, // (uint)
 
@@ -4864,6 +4966,7 @@ let window = {
      * @param {Map} values Map of values to set
      * @param {reload_panel=} [reload_panel=false] If true, reloads panel script after setting
      * 
+     * @throws {Error}
      * @example
      * const values = new Map([["First value", 1], ["Second value", 2], ["Third value", 3]]);
      * window.SetProperties(values);
@@ -4880,6 +4983,7 @@ let window = {
      *
      * @param {string} name
      * @param {*=} val
+     * @throws {Error}
      */
     SetProperty: function (name, val) { }, // (void)
 
@@ -4889,6 +4993,7 @@ let window = {
      * @param {boolean=} [enabled=true] If true filter is enabled. Suppresses player shortcuts depending on the following two parameters
      * @param {boolean=} [type_only=true] If true suppresses only shortcuts that identified as user input (keyboard_shortcut_manager::is_typing_message from SDK used). If false ALL shortcuts are disabled for panel
      * @param {boolean=} [suppress_children=false] If true suppresses also shortcuts for all JSplitter's children. Takes into account the parameter type_only only for DUI. For CUI alwas disables ALL shortcuts
+     * @throws {Error}
      */
     SetShortcutFilter: function (enabled, type_only, suppress_children) { }, // (uint)
 
@@ -4899,6 +5004,7 @@ let window = {
      * @param {number} delay
      *
      * @return {number}
+     * @throws {Error}
      */
     SetTimeout: function (func, delay) { }, // (uint)
 
@@ -4937,6 +5043,7 @@ let window = {
      * Get an object for accessing the panel by the caption text. The first panel that matches the argument in text will be returned. The panel text is specified in the caption. By default, it has the value of the panel plugin name, but it can be changed either directly in the window title (Show coords -> Click in caption text) or in the Columns UI placer (Use custom title) or in 'Panel list' (right click on JSplitter window)
      * @param {string} caption
      * @return {PanelObject}
+     * @throws {Error}
      */
     GetPanel: function (caption) { }, // (PanelObject)
 
@@ -4950,6 +5057,7 @@ let window = {
      * Get an object for accessing the panel by index. the order depends on the position in the window stack: the bottommost window will have index 0.
      * @param {number} index
      * @return {PanelObject}
+     * @throws {Error}
      */
     GetPanelByIndex: function (index) { }, // (PanelObject)
 
@@ -4991,6 +5099,7 @@ let window = {
      * Creates a group of radio buttons. Takes an array of buttons as an argument. 
      * Each button must have at least two states, otherwise the function will fail.
      * @param {Array<ButtonObject>} buttons
+     * @throws {Error}
      * @example
      * var a = window.CreateButton(0 , 0, [path, hpath], null);
      * var b = window.CreateButton(30 ,0 , [path, hpath], null);
