@@ -5,7 +5,7 @@ include('docs/Helpers.js');
 // A small persistent playback-history panel.
 // The database is stored in the foobar2000 profile folder and survives restarts.
 // It demonstrates schema creation, parameters, a reusable prepared statement,
-// aggregate queries and explicit cleanup.
+// aggregate queries, SQLite exception handling and explicit cleanup.
 
 const DB_PATH = fb.ProfilePath + 'jsplitter-playback-history.db';
 const RECENT_LIMIT = 12;
@@ -13,7 +13,6 @@ const TOP_ARTISTS_LIMIT = 5;
 const HISTORY_LIMIT = 1000;
 const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
 
-const sqliteAvailable = typeof utils.OpenDatabase === 'function';
 
 const fontTitle = gdi.Font('Segoe UI', 16, 1);
 const fontText = gdi.Font('Segoe UI', 12, 0);
@@ -23,69 +22,92 @@ const tfArtist = fb.TitleFormat('$if2(%album artist%,$if2(%artist%,Unknown artis
 const tfTitle = fb.TitleFormat('$if2(%title%,Unknown title)');
 const tfAlbum = fb.TitleFormat('[%album%]');
 
-const db = sqliteAvailable ? utils.OpenDatabase(DB_PATH) : null;
+let db = utils.OpenDatabase(DB_PATH);
 let insertHistory = null;
 let recent = [];
 let topArtists = [];
+let databaseError = '';
 
 if (db) {
-    db.Exec(`
-        CREATE TABLE IF NOT EXISTS playback_history (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            played_at INTEGER NOT NULL,
-            artist TEXT NOT NULL,
-            title TEXT NOT NULL,
-            album TEXT NOT NULL,
-            path TEXT NOT NULL
-        );
-        CREATE INDEX IF NOT EXISTS playback_history_played_at
-            ON playback_history(played_at DESC);
-    `);
+    try {
+        db.Exec(`
+            CREATE TABLE IF NOT EXISTS playback_history (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                played_at INTEGER NOT NULL,
+                artist TEXT NOT NULL,
+                title TEXT NOT NULL,
+                album TEXT NOT NULL,
+                path TEXT NOT NULL
+            );
+            CREATE INDEX IF NOT EXISTS playback_history_played_at
+                ON playback_history(played_at DESC);
+        `);
 
-    insertHistory = db.Prepare(`
-        INSERT INTO playback_history(played_at, artist, title, album, path)
-        VALUES (?, ?, ?, ?, ?)
-    `);
+        insertHistory = db.Prepare(`
+            INSERT INTO playback_history(played_at, artist, title, album, path)
+            VALUES (?, ?, ?, ?, ?)
+        `);
 
-    refreshView();
+        refreshView();
+    } catch (e) {
+        reportDatabaseError(e);
+
+        if (insertHistory) {
+            insertHistory.Close();
+            insertHistory = null;
+        }
+
+        db.Close();
+        db = null;
+    }
+}
+
+function reportDatabaseError(error) {
+    databaseError = error && error.message ? error.message : String(error);
+    console.log(`SQLite Playback History: ${databaseError}`);
+    window.Repaint();
 }
 
 function addPlayback(metadb) {
     if (!db || !insertHistory || !metadb) return;
 
-    insertHistory.Run([
-        Date.now(),
-        tfArtist.EvalWithMetadb(metadb),
-        tfTitle.EvalWithMetadb(metadb),
-        tfAlbum.EvalWithMetadb(metadb),
-        metadb.Path
-    ]);
+    try {
+        insertHistory.Run([
+            Date.now(),
+            tfArtist.EvalWithMetadb(metadb),
+            tfTitle.EvalWithMetadb(metadb),
+            tfAlbum.EvalWithMetadb(metadb),
+            metadb.Path
+        ]);
 
-    // Keep the demo database bounded without rebuilding the table.
-    db.Exec(`
-        DELETE FROM playback_history
-        WHERE id <= (
-            SELECT id
-            FROM playback_history
-            ORDER BY id DESC
-            LIMIT 1 OFFSET ?
-        )
-    `, [HISTORY_LIMIT - 1]);
+        // Keep the demo database bounded without rebuilding the table.
+        db.Exec(`
+            DELETE FROM playback_history
+            WHERE id <= (
+                SELECT id
+                FROM playback_history
+                ORDER BY id DESC
+                LIMIT 1 OFFSET ?
+            )
+        `, [HISTORY_LIMIT - 1]);
 
-    refreshView();
+        refreshView();
+    } catch (e) {
+        reportDatabaseError(e);
+    }
 }
 
 function refreshView() {
     if (!db) return;
 
-    recent = db.Query(`
+    const newRecent = db.Query(`
         SELECT played_at, artist, title, album
         FROM playback_history
         ORDER BY id DESC
         LIMIT ?
     `, [RECENT_LIMIT]);
 
-    topArtists = db.Query(`
+    const newTopArtists = db.Query(`
         SELECT artist, COUNT(*) AS plays
         FROM playback_history
         WHERE played_at >= ?
@@ -94,6 +116,9 @@ function refreshView() {
         LIMIT ?
     `, [Date.now() - THIRTY_DAYS_MS, TOP_ARTISTS_LIMIT]);
 
+    recent = newRecent;
+    topArtists = newTopArtists;
+    databaseError = '';
     window.Repaint();
 }
 
@@ -125,6 +150,7 @@ function on_paint(gr) {
     const text = RGB(230, 230, 230);
     const muted = RGB(155, 155, 155);
     const accent = RGB(110, 190, 255);
+    const error = RGB(255, 130, 130);
 
     gr.FillSolidRect(0, 0, width, height, RGB(28, 30, 34));
 
@@ -133,11 +159,16 @@ function on_paint(gr) {
     y += 32;
 
     if (!db) {
-        const message = sqliteAvailable
-            ? 'Unable to open the playback history database.'
-            : 'SQLite API is not available in this foobar2000 version.';
-        drawLine(gr, message, margin, y, width - margin * 2, 22, fontText, muted);
+        const message = databaseError
+            ? `SQLite error: ${databaseError}`
+            : 'Unable to open the playback history database.';
+        drawLine(gr, message, margin, y, width - margin * 2, 22, fontText, error);
         return;
+    }
+
+    if (databaseError) {
+        drawLine(gr, `SQLite error: ${databaseError}`, margin, y, width - margin * 2, 22, fontSmall, error);
+        y += 24;
     }
 
     drawLine(gr, 'Top artists — last 30 days', margin, y, width - margin * 2, 20, fontSmall, muted);
@@ -176,8 +207,12 @@ function on_mouse_rbtn_up(x, y) {
     menu.AppendMenuItem(MF_STRING, 1, 'Clear history');
 
     if (menu.TrackPopupMenu(x, y) === 1) {
-        db.Exec('DELETE FROM playback_history');
-        refreshView();
+        try {
+            db.Exec('DELETE FROM playback_history');
+            refreshView();
+        } catch (e) {
+            reportDatabaseError(e);
+        }
     }
 }
 

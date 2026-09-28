@@ -572,11 +572,11 @@
  *         // Runs in a separate Worker realm/thread.
  *         return arg1 + arg2;
  *     },
- *     20,
- *     22
+ *     10,
+ *     12
  * );
  *
- * console.log(result); // 42
+ * console.log(result); // 22
  * ```
  *
  * The callback is recreated from its JavaScript source in the Worker realm. Although the call syntax looks like an ordinary local callback, it therefore does <b>not</b> capture lexical variables from the panel. This is incorrect:
@@ -729,10 +729,10 @@ function Worker(source, name) {
      *     async (a, b) => {
      *         return a + b;
      *     },
-     *     20,
-     *     22
+     *     10,
+     *     12
      * );
-     * console.log(result); // 42
+     * console.log(result); // 22
      *
      * @sourceFile ../../component/samples/basic/Streaming Text IO.js
      */

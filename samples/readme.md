@@ -30,6 +30,7 @@ Simply copy the text from a sample .js file into a panel's configuration dialog.
          Some very simple samples that are referred to from the API documentation.  
          `BroadcastChannel.js` is a two-panel interactive example: load the same script in two or more JSplitter panels and click a panel to broadcast a structured message to the others. The sample also points out that BroadcastChannel clones messages and has no ownership-transfer list.  
          `Focus Track Waveform.js` demonstrates progressive `GetWaveformAsync()` output and cancellation of an obsolete native decode.  
+         `Audio Stream Selector.js` follows the focused item, displays every audio stream and its `FbFileInfo` data, and switches streams by clicking a card.  
          `Streaming Text IO.js` combines `Worker.RunAsync()` with `OpenTextReader()` / `OpenTextWriter()`: a one-shot Worker creates, reads and filters a text file incrementally so synchronous file I/O does not block the panel UI.  
          `SQLite Playback History.js` stores playback history in a persistent SQLite database, reuses a prepared INSERT statement, runs parameterized aggregate queries and renders recent plays plus 30-day artist statistics.  
 - "complete":  

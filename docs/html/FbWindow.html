@@ -236,17 +236,22 @@
         
         
         <div class="description"><p>Controls the main foobar2000 application window.</p>
-<p><b>Global state:</b> every JSplitter panel accesses the same native foobar2000 window through <a href="fb.html#Window">fb.Window</a></code>. Window geometry <a href="FbWindow.html#X">X</a>, <a href="FbWindow.html#Y">Y</a>, <a href="FbWindow.html#Width">Width</a>, <a href="FbWindow.html#Height">Height</a>, the numeric <a href="FbWindow.html#MinWidth">MinWidth</a>, <a href="FbWindow.html#MinHeight">MinHeight</a>, <a href="FbWindow.html#MaxWidth">MaxWidth</a>, <a href="FbWindow.html#MaxHeight">MaxHeight</a>, and the numeric pseudo-caption rectangle defined by <a href="FbWindow.html#SetPseudoCaption">SetPseudoCaption</a> are global host state. These numeric values are not automatically restored when a panel reloads or unloads. The pseudo-caption active state itself is tracked per panel, like <a href="FbWindow.html#MinSize">MinSize</a> and <a href="FbWindow.html#MaxSize">MaxSize</a>: unloading or reloading a panel removes its request, while the last rectangle coordinates remain stored globally.</p>
-<p>Window modes such as <a href="FbWindow.html#FrameStyle">FrameStyle</a>, <a href="FbWindow.html#Fullscreen">Fullscreen</a>, <a href="FbWindow.html#MainMenuHidden">MainMenuHidden</a>, <a href="FbWindow.html#StatusBarHidden">StatusBarHidden</a>, <a href="FbWindow.html#MinSize">MinSize</a>, <a href="FbWindow.html#MaxSize">MaxSize</a>, and pseudo-caption activation are tracked per panel. The most recent explicit assignment made by any live panel becomes the effective global value. When that panel reloads or unloads, its request is removed and the previous request from another live panel, if any, becomes effective again. If no panel has a request, <a href="FbWindow.html#FrameStyle">FrameStyle</a> defaults to <a href="module-Flags.html#FrameStyle">FrameStyle.Default</a> and the boolean modes default to <b>false</b>.</p>
+<p><b>Global state:</b> every JSplitter panel accesses the same native foobar2000 window through <a href="fb.html#Window">fb.Window</a></code>. Window geometry <a href="FbWindow.html#X">X</a>, <a href="FbWindow.html#Y">Y</a>, <a href="FbWindow.html#Width">Width</a>, <a href="FbWindow.html#Height">Height</a>, the numeric <a href="FbWindow.html#MinWidth">MinWidth</a>, <a href="FbWindow.html#MinHeight">MinHeight</a>, <a href="FbWindow.html#MaxWidth">MaxWidth</a>, <a href="FbWindow.html#MaxHeight">MaxHeight</a>, and the numeric pseudo-caption rectangle defined by <a href="FbWindow.html#SetPseudoCaption">SetPseudoCaption</a> are global host state. These numeric values are not automatically restored when a panel reloads or unloads.</p>
+<p>Window UI settings such as <a href="FbWindow.html#FrameStyle">FrameStyle</a>, <a href="FbWindow.html#Fullscreen">Fullscreen</a>, <a href="FbWindow.html#MainMenuHidden">MainMenuHidden</a>, <a href="FbWindow.html#StatusBarHidden">StatusBarHidden</a>, <a href="FbWindow.html#MinSize">MinSize</a>, <a href="FbWindow.html#MaxSize">MaxSize</a>, and pseudo-caption activation are tracked per panel. The most recent explicit assignment made by any live panel becomes the effective global value. When that panel reloads or unloads, its request is removed and the previous request from another live panel, if any, becomes effective again.</p>
+<p>If no panel has a request, <a href="FbWindow.html#FrameStyle">FrameStyle</a> defaults to <a href="module-Flags.html#FrameStyle">FrameStyle.Default</a>, and the boolean settings default to <b>false</b>.</p>
 <p>So getters return the effective global value, not the last value assigned by the current panel.</p>
 <p>If both minimum and maximum limits are enabled for the same axis, keep the nonzero minimum less than or equal to the nonzero maximum. Contradictory limits are not a supported configuration.</p>
-<div class="doc-note warning"> 
+<div class="doc-note warning">
 <b>WARNING!</b><br>
-Using the most methods described here (beyond simply changing the window's position and size) is incompatible with plugins that provide similar functionality, e.g. <a href="https://github.com/The-Wizardium/UI-Wizard" target="_blank" rel="noreferrer">foo_ui_wizard</a>, <a href="https://github.com/ttsping/foo_openhacks" target="_blank" rel="noreferrer">foo_openhacks</a> or <a href="https://foobar2000.club/forum/viewtopic.php?t=1911" target="_blank" rel="noreferrer">foo_ui_hacks</a>.
-Therefore, if you intend to make active use of these methods, it is strongly recommended to uninstall the specified components.
+Most methods described here, except for basic window positioning and resizing, are incompatible with plugins that provide similar functionality, such as
+<a href="https://github.com/The-Wizardium/UI-Wizard" target="_blank" rel="noreferrer">foo_ui_wizard</a>,
+<a href="https://github.com/ttsping/foo_openhacks" target="_blank" rel="noreferrer">foo_openhacks</a>, or
+<a href="https://foobar2000.club/forum/viewtopic.php?t=1911" target="_blank" rel="noreferrer">foo_ui_hacks</a>.
+
+If you intend to use these methods, uninstall such components first. Running them together may cause conflicting behavior and is not a supported configuration.
 </div>
 <div class="doc-note warning"> 
-<b>Legacy geometry API:</b> <a href="window.html#FoobarWindowX">window.FoobarWindowX</a>, <a href="window.html#FoobarWindowY">window.FoobarWindowY</a>, <a href="window.html#FoobarWindowWidth">window.FoobarWindowWidth</a>, <a href="window.html#FoobarWindowHeight">window.FoobarWindowHeight</a> and <a href="window.html#MoveFoobarWindow">window.MoveFoobarWindow</a> are deprecated compatibility APIs and will be removed in a future release. New code should use <a href="fb.html#Window">fb.Window</a> geometry properties and <a href="FbWindow.html#Move">Move()</a> instead.
+<b>Legacy geometry API:</b> <a href="window.html#FoobarWindowX">window.FoobarWindowX</a>, <a href="window.html#FoobarWindowY">window.FoobarWindowY</a>, <a href="window.html#FoobarWindowWidth">window.FoobarWindowWidth</a>, <a href="window.html#FoobarWindowHeight">window.FoobarWindowHeight</a> and <a href="window.html#MoveFoobarWindow">window.MoveFoobarWindow</a> are deprecated compatibility APIs and will be removed in a future release. New code should use <a href="fb.html#Window">fb.Window</a> geometry properties and <a href="FbWindow.html#Move">Move</a> instead.
 </div></div>
         
         
@@ -270,7 +275,7 @@ fb.Window.FrameStyle = FrameStyle.NoBorder;
 
 <span class="tok-comment">// Panel B, executed later:</span>
 fb.Window.FrameStyle = FrameStyle.Default;
-<span class="tok-comment">// FrameStyle.Default is now effective globally. If Panel B reloads or unloads,</span>
+<span class="tok-comment">// FrameStyle.Default is now effective globally. If Panel B unloads or reloads without this line (e.g. commented),</span>
 <span class="tok-comment">// Panel A&#39;s still-live FrameStyle.NoBorder request becomes effective again.</span></code></pre>
         </section>
         
@@ -282,7 +287,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#FrameStyle">FrameStyle</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:276</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:288</div>
         </header>
         <pre class="signature"><code>FrameStyle: <a class="type-link" href="module-Flags.html#FrameStyle">FrameStyle</a> = FrameStyle.Default</code></pre>
         
@@ -313,7 +318,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#Fullscreen">Fullscreen</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:292</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:304</div>
         </header>
         <pre class="signature"><code>Fullscreen: boolean = false</code></pre>
         
@@ -336,7 +341,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#Height">Height</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:269</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:281</div>
         </header>
         <pre class="signature"><code>Height: number = 0</code></pre>
         
@@ -357,7 +362,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#MainMenuHidden">MainMenuHidden</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:304</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:316</div>
         </header>
         <pre class="signature"><code>MainMenuHidden: boolean = false</code></pre>
         
@@ -382,7 +387,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#MaxHeight">MaxHeight</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:366</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:378</div>
         </header>
         <pre class="signature"><code>MaxHeight: number = 0</code></pre>
         
@@ -403,7 +408,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#MaxSize">MaxSize</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:349</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:361</div>
         </header>
         <pre class="signature"><code>MaxSize: boolean = false</code></pre>
         
@@ -424,7 +429,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#MaxWidth">MaxWidth</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:358</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:370</div>
         </header>
         <pre class="signature"><code>MaxWidth: number = 0</code></pre>
         
@@ -445,7 +450,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#MinHeight">MinHeight</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:341</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:353</div>
         </header>
         <pre class="signature"><code>MinHeight: number = 0</code></pre>
         
@@ -466,7 +471,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#MinSize">MinSize</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:324</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:336</div>
         </header>
         <pre class="signature"><code>MinSize: boolean = false</code></pre>
         
@@ -487,7 +492,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#MinWidth">MinWidth</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:333</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:345</div>
         </header>
         <pre class="signature"><code>MinWidth: number = 0</code></pre>
         
@@ -508,7 +513,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#StatusBarHidden">StatusBarHidden</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:314</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:326</div>
         </header>
         <pre class="signature"><code>StatusBarHidden: boolean = false</code></pre>
         
@@ -533,7 +538,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#Width">Width</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:262</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:274</div>
         </header>
         <pre class="signature"><code>Width: number = 0</code></pre>
         
@@ -554,7 +559,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#X">X</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:248</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:260</div>
         </header>
         <pre class="signature"><code>X: number = 0</code></pre>
         
@@ -575,7 +580,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#Y">Y</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:255</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:267</div>
         </header>
         <pre class="signature"><code>Y: number = 0</code></pre>
         
@@ -596,11 +601,11 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#ClearPseudoCaption">ClearPseudoCaption</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:420</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:433</div>
         </header>
         <pre class="signature"><code>ClearPseudoCaption()</code></pre>
         
-        <div class="description"><p>Removes the current panel's pseudo-caption request previously enabled by <a href="FbWindow.html#SetPseudoCaption">SetPseudoCaption</a>. The stored rectangle coordinates are not cleared. The request is also removed automatically when the panel reloads or unloads; if another live panel has an active request, pseudo-caption remains enabled for that panel.</p></div>
+        <div class="description"><p>Removes the current panel's pseudo-caption request previously enabled by <a href="FbWindow.html#SetPseudoCaption">SetPseudoCaption</a>. The stored rectangle coordinates are not cleared. The request is also removed automatically when the panel reloads or unloads; if another live panel has an active request, pseudo-caption remains enabled.</p></div>
         
         
         
@@ -617,11 +622,11 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#Move">Move</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:374</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:386</div>
         </header>
         <pre class="signature"><code>Move(x, y, width, height)</code></pre>
         
-        <div class="description"><p>Moves and resizes the main foobar2000 window in one operation. The arguments describe the outer window rectangle in screen coordinates. If called during early startup, the requested geometry is retained and applied when the main window becomes available.</p></div>
+        <div class="description"><p>Moves and resizes the main foobar2000 window in one operation. The arguments describe the outer window rectangle in screen coordinates.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -645,7 +650,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#MoveStart">MoveStart</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:386</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:397</div>
         </header>
         <pre class="signature"><code>MoveStart()</code></pre>
         
@@ -674,13 +679,14 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#SetPseudoCaption">SetPseudoCaption</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:400</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:411</div>
         </header>
         <pre class="signature"><code>SetPseudoCaption(x, y, width, height)</code></pre>
         
         <div class="description"><p>Defines a rectangular pseudo-caption area for the main foobar2000 window. Pressing the left mouse button anywhere inside this area starts the native Windows move operation, including when the pointer is over a child window such as a JSplitter panel. This provides a persistent alternative to calling <a href="FbWindow.html#MoveStart">MoveStart</a> from a mouse callback and is especially useful with <a href="FbWindow.html#FrameStyle">FrameStyle</a> set to <a href="module-Flags.html#FrameStyle">FrameStyle.NoCaption</a> or <a href="module-Flags.html#FrameStyle">FrameStyle.NoBorder</a>.</p>
 <p>The coordinates are pixel offsets from the top-left corner of the outer main-window rectangle. Calling this method again replaces the stored global rectangle and enables pseudo-caption for the current panel. The rectangle values remain stored globally, but the active request belongs to the panel and is automatically removed when that panel reloads or unloads. If another live panel has an active pseudo-caption request, it becomes effective again using the current stored rectangle.</p>
-<p>With <a href="module-Flags.html#FrameStyle">FrameStyle.NoBorder</a>, resize edges take precedence over the pseudo-caption area. The pseudo-caption does not start a move operation while the main window is fullscreen or maximized. A left click inside the rectangle is consumed for window dragging, so interactive controls should not be placed inside it.</p></div>
+<p>With <a href="module-Flags.html#FrameStyle">FrameStyle.NoBorder</a>, resize edges take precedence over the pseudo-caption area. The pseudo-caption does not start a move operation while the main window is fullscreen or maximized. A left click inside the rectangle is consumed for window dragging, so interactive controls should not be placed inside it.</p>
+<p>To unset pseudo-caption use <a href="FbWindow.html#ClearPseudoCaption">ClearPseudoCaption</a></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>

@@ -231,11 +231,11 @@
                 <div class="eyebrow"><span class="kind kind-class">class</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#SQLiteDatabase">SQLiteDatabase</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3877</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3953</div>
         </header>
         
         
-        <div class="description"><p>SQLite database returned by <a href="utils.html#OpenDatabase">utils.OpenDatabase</a>.<br> All operations are synchronous. Use a <a href="Worker.html#Worker">Worker</a> for large imports, maintenance, or expensive queries when blocking the panel UI would be undesirable.<br> Parameter arrays are positional and must contain exactly as many values as the SQL statement requires. Booleans are stored as SQLite integers 0/1. Query results map SQLite NULL to <code>null</code>, INTEGER/REAL to number, TEXT to string, and BLOB to <code>Uint8Array</code>.</p></div>
+        <div class="description"><p>SQLite database returned by <a href="utils.html#OpenDatabase">utils.OpenDatabase</a>.<br> All operations are synchronous. Use a <a href="Worker.html#Worker">Worker</a> for large imports, maintenance, or expensive queries when blocking the panel UI would be undesirable.<br> Parameter arrays are positional and must contain exactly as many values as the SQL statement requires. Booleans are stored as SQLite integers 0/1. Query results map SQLite NULL to <code>null</code>, INTEGER/REAL to number, TEXT to string, and BLOB to <code>Uint8Array</code>.<br> Database operations report SQL, binding, transaction-state, and closed-handle errors as JavaScript exceptions. <a href="SQLiteDatabase.html#Close">Close()</a> is idempotent and does not throw.</p></div>
         
         
         
@@ -252,7 +252,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#IsOpen">IsOpen</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3986</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4069</div>
         </header>
         <pre class="signature"><code>IsOpen: boolean = false</code></pre>
         
@@ -273,16 +273,20 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Begin">Begin</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3896</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3974</div>
         </header>
         <pre class="signature"><code>Begin()</code></pre>
         
-        <div class="description"><p>Starts a deferred transaction.</p></div>
+        <div class="description"><p>Starts a deferred transaction by executing <code>BEGIN TRANSACTION</code>.</p></div>
         
         
         
         
         
+        <section class="member-section compact-section">
+            <h3>Throws</h3>
+            <div><code></code> — <p>Throws on SQLite/database errors, including when the database is closed or the transaction cannot be started.</p></div>
+        </section>
         
         
         <section class="member-section">
@@ -294,7 +298,11 @@ db.Begin();
     db.Exec(<span class="tok-string">&#39;INSERT INTO items(name) VALUES (?)&#39;</span>, [<span class="tok-string">&#39;Beta&#39;</span>]);
     db.Commit();
 } <span class="tok-keyword">catch</span> (e) {
-    db.Rollback();
+    <span class="tok-keyword">try</span> {
+        db.Rollback();
+    } <span class="tok-keyword">catch</span> (rollbackError) {
+        console.log(<span class="tok-string">`Rollback failed: ${rollbackError.message}`</span>);
+    }
     <span class="tok-keyword">throw</span> e;
 }</code></pre>
         </section>
@@ -307,11 +315,11 @@ db.Begin();
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Close">Close</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3888</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3965</div>
         </header>
         <pre class="signature"><code>Close()</code></pre>
         
-        <div class="description"><p>Closes the database. Calling <code>Close()</code> more than once is allowed.</p></div>
+        <div class="description"><p>Closes the database. Calling <code>Close()</code> more than once is allowed.<br> This method does not throw; any SQLite close status is not exposed to script code.</p></div>
         
         
         
@@ -332,16 +340,20 @@ db.Begin();
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Commit">Commit</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3914</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3998</div>
         </header>
         <pre class="signature"><code>Commit()</code></pre>
         
-        <div class="description"><p>Commits the current transaction.</p></div>
+        <div class="description"><p>Commits the current transaction by executing <code>COMMIT</code>.</p></div>
         
         
         
         
         
+        <section class="member-section compact-section">
+            <h3>Throws</h3>
+            <div><code></code> — <p>Throws on SQLite/database errors, including when the database is closed or no transaction can be committed.</p></div>
+        </section>
         
         
         
@@ -353,7 +365,7 @@ db.Begin();
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Exec">Exec</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3928</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4014</div>
         </header>
         <pre class="signature"><code>Exec(sql, parameters)</code></pre>
         
@@ -372,7 +384,7 @@ db.Begin();
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws on SQL, binding, or database errors, or when the database is closed.</p></div>
+            <div><code></code> — <p>Throws on SQL, parameter, binding, or database errors, including an invalid parameter array/count or when the database is closed.</p></div>
         </section>
         
         
@@ -393,11 +405,11 @@ db.Begin();
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Prepare">Prepare</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3967</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4053</div>
         </header>
         <pre class="signature"><code>Prepare(sql)</code></pre>
         
-        <div class="description"><p>Prepares exactly one SQL statement for repeated execution.</p></div>
+        <div class="description"><p>Prepares exactly one SQL statement for repeated execution. The returned statement owns its native SQLite handle. It is finalized automatically when the JavaScript object is destroyed, so calling <a href="SQLiteStatement.html#Close">Close()</a> is not required for normal use. Call <code>Close()</code> only when the native statement should be released immediately.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -416,19 +428,15 @@ db.Begin();
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws if the SQL cannot be prepared, if more than one statement is supplied, or when the database is closed.</p></div>
+            <div><code></code> — <p>Throws if the SQL cannot be prepared, if the input does not contain exactly one SQL statement, or when the database is closed.</p></div>
         </section>
         
         
         <section class="member-section">
             <h3>Example</h3>
             <pre class="example"><code><span class="tok-keyword">const</span> insert = db.Prepare(<span class="tok-string">&#39;INSERT INTO items(name, score) VALUES (?, ?)&#39;</span>);
-<span class="tok-keyword">try</span> {
-    insert.Run([<span class="tok-string">&#39;Alpha&#39;</span>, <span class="tok-number">10</span>]);
-    insert.Run([<span class="tok-string">&#39;Beta&#39;</span>, <span class="tok-number">20</span>]);
-} <span class="tok-keyword">finally</span> {
-    insert.Close();
-}</code></pre>
+insert.Run([<span class="tok-string">&#39;Alpha&#39;</span>, <span class="tok-number">10</span>]);
+insert.Run([<span class="tok-string">&#39;Beta&#39;</span>, <span class="tok-number">20</span>]);</code></pre>
         </section>
         
     </article>
@@ -439,7 +447,7 @@ db.Begin();
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Query">Query</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3946</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4032</div>
         </header>
         <pre class="signature"><code>Query(sql, parameters)</code></pre>
         
@@ -462,7 +470,7 @@ db.Begin();
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws on SQL, binding, or database errors, when multiple SQL statements are supplied, or when the database is closed.</p></div>
+            <div><code></code> — <p>Throws on SQL, parameter, binding, result-conversion, or database errors; when multiple SQL statements are supplied; when result column names are duplicated; or when the database is closed.</p></div>
         </section>
         
         
@@ -485,16 +493,20 @@ db.Begin();
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Rollback">Rollback</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3921</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4006</div>
         </header>
         <pre class="signature"><code>Rollback()</code></pre>
         
-        <div class="description"><p>Rolls back the current transaction.</p></div>
+        <div class="description"><p>Rolls back the current transaction by executing <code>ROLLBACK</code>.</p></div>
         
         
         
         
         
+        <section class="member-section compact-section">
+            <h3>Throws</h3>
+            <div><code></code> — <p>Throws on SQLite/database errors, including when the database is closed or no transaction can be rolled back.</p></div>
+        </section>
         
         
         
