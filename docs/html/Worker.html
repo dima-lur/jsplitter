@@ -681,11 +681,11 @@ If most of a Worker consists of frequent synchronous host calls, moving that cod
         <span class="tok-comment">// Runs in a separate Worker realm/thread.</span>
         <span class="tok-keyword">return</span> arg1 + arg2;
     },
-    <span class="tok-number">20</span>,
-    <span class="tok-number">22</span>
+    <span class="tok-number">10</span>,
+    <span class="tok-number">12</span>
 );
 
-console.log(result); <span class="tok-comment">// 42</span></code></pre>
+console.log(result); <span class="tok-comment">// 22</span></code></pre>
 <p>The callback is recreated from its JavaScript source in the Worker realm. Although the call syntax looks like an ordinary local callback, it therefore does <b>not</b> capture lexical variables from the panel. This is incorrect:</p>
 <pre class="description-code language-js"><code><span class="tok-keyword">const</span> factor = <span class="tok-number">10</span>;
 
@@ -935,10 +935,10 @@ worker.onmessage = <span class="tok-keyword">function</span> (event) {
     <span class="tok-keyword">async</span> (a, b) =&gt; {
         <span class="tok-keyword">return</span> a + b;
     },
-    <span class="tok-number">20</span>,
-    <span class="tok-number">22</span>
+    <span class="tok-number">10</span>,
+    <span class="tok-number">12</span>
 );
-console.log(result); <span class="tok-comment">// 42</span></code></pre>
+console.log(result); <span class="tok-comment">// 22</span></code></pre>
         </section>
         
         <section class="member-section">

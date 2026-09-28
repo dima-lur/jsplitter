@@ -231,11 +231,11 @@
                 <div class="eyebrow"><span class="kind kind-class">class</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#SQLiteStatement">SQLiteStatement</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3996</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4079</div>
         </header>
         
         
-        <div class="description"><p>Prepared SQLite statement returned by <a href="SQLiteDatabase.html#Prepare">SQLiteDatabase#Prepare</a>.<br> <code>Run()</code> and <code>Query()</code> automatically reset the statement and clear all parameter bindings before returning, so the same statement can be reused immediately with a new parameter array.</p></div>
+        <div class="description"><p>Prepared SQLite statement returned by <a href="SQLiteDatabase.html#Prepare">Prepare</a>.<br> A prepared statement is usable immediately after <a href="SQLiteDatabase.html#Prepare">Prepare</a> succeeds. Its native SQLite handle is finalized automatically when the JavaScript object is destroyed, so explicit cleanup is not required for normal use. <a href="SQLiteStatement.html#Close">Close</a> is provided only for releasing the native statement immediately when it is no longer needed.<br> <a href="SQLiteStatement.html#Run">Run</a> and <a href="SQLiteStatement.html#Query">Query</a> automatically reset the statement and clear all parameter bindings before returning, including when execution throws, so the same active statement can be reused immediately with a new parameter array.<br> Statement operations report parameter, binding, execution, result-conversion, and closed-handle errors as JavaScript exceptions. <a href="SQLiteStatement.html#Close">Close</a> is idempotent and does not throw.</p></div>
         
         
         
@@ -252,11 +252,11 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#IsOpen">IsOpen</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4042</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4129</div>
         </header>
         <pre class="signature"><code>IsOpen: boolean = false</code></pre>
         
-        <div class="description"><p>Indicates whether the prepared statement is open.</p></div>
+        <div class="description"><p>Indicates whether the prepared statement still owns an active native SQLite handle.<br> This is <b>true</b> immediately after <a href="SQLiteDatabase.html#Prepare">Prepare</a> succeeds and becomes <b>false</b> after <a href="SQLiteStatement.html#Close">Close</a> is called. Normally there is no need to check this property unless the statement is being closed explicitly.</p></div>
         
         
         
@@ -273,11 +273,11 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Close">Close</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4006</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4091</div>
         </header>
         <pre class="signature"><code>Close()</code></pre>
         
-        <div class="description"><p>Closes the prepared statement. Calling <code>Close()</code> more than once is allowed.</p></div>
+        <div class="description"><p>Finalizes the prepared statement immediately and releases its native SQLite handle. Calling <a href="SQLiteStatement.html#Close">Close</a> more than once is allowed.<br> Explicit cleanup is optional: the statement is finalized automatically when the JavaScript object is destroyed. Use <a href="SQLiteStatement.html#Close">Close</a> when early release is useful, for example when many prepared statements are created while other work continues.<br> This method does not throw; any SQLite finalize status is not exposed to script code.</p></div>
         
         
         
@@ -298,7 +298,7 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Query">Query</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4023</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4110</div>
         </header>
         <pre class="signature"><code>Query(parameters)</code></pre>
         
@@ -321,7 +321,7 @@
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws on binding or execution errors, or when the statement is closed.</p></div>
+            <div><code></code> — <p>Throws on parameter, binding, execution, or result-conversion errors, including an invalid parameter array/count, duplicate result column names, or when the statement is closed.</p></div>
         </section>
         
         
@@ -334,11 +334,11 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Reset">Reset</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4033</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4120</div>
         </header>
         <pre class="signature"><code>Reset()</code></pre>
         
-        <div class="description"><p>Explicitly resets the statement and clears its current parameter bindings.<br> This is normally unnecessary after <a href="SQLiteStatement.html#Run">Run()</a> or <a href="SQLiteStatement.html#Query">Query()</a>, because both methods do it automatically.</p></div>
+        <div class="description"><p>Explicitly resets the statement and clears its current parameter bindings.<br> This is normally unnecessary after <a href="SQLiteStatement.html#Run">Run</a> or <a href="SQLiteStatement.html#Query">Query</a>, because both methods do it automatically.</p></div>
         
         
         
@@ -346,7 +346,7 @@
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws when the statement is closed.</p></div>
+            <div><code></code> — <p>Throws when the statement is closed or SQLite fails to clear its parameter bindings.</p></div>
         </section>
         
         
@@ -359,7 +359,7 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Run">Run</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4014</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4101</div>
         </header>
         <pre class="signature"><code>Run(parameters)</code></pre>
         
@@ -378,7 +378,7 @@
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code></code> — <p>Throws on binding or execution errors, or when the statement is closed.</p></div>
+            <div><code></code> — <p>Throws on parameter, binding, or execution errors, including an invalid parameter array/count or when the statement is closed.</p></div>
         </section>
         
         

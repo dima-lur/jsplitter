@@ -24,7 +24,10 @@ body {
 }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
-code, pre { font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace; }
+code, pre {
+    font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+    font-variant-ligatures: none;
+}
 code { font-size: 0.93em; }
 
 .sidebar {

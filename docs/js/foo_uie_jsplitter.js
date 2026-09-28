@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @typedef {number} float
  */
 
@@ -204,22 +204,34 @@ let console = {
  * 
  * <b>Global state:</b> every JSplitter panel accesses the same native foobar2000 window through {@link fb.Window}</code>.
  * Window geometry {@link FbWindow#X X}, {@link FbWindow#Y Y}, {@link FbWindow#Width Width}, {@link FbWindow#Height Height}, the numeric {@link FbWindow#MinWidth MinWidth}, {@link FbWindow#MinHeight MinHeight}, {@link FbWindow#MaxWidth MaxWidth}, {@link FbWindow#MaxHeight MaxHeight}, and the numeric pseudo-caption rectangle defined by {@link FbWindow#SetPseudoCaption SetPseudoCaption} are global host state.
- * These numeric values are not automatically restored when a panel reloads or unloads. The pseudo-caption active state itself is tracked per panel, like {@link FbWindow#MinSize MinSize} and {@link FbWindow#MaxSize MaxSize}: unloading or reloading a panel removes its request, while the last rectangle coordinates remain stored globally.
+ * These numeric values are not automatically restored when a panel reloads or unloads.
  * 
- * Window modes such as {@link FbWindow#FrameStyle FrameStyle}, {@link FbWindow#Fullscreen Fullscreen}, {@link FbWindow#MainMenuHidden MainMenuHidden}, {@link FbWindow#StatusBarHidden StatusBarHidden}, {@link FbWindow#MinSize MinSize}, {@link FbWindow#MaxSize MaxSize}, and pseudo-caption activation are tracked per panel. 
- * The most recent explicit assignment made by any live panel becomes the effective global value. When that panel reloads or unloads, its request is removed and the previous request from another live panel, if any, becomes effective again. 
- * If no panel has a request, {@link FbWindow#FrameStyle FrameStyle} defaults to {@link module:Flags.FrameStyle FrameStyle.Default} and the boolean modes default to <b>false</b>.
+ * Window UI settings such as {@link FbWindow#FrameStyle FrameStyle},
+ * {@link FbWindow#Fullscreen Fullscreen},
+ * {@link FbWindow#MainMenuHidden MainMenuHidden},
+ * {@link FbWindow#StatusBarHidden StatusBarHidden},
+ * {@link FbWindow#MinSize MinSize},
+ * {@link FbWindow#MaxSize MaxSize}, and pseudo-caption activation are tracked per panel. The most recent explicit assignment made by any live panel becomes the effective global value.
+ * When that panel reloads or unloads, its request is removed and the previous request from another
+ * live panel, if any, becomes effective again.
+ *
+ * If no panel has a request, {@link FbWindow#FrameStyle FrameStyle} defaults to
+ * {@link module:Flags.FrameStyle FrameStyle.Default}, and the boolean settings default to <b>false</b>.
  * 
  * So getters return the effective global value, not the last value assigned by the current panel.
  *
  * If both minimum and maximum limits are enabled for the same axis, keep the nonzero minimum less than or equal to the nonzero maximum. Contradictory limits are not a supported configuration.
- * <div class="doc-note warning"> 
+ * <div class="doc-note warning">
  * <b>WARNING!</b><br>
- * Using the most methods described here (beyond simply changing the window's position and size) is incompatible with plugins that provide similar functionality, e.g. {@link https://github.com/The-Wizardium/UI-Wizard foo_ui_wizard}, {@link https://github.com/ttsping/foo_openhacks foo_openhacks} or {@link https://foobar2000.club/forum/viewtopic.php?t=1911 foo_ui_hacks}.
- * Therefore, if you intend to make active use of these methods, it is strongly recommended to uninstall the specified components.
+ * Most methods described here, except for basic window positioning and resizing, are incompatible with plugins that provide similar functionality, such as
+ * {@link https://github.com/The-Wizardium/UI-Wizard foo_ui_wizard},
+ * {@link https://github.com/ttsping/foo_openhacks foo_openhacks}, or
+ * {@link https://foobar2000.club/forum/viewtopic.php?t=1911 foo_ui_hacks}.
+ *
+ * If you intend to use these methods, uninstall such components first. Running them together may cause conflicting behavior and is not a supported configuration.
  * </div>
  * <div class="doc-note warning"> 
- * <b>Legacy geometry API:</b> {@link window.FoobarWindowX}, {@link window.FoobarWindowY}, {@link window.FoobarWindowWidth}, {@link window.FoobarWindowHeight} and {@link window.MoveFoobarWindow} are deprecated compatibility APIs and will be removed in a future release. New code should use {@link fb.Window} geometry properties and {@link FbWindow#Move Move()} instead.
+ * <b>Legacy geometry API:</b> {@link window.FoobarWindowX}, {@link window.FoobarWindowY}, {@link window.FoobarWindowWidth}, {@link window.FoobarWindowHeight} and {@link window.MoveFoobarWindow} are deprecated compatibility APIs and will be removed in a future release. New code should use {@link fb.Window} geometry properties and {@link FbWindow#Move Move} instead.
  * </div>
  *
  * @hideconstructor
@@ -241,7 +253,7 @@ let console = {
  *
  * // Panel B, executed later:
  * fb.Window.FrameStyle = FrameStyle.Default;
- * // FrameStyle.Default is now effective globally. If Panel B reloads or unloads,
+ * // FrameStyle.Default is now effective globally. If Panel B unloads or reloads without this line (e.g. commented),
  * // Panel A's still-live FrameStyle.NoBorder request becomes effective again.
  */
 function FbWindow() {
@@ -296,7 +308,7 @@ function FbWindow() {
      * Minimum and maximum size limits do not clamp the window while fullscreen is active.
      * 
      * If fullscreen is changed while a modal JSplitter/foobar2000 dialog is open, the native transition is deferred until the modal dialog closes. The property still reports the current effective requested state during that time.
-     *
+     * 
      * @type {boolean}
      */
     this.Fullscreen = false;
@@ -374,7 +386,6 @@ function FbWindow() {
     /**
      * Moves and resizes the main foobar2000 window in one operation.
      * The arguments describe the outer window rectangle in screen coordinates.
-     * If called during early startup, the requested geometry is retained and applied when the main window becomes available.
      *
      * @param {number} x X coordinate in screen coordinates.
      * @param {number} y Y coordinate in screen coordinates.
@@ -404,6 +415,8 @@ function FbWindow() {
      * The coordinates are pixel offsets from the top-left corner of the outer main-window rectangle. Calling this method again replaces the stored global rectangle and enables pseudo-caption for the current panel. The rectangle values remain stored globally, but the active request belongs to the panel and is automatically removed when that panel reloads or unloads. If another live panel has an active pseudo-caption request, it becomes effective again using the current stored rectangle.
      * 
      * With {@link module:Flags.FrameStyle FrameStyle.NoBorder}, resize edges take precedence over the pseudo-caption area. The pseudo-caption does not start a move operation while the main window is fullscreen or maximized. A left click inside the rectangle is consumed for window dragging, so interactive controls should not be placed inside it.
+     * 
+     * To unset pseudo-caption use {@link FbWindow#ClearPseudoCaption ClearPseudoCaption}
      *
      * @param {number} x Horizontal offset from the left edge of the outer main-window rectangle.
      * @param {number} y Vertical offset from the top edge of the outer main-window rectangle.
@@ -419,10 +432,24 @@ function FbWindow() {
 
     /**
      * Removes the current panel's pseudo-caption request previously enabled by {@link FbWindow#SetPseudoCaption SetPseudoCaption}.
-     * The stored rectangle coordinates are not cleared. The request is also removed automatically when the panel reloads or unloads; if another live panel has an active request, pseudo-caption remains enabled for that panel.
+     * The stored rectangle coordinates are not cleared. The request is also removed automatically when the panel reloads or unloads; if another live panel has an active request, pseudo-caption remains enabled.
      */
     this.ClearPseudoCaption = function () { };
 }
+
+/**
+ * Audio-stream descriptor returned by {@link fb.GetAudioStreams}.
+ *
+ * @typedef {Object} AudioStreamInfo
+ * @property {number} index
+ *    Zero-based stream index used by {@link fb.SetAudioStream}.
+ * @property {FbFileInfo} info
+ *    Full metadata and technical information reported by the input decoder for this stream.
+ * @property {boolean} default
+ *    True when this is the input decoder's default stream.
+ * @property {boolean} selected
+ *    True when this is the effective selected stream. A saved user preference takes precedence over the decoder default.
+ */
 
 /**
  * Functions for controlling foobar2000 and accessing it's data.
@@ -782,6 +809,30 @@ let fb = {
      * @mainthread
      */
     GetActiveDSPs: function () { }, 
+
+    /**
+     * Returns the audio streams exposed by the input decoder for <b>handle</b> as array of {@link AudioStreamInfo} objects.<br>
+     * Returns an empty array when the file's input decoder does not expose stream information.
+     * Related methods: {@link fb.SetAudioStream}.
+     *
+     * @param {FbMetadbHandle} handle
+     * @return {Array<AudioStreamInfo>}
+     *
+     * @example
+     * const handle = fb.GetFocusItem();
+     * if (handle) {
+     *     const streams = fb.GetAudioStreams(handle);
+     *     for (const stream of streams) {
+     *         console.log(`#${stream.index}: default=${stream.default}, selected=${stream.selected}`);
+     *         for (let i = 0; i < stream.info.InfoCount; ++i) {
+     *             console.log(`  ${stream.info.InfoName(i)}=${stream.info.InfoValue(i)}`);
+     *         }
+     *     }
+     * }
+     * @sourceFile ../../component/samples/basic/Audio Stream Selector.js
+     * @worker
+     */
+    GetAudioStreams: function (handle) { },
     
     /**
      * Returns PCM data from the foobar2000 visualisation stream.<br>
@@ -1197,6 +1248,30 @@ let fb = {
      * @mainthread
      */
     SetDSPPreset: function (idx) { }, // (void)
+
+    /**
+     * Selects an audio stream for <b>handle</b> and stores it as the user's stream preference.<br>
+     * <b>Available only in foobar2000 v2.0 and above</b>. Throws an {@link Error} when API is unavailable, the file does not support stream selection, or <b>index</b> is out of bounds.<br>
+     * If the file is currently playing and the effective selection changes, playback is restarted so the new stream is applied immediately.<br>
+     * <br>
+     * Related methods: {@link fb.GetAudioStreams}.
+     *
+     * @param {FbMetadbHandle} handle
+     * @param {number} index Zero-based stream index returned by {@link fb.GetAudioStreams}.
+     * @throws {Error} If handle is null, stream selection is unavailable or the index is invalid.
+     *
+     * @example
+     * const handle = fb.GetFocusItem();
+     * if (handle) {
+     *     const streams = fb.GetAudioStreams(handle);
+     *     if (streams.length > 1) {
+     *         fb.SetAudioStream(handle, streams[1].index);
+     *     }
+     * }
+     * @worker
+     * @mainthread
+     */
+    SetAudioStream: function (handle, index) { }, // (void)
 
     /**
      * Available only in foobar2000 v1.4 and above. Throws a script error on v1.3.<br>
@@ -3064,18 +3139,14 @@ let utils = {
      * After a successful call the font becomes available to the foobar2000 process. It can be used by {@link gdi.Font} and {@link d2d.Font} and is visible to other JSplitter panels and Workers.
      * The font is registered privately for the foobar2000 process rather than for JSplitter alone. As a result, it may also become available to native foobar2000 UI and other components that use the Windows font APIs, depending on when they enumerate or create their fonts.
      *
-     * Relative paths are resolved from the file containing the <b>LoadFont</b> call. 
-     * For the main script, they are relative to the main script directory; when called from an included script or a file-backed Worker, they are relative to that file.
-     * Absolute paths are used as-is.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
-     * The file is registered once by its normalised absolute path. Calling <b>LoadFont</b> again with the
+     * The file is registered (cached) once by its normalised absolute path. Calling <b>LoadFont</b> again with the
      * same file returns <b>true</b> without registering it again. Loaded fonts remain available for the
      * lifetime of the foobar2000 process; there is no corresponding unload operation.
      *
      * A font may expose different legacy/GDI and typographic/DirectWrite family names. 
      * {@link utils.CheckFont} can be used to verify a family name after loading, while {@link utils.ListFonts} shows the names reported by the GDI and DirectWrite backends.
-     *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string} path Path to a font file, typically a `.ttf` or `.otf` file.
      * @return {boolean} `true` if the font is already loaded or was loaded successfully; `false` if the
@@ -3179,11 +3250,11 @@ let utils = {
     PathWildcardMatch: function (pattern, str) { }, // (boolean)
 
     /**
-     * Opens a binary file for incremental reading into a caller-provided <code>Uint8Array</code>.<br>
+     * Opens a binary file for incremental reading into a caller-provided <b>Uint8Array</b>.<br>
      * The buffer is reused by the caller, so repeated reads do not allocate a new typed array for every chunk.
      * This is intended for large files or other cases where whole-file {@link utils.ReadBinaryFile} would be inefficient.<br>
      * Reading is synchronous. For one-shot large-file processing, use the reader inside {@link Worker.RunAsync}; for persistent pipelines, use it from a {@link Worker}. Both approaches keep blocking file I/O off the panel UI thread.<br>
-     * Ordinary read failures are reported through <code>Read()</code> and <code>EOF</code>; they are not thrown as exceptions.
+     * Ordinary read failures are reported through {@link BinaryReader#Read Read} and {@link BinaryReader#EOF EOF}>; they are not thrown as exceptions.
      *
      * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
@@ -3212,10 +3283,12 @@ let utils = {
     OpenBinaryReader: function (filename) { },
 
     /**
-     * Opens a binary file for incremental writing from a caller-provided <code>Uint8Array</code>.<br>
-     * The file is created or truncated when opened. The parent folder must already exist.<br>
-     * Reusing the same typed array avoids allocating temporary buffers for every chunk.<br>
-     * Write, flush, and close failures are reported through boolean return values. Writing is synchronous. For long-running processing, use the writer from a {@link Worker} to avoid blocking the panel UI.
+     * Opens a binary file for incremental writing from a caller-provided <b>Uint8Array</b>.
+     * The file is created or truncated when opened. The parent folder must already exist.
+     * Reusing the same typed array avoids allocating temporary buffers for every chunk.
+     * Write, flush, and close failures are reported through boolean return values. 
+     * 
+     * Writing is synchronous. For long-running processing, use the writer from a {@link Worker} to avoid blocking the panel UI.
      *
      * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
@@ -3237,11 +3310,10 @@ let utils = {
     OpenBinaryWriter: function (filename) { },
 
     /**
-     * Opens or creates a SQLite database for synchronous read/write access.<br>
-     * This is an optional host capability. <code>utils.OpenDatabase</code> is defined only when the SQLite library already loaded by foobar2000 exposes the required API. Scripts that need to support hosts without compatible SQLite can feature-detect it with <code>typeof utils.OpenDatabase === 'function'</code>.<br>
-     * The special filename <code>:memory:</code> creates an in-memory SQLite database and is not path-resolved. The parent folder of a file-backed database must already exist.<br>
+     * Opens or creates a SQLite database for synchronous read/write access by given filename.<br>
+     * The special filename <b>:memory:</b> creates an in-memory SQLite database and is not path-resolved. The parent folder of a file-backed database must already exist.<br>
      * Database work is synchronous, so large imports or expensive queries should be run from a {@link Worker} to avoid blocking the panel UI thread.<br>
-     * SQL values should be passed through the optional parameter array instead of being concatenated into the SQL text. Supported parameter types are <code>null</code>, boolean, number, string, <code>ArrayBuffer</code>, and typed-array views.
+     * SQL values should be passed through the optional parameter array instead of being concatenated into the SQL text. Supported parameter types are <b>null, boolean, number, string, ArrayBuffer</b>, and typed-array views.
      *
      * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
@@ -3313,7 +3385,9 @@ let utils = {
      * UTF-8, UTF-16LE/BE, UTF-32LE/BE, and supported Windows codepages use the same decoding rules as {@link utils.OpenTextReader}. A matching BOM is removed for UTF encodings.<br>
      * For large line-oriented files, consider {@link utils.OpenTextReader}; it avoids creating one JavaScript string containing the entire file.
      *
-     * Filesystem path resolution: absolute paths are used as-is. Relative paths are resolved against the file containing the current call. For the main script this is the main script directory; for an included script or a file-backed Worker it is that script's own directory. If there is no file-backed caller, the existing host fallback is used (the Worker's relative-path root, or the component directory for an in-memory panel script).
+     * <div class="doc-note warning">
+     * <b>Filesystem path resolution:</b> absolute paths are used as-is. Relative paths are resolved against the file containing the current call. For the main script this is the main script directory; for an included script or a file-backed Worker it is that script's own directory. If there is no file-backed caller, the existing host fallback is used (the Worker's relative-path root, or the component directory for an in-memory panel script).
+     * </div>
      *
      * @param {string} filename
      * @param {number=} [codepage=65001] See Codepages.js. UTF-16LE/BE use 1200/1201, UTF-32LE/BE use 12000/12001. If codepage is 0, automatic detection is performed.
@@ -3326,8 +3400,10 @@ let utils = {
     ReadTextFile: function (filename, codepage) { }, // (string) [,codepage]
 
     /**
-     * Returns a string. Will be empty if path doesn't exist or there was an error opening it.<br>
+     * Returns a string. Will be empty if path doesn't exist or there was an error opening it.
+     * 
      * For UTF8 files with or without BOM. If you're unsure about the file encoding, continue to use {@link utils.ReadTextFile}
+     * 
      * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string} path
@@ -3686,8 +3762,8 @@ let utils = {
      * Opens a text file for incremental writing.<br>
      * The file is created or truncated when opened. The parent folder must already exist.<br>
      * UTF-8 is used by default. UTF-16LE (1200), UTF-16BE (1201), UTF-32LE (12000), UTF-32BE (12001), and other valid Windows codepages are also supported.<br>
-     * If <code>write_bom</code> is true, the matching BOM is written for UTF-8, UTF-16, and UTF-32. Other Windows codepages do not have a BOM and ignore this option.<br>
-     * Use <code>Write()</code> to append text without a line terminator or <code>WriteLine()</code> to append text followed by CRLF. Encoding and I/O failures are reported through boolean return values. This avoids building one large JavaScript string before writing a large file.<br>
+     * If <b>write_bom</b> is true, the matching BOM is written for UTF-8, UTF-16, and UTF-32. Other Windows codepages do not have a BOM and ignore this option.<br>
+     * Use {@link TextWriter#Write Write} to append text without a line terminator or {@link TextWriter#WriteLine WriteLine} to append text followed by CRLF. Encoding and I/O failures are reported through boolean return values. This avoids building one large JavaScript string before writing a large file.<br>
      * Writing is synchronous. For one-shot large-file generation, use the writer inside {@link Worker.RunAsync}; for persistent pipelines, use it from a {@link Worker}. Both approaches keep blocking file I/O off the panel UI thread.
      *
      * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
@@ -3877,7 +3953,8 @@ function BinaryWriter() {
 /**
  * SQLite database returned by {@link utils.OpenDatabase}.<br>
  * All operations are synchronous. Use a {@link Worker} for large imports, maintenance, or expensive queries when blocking the panel UI would be undesirable.<br>
- * Parameter arrays are positional and must contain exactly as many values as the SQL statement requires. Booleans are stored as SQLite integers 0/1. Query results map SQLite NULL to <code>null</code>, INTEGER/REAL to number, TEXT to string, and BLOB to <code>Uint8Array</code>.
+ * Parameter arrays are positional and must contain exactly as many values as the SQL statement requires. Booleans are stored as SQLite integers 0/1. Query results map SQLite NULL to <code>null</code>, INTEGER/REAL to number, TEXT to string, and BLOB to <code>Uint8Array</code>.<br>
+ * Database operations report SQL, binding, transaction-state, and closed-handle errors as JavaScript exceptions. {@link SQLiteDatabase#Close Close()} is idempotent and does not throw.
  *
  * @constructor
  * @hideconstructor
@@ -3886,7 +3963,8 @@ function BinaryWriter() {
 function SQLiteDatabase() {
 
     /**
-     * Closes the database. Calling <code>Close()</code> more than once is allowed.
+     * Closes the database. Calling <code>Close()</code> more than once is allowed.<br>
+     * This method does not throw; any SQLite close status is not exposed to script code.
      *
      * @return {boolean} true after the database has been closed.
      * @worker
@@ -3894,7 +3972,9 @@ function SQLiteDatabase() {
     this.Close = function () { };
 
     /**
-     * Starts a deferred transaction.
+     * Starts a deferred transaction by executing <code>BEGIN TRANSACTION</code>.
+     *
+     * @throws Throws on SQLite/database errors, including when the database is closed or the transaction cannot be started.
      *
      * @example
      * db.Exec('CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, name TEXT)');
@@ -3904,7 +3984,11 @@ function SQLiteDatabase() {
      *     db.Exec('INSERT INTO items(name) VALUES (?)', ['Beta']);
      *     db.Commit();
      * } catch (e) {
-     *     db.Rollback();
+     *     try {
+     *         db.Rollback();
+     *     } catch (rollbackError) {
+     *         console.log(`Rollback failed: ${rollbackError.message}`);
+     *     }
      *     throw e;
      * }
      * @worker
@@ -3912,15 +3996,17 @@ function SQLiteDatabase() {
     this.Begin = function () { };
 
     /**
-     * Commits the current transaction.
+     * Commits the current transaction by executing <code>COMMIT</code>.
      *
+     * @throws Throws on SQLite/database errors, including when the database is closed or no transaction can be committed.
      * @worker
      */
     this.Commit = function () { };
 
     /**
-     * Rolls back the current transaction.
+     * Rolls back the current transaction by executing <code>ROLLBACK</code>.
      *
+     * @throws Throws on SQLite/database errors, including when the database is closed or no transaction can be rolled back.
      * @worker
      */
     this.Rollback = function () { };
@@ -3931,7 +4017,7 @@ function SQLiteDatabase() {
      *
      * @param {string} sql SQL text to execute.
      * @param {Array<*>=} [parameters] Positional parameter values. Supported element types: <code>null</code>, boolean, number, string, <code>ArrayBuffer</code>, and typed-array views.
-     * @throws Throws on SQL, binding, or database errors, or when the database is closed.
+     * @throws Throws on SQL, parameter, binding, or database errors, including an invalid parameter array/count or when the database is closed.
      *
      * @example
      * db.Exec(
@@ -3950,7 +4036,7 @@ function SQLiteDatabase() {
      * @param {string} sql SQL query to execute.
      * @param {Array<*>=} [parameters] Positional parameter values. Supported element types: <code>null</code>, boolean, number, string, <code>ArrayBuffer</code>, and typed-array views.
      * @return {Array<Object>} Query rows. Returns an empty array when the query produces no rows.
-     * @throws Throws on SQL, binding, or database errors, when multiple SQL statements are supplied, or when the database is closed.
+     * @throws Throws on SQL, parameter, binding, result-conversion, or database errors; when multiple SQL statements are supplied; when result column names are duplicated; or when the database is closed.
      *
      * @example
      * const rows = db.Query(
@@ -3966,19 +4052,16 @@ function SQLiteDatabase() {
 
     /**
      * Prepares exactly one SQL statement for repeated execution.
+     * The returned statement owns its native SQLite handle. It is finalized automatically when the JavaScript object is destroyed, so calling {@link SQLiteStatement#Close Close()} is not required for normal use. Call <code>Close()</code> only when the native statement should be released immediately.
      *
      * @param {string} sql SQL statement to prepare.
      * @return {SQLiteStatement} Prepared statement.
-     * @throws Throws if the SQL cannot be prepared, if more than one statement is supplied, or when the database is closed.
+     * @throws Throws if the SQL cannot be prepared, if the input does not contain exactly one SQL statement, or when the database is closed.
      *
      * @example
      * const insert = db.Prepare('INSERT INTO items(name, score) VALUES (?, ?)');
-     * try {
-     *     insert.Run(['Alpha', 10]);
-     *     insert.Run(['Beta', 20]);
-     * } finally {
-     *     insert.Close();
-     * }
+     * insert.Run(['Alpha', 10]);
+     * insert.Run(['Beta', 20]);
      * @worker
      */
     this.Prepare = function (sql) { };
@@ -3994,8 +4077,10 @@ function SQLiteDatabase() {
 }
 
 /**
- * Prepared SQLite statement returned by {@link SQLiteDatabase#Prepare}.<br>
- * <code>Run()</code> and <code>Query()</code> automatically reset the statement and clear all parameter bindings before returning, so the same statement can be reused immediately with a new parameter array.
+ * Prepared SQLite statement returned by {@link SQLiteDatabase#Prepare Prepare}.<br>
+ * A prepared statement is usable immediately after {@link SQLiteDatabase#Prepare Prepare} succeeds. Its native SQLite handle is finalized automatically when the JavaScript object is destroyed, so explicit cleanup is not required for normal use. {@link SQLiteStatement#Close Close} is provided only for releasing the native statement immediately when it is no longer needed.<br>
+ * {@link SQLiteStatement#Run Run} and {@link SQLiteStatement#Query Query} automatically reset the statement and clear all parameter bindings before returning, including when execution throws, so the same active statement can be reused immediately with a new parameter array.<br>
+ * Statement operations report parameter, binding, execution, result-conversion, and closed-handle errors as JavaScript exceptions. {@link SQLiteStatement#Close Close} is idempotent and does not throw.
  *
  * @constructor
  * @hideconstructor
@@ -4004,7 +4089,9 @@ function SQLiteDatabase() {
 function SQLiteStatement() {
 
     /**
-     * Closes the prepared statement. Calling <code>Close()</code> more than once is allowed.
+     * Finalizes the prepared statement immediately and releases its native SQLite handle. Calling {@link SQLiteStatement#Close Close} more than once is allowed.<br>
+     * Explicit cleanup is optional: the statement is finalized automatically when the JavaScript object is destroyed. Use {@link SQLiteStatement#Close Close} when early release is useful, for example when many prepared statements are created while other work continues.<br>
+     * This method does not throw; any SQLite finalize status is not exposed to script code.
      *
      * @return {boolean} true after the statement has been closed.
      * @worker
@@ -4015,7 +4102,7 @@ function SQLiteStatement() {
      * Executes the prepared statement and discards any result rows. The statement is reset and its bindings are cleared before returning.
      *
      * @param {Array<*>=} [parameters] Positional parameter values. The count must match the prepared statement exactly.
-     * @throws Throws on binding or execution errors, or when the statement is closed.
+     * @throws Throws on parameter, binding, or execution errors, including an invalid parameter array/count or when the statement is closed.
      * @worker
      */
     this.Run = function (parameters) { };
@@ -4025,22 +4112,23 @@ function SQLiteStatement() {
      *
      * @param {Array<*>=} [parameters] Positional parameter values. The count must match the prepared statement exactly.
      * @return {Array<Object>} Query rows as plain JavaScript objects.
-     * @throws Throws on binding or execution errors, or when the statement is closed.
+     * @throws Throws on parameter, binding, execution, or result-conversion errors, including an invalid parameter array/count, duplicate result column names, or when the statement is closed.
      * @worker
      */
     this.Query = function (parameters) { };
 
     /**
      * Explicitly resets the statement and clears its current parameter bindings.<br>
-     * This is normally unnecessary after {@link SQLiteStatement#Run Run()} or {@link SQLiteStatement#Query Query()}, because both methods do it automatically.
+     * This is normally unnecessary after {@link SQLiteStatement#Run Run} or {@link SQLiteStatement#Query Query}, because both methods do it automatically.
      *
-     * @throws Throws when the statement is closed.
+     * @throws Throws when the statement is closed or SQLite fails to clear its parameter bindings.
      * @worker
      */
     this.Reset = function () { };
 
     /**
-     * Indicates whether the prepared statement is open.
+     * Indicates whether the prepared statement still owns an active native SQLite handle.<br>
+     * This is <b>true</b> immediately after {@link SQLiteDatabase#Prepare Prepare} succeeds and becomes <b>false</b> after {@link SQLiteStatement#Close Close} is called. Normally there is no need to check this property unless the statement is being closed explicitly.
      *
      * @type {boolean}
      * @readonly
