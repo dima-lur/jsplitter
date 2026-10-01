@@ -4,15 +4,15 @@
 
 /**
  * Evaluates JavaScript from a file in the current panel or Worker realm.<br>
- * Similar to `eval({@link utils.ReadTextFile}(path))`, but provides more features:<br>
- * - Has `include guards` - a file is evaluated only once per realm unless `always_evaluate` is used.<br>
+ * Similar to <b>eval({@link utils.ReadTextFile}(path))</b>, but provides more features:<br>
+ * - Has <b>include guards</b> - a file is evaluated only once per realm unless <b>always_evaluate</b> is used.<br>
  * - Panel-side includes also use compiled-script caching; Worker includes keep their own per-Worker include guard.<br>
  * - Has better error reporting.<br>
  * <br>
  * Relative paths are resolved from the currently executing script file first when available.<br>
- * For a file-backed Worker, this makes its own directory the natural root for nested relative `include()` calls.<br>
+ * For a file-backed Worker, this makes its own directory the natural root for nested relative {@link include} calls.<br>
  * Configured panel/package script roots are then considered where applicable.<br>
- * `${fb.ComponentPath}` is the final fallback.
+ * <b>${fb.ComponentPath}</b> is the final fallback.
  * @worker
  * @param {string} path Absolute or relative path to JavaScript file.
  * @param {object=} [options=undefined]
@@ -72,7 +72,7 @@ function setTimeout(func, delay, ...func_args) { } // (uint)
 function ActiveXObject(name) {
 
     /**
-     * Creates an `ActiveXObject` that contains an object of type (VT_ARRAY|SOME_TYPE).
+     * Creates an <b>ActiveXObject</b> that contains an object of type (VT_ARRAY|SOME_TYPE).
      *
      * @static
      * 
@@ -123,7 +123,7 @@ function ActiveXObject(name) {
 }
 
 /**
- * Deprecated: use `for ... of` loop instead.
+ * Deprecated: use <b>for ... of</b> loop instead.
  * 
  * @deprecated
  * 
@@ -395,6 +395,68 @@ function FbWindow() {
     this.Move = function (x, y, width, height) { };
 
     /**
+     * <b>true</b> when the main foobar2000 window is currently minimized.
+     *
+     * This property is read-only and reports the actual native window state.
+     *
+     * @type {boolean}
+     * @readonly
+     */
+    this.Minimized = false;
+
+    /**
+     * <b>true</b> when the main foobar2000 window is currently maximized.
+     *
+     * This property is read-only and reports the actual native window state.
+     *
+     * @type {boolean}
+     * @readonly
+     */
+    this.Maximized = false;
+
+    /**
+     * Minimizes the main foobar2000 window using the normal native Windows system command.
+     *
+     * The command is posted asynchronously, so {@link FbWindow#Minimized Minimized} may change after the current JavaScript callback returns.
+     *
+     * @example
+     * fb.Window.Minimize();
+     */
+    this.Minimize = function () { };
+
+    /**
+     * Maximizes the main foobar2000 window using the normal native Windows system command.
+     *
+     * The command is posted asynchronously, so {@link FbWindow#Maximized Maximized} may change after the current JavaScript callback returns.
+     *
+     * @example
+     * if (!fb.Window.Maximized) {
+     *     fb.Window.Maximize();
+     * }
+     */
+    this.Maximize = function () { };
+
+    /**
+     * Restores the main foobar2000 window from a minimized or maximized state to its normal state using the native Windows system command.
+     *
+     * The command is posted asynchronously.
+     *
+     * @example
+     * if (fb.Window.Minimized || fb.Window.Maximized) {
+     *     fb.Window.Restore();
+     * }
+     */
+    this.Restore = function () { };
+
+    /**
+     * Requests the main foobar2000 window to close using the normal native Windows system command.
+     * This follows the same close path as closing the application window normally, rather than terminating the process directly.
+     *
+     * The command is posted asynchronously.
+     */
+    this.Close = function () { };
+
+    /**
      * Starts the native Windows move operation for the main foobar2000 window, as if the user had started dragging its caption.
      * This is useful when the script needs to decide dynamically whether a mouse action should start moving the window. For a fixed draggable area, {@link FbWindow#SetPseudoCaption SetPseudoCaption} is usually simpler.
      * The move loop is started asynchronously, so the JavaScript callback is not kept running for the duration of the drag.
@@ -497,7 +559,7 @@ let fb = {
     /** 
      * It can be used for displaying the volume from UPnP devices.<br>
      * It will return a value of -1 when using a normal device and that also indicates that fb.Volume is writable.<br>
-     * When a custom volume control is active, you can not use fb.Volume and must use fb.VolumeUp() / fb.VolumeDown() / fb.VolumeMute().
+     * When a custom volume control is active, you can not use {@link fb.Volume} and must use {@link fb.VolumeUp} / {@link fb.VolumeDown} / {@link fb.VolumeMute}.
      * @type {boolean}
      * @readonly
      * @worker
@@ -729,7 +791,7 @@ let fb = {
      * - If you need only to drag from your panel with copy (i.e. without physically moving them):
      *      use only fb.DoDragDrop(handles, DROPEFFECT_COPY | DROPEFFECT_LINK).<br>
      * - If you need only to receive drop to your panel with copy:
-     *      handle `on_drop_*()` callbacks, while setting action.effect argument to (DROPEFFECT_COPY | DROPEFFECT_LINK).<br>
+     *      handle <b>on_drop_*()</b> callbacks, while setting action.effect argument to (DROPEFFECT_COPY | DROPEFFECT_LINK).<br>
      * <br>
      * Full drag-n-drop interface description:<br>
      * - Drag-n-drop interface is based on Microsoft IDropSource and IDropTarget interfaces, so a lot of info (including examples) could be gathered from MSDN (IDropSource, IDropTarget, DoDragDrop, DROPEFFECT).<br>
@@ -743,8 +805,8 @@ let fb = {
      * - DROPEFFECT_LINK should be used as fallback in case effect argument does not have DROPEFFECT_COPY (===1), since some external drops only allow DROPEFFECT_LINK effect.<br>
      * - Changing effect on key modifiers is nice (to be in line with native Windows behaviour): see the example below.<br>
      * <br>
-     * Note: due to the asynchronous nature of event handling, `fb.DoDragDrop()` might exit before `on_drag_drop` callback is triggered
-     * when dropping data on the same panel as the one that had a call to `fb.DoDragDrop()`.<br>
+     * Note: due to the asynchronous nature of event handling, {@link fb.DoDragDrop} might exit before {@link module:Callbacks.on_drag_drop on_drag_drop} callback is triggered
+     * when dropping data on the same panel as the one that had a call to {@link fb.DoDragDrop}.<br>
      * <br>
      * Related callbacks: {@link module:Callbacks.on_drag_enter on_drag_enter}, {@link module:Callbacks.on_drag_drop on_drag_drop},
      * {@link module:Callbacks.on_drag_over on_drag_over}, {@link module:Callbacks.on_drag_leave on_drag_leave}
@@ -1104,7 +1166,7 @@ let fb = {
     IsLibraryInitialised: function () { }, // (boolean)
     
     /**
-     * Performance note: don't use in `on_paint`.
+     * Performance note: don't use in {@link module:Callbacks.on_paint on_paint}.
      *
      * @param {string} command Path to main menu item
      * @return {boolean} true, if the item is checked.
@@ -1130,7 +1192,7 @@ let fb = {
     IsMetadbInMediaLibrary: function (handle) { }, // (boolean)
 
     /**
-     * Loads playlist from file. Equivalent to `File`>`Load Playlist...`.
+     * Loads playlist from file. Equivalent to <b>File</b>><b>Load Playlist...</b>.
      *
      * @method
      */
@@ -1324,7 +1386,7 @@ let fb = {
     ShowLibrarySearchUI: function (query) { }, // (void)
 
     /**
-     * Opens the image viewer built in to `foobar2000`. Pass an image file path, or an {@link FbMetadbHandle}; with a handle, {@link module:Flags.AlbumArtId AlbumArtId} defaults to `AlbumArtId.front`. Album art is resolved by foobar2000 and may be embedded or external.
+     * Opens the image viewer built in to <b>foobar2000</b>. Pass an image file path, or an {@link FbMetadbHandle}; with a handle, {@link module:Flags.AlbumArtId AlbumArtId} defaults to <b>AlbumArtId.front</b>. Album art is resolved by foobar2000 and may be embedded or external.
      * @param {(string|FbMetadbHandle)} image_path_or_handle Image file path or track handle.
      * @param {AlbumArtId=} [art_id=AlbumArtId.front] Album art type. Used only when the first argument is an {@link FbMetadbHandle}.
      * @throws {Error} If the track handle is invalid, the foobar2000 image viewer API is unavailable, or an image file path cannot be read.
@@ -1475,10 +1537,10 @@ let gdi = {
     CreateImageFromPixelData: function(pixelData, width, height, format = "bgra32") { }, // (GdiBitmap)
 
     /**
-     * Performance note: avoid using inside `on_paint`.<br>
-     * Performance note II: try caching and reusing `GdiFont` objects,
+     * Performance note: avoid using inside {@link module:Callbacks.on_paint on_paint}.<br>
+     * Performance note II: try caching and reusing {@link GdiFont} objects,
      * since the maximum amount of such objects is hard-limited by Windows.
-     * `GdiFont` creation will fail after reaching this limit.
+     * {@link GdiFont} creation will fail after reaching this limit.
      *
      * @param {string} name
      * @param {number} size_px See {@link module:Helpers.Point2Pixel Point2Pixel} function for conversions
@@ -1518,7 +1580,7 @@ let gdi = {
 
     /**
      * Load image from file asynchronously.
-     * Returns a `Promise` object, which will be resolved when image loading is done.
+     * Returns a <b>Promise</b> object, which will be resolved when image loading is done.
      *
      * @param {number} window_id unused
      * @param {string} path
@@ -1922,7 +1984,7 @@ let plman = {
 
     /**
      * Note: returns true, if the playlist is an autoplaylist. To determine if a playlist is not an autoplaylist,
-     * but locked with something like `foo_utils` or `foo_playlist_attributes`, use with conjunction of {@link plman.IsAutoPlaylist}.
+     * but locked with something like <b>foo_utils</b> or <b>foo_playlist_attributes</b>, use with conjunction of {@link plman.IsAutoPlaylist}.
      * <br>
      * Deprecated: use {@link plman.GetPlaylistLockedActions}.
      *
@@ -2152,7 +2214,7 @@ let plman = {
 
     /**
      * Blocks requested actions.<br>
-     * Note: the lock can be changed only if there is no lock or if it's owned by `foo_uie_jsplitter`.
+     * Note: the lock can be changed only if there is no lock or if it's owned by <b>foo_uie_jsplitter</b>.
      * The owner of the lock can be checked via {@link plman.GetPlaylistLockName}.
      * 
      * @param {number} playlistIndex
@@ -2272,7 +2334,7 @@ let plman = {
     Undo: function (playlistIndex) { }, // (void)
 
     /**
-     * Creates an undo restore point for the specified playlist. This will enable `Edit`>`Undo` menu item after calling other {@link plman} methods that change playlist content.<br>
+     * Creates an undo restore point for the specified playlist. This will enable <b>Edit</b>><b>Undo</b> menu item after calling other {@link plman} methods that change playlist content.<br>
      * Note: this method should be called before performing modification to the playlist.<br>
      * <br>
      * Related methods: {@link plman.IsRedoAvailable}, {@link plman.IsUndoAvailable}, {@link plman.Redo}, {@link plman.Undo}
@@ -2672,7 +2734,7 @@ let utils = {
 
     /**
      * Edit a text file with the default text editor. <br>
-     * Default text editor can be changed via `Edit` button on the main tab of {@link window.ShowConfigureV2}.
+     * Default text editor can be changed via <b>Edit</b> button on the main tab of {@link window.ShowConfigureV2}.
      *
      * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
@@ -2803,12 +2865,12 @@ let utils = {
 
     /**
      * Load art image for the track asynchronously.<br>
-     * Returns a `Promise` object, which will be resolved when art loading is done.
+     * Returns a <b>Promise</b> object, which will be resolved when art loading is done.
      *
      * @param {number} window_id unused
      * @param {FbMetadbHandle} handle
      * @param {number=} [art_id=0] See {@link module:Flags.AlbumArtId AlbumArtId} enum
-     * @param {boolean=} [need_stub=true] If true, will return a stub image from `Preferences`>`Display`>`Stub image path` when there is no art image available.
+     * @param {boolean=} [need_stub=true] If true, will return a stub image from <b>Preferences</b>><b>Display</b>><b>Stub image path</b> when there is no art image available.
      * @param {boolean=} [only_embed=false] If true, will only try to load the embedded image.
      * @param {boolean=} [no_load=false] If true, then no art loading will be performed and only path to art will be returned in {@link ArtPromiseResult}.
      * @return {Promise.<ArtPromiseResult>}
@@ -3032,7 +3094,7 @@ let utils = {
      * Decoding uses one sequential decoder pass. Decoded PCM data is not exposed to JavaScript.<br>
      * <br>
      * If <b>on_progress</b> is supplied, finalized contiguous ranges of the output envelope are delivered while decoding is still in progress. The callback receives a <b>Float32Array</b> containing the new values and the zero-based output index where that range begins. Progress chunk size and delivery frequency are implementation details and must not be relied on.<br>
-     * <b>For waveform UIs that should appear while decoding, this progressive form is the recommended approach.</b> Use one <b>GetWaveformAsync()</b> call for the whole requested range instead of splitting the track into repeated range calls. One decoder remains open for the sequential pass, avoiding repeated open/seek/decode overhead. For visually smooth rendering, store progress chunks immediately but animate a separate visible front toward the loaded front rather than exposing the native chunk boundaries directly.<br>
+     * <b>For waveform UIs that should appear while decoding, this progressive form is the recommended approach.</b> Use one {@link utils.GetWaveformAsync} call for the whole requested range instead of splitting the track into repeated range calls. One decoder remains open for the sequential pass, avoiding repeated open/seek/decode overhead. For visually smooth rendering, store progress chunks immediately but animate a separate visible front toward the loaded front rather than exposing the native chunk boundaries directly.<br>
      * Return <b>false</b> from <b>on_progress</b> to cancel the native decode. This is recommended when a progressive request becomes obsolete, for example after the focused or playing track changes. Cancellation rejects the returned Promise. Any other return value continues decoding.<br>
      * The Promise still resolves with the complete <b>Float32Array</b> when decoding finishes normally, whether or not a progress callback is used.<br>
      * <br>
@@ -3206,8 +3268,8 @@ let utils = {
      * A font may expose different legacy/GDI and typographic/DirectWrite family names. 
      * {@link utils.CheckFont} can be used to verify a family name after loading, while {@link utils.ListFonts} shows the names reported by the GDI and DirectWrite backends.
      *
-     * @param {string} path Path to a font file, typically a `.ttf` or `.otf` file.
-     * @return {boolean} `true` if the font is already loaded or was loaded successfully; `false` if the
+     * @param {string} path Path to a font file, typically a <b>.ttf</b> or <b>.otf</b> file.
+     * @return {boolean} <b>true</b> if the font is already loaded or was loaded successfully; <b>false</b> if the
      * file does not exist, cannot be read as a font, contains no usable family, or cannot be registered.
      * @worker
      *
@@ -3900,13 +3962,13 @@ function BinaryReader() {
      * @param {number=} [offset=0] Destination offset in bytes.
      * @param {number=} count Maximum number of bytes to read. Defaults to the remaining buffer size.
      * @return {number} Number of bytes actually read. A nonzero request returning 0 means that no bytes were read: {@link BinaryReader#EOF EOF} is <b>true</b> at clean end of file and <b>false</b> if the read could not be performed. A zero-length request also returns 0.
-     * @throws Throws only if the reader is closed.
+     * @throws {Error} If the reader is closed.
      * @worker
      */
     this.Read = function (buffer, offset, count) { };
 
     /**
-     * Closes the file. Calling <b>Close()</b> more than once is allowed.
+     * Closes the file. Calling {@link BinaryReader#Close Close} more than once is allowed.
      *
      * @return {boolean} true if the reader is closed successfully; false if closing the file fails. Calling it again after a successful close returns true.
      * @worker
@@ -3969,7 +4031,7 @@ function BinaryWriter() {
      * @param {number=} [offset=0] Source offset in bytes.
      * @param {number=} count Number of bytes to write. Defaults to the remaining buffer size.
      * @return {boolean} true on success; false if the buffer/range is invalid or the write fails.
-     * @throws Throws only if the writer is closed.
+     * @throws {Error} If the writer is closed.
      * @worker
      */
     this.Write = function (buffer, offset, count) { };
@@ -3978,13 +4040,13 @@ function BinaryWriter() {
      * Flushes buffered output to the file.
      *
      * @return {boolean} true on success; false if flushing fails.
-     * @throws Throws only if the writer is closed.
+     * @throws {Error} If the writer is closed.
      * @worker
      */
     this.Flush = function () { };
 
     /**
-     * Closes the file. Calling <b>Close()</b> more than once is allowed.
+     * Closes the file. Calling {@link BinaryWriter#Close Close} more than once is allowed.
      *
      * @return {boolean} true if the writer is closed successfully; false if closing/flushing the file fails. Calling it again after a successful close returns true.
      * @worker
@@ -4023,7 +4085,7 @@ function BinaryWriter() {
 function SQLiteDatabase() {
 
     /**
-     * Closes the database. Calling <b>Close()</b> more than once is allowed.<br>
+     * Closes the database. Calling {@link SQLiteDatabase#Close Close} more than once is allowed.<br>
      * This method does not throw; any SQLite close status is not exposed to script code.
      *
      * @return {boolean} true after the database has been closed.
@@ -4034,12 +4096,12 @@ function SQLiteDatabase() {
     /**
      * Starts a deferred transaction by executing <b>BEGIN TRANSACTION</b>.
      *
-     * @throws Throws on SQLite/database errors, including when the database is closed or the transaction cannot be started.
+     * @throws {Error} If a SQLite/database error occurs, including when the database is closed or the transaction cannot be started.
      *
      * @example
-     * db.Exec('CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, name TEXT)');
-     * db.Begin();
      * try {
+     *     db.Exec('CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, name TEXT)');
+     *     db.Begin();
      *     db.Exec('INSERT INTO items(name) VALUES (?)', ['Alpha']);
      *     db.Exec('INSERT INTO items(name) VALUES (?)', ['Beta']);
      *     db.Commit();
@@ -4058,7 +4120,7 @@ function SQLiteDatabase() {
     /**
      * Commits the current transaction by executing <b>COMMIT</b>.
      *
-     * @throws Throws on SQLite/database errors, including when the database is closed or no transaction can be committed.
+     * @throws {Error} If a SQLite/database error occurs, including when the database is closed or no transaction can be committed.
      * @worker
      */
     this.Commit = function () { };
@@ -4066,7 +4128,7 @@ function SQLiteDatabase() {
     /**
      * Rolls back the current transaction by executing <b>ROLLBACK</b>.
      *
-     * @throws Throws on SQLite/database errors, including when the database is closed or no transaction can be rolled back.
+     * @throws {Error} If a SQLite/database error occurs, including when the database is closed or no transaction can be rolled back.
      * @worker
      */
     this.Rollback = function () { };
@@ -4077,7 +4139,7 @@ function SQLiteDatabase() {
      *
      * @param {string} sql SQL text to execute.
      * @param {Array<*>=} [parameters] Positional parameter values. Supported element types: <b>null</b>, boolean, number, string, <b>ArrayBuffer</b>, and typed-array views.
-     * @throws Throws on SQL, parameter, binding, or database errors, including an invalid parameter array/count or when the database is closed.
+     * @throws {Error} If an SQL, parameter, binding, or database error occurs, including an invalid parameter array/count or when the database is closed.
      *
      * @example
      * db.Exec(
@@ -4096,7 +4158,7 @@ function SQLiteDatabase() {
      * @param {string} sql SQL query to execute.
      * @param {Array<*>=} [parameters] Positional parameter values. Supported element types: <b>null</b>, boolean, number, string, <b>ArrayBuffer</b>, and typed-array views.
      * @return {Array<Object>} Query rows. Returns an empty array when the query produces no rows.
-     * @throws Throws on SQL, parameter, binding, result-conversion, or database errors; when multiple SQL statements are supplied; when result column names are duplicated; or when the database is closed.
+     * @throws {Error} If an SQL, parameter, binding, result-conversion, or database error occurs; multiple SQL statements are supplied; result column names are duplicated; or the database is closed.
      *
      * @example
      * const rows = db.Query(
@@ -4112,11 +4174,11 @@ function SQLiteDatabase() {
 
     /**
      * Prepares exactly one SQL statement for repeated execution.
-     * The returned statement owns its native SQLite handle. It is finalized automatically when the JavaScript object is destroyed, so calling {@link SQLiteStatement#Close Close} is not required for normal use. Call <b>Close()</b> only when the native statement should be released immediately.
+     * The returned statement owns its native SQLite handle. It is finalized automatically when the JavaScript object is destroyed, so calling {@link SQLiteStatement#Close Close} is not required for normal use. Call {@link SQLiteStatement#Close Close} only when the native statement should be released immediately.
      *
      * @param {string} sql SQL statement to prepare.
      * @return {SQLiteStatement} Prepared statement.
-     * @throws Throws if the SQL cannot be prepared, if the input does not contain exactly one SQL statement, or when the database is closed.
+     * @throws {Error} If the SQL cannot be prepared, the input does not contain exactly one SQL statement, or the database is closed.
      *
      * @example
      * const insert = db.Prepare('INSERT INTO items(name, score) VALUES (?, ?)');
@@ -4162,7 +4224,7 @@ function SQLiteStatement() {
      * Executes the prepared statement and discards any result rows. The statement is reset and its bindings are cleared before returning.
      *
      * @param {Array<*>=} [parameters] Positional parameter values. The count must match the prepared statement exactly.
-     * @throws Throws on parameter, binding, or execution errors, including an invalid parameter array/count or when the statement is closed.
+     * @throws {Error} If a parameter, binding, or execution error occurs, including an invalid parameter array/count or when the statement is closed.
      * @worker
      */
     this.Run = function (parameters) { };
@@ -4172,7 +4234,7 @@ function SQLiteStatement() {
      *
      * @param {Array<*>=} [parameters] Positional parameter values. The count must match the prepared statement exactly.
      * @return {Array<Object>} Query rows as plain JavaScript objects.
-     * @throws Throws on parameter, binding, execution, or result-conversion errors, including an invalid parameter array/count, duplicate result column names, or when the statement is closed.
+     * @throws {Error} If a parameter, binding, execution, or result-conversion error occurs, including an invalid parameter array/count, duplicate result column names, or when the statement is closed.
      * @worker
      */
     this.Query = function (parameters) { };
@@ -4181,7 +4243,7 @@ function SQLiteStatement() {
      * Explicitly resets the statement and clears its current parameter bindings.<br>
      * This is normally unnecessary after {@link SQLiteStatement#Run Run} or {@link SQLiteStatement#Query Query}, because both methods do it automatically.
      *
-     * @throws Throws when the statement is closed or SQLite fails to clear its parameter bindings.
+     * @throws {Error} If the statement is closed or SQLite fails to clear its parameter bindings.
      * @worker
      */
     this.Reset = function () { };
@@ -4210,13 +4272,13 @@ function TextReader() {
      * Reads the next line and removes its line terminator.
      *
      * @return {?string} The next decoded line, or <b>null</b> when no line can be returned. When <b>null</b> is returned, {@link TextReader#EOF EOF} is <b>true</b> for clean end of file and <b>false</b> for a read or decoding failure.
-     * @throws Throws only if the reader is closed.
+     * @throws {Error} If the reader is closed.
      * @worker
      */
     this.ReadLine = function () { };
 
     /**
-     * Closes the file. Calling <b>Close()</b> more than once is allowed.
+     * Closes the file. Calling {@link TextReader#Close Close} more than once is allowed.
      *
      * @return {boolean} true if the reader is closed successfully; false if closing the file fails. Calling it again after a successful close returns true.
      * @worker
@@ -4225,7 +4287,7 @@ function TextReader() {
 
     /**
      * Indicates that a clean end of file has been observed while reading.<br>
-     * This property does not report a closed reader or a read/decoding failure. Do not use it as a pre-read loop condition; use the return value of {@link TextReader#ReadLine ReadLine} to drive the loop, then inspect <b>EOF</b> when <b>ReadLine()</b> returns <b>null</b>.
+     * This property does not report a closed reader or a read/decoding failure. Do not use it as a pre-read loop condition; use the return value of {@link TextReader#ReadLine ReadLine} to drive the loop, then inspect {@link TextReader#EOF EOF} when {@link TextReader#ReadLine ReadLine} returns <b>null</b>.
      *
      * @type {boolean}
      * @readonly
@@ -4257,7 +4319,7 @@ function TextWriter() {
      *
      * @param {string} content Text to write.
      * @return {boolean} true on success; false if the text cannot be encoded in the selected codepage or the write fails.
-     * @throws Throws only if the writer is closed.
+     * @throws {Error} If the writer is closed.
      * @worker
      */
     this.Write = function (content) { };
@@ -4267,7 +4329,7 @@ function TextWriter() {
      *
      * @param {string} content Text to write.
      * @return {boolean} true on success; false if the text cannot be encoded in the selected codepage or the write fails.
-     * @throws Throws only if the writer is closed.
+     * @throws {Error} If the writer is closed.
      * @worker
      */
     this.WriteLine = function (content) { };
@@ -4276,13 +4338,13 @@ function TextWriter() {
      * Flushes buffered output to the file.
      *
      * @return {boolean} true on success; false if flushing fails.
-     * @throws Throws only if the writer is closed.
+     * @throws {Error} If the writer is closed.
      * @worker
      */
     this.Flush = function () { };
 
     /**
-     * Closes the file. Calling <b>Close()</b> more than once is allowed.
+     * Closes the file. Calling {@link TextWriter#Close Close} more than once is allowed.
      *
      * @return {boolean} true if the writer is closed successfully; false if closing/flushing the file fails. Calling it again after a successful close returns true.
      * @worker
@@ -4447,7 +4509,7 @@ let window = {
     DPI: undefined, // (read) (uint)
     
     /**
-     * Set whether the JSplitter panel should be cleared with background color before raising <b>on_paint</b> callback.<br>
+     * Set whether the JSplitter panel should be cleared with background color before raising {@link module:Callbacks.on_paint on_paint} callback.<br>
      * Default value: true.
      * @type {boolean}
      * @example
@@ -4525,6 +4587,17 @@ let window = {
      * @readonly
      */
     InstanceType: undefined, // (uint)
+
+    /**
+     * Indicates whether this JSplitter panel is hosted as a toolbar item in Columns UI.<br>
+     * This property is only meaningful when using Columns UI: it is true for a toolbar panel and false for a regular panel.
+     * 
+     * It is always false in Default User Interface.
+     *
+     * @type {boolean}
+     * @readonly
+     */
+    IsToolbar: undefined, // (boolean) (read)
 
     /**
      * Indicates whether this JSplitter panel currently has keyboard focus.
@@ -4741,7 +4814,7 @@ let window = {
 
      /**
      * Open the current panel script in the default text editor.<br>
-     * Default text editor can be changed via `Edit` button on the main tab of {@link window.ShowConfigureV2}.
+     * Default text editor can be changed via <b>Edit</b> button on the main tab of {@link window.ShowConfigureV2}.
      */
     EditScript: function () { },
 
@@ -4857,7 +4930,7 @@ let window = {
 
     /**
      * This will <b>synchronously</b> trigger {@link module:Callbacks.on_notify_data on_notify_data}(name, info) in other panels.<br>
-     * <b>!!! Beware !!!</b>: data passed via `info` argument must NOT be used or modified in the source panel after invoking this method.
+     * <b>!!! Beware !!!</b>: data passed via <b>info</b> argument must NOT be used or modified in the source panel after invoking this method.
      * <div class="doc-note warning">
      * <b>Legacy compatibility API</b><br>Existing scripts can keep using NotifyOthers unchanged. For new asynchronous structured-clone messaging between panels and Workers, prefer {@link BroadcastChannel}.<br></div>
      *
@@ -5527,7 +5600,7 @@ function FbMetadbHandleList(arg) {
     this.CalcTotalDuration = function () { }; // (double)
 
     /**
-     * @return {number} total size in bytes. For display purposes, consider using utils.FormatFileSize() on the result.
+     * @return {number} total size in bytes. For display purposes, consider using {@link utils.FormatFileSize} on the result.
      * @worker
      */
     this.CalcTotalSize = function () { }; // (LONGLONG)
@@ -5673,7 +5746,7 @@ function FbMetadbHandleList(arg) {
      * @param {boolean} minimise
      *
      * This provides the same functionality as the native context menu items
-     * under `Utilities` except there are no prompts.
+     * under <b>Utilities</b> except there are no prompts.
      * @worker
      * @mainthread
      */
@@ -6464,9 +6537,9 @@ function GdiBitmap(arg) {
 /**
  * Constructor may fail if font is not present.<br>
  *
- * Performance note: try caching and reusing `GdiFont` objects,
+ * Performance note: try caching and reusing {@link GdiFont} objects,
  * since the maximum amount of such objects is hard-limited by Windows.
- * `GdiFont` creation will fail after reaching this limit.
+ * {@link GdiFont} creation will fail after reaching this limit.
  * @cloneable
  * @constructor
  * @param {string} name
@@ -6652,7 +6725,7 @@ function GdiBrush(arg) {
 }
 
 /**
- * Typically used inside `on_paint`.<br>
+ * Typically used inside {@link module:Callbacks.on_paint on_paint}.<br>
  *
  * Note: there are many different ways to get colours:
  * window.GetColourDUI/window.GetColourCUI,
@@ -6931,8 +7004,8 @@ function GdiGraphics() {
      * <br>
      * To calculate text dimensions use {@link GdiGraphics#CalcTextHeight CalcTextHeight}, {@link GdiGraphics#CalcTextWidth CalcTextWidth}.<br>
      * <br>
-     * Note: uses special rules for `&` character by default, which consumes the `&` and causes the next character to be underscored.
-     * This behaviour can be changed (or disabled) via `format` parameter.
+     * Note: uses special rules for <b>&</b> character by default, which consumes the <b>&</b> and causes the next character to be underscored.
+     * This behaviour can be changed (or disabled) via <b>format</b> parameter.
      *
      * @param {string} str
      * @param {GdiFont} font
@@ -7591,7 +7664,7 @@ class HtmlDocument {
      * 
      * @method
      * @param {string} selector CSS selector.
-     * @return {?HtmlNode} First matching node, or `null` if nothing matches.
+     * @return {?HtmlNode} First matching node, or <b>null</b> if nothing matches.
      *
      * @example
      * let doc = utils.ParseHtml("<html><body><p class='name'>Test Artist</p></body></html>");
@@ -7861,7 +7934,7 @@ class HtmlNode {
      * 
      * @method
      * @param {string} selector CSS selector.
-     * @return {?HtmlNode} First matching node, or `null` if nothing matches.
+     * @return {?HtmlNode} First matching node, or <b>null</b> if nothing matches.
      *
      * @example
      * const doc = utils.ParseHtml("<li>text <a href='https://example.com'>Link</a></li>");
@@ -7911,3 +7984,13 @@ class HtmlNode {
      */
     getElementsByTagName = function (tagName) { }; //
 }
+
+/**
+ * Standard JavaScript error object thrown by JSplitter API methods.
+ * Catch it with a regular JavaScript <b>try...catch</b> statement.
+ *
+ * @typedef {Object} Error
+ * @property {string} name Error type name.
+ * @property {string} message Human-readable error message.
+ * @property {string=} stack JavaScript stack trace when available.
+ */

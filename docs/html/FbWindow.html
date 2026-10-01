@@ -210,7 +210,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Effects">
         <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><div class="nav-page-tree" data-nav-root="module:Flags">
+    </div><a class="nav-link" href="module-ESModules.html">ESModules</a><div class="nav-page-tree" data-nav-root="module:Flags">
         <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="module:Helpers">
@@ -402,6 +402,28 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
     </article>
 
+    <article class="api-item" id="Maximized" data-kind="property" data-name="maximized">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#Maximized">Maximized</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:407</div>
+        </header>
+        <pre class="signature"><code>Maximized: boolean = false</code></pre>
+        
+        <div class="description"><p><b>true</b> when the main foobar2000 window is currently maximized.</p>
+<p>This property is read-only and reports the actual native window state.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
     <article class="api-item" id="MaxSize" data-kind="property" data-name="maxsize">
         <header class="api-item-header">
             <div>
@@ -455,6 +477,28 @@ fb.Window.FrameStyle = FrameStyle.Default;
         <pre class="signature"><code>MinHeight: number = 0</code></pre>
         
         <div class="description"><p>Minimum height of the outer main-window rectangle when <a href="FbWindow.html#MinSize">MinSize</a> is enabled. A value of <b>0</b> disables the minimum-height constraint while leaving the minimum-width constraint independent.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Minimized" data-kind="property" data-name="minimized">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#Minimized">Minimized</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:397</div>
+        </header>
+        <pre class="signature"><code>Minimized: boolean = false</code></pre>
+        
+        <div class="description"><p><b>true</b> when the main foobar2000 window is currently minimized.</p>
+<p>This property is read-only and reports the actual native window state.</p></div>
         
         
         
@@ -601,7 +645,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#ClearPseudoCaption">ClearPseudoCaption</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:433</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:495</div>
         </header>
         <pre class="signature"><code>ClearPseudoCaption()</code></pre>
         
@@ -613,6 +657,82 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
         
         
+        
+    </article>
+
+    <article class="api-item" id="Close" data-kind="method" data-name="close">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#Close">Close</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:451</div>
+        </header>
+        <pre class="signature"><code>Close()</code></pre>
+        
+        <div class="description"><p>Requests the main foobar2000 window to close using the normal native Windows system command. This follows the same close path as closing the application window normally, rather than terminating the process directly.</p>
+<p>The command is posted asynchronously.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Maximize" data-kind="method" data-name="maximize">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#Maximize">Maximize</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:427</div>
+        </header>
+        <pre class="signature"><code>Maximize()</code></pre>
+        
+        <div class="description"><p>Maximizes the main foobar2000 window using the normal native Windows system command.</p>
+<p>The command is posted asynchronously, so <a href="FbWindow.html#Maximized">Maximized</a> may change after the current JavaScript callback returns.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">if</span> (!fb.Window.Maximized) {
+    fb.Window.Maximize();
+}</code></pre>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="Minimize" data-kind="method" data-name="minimize">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#Minimize">Minimize</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:417</div>
+        </header>
+        <pre class="signature"><code>Minimize()</code></pre>
+        
+        <div class="description"><p>Minimizes the main foobar2000 window using the normal native Windows system command.</p>
+<p>The command is posted asynchronously, so <a href="FbWindow.html#Minimized">Minimized</a> may change after the current JavaScript callback returns.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code>fb.Window.Minimize();</code></pre>
+        </section>
         
     </article>
 
@@ -650,7 +770,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#MoveStart">MoveStart</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:397</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:459</div>
         </header>
         <pre class="signature"><code>MoveStart()</code></pre>
         
@@ -673,13 +793,41 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
     </article>
 
+    <article class="api-item" id="Restore" data-kind="method" data-name="restore">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#Restore">Restore</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:439</div>
+        </header>
+        <pre class="signature"><code>Restore()</code></pre>
+        
+        <div class="description"><p>Restores the main foobar2000 window from a minimized or maximized state to its normal state using the native Windows system command.</p>
+<p>The command is posted asynchronously.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-keyword">if</span> (fb.Window.Minimized || fb.Window.Maximized) {
+    fb.Window.Restore();
+}</code></pre>
+        </section>
+        
+    </article>
+
     <article class="api-item" id="SetPseudoCaption" data-kind="method" data-name="setpseudocaption">
         <header class="api-item-header">
             <div>
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#SetPseudoCaption">SetPseudoCaption</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:411</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:473</div>
         </header>
         <pre class="signature"><code>SetPseudoCaption(x, y, width, height)</code></pre>
         

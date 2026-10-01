@@ -26,6 +26,8 @@ const BAR_WIDTH = 5;
 const BAR_GAP = 2;
 const BAR_COLOUR = 0xFF42A5F5;
 const SPECTRUM_TOP = 92;
+const MIN_FREQUENCY = 30;
+const MAX_FREQUENCY = 16000;
 
 const DT_LEFT = 0x0000;
 const DT_CENTER = 0x0001;
@@ -49,10 +51,8 @@ let paintCount = 0;
 let frameWindowStart = performance.now();
 let paintWindowStart = frameWindowStart;
 
-function createSpectrumEngine(currentFftSize) {
+function createSpectrumEngine(currentFftSize, minFrequencyLimit, maxFrequencyLimit) {
     const FFT_SIZE = currentFftSize;
-    const FLOOR_LEVEL = 0.04;
-    const IDLE_LEVEL = 0.015;
     let bandCount = 1;
     let bandSampleRate = 0;
     let windowLength = 0;
@@ -70,6 +70,8 @@ function createSpectrumEngine(currentFftSize) {
     let windowCoefficients = new Float64Array(1);
     let bandStart = new Int32Array(1);
     let bandEnd = new Int32Array(1);
+    let bandPosition0 = new Float64Array(1);
+    let bandPosition1 = new Float64Array(1);
 
     function ensureWindow(length) {
         length = Math.max(1, Math.min(FFT_SIZE, length | 0));
@@ -139,8 +141,8 @@ function createSpectrumEngine(currentFftSize) {
         bandSampleRate = sampleRate;
 
         const nyquist = sampleRate * 0.5;
-        const minFrequency = Math.min(30, nyquist * 0.5);
-        const maxFrequency = Math.max(minFrequency + 1, Math.min(16000, nyquist * 0.96));
+        const minFrequency = Math.min(minFrequencyLimit, nyquist * 0.5);
+        const maxFrequency = Math.max(minFrequency + 1, Math.min(maxFrequencyLimit, nyquist * 0.96));
         const ratio = maxFrequency / minFrequency;
         const half = FFT_SIZE >> 1;
 
@@ -149,14 +151,19 @@ function createSpectrumEngine(currentFftSize) {
             const t1 = (band + 1) / bandCount;
             const f0 = minFrequency * Math.pow(ratio, t0);
             const f1 = minFrequency * Math.pow(ratio, t1);
-            const bin0 = Math.max(1, Math.floor(f0 * FFT_SIZE / sampleRate));
-            const bin1 = Math.min(half + 1, Math.max(bin0 + 1, Math.ceil(f1 * FFT_SIZE / sampleRate)));
+            const fftScale = FFT_SIZE / sampleRate;
+            const binPosition0 = f0 * fftScale;
+            const binPosition1 = f1 * fftScale;
+            const bin0 = Math.max(1, Math.floor(binPosition0));
+            const bin1 = Math.min(half + 1, Math.max(bin0 + 1, Math.ceil(binPosition1)));
+            bandPosition0[band] = binPosition0;
+            bandPosition1[band] = binPosition1;
             bandStart[band] = bin0;
             bandEnd[band] = bin1;
         }
     }
 
-    function updateDynamics(dt, floorLevel) {
+    function updateDynamics(dt) {
         const attack = 1 - Math.exp(-dt / 0.018);
         const release = 1 - Math.exp(-dt / 0.095);
         const gravity = 3.0;
@@ -166,7 +173,7 @@ function createSpectrumEngine(currentFftSize) {
             const target = targets[i];
             let level = smoothed[i] || 0;
             level += (target - level) * (target >= level ? attack : release);
-            level = Math.max(floorLevel, Math.min(0.98, level));
+            level = Math.max(0, Math.min(0.98, level));
             smoothed[i] = level;
 
             let peak = peaks[i] || 0;
@@ -194,8 +201,8 @@ function createSpectrumEngine(currentFftSize) {
     function analyse(data, sampleCount, channels, sampleRate, available, dt) {
         const required = sampleCount * channels;
         if (!data || !sampleCount || !channels || !sampleRate || available < required) {
-            targets.fill(IDLE_LEVEL);
-            updateDynamics(dt, IDLE_LEVEL);
+            targets.fill(0);
+            updateDynamics(dt);
             return;
         }
 
@@ -226,22 +233,39 @@ function createSpectrumEngine(currentFftSize) {
         }
 
         for (let band = 0; band < bandCount; ++band) {
-            let energy = 0;
-            const bin0 = bandStart[band];
-            const bin1 = bandEnd[band];
+            const binPosition0 = bandPosition0[band];
+            const binPosition1 = bandPosition1[band];
+            let bandMagnitude = 0;
 
-            for (let bin = bin0; bin < bin1; ++bin) {
-                const magnitude = magnitudes[bin];
-                energy += magnitude * magnitude;
+            if (binPosition1 - binPosition0 < 1) {
+                // A logarithmic band can be narrower than a single FFT bin at low frequencies.
+                // Interpolate the magnitude at the geometric centre of such a band instead,
+                // preserving independent motion without increasing the FFT size.
+                const centrePosition = Math.sqrt(binPosition0 * binPosition1);
+                const position = Math.max(1, Math.min(half, centrePosition));
+                const bin = Math.floor(position);
+                const nextBin = Math.min(half, bin + 1);
+                const fraction = position - bin;
+                bandMagnitude = magnitudes[bin] + (magnitudes[nextBin] - magnitudes[bin]) * fraction;
+            } else {
+                let energy = 0;
+                const bin0 = bandStart[band];
+                const bin1 = bandEnd[band];
+
+                for (let bin = bin0; bin < bin1; ++bin) {
+                    const magnitude = magnitudes[bin];
+                    energy += magnitude * magnitude;
+                }
+
+                bandMagnitude = Math.sqrt(energy / Math.max(1, bin1 - bin0));
             }
 
-            const rms = Math.sqrt(energy / Math.max(1, bin1 - bin0));
-            const db = 20 * Math.log10(Math.max(1e-12, rms));
+            const db = 20 * Math.log10(Math.max(1e-12, bandMagnitude));
             const level = Math.max(0, Math.min(1, (db + 72) / 72));
-            targets[band] = Math.max(FLOOR_LEVEL, Math.min(0.98, level));
+            targets[band] = Math.min(0.98, level);
         }
 
-        updateDynamics(dt, FLOOR_LEVEL);
+        updateDynamics(dt);
     }
 
     function makeSpectrumFrame() {
@@ -253,8 +277,8 @@ function createSpectrumEngine(currentFftSize) {
         const frame = outputFrame;
         for (let i = 0; i < bandCount; ++i) {
             const at = i * 2;
-            frame[at] = smoothed[i] || FLOOR_LEVEL;
-            frame[at + 1] = peaks[i] || FLOOR_LEVEL;
+            frame[at] = smoothed[i];
+            frame[at + 1] = peaks[i];
         }
         return frame;
     }
@@ -273,6 +297,8 @@ function createSpectrumEngine(currentFftSize) {
             peakHold = new Float64Array(bandCount);
             bandStart = new Int32Array(bandCount);
             bandEnd = new Int32Array(bandCount);
+            bandPosition0 = new Float64Array(bandCount);
+            bandPosition1 = new Float64Array(bandCount);
             bandSampleRate = 0;
             outputFrame = null;
         },
@@ -346,7 +372,7 @@ const TARGET_FPS = ${TARGET_FPS};
 const FRAME_TIME = 1000 / TARGET_FPS;
 const UNCAPPED = ${uncapped};
 const createSpectrumEngine = ${createSpectrumEngine.toString()};
-const engine = createSpectrumEngine(${currentFftSize});
+const engine = createSpectrumEngine(${currentFftSize}, ${MIN_FREQUENCY}, ${MAX_FREQUENCY});
 
 let configured = false;
 let waitingForPanel = false;
@@ -516,7 +542,7 @@ function startEngine() {
             if (worker === currentWorker) console.log(`Worker error: ${event.message}`);
         };
     } else {
-        mainEngine = createSpectrumEngine(fftSize);
+        mainEngine = createSpectrumEngine(fftSize, MIN_FREQUENCY, MAX_FREQUENCY);
     }
 
     sendSize();
@@ -604,15 +630,19 @@ function drawSpectrumFrame(gr, spectrumFrame) {
 
     for (let i = 0; i < count; ++i) {
         const x = firstX + i * (barWidth + BAR_GAP);
-        const level = spectrumFrame[i * 2] || 0.04;
-        const peak = spectrumFrame[i * 2 + 1] || 0.04;
-        const barHeight = Math.max(1, level * usableHeight);
-        const y = plotBottom - barHeight;
+        const level = spectrumFrame[i * 2] || 0;
+        const peak = spectrumFrame[i * 2 + 1] || 0;
+        const barHeight = level * usableHeight;
 
-        gr.FillSolidRect(x, y, barWidth, barHeight, BAR_COLOUR);
+        if (barHeight > 0) {
+            const y = plotBottom - barHeight;
+            gr.FillSolidRect(x, y, barWidth, barHeight, BAR_COLOUR);
+        }
 
-        const peakY = plotBottom - peak * usableHeight;
-        gr.DrawLine(x, peakY, x + barWidth - 1, peakY, 1, 0xFFE8EDF2);
+        if (peak > 0) {
+            const peakY = plotBottom - peak * usableHeight;
+            gr.DrawLine(x, peakY, x + barWidth - 1, peakY, 1, 0xFFE8EDF2);
+        }
     }
 }
 

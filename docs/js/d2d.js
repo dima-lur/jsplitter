@@ -280,9 +280,9 @@ function D2DBitmap(arg) {
 /**
  * Constructor may fail if font is not present.<br>
  *
- * Performance note: try caching and reusing `D2DFont` objects,
+ * Performance note: try caching and reusing {@link D2DFont} objects,
  * since the maximum amount of such objects is hard-limited by Windows.
- * `D2DFont` creation will fail after reaching this limit.
+ * {@link D2DFont} creation will fail after reaching this limit.
  * @cloneable
  * @constructor
  * @param {string} name
@@ -692,7 +692,7 @@ function D2DStrokeStyle() {
 }
 
 /**
- * Typically used inside `on_paint`.<br>
+ * Typically used inside {@link module:Callbacks.on_paint on_paint}.<br>
  * Use on_paint(dgr) for D2DGraphics members hints in auto-completion list.<br>
  * Note: there are many different ways to get colours:
  * window.GetColourDUI/window.GetColourCUI,
@@ -997,8 +997,8 @@ function D2DGraphics() {
      * <br>
      * To calculate text dimensions use {@link D2DGraphics#CalcTextHeight CalcTextHeight}, {@link D2DGraphics#CalcTextWidth CalcTextWidth}.<br>
      * <br>
-     * Note: uses special rules for `&` character by default, which consumes the `&` and causes the next character to be underscored.
-     * This behaviour can be changed (or disabled) via `format` parameter.
+     * Note: uses special rules for <b>&</b> character by default, which consumes the <b>&</b> and causes the next character to be underscored.
+     * This behaviour can be changed (or disabled) via <b>format</b> parameter.
      *
      * @param {string} str
      * @param {D2DFont} font
@@ -1303,7 +1303,7 @@ let d2d = {
     /**
      * Creates a reusable Direct2D stroke style for line and outline drawing.<br>
      * The style controls start/end/dash caps, line joins, miter limit, dash pattern and dash offset.<br>
-     * Performance note: create commonly used styles once and reuse them from <b>on_paint</b>.<br><div class="doc-note"><b>Dotted strokes:</b> when <b>dashCap</b> is omitted, <b>DashStyle.Dot</b>, <b>DashStyle.DashDot</b> and <b>DashStyle.DashDotDot</b> automatically use <b>CapStyle.Round</b>. This makes <b>d2d.StrokeStyle({ dashStyle: DashStyle.Dot })</b> match the <b>DashStyle.Dot</b> drawing-method shorthand. An explicitly supplied <b>dashCap</b> is preserved, including <b>CapStyle.Flat</b>. See {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_dash_style Microsoft: D2D1_DASH_STYLE} and {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_cap_style Microsoft: D2D1_CAP_STYLE}.</div>
+     * Performance note: create commonly used styles once and reuse them from {@link module:Callbacks.on_paint on_paint}.<br><div class="doc-note"><b>Dotted strokes:</b> when <b>dashCap</b> is omitted, <b>DashStyle.Dot</b>, <b>DashStyle.DashDot</b> and <b>DashStyle.DashDotDot</b> automatically use <b>CapStyle.Round</b>. This makes <b>d2d.StrokeStyle({ dashStyle: DashStyle.Dot })</b> match the <b>DashStyle.Dot</b> drawing-method shorthand. An explicitly supplied <b>dashCap</b> is preserved, including <b>CapStyle.Flat</b>. See {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_dash_style Microsoft: D2D1_DASH_STYLE} and {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_cap_style Microsoft: D2D1_CAP_STYLE}.</div>
      *
      * @param {D2DStrokeStyleOptions=} [options={}] Stroke appearance options. Omitted properties use the defaults documented by D2DStrokeStyleOptions.
      * @return {D2DStrokeStyle}
@@ -1343,10 +1343,10 @@ let d2d = {
     CreateImageFromPixelData: function(pixelData, width, height, format = "bgra32") { }, // (D2DBitmap)
 
     /**
-     * Performance note: avoid using inside `on_paint`.<br>
-     * Performance note II: try caching and reusing `D2DFont` objects,
+     * Performance note: avoid using inside {@link module:Callbacks.on_paint on_paint}.<br>
+     * Performance note II: try caching and reusing {@link D2DFont} objects,
      * since the maximum amount of such objects is hard-limited by Windows.
-     * `D2DFont` creation will fail after reaching this limit.
+     * {@link D2DFont} creation will fail after reaching this limit.
      *
      * @param {string} name
      * @param {number} size_px See {@link module:Helpers.Point2Pixel Point2Pixel} function for conversions
@@ -1388,7 +1388,7 @@ let d2d = {
 
     /**
      * Load image from file asynchronously.
-     * Returns a `Promise` object, which will be resolved when image loading is done.
+     * Returns a <b>Promise</b> object, which will be resolved when image loading is done.
      *
      * @param {number} window_id unused
      * @param {string} path

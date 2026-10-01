@@ -210,7 +210,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Effects">
         <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><div class="nav-page-tree" data-nav-root="module:Flags">
+    </div><a class="nav-link" href="module-ESModules.html">ESModules</a><div class="nav-page-tree" data-nav-root="module:Flags">
         <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="module:Helpers">
@@ -237,7 +237,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#ArtPromiseResult">ArtPromiseResult</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2798</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2860</div>
         </header>
         
         
@@ -265,7 +265,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#AudioStreamInfo">AudioStreamInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:440</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:502</div>
         </header>
         
         
@@ -409,11 +409,11 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#Error">Error</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7915</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:7988</div>
         </header>
         
         
-        <div class="description"><p>Standard JavaScript error object thrown by JSplitter API methods. Catch it with a regular JavaScript <code>try...catch</code> statement.</p></div>
+        <div class="description"><p>Standard JavaScript error object thrown by JSplitter API methods. Catch it with a regular JavaScript <b>try...catch</b> statement.</p></div>
         
         
         <section class="member-section">
@@ -462,7 +462,7 @@
         </header>
         <pre class="signature"><code>include(path, options)</code></pre>
         
-        <div class="description"><p>Evaluates JavaScript from a file in the current panel or Worker realm.<br> Similar to <b>eval(<a href="utils.html#ReadTextFile">utils.ReadTextFile</a>(path))</b>, but provides more features:<br> - Has <b>include guards</b> - a file is evaluated only once per realm unless <b>always_evaluate</b> is used.<br> - Panel-side includes also use compiled-script caching; Worker includes keep their own per-Worker include guard.<br> - Has better error reporting.<br> <br> Relative paths are resolved from the currently executing script file first when available.<br> For a file-backed Worker, this makes its own directory the natural root for nested relative <b>include()</b> calls.<br> Configured panel/package script roots are then considered where applicable.<br> <b>${fb.ComponentPath}</b> is the final fallback.</p></div>
+        <div class="description"><p>Evaluates JavaScript from a file in the current panel or Worker realm.<br> Similar to <b>eval(<a href="utils.html#ReadTextFile">utils.ReadTextFile</a>(path))</b>, but provides more features:<br> - Has <b>include guards</b> - a file is evaluated only once per realm unless <b>always_evaluate</b> is used.<br> - Panel-side includes also use compiled-script caching; Worker includes keep their own per-Worker include guard.<br> - Has better error reporting.<br> <br> Relative paths are resolved from the currently executing script file first when available.<br> For a file-backed Worker, this makes its own directory the natural root for nested relative <a href="globals.html#include">include</a> calls.<br> Configured panel/package script roots are then considered where applicable.<br> <b>${fb.ComponentPath}</b> is the final fallback.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -490,7 +490,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#JsMemoryStats">JsMemoryStats</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4572</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4645</div>
         </header>
         
         
@@ -518,7 +518,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#JsPackageDirs">JsPackageDirs</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2965</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3027</div>
         </header>
         
         
@@ -546,7 +546,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#JsPackageInfo">JsPackageInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2975</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3037</div>
         </header>
         
         
@@ -574,7 +574,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#JsWorkerMemoryStats">JsWorkerMemoryStats</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4554</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4627</div>
         </header>
         
         
@@ -747,7 +747,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#ScriptInfo">ScriptInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4653</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4726</div>
         </header>
         
         
@@ -843,7 +843,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#SystemInfo">SystemInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2392</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2454</div>
         </header>
         
         
@@ -871,7 +871,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#SystemMemoryInfo">SystemMemoryInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2363</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2425</div>
         </header>
         
         
@@ -899,7 +899,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#SystemVideoMemoryInfo">SystemVideoMemoryInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2375</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2437</div>
         </header>
         
         

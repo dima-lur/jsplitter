@@ -232,7 +232,7 @@ function on_load_image_done(cookie, image, image_path) { }
 function on_main_menu(index) { }
 
 /**
- * Called when one of the commands corresponding to this panel from `main menu`>`File`>`Spider Monkey Panel`>`Script commands` is executed.<br>
+ * Called when one of the commands corresponding to this panel from <b>main menu</b>><b>File</b>><b>Spider Monkey Panel</b>><b>Script commands</b> is executed.<br>
  * <br>
  * Related methods: {@link fb.RegisterMainMenuCommand}, {@link fb.UnregisterMainMenuCommand}
  *
@@ -373,14 +373,14 @@ function on_mouse_wheel_h(step) { }
  * This callback belongs to the legacy NotifyOthers compatibility path. New code that needs asynchronous structured-clone messaging between panels and/or Workers should prefer {@link BroadcastChannel}.<br>
  * <br>
  * <b>!!! Beware !!!</b><br>
- * 1. Data from `info` argument is only accessible inside `on_notify_data` callback:
+ * 1. Data from <b>info</b> argument is only accessible inside {@link module:Callbacks.on_notify_data on_notify_data} callback:
  *    if stored and accessed outside of the callback it will throw JS error.<br>
- *    This also applies to the data produced from that `info`: e.g. storing `info.Path` directly (if `info` is FbMetadbHandle).<br>
- * 2. If you want to store the data from `info` you have to perform a deep copy:<br>
- *    - `String(info)` for strings.<br>
- *    - `JSON.parse(JSON.stringify(info))` for serializable objects.<br>
- *    - `new ObjectType(info)` for objects that have an approppriate constructor available, e.g. `new GdiBitmap(info)` or `new FbMetadbHandleList(info)`.<br>
- * 3. `info` argument is shared between panels, so it should NOT be modified in any way.
+ *    This also applies to the data produced from that <b>info</b>: e.g. storing {@link FbMetadbHandle#Path info.Path} directly (if <b>info</b> is {@link FbMetadbHandle}).<br>
+ * 2. If you want to store the data from <b>info</b> you have to perform a deep copy:<br>
+ *    - <b>String(info)</b> for strings.<br>
+ *    - <b>JSON.parse(JSON.stringify(info))</b> for serializable objects.<br>
+ *    - <b>new ObjectType(info)</b> for objects that have an approppriate constructor available, e.g. {@link GdiBitmap} or {@link FbMetadbHandleList}.<br>
+ * 3. <b>info</b> argument is shared between panels, so it should NOT be modified in any way.
  *
  * @memberof module:Callbacks
  * @param {string} name
@@ -554,7 +554,7 @@ function on_playlist_switch() { }
  * Called when:<br>
  * - Playlists are added/removed/reordered/renamed.<br>
  * - A playlist's lock status changes through the use of {@link plman.SetPlaylistLockedActions} or
- *   components such as `foo_utils` or `foo_playlist_attributes`.
+ *   components such as <b>foo_utils</b> or <b>foo_playlist_attributes</b>.
  *
  * @memberof module:Callbacks
  */
