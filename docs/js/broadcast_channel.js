@@ -91,7 +91,7 @@
  *
  * Use BroadcastChannel when several independent panels and/or Workers should receive cloned data by channel name. Use direct Worker messaging when one known destination should take ownership of a transferable resource. See <b>Transferring ownership</b> in {@link Worker} for the transfer model and the current transferable host-object list.<br>
  *
- * Serialization is performed synchronously by {@link BroadcastChannel#postMessage postMessage}. Before delivering the message, JSplitter first serializes it for all current receivers. If serialization fails for any receiver, postMessage() throws and no message is delivered, preventing a partial broadcast.
+ * Serialization is performed synchronously by {@link BroadcastChannel#postMessage postMessage}. Before delivering the message, JSplitter first serializes it for all current receivers. If serialization fails for any receiver, {@link BroadcastChannel#postMessage postMessage} throws and no message is delivered, preventing a partial broadcast.
  * 
  * Serialization is also performed when there are no receivers. This matches the Web API behaviour, where posting a value that cannot be cloned can still throw even if nobody is listening.
  *
@@ -103,16 +103,16 @@
  *
  * Trusted BroadcastChannel <b>message</b> events are {@link MessageEvent} objects. In JSplitter they use:
  * <ul class="doc-article-list">
- * <li><b><code>event.data</code></b> — the reconstructed payload.</li>
- * <li><b><code>event.origin</code></b> — empty string.</li>
- * <li><b><code>event.source</code></b> — <code>null</code>.</li>
- * <li><b><code>event.ports</code></b> — empty frozen array.</li>
- * <li><b><code>event.direction</code></b> — <code>"broadcast"</code>.</li>
+ * <li><b>event.data</b> — the reconstructed payload.</li>
+ * <li><b>event.origin</b> — empty string.</li>
+ * <li><b>event.source</b> — <b>null</b>.</li>
+ * <li><b>event.ports</b> — empty frozen array.</li>
+ * <li><b>event.direction</b> — <b>"broadcast"</b>.</li>
  * </ul>
  *
- * If a receiver cannot reconstruct a serialized value, its {@link BroadcastChannel#onmessageerror onmessageerror} handler receives a MessageEvent whose <b><code>data</code></b> is <b>null</b>, <b><code>direction</code></b> is <b>"broadcast"</b>, and {@link MessageEvent#errorMessage errorMessage} contains a JSplitter diagnostic string.
+ * If a receiver cannot reconstruct a serialized value, its {@link BroadcastChannel#onmessageerror onmessageerror} handler receives a MessageEvent whose <b>data</b> is <b>null</b>, <b>direction</b> is <b>"broadcast"</b>, and {@link MessageEvent#errorMessage errorMessage} contains a JSplitter diagnostic string.
  *
- * <h2>Lifetime and close()</h2>
+ * <h2>Lifetime and {@link BroadcastChannel#close close}</h2>
  * Call {@link BroadcastChannel#close close} when a BroadcastChannel instance is no longer needed. This disconnects only that instance from the named channel: it can no longer send or receive messages, while other instances with the same name continue to work normally. Closing is idempotent. A queued delivery is ignored if the destination instance is closed before it runs.
  *
  * JSplitter automatically cleans up channels when a panel script is reloaded/unloaded or when a Worker terminates. An open channel with a <b>message</b> or <b>messageerror</b> listener is kept alive while its realm lives, matching the useful lifetime behaviour of the Web API; closing the channel releases that listener root. An unreachable open channel with no message listeners may be garbage-collected and removed automatically.

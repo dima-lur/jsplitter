@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Audio Stream Selector.js — JSplitter source example</title>
+    <title>ES Modules.mjs — JSplitter source example</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -226,245 +226,88 @@
         <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
         <header class="source-header">
             <div class="eyebrow">Example source</div>
-            <h1>samples/basic/Audio Stream Selector.js</h1>
-            <div class="source-references"><b>Referenced by:</b><a href="fb.html#GetAudioStreams">fb.GetAudioStreams</a></div>
+            <h1>samples/basic/ES Modules.mjs</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="module-ESModules.html#ESModules">module:ESModules</a></div>
         </header>
-        <pre class="source-code"><code>window.DefineScript(<span class="tok-string">&#39;Audio Stream Selector&#39;</span>);
+        <pre class="source-code"><code><span class="tok-comment">/*
+    ES MODULE SAMPLE
+    ----------------
 
-<span class="tok-comment">// Visual selector for audio streams exposed by the input decoder.</span>
-<span class="tok-comment">// The panel follows the focused playlist item. Click a stream card to select it.</span>
-<span class="tok-comment">// If the focused item is currently playing, SetAudioStream() restarts playback</span>
-<span class="tok-comment">// automatically when the effective stream changes.</span>
+    This file is selected through Script -&gt; File (or Script -&gt; Sample) and has
+    the .mjs extension, so JSplitter evaluates it as an ES module.
 
-include(<span class="tok-string">&quot;docs/Helpers.js&quot;</span>);
+    message.js deliberately has a .js extension. Because it is imported from a
+    module, it is still compiled as an ES module. message.js then imports
+    math.mjs, demonstrating a nested module dependency.
 
-<span class="tok-keyword">const</span> MARGIN = <span class="tok-number">12</span>;
-<span class="tok-keyword">const</span> HEADER_HEIGHT = <span class="tok-number">34</span>;
-<span class="tok-keyword">const</span> CARD_GAP = <span class="tok-number">8</span>;
-<span class="tok-keyword">const</span> CARD_PADDING = <span class="tok-number">10</span>;
-<span class="tok-keyword">const</span> CARD_HEADER_HEIGHT = <span class="tok-number">24</span>;
-<span class="tok-keyword">const</span> INFO_LINE_HEIGHT = <span class="tok-number">17</span>;
-<span class="tok-keyword">const</span> SCROLL_STEP = <span class="tok-number">48</span>;
+    Important: top-level declarations in an ES module are module-scoped.
+    JSplitter callbacks therefore have to be exposed through globalThis.
+*/</span>
 
-<span class="tok-keyword">const</span> BG = RGB(<span class="tok-number">24</span>, <span class="tok-number">24</span>, <span class="tok-number">24</span>);
-<span class="tok-keyword">const</span> CARD = RGB(<span class="tok-number">38</span>, <span class="tok-number">38</span>, <span class="tok-number">38</span>);
-<span class="tok-keyword">const</span> CARD_HOVER = RGB(<span class="tok-number">46</span>, <span class="tok-number">46</span>, <span class="tok-number">46</span>);
-<span class="tok-keyword">const</span> CARD_SELECTED = RGB(<span class="tok-number">53</span>, <span class="tok-number">70</span>, <span class="tok-number">43</span>);
-<span class="tok-keyword">const</span> BORDER = RGB(<span class="tok-number">70</span>, <span class="tok-number">70</span>, <span class="tok-number">70</span>);
-<span class="tok-keyword">const</span> BORDER_SELECTED = RGB(<span class="tok-number">126</span>, <span class="tok-number">170</span>, <span class="tok-number">85</span>);
-<span class="tok-keyword">const</span> TEXT = RGB(<span class="tok-number">230</span>, <span class="tok-number">230</span>, <span class="tok-number">230</span>);
-<span class="tok-keyword">const</span> TEXT_DIM = RGB(<span class="tok-number">165</span>, <span class="tok-number">165</span>, <span class="tok-number">165</span>);
-<span class="tok-keyword">const</span> TEXT_ACCENT = RGB(<span class="tok-number">190</span>, <span class="tok-number">220</span>, <span class="tok-number">145</span>);
-<span class="tok-keyword">const</span> ERROR = RGB(<span class="tok-number">235</span>, <span class="tok-number">125</span>, <span class="tok-number">125</span>);
+<span class="tok-string">&#39;use strict&#39;</span>;
 
-<span class="tok-keyword">const</span> fontTitle = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">15</span>, <span class="tok-number">1</span>);
-<span class="tok-keyword">const</span> fontHeader = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">13</span>, <span class="tok-number">1</span>);
-<span class="tok-keyword">const</span> fontText = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">12</span>);
-<span class="tok-keyword">const</span> fontSmall = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">11</span>);
-<span class="tok-keyword">const</span> tfTitle = fb.TitleFormat(<span class="tok-string">&#39;%title%[ - %artist%]&#39;</span>);
+<span class="tok-keyword">import</span> createMessage, { helperUrl } from <span class="tok-string">&#39;./es_modules/message.js&#39;</span>;
 
-<span class="tok-keyword">let</span> handle = <span class="tok-literal">null</span>;
-<span class="tok-keyword">let</span> streams = [];
-<span class="tok-keyword">let</span> rows = [];
-<span class="tok-keyword">let</span> hoverIndex = -<span class="tok-number">1</span>;
-<span class="tok-keyword">let</span> scrollY = <span class="tok-number">0</span>;
-<span class="tok-keyword">let</span> contentHeight = <span class="tok-number">0</span>;
-<span class="tok-keyword">let</span> errorText = <span class="tok-string">&#39;&#39;</span>;
+window.DefineScript(<span class="tok-string">&#39;ES Modules&#39;</span>, {
+    author: <span class="tok-string">&#39;JSplitter&#39;</span>,
+    version: <span class="tok-string">&#39;1.0&#39;</span>
+});
 
-<span class="tok-keyword">function</span> clampScroll() {
-    <span class="tok-keyword">const</span> viewport = Math.max(<span class="tok-number">0</span>, window.Height - HEADER_HEIGHT - MARGIN);
-    <span class="tok-keyword">const</span> maxScroll = Math.max(<span class="tok-number">0</span>, contentHeight - viewport);
-    scrollY = Math.max(<span class="tok-number">0</span>, Math.min(scrollY, maxScroll));
-}
+<span class="tok-keyword">const</span> titleFont = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">16</span>, <span class="tok-number">1</span>);
+<span class="tok-keyword">const</span> textFont = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">11</span>, <span class="tok-number">0</span>);
 
-<span class="tok-keyword">function</span> streamCardHeight(stream) {
-    <span class="tok-keyword">return</span> CARD_PADDING * <span class="tok-number">2</span> + CARD_HEADER_HEIGHT + stream.info.InfoCount * INFO_LINE_HEIGHT;
-}
+<span class="tok-keyword">const</span> mainUrl = <span class="tok-keyword">import</span>.meta.url;
+<span class="tok-keyword">const</span> message = createMessage(<span class="tok-string">&#39;JSplitter&#39;</span>);
 
-<span class="tok-keyword">function</span> rebuildRows() {
-    rows = [];
-    <span class="tok-keyword">let</span> y = HEADER_HEIGHT + MARGIN;
+<span class="tok-keyword">let</span> width = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> height = <span class="tok-number">0</span>;
 
-    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> stream <span class="tok-keyword">of</span> streams) {
-        <span class="tok-keyword">const</span> height = streamCardHeight(stream);
-        rows.push({ index: stream.index, y, height });
-        y += height + CARD_GAP;
-    }
+globalThis.on_size = <span class="tok-keyword">function</span> () {
+    width = window.Width;
+    height = window.Height;
+};
 
-    contentHeight = Math.max(<span class="tok-number">0</span>, y - (HEADER_HEIGHT + MARGIN));
-    clampScroll();
-}
+globalThis.on_paint = <span class="tok-keyword">function</span> (gr) {
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, width, height, <span class="tok-number">0xff202124</span>);
 
-<span class="tok-keyword">function</span> refresh() {
-    handle = fb.GetFocusItem();
-    streams = [];
-    errorText = <span class="tok-string">&#39;&#39;</span>;
-    hoverIndex = -<span class="tok-number">1</span>;
-    scrollY = <span class="tok-number">0</span>;
+    gr.GdiDrawText(
+        <span class="tok-string">&#39;ES Modules&#39;</span>,
+        titleFont,
+        <span class="tok-number">0xfff1f3f4</span>,
+        <span class="tok-number">16</span>,
+        <span class="tok-number">14</span>,
+        Math.max(<span class="tok-number">0</span>, width - <span class="tok-number">32</span>),
+        <span class="tok-number">32</span>
+    );
 
-    <span class="tok-keyword">if</span> (handle) {
-        <span class="tok-keyword">try</span> {
-            streams = fb.GetAudioStreams(handle);
-        }
-        <span class="tok-keyword">catch</span> (e) {
-            errorText = e <span class="tok-keyword">instanceof</span> Error ? e.message : String(e);
-        }
-    }
+    gr.GdiDrawText(
+        message,
+        textFont,
+        <span class="tok-number">0xffd7dadc</span>,
+        <span class="tok-number">16</span>,
+        <span class="tok-number">56</span>,
+        Math.max(<span class="tok-number">0</span>, width - <span class="tok-number">32</span>),
+        <span class="tok-number">24</span>
+    );
 
-    rebuildRows();
-    window.Repaint();
-}
+    gr.GdiDrawText(
+        <span class="tok-string">&#39;main:   &#39;</span> + mainUrl + <span class="tok-string">&#39;\n&#39;</span> +
+        <span class="tok-string">&#39;helper: &#39;</span> + helperUrl + <span class="tok-string">&#39;\n\n&#39;</span> +
+        <span class="tok-string">&#39;The panel callbacks are assigned through globalThis.&#39;</span>,
+        textFont,
+        <span class="tok-number">0xffbdc1c6</span>,
+        <span class="tok-number">16</span>,
+        <span class="tok-number">92</span>,
+        Math.max(<span class="tok-number">0</span>, width - <span class="tok-number">32</span>),
+        Math.max(<span class="tok-number">0</span>, height - <span class="tok-number">108</span>)
+    );
+};
 
-<span class="tok-keyword">function</span> refreshStreamsOnly() {
-    <span class="tok-keyword">if</span> (!handle) <span class="tok-keyword">return</span>;
-
-    <span class="tok-keyword">try</span> {
-        streams = fb.GetAudioStreams(handle);
-        errorText = <span class="tok-string">&#39;&#39;</span>;
-    }
-    <span class="tok-keyword">catch</span> (e) {
-        streams = [];
-        errorText = e <span class="tok-keyword">instanceof</span> Error ? e.message : String(e);
-    }
-
-    rebuildRows();
-    window.Repaint();
-}
-
-<span class="tok-keyword">function</span> getRowAt(x, y) {
-    <span class="tok-keyword">if</span> (x &lt; MARGIN || x &gt;= window.Width - MARGIN) <span class="tok-keyword">return</span> <span class="tok-literal">null</span>;
-
-    <span class="tok-keyword">const</span> contentY = y + scrollY;
-    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> row <span class="tok-keyword">of</span> rows) {
-        <span class="tok-keyword">if</span> (contentY &gt;= row.y &amp;&amp; contentY &lt; row.y + row.height) {
-            <span class="tok-keyword">return</span> row;
-        }
-    }
-    <span class="tok-keyword">return</span> <span class="tok-literal">null</span>;
-}
-
-<span class="tok-keyword">function</span> drawHeader(gr) {
-    <span class="tok-keyword">const</span> title = handle ? tfTitle.EvalWithMetadb(handle) : <span class="tok-string">&#39;No focused item&#39;</span>;
-    gr.GdiDrawText(title, fontTitle, TEXT, MARGIN, <span class="tok-number">7</span>, Math.max(<span class="tok-number">0</span>, window.Width - MARGIN * <span class="tok-number">2</span>), <span class="tok-number">24</span>, <span class="tok-number">0x00000020</span> | <span class="tok-number">0x00008000</span>);
-}
-
-<span class="tok-keyword">function</span> drawMessage(gr, text, colour) {
-    gr.GdiDrawText(text, fontText, colour, MARGIN, HEADER_HEIGHT + MARGIN,
-        Math.max(<span class="tok-number">0</span>, window.Width - MARGIN * <span class="tok-number">2</span>), Math.max(<span class="tok-number">0</span>, window.Height - HEADER_HEIGHT - MARGIN * <span class="tok-number">2</span>),
-        <span class="tok-number">0x00000010</span>);
-}
-
-<span class="tok-keyword">function</span> drawStream(gr, stream, row) {
-    <span class="tok-keyword">const</span> x = MARGIN;
-    <span class="tok-keyword">const</span> y = row.y - scrollY;
-    <span class="tok-keyword">const</span> w = Math.max(<span class="tok-number">0</span>, window.Width - MARGIN * <span class="tok-number">2</span>);
-    <span class="tok-keyword">const</span> h = row.height;
-
-    <span class="tok-keyword">if</span> (y + h &lt; HEADER_HEIGHT || y &gt; window.Height) <span class="tok-keyword">return</span>;
-
-    <span class="tok-keyword">const</span> hovered = hoverIndex === stream.index;
-    <span class="tok-keyword">const</span> fill = stream.selected ? CARD_SELECTED : (hovered ? CARD_HOVER : CARD);
-    <span class="tok-keyword">const</span> border = stream.selected ? BORDER_SELECTED : BORDER;
-
-    gr.FillSolidRect(x, y, w, h, fill);
-    gr.DrawRect(x, y, w - <span class="tok-number">1</span>, h - <span class="tok-number">1</span>, <span class="tok-number">1</span>, border);
-
-    <span class="tok-keyword">let</span> flags = [];
-    <span class="tok-keyword">if</span> (stream.selected) flags.push(<span class="tok-string">&#39;selected&#39;</span>);
-    <span class="tok-keyword">if</span> (stream.<span class="tok-keyword">default</span>) flags.push(<span class="tok-string">&#39;default&#39;</span>);
-
-    <span class="tok-keyword">const</span> heading = <span class="tok-string">`Stream ${stream.index}${flags.length ? `</span>  [${flags.join(<span class="tok-string">&#39;, &#39;</span>)}]<span class="tok-string">` : &#39;&#39;}`</span>;
-    gr.GdiDrawText(heading, fontHeader, stream.selected ? TEXT_ACCENT : TEXT,
-        x + CARD_PADDING, y + CARD_PADDING, Math.max(<span class="tok-number">0</span>, w - CARD_PADDING * <span class="tok-number">2</span>), CARD_HEADER_HEIGHT,
-        <span class="tok-number">0x00000020</span> | <span class="tok-number">0x00008000</span>);
-
-    <span class="tok-keyword">let</span> infoY = y + CARD_PADDING + CARD_HEADER_HEIGHT;
-    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; stream.info.InfoCount; ++i) {
-        <span class="tok-keyword">const</span> name = stream.info.InfoName(i);
-        <span class="tok-keyword">const</span> value = stream.info.InfoValue(i);
-        gr.GdiDrawText(<span class="tok-string">`${name}: ${value}`</span>, fontSmall, TEXT_DIM,
-            x + CARD_PADDING, infoY, Math.max(<span class="tok-number">0</span>, w - CARD_PADDING * <span class="tok-number">2</span>), INFO_LINE_HEIGHT,
-            <span class="tok-number">0x00000020</span> | <span class="tok-number">0x00008000</span>);
-        infoY += INFO_LINE_HEIGHT;
-    }
-}
-
-<span class="tok-keyword">function</span> on_paint(gr) {
-    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, window.Width, window.Height, BG);
-    drawHeader(gr);
-
-    <span class="tok-keyword">if</span> (!handle) {
-        drawMessage(gr, <span class="tok-string">&#39;Focus a playlist item to inspect its audio streams.&#39;</span>, TEXT_DIM);
-        <span class="tok-keyword">return</span>;
-    }
-
-    <span class="tok-keyword">if</span> (errorText) {
-        drawMessage(gr, <span class="tok-string">`GetAudioStreams failed:\n${errorText}`</span>, ERROR);
-        <span class="tok-keyword">return</span>;
-    }
-
-    <span class="tok-keyword">if</span> (!streams.length) {
-        drawMessage(gr, <span class="tok-string">&#39;The input decoder does not expose selectable audio streams for this file.&#39;</span>, TEXT_DIM);
-        <span class="tok-keyword">return</span>;
-    }
-
-    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; streams.length; ++i) {
-        drawStream(gr, streams[i], rows[i]);
-    }
-}
-
-<span class="tok-keyword">function</span> on_mouse_move(x, y) {
-    <span class="tok-keyword">const</span> row = getRowAt(x, y);
-    <span class="tok-keyword">const</span> next = row ? row.index : -<span class="tok-number">1</span>;
-    <span class="tok-keyword">if</span> (next !== hoverIndex) {
-        hoverIndex = next;
-        window.Repaint();
-    }
-}
-
-<span class="tok-keyword">function</span> on_mouse_leave() {
-    <span class="tok-keyword">if</span> (hoverIndex !== -<span class="tok-number">1</span>) {
-        hoverIndex = -<span class="tok-number">1</span>;
-        window.Repaint();
-    }
-}
-
-<span class="tok-keyword">function</span> on_mouse_lbtn_up(x, y) {
-    <span class="tok-keyword">const</span> row = getRowAt(x, y);
-    <span class="tok-keyword">if</span> (!row || !handle) <span class="tok-keyword">return</span>;
-
-    <span class="tok-keyword">const</span> stream = streams.find(item =&gt; item.index === row.index);
-    <span class="tok-keyword">if</span> (!stream || stream.selected) <span class="tok-keyword">return</span>;
-
-    <span class="tok-keyword">try</span> {
-        fb.SetAudioStream(handle, stream.index);
-        refreshStreamsOnly();
-    }
-    <span class="tok-keyword">catch</span> (e) {
-        errorText = e <span class="tok-keyword">instanceof</span> Error ? e.message : String(e);
-        window.Repaint();
-    }
-}
-
-<span class="tok-keyword">function</span> on_mouse_wheel(step) {
-    scrollY -= step * SCROLL_STEP;
-    clampScroll();
-    window.Repaint();
-}
-
-<span class="tok-keyword">function</span> on_size() {
-    clampScroll();
-}
-
-<span class="tok-keyword">function</span> on_item_focus_change() {
-    refresh();
-}
-
-<span class="tok-keyword">function</span> on_playlist_switch() {
-    refresh();
-}
-
-refresh();
+console.log(<span class="tok-string">&#39;ES Modules sample loaded&#39;</span>, {
+    mainUrl: mainUrl,
+    helperUrl: helperUrl,
+    message: message
+});
 </code></pre></main>
     <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
 </body>

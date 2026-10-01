@@ -373,13 +373,13 @@ function on_mouse_wheel_h(step) { }
  * This callback belongs to the legacy NotifyOthers compatibility path. New code that needs asynchronous structured-clone messaging between panels and/or Workers should prefer {@link BroadcastChannel}.<br>
  * <br>
  * <b>!!! Beware !!!</b><br>
- * 1. Data from <b>info</b> argument is only accessible inside <b>on_notify_data</b> callback:
+ * 1. Data from <b>info</b> argument is only accessible inside {@link module:Callbacks.on_notify_data on_notify_data} callback:
  *    if stored and accessed outside of the callback it will throw JS error.<br>
- *    This also applies to the data produced from that <b>info</b>: e.g. storing <b>info.Path</b> directly (if <b>info</b> is FbMetadbHandle).<br>
+ *    This also applies to the data produced from that <b>info</b>: e.g. storing {@link FbMetadbHandle#Path info.Path} directly (if <b>info</b> is {@link FbMetadbHandle}).<br>
  * 2. If you want to store the data from <b>info</b> you have to perform a deep copy:<br>
  *    - <b>String(info)</b> for strings.<br>
  *    - <b>JSON.parse(JSON.stringify(info))</b> for serializable objects.<br>
- *    - <b>new ObjectType(info)</b> for objects that have an approppriate constructor available, e.g. <b>new GdiBitmap(info)</b> or <b>new FbMetadbHandleList(info)</b>.<br>
+ *    - <b>new ObjectType(info)</b> for objects that have an approppriate constructor available, e.g. {@link GdiBitmap} or {@link FbMetadbHandleList}.<br>
  * 3. <b>info</b> argument is shared between panels, so it should NOT be modified in any way.
  *
  * @memberof module:Callbacks

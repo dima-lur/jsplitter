@@ -210,7 +210,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Effects">
         <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><div class="nav-page-tree" data-nav-root="module:Flags">
+    </div><a class="nav-link" href="module-ESModules.html">ESModules</a><div class="nav-page-tree" data-nav-root="module:Flags">
         <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="module:Helpers">
@@ -257,6 +257,8 @@ window.DrawMode = drawMode;
 <span class="tok-keyword">const</span> BAR_GAP = <span class="tok-number">2</span>;
 <span class="tok-keyword">const</span> BAR_COLOUR = <span class="tok-number">0xFF42A5F5</span>;
 <span class="tok-keyword">const</span> SPECTRUM_TOP = <span class="tok-number">92</span>;
+<span class="tok-keyword">const</span> MIN_FREQUENCY = <span class="tok-number">30</span>;
+<span class="tok-keyword">const</span> MAX_FREQUENCY = <span class="tok-number">16000</span>;
 
 <span class="tok-keyword">const</span> DT_LEFT = <span class="tok-number">0x0000</span>;
 <span class="tok-keyword">const</span> DT_CENTER = <span class="tok-number">0x0001</span>;
@@ -280,10 +282,8 @@ window.DrawMode = drawMode;
 <span class="tok-keyword">let</span> frameWindowStart = performance.now();
 <span class="tok-keyword">let</span> paintWindowStart = frameWindowStart;
 
-<span class="tok-keyword">function</span> createSpectrumEngine(currentFftSize) {
+<span class="tok-keyword">function</span> createSpectrumEngine(currentFftSize, minFrequencyLimit, maxFrequencyLimit) {
     <span class="tok-keyword">const</span> FFT_SIZE = currentFftSize;
-    <span class="tok-keyword">const</span> FLOOR_LEVEL = <span class="tok-number">0.04</span>;
-    <span class="tok-keyword">const</span> IDLE_LEVEL = <span class="tok-number">0.015</span>;
     <span class="tok-keyword">let</span> bandCount = <span class="tok-number">1</span>;
     <span class="tok-keyword">let</span> bandSampleRate = <span class="tok-number">0</span>;
     <span class="tok-keyword">let</span> windowLength = <span class="tok-number">0</span>;
@@ -301,6 +301,8 @@ window.DrawMode = drawMode;
     <span class="tok-keyword">let</span> windowCoefficients = <span class="tok-keyword">new</span> Float64Array(<span class="tok-number">1</span>);
     <span class="tok-keyword">let</span> bandStart = <span class="tok-keyword">new</span> Int32Array(<span class="tok-number">1</span>);
     <span class="tok-keyword">let</span> bandEnd = <span class="tok-keyword">new</span> Int32Array(<span class="tok-number">1</span>);
+    <span class="tok-keyword">let</span> bandPosition0 = <span class="tok-keyword">new</span> Float64Array(<span class="tok-number">1</span>);
+    <span class="tok-keyword">let</span> bandPosition1 = <span class="tok-keyword">new</span> Float64Array(<span class="tok-number">1</span>);
 
     <span class="tok-keyword">function</span> ensureWindow(length) {
         length = Math.max(<span class="tok-number">1</span>, Math.min(FFT_SIZE, length | <span class="tok-number">0</span>));
@@ -370,8 +372,8 @@ window.DrawMode = drawMode;
         bandSampleRate = sampleRate;
 
         <span class="tok-keyword">const</span> nyquist = sampleRate * <span class="tok-number">0.5</span>;
-        <span class="tok-keyword">const</span> minFrequency = Math.min(<span class="tok-number">30</span>, nyquist * <span class="tok-number">0.5</span>);
-        <span class="tok-keyword">const</span> maxFrequency = Math.max(minFrequency + <span class="tok-number">1</span>, Math.min(<span class="tok-number">16000</span>, nyquist * <span class="tok-number">0.96</span>));
+        <span class="tok-keyword">const</span> minFrequency = Math.min(minFrequencyLimit, nyquist * <span class="tok-number">0.5</span>);
+        <span class="tok-keyword">const</span> maxFrequency = Math.max(minFrequency + <span class="tok-number">1</span>, Math.min(maxFrequencyLimit, nyquist * <span class="tok-number">0.96</span>));
         <span class="tok-keyword">const</span> ratio = maxFrequency / minFrequency;
         <span class="tok-keyword">const</span> half = FFT_SIZE &gt;&gt; <span class="tok-number">1</span>;
 
@@ -380,14 +382,19 @@ window.DrawMode = drawMode;
             <span class="tok-keyword">const</span> t1 = (band + <span class="tok-number">1</span>) / bandCount;
             <span class="tok-keyword">const</span> f0 = minFrequency * Math.pow(ratio, t0);
             <span class="tok-keyword">const</span> f1 = minFrequency * Math.pow(ratio, t1);
-            <span class="tok-keyword">const</span> bin0 = Math.max(<span class="tok-number">1</span>, Math.floor(f0 * FFT_SIZE / sampleRate));
-            <span class="tok-keyword">const</span> bin1 = Math.min(half + <span class="tok-number">1</span>, Math.max(bin0 + <span class="tok-number">1</span>, Math.ceil(f1 * FFT_SIZE / sampleRate)));
+            <span class="tok-keyword">const</span> fftScale = FFT_SIZE / sampleRate;
+            <span class="tok-keyword">const</span> binPosition0 = f0 * fftScale;
+            <span class="tok-keyword">const</span> binPosition1 = f1 * fftScale;
+            <span class="tok-keyword">const</span> bin0 = Math.max(<span class="tok-number">1</span>, Math.floor(binPosition0));
+            <span class="tok-keyword">const</span> bin1 = Math.min(half + <span class="tok-number">1</span>, Math.max(bin0 + <span class="tok-number">1</span>, Math.ceil(binPosition1)));
+            bandPosition0[band] = binPosition0;
+            bandPosition1[band] = binPosition1;
             bandStart[band] = bin0;
             bandEnd[band] = bin1;
         }
     }
 
-    <span class="tok-keyword">function</span> updateDynamics(dt, floorLevel) {
+    <span class="tok-keyword">function</span> updateDynamics(dt) {
         <span class="tok-keyword">const</span> attack = <span class="tok-number">1</span> - Math.exp(-dt / <span class="tok-number">0.018</span>);
         <span class="tok-keyword">const</span> release = <span class="tok-number">1</span> - Math.exp(-dt / <span class="tok-number">0.095</span>);
         <span class="tok-keyword">const</span> gravity = <span class="tok-number">3.0</span>;
@@ -397,7 +404,7 @@ window.DrawMode = drawMode;
             <span class="tok-keyword">const</span> target = targets[i];
             <span class="tok-keyword">let</span> level = smoothed[i] || <span class="tok-number">0</span>;
             level += (target - level) * (target &gt;= level ? attack : release);
-            level = Math.max(floorLevel, Math.min(<span class="tok-number">0.98</span>, level));
+            level = Math.max(<span class="tok-number">0</span>, Math.min(<span class="tok-number">0.98</span>, level));
             smoothed[i] = level;
 
             <span class="tok-keyword">let</span> peak = peaks[i] || <span class="tok-number">0</span>;
@@ -425,8 +432,8 @@ window.DrawMode = drawMode;
     <span class="tok-keyword">function</span> analyse(data, sampleCount, channels, sampleRate, available, dt) {
         <span class="tok-keyword">const</span> required = sampleCount * channels;
         <span class="tok-keyword">if</span> (!data || !sampleCount || !channels || !sampleRate || available &lt; required) {
-            targets.fill(IDLE_LEVEL);
-            updateDynamics(dt, IDLE_LEVEL);
+            targets.fill(<span class="tok-number">0</span>);
+            updateDynamics(dt);
             <span class="tok-keyword">return</span>;
         }
 
@@ -457,22 +464,39 @@ window.DrawMode = drawMode;
         }
 
         <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> band = <span class="tok-number">0</span>; band &lt; bandCount; ++band) {
-            <span class="tok-keyword">let</span> energy = <span class="tok-number">0</span>;
-            <span class="tok-keyword">const</span> bin0 = bandStart[band];
-            <span class="tok-keyword">const</span> bin1 = bandEnd[band];
+            <span class="tok-keyword">const</span> binPosition0 = bandPosition0[band];
+            <span class="tok-keyword">const</span> binPosition1 = bandPosition1[band];
+            <span class="tok-keyword">let</span> bandMagnitude = <span class="tok-number">0</span>;
 
-            <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> bin = bin0; bin &lt; bin1; ++bin) {
-                <span class="tok-keyword">const</span> magnitude = magnitudes[bin];
-                energy += magnitude * magnitude;
+            <span class="tok-keyword">if</span> (binPosition1 - binPosition0 &lt; <span class="tok-number">1</span>) {
+                <span class="tok-comment">// A logarithmic band can be narrower than a single FFT bin at low frequencies.</span>
+                <span class="tok-comment">// Interpolate the magnitude at the geometric centre of such a band instead,</span>
+                <span class="tok-comment">// preserving independent motion without increasing the FFT size.</span>
+                <span class="tok-keyword">const</span> centrePosition = Math.sqrt(binPosition0 * binPosition1);
+                <span class="tok-keyword">const</span> position = Math.max(<span class="tok-number">1</span>, Math.min(half, centrePosition));
+                <span class="tok-keyword">const</span> bin = Math.floor(position);
+                <span class="tok-keyword">const</span> nextBin = Math.min(half, bin + <span class="tok-number">1</span>);
+                <span class="tok-keyword">const</span> fraction = position - bin;
+                bandMagnitude = magnitudes[bin] + (magnitudes[nextBin] - magnitudes[bin]) * fraction;
+            } <span class="tok-keyword">else</span> {
+                <span class="tok-keyword">let</span> energy = <span class="tok-number">0</span>;
+                <span class="tok-keyword">const</span> bin0 = bandStart[band];
+                <span class="tok-keyword">const</span> bin1 = bandEnd[band];
+
+                <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> bin = bin0; bin &lt; bin1; ++bin) {
+                    <span class="tok-keyword">const</span> magnitude = magnitudes[bin];
+                    energy += magnitude * magnitude;
+                }
+
+                bandMagnitude = Math.sqrt(energy / Math.max(<span class="tok-number">1</span>, bin1 - bin0));
             }
 
-            <span class="tok-keyword">const</span> rms = Math.sqrt(energy / Math.max(<span class="tok-number">1</span>, bin1 - bin0));
-            <span class="tok-keyword">const</span> db = <span class="tok-number">20</span> * Math.log10(Math.max(<span class="tok-number">1e-12</span>, rms));
+            <span class="tok-keyword">const</span> db = <span class="tok-number">20</span> * Math.log10(Math.max(<span class="tok-number">1e-12</span>, bandMagnitude));
             <span class="tok-keyword">const</span> level = Math.max(<span class="tok-number">0</span>, Math.min(<span class="tok-number">1</span>, (db + <span class="tok-number">72</span>) / <span class="tok-number">72</span>));
-            targets[band] = Math.max(FLOOR_LEVEL, Math.min(<span class="tok-number">0.98</span>, level));
+            targets[band] = Math.min(<span class="tok-number">0.98</span>, level);
         }
 
-        updateDynamics(dt, FLOOR_LEVEL);
+        updateDynamics(dt);
     }
 
     <span class="tok-keyword">function</span> makeSpectrumFrame() {
@@ -484,8 +508,8 @@ window.DrawMode = drawMode;
         <span class="tok-keyword">const</span> frame = outputFrame;
         <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; bandCount; ++i) {
             <span class="tok-keyword">const</span> at = i * <span class="tok-number">2</span>;
-            frame[at] = smoothed[i] || FLOOR_LEVEL;
-            frame[at + <span class="tok-number">1</span>] = peaks[i] || FLOOR_LEVEL;
+            frame[at] = smoothed[i];
+            frame[at + <span class="tok-number">1</span>] = peaks[i];
         }
         <span class="tok-keyword">return</span> frame;
     }
@@ -504,6 +528,8 @@ window.DrawMode = drawMode;
             peakHold = <span class="tok-keyword">new</span> Float64Array(bandCount);
             bandStart = <span class="tok-keyword">new</span> Int32Array(bandCount);
             bandEnd = <span class="tok-keyword">new</span> Int32Array(bandCount);
+            bandPosition0 = <span class="tok-keyword">new</span> Float64Array(bandCount);
+            bandPosition1 = <span class="tok-keyword">new</span> Float64Array(bandCount);
             bandSampleRate = <span class="tok-number">0</span>;
             outputFrame = <span class="tok-literal">null</span>;
         },
@@ -577,7 +603,7 @@ const TARGET_FPS = ${TARGET_FPS};
 const FRAME_TIME = 1000 / TARGET_FPS;
 const UNCAPPED = ${uncapped};
 const createSpectrumEngine = ${createSpectrumEngine.toString()};
-const engine = createSpectrumEngine(${currentFftSize});
+const engine = createSpectrumEngine(${currentFftSize}, ${MIN_FREQUENCY}, ${MAX_FREQUENCY});
 
 let configured = false;
 let waitingForPanel = false;
@@ -747,7 +773,7 @@ onmessage = function (event) {
             <span class="tok-keyword">if</span> (worker === currentWorker) console.log(<span class="tok-string">`Worker error: ${event.message}`</span>);
         };
     } <span class="tok-keyword">else</span> {
-        mainEngine = createSpectrumEngine(fftSize);
+        mainEngine = createSpectrumEngine(fftSize, MIN_FREQUENCY, MAX_FREQUENCY);
     }
 
     sendSize();
@@ -835,15 +861,19 @@ onmessage = function (event) {
 
     <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; count; ++i) {
         <span class="tok-keyword">const</span> x = firstX + i * (barWidth + BAR_GAP);
-        <span class="tok-keyword">const</span> level = spectrumFrame[i * <span class="tok-number">2</span>] || <span class="tok-number">0.04</span>;
-        <span class="tok-keyword">const</span> peak = spectrumFrame[i * <span class="tok-number">2</span> + <span class="tok-number">1</span>] || <span class="tok-number">0.04</span>;
-        <span class="tok-keyword">const</span> barHeight = Math.max(<span class="tok-number">1</span>, level * usableHeight);
-        <span class="tok-keyword">const</span> y = plotBottom - barHeight;
+        <span class="tok-keyword">const</span> level = spectrumFrame[i * <span class="tok-number">2</span>] || <span class="tok-number">0</span>;
+        <span class="tok-keyword">const</span> peak = spectrumFrame[i * <span class="tok-number">2</span> + <span class="tok-number">1</span>] || <span class="tok-number">0</span>;
+        <span class="tok-keyword">const</span> barHeight = level * usableHeight;
 
-        gr.FillSolidRect(x, y, barWidth, barHeight, BAR_COLOUR);
+        <span class="tok-keyword">if</span> (barHeight &gt; <span class="tok-number">0</span>) {
+            <span class="tok-keyword">const</span> y = plotBottom - barHeight;
+            gr.FillSolidRect(x, y, barWidth, barHeight, BAR_COLOUR);
+        }
 
-        <span class="tok-keyword">const</span> peakY = plotBottom - peak * usableHeight;
-        gr.DrawLine(x, peakY, x + barWidth - <span class="tok-number">1</span>, peakY, <span class="tok-number">1</span>, <span class="tok-number">0xFFE8EDF2</span>);
+        <span class="tok-keyword">if</span> (peak &gt; <span class="tok-number">0</span>) {
+            <span class="tok-keyword">const</span> peakY = plotBottom - peak * usableHeight;
+            gr.DrawLine(x, peakY, x + barWidth - <span class="tok-number">1</span>, peakY, <span class="tok-number">1</span>, <span class="tok-number">0xFFE8EDF2</span>);
+        }
     }
 }
 

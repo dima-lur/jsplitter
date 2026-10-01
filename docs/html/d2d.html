@@ -210,7 +210,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Effects">
         <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><div class="nav-page-tree" data-nav-root="module:Flags">
+    </div><a class="nav-link" href="module-ESModules.html">ESModules</a><div class="nav-page-tree" data-nav-root="module:Flags">
         <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
         <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="module:Helpers">
@@ -492,7 +492,7 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
         </header>
         <pre class="signature"><code>Font(name, size_px, style)</code></pre>
         
-        <div class="description"><p>Performance note: avoid using inside <b>on_paint</b>.<br> Performance note II: try caching and reusing <b>D2DFont</b> objects, since the maximum amount of such objects is hard-limited by Windows. <b>D2DFont</b> creation will fail after reaching this limit.</p></div>
+        <div class="description"><p>Performance note: avoid using inside <a href="module-Callbacks.html#on_paint">on_paint</a>.<br> Performance note II: try caching and reusing <a href="D2DFont.html#D2DFont">D2DFont</a> objects, since the maximum amount of such objects is hard-limited by Windows. <a href="D2DFont.html#D2DFont">D2DFont</a> creation will fail after reaching this limit.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -696,7 +696,7 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
         </header>
         <pre class="signature"><code>StrokeStyle(options)</code></pre>
         
-        <div class="description"><p>Creates a reusable Direct2D stroke style for line and outline drawing.<br> The style controls start/end/dash caps, line joins, miter limit, dash pattern and dash offset.<br> Performance note: create commonly used styles once and reuse them from <b>on_paint</b>.<br><div class="doc-note"><b>Dotted strokes:</b> when <b>dashCap</b> is omitted, <b>DashStyle.Dot</b>, <b>DashStyle.DashDot</b> and <b>DashStyle.DashDotDot</b> automatically use <b>CapStyle.Round</b>. This makes <b>d2d.StrokeStyle({ dashStyle: DashStyle.Dot })</b> match the <b>DashStyle.Dot</b> drawing-method shorthand. An explicitly supplied <b>dashCap</b> is preserved, including <b>CapStyle.Flat</b>. See <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_dash_style" target="_blank" rel="noreferrer">Microsoft: D2D1_DASH_STYLE</a> and <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_cap_style" target="_blank" rel="noreferrer">Microsoft: D2D1_CAP_STYLE</a>.</div></p></div>
+        <div class="description"><p>Creates a reusable Direct2D stroke style for line and outline drawing.<br> The style controls start/end/dash caps, line joins, miter limit, dash pattern and dash offset.<br> Performance note: create commonly used styles once and reuse them from <a href="module-Callbacks.html#on_paint">on_paint</a>.<br><div class="doc-note"><b>Dotted strokes:</b> when <b>dashCap</b> is omitted, <b>DashStyle.Dot</b>, <b>DashStyle.DashDot</b> and <b>DashStyle.DashDotDot</b> automatically use <b>CapStyle.Round</b>. This makes <b>d2d.StrokeStyle({ dashStyle: DashStyle.Dot })</b> match the <b>DashStyle.Dot</b> drawing-method shorthand. An explicitly supplied <b>dashCap</b> is preserved, including <b>CapStyle.Flat</b>. See <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_dash_style" target="_blank" rel="noreferrer">Microsoft: D2D1_DASH_STYLE</a> and <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_cap_style" target="_blank" rel="noreferrer">Microsoft: D2D1_CAP_STYLE</a>.</div></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
