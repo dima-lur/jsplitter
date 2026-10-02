@@ -219,7 +219,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -237,7 +237,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#ArtPromiseResult">ArtPromiseResult</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2860</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2880</div>
         </header>
         
         
@@ -265,7 +265,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#AudioStreamInfo">AudioStreamInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:502</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:505</div>
         </header>
         
         
@@ -381,7 +381,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#D2DStrokeStyleOptions">D2DStrokeStyleOptions</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:613</div>
+            <div class="source-location">js/d2d.js:617</div>
         </header>
         
         
@@ -409,7 +409,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#Error">Error</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7988</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:8030</div>
         </header>
         
         
@@ -462,7 +462,7 @@
         </header>
         <pre class="signature"><code>include(path, options)</code></pre>
         
-        <div class="description"><p>Evaluates JavaScript from a file in the current panel or Worker realm.<br> Similar to <b>eval(<a href="utils.html#ReadTextFile">utils.ReadTextFile</a>(path))</b>, but provides more features:<br> - Has <b>include guards</b> - a file is evaluated only once per realm unless <b>always_evaluate</b> is used.<br> - Panel-side includes also use compiled-script caching; Worker includes keep their own per-Worker include guard.<br> - Has better error reporting.<br> <br> Relative paths are resolved from the currently executing script file first when available.<br> For a file-backed Worker, this makes its own directory the natural root for nested relative <a href="globals.html#include">include</a> calls.<br> Configured panel/package script roots are then considered where applicable.<br> <b>${fb.ComponentPath}</b> is the final fallback.</p></div>
+        <div class="description"><p>Evaluates JavaScript from a file in the current panel or Worker realm.<br> Similar to <b>eval(<a href="utils.html#ReadTextFile">utils.ReadTextFile</a>(path))</b>, but provides more features:<br> - Has <b>include guards</b> - a file is evaluated only once per realm unless <b>always_evaluate</b> is used.<br> - Panel-side includes also use compiled-script caching; Worker includes keep their own per-Worker include guard.<br> - Has better error reporting.<br> <br> Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>. The currently executing script file is tried first when available.<br> For a file-backed Worker, this makes its own directory the natural root for nested relative <a href="globals.html#include">include</a> calls.<br> Configured panel/package script roots are then considered where applicable.<br> <b>${fb.ComponentPath}</b> is the final fallback.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -490,7 +490,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#JsMemoryStats">JsMemoryStats</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4645</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4667</div>
         </header>
         
         
@@ -518,7 +518,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#JsPackageDirs">JsPackageDirs</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3027</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3049</div>
         </header>
         
         
@@ -546,7 +546,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#JsPackageInfo">JsPackageInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3037</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3059</div>
         </header>
         
         
@@ -574,7 +574,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#JsWorkerMemoryStats">JsWorkerMemoryStats</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4627</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4649</div>
         </header>
         
         
@@ -747,18 +747,19 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#ScriptInfo">ScriptInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4726</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4748</div>
         </header>
         
         
-        <div class="description"><p>Return value of <a href="window.html#ScriptInfo">window.ScriptInfo</a>.<br> Note: package_id is only present when the panel script is a package.</p></div>
+        <div class="description"><p>Return value of <a href="window.html#ScriptInfo">window.ScriptInfo</a>.<br> <b>PackageId</b> is only present when the panel script is an SMP package.</p>
+<p><b>Path</b> is always present. It contains the full native filesystem path of the panel's main script: the selected file for a File script, the sample file in the component folder for a Sample script, or the actual entry file for a package (main.js for an SMP package). For a script stored in panel memory, it is an empty string. This is a filesystem path, not a file URL. The value always identifies the main script, including when read from an included file or an imported module. Relative filesystem paths used by supported methods are resolved from the calling file as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>; they do not necessarily use the directory of <b>Path</b>.</p></div>
         
         
         <section class="member-section">
             <h3>Properties</h3>
             <div class="table-wrap"><table>
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr id="ScriptInfo.Name"><td><code>Name</code></td><td><code>string</code></td><td></td></tr><tr id="Author"><td><code>Author</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td></td></tr><tr id="ScriptInfo.Version"><td><code>Version</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td></td></tr><tr id="PackageId"><td><code>PackageId</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td></td></tr></tbody>
+                <tbody><tr id="ScriptInfo.Name"><td><code>Name</code></td><td><code>string</code></td><td></td></tr><tr id="Path"><td><code>Path</code></td><td><code>string</code></td><td><p>Full native filesystem path of the main script, or an empty string for an in-memory script.</p></td></tr><tr id="Author"><td><code>Author</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td></td></tr><tr id="ScriptInfo.Version"><td><code>Version</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td></td></tr><tr id="PackageId"><td><code>PackageId</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td></td></tr></tbody>
             </table></div>
         </section>
         
@@ -843,7 +844,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#SystemInfo">SystemInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2454</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2473</div>
         </header>
         
         
@@ -871,7 +872,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#SystemMemoryInfo">SystemMemoryInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2425</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2444</div>
         </header>
         
         
@@ -899,7 +900,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#SystemVideoMemoryInfo">SystemVideoMemoryInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2437</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2456</div>
         </header>
         
         

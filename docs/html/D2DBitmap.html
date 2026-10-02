@@ -219,7 +219,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -858,13 +858,14 @@ console.log(toRGB(colours[<span class="tok-number">0</span>].col)); <span class=
         </header>
         <pre class="signature"><code>SaveAs(path, format)</code></pre>
         
-        <div class="description"></div>
+        <div class="description"><p>Saves the bitmap to an image file.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>path</code></td><td><code>string</code></td><td><p>Full path including file extension. The parent folder must already exist.</p></td></tr><tr><td><code>format = &#39;image/png&#39;</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>"image/png"<br> "image/bmp"<br> "image/jpeg"<br> "image/gif"<br> "image/tiff"</p></td></tr></tbody>
+                <tbody><tr><td><code>path</code></td><td><code>string</code></td><td><p>Absolute or script-relative file path including file extension. The parent folder must already exist.</p></td></tr><tr><td><code>format = &#39;image/png&#39;</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>"image/png"<br> "image/bmp"<br> "image/jpeg"<br> "image/gif"<br> "image/tiff"</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -893,7 +894,7 @@ console.log(toRGB(colours[<span class="tok-number">0</span>].col)); <span class=
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#StackBlur">StackBlur</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:265</div>
+            <div class="source-location">js/d2d.js:269</div>
         </header>
         <pre class="signature"><code>StackBlur(radius)</code></pre>
         

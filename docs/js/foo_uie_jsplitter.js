@@ -9,7 +9,7 @@
  * - Panel-side includes also use compiled-script caching; Worker includes keep their own per-Worker include guard.<br>
  * - Has better error reporting.<br>
  * <br>
- * Relative paths are resolved from the currently executing script file first when available.<br>
+ * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. The currently executing script file is tried first when available.<br>
  * For a file-backed Worker, this makes its own directory the natural root for nested relative {@link include} calls.<br>
  * Configured panel/package script roots are then considered where applicable.<br>
  * <b>${fb.ComponentPath}</b> is the final fallback.
@@ -202,8 +202,8 @@ let console = {
 /**
  * Controls the main foobar2000 application window.
  * 
- * <b>Global state:</b> every JSplitter panel accesses the same native foobar2000 window through {@link fb.Window}</b>.
- * Window geometry {@link FbWindow#X X}, {@link FbWindow#Y Y}, {@link FbWindow#Width Width}, {@link FbWindow#Height Height}, the numeric {@link FbWindow#MinWidth MinWidth}, {@link FbWindow#MinHeight MinHeight}, {@link FbWindow#MaxWidth MaxWidth}, {@link FbWindow#MaxHeight MaxHeight}, and the numeric pseudo-caption rectangle defined by {@link FbWindow#SetPseudoCaption SetPseudoCaption} are global host state.
+ * <b>Global state:</b> every JSplitter panel accesses the same native foobar2000 window through {@link fb.Window}.
+ * Window geometry {@link FbWindow#X X}, {@link FbWindow#Y Y}, {@link FbWindow#Width Width}, {@link FbWindow#Height Height}, the numeric {@link FbWindow#MinWidth MinWidth}, {@link FbWindow#MinHeight MinHeight}, {@link FbWindow#MaxWidth MaxWidth}, {@link FbWindow#MaxHeight MaxHeight} are global host state.
  * These numeric values are not automatically restored when a panel reloads or unloads.
  * 
  * Window UI settings such as {@link FbWindow#FrameStyle FrameStyle},
@@ -211,7 +211,7 @@ let console = {
  * {@link FbWindow#MainMenuHidden MainMenuHidden},
  * {@link FbWindow#StatusBarHidden StatusBarHidden},
  * {@link FbWindow#MinSize MinSize},
- * {@link FbWindow#MaxSize MaxSize}, and pseudo-caption activation are tracked per panel. The most recent explicit assignment made by any live panel becomes the effective global value.
+ * {@link FbWindow#MaxSize MaxSize}, and pseudo-caption activation, rectangle, and double-click option defined by {@link FbWindow#SetPseudoCaption SetPseudoCaption} are tracked per panel. The most recent explicit assignment made by any live panel becomes the effective global value.
  * When that panel reloads or unloads, its request is removed and the previous request from another
  * live panel, if any, becomes effective again.
  *
@@ -471,30 +471,33 @@ function FbWindow() {
     this.MoveStart = function () { };
 
     /**
-     * Defines a rectangular pseudo-caption area for the main foobar2000 window. Pressing the left mouse button anywhere inside this area starts the native Windows move operation, including when the pointer is over a child window such as a JSplitter panel.
+     * Defines a rectangular pseudo-caption area for the main foobar2000 window. Pressing the left mouse button inside this area starts the native Windows move operation, including when the pointer is over a child window such as a JSplitter panel.
      * This provides a persistent alternative to calling {@link FbWindow#MoveStart MoveStart} from a mouse callback and is especially useful with {@link FbWindow#FrameStyle FrameStyle} set to {@link module:Flags.FrameStyle FrameStyle.NoCaption} or {@link module:Flags.FrameStyle FrameStyle.NoBorder}.
-     * 
-     * The coordinates are pixel offsets from the top-left corner of the outer main-window rectangle. Calling this method again replaces the stored global rectangle and enables pseudo-caption for the current panel. The rectangle values remain stored globally, but the active request belongs to the panel and is automatically removed when that panel reloads or unloads. If another live panel has an active pseudo-caption request, it becomes effective again using the current stored rectangle.
-     * 
-     * With {@link module:Flags.FrameStyle FrameStyle.NoBorder}, resize edges take precedence over the pseudo-caption area. The pseudo-caption does not start a move operation while the main window is fullscreen or maximized. A left click inside the rectangle is consumed for window dragging, so interactive controls should not be placed inside it.
-     * 
-     * To unset pseudo-caption use {@link FbWindow#ClearPseudoCaption ClearPseudoCaption}
+     *
+     * The coordinates are pixel offsets from the top-left corner of the outer main-window rectangle. The rectangle, activation request, and <b>maximize_on_dblclk</b> option belong to the current panel. The most recent explicit request made by any live panel becomes effective globally. Calling this method again replaces that panel's rectangle and option and enables its request. When the panel reloads or unloads, its request and settings are removed; the previous live panel's request becomes effective again with its own rectangle and option.
+     *
+     * With <b>maximize_on_dblclk</b> set to <b>true</b>, a left-button double-click inside the area automatically maximizes a normal window or restores a maximized window, using the same native commands as {@link FbWindow#Maximize Maximize} and {@link FbWindow#Restore Restore}. The handled double-click is consumed and is not delivered to the underlying panel's {@link module:Callbacks.on_mouse_lbtn_dblclk on_mouse_lbtn_dblclk} callback. The default is <b>false</b>, which preserves script-defined double-click handling.
+     *
+     * With {@link module:Flags.FrameStyle FrameStyle.NoBorder}, resize edges take precedence over both dragging and automatic double-click handling. Dragging is inactive while the main window is fullscreen or maximized. Automatic maximize/restore is inactive in fullscreen mode. A left click used to start dragging is consumed, so interactive controls should not be placed inside the rectangle.
+     *
+     * To disable the current panel's request, use {@link FbWindow#ClearPseudoCaption ClearPseudoCaption}.
      *
      * @param {number} x Horizontal offset from the left edge of the outer main-window rectangle.
      * @param {number} y Vertical offset from the top edge of the outer main-window rectangle.
      * @param {number} width Width of the pseudo-caption rectangle. Must be greater than 0.
      * @param {number} height Height of the pseudo-caption rectangle. Must be greater than 0.
+     * @param {boolean=} [maximize_on_dblclk=false] Enable automatic maximize/restore on a left-button double-click inside the area.
      * @throws {Error} If <b>width</b> or <b>height</b> is not greater than 0.
      *
      * @example
      * fb.Window.FrameStyle = FrameStyle.NoBorder;
-     * fb.Window.SetPseudoCaption(8, 8, 400, 32);
+     * fb.Window.SetPseudoCaption(8, 8, 400, 32, true);
      */
-    this.SetPseudoCaption = function (x, y, width, height) { };
+    this.SetPseudoCaption = function (x, y, width, height, maximize_on_dblclk) { };
 
     /**
-     * Removes the current panel's pseudo-caption request previously enabled by {@link FbWindow#SetPseudoCaption SetPseudoCaption}.
-     * The stored rectangle coordinates are not cleared. The request is also removed automatically when the panel reloads or unloads; if another live panel has an active request, pseudo-caption remains enabled.
+     * Disables the current panel's pseudo-caption request previously enabled by {@link FbWindow#SetPseudoCaption SetPseudoCaption}. The most recent explicit request now disables the effective global pseudo-caption. Calling {@link FbWindow#SetPseudoCaption SetPseudoCaption} enables it again.
+     * The request and its stored settings are removed automatically when the panel reloads or unloads. The previous live panel's request, if any, then becomes effective again with its own rectangle and double-click option.
      */
     this.ClearPseudoCaption = function () { };
 }
@@ -689,6 +692,9 @@ let fb = {
     /**
      * Converts one or more paths to a list of metadb_handles.<br>
      * The function returns immediately; specified callback {@link module:Callbacks.on_locations_added on_locations_added} receives results when the operation has completed.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. URLs and foobar2000 URI paths are passed through unchanged. Each filesystem location is resolved before the asynchronous operation starts.
+     *
      * @param {Array<string>} locations must be an array of strings and it can contain file paths, playlists or urls.
      * @return {number} task id (see first parameter of {@link module:Callbacks.on_locations_added on_locations_added})
      * 
@@ -1387,6 +1393,9 @@ let fb = {
 
     /**
      * Opens the image viewer built in to <b>foobar2000</b>. Pass an image file path, or an {@link FbMetadbHandle}; with a handle, {@link module:Flags.AlbumArtId AlbumArtId} defaults to <b>AlbumArtId.front</b>. Album art is resolved by foobar2000 and may be embedded or external.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. This applies to the image-file argument; track handles use foobar2000 artwork lookup.
+     *
      * @param {(string|FbMetadbHandle)} image_path_or_handle Image file path or track handle.
      * @param {AlbumArtId=} [art_id=AlbumArtId.front] Album art type. Used only when the first argument is an {@link FbMetadbHandle}.
      * @throws {Error} If the track handle is invalid, the foobar2000 image viewer API is unavailable, or an image file path cannot be read.
@@ -1556,6 +1565,8 @@ let gdi = {
      * Performance note: consider using {@link gdi.LoadImageAsync} or {@link gdi.LoadImageAsyncV2} if there are a lot of images to load
      * or if the image is big.
      *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} path
      * @return {?GdiBitmap} null, if image failed to load.
      *
@@ -1567,6 +1578,8 @@ let gdi = {
 
     /**
      * Load image from file asynchronously.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {number} window_id unused
      * @param {string} path
@@ -1582,6 +1595,8 @@ let gdi = {
      * Load image from file asynchronously.
      * Returns a <b>Promise</b> object, which will be resolved when image loading is done.
      *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {number} window_id unused
      * @param {string} path
      * @return {Promise.<?GdiBitmap>}
@@ -1594,6 +1609,8 @@ let gdi = {
 
     /**
      * Loads rasterized image from SVG file or XML string
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. Raw SVG/XML strings are used as-is.
      *
      * @param {string} path_or_xml string containing SVG file path or raw XML
      * @param {number=} [max_width=0] If specified rasterizes with width = max_width and height according to the proportions, otherwise uses "width" and "height" attributes in SVG header if exist
@@ -1688,6 +1705,8 @@ let plman = {
 
     /**
      * This operation is asynchronous and may take some time to complete if it's a large array.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. URLs and foobar2000 URI paths are passed through unchanged. Each filesystem location is resolved before the asynchronous operation starts.
      *
      * @param {number} playlistIndex
      * @param {Array<string>} paths An array of files/URLs
@@ -2755,7 +2774,7 @@ let utils = {
     /**
      * Opens system file picker dialog window
      *
-     * Relative <b>defaultPath</b> values are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string=} [title=undefined] Title of dialog. If empty it will be the title by system default
      * @param {string=} [default_path=undefined] Default file path to choose. If only path without file name is specified it will open specified folder
@@ -2773,10 +2792,11 @@ let utils = {
      * Deprecated: use {@link utils.DetectCharset}, {@link utils.FileExists}, {@link utils.GetFileSize},
      * {@link utils.IsDirectory}, {@link utils.IsFile} and {@link utils.SplitFilePath} instead.
      *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. This applies only to modes that access the filesystem; <b>split</b> only splits the supplied path string.
+     *
      * @throws {Error} If <b>mode</b> is not one of the supported values.
      * @deprecated
      * 
-     * For modes that access the filesystem, relative paths are resolved as described in {@link utils.ReadTextFile}; <b>split</b> remains purely lexical.
      *
      * @param {string} path
      * @param {string} mode
@@ -2799,7 +2819,7 @@ let utils = {
     /**
      * Opens system folder picker dialog window
      *
-     * Relative <b>defaultPath</b> values are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {string=} [title=undefined] Title of dialog. If empty it will be the title by system default
      * @param {string=} [default_path=undefined] Default folder path to choose
@@ -2885,6 +2905,8 @@ let utils = {
      * Load embedded art image for the track.<br>
      * <br>
      * Performance note: consider using {@link utils.GetAlbumArtAsync} or {@link utils.GetAlbumArtAsyncV2} if there are a lot of images to load.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. URLs and foobar2000 URI paths are passed through unchanged.
      *
      * @param {string} rawpath Path to track file
      * @param {number=} [art_id=0] See {@link module:Flags.AlbumArtId AlbumArtId} enum
@@ -3583,7 +3605,7 @@ let utils = {
      * For large files, consider {@link utils.OpenBinaryReader}; it reads incrementally into a reusable caller-provided buffer instead of allocating one typed array for the whole file.
      * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
-     * @param {string} path Absolute file path
+     * @param {string} path Absolute or script-relative file path.
      * @returns {Uint8Array} File bytes, or null if was an error
      * 
      * @sourceFile ../../component/samples/basic/CreateImageFromPixelData.js
@@ -3613,7 +3635,7 @@ let utils = {
      * This method uses ShellExecuteEx, so it supports shell verbs, file associations, URLs, and elevation through "runas".<br>
      * Unlike {@link utils.RunCmdAsync RunCmdAsync}, this method does not capture stdout or stderr and does not provide timeout handling.<br>
      * If wait is true, the call blocks until the launched process exits, when a process handle is available.<br>
-     * Relative <b>working_dir</b> values are resolved as described in {@link utils.ReadTextFile}. The <b>target</b> argument is not path-resolved.<br>
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. This applies only to <b>working_dir</b>; <b>target</b> is not path-resolved.<br>
      *
      * @param {string} target
      * File, executable, URL, or document to run/open.<br>
@@ -3700,7 +3722,7 @@ let utils = {
      * Use the returned task id to match the result with the original RunCmdAsync call.<br>
      * If the process does not finish before timeout_ms, the whole process tree is terminated.<br>
      * Pass 0 as timeout_ms to wait indefinitely.<br>
-     * Relative <b>working_dir</b> values are resolved as described in {@link utils.ReadTextFile}. The <b>app</b> argument is not path-resolved.<br>
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. This applies only to <b>working_dir</b>; <b>app</b> is not path-resolved.<br>
      *
      * @param {string} app
      * Full path or executable name to run.<br>
@@ -3843,7 +3865,7 @@ let utils = {
      * For large output, consider {@link utils.OpenBinaryWriter}; it writes incrementally from a reusable caller-provided buffer.
      * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
-     * @param {string} path Absolute file path
+     * @param {string} path Absolute or script-relative file path.
      * @param {Uint8Array} data Bytes to write
      * @returns {boolean} true on success
      * @throws {Error} If <b>data</b> is not a <b>Uint8Array</b>.
@@ -4724,18 +4746,22 @@ let window = {
     Name: undefined, // (string) (read)
 
     /**
-    * Return value of {@link window.ScriptInfo}.<br>
-    * Note: package_id is only present when the panel script is a package.
-    * 
+     * Return value of {@link window.ScriptInfo}.<br>
+     * <b>PackageId</b> is only present when the panel script is an SMP package.
+     *
+     * <b>Path</b> is always present. It contains the full native filesystem path of the panel's main script: the selected file for a File script, the sample file in the component folder for a Sample script, or the actual entry file for a package (main.js for an SMP package). For a script stored in panel memory, it is an empty string. This is a filesystem path, not a file URL.
+     * The value always identifies the main script, including when read from an included file or an imported module. Relative filesystem paths used by supported methods are resolved from the calling file as described in {@link utils.ReadTextFile}; they do not necessarily use the directory of <b>Path</b>.
+     *
     * @typedef {Object} ScriptInfo
     * @property {string} Name
+    * @property {string} Path Full native filesystem path of the main script, or an empty string for an in-memory script.
     * @property {string} [Author]
     * @property {string} [Version]
     * @property {string} [PackageId]
     */
 
     /**
-     * Information about the panel script.
+     * Information about the panel's main script. The <b>Path</b> property contains its full native filesystem path, or an empty string for an in-memory script. See {@link ScriptInfo} for all properties and source types.
      *
      * @type {ScriptInfo}
      * @readonly
@@ -4820,6 +4846,9 @@ let window = {
 
     /**
      * Exports all current panel properties set by {@link window.SetProperty} to file
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} fileName
      * @return {boolean} If false, then an error occurred during export
      */
@@ -4922,6 +4951,9 @@ let window = {
     /**
      * Imports panel properties from file and (optionally) reloads the panel script<br>
      * DOES clear all existing panel properties.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} fileName
      * @param {boolean=} [reload_panel=false] If true, reloads panel script
      * @return {boolean} If false, then an error occurred during import. Also, if an error occurs during import, the panel does not reload.
@@ -5529,6 +5561,8 @@ function FbMetadbHandleList(arg) {
      * Any existing artwork of the specified type will be overwritten!<br>
      * Embedding covers is an asynchronous operation, so its result is not controlled here in any way. However, all the work of the method up to this point (reading file, creating art data) will return false in case of an error.
      *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. URLs and foobar2000 URI paths are passed through unchanged.
+     *
      * @param {string} image_path path to an existing image
      * @param {AlbumArtId=} [art_id=AlbumArtId.front] See {@link module:Flags.AlbumArtId AlbumArtId}
      * @return {boolean} Returns false if any error occurred before the embedding started, otherwise true
@@ -5848,6 +5882,10 @@ function FbMetadbHandleList(arg) {
     this.Shuffle = function() { },
 
     /**
+     * Saves the handle list as a playlist. The output format is selected by foobar2000 from the filename extension.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. URLs and foobar2000 URI paths are passed through unchanged.
+     *
      * @param {string} path
      *
      * @worker
@@ -6501,7 +6539,11 @@ function GdiBitmap(arg) {
     this.RotateFlip = function (mode) { }; // (void)
 
     /**
-     * @param {string} path Full path including file extension. The parent folder must already exist.
+     * Saves the bitmap to an image file.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
+     * @param {string} path Absolute or script-relative file path including file extension. The parent folder must already exist.
      * @param {string=} [format='image/png']
      *      "image/png"<br>
      *      "image/bmp"<br>
