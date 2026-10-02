@@ -28,7 +28,7 @@
  * <li><b>new Worker({ file: 'path/to/worker.js' }[, name])</b> — reads and evaluates a JavaScript file.</li>
  * </ul>
  *
- * In the file-backed form, <b>file</b> may be an absolute or relative path. Relative paths use the caller/package/component search roots, and the resolved file becomes the Worker's startup script origin. 
+ * In the file-backed form, <b>file</b> may be an absolute or relative path. Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. The caller/package/component search roots are considered, and the resolved file becomes the Worker's startup script origin. 
  * 
  * The optional second <b>name</b> argument has the same meaning in both startup forms: it is the Worker's immutable identity for its lifetime. Supply it when the Worker is created; inside the Worker the same value is exposed through read-only {@link WorkerGlobalScope#name self.name}. JSplitter also uses this exact name in {@link window.JsMemoryStats} (<b>Workers[].Name</b>) and as the first diagnostic metadata line of every unhandled Worker exception (see below). Giving long-lived or multiple concurrent Workers short descriptive names therefore makes both memory inspection and failures much easier to identify.
  *

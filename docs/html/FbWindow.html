@@ -219,7 +219,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -236,8 +236,8 @@
         
         
         <div class="description"><p>Controls the main foobar2000 application window.</p>
-<p><b>Global state:</b> every JSplitter panel accesses the same native foobar2000 window through <a href="fb.html#Window">fb.Window</a></b>. Window geometry <a href="FbWindow.html#X">X</a>, <a href="FbWindow.html#Y">Y</a>, <a href="FbWindow.html#Width">Width</a>, <a href="FbWindow.html#Height">Height</a>, the numeric <a href="FbWindow.html#MinWidth">MinWidth</a>, <a href="FbWindow.html#MinHeight">MinHeight</a>, <a href="FbWindow.html#MaxWidth">MaxWidth</a>, <a href="FbWindow.html#MaxHeight">MaxHeight</a>, and the numeric pseudo-caption rectangle defined by <a href="FbWindow.html#SetPseudoCaption">SetPseudoCaption</a> are global host state. These numeric values are not automatically restored when a panel reloads or unloads.</p>
-<p>Window UI settings such as <a href="FbWindow.html#FrameStyle">FrameStyle</a>, <a href="FbWindow.html#Fullscreen">Fullscreen</a>, <a href="FbWindow.html#MainMenuHidden">MainMenuHidden</a>, <a href="FbWindow.html#StatusBarHidden">StatusBarHidden</a>, <a href="FbWindow.html#MinSize">MinSize</a>, <a href="FbWindow.html#MaxSize">MaxSize</a>, and pseudo-caption activation are tracked per panel. The most recent explicit assignment made by any live panel becomes the effective global value. When that panel reloads or unloads, its request is removed and the previous request from another live panel, if any, becomes effective again.</p>
+<p><b>Global state:</b> every JSplitter panel accesses the same native foobar2000 window through <a href="fb.html#Window">fb.Window</a>. Window geometry <a href="FbWindow.html#X">X</a>, <a href="FbWindow.html#Y">Y</a>, <a href="FbWindow.html#Width">Width</a>, <a href="FbWindow.html#Height">Height</a>, the numeric <a href="FbWindow.html#MinWidth">MinWidth</a>, <a href="FbWindow.html#MinHeight">MinHeight</a>, <a href="FbWindow.html#MaxWidth">MaxWidth</a>, <a href="FbWindow.html#MaxHeight">MaxHeight</a> are global host state. These numeric values are not automatically restored when a panel reloads or unloads.</p>
+<p>Window UI settings such as <a href="FbWindow.html#FrameStyle">FrameStyle</a>, <a href="FbWindow.html#Fullscreen">Fullscreen</a>, <a href="FbWindow.html#MainMenuHidden">MainMenuHidden</a>, <a href="FbWindow.html#StatusBarHidden">StatusBarHidden</a>, <a href="FbWindow.html#MinSize">MinSize</a>, <a href="FbWindow.html#MaxSize">MaxSize</a>, and pseudo-caption activation, rectangle, and double-click option defined by <a href="FbWindow.html#SetPseudoCaption">SetPseudoCaption</a> are tracked per panel. The most recent explicit assignment made by any live panel becomes the effective global value. When that panel reloads or unloads, its request is removed and the previous request from another live panel, if any, becomes effective again.</p>
 <p>If no panel has a request, <a href="FbWindow.html#FrameStyle">FrameStyle</a> defaults to <a href="module-Flags.html#FrameStyle">FrameStyle.Default</a>, and the boolean settings default to <b>false</b>.</p>
 <p>So getters return the effective global value, not the last value assigned by the current panel.</p>
 <p>If both minimum and maximum limits are enabled for the same axis, keep the nonzero minimum less than or equal to the nonzero maximum. Contradictory limits are not a supported configuration.</p>
@@ -645,11 +645,11 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#ClearPseudoCaption">ClearPseudoCaption</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:495</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:498</div>
         </header>
         <pre class="signature"><code>ClearPseudoCaption()</code></pre>
         
-        <div class="description"><p>Removes the current panel's pseudo-caption request previously enabled by <a href="FbWindow.html#SetPseudoCaption">SetPseudoCaption</a>. The stored rectangle coordinates are not cleared. The request is also removed automatically when the panel reloads or unloads; if another live panel has an active request, pseudo-caption remains enabled.</p></div>
+        <div class="description"><p>Disables the current panel's pseudo-caption request previously enabled by <a href="FbWindow.html#SetPseudoCaption">SetPseudoCaption</a>. The most recent explicit request now disables the effective global pseudo-caption. Calling <a href="FbWindow.html#SetPseudoCaption">SetPseudoCaption</a> enables it again. The request and its stored settings are removed automatically when the panel reloads or unloads. The previous live panel's request, if any, then becomes effective again with its own rectangle and double-click option.</p></div>
         
         
         
@@ -829,18 +829,19 @@ fb.Window.FrameStyle = FrameStyle.Default;
             </div>
             <div class="source-location">js/foo_uie_jsplitter.js:473</div>
         </header>
-        <pre class="signature"><code>SetPseudoCaption(x, y, width, height)</code></pre>
+        <pre class="signature"><code>SetPseudoCaption(x, y, width, height, maximize_on_dblclk)</code></pre>
         
-        <div class="description"><p>Defines a rectangular pseudo-caption area for the main foobar2000 window. Pressing the left mouse button anywhere inside this area starts the native Windows move operation, including when the pointer is over a child window such as a JSplitter panel. This provides a persistent alternative to calling <a href="FbWindow.html#MoveStart">MoveStart</a> from a mouse callback and is especially useful with <a href="FbWindow.html#FrameStyle">FrameStyle</a> set to <a href="module-Flags.html#FrameStyle">FrameStyle.NoCaption</a> or <a href="module-Flags.html#FrameStyle">FrameStyle.NoBorder</a>.</p>
-<p>The coordinates are pixel offsets from the top-left corner of the outer main-window rectangle. Calling this method again replaces the stored global rectangle and enables pseudo-caption for the current panel. The rectangle values remain stored globally, but the active request belongs to the panel and is automatically removed when that panel reloads or unloads. If another live panel has an active pseudo-caption request, it becomes effective again using the current stored rectangle.</p>
-<p>With <a href="module-Flags.html#FrameStyle">FrameStyle.NoBorder</a>, resize edges take precedence over the pseudo-caption area. The pseudo-caption does not start a move operation while the main window is fullscreen or maximized. A left click inside the rectangle is consumed for window dragging, so interactive controls should not be placed inside it.</p>
-<p>To unset pseudo-caption use <a href="FbWindow.html#ClearPseudoCaption">ClearPseudoCaption</a></p></div>
+        <div class="description"><p>Defines a rectangular pseudo-caption area for the main foobar2000 window. Pressing the left mouse button inside this area starts the native Windows move operation, including when the pointer is over a child window such as a JSplitter panel. This provides a persistent alternative to calling <a href="FbWindow.html#MoveStart">MoveStart</a> from a mouse callback and is especially useful with <a href="FbWindow.html#FrameStyle">FrameStyle</a> set to <a href="module-Flags.html#FrameStyle">FrameStyle.NoCaption</a> or <a href="module-Flags.html#FrameStyle">FrameStyle.NoBorder</a>.</p>
+<p>The coordinates are pixel offsets from the top-left corner of the outer main-window rectangle. The rectangle, activation request, and <b>maximize_on_dblclk</b> option belong to the current panel. The most recent explicit request made by any live panel becomes effective globally. Calling this method again replaces that panel's rectangle and option and enables its request. When the panel reloads or unloads, its request and settings are removed; the previous live panel's request becomes effective again with its own rectangle and option.</p>
+<p>With <b>maximize_on_dblclk</b> set to <b>true</b>, a left-button double-click inside the area automatically maximizes a normal window or restores a maximized window, using the same native commands as <a href="FbWindow.html#Maximize">Maximize</a> and <a href="FbWindow.html#Restore">Restore</a>. The handled double-click is consumed and is not delivered to the underlying panel's <a href="module-Callbacks.html#on_mouse_lbtn_dblclk">on_mouse_lbtn_dblclk</a> callback. The default is <b>false</b>, which preserves script-defined double-click handling.</p>
+<p>With <a href="module-Flags.html#FrameStyle">FrameStyle.NoBorder</a>, resize edges take precedence over both dragging and automatic double-click handling. Dragging is inactive while the main window is fullscreen or maximized. Automatic maximize/restore is inactive in fullscreen mode. A left click used to start dragging is consumed, so interactive controls should not be placed inside the rectangle.</p>
+<p>To disable the current panel's request, use <a href="FbWindow.html#ClearPseudoCaption">ClearPseudoCaption</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>x</code></td><td><code>number</code></td><td><p>Horizontal offset from the left edge of the outer main-window rectangle.</p></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td><p>Vertical offset from the top edge of the outer main-window rectangle.</p></td></tr><tr><td><code>width</code></td><td><code>number</code></td><td><p>Width of the pseudo-caption rectangle. Must be greater than 0.</p></td></tr><tr><td><code>height</code></td><td><code>number</code></td><td><p>Height of the pseudo-caption rectangle. Must be greater than 0.</p></td></tr></tbody>
+                <tbody><tr><td><code>x</code></td><td><code>number</code></td><td><p>Horizontal offset from the left edge of the outer main-window rectangle.</p></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td><p>Vertical offset from the top edge of the outer main-window rectangle.</p></td></tr><tr><td><code>width</code></td><td><code>number</code></td><td><p>Width of the pseudo-caption rectangle. Must be greater than 0.</p></td></tr><tr><td><code>height</code></td><td><code>number</code></td><td><p>Height of the pseudo-caption rectangle. Must be greater than 0.</p></td></tr><tr><td><code>maximize_on_dblclk = false</code><span class="mini-flag">optional</span></td><td><code>boolean</code></td><td><p>Enable automatic maximize/restore on a left-button double-click inside the area.</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -856,7 +857,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         <section class="member-section">
             <h3>Example</h3>
             <pre class="example"><code>fb.Window.FrameStyle = FrameStyle.NoBorder;
-fb.Window.SetPseudoCaption(<span class="tok-number">8</span>, <span class="tok-number">8</span>, <span class="tok-number">400</span>, <span class="tok-number">32</span>);</code></pre>
+fb.Window.SetPseudoCaption(<span class="tok-number">8</span>, <span class="tok-number">8</span>, <span class="tok-number">400</span>, <span class="tok-number">32</span>, <span class="tok-literal">true</span>);</code></pre>
         </section>
         
     </article></main>

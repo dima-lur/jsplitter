@@ -219,7 +219,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -231,7 +231,7 @@
                 <div class="eyebrow"><span class="kind kind-namespace">namespace</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#d2d">d2d</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1262</div>
+            <div class="source-location">js/d2d.js:1266</div>
         </header>
         
         
@@ -254,7 +254,7 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Brush">Brush</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1272</div>
+            <div class="source-location">js/d2d.js:1276</div>
         </header>
         <pre class="signature"><code>Brush(type, param1, param2, param3, param4)</code></pre>
         
@@ -294,7 +294,7 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Compile">Compile</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1436</div>
+            <div class="source-location">js/d2d.js:1448</div>
         </header>
         <pre class="signature"><code>Compile(source, entryPoint, target, flags)</code></pre>
         
@@ -374,7 +374,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#CreateImage">CreateImage</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1316</div>
+            <div class="source-location">js/d2d.js:1320</div>
         </header>
         <pre class="signature"><code>CreateImage(w, h)</code></pre>
         
@@ -410,7 +410,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#CreateImageFromPixelData">CreateImageFromPixelData</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1325</div>
+            <div class="source-location">js/d2d.js:1329</div>
         </header>
         <pre class="signature"><code>CreateImageFromPixelData(pixelData, width, height, format = &quot;bgra32&quot;)</code></pre>
         
@@ -450,7 +450,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Effect">Effect</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1425</div>
+            <div class="source-location">js/d2d.js:1437</div>
         </header>
         <pre class="signature"><code>Effect(CLSID)</code></pre>
         
@@ -488,7 +488,7 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Font">Font</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1345</div>
+            <div class="source-location">js/d2d.js:1349</div>
         </header>
         <pre class="signature"><code>Font(name, size_px, style)</code></pre>
         
@@ -524,11 +524,12 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Image">Image</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1360</div>
+            <div class="source-location">js/d2d.js:1364</div>
         </header>
         <pre class="signature"><code>Image(path)</code></pre>
         
-        <div class="description"><p>Load image from file.<br> <br> Performance note: consider using <a href="d2d.html#LoadImageAsync">d2d.LoadImageAsync</a> or <a href="d2d.html#LoadImageAsyncV2">d2d.LoadImageAsyncV2</a> if there are a lot of images to load or if the image is big.</p></div>
+        <div class="description"><p>Load image from file.<br> <br> Performance note: consider using <a href="d2d.html#LoadImageAsync">d2d.LoadImageAsync</a> or <a href="d2d.html#LoadImageAsyncV2">d2d.LoadImageAsyncV2</a> if there are a lot of images to load or if the image is big.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -564,11 +565,12 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#LoadImageAsync">LoadImageAsync</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1376</div>
+            <div class="source-location">js/d2d.js:1382</div>
         </header>
         <pre class="signature"><code>LoadImageAsync(window_id, path)</code></pre>
         
-        <div class="description"><p>Load image from file asynchronously.</p></div>
+        <div class="description"><p>Load image from file asynchronously.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -604,11 +606,12 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#LoadImageAsyncV2">LoadImageAsyncV2</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1389</div>
+            <div class="source-location">js/d2d.js:1397</div>
         </header>
         <pre class="signature"><code>LoadImageAsyncV2(window_id, path)</code></pre>
         
-        <div class="description"><p>Load image from file asynchronously. Returns a <b>Promise</b> object, which will be resolved when image loading is done.</p></div>
+        <div class="description"><p>Load image from file asynchronously. Returns a <b>Promise</b> object, which will be resolved when image loading is done.</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -644,11 +647,12 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#LoadSVG">LoadSVG</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1403</div>
+            <div class="source-location">js/d2d.js:1413</div>
         </header>
         <pre class="signature"><code>LoadSVG(path_or_xml, max_width)</code></pre>
         
-        <div class="description"><p>Loads rasterized image from SVG file or XML string</p></div>
+        <div class="description"><p>Loads rasterized image from SVG file or XML string</p>
+<p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>. Raw SVG/XML strings are used as-is.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -692,7 +696,7 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#StrokeStyle">StrokeStyle</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1303</div>
+            <div class="source-location">js/d2d.js:1307</div>
         </header>
         <pre class="signature"><code>StrokeStyle(options)</code></pre>
         

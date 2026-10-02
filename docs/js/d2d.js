@@ -244,7 +244,11 @@ function D2DBitmap(arg) {
     this.RotateFlip = function (mode) { }; // (void)
 
     /**
-     * @param {string} path Full path including file extension. The parent folder must already exist.
+     * Saves the bitmap to an image file.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
+     * @param {string} path Absolute or script-relative file path including file extension. The parent folder must already exist.
      * @param {string=} [format='image/png']
      *      "image/png"<br>
      *      "image/bmp"<br>
@@ -1363,6 +1367,8 @@ let d2d = {
      * Performance note: consider using {@link d2d.LoadImageAsync} or {@link d2d.LoadImageAsyncV2} if there are a lot of images to load
      * or if the image is big.
      *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {string} path
      * @return {?D2DBitmap} null, if image failed to load.
      *
@@ -1375,6 +1381,8 @@ let d2d = {
 
     /**
      * Load image from file asynchronously.
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
      * @param {number} window_id unused
      * @param {string} path
@@ -1390,6 +1398,8 @@ let d2d = {
      * Load image from file asynchronously.
      * Returns a <b>Promise</b> object, which will be resolved when image loading is done.
      *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     *
      * @param {number} window_id unused
      * @param {string} path
      * @return {Promise.<?D2DBitmap>}
@@ -1402,6 +1412,8 @@ let d2d = {
 
     /**
      * Loads rasterized image from SVG file or XML string
+     *
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. Raw SVG/XML strings are used as-is.
      *
      * @param {string} path_or_xml string containing SVG file path or raw XML
      * @param {number=} [max_width=0] If specified rasterizes with width = max_width and height according to the proportions, otherwise uses "width" and "height" attributes in SVG header if exist

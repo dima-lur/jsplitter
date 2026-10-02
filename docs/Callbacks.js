@@ -195,7 +195,7 @@ function on_library_items_removed(handle_list) { }
  * @memberof module:Callbacks
  * @param {number} cookie the return value from the {@link gdi.LoadImageAsync} call
  * @param {?GdiBitmap} image (or {@link D2DBitmap} if {@link window.DrawMode} == 1). Null on failure (invalid path/not an image)
- * @param {string} image_path the path that was originally supplied to {@link gdi.LoadImageAsync}
+ * @param {string} image_path the resolved image path supplied to the background loader. Relative input paths are resolved as described in {@link utils.ReadTextFile}.
  * @worker
  */
 function on_load_image_done(cookie, image, image_path) { }

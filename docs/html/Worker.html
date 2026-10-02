@@ -219,7 +219,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -258,7 +258,7 @@ UI / callbacks                       own JS realm + event loop
 <li><b>new Worker(source[, name])</b> — evaluates JavaScript <b>source</b> text supplied by the panel script.</li>
 <li><b>new Worker({ file: 'path/to/worker.js' }[, name])</b> — reads and evaluates a JavaScript file.</li>
 </ul>
-<p>In the file-backed form, <b>file</b> may be an absolute or relative path. Relative paths use the caller/package/component search roots, and the resolved file becomes the Worker's startup script origin.</p>
+<p>In the file-backed form, <b>file</b> may be an absolute or relative path. Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>. The caller/package/component search roots are considered, and the resolved file becomes the Worker's startup script origin.</p>
 <p>The optional second <b>name</b> argument has the same meaning in both startup forms: it is the Worker's immutable identity for its lifetime. Supply it when the Worker is created; inside the Worker the same value is exposed through read-only <a href="WorkerGlobalScope.html#name">self.name</a>. JSplitter also uses this exact name in <a href="window.html#JsMemoryStats">window.JsMemoryStats</a> (<b>Workers[].Name</b>) and as the first diagnostic metadata line of every unhandled Worker exception (see below). Giving long-lived or multiple concurrent Workers short descriptive names therefore makes both memory inspection and failures much easier to identify.</p>
 <p>Here are the examples of Worker creation:</p>
 <pre class="description-code language-js"><code><span class="tok-keyword">const</span> inlineWorker = <span class="tok-keyword">new</span> Worker(<span class="tok-string">`
