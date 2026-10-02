@@ -402,7 +402,7 @@ function FbWindow() {
      * @type {boolean}
      * @readonly
      */
-    this.Minimized = false;
+    this.IsMinimized = false;
 
     /**
      * <b>true</b> when the main foobar2000 window is currently maximized.
@@ -412,12 +412,12 @@ function FbWindow() {
      * @type {boolean}
      * @readonly
      */
-    this.Maximized = false;
+    this.IsMaximized = false;
 
     /**
      * Minimizes the main foobar2000 window using the normal native Windows system command.
      *
-     * The command is posted asynchronously, so {@link FbWindow#Minimized Minimized} may change after the current JavaScript callback returns.
+     * The command is posted asynchronously, so {@link FbWindow#IsMinimized IsMinimized} may change after the current JavaScript callback returns.
      *
      * @example
      * fb.Window.Minimize();
@@ -427,10 +427,10 @@ function FbWindow() {
     /**
      * Maximizes the main foobar2000 window using the normal native Windows system command.
      *
-     * The command is posted asynchronously, so {@link FbWindow#Maximized Maximized} may change after the current JavaScript callback returns.
+     * The command is posted asynchronously, so {@link FbWindow#IsMaximized IsMaximized} may change after the current JavaScript callback returns.
      *
      * @example
-     * if (!fb.Window.Maximized) {
+     * if (!fb.Window.IsMaximized) {
      *     fb.Window.Maximize();
      * }
      */
@@ -442,7 +442,7 @@ function FbWindow() {
      * The command is posted asynchronously.
      *
      * @example
-     * if (fb.Window.Minimized || fb.Window.Maximized) {
+     * if (fb.Window.IsMinimized || fb.Window.IsMaximized) {
      *     fb.Window.Restore();
      * }
      */

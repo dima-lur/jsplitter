@@ -394,11 +394,12 @@ window.DrawMode = drawMode;
         }
     }
 
-    <span class="tok-keyword">function</span> updateDynamics(dt) {
+    <span class="tok-keyword">function</span> updateDynamics(dt, stopped = <span class="tok-literal">false</span>) {
         <span class="tok-keyword">const</span> attack = <span class="tok-number">1</span> - Math.exp(-dt / <span class="tok-number">0.018</span>);
         <span class="tok-keyword">const</span> release = <span class="tok-number">1</span> - Math.exp(-dt / <span class="tok-number">0.095</span>);
         <span class="tok-keyword">const</span> gravity = <span class="tok-number">3.0</span>;
         <span class="tok-keyword">const</span> peakHoldSeconds = <span class="tok-number">0.10</span>;
+        <span class="tok-keyword">const</span> inactiveEpsilon = <span class="tok-number">1e-3</span>;
 
         <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; bandCount; ++i) {
             <span class="tok-keyword">const</span> target = targets[i];
@@ -425,15 +426,29 @@ window.DrawMode = drawMode;
                     }
                 }
             }
-            peaks[i] = Math.max(level, Math.min(<span class="tok-number">0.98</span>, peak));
+            peak = Math.max(level, Math.min(<span class="tok-number">0.98</span>, peak));
+
+            <span class="tok-keyword">if</span> (stopped) {
+                <span class="tok-keyword">if</span> (level &lt; inactiveEpsilon) {
+                    level = <span class="tok-number">0</span>;
+                    smoothed[i] = <span class="tok-number">0</span>;
+                }
+                <span class="tok-keyword">if</span> (level === <span class="tok-number">0</span> &amp;&amp; peak &lt; inactiveEpsilon) {
+                    peak = <span class="tok-number">0</span>;
+                    peakVelocity[i] = <span class="tok-number">0</span>;
+                    peakHold[i] = <span class="tok-number">0</span>;
+                }
+            }
+
+            peaks[i] = peak;
         }
     }
 
-    <span class="tok-keyword">function</span> analyse(data, sampleCount, channels, sampleRate, available, dt) {
+    <span class="tok-keyword">function</span> analyse(data, sampleCount, channels, sampleRate, available, dt, stopped) {
         <span class="tok-keyword">const</span> required = sampleCount * channels;
         <span class="tok-keyword">if</span> (!data || !sampleCount || !channels || !sampleRate || available &lt; required) {
             targets.fill(<span class="tok-number">0</span>);
-            updateDynamics(dt);
+            updateDynamics(dt, stopped);
             <span class="tok-keyword">return</span>;
         }
 
@@ -496,7 +511,7 @@ window.DrawMode = drawMode;
             targets[band] = Math.min(<span class="tok-number">0.98</span>, level);
         }
 
-        updateDynamics(dt);
+        updateDynamics(dt, stopped);
     }
 
     <span class="tok-keyword">function</span> makeSpectrumFrame() {
@@ -575,7 +590,7 @@ window.DrawMode = drawMode;
             }
             <span class="tok-keyword">const</span> audioEnd = performance.now();
 
-            analyse(data, sampleCount, channels, sampleRate, available, dt);
+            analyse(data, sampleCount, channels, sampleRate, available, dt, !fb.IsPlaying);
             <span class="tok-keyword">const</span> analysisEnd = performance.now();
 
             <span class="tok-keyword">const</span> frame = makeSpectrumFrame();
@@ -870,8 +885,9 @@ onmessage = function (event) {
             gr.FillSolidRect(x, y, barWidth, barHeight, BAR_COLOUR);
         }
 
-        <span class="tok-keyword">if</span> (peak &gt; <span class="tok-number">0</span>) {
-            <span class="tok-keyword">const</span> peakY = plotBottom - peak * usableHeight;
+        <span class="tok-keyword">const</span> peakHeight = peak * usableHeight;
+        <span class="tok-keyword">if</span> (peakHeight &gt;= <span class="tok-number">1</span>) {
+            <span class="tok-keyword">const</span> peakY = plotBottom - peakHeight;
             gr.DrawLine(x, peakY, x + barWidth - <span class="tok-number">1</span>, peakY, <span class="tok-number">1</span>, <span class="tok-number">0xFFE8EDF2</span>);
         }
     }

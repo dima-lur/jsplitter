@@ -22914,8 +22914,8 @@
     }
   },
   {
-    "canonical": "FbWindow#Minimized",
-    "name": "Minimized",
+    "canonical": "FbWindow#IsMinimized",
+    "name": "IsMinimized",
     "kind": "property",
     "parent": "FbWindow",
     "signature": null,
@@ -22944,8 +22944,8 @@
     }
   },
   {
-    "canonical": "FbWindow#Maximized",
-    "name": "Maximized",
+    "canonical": "FbWindow#IsMaximized",
+    "name": "IsMaximized",
     "kind": "property",
     "parent": "FbWindow",
     "signature": null,
@@ -22981,7 +22981,7 @@
     "signature": "Minimize()",
     "type": null,
     "value": null,
-    "description": "Minimizes the main foobar2000 window using the normal native Windows system command.\n\nThe command is posted asynchronously, so {@link FbWindow#Minimized Minimized} may change after the current JavaScript callback returns.",
+    "description": "Minimizes the main foobar2000 window using the normal native Windows system command.\n\nThe command is posted asynchronously, so {@link FbWindow#IsMinimized IsMinimized} may change after the current JavaScript callback returns.",
     "params": [],
     "properties": [],
     "returns": null,
@@ -23013,13 +23013,13 @@
     "signature": "Maximize()",
     "type": null,
     "value": null,
-    "description": "Maximizes the main foobar2000 window using the normal native Windows system command.\n\nThe command is posted asynchronously, so {@link FbWindow#Maximized Maximized} may change after the current JavaScript callback returns.",
+    "description": "Maximizes the main foobar2000 window using the normal native Windows system command.\n\nThe command is posted asynchronously, so {@link FbWindow#IsMaximized IsMaximized} may change after the current JavaScript callback returns.",
     "params": [],
     "properties": [],
     "returns": null,
     "throws": [],
     "examples": [
-      "if (!fb.Window.Maximized) {\n    fb.Window.Maximize();\n}"
+      "if (!fb.Window.IsMaximized) {\n    fb.Window.Maximize();\n}"
     ],
     "sourceFiles": [],
     "readonly": false,
@@ -23051,7 +23051,7 @@
     "returns": null,
     "throws": [],
     "examples": [
-      "if (fb.Window.Minimized || fb.Window.Maximized) {\n    fb.Window.Restore();\n}"
+      "if (fb.Window.IsMinimized || fb.Window.IsMaximized) {\n    fb.Window.Restore();\n}"
     ],
     "sourceFiles": [],
     "readonly": false,
