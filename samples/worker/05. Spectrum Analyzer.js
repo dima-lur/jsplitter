@@ -163,11 +163,12 @@ function createSpectrumEngine(currentFftSize, minFrequencyLimit, maxFrequencyLim
         }
     }
 
-    function updateDynamics(dt) {
+    function updateDynamics(dt, stopped = false) {
         const attack = 1 - Math.exp(-dt / 0.018);
         const release = 1 - Math.exp(-dt / 0.095);
         const gravity = 3.0;
         const peakHoldSeconds = 0.10;
+        const inactiveEpsilon = 1e-3;
 
         for (let i = 0; i < bandCount; ++i) {
             const target = targets[i];
@@ -194,15 +195,29 @@ function createSpectrumEngine(currentFftSize, minFrequencyLimit, maxFrequencyLim
                     }
                 }
             }
-            peaks[i] = Math.max(level, Math.min(0.98, peak));
+            peak = Math.max(level, Math.min(0.98, peak));
+
+            if (stopped) {
+                if (level < inactiveEpsilon) {
+                    level = 0;
+                    smoothed[i] = 0;
+                }
+                if (level === 0 && peak < inactiveEpsilon) {
+                    peak = 0;
+                    peakVelocity[i] = 0;
+                    peakHold[i] = 0;
+                }
+            }
+
+            peaks[i] = peak;
         }
     }
 
-    function analyse(data, sampleCount, channels, sampleRate, available, dt) {
+    function analyse(data, sampleCount, channels, sampleRate, available, dt, stopped) {
         const required = sampleCount * channels;
         if (!data || !sampleCount || !channels || !sampleRate || available < required) {
             targets.fill(0);
-            updateDynamics(dt);
+            updateDynamics(dt, stopped);
             return;
         }
 
@@ -265,7 +280,7 @@ function createSpectrumEngine(currentFftSize, minFrequencyLimit, maxFrequencyLim
             targets[band] = Math.min(0.98, level);
         }
 
-        updateDynamics(dt);
+        updateDynamics(dt, stopped);
     }
 
     function makeSpectrumFrame() {
@@ -344,7 +359,7 @@ function createSpectrumEngine(currentFftSize, minFrequencyLimit, maxFrequencyLim
             }
             const audioEnd = performance.now();
 
-            analyse(data, sampleCount, channels, sampleRate, available, dt);
+            analyse(data, sampleCount, channels, sampleRate, available, dt, !fb.IsPlaying);
             const analysisEnd = performance.now();
 
             const frame = makeSpectrumFrame();
@@ -639,8 +654,9 @@ function drawSpectrumFrame(gr, spectrumFrame) {
             gr.FillSolidRect(x, y, barWidth, barHeight, BAR_COLOUR);
         }
 
-        if (peak > 0) {
-            const peakY = plotBottom - peak * usableHeight;
+        const peakHeight = peak * usableHeight;
+        if (peakHeight >= 1) {
+            const peakY = plotBottom - peakHeight;
             gr.DrawLine(x, peakY, x + barWidth - 1, peakY, 1, 0xFFE8EDF2);
         }
     }

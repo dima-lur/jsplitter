@@ -356,6 +356,50 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
     </article>
 
+    <article class="api-item" id="IsMaximized" data-kind="property" data-name="ismaximized">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#IsMaximized">IsMaximized</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:407</div>
+        </header>
+        <pre class="signature"><code>IsMaximized: boolean = false</code></pre>
+        
+        <div class="description"><p><b>true</b> when the main foobar2000 window is currently maximized.</p>
+<p>This property is read-only and reports the actual native window state.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="IsMinimized" data-kind="property" data-name="isminimized">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#IsMinimized">IsMinimized</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:397</div>
+        </header>
+        <pre class="signature"><code>IsMinimized: boolean = false</code></pre>
+        
+        <div class="description"><p><b>true</b> when the main foobar2000 window is currently minimized.</p>
+<p>This property is read-only and reports the actual native window state.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
     <article class="api-item" id="MainMenuHidden" data-kind="property" data-name="mainmenuhidden">
         <header class="api-item-header">
             <div>
@@ -392,28 +436,6 @@ fb.Window.FrameStyle = FrameStyle.Default;
         <pre class="signature"><code>MaxHeight: number = 0</code></pre>
         
         <div class="description"><p>Maximum height of the outer main-window rectangle when <a href="FbWindow.html#MaxSize">MaxSize</a> is enabled. A value of <b>0</b> disables the maximum-height constraint while leaving the maximum-width constraint independent.</p></div>
-        
-        
-        
-        
-        
-        
-        
-        
-    </article>
-
-    <article class="api-item" id="Maximized" data-kind="property" data-name="maximized">
-        <header class="api-item-header">
-            <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
-                <h2><a class="anchor" href="#Maximized">Maximized</a></h2>
-            </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:407</div>
-        </header>
-        <pre class="signature"><code>Maximized: boolean = false</code></pre>
-        
-        <div class="description"><p><b>true</b> when the main foobar2000 window is currently maximized.</p>
-<p>This property is read-only and reports the actual native window state.</p></div>
         
         
         
@@ -477,28 +499,6 @@ fb.Window.FrameStyle = FrameStyle.Default;
         <pre class="signature"><code>MinHeight: number = 0</code></pre>
         
         <div class="description"><p>Minimum height of the outer main-window rectangle when <a href="FbWindow.html#MinSize">MinSize</a> is enabled. A value of <b>0</b> disables the minimum-height constraint while leaving the minimum-width constraint independent.</p></div>
-        
-        
-        
-        
-        
-        
-        
-        
-    </article>
-
-    <article class="api-item" id="Minimized" data-kind="property" data-name="minimized">
-        <header class="api-item-header">
-            <div>
-                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
-                <h2><a class="anchor" href="#Minimized">Minimized</a></h2>
-            </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:397</div>
-        </header>
-        <pre class="signature"><code>Minimized: boolean = false</code></pre>
-        
-        <div class="description"><p><b>true</b> when the main foobar2000 window is currently minimized.</p>
-<p>This property is read-only and reports the actual native window state.</p></div>
         
         
         
@@ -693,7 +693,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         <pre class="signature"><code>Maximize()</code></pre>
         
         <div class="description"><p>Maximizes the main foobar2000 window using the normal native Windows system command.</p>
-<p>The command is posted asynchronously, so <a href="FbWindow.html#Maximized">Maximized</a> may change after the current JavaScript callback returns.</p></div>
+<p>The command is posted asynchronously, so <a href="FbWindow.html#IsMaximized">IsMaximized</a> may change after the current JavaScript callback returns.</p></div>
         
         
         
@@ -703,7 +703,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
         <section class="member-section">
             <h3>Example</h3>
-            <pre class="example"><code><span class="tok-keyword">if</span> (!fb.Window.Maximized) {
+            <pre class="example"><code><span class="tok-keyword">if</span> (!fb.Window.IsMaximized) {
     fb.Window.Maximize();
 }</code></pre>
         </section>
@@ -721,7 +721,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         <pre class="signature"><code>Minimize()</code></pre>
         
         <div class="description"><p>Minimizes the main foobar2000 window using the normal native Windows system command.</p>
-<p>The command is posted asynchronously, so <a href="FbWindow.html#Minimized">Minimized</a> may change after the current JavaScript callback returns.</p></div>
+<p>The command is posted asynchronously, so <a href="FbWindow.html#IsMinimized">IsMinimized</a> may change after the current JavaScript callback returns.</p></div>
         
         
         
@@ -814,7 +814,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
         <section class="member-section">
             <h3>Example</h3>
-            <pre class="example"><code><span class="tok-keyword">if</span> (fb.Window.Minimized || fb.Window.Maximized) {
+            <pre class="example"><code><span class="tok-keyword">if</span> (fb.Window.IsMinimized || fb.Window.IsMaximized) {
     fb.Window.Restore();
 }</code></pre>
         </section>
