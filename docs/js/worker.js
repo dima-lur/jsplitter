@@ -2,6 +2,9 @@
  * Runs JavaScript in a separate JSplitter Worker realm and Worker thread.<br>
  * JSplitter Workers use a Web-Worker-inspired programming model, but this page describes the actual JSplitter behaviour and should be treated as the primary guide. A Worker has its own global scope and event loop, communicates with its parent panel through structured-clone messages, and has no direct access to the panel UI.
  *
+ * Workers can also run computationally intensive WebAssembly modules;
+ * see the {@link module:WebAssembly WebAssembly guide} for a complete example.
+ *
  * <h2>Why use a Worker?</h2>
  * A panel script shares its thread with panel/UI work. Expensive JavaScript, large metadata aggregation, image processing, or repeated frame preparation performed there can make the interface less responsive. A Worker moves suitable work to another thread and lets the panel remain focused on interaction and presentation.
  *

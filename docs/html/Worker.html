@@ -219,7 +219,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -236,6 +236,7 @@
         <div class="signatures"><pre class="signature"><code>Worker(source[, name])</code></pre><pre class="signature"><code>Worker({ file }[, name])</code></pre></div>
         
         <div class="description"><p>Runs JavaScript in a separate JSplitter Worker realm and Worker thread.<br> JSplitter Workers use a Web-Worker-inspired programming model, but this page describes the actual JSplitter behaviour and should be treated as the primary guide. A Worker has its own global scope and event loop, communicates with its parent panel through structured-clone messages, and has no direct access to the panel UI.</p>
+<p>Workers can also run computationally intensive WebAssembly modules; see the <a href="module-WebAssembly.html#WebAssembly">WebAssembly guide</a> for a complete example.</p>
 <h2>Why use a Worker?</h2>
 <p>A panel script shares its thread with panel/UI work. Expensive JavaScript, large metadata aggregation, image processing, or repeated frame preparation performed there can make the interface less responsive. A Worker moves suitable work to another thread and lets the panel remain focused on interaction and presentation.</p>
 <div class="doc-article-diagram">Panel realm                         Worker realm
@@ -807,7 +808,7 @@ worker.onmessage = <span class="tok-keyword">function</span> (event) {
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#onerror">onerror</a></h2>
             </div>
-            <div class="source-location">js/worker.js:748</div>
+            <div class="source-location">js/worker.js:751</div>
         </header>
         <pre class="signature"><code>onerror: ?<a class="type-link" href="globals.html#WorkerErrorCallback">WorkerErrorCallback</a> = null</code></pre>
         
@@ -828,7 +829,7 @@ worker.onmessage = <span class="tok-keyword">function</span> (event) {
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#onmessage">onmessage</a></h2>
             </div>
-            <div class="source-location">js/worker.js:741</div>
+            <div class="source-location">js/worker.js:744</div>
         </header>
         <pre class="signature"><code>onmessage: ?<a class="type-link" href="globals.html#WorkerMessageCallback">WorkerMessageCallback</a> = null</code></pre>
         
@@ -849,7 +850,7 @@ worker.onmessage = <span class="tok-keyword">function</span> (event) {
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#onmessageerror">onmessageerror</a></h2>
             </div>
-            <div class="source-location">js/worker.js:757</div>
+            <div class="source-location">js/worker.js:760</div>
         </header>
         <pre class="signature"><code>onmessageerror: ?<a class="type-link" href="globals.html#WorkerMessageCallback">WorkerMessageCallback</a> = null</code></pre>
         
@@ -870,7 +871,7 @@ worker.onmessage = <span class="tok-keyword">function</span> (event) {
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#postMessage">postMessage</a></h2>
             </div>
-            <div class="source-location">js/worker.js:765</div>
+            <div class="source-location">js/worker.js:768</div>
         </header>
         <pre class="signature"><code>postMessage(data, transfer)</code></pre>
         
@@ -902,7 +903,7 @@ worker.onmessage = <span class="tok-keyword">function</span> (event) {
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
                 <h2><a class="anchor" href="#RunAsync">RunAsync</a></h2>
             </div>
-            <div class="source-location">js/worker.js:715</div>
+            <div class="source-location">js/worker.js:718</div>
         </header>
         <pre class="signature"><code>RunAsync(callback, ...args)</code></pre>
         
@@ -953,7 +954,7 @@ console.log(result); <span class="tok-comment">// 22</span></code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#terminate">terminate</a></h2>
             </div>
-            <div class="source-location">js/worker.js:774</div>
+            <div class="source-location">js/worker.js:777</div>
         </header>
         <pre class="signature"><code>terminate()</code></pre>
         
