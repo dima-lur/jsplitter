@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WebAssembly Image Filters.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryReader">
+        <a class="nav-link nav-page-link" href="BinaryReader.html">BinaryReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryWriter">
+        <a class="nav-link nav-page-link" href="BinaryWriter.html">BinaryWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
+        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbWindow">
+        <a class="nav-link nav-page-link" href="FbWindow.html">FbWindow</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteDatabase">
+        <a class="nav-link nav-page-link" href="SQLiteDatabase.html">SQLiteDatabase</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteStatement">
+        <a class="nav-link nav-page-link" href="SQLiteStatement.html">SQLiteStatement</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextReader">
+        <a class="nav-link nav-page-link" href="TextReader.html">TextReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextWriter">
+        <a class="nav-link nav-page-link" href="TextWriter.html">TextWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><a class="nav-link" href="module-ESModules.html">ESModules</a><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/wasm/WebAssembly Image Filters.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="module-WebAssembly.html#WebAssembly">module:WebAssembly</a></div>
+        </header>
+        <pre class="source-code"><code><span class="tok-comment">// JSplitter WebAssembly demo: album-art Sobel filters in a real Worker.</span>
+<span class="tok-comment">// Installed at component/samples/wasm. Load this file via Script &gt; File.</span>
+<span class="tok-comment">// Worker and WASM paths are resolved relative to their calling script.</span>
+<span class="tok-comment">// Use GDI mode (DrawMode = 0). No packages, Emscripten or WASI needed.</span>
+<span class="tok-comment">//</span>
+<span class="tok-comment">// LEFT CLICK: next filter (Pencil / Neon / Ink).</span>
+<span class="tok-comment">// MOUSE WHEEL: increase/decrease edge threshold.</span>
+<span class="tok-comment">// RIGHT CLICK: refresh currently playing or selected album art.</span>
+<span class="tok-comment">// If there is no cover, a generated example image is used automatically.</span>
+
+window.DefineScript(<span class="tok-string">&#39;WebAssembly Image Filters&#39;</span>);
+window.DrawMode = <span class="tok-number">0</span>;
+<span class="tok-keyword">const</span> IMAGE_LIMIT = <span class="tok-number">384</span>;
+<span class="tok-keyword">const</span> MODES = [<span class="tok-string">&#39;Pencil&#39;</span>, <span class="tok-string">&#39;Neon&#39;</span>, <span class="tok-string">&#39;Ink&#39;</span>];
+<span class="tok-keyword">const</span> fontTitle = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">16</span>, <span class="tok-number">1</span>);
+<span class="tok-keyword">const</span> fontBody = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">12</span>);
+<span class="tok-keyword">const</span> fontSmall = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">11</span>);
+<span class="tok-keyword">const</span> COLOR_BG = <span class="tok-number">0xff111820</span>;
+<span class="tok-keyword">const</span> COLOR_TEXT = <span class="tok-number">0xffe7edf3</span>;
+<span class="tok-keyword">const</span> COLOR_MUTED = <span class="tok-number">0xffaab9c6</span>;
+
+<span class="tok-keyword">let</span> worker = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> original = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> filtered = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> mode = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> threshold = <span class="tok-number">180</span>;
+<span class="tok-keyword">let</span> revision = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> requestId = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> resultTimeMs = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> edgeCount = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> label = <span class="tok-string">&#39;Loading…&#39;</span>;
+<span class="tok-keyword">let</span> status = <span class="tok-string">&#39;Initializing WebAssembly…&#39;</span>;
+<span class="tok-keyword">let</span> loaded = <span class="tok-literal">false</span>;
+
+<span class="tok-keyword">function</span> createFallback() {
+    <span class="tok-comment">// Procedural image - the example works even without playback or album art.</span>
+    <span class="tok-keyword">const</span> n = IMAGE_LIMIT;
+    <span class="tok-keyword">const</span> pixels = <span class="tok-keyword">new</span> Uint8Array(n * n * <span class="tok-number">4</span>);
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> y = <span class="tok-number">0</span>; y &lt; n; ++y) {
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> x = <span class="tok-number">0</span>; x &lt; n; ++x) {
+            <span class="tok-keyword">const</span> at = (y * n + x) * <span class="tok-number">4</span>;
+            <span class="tok-keyword">const</span> dx = x - n / <span class="tok-number">2</span>;
+            <span class="tok-keyword">const</span> dy = y - n / <span class="tok-number">2</span>;
+            <span class="tok-keyword">const</span> radius = Math.sqrt(dx * dx + dy * dy);
+            <span class="tok-keyword">const</span> ring = Math.sin(radius * <span class="tok-number">0.11</span>) &gt; <span class="tok-number">0.25</span>;
+            <span class="tok-keyword">const</span> square = x &gt; <span class="tok-number">75</span> &amp;&amp; x &lt; <span class="tok-number">310</span> &amp;&amp; y &gt; <span class="tok-number">86</span> &amp;&amp; y &lt; <span class="tok-number">295</span>;
+            <span class="tok-keyword">const</span> lines = Math.sin(x * <span class="tok-number">0.12</span> + y * <span class="tok-number">0.03</span>) &gt; <span class="tok-number">0.85</span>;
+            pixels[at] = square ? <span class="tok-number">245</span> : (ring ? <span class="tok-number">45</span> : <span class="tok-number">30</span> + x * <span class="tok-number">160</span> / n);
+            pixels[at + <span class="tok-number">1</span>] = square ? (lines ? <span class="tok-number">48</span> : <span class="tok-number">110</span>) : (ring ? <span class="tok-number">200</span> : <span class="tok-number">42</span> + y * <span class="tok-number">120</span> / n);
+            pixels[at + <span class="tok-number">2</span>] = square ? (lines ? <span class="tok-number">40</span> : <span class="tok-number">200</span>) : (ring ? <span class="tok-number">210</span> : <span class="tok-number">165</span>);
+            pixels[at + <span class="tok-number">3</span>] = <span class="tok-number">255</span>;
+        }
+    }
+    <span class="tok-keyword">return</span> gdi.CreateImageFromPixelData(pixels, n, n, <span class="tok-string">&#39;rgba32&#39;</span>);
+}
+
+<span class="tok-keyword">function</span> loadArtwork() {
+    <span class="tok-keyword">if</span> (!loaded) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">let</span> image = <span class="tok-literal">null</span>;
+    <span class="tok-keyword">let</span> name = <span class="tok-string">&#39;Generated example&#39;</span>;
+    <span class="tok-keyword">try</span> {
+        <span class="tok-keyword">const</span> handle = fb.GetNowPlaying() || fb.GetFocusItem();
+        <span class="tok-keyword">if</span> (handle) {
+            <span class="tok-comment">// GDI bitmap returned by JSplitter in DrawMode 0.</span>
+            image = utils.GetAlbumArtV2(handle, <span class="tok-number">0</span>, <span class="tok-literal">false</span>);
+            <span class="tok-keyword">if</span> (image) name = <span class="tok-string">&#39;Album art&#39;</span>;
+        }
+    } <span class="tok-keyword">catch</span> (e) {
+        console.log(<span class="tok-string">&#39;Album-art lookup: &#39;</span> + e);
+    }
+    <span class="tok-keyword">if</span> (!image) image = createFallback();
+    <span class="tok-keyword">if</span> (!image) {
+        status = <span class="tok-string">&#39;Unable to create source image&#39;</span>;
+        window.Repaint();
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-comment">// Bound both the work and the transfer size; preserve the aspect ratio.</span>
+    <span class="tok-keyword">const</span> scale = Math.min(<span class="tok-number">1</span>, IMAGE_LIMIT / Math.max(image.Width, image.Height));
+    <span class="tok-keyword">const</span> w = Math.max(<span class="tok-number">3</span>, Math.round(image.Width * scale));
+    <span class="tok-keyword">const</span> h = Math.max(<span class="tok-number">3</span>, Math.round(image.Height * scale));
+    original = (w === image.Width &amp;&amp; h === image.Height) ? image : image.Resize(w, h);
+    <span class="tok-keyword">const</span> pixels = original.GetPixelData(<span class="tok-string">&#39;rgba32&#39;</span>);
+    <span class="tok-keyword">if</span> (!pixels || pixels.length !== w * h * <span class="tok-number">4</span>) {
+        status = <span class="tok-string">&#39;GetPixelData(rgba32) failed&#39;</span>;
+        window.Repaint();
+        <span class="tok-keyword">return</span>;
+    }
+
+    filtered = <span class="tok-literal">null</span>;
+    label = name;
+    status = <span class="tok-string">&#39;Processing…&#39;</span>;
+    ++revision;
+    ++requestId;
+    worker.postMessage({
+        type: <span class="tok-string">&#39;load&#39;</span>, width: w, height: h,
+        pixels, threshold, mode, revision, requestId
+    }, [pixels.buffer]);
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> refilter() {
+    <span class="tok-keyword">if</span> (!loaded || !original) <span class="tok-keyword">return</span>;
+    status = <span class="tok-string">&#39;Processing…&#39;</span>;
+    ++requestId;
+    worker.postMessage({type: <span class="tok-string">&#39;filter&#39;</span>, threshold, mode, revision, requestId});
+    window.Repaint();
+}
+
+worker = <span class="tok-keyword">new</span> Worker({file: <span class="tok-string">&#39;WebAssembly Image Filters.worker.js&#39;</span>}, <span class="tok-string">&#39;WASM Image Filters&#39;</span>);
+worker.onmessage = <span class="tok-keyword">function</span> (e) {
+    <span class="tok-keyword">const</span> m = e.data;
+    <span class="tok-keyword">if</span> (m.type === <span class="tok-string">&#39;ready&#39;</span>) {
+        loaded = <span class="tok-literal">true</span>;
+        loadArtwork();
+    } <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (m.type === <span class="tok-string">&#39;result&#39;</span>) {
+        <span class="tok-comment">// Ignore stale frames after an artwork change or a newer filter request.</span>
+        <span class="tok-keyword">if</span> (m.revision !== revision || m.requestId !== requestId) <span class="tok-keyword">return</span>;
+        filtered = gdi.CreateImageFromPixelData(m.pixels, m.width, m.height, <span class="tok-string">&#39;rgba32&#39;</span>);
+        resultTimeMs = m.elapsedMs;
+        edgeCount = m.edgeCount;
+        status = filtered ? <span class="tok-string">&#39;Ready&#39;</span> : <span class="tok-string">&#39;Bitmap creation failed&#39;</span>;
+        window.Repaint();
+    } <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (m.type === <span class="tok-string">&#39;error&#39;</span>) {
+        status = m.message;
+        console.log(<span class="tok-string">&#39;WebAssembly sample: &#39;</span> + status);
+        window.Repaint();
+    }
+};
+worker.onerror = <span class="tok-keyword">function</span> (e) {
+    status = <span class="tok-string">&#39;Worker error&#39;</span>;
+    console.log(status + <span class="tok-string">&#39;: &#39;</span> + e.message);
+    window.Repaint();
+};
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    <span class="tok-keyword">const</span> w = window.Width;
+    <span class="tok-keyword">const</span> h = window.Height;
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, w, h, COLOR_BG);
+    gr.DrawString(<span class="tok-string">&#39;WebAssembly · Album Art Filters&#39;</span>, fontTitle, COLOR_TEXT, <span class="tok-number">15</span>, <span class="tok-number">10</span>, w - <span class="tok-number">30</span>, <span class="tok-number">29</span>);
+    gr.DrawString(<span class="tok-string">&#39;Original&#39;</span>, fontBody, COLOR_MUTED, <span class="tok-number">15</span>, <span class="tok-number">47</span>, w / <span class="tok-number">2</span> - <span class="tok-number">20</span>, <span class="tok-number">22</span>);
+    gr.DrawString(<span class="tok-string">&#39;WASM: &#39;</span> + MODES[mode], fontBody, COLOR_MUTED, w / <span class="tok-number">2</span> + <span class="tok-number">8</span>, <span class="tok-number">47</span>, w / <span class="tok-number">2</span> - <span class="tok-number">20</span>, <span class="tok-number">22</span>);
+    <span class="tok-keyword">const</span> contentTop = <span class="tok-number">73</span>;
+    <span class="tok-keyword">const</span> contentBottom = Math.max(contentTop, h - <span class="tok-number">65</span>);
+    <span class="tok-keyword">const</span> tileW = Math.max(<span class="tok-number">0</span>, (w - <span class="tok-number">42</span>) / <span class="tok-number">2</span>);
+    <span class="tok-keyword">const</span> tileH = Math.max(<span class="tok-number">0</span>, contentBottom - contentTop);
+
+    <span class="tok-keyword">function</span> paintTile(image, x) {
+        <span class="tok-keyword">if</span> (!image || tileW &lt; <span class="tok-number">3</span> || tileH &lt; <span class="tok-number">3</span>) <span class="tok-keyword">return</span>;
+        <span class="tok-keyword">const</span> scale = Math.min(tileW / image.Width, tileH / image.Height);
+        <span class="tok-keyword">const</span> iw = image.Width * scale;
+        <span class="tok-keyword">const</span> ih = image.Height * scale;
+        gr.DrawImage(image, x + (tileW - iw) / <span class="tok-number">2</span>, contentTop + (tileH - ih) / <span class="tok-number">2</span>,
+            iw, ih, <span class="tok-number">0</span>, <span class="tok-number">0</span>, image.Width, image.Height);
+    }
+    paintTile(original, <span class="tok-number">15</span>);
+    paintTile(filtered, w / <span class="tok-number">2</span> + <span class="tok-number">6</span>);
+    <span class="tok-keyword">const</span> footer = Math.max(contentTop + <span class="tok-number">5</span>, h - <span class="tok-number">54</span>);
+    gr.DrawString(label + <span class="tok-string">&#39;  ·  &#39;</span> + status, fontSmall, COLOR_TEXT, <span class="tok-number">15</span>, footer, w - <span class="tok-number">25</span>, <span class="tok-number">18</span>);
+    gr.DrawString(<span class="tok-string">&#39;Click: filter  |  Wheel: threshold (&#39;</span> + threshold +
+        <span class="tok-string">&#39;)  |  Right-click: refresh  |  WASM: &#39;</span> + resultTimeMs.toFixed(<span class="tok-number">2</span>) +
+        <span class="tok-string">&#39; ms  |  Edges: &#39;</span> + edgeCount,
+        fontSmall, COLOR_MUTED, <span class="tok-number">15</span>, footer + <span class="tok-number">21</span>, w - <span class="tok-number">25</span>, <span class="tok-number">21</span>);
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_up() {
+    mode = (mode + <span class="tok-number">1</span>) % MODES.length;
+    refilter();
+}
+
+<span class="tok-keyword">function</span> on_mouse_wheel(step) {
+    threshold = Math.max(<span class="tok-number">0</span>, Math.min(<span class="tok-number">600</span>, threshold + (step &gt; <span class="tok-number">0</span> ? <span class="tok-number">20</span> : -<span class="tok-number">20</span>)));
+    refilter();
+}
+
+<span class="tok-keyword">function</span> on_mouse_rbtn_up() {
+    loadArtwork();
+    <span class="tok-keyword">return</span> <span class="tok-literal">true</span>;
+}
+
+<span class="tok-keyword">function</span> on_playback_new_track() { loadArtwork(); }
+<span class="tok-keyword">function</span> on_playback_stop() { loadArtwork(); }
+<span class="tok-comment">// The script automatically disposes the Worker when the panel unloads.</span>
+<span class="tok-comment">// Closing it manually is not needed here because it lives with this panel.</span>
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

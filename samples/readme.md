@@ -41,6 +41,10 @@ Simply copy the text from a sample .js file into a panel's configuration dialog.
          Br3tt's excellent JSPlaylist (originally written for WSH panel) ported to SMP by marc2003.
 - "js-smooth":  
          Br3tt's "JS Smooth Playlist", "JS Smooth Browser" and "JS Smooth Playlist Manager" scripts ported to SMP by marc2003.
+- "wasm":  
+         WebAssembly demo (album-art filters). Select the panel .js via Script → File; its Worker and .wasm dependencies load from the same folder.  
+- "wasm":  
+         Ready-to-run C/WebAssembly Sobel image filters with persistent Worker and GDI album art; see `WebAssembly Image Filters.js`.  
 - "worker":  
          Worker API samples ordered from introductory to advanced: 01. Basic Messaging, 02. Playlist Statistics, 03. Fractal Renderer, 04. Playlist Album Gallery and 05. Spectrum Analyzer. They are also linked from the Worker API documentation.
 
