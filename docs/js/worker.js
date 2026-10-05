@@ -539,6 +539,8 @@
  * <li>{@link FbMetadbHandleList#RemoveAttachedImages}</li>
  * <li>{@link FbMetadbHandleList#UpdateFileInfoFromJSON}</li>
  * <li>{@link FbTitleFormat#Eval}</li>
+ * <li>{@link FbTitleFormat#EvalActivePlaylistItem}</li>
+ * <li>{@link FbTitleFormat#EvalPlaylistItem}</li>
  * <li>{@link FbUiSelectionHolder#SetSelection}</li>
  * <li>{@link FbUiSelectionHolder#SetPlaylistSelectionTracking}</li>
  * <li>{@link FbUiSelectionHolder#SetPlaylistTracking}</li>

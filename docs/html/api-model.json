@@ -21645,7 +21645,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 8030
+      "line": 8064
     }
   },
   {
@@ -42011,6 +42011,108 @@
     }
   },
   {
+    "canonical": "FbTitleFormat#EvalActivePlaylistItem",
+    "name": "EvalActivePlaylistItem",
+    "kind": "method",
+    "parent": "FbTitleFormat",
+    "signature": "EvalActivePlaylistItem(playlistItemIndex)",
+    "type": null,
+    "value": null,
+    "description": "Evaluates this title formatting expression for an item in the active playlist.\nUse this method to access playlist-specific fields such as <b>%list_index%</b>, <b>%list_total%</b> and <b>%isplaying%</b>.",
+    "params": [
+      {
+        "type": "number",
+        "name": "playlistItemIndex",
+        "rawName": "playlistItemIndex",
+        "optional": false,
+        "variadic": false,
+        "description": "Zero-based item index in the active playlist."
+      }
+    ],
+    "properties": [],
+    "returns": {
+      "type": "string",
+      "description": ""
+    },
+    "throws": [
+      {
+        "type": "Error",
+        "description": "If there is no active playlist or <b>playlistItemIndex</b> is invalid."
+      }
+    ],
+    "examples": [],
+    "sourceFiles": [],
+    "readonly": false,
+    "static": false,
+    "deprecated": false,
+    "worker": true,
+    "mainThread": true,
+    "cloneable": false,
+    "transferable": false,
+    "enumType": null,
+    "enumMembers": null,
+    "legacyEnumMarkup": false,
+    "source": {
+      "file": "js/foo_uie_jsplitter.js",
+      "line": 6135
+    }
+  },
+  {
+    "canonical": "FbTitleFormat#EvalPlaylistItem",
+    "name": "EvalPlaylistItem",
+    "kind": "method",
+    "parent": "FbTitleFormat",
+    "signature": "EvalPlaylistItem(playlistIndex, playlistItemIndex)",
+    "type": null,
+    "value": null,
+    "description": "Evaluates this title formatting expression for an item in a specific playlist.\nUse this method to access playlist-specific fields such as <b>%list_index%</b>, <b>%list_total%</b> and <b>%isplaying%</b>.",
+    "params": [
+      {
+        "type": "number",
+        "name": "playlistIndex",
+        "rawName": "playlistIndex",
+        "optional": false,
+        "variadic": false,
+        "description": "Zero-based playlist index."
+      },
+      {
+        "type": "number",
+        "name": "playlistItemIndex",
+        "rawName": "playlistItemIndex",
+        "optional": false,
+        "variadic": false,
+        "description": "Zero-based item index in the playlist."
+      }
+    ],
+    "properties": [],
+    "returns": {
+      "type": "string",
+      "description": ""
+    },
+    "throws": [
+      {
+        "type": "Error",
+        "description": "If <b>playlistIndex</b> or <b>playlistItemIndex</b> is invalid."
+      }
+    ],
+    "examples": [],
+    "sourceFiles": [],
+    "readonly": false,
+    "static": false,
+    "deprecated": false,
+    "worker": true,
+    "mainThread": true,
+    "cloneable": false,
+    "transferable": false,
+    "enumType": null,
+    "enumMembers": null,
+    "legacyEnumMarkup": false,
+    "source": {
+      "file": "js/foo_uie_jsplitter.js",
+      "line": 6147
+    }
+  },
+  {
     "canonical": "FbTitleFormat#EvalWithMetadb",
     "name": "EvalWithMetadb",
     "kind": "method",
@@ -42060,7 +42162,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6135
+      "line": 6160
     }
   },
   {
@@ -42104,7 +42206,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6147
+      "line": 6172
     }
   },
   {
@@ -42134,7 +42236,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6161
+      "line": 6186
     }
   },
   {
@@ -42166,7 +42268,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6166
+      "line": 6191
     }
   },
   {
@@ -42196,7 +42298,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6179
+      "line": 6204
     }
   },
   {
@@ -42228,7 +42330,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6182
+      "line": 6207
     }
   },
   {
@@ -42258,7 +42360,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6196
+      "line": 6221
     }
   },
   {
@@ -42300,7 +42402,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6199
+      "line": 6224
     }
   },
   {
@@ -42347,7 +42449,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6205
+      "line": 6230
     }
   },
   {
@@ -42404,7 +42506,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6211
+      "line": 6236
     }
   },
   {
@@ -42445,7 +42547,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6218
+      "line": 6243
     }
   },
   {
@@ -42492,7 +42594,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6230
+      "line": 6255
     }
   },
   {
@@ -42525,7 +42627,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6240
+      "line": 6265
     }
   },
   {
@@ -42573,7 +42675,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6278
+      "line": 6303
     }
   },
   {
@@ -42603,7 +42705,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6297
+      "line": 6322
     }
   },
   {
@@ -42633,7 +42735,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6307
+      "line": 6332
     }
   },
   {
@@ -42672,7 +42774,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6318
+      "line": 6343
     }
   },
   {
@@ -42702,7 +42804,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6327
+      "line": 6352
     }
   },
   {
@@ -42732,7 +42834,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6334
+      "line": 6359
     }
   },
   {
@@ -42774,7 +42876,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6341
+      "line": 6366
     }
   },
   {
@@ -42815,7 +42917,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6348
+      "line": 6373
     }
   },
   {
@@ -42881,7 +42983,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6358
+      "line": 6383
     }
   },
   {
@@ -42914,7 +43016,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6368
+      "line": 6393
     }
   },
   {
@@ -42956,7 +43058,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6376
+      "line": 6401
     }
   },
   {
@@ -43000,7 +43102,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6388
+      "line": 6413
     }
   },
   {
@@ -43053,7 +43155,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6410
+      "line": 6435
     }
   },
   {
@@ -43100,7 +43202,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6434
+      "line": 6459
     }
   },
   {
@@ -43133,7 +43235,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6474
+      "line": 6499
     }
   },
   {
@@ -43178,7 +43280,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6482
+      "line": 6507
     }
   },
   {
@@ -43211,7 +43313,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6510
+      "line": 6535
     }
   },
   {
@@ -43250,7 +43352,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6518
+      "line": 6543
     }
   },
   {
@@ -43309,7 +43411,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6524
+      "line": 6549
     }
   },
   {
@@ -43348,7 +43450,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6533
+      "line": 6558
     }
   },
   {
@@ -43401,7 +43503,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6541
+      "line": 6566
     }
   },
   {
@@ -43443,7 +43545,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6564
+      "line": 6589
     }
   },
   {
@@ -43499,7 +43601,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6579
+      "line": 6604
     }
   },
   {
@@ -43531,7 +43633,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6593
+      "line": 6618
     }
   },
   {
@@ -43563,7 +43665,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6603
+      "line": 6628
     }
   },
   {
@@ -43595,7 +43697,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6613
+      "line": 6638
     }
   },
   {
@@ -43627,7 +43729,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6623
+      "line": 6648
     }
   },
   {
@@ -43657,7 +43759,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6635
+      "line": 6660
     }
   },
   {
@@ -43698,7 +43800,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6645
+      "line": 6670
     }
   },
   {
@@ -43728,7 +43830,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6657
+      "line": 6682
     }
   },
   {
@@ -43758,7 +43860,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6666
+      "line": 6691
     }
   },
   {
@@ -43805,7 +43907,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6675
+      "line": 6700
     }
   },
   {
@@ -43862,7 +43964,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6685
+      "line": 6710
     }
   },
   {
@@ -43928,7 +44030,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6696
+      "line": 6721
     }
   },
   {
@@ -43993,7 +44095,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6708
+      "line": 6733
     }
   },
   {
@@ -44023,7 +44125,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6720
+      "line": 6745
     }
   },
   {
@@ -44053,7 +44155,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6726
+      "line": 6751
     }
   },
   {
@@ -44088,7 +44190,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6732
+      "line": 6757
     }
   },
   {
@@ -44129,7 +44231,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6742
+      "line": 6767
     }
   },
   {
@@ -44159,7 +44261,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6752
+      "line": 6777
     }
   },
   {
@@ -44200,7 +44302,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6758
+      "line": 6783
     }
   },
   {
@@ -44230,7 +44332,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6769
+      "line": 6794
     }
   },
   {
@@ -44280,7 +44382,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6782
+      "line": 6807
     }
   },
   {
@@ -44339,7 +44441,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6793
+      "line": 6818
     }
   },
   {
@@ -44418,7 +44520,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6808
+      "line": 6833
     }
   },
   {
@@ -44539,7 +44641,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6819
+      "line": 6844
     }
   },
   {
@@ -44642,7 +44744,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6835
+      "line": 6860
     }
   },
   {
@@ -44721,7 +44823,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6851
+      "line": 6876
     }
   },
   {
@@ -44776,7 +44878,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6862
+      "line": 6887
     }
   },
   {
@@ -44831,7 +44933,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6872
+      "line": 6897
     }
   },
   {
@@ -44927,7 +45029,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6882
+      "line": 6907
     }
   },
   {
@@ -45006,7 +45108,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6897
+      "line": 6922
     }
   },
   {
@@ -45101,7 +45203,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6908
+      "line": 6933
     }
   },
   {
@@ -45159,7 +45261,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6921
+      "line": 6946
     }
   },
   {
@@ -45230,7 +45332,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6938
+      "line": 6963
     }
   },
   {
@@ -45326,7 +45428,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6948
+      "line": 6973
     }
   },
   {
@@ -45407,7 +45509,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6964
+      "line": 6989
     }
   },
   {
@@ -45462,7 +45564,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6978
+      "line": 7003
     }
   },
   {
@@ -45549,7 +45651,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6986
+      "line": 7011
     }
   },
   {
@@ -45620,7 +45722,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 6998
+      "line": 7023
     }
   },
   {
@@ -45732,7 +45834,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7008
+      "line": 7033
     }
   },
   {
@@ -45835,7 +45937,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7023
+      "line": 7048
     }
   },
   {
@@ -45931,7 +46033,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7039
+      "line": 7064
     }
   },
   {
@@ -46027,7 +46129,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7064
+      "line": 7089
     }
   },
   {
@@ -46118,7 +46220,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7079
+      "line": 7104
     }
   },
   {
@@ -46181,7 +46283,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7094
+      "line": 7119
     }
   },
   {
@@ -46211,7 +46313,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7108
+      "line": 7133
     }
   },
   {
@@ -46258,7 +46360,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7116
+      "line": 7141
     }
   },
   {
@@ -46315,7 +46417,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7126
+      "line": 7151
     }
   },
   {
@@ -46381,7 +46483,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7137
+      "line": 7162
     }
   },
   {
@@ -46446,7 +46548,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7149
+      "line": 7174
     }
   },
   {
@@ -46476,7 +46578,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7161
+      "line": 7186
     }
   },
   {
@@ -46506,7 +46608,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7167
+      "line": 7192
     }
   },
   {
@@ -46541,7 +46643,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7173
+      "line": 7198
     }
   },
   {
@@ -46582,7 +46684,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7183
+      "line": 7208
     }
   },
   {
@@ -46612,7 +46714,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7193
+      "line": 7218
     }
   },
   {
@@ -46653,7 +46755,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7199
+      "line": 7224
     }
   },
   {
@@ -46685,7 +46787,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7209
+      "line": 7234
     }
   },
   {
@@ -46715,7 +46817,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7235
+      "line": 7260
     }
   },
   {
@@ -46745,7 +46847,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7242
+      "line": 7267
     }
   },
   {
@@ -46775,7 +46877,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7249
+      "line": 7274
     }
   },
   {
@@ -46805,7 +46907,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7256
+      "line": 7281
     }
   },
   {
@@ -46835,7 +46937,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7263
+      "line": 7288
     }
   },
   {
@@ -46865,7 +46967,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7270
+      "line": 7295
     }
   },
   {
@@ -46905,7 +47007,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7278
+      "line": 7303
     }
   },
   {
@@ -46945,7 +47047,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7284
+      "line": 7309
     }
   },
   {
@@ -46985,7 +47087,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7290
+      "line": 7315
     }
   },
   {
@@ -47015,7 +47117,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7296
+      "line": 7321
     }
   },
   {
@@ -47045,7 +47147,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7303
+      "line": 7328
     }
   },
   {
@@ -47075,7 +47177,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7312
+      "line": 7337
     }
   },
   {
@@ -47105,7 +47207,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7319
+      "line": 7344
     }
   },
   {
@@ -47135,7 +47237,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7326
+      "line": 7351
     }
   },
   {
@@ -47165,7 +47267,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7334
+      "line": 7359
     }
   },
   {
@@ -47195,7 +47297,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7340
+      "line": 7365
     }
   },
   {
@@ -47225,7 +47327,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7343
+      "line": 7368
     }
   },
   {
@@ -47255,7 +47357,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7350
+      "line": 7375
     }
   },
   {
@@ -47285,7 +47387,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7360
+      "line": 7385
     }
   },
   {
@@ -47315,7 +47417,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7370
+      "line": 7395
     }
   },
   {
@@ -47345,7 +47447,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7377
+      "line": 7402
     }
   },
   {
@@ -47375,7 +47477,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7387
+      "line": 7412
     }
   },
   {
@@ -47431,7 +47533,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7392
+      "line": 7417
     }
   },
   {
@@ -47473,7 +47575,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7399
+      "line": 7424
     }
   },
   {
@@ -47512,7 +47614,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7405
+      "line": 7430
     }
   },
   {
@@ -47542,7 +47644,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7412
+      "line": 7437
     }
   },
   {
@@ -47572,7 +47674,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7418
+      "line": 7443
     }
   },
   {
@@ -47602,7 +47704,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7426
+      "line": 7451
     }
   },
   {
@@ -47657,7 +47759,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7431
+      "line": 7456
     }
   },
   {
@@ -47699,7 +47801,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7438
+      "line": 7463
     }
   },
   {
@@ -47738,7 +47840,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7444
+      "line": 7469
     }
   },
   {
@@ -47768,7 +47870,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7450
+      "line": 7475
     }
   },
   {
@@ -47823,7 +47925,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7456
+      "line": 7481
     }
   },
   {
@@ -47853,7 +47955,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7463
+      "line": 7488
     }
   },
   {
@@ -47908,7 +48010,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7466
+      "line": 7491
     }
   },
   {
@@ -47955,7 +48057,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7473
+      "line": 7498
     }
   },
   {
@@ -48010,7 +48112,51 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7479
+      "line": 7504
+    }
+  },
+  {
+    "canonical": "MenuObject#SetDefault",
+    "name": "SetDefault",
+    "kind": "method",
+    "parent": "MenuObject",
+    "signature": "SetDefault(item_id)",
+    "type": null,
+    "value": null,
+    "description": "Sets a menu item as the default item. The default item is displayed in bold.\nOnly one item can be set as default for each menu object.",
+    "params": [
+      {
+        "type": "number",
+        "name": "item_id",
+        "rawName": "item_id",
+        "optional": false,
+        "variadic": false,
+        "description": ""
+      }
+    ],
+    "properties": [],
+    "returns": null,
+    "throws": [
+      {
+        "type": "Error",
+        "description": "If <b>item_id</b> does not exist."
+      }
+    ],
+    "examples": [],
+    "sourceFiles": [],
+    "readonly": false,
+    "static": false,
+    "deprecated": false,
+    "worker": false,
+    "mainThread": false,
+    "cloneable": false,
+    "transferable": false,
+    "enumType": null,
+    "enumMembers": null,
+    "legacyEnumMarkup": false,
+    "source": {
+      "file": "js/foo_uie_jsplitter.js",
+      "line": 7511
     }
   },
   {
@@ -48069,7 +48215,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7486
+      "line": 7520
     }
   },
   {
@@ -48099,7 +48245,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7495
+      "line": 7529
     }
   },
   {
@@ -48206,7 +48352,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7500
+      "line": 7534
     }
   },
   {
@@ -48248,7 +48394,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7513
+      "line": 7547
     }
   },
   {
@@ -48296,7 +48442,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7519
+      "line": 7553
     }
   },
   {
@@ -48326,7 +48472,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7528
+      "line": 7562
     }
   },
   {
@@ -48356,7 +48502,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7538
+      "line": 7572
     }
   },
   {
@@ -48386,7 +48532,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7550
+      "line": 7584
     }
   },
   {
@@ -48416,7 +48562,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7561
+      "line": 7595
     }
   },
   {
@@ -48446,7 +48592,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7572
+      "line": 7606
     }
   },
   {
@@ -48476,7 +48622,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7585
+      "line": 7619
     }
   },
   {
@@ -48508,7 +48654,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7599
+      "line": 7633
     }
   },
   {
@@ -48540,7 +48686,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7613
+      "line": 7647
     }
   },
   {
@@ -48572,7 +48718,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7626
+      "line": 7660
     }
   },
   {
@@ -48604,7 +48750,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7639
+      "line": 7673
     }
   },
   {
@@ -48636,7 +48782,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7652
+      "line": 7686
     }
   },
   {
@@ -48666,7 +48812,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7667
+      "line": 7701
     }
   },
   {
@@ -48698,7 +48844,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7677
+      "line": 7711
     }
   },
   {
@@ -48730,7 +48876,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7691
+      "line": 7725
     }
   },
   {
@@ -48774,7 +48920,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7704
+      "line": 7738
     }
   },
   {
@@ -48818,7 +48964,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7719
+      "line": 7753
     }
   },
   {
@@ -48862,7 +49008,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7735
+      "line": 7769
     }
   },
   {
@@ -48892,7 +49038,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7752
+      "line": 7786
     }
   },
   {
@@ -48924,7 +49070,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7762
+      "line": 7796
     }
   },
   {
@@ -48956,7 +49102,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7781
+      "line": 7815
     }
   },
   {
@@ -48988,7 +49134,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7795
+      "line": 7829
     }
   },
   {
@@ -49020,7 +49166,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7812
+      "line": 7846
     }
   },
   {
@@ -49050,7 +49196,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7829
+      "line": 7863
     }
   },
   {
@@ -49082,7 +49228,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7839
+      "line": 7873
     }
   },
   {
@@ -49114,7 +49260,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7853
+      "line": 7887
     }
   },
   {
@@ -49146,7 +49292,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7867
+      "line": 7901
     }
   },
   {
@@ -49178,7 +49324,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7890
+      "line": 7924
     }
   },
   {
@@ -49210,7 +49356,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7904
+      "line": 7938
     }
   },
   {
@@ -49254,7 +49400,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7920
+      "line": 7954
     }
   },
   {
@@ -49298,7 +49444,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7936
+      "line": 7970
     }
   },
   {
@@ -49342,7 +49488,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7953
+      "line": 7987
     }
   },
   {
@@ -49386,7 +49532,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7974
+      "line": 8008
     }
   },
   {
@@ -49430,7 +49576,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7993
+      "line": 8027
     }
   },
   {
@@ -49474,7 +49620,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 8011
+      "line": 8045
     }
   },
   {
@@ -51673,7 +51819,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 1116
+      "line": 1118
     }
   },
   {
@@ -51715,7 +51861,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 1125
+      "line": 1127
     }
   },
   {
@@ -51757,7 +51903,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 1134
+      "line": 1136
     }
   },
   {
@@ -51772,7 +51918,7 @@
     ],
     "type": null,
     "value": null,
-    "description": "Runs JavaScript in a separate JSplitter Worker realm and Worker thread.<br>\nJSplitter Workers use a Web-Worker-inspired programming model, but this page describes the actual JSplitter behaviour and should be treated as the primary guide. A Worker has its own global scope and event loop, communicates with its parent panel through structured-clone messages, and has no direct access to the panel UI.\n\nWorkers can also run computationally intensive WebAssembly modules;\nsee the {@link module:WebAssembly WebAssembly guide} for a complete example.\n\n<h2>Why use a Worker?</h2>\nA panel script shares its thread with panel/UI work. Expensive JavaScript, large metadata aggregation, image processing, or repeated frame preparation performed there can make the interface less responsive. A Worker moves suitable work to another thread and lets the panel remain focused on interaction and presentation.\n\n<div class=\"doc-article-diagram\">Panel realm                         Worker realm\nUI / callbacks                       own JS realm + event loop\n    |                                      |\n    | new Worker(source / { file })                   |\n    |------------------------------------->|\n    |                                      | script starts\n    | postMessage(data)                    |\n    |------------------------------------->| process / render / I/O\n    |                                      |\n    |                  postMessage(result) |\n    |<-------------------------------------|\n    | repaint / present result             |\n    |                                      |\n    | terminate                close ----|</div>\n\n<h2>Creating a Worker</h2>\nThe {@link Worker} constructor has two explicit startup forms:\n\n<ul class=\"doc-article-list\">\n<li><b>new Worker(source[, name])</b> — evaluates JavaScript <b>source</b> text supplied by the panel script.</li>\n<li><b>new Worker({ file: 'path/to/worker.js' }[, name])</b> — reads and evaluates a JavaScript file.</li>\n</ul>\n\nIn the file-backed form, <b>file</b> may be an absolute or relative path. Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. The caller/package/component search roots are considered, and the resolved file becomes the Worker's startup script origin. \n\nThe optional second <b>name</b> argument has the same meaning in both startup forms: it is the Worker's immutable identity for its lifetime. Supply it when the Worker is created; inside the Worker the same value is exposed through read-only {@link WorkerGlobalScope#name self.name}. JSplitter also uses this exact name in {@link window.JsMemoryStats} (<b>Workers[].Name</b>) and as the first diagnostic metadata line of every unhandled Worker exception (see below). Giving long-lived or multiple concurrent Workers short descriptive names therefore makes both memory inspection and failures much easier to identify.\n\nHere are the examples of Worker creation:\n\n```js\nconst inlineWorker = new Worker(`\n    include('workers/main.js');\n`,\n'inline-worker');\n\nconst fileWorker = new Worker(\n    { file: 'workers/main.js' },\n    'file-worker'\n);\n```\n\nThis also means an inline Worker based on source text can be any piece of executable JavaScript code or only a tiny bootstrap that {@link include}s ordinary files, while a file-backed Worker can start from the same file directly. Relative paths are resolved from the currently executing script file first when one exists, so a file-backed <b>workers/main.js</b> can <b>include('./helpers.js')</b>; otherwise the Worker's inherited script/package roots and component path are used.\n\nSource text passed to {@link Worker} is ordinary JavaScript. JSplitter evaluates it in a new Worker realm running on its own thread:\n\n```js\nconst worker = new Worker(`\n    const value = 21 * 2;\n    console.log('Worker result: ' + value);\n`, 'example-worker');\n```\n\nThe code inside the string runs in the Worker, not in the panel. It can use the APIs available to Worker code just as ordinary panel JavaScript can use panel APIs.\n\nThis example is intentionally not very useful: it performs one calculation and does not communicate with the panel. The next section explains an important consequence of this execution model: the Worker remains alive even after that startup code reaches its end. Later sections show how messaging turns it into a useful long-lived Worker.\n\n<h2>Worker lifetime and the event loop</h2>\nReaching the end of the Worker's initial source does <b>not</b> mean that the Worker has finished. In the example above, execution reaches the end immediately after {@link console.log}, but the Worker itself remains alive. JSplitter keeps it running in its event loop. In this documentation, <b>event loop</b> simply means the Worker waits for the next unit of work and dispatches it when it arrives: a message from the panel, a timer, a Worker-capable asynchronous host completion, observer delivery, or Promise work associated with a task. When there is nothing to do, the Worker waits; it does not repeatedly execute the initial source and it does not need a user-written loop.\n\nThis also means that processing one message does not end the Worker. The same Worker can receive many later messages through the same {@link WorkerGlobalScope#onmessage onmessage} handler with one {@link MessageEvent} parameter. If the panel stays loaded and keeps the Worker alive, and neither side closes it, the Worker remains alive waiting for more work. It is therefore important to end Workers that are no longer needed rather than assuming that returning from the startup script or from a message handler stops them.\n\nThere are two normal ways to end a Worker:\n\n<ul class=\"doc-article-list\">\n<li>The parent panel calls {@link Worker#terminate terminate} when it decides that the Worker is no longer needed.</li>\n<li>Worker code calls Worker-global {@link WorkerGlobalScope#close close} when the Worker itself knows that its work is finished. New work is no longer accepted, the current task is allowed to finish, and then the event loop exits.</li>\n</ul>\n\nNext example shows typical <b>worker <-> panel</b> messaging:\n```js\nconst worker = new Worker(`\nonmessage = function (event) {\n    if (event.data === 'stop') {\n        // WORKER: the Worker decides that it has finished.\n        postMessage('finished');\n        close();\n        return;\n    }\n\n    postMessage('processed: ' + event.data);\n};\n`);\n\n// PANEL: receives messages sent by postMessage() inside the Worker here\nworker.onmessage = function (event) {\n    console.log('Worker says: ' + event.data);\n};\n\n// PANEL: sends message to worker\nworker.postMessage('hello');\n// -> Worker says: processed: hello\n\n// If Worker is no longer needed then:\n\n// Option A: ask the Worker to finish through its own message protocol\nworker.postMessage('stop');\n// -> Worker says: finished\n\n// Option B: stop Worker directly from the outside instead.\n// Calling terminate() here is also safe, after the Worker has already called close()\n// worker.terminate();\n```\n\nJSplitter automatically terminates all Workers still owned by a panel when that panel is unloaded, so explicit cleanup is not required merely for panel teardown. Explicit {@link Worker#terminate terminate} is for ending a Worker <b>earlier</b>, while the panel continues to live. Conversely, while the panel remains loaded, a Worker that is still kept alive and is never closed or terminated will remain waiting in its event loop and will continue to hold its Worker realm and associated resources.\n\n<div class=\"doc-note warning\"><b>Do not treat a Worker created with <b>new Worker(...)</b> as a one-shot function call.</b><br>\nIf the panel keeps an ordinary Worker alive after its useful work is finished, returning from the Worker source or from its last message handler does not dispose it. Call {@link Worker#terminate terminate} when the panel is done with it, design the Worker protocol so Worker-global {@link WorkerGlobalScope#close close} is called when the Worker knows it is finished, or use {@link Worker.RunAsync Worker.RunAsync} when the task is naturally one-shot.</div>\n\n<h2>Handling Worker errors</h2>\n\nAn exception that is <strong>not caught by Worker code</strong> and escapes Worker startup code, a Worker message handler, a timer callback, or another Worker task is reported as an {@link ErrorEvent}. A normal <b>try...catch</b> handles the exception locally and prevents this error-reporting path from being used.\n\nFor uncaught exceptions, Worker-local handling comes first: if Worker-global {@link WorkerGlobalScope#onerror onerror} or an <strong><b>error</b></strong> listener is installed, the error is handled there and is not forwarded to the parent. Otherwise it is forwarded to the parent side, where {@link Worker#onerror Worker.onerror} or an <strong><b>error</b></strong> listener can handle it.\n\n```js\nworker.onerror = function (event) {\n    console.log('Worker error: ' + event.message);\n    console.log('Source: ' + event.filename);\n    console.log('Location: ' + event.lineno + ':' + event.colno);\n};\n```\n\nIf the error reaches the parent and no parent error handler is installed, JSplitter shows the normal panel-script error UI. A named inline Worker can produce a diagnostic like this:\n\n```text\nz is not defined\n\nWorker: spectrum-renderer\nFile: worker.js\nLine: 42, Column: 5\nStack trace:\n  scheduleNext@worker.js:42:5\n  onmessage@worker.js:68:3\n```\n\nRead it from top to bottom:\n\n<ul class=\"doc-article-list\">\n<li><b>Error message</b> — <b>z is not defined</b> is the exception text.</li>\n<li><b>Worker:</b> — the immutable Worker name supplied at construction time. An unnamed Worker shows <b>&lt;unnamed&gt;</b>.</li>\n<li><b>File:</b> — the Worker source name. Inline Workers use <b>worker.js</b>; file-backed Workers use the startup script basename.</li>\n<li><b>Line / Column:</b> — the original location of the exception in Worker code.</li>\n<li><b>Stack trace:</b> — the original Worker call chain when SpiderMonkey provides it.</li>\n</ul>\n\nThe resolved full path of a file-backed Worker is retained internally for relative file resolution, but diagnostics intentionally use the script basename to match ordinary panel-script diagnostics.\n\nA parent-side error handler can also deliberately turn a Worker failure into a normal panel-script exception by throwing. The <b>event</b> parameter below is the incoming {@link ErrorEvent}, so the original Worker location is available directly on that object:\n\n```js\nworker.onerror = function (event) {\n    console.log('Original Worker location: ' +\n        event.filename + ':' + event.lineno + ':' + event.colno);\n\n    throw new Error('Worker failed: ' + event.message);\n};\n```\n\n<h2>Sending structured data</h2>\nMessages are not limited to strings. {@link Worker#postMessage Worker.postMessage} and Worker-global {@link WorkerGlobalScope#postMessage postMessage} use structured-clone semantics: the sender serializes the value and the receiver reconstructs its own independent value. The two realms do not share the same JavaScript object.\n\n```js\nconst worker = new Worker(`\nonmessage = function (event) {\n    const request = event.data;\n\n    if (request.command === 'sum') {\n        const total = request.values.reduce((a, b) => a + b, 0);\n\n        // WORKER: send a structured result object back to the panel.\n        postMessage({\n            command: 'sum-result',\n            total: total\n        });\n    }\n};\n`);\n\nworker.onmessage = function (event) {\n    console.log(event.data.command); // sum-result\n    console.log(event.data.total);   // 10\n\n    // PANEL: this one-shot example has its result, so it no longer needs\n    // the Worker to remain alive waiting for more messages.\n    worker.terminate();\n};\n\n// PANEL: the object and nested array are cloned for the Worker.\nworker.postMessage({\n    command: 'sum',\n    values: [1, 2, 3, 4]\n});\n```\n\nOrdinary JavaScript objects, arrays, maps, sets, typed arrays, ArrayBuffers and other supported structured-clone values can be sent this way. Selected JSplitter host wrappers can also cross the message boundary; the exact types and their ownership rules are listed later under <b>Host objects in messages</b>.\n\n<h2>Broadcasting between panels and Workers</h2>\n{@link Worker#postMessage Worker.postMessage} is a direct channel between one panel and one specific Worker. When several independent panels and/or Workers should publish and receive messages by a shared name, use {@link BroadcastChannel} instead. BroadcastChannel uses asynchronous structured-clone delivery and does not require the sender to keep references to every receiver.\n\n```js\nconst channel = new BroadcastChannel('playback-state');\nchannel.onmessage = event => console.log(event.data);\nchannel.postMessage({ playing: true, track: 12 });\n```\n\nThe same constructor and handlers are available in panel and Worker realms. One important difference from direct Worker messaging is ownership: <b>BroadcastChannel has no transfer list and never detaches the sender's objects.</b> Values are structured-cloned for its receivers. A broadcast can fan out to several independent destinations, so there is no single receiver that could take ownership of a transferred resource.\n\n```js\n// Broadcast: cloned for listeners; bitmap stays usable here.\nchannel.postMessage({ bitmap: bitmap });\n\n// Direct Worker message: ownership can be moved to this one Worker.\nworker.postMessage({ bitmap: bitmap }, [bitmap]);\n// bitmap is detached after a successful transfer.\n```\n\nIf you need publish/subscribe delivery, use {@link BroadcastChannel}. If you need to move a large transferable resource to one known Worker without retaining a usable source object, use the transfer-list form described below. See {@link BroadcastChannel} and its linked sample for the complete broadcast usage guide.\n\n<h2>Transferring ownership</h2>\nA transferable value uses the same message channel but a different ownership model.\nNormal structured clone leaves the source usable and creates a representation for the receiver.\nTransfer instead <b>moves ownership</b> of the underlying resource without cloning.\nAfter a successful transfer, the source wrapper is detached and <b>must not be used</b> again\nby the sender.\n\nThe syntax difference is the <b>transfer list</b> passed as the second argument.\nThe transfer list is separate from the message payload. It identifies transferable objects\ncontained anywhere in the payload that should have their ownership moved instead of being cloned.\n\n```js\n// Clone: both objects remain usable in the panel.\nworker.postMessage({\n    bitmap: bitmap,\n    chunk: audioChunk\n});\n\n// Transfer: the message payload is still the first argument.\n// The transfer list only specifies which transferable objects inside that\n// payload move to the Worker instead of being cloned.\nworker.postMessage(\n    {\n        bitmap: bitmap,\n        chunk: audioChunk,\n        values: [1, 2, 3, 4]\n    },\n    [bitmap, audioChunk]\n);\n\n// After a successful transfer, bitmap and audioChunk are detached in the\n// panel. Other values in the message, such as \"values\", are cloned normally.\n```\n\nTransfers are atomic with respect to the transfer list. A call to <b>postMessage(value, transferList)</b> either transfers every transferable object\nin the list or transfers none of them.\n\nIf the message cannot be serialized, or any object in the transfer list cannot be transferred,\n{@link Worker#postMessage postMessage} fails <b>synchronously by throwing an exception in the sender</b>.\nThe message is not queued, all source objects remain usable, and no object in the transfer list is detached.\n\nAfter {@link Worker#postMessage postMessage} successfully serializes the message and commits the transfer,\nall objects listed in the transfer list are detached in the sender.\n\nA message is delivered only after sender-side serialization and transfer have completed successfully.\nIf the receiving realm then cannot reconstruct one of the message values, that endpoint receives a\n{@link Worker#onmessageerror messageerror} event and remains usable for later messages. This is a\nreceiver-side delivery failure and is therefore separate from a synchronous exception thrown by\n<b>postMessage</b> in the sender. A completed transfer is <b>not rolled back</b>, and transferred\nsource objects remain detached.\n\nJSplitter adds two diagnostic fields to that {@link MessageEvent}:\n{@link MessageEvent#errorMessage errorMessage} tells you why reconstruction failed, while\n{@link MessageEvent#direction direction} tells you whether the failed delivery was\n<b>panel-to-worker</b> or <b>worker-to-panel</b>. The original payload is not available because\nreconstruction did not complete, so {@link MessageEvent#data data} is <b>undefined</b>.\n\n```js\nworker.onmessageerror = function (event) {\n    // PANEL: a Worker result reached this panel but could not be reconstructed.\n    console.log('Failed direction: ' + event.direction);\n    console.log('Reason: ' + event.errorMessage);\n};\n```\n\nInside a Worker, Worker-global {@link WorkerGlobalScope#onmessageerror onmessageerror} exposes\nthe same fields; its direction is <b>panel-to-worker</b>. This is a delivery/structured-clone\nfailure, not an uncaught Worker exception, so it is separate from\n{@link Worker#onerror onerror}.\n\n<h2>Host objects in messages</h2>\nThe examples above cover normal structured data and transfer syntax. JSplitter also defines explicit messaging rules for its native host wrappers. The lists below are the reference for which wrappers may cross between the panel and Worker realms.\n\n<b>Cloneable host objects.</b> Sending one of these without a transfer list leaves the source object usable in the sender and creates an independent representation for the receiving realm.\n<details class=\"doc-capability-list\"><summary><b>Cloneable host objects</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link FbMetadbHandle}</li>\n<li>{@link FbMetadbHandleList}</li>\n<li>{@link FbFileInfo}</li>\n<li>{@link FbTitleFormat}</li>\n<li>{@link FbPlaybackQueueItem}</li>\n<li>{@link FbPlayingItemLocation}</li>\n<li>{@link FbAudioChunk}</li>\n<li>{@link DriveInfo}</li>\n<li>{@link RunResult}</li>\n<li>{@link GdiGraphics.MeasureStringInfo GDI MeasureStringInfo}</li>\n<li>{@link D2DGraphics.MeasureStringInfo D2D MeasureStringInfo}</li>\n<li>{@link D2DCompileInfo}</li>\n<li>{@link GdiBitmap}</li>\n<li>{@link GdiFont}</li>\n<li>{@link GdiBrush}</li>\n<li>{@link D2DBitmap}</li>\n<li>{@link D2DFont}</li>\n<li>{@link D2DBrush}</li>\n<li>{@link D2DStrokeStyle}</li>\n</ul>\n</details>\n\n<b>Transferable host objects.</b> These are the JSplitter host wrappers that support the transfer-list ownership model demonstrated above. After a successful transfer the source wrapper is detached and no longer usable on the sender side; if serialization itself fails, the transfer is rolled back and the source remains usable.\n\nTransfer support is intentionally limited to objects that own a significant dynamic resource whose ownership can be moved efficiently and unambiguously between realms. Smaller value-like objects are simply cloned, while shared or realm-bound resources are not made transferable.\n\n<details class=\"doc-capability-list\"><summary><b>Transferable host objects</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link FbAudioChunk}</li>\n<li>{@link GdiBitmap}</li>\n<li>{@link D2DBitmap}</li>\n</ul>\n<p>All three types are also cloneable. Choose ordinary cloning when both realms still need a usable object. Transfer moves bitmap pixel storage or the {@link FbAudioChunk} sample buffer to the receiving realm without keeping a usable source wrapper.</p>\n</details>\n\n<b>Realm-local host objects.</b> Other wrappers represent live services, graphics state or resources whose meaning is tied to the realm that created them. They can be used normally inside that realm, including inside a Worker when the relevant API is available there, but they cannot cross a structured-clone message boundary. Attempting to post one fails serialization rather than silently sharing the native object.\n\n<details class=\"doc-capability-list\"><summary><b>Realm-local host objects</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link FbProfiler}</li>\n<li>{@link FbUiSelectionHolder}</li>\n<li>{@link FbPlaylistRecycler}</li>\n<li>{@link HtmlDocument}</li>\n<li>{@link HtmlNode}</li>\n<li>{@link GdiRawBitmap}</li>\n<li>{@link GdiGraphics}</li>\n<li>{@link D2DGraphics}</li>\n<li>{@link D2DEffect}</li>\n</ul>\n<p>{@link MainMenuManager} and {@link ContextMenuManager} are additionally panel-only because their factories are not exposed in Workers.</p>\n</details>\n\n<h2>Panel realm versus Worker realm</h2>\nA Worker is not another panel. It has no panel HWND, no {@link window} object, no panel graphics render target, and no panel UI/input callbacks such as {@link module:Callbacks.on_paint on_paint}, {@link module:Callbacks.on_key_down on_key_down} or {@link module:Callbacks.on_mouse_move on_mouse_move}. This does not mean Worker code has no callbacks at all: message/event handlers and completion callbacks belonging to Worker-capable asynchronous host APIs remain available where documented. A Worker has its own {@link fb}, {@link plman}, {@link utils}, {@link gdi}, {@link console} and {@link performance} namespace objects. When Direct2D is initialized before the Worker is created, {@link d2d} is available as well.\n<div class=\"doc-note warning\"><b>Direct2D versions earlier than 1.1 are not supported in the Worker.</b><br>\nMinimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div>\n\nThese APIs are exposed in the Worker realm, but this does not mean that every operation runs on the Worker thread: methods marked <strong>MAIN THREAD</strong> cross to the main thread internally but, for example, GDI and Direct2D resources can be created and used by the Worker for offscreen rendering in its own thread.\n\nThe Worker environment implements the JSplitter subset of familiar Worker primitives: {@link EventTarget}, {@link Event}, {@link MessageEvent}, {@link ErrorEvent}, {@link PromiseRejectionEvent}, {@link WorkerGlobalScope}, timers and promises. The local JSplitter interface pages describe the supported surface and behaviour.\n\n<h2>Worker API coverage</h2>\nMost useful non-UI JSplitter API is available inside a Worker. Namespaces marked <b>mostly available</b> below expose the large majority of their normal surface; the relatively small set of exclusions is listed separately in <b>APIs intentionally unavailable in Workers</b>.\n\n<ul class=\"doc-article-list\">\n<li><b>Core Worker environment</b> — messaging, events, timers, promises, {@link include} are available.</li>\n<li>{@link fb} — <b>mostly available</b>. Playback, library/selection data, title formatting, DSP/output state and most non-modal host operations are exposed.</li>\n<li>{@link plman} — <b>mostly available</b>. Playlist manipulation, playback queue, sorting, undo/redo and the playlist recycler are exposed.</li>\n<li>{@link utils} — <b>mostly available</b>. Filesystem, hashing, text/binary/INI, package/system information, HTML parsing, drives, image/album-art loading, process, HTTP and download helpers are exposed.</li>\n<li>{@link gdi} — <b>fully available</b> as a DrawMode-aware Worker namespace. In GDI mode its factories create GDI+ resources; when the Worker is created from a Direct2D panel, the same <b>gdi.*</b> factories route to the Worker Direct2D backend and create the corresponding D2D resources.</li>\n<li>{@link d2d} — <b>fully available</b> as a Worker namespace when Direct2D is initialized before Worker creation, including effects, compile support and Worker-local offscreen rendering. Set {@link window.DrawMode} to <b>1</b> in the panel <b>before</b> creating a Worker that needs Direct2D.</li>\n<li>{@link console} — <b>fully available</b> inside a Worker.</li>\n<li>{@link performance} — <b>fully available</b> inside a Worker.</li>\n</ul>\n\n<h2>APIs intentionally unavailable in Workers</h2>\n<b>Panel and browser globals.</b> The panel {@link window} namespace, panel UI/input callbacks such as {@link module:Callbacks.on_paint on_paint}, {@link module:Callbacks.on_key_down on_key_down} and {@link module:Callbacks.on_mouse_move on_mouse_move}, tooltips, theme/HWND services and the panel graphics render target are not Worker concepts. In particular, the panel-provided {@link GdiGraphics} or {@link D2DGraphics} graphics context passed to UI painting callbacks is not available to Worker code. Also panel-only compatibility globals such as {@link ActiveXObject} and {@link Enumerator}, and nested {@link Worker} creation are also unavailable.\n\nThe mostly available namespaces listed above also omit a small number of operations that are modal, interactive, tied to live panel UI state, or otherwise unsuitable for a Worker:\n\n<details class=\"doc-capability-list\"><summary><b>fb</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link fb.AddDirectory}</li>\n<li>{@link fb.AddFiles}</li>\n<li>{@link fb.CreateContextMenuManager}</li>\n<li>{@link fb.CreateMainMenuManager}</li>\n<li>{@link fb.DoDragDrop}</li>\n<li>{@link fb.LoadPlaylist}</li>\n<li>{@link fb.RunContextCommand}</li>\n<li>{@link fb.RunContextCommandWithMetadb}</li>\n<li>{@link fb.RunMainMenuCommand}</li>\n<li>{@link fb.SavePlaylist}</li>\n</ul>\n</details>\n\n<details class=\"doc-capability-list\"><summary><b>plman</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link plman.ShowAutoPlaylistUI}</li>\n<li>{@link plman.ShowPlaylistLockUI}</li>\n</ul>\n</details>\n\n<details class=\"doc-capability-list\"><summary><b>utils</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link utils.ColourPicker}</li>\n<li>{@link utils.EditTextFile}</li>\n<li>{@link utils.FilePicker}</li>\n<li>{@link utils.FolderPicker}</li>\n<li>{@link utils.FontPicker}</li>\n<li>{@link utils.InputBox}</li>\n<li>{@link utils.MessageBox}</li>\n<li>{@link utils.ShowHtmlDialog}</li>\n</ul>\n</details>\n\n<h2>Main-thread host operations</h2>\nMany APIs are callable from Worker code but ultimately use foobar2000 services that can only execute on the main thread (this is a foobar2000 SDK requirement). When the Worker calls one of these APIs, it waits synchronously until that host operation finishes. Occasional calls are fine; a tight loop of them defeats much of the reason for moving work to a Worker.\n\n<div class=\"doc-article-diagram\">GOOD\npanel:  send one useful batch\n                   |\n                   v\nworker: process / aggregate / render\n                   |\n                   v\npanel:  receive compact result\n\nPOOR\nworker: main thread -> main thread -> main thread -> ...</div>\n\n<div class=\"doc-note warning\"><b>Avoid building a Worker around repeated main-thread calls.</b><br>\nIf most of a Worker consists of frequent synchronous host calls, moving that code to a Worker will usually provide no performance benefit and can make it slower because of repeated cross-thread synchronization. If the main thread is busy, the Worker waits too.</div>\n\nThe lists below show the Worker-accessible API that uses this synchronous main-thread bridge:\n\n<details class=\"doc-capability-list\"><summary><b>plman</b></summary>\n<p><b>EVERY</b> Worker-exposed {@link plman} function is main-thread bridged. These live properties also have main-thread accessors:</p>\n<ul class=\"doc-api-link-list\">\n<li>{@link plman.ActivePlaylist}</li>\n<li>{@link plman.PlaybackOrder}</li>\n<li>{@link plman.PlayingPlaylist}</li>\n<li>{@link plman.PlaylistCount}</li>\n</ul>\n<p>Reading {@link plman.PlaylistRecycler} itself only obtains the Worker-local {@link FbPlaylistRecycler} wrapper; its operations are main-thread bridged.</p>\n</details>\n\n<details class=\"doc-capability-list\"><summary><b>fb</b></summary>\n<h4>Functions</h4>\n<ul class=\"doc-api-link-list\">\n<li>{@link fb.AcquireUiSelectionHolder}</li>\n<li>{@link fb.AddLocationsAsync}</li>\n<li>{@link fb.CheckClipboardContents}</li>\n<li>{@link fb.ClearPlaylist}</li>\n<li>{@link fb.CopyHandleListToClipboard}</li>\n<li>{@link fb.Exit}</li>\n<li>{@link fb.EnumerateMainMenuCommands}</li>\n<li>{@link fb.GetActiveDSPs}</li>\n<li>{@link fb.GetClipboardContents}</li>\n<li>{@link fb.GetDSPPresets}</li>\n<li>{@link fb.GetFocusItem}</li>\n<li>{@link fb.GetLibraryItems}</li>\n<li>{@link fb.GetLibraryRelativePath}</li>\n<li>{@link fb.GetLibraryRoots}</li>\n<li>{@link fb.GetNowPlaying}</li>\n<li>{@link fb.GetSelection}</li>\n<li>{@link fb.GetSelections}</li>\n<li>{@link fb.GetSelectionType}</li>\n<li>{@link fb.IsLibraryEnabled}</li>\n<li>{@link fb.IsMainMenuCommandChecked}</li>\n<li>{@link fb.IsMetadbInMediaLibrary}</li>\n<li>{@link fb.Next}</li>\n<li>{@link fb.Pause}</li>\n<li>{@link fb.Play}</li>\n<li>{@link fb.PlayOrPause}</li>\n<li>{@link fb.Prev}</li>\n<li>{@link fb.Random}</li>\n<li>{@link fb.RegisterMainMenuCommand}</li>\n<li>{@link fb.Restart}</li>\n<li>{@link fb.SetDSPPreset}</li>\n<li>{@link fb.SetOutputDevice}</li>\n<li>{@link fb.ShowConsole}</li>\n<li>{@link fb.ShowLibrarySearchUI}</li>\n<li>{@link fb.ShowPictureViewer}</li>\n<li>{@link fb.ShowPlaylistSearchUI}</li>\n<li>{@link fb.ShowPreferences}</li>\n<li>{@link fb.Stop}</li>\n<li>{@link fb.UnregisterMainMenuCommand}</li>\n<li>{@link fb.VolumeDown}</li>\n<li>{@link fb.VolumeMute}</li>\n<li>{@link fb.VolumeUp}</li>\n</ul>\n<h4>Properties</h4>\n<ul class=\"doc-api-link-list\">\n<li>{@link fb.AlwaysOnTop}</li>\n<li>{@link fb.CursorFollowPlayback}</li>\n<li>{@link fb.CustomVolume}</li>\n<li>{@link fb.IsPaused}</li>\n<li>{@link fb.IsPlaying}</li>\n<li>{@link fb.PlaybackFollowCursor}</li>\n<li>{@link fb.PlaybackLength}</li>\n<li>{@link fb.PlaybackTime}</li>\n<li>{@link fb.ReplaygainMode}</li>\n<li>{@link fb.StopAfterCurrent}</li>\n<li>{@link fb.Volume}</li>\n</ul>\n</details>\n\n<details class=\"doc-capability-list\"><summary><b>utils / console</b></summary>\n<h4>utils</h4>\n<ul class=\"doc-api-link-list\">\n<li>{@link utils.CheckComponent}</li>\n<li>{@link utils.GetClipboardText}</li>\n<li>{@link utils.GetPackageInfo}</li>\n<li>{@link utils.GetPackagePath}</li>\n<li>{@link utils.RecyclePath}</li>\n<li>{@link utils.Run}</li>\n<li>{@link utils.SetClipboardText}</li>\n</ul>\n<h4>console</h4>\n<ul class=\"doc-api-link-list\">\n<li>{@link console.GetLines}</li>\n<li>{@link console.ClearBacklog}</li>\n</ul>\n<p>The console methods above use the foobar2000 main-thread console manager on foobar2000 2.0 and newer; the legacy JSplitter-owned console backlog path is thread-safe and direct.</p>\n</details>\n\n<details class=\"doc-capability-list\"><summary><b>Host wrapper methods</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link FbMetadbHandle#RefreshStats}</li>\n<li>{@link FbMetadbHandleList#GetLibraryRelativePaths}</li>\n<li>{@link FbMetadbHandleList#OptimiseFileLayout}</li>\n<li>{@link FbMetadbHandleList#OrderByRelativePath}</li>\n<li>{@link FbMetadbHandleList#RefreshStats}</li>\n<li>{@link FbMetadbHandleList#RemoveAttachedImage}</li>\n<li>{@link FbMetadbHandleList#RemoveAttachedImages}</li>\n<li>{@link FbMetadbHandleList#UpdateFileInfoFromJSON}</li>\n<li>{@link FbTitleFormat#Eval}</li>\n<li>{@link FbUiSelectionHolder#SetSelection}</li>\n<li>{@link FbUiSelectionHolder#SetPlaylistSelectionTracking}</li>\n<li>{@link FbUiSelectionHolder#SetPlaylistTracking}</li>\n<li>{@link FbPlaylistRecycler#Count}</li>\n<li>{@link FbPlaylistRecycler#GetName}</li>\n<li>{@link FbPlaylistRecycler#GetContent}</li>\n<li>{@link FbPlaylistRecycler#Purge}</li>\n<li>{@link FbPlaylistRecycler#Restore}</li>\n</ul>\n</details>\n\nA small note on {@link fb.GetAudioChunk fb.GetAudioChunk}: it's normally accesses the visualisation stream directly from the Worker but its first use may briefly synchronize with the main thread while that stream is initialized.\n\nA Worker waiting for a bridge call can normally be terminated cleanly. Once a main-thread callback has already begun executing, however, it cannot be interrupted halfway through; that in-progress host operation must return before it can be fully unwound. Blocking or modal host APIs are therefore deliberately excluded from the Worker surface.\n\n<h2>Capability badges and terms</h2>\nThe detailed API pages use four local badges for the concepts introduced above:\n\n<ul class=\"doc-article-list\">\n<li><span class=\"flag capability worker\">WORKER</span> — this API item is available from Worker code. Absence of this badge means the item is not part of the documented Worker surface.</li>\n<li><span class=\"flag capability main-thread\">MAIN THREAD</span> — as described in <b>Main-thread host operations</b> above, the item is callable from a Worker but its foobar2000 host operation executes synchronously on the main thread. The Worker waits for that operation to return, so repeated calls should be avoided in hot Worker loops.</li>\n<li><span class=\"flag capability cloneable\">CLONEABLE</span> — instances of this host type can be sent through {@link Worker#postMessage postMessage} using structured clone while the source remains usable.</li>\n<li><span class=\"flag capability transferable\">TRANSFERABLE</span> — instances can additionally be placed in the transfer list so ownership moves to the receiver; after a successful transfer the source wrapper is detached and no longer usable on the sender side.</li>\n</ul>\n\n<h2>One-shot work with {@link Worker.RunAsync}</h2>\nWhen work naturally has one input and one result, {@link Worker.RunAsync Worker.RunAsync} avoids building a message protocol around a short-lived Worker. Each call creates a normal temporary Worker realm and Worker thread with the same Worker-side API surface as {@link Worker} code. The callback arguments are structured-cloned into that realm, and the callback's return value (or the resolved value of its Promise) is structured-cloned back to the panel. The temporary Worker is terminated automatically after success or failure.\n\nBoth synchronous and asynchronous callbacks are supported:\n\n```js\nconst result = await Worker.RunAsync(\n    async (arg1, arg2) => {\n        // Runs in a separate Worker realm/thread.\n        return arg1 + arg2;\n    },\n    10,\n    12\n);\n\nconsole.log(result); // 22\n```\n\nThe callback is recreated from its JavaScript source in the Worker realm. Although the call syntax looks like an ordinary local callback, it therefore does <b>not</b> capture lexical variables from the panel. This is incorrect:\n\n```js\nconst factor = 10;\n\n// Wrong: factor exists only in the panel realm.\nconst result = await Worker.RunAsync(\n    value => value * factor,\n    5\n);\n// Rejects with ReferenceError: factor is not defined\n```\n\nPass every required value explicitly as an argument instead:\n\n```js\nconst factor = 10;\n\n// Correct: factor crosses the realm boundary through structured clone.\nconst result = await Worker.RunAsync(\n    (value, factor) => value * factor,\n    5,\n    factor\n);\n```\n\nUser-defined normal, arrow and <b>async</b> functions are supported. Native and bound functions cannot be recreated from source and are rejected. If the callback throws, returns a rejected Promise, or an argument/result cannot be structured-cloned, the Promise returned by {@link Worker.RunAsync} rejects, so ordinary <b>try...catch</b> around <b>await</b> can handle the failure. Relative {@link include} calls inside the callback keep the caller's script/package roots.\n\n{@link Worker.RunAsync} currently uses structured clone only and has no transfer-list parameter. Use an ordinary long-lived {@link Worker} with {@link Worker#postMessage postMessage} when explicit ownership transfer, repeated requests, persistent Worker state, or a custom message protocol is required. Each {@link Worker.RunAsync} call creates a fresh full Worker, so it is intended for reasonably coarse one-shot jobs rather than tiny operations in a hot loop.\n\nStreaming text I/O is a practical {@link Worker.RunAsync} example for larger or longer-running file operations: the work can be performed in a Worker while the panel remains responsive. \n\n```js\nconst summary = await Worker.RunAsync((input, output) => {\n    const reader = utils.OpenTextReader(input);\n    if (!reader) throw new Error('Unable to open input file');\n\n    const writer = utils.OpenTextWriter(output, false);\n    if (!writer) {\n        reader.Close();\n        throw new Error('Unable to create output file');\n    }\n\n    let lines = 0;\n    try {\n        for (;;) {\n            const line = reader.ReadLine();\n            if (line === null) break;\n            writer.WriteLine(line);\n            ++lines;\n        }\n    } finally {\n        reader.Close();\n        writer.Close();\n    }\n\n    return { lines };\n}, inputPath, outputPath);\n```\n\n<h2>Samples</h2>\nThe samples are intentionally ordered. Start with lifecycle/messaging, then move through batch data processing, CPU-bound work, asynchronous image processing and finally a real-time audio/render pipeline.\n\n<b>1. Basic Messaging.</b> The smallest complete lifecycle example: create a named inline Worker, send a structured object, receive a result, install parent/Worker <b>messageerror</b> diagnostics and a parent error handler, then let the Worker finish with Worker-global {@link WorkerGlobalScope#close close}. The unload handler also shows that parent {@link Worker#terminate terminate} is safe during panel teardown.\n\n```js\n// PANEL: create and immediately start a named Worker from prepared source text.\nconst worker = new Worker(source, 'basic-messaging');\n\n// PANEL: values sent by Worker-global postMessage(...) arrive here as event.data.\nworker.onmessage = event => console.log(event.data);\n\n// PANEL: send one object to this Worker. JSplitter structured-clones it before\n// the Worker's onmessage handler receives its own reconstructed copy.\nworker.postMessage({ values: [1, 2, 3, 4] });\n```\n\n<b>2. Playlist Statistics.</b> Presents Media Library and the existing playlists as an interactive source list. The panel obtains one {@link FbMetadbHandleList}, then the <b>Main / Worker</b> switch runs the same metadata and {@link FbFileInfo} aggregation either synchronously in the panel realm or on the cloned list in the Worker. The detail view reports calculation and end-to-end time, making the responsiveness/overhead trade-off visible on large real-world batches.\n\n```js\n// Panel: obtain one source batch. Media Library uses fb.GetLibraryItems();\n// playlists use plman.GetPlaylistItems(...).\nconst handles = source.library ? fb.GetLibraryItems() : plman.GetPlaylistItems(source.index);\n\n// Worker mode: clone the complete list once and aggregate it off the panel thread.\nworker.postMessage({ requestId, handles });\n\n// Main mode runs the same analyseHandles(handles) function in the panel realm.\n```\n\n<b>3. Fractal Renderer.</b> Demonstrates a CPU-bound render job that belongs entirely in a Worker. Pan and zoom reuse one completed frame locally for immediate feedback; drag sends one final viewport on release, while wheel and resize bursts are coalesced for 80 ms. The Worker renders only the settled viewport, transfers the completed bitmap, and stale results are rejected by view id. The <b>GDI / D2D</b> switch recreates the Worker so the same <b>gdi.*</b> facade can be compared in both rendering modes.\n\n<b>4. Playlist Album Gallery.</b> A practical artwork-loading A/B test. <b>Main / Worker</b> runs the same visible-cover pipeline either in the panel or in the Worker. In Worker mode the panel sends one cloneable {@link FbMetadbHandleList}; the Worker deduplicates it into albums, loads artwork with {@link utils.GetAlbumArtAsyncV2 GetAlbumArtAsyncV2}, resizes each image and transfers completed bitmaps back individually. Only the covers that fit in the current viewport are requested, changing cover size intentionally reloads them, and the sample has no artwork cache. <b>Concurrency</b> controls how many artwork requests may be in flight, while <b>GDI / D2D</b> selects the rendering backend. Targeted <b>RepaintRect</b> updates and timing counters make first display, loading, delivery and paint cost visible.\n\n<b>5. Spectrum Analyzer.</b> The real-time A/B test. <b>Main / Worker</b> runs the same audio-read, FFT and offscreen-render pipeline on either thread. Both paths allow only one completed frame at a time; the next frame starts only after the previous bitmap reaches <b>on_paint</b>, so the counters measure work that can actually be presented. Additional switches select <b>GDI / D2D</b>, FFT size, and either a <b>120 FPS</b> limiter or <b>Max</b> mode. The overlay reports frame/paint rate plus audio, FFT, render and total processing time. <b>Max</b> is useful for exposing fixed per-frame overhead, but the sample is not intended as a general GDI-versus-D2D benchmark.\n\n```js\n// Worker: read a short audio window and turn it into spectrum data.\nconst chunk = fb.GetAudioChunk(0.06, -0.03);\nanalyse(chunk);\n\n// Render a complete offscreen frame, then transfer its ownership to the panel.\nconst frame = renderSpectrum();\npostMessage({ bitmap: frame, timing }, [frame]);\n// frame is detached here after a successful transfer and must not be reused.\n\n// Panel: keep one completed frame and request presentation. Do not acknowledge\n// it yet: the Worker remains paused until this exact frame reaches on_paint.\nworker.onmessage = function (event) {\n    frame = event.data.bitmap;\n    window.Repaint();\n};\n\nfunction on_paint(gr) {\n    gr.DrawImage(frame, 0, 0, window.Width, window.Height, 0, 0, frame.Width, frame.Height);\n    worker.postMessage({ type: 'next' });\n}\n```",
+    "description": "Runs JavaScript in a separate JSplitter Worker realm and Worker thread.<br>\nJSplitter Workers use a Web-Worker-inspired programming model, but this page describes the actual JSplitter behaviour and should be treated as the primary guide. A Worker has its own global scope and event loop, communicates with its parent panel through structured-clone messages, and has no direct access to the panel UI.\n\nWorkers can also run computationally intensive WebAssembly modules;\nsee the {@link module:WebAssembly WebAssembly guide} for a complete example.\n\n<h2>Why use a Worker?</h2>\nA panel script shares its thread with panel/UI work. Expensive JavaScript, large metadata aggregation, image processing, or repeated frame preparation performed there can make the interface less responsive. A Worker moves suitable work to another thread and lets the panel remain focused on interaction and presentation.\n\n<div class=\"doc-article-diagram\">Panel realm                         Worker realm\nUI / callbacks                       own JS realm + event loop\n    |                                      |\n    | new Worker(source / { file })                   |\n    |------------------------------------->|\n    |                                      | script starts\n    | postMessage(data)                    |\n    |------------------------------------->| process / render / I/O\n    |                                      |\n    |                  postMessage(result) |\n    |<-------------------------------------|\n    | repaint / present result             |\n    |                                      |\n    | terminate                close ----|</div>\n\n<h2>Creating a Worker</h2>\nThe {@link Worker} constructor has two explicit startup forms:\n\n<ul class=\"doc-article-list\">\n<li><b>new Worker(source[, name])</b> — evaluates JavaScript <b>source</b> text supplied by the panel script.</li>\n<li><b>new Worker({ file: 'path/to/worker.js' }[, name])</b> — reads and evaluates a JavaScript file.</li>\n</ul>\n\nIn the file-backed form, <b>file</b> may be an absolute or relative path. Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. The caller/package/component search roots are considered, and the resolved file becomes the Worker's startup script origin. \n\nThe optional second <b>name</b> argument has the same meaning in both startup forms: it is the Worker's immutable identity for its lifetime. Supply it when the Worker is created; inside the Worker the same value is exposed through read-only {@link WorkerGlobalScope#name self.name}. JSplitter also uses this exact name in {@link window.JsMemoryStats} (<b>Workers[].Name</b>) and as the first diagnostic metadata line of every unhandled Worker exception (see below). Giving long-lived or multiple concurrent Workers short descriptive names therefore makes both memory inspection and failures much easier to identify.\n\nHere are the examples of Worker creation:\n\n```js\nconst inlineWorker = new Worker(`\n    include('workers/main.js');\n`,\n'inline-worker');\n\nconst fileWorker = new Worker(\n    { file: 'workers/main.js' },\n    'file-worker'\n);\n```\n\nThis also means an inline Worker based on source text can be any piece of executable JavaScript code or only a tiny bootstrap that {@link include}s ordinary files, while a file-backed Worker can start from the same file directly. Relative paths are resolved from the currently executing script file first when one exists, so a file-backed <b>workers/main.js</b> can <b>include('./helpers.js')</b>; otherwise the Worker's inherited script/package roots and component path are used.\n\nSource text passed to {@link Worker} is ordinary JavaScript. JSplitter evaluates it in a new Worker realm running on its own thread:\n\n```js\nconst worker = new Worker(`\n    const value = 21 * 2;\n    console.log('Worker result: ' + value);\n`, 'example-worker');\n```\n\nThe code inside the string runs in the Worker, not in the panel. It can use the APIs available to Worker code just as ordinary panel JavaScript can use panel APIs.\n\nThis example is intentionally not very useful: it performs one calculation and does not communicate with the panel. The next section explains an important consequence of this execution model: the Worker remains alive even after that startup code reaches its end. Later sections show how messaging turns it into a useful long-lived Worker.\n\n<h2>Worker lifetime and the event loop</h2>\nReaching the end of the Worker's initial source does <b>not</b> mean that the Worker has finished. In the example above, execution reaches the end immediately after {@link console.log}, but the Worker itself remains alive. JSplitter keeps it running in its event loop. In this documentation, <b>event loop</b> simply means the Worker waits for the next unit of work and dispatches it when it arrives: a message from the panel, a timer, a Worker-capable asynchronous host completion, observer delivery, or Promise work associated with a task. When there is nothing to do, the Worker waits; it does not repeatedly execute the initial source and it does not need a user-written loop.\n\nThis also means that processing one message does not end the Worker. The same Worker can receive many later messages through the same {@link WorkerGlobalScope#onmessage onmessage} handler with one {@link MessageEvent} parameter. If the panel stays loaded and keeps the Worker alive, and neither side closes it, the Worker remains alive waiting for more work. It is therefore important to end Workers that are no longer needed rather than assuming that returning from the startup script or from a message handler stops them.\n\nThere are two normal ways to end a Worker:\n\n<ul class=\"doc-article-list\">\n<li>The parent panel calls {@link Worker#terminate terminate} when it decides that the Worker is no longer needed.</li>\n<li>Worker code calls Worker-global {@link WorkerGlobalScope#close close} when the Worker itself knows that its work is finished. New work is no longer accepted, the current task is allowed to finish, and then the event loop exits.</li>\n</ul>\n\nNext example shows typical <b>worker <-> panel</b> messaging:\n```js\nconst worker = new Worker(`\nonmessage = function (event) {\n    if (event.data === 'stop') {\n        // WORKER: the Worker decides that it has finished.\n        postMessage('finished');\n        close();\n        return;\n    }\n\n    postMessage('processed: ' + event.data);\n};\n`);\n\n// PANEL: receives messages sent by postMessage() inside the Worker here\nworker.onmessage = function (event) {\n    console.log('Worker says: ' + event.data);\n};\n\n// PANEL: sends message to worker\nworker.postMessage('hello');\n// -> Worker says: processed: hello\n\n// If Worker is no longer needed then:\n\n// Option A: ask the Worker to finish through its own message protocol\nworker.postMessage('stop');\n// -> Worker says: finished\n\n// Option B: stop Worker directly from the outside instead.\n// Calling terminate() here is also safe, after the Worker has already called close()\n// worker.terminate();\n```\n\nJSplitter automatically terminates all Workers still owned by a panel when that panel is unloaded, so explicit cleanup is not required merely for panel teardown. Explicit {@link Worker#terminate terminate} is for ending a Worker <b>earlier</b>, while the panel continues to live. Conversely, while the panel remains loaded, a Worker that is still kept alive and is never closed or terminated will remain waiting in its event loop and will continue to hold its Worker realm and associated resources.\n\n<div class=\"doc-note warning\"><b>Do not treat a Worker created with <b>new Worker(...)</b> as a one-shot function call.</b><br>\nIf the panel keeps an ordinary Worker alive after its useful work is finished, returning from the Worker source or from its last message handler does not dispose it. Call {@link Worker#terminate terminate} when the panel is done with it, design the Worker protocol so Worker-global {@link WorkerGlobalScope#close close} is called when the Worker knows it is finished, or use {@link Worker.RunAsync Worker.RunAsync} when the task is naturally one-shot.</div>\n\n<h2>Handling Worker errors</h2>\n\nAn exception that is <strong>not caught by Worker code</strong> and escapes Worker startup code, a Worker message handler, a timer callback, or another Worker task is reported as an {@link ErrorEvent}. A normal <b>try...catch</b> handles the exception locally and prevents this error-reporting path from being used.\n\nFor uncaught exceptions, Worker-local handling comes first: if Worker-global {@link WorkerGlobalScope#onerror onerror} or an <strong><b>error</b></strong> listener is installed, the error is handled there and is not forwarded to the parent. Otherwise it is forwarded to the parent side, where {@link Worker#onerror Worker.onerror} or an <strong><b>error</b></strong> listener can handle it.\n\n```js\nworker.onerror = function (event) {\n    console.log('Worker error: ' + event.message);\n    console.log('Source: ' + event.filename);\n    console.log('Location: ' + event.lineno + ':' + event.colno);\n};\n```\n\nIf the error reaches the parent and no parent error handler is installed, JSplitter shows the normal panel-script error UI. A named inline Worker can produce a diagnostic like this:\n\n```text\nz is not defined\n\nWorker: spectrum-renderer\nFile: worker.js\nLine: 42, Column: 5\nStack trace:\n  scheduleNext@worker.js:42:5\n  onmessage@worker.js:68:3\n```\n\nRead it from top to bottom:\n\n<ul class=\"doc-article-list\">\n<li><b>Error message</b> — <b>z is not defined</b> is the exception text.</li>\n<li><b>Worker:</b> — the immutable Worker name supplied at construction time. An unnamed Worker shows <b>&lt;unnamed&gt;</b>.</li>\n<li><b>File:</b> — the Worker source name. Inline Workers use <b>worker.js</b>; file-backed Workers use the startup script basename.</li>\n<li><b>Line / Column:</b> — the original location of the exception in Worker code.</li>\n<li><b>Stack trace:</b> — the original Worker call chain when SpiderMonkey provides it.</li>\n</ul>\n\nThe resolved full path of a file-backed Worker is retained internally for relative file resolution, but diagnostics intentionally use the script basename to match ordinary panel-script diagnostics.\n\nA parent-side error handler can also deliberately turn a Worker failure into a normal panel-script exception by throwing. The <b>event</b> parameter below is the incoming {@link ErrorEvent}, so the original Worker location is available directly on that object:\n\n```js\nworker.onerror = function (event) {\n    console.log('Original Worker location: ' +\n        event.filename + ':' + event.lineno + ':' + event.colno);\n\n    throw new Error('Worker failed: ' + event.message);\n};\n```\n\n<h2>Sending structured data</h2>\nMessages are not limited to strings. {@link Worker#postMessage Worker.postMessage} and Worker-global {@link WorkerGlobalScope#postMessage postMessage} use structured-clone semantics: the sender serializes the value and the receiver reconstructs its own independent value. The two realms do not share the same JavaScript object.\n\n```js\nconst worker = new Worker(`\nonmessage = function (event) {\n    const request = event.data;\n\n    if (request.command === 'sum') {\n        const total = request.values.reduce((a, b) => a + b, 0);\n\n        // WORKER: send a structured result object back to the panel.\n        postMessage({\n            command: 'sum-result',\n            total: total\n        });\n    }\n};\n`);\n\nworker.onmessage = function (event) {\n    console.log(event.data.command); // sum-result\n    console.log(event.data.total);   // 10\n\n    // PANEL: this one-shot example has its result, so it no longer needs\n    // the Worker to remain alive waiting for more messages.\n    worker.terminate();\n};\n\n// PANEL: the object and nested array are cloned for the Worker.\nworker.postMessage({\n    command: 'sum',\n    values: [1, 2, 3, 4]\n});\n```\n\nOrdinary JavaScript objects, arrays, maps, sets, typed arrays, ArrayBuffers and other supported structured-clone values can be sent this way. Selected JSplitter host wrappers can also cross the message boundary; the exact types and their ownership rules are listed later under <b>Host objects in messages</b>.\n\n<h2>Broadcasting between panels and Workers</h2>\n{@link Worker#postMessage Worker.postMessage} is a direct channel between one panel and one specific Worker. When several independent panels and/or Workers should publish and receive messages by a shared name, use {@link BroadcastChannel} instead. BroadcastChannel uses asynchronous structured-clone delivery and does not require the sender to keep references to every receiver.\n\n```js\nconst channel = new BroadcastChannel('playback-state');\nchannel.onmessage = event => console.log(event.data);\nchannel.postMessage({ playing: true, track: 12 });\n```\n\nThe same constructor and handlers are available in panel and Worker realms. One important difference from direct Worker messaging is ownership: <b>BroadcastChannel has no transfer list and never detaches the sender's objects.</b> Values are structured-cloned for its receivers. A broadcast can fan out to several independent destinations, so there is no single receiver that could take ownership of a transferred resource.\n\n```js\n// Broadcast: cloned for listeners; bitmap stays usable here.\nchannel.postMessage({ bitmap: bitmap });\n\n// Direct Worker message: ownership can be moved to this one Worker.\nworker.postMessage({ bitmap: bitmap }, [bitmap]);\n// bitmap is detached after a successful transfer.\n```\n\nIf you need publish/subscribe delivery, use {@link BroadcastChannel}. If you need to move a large transferable resource to one known Worker without retaining a usable source object, use the transfer-list form described below. See {@link BroadcastChannel} and its linked sample for the complete broadcast usage guide.\n\n<h2>Transferring ownership</h2>\nA transferable value uses the same message channel but a different ownership model.\nNormal structured clone leaves the source usable and creates a representation for the receiver.\nTransfer instead <b>moves ownership</b> of the underlying resource without cloning.\nAfter a successful transfer, the source wrapper is detached and <b>must not be used</b> again\nby the sender.\n\nThe syntax difference is the <b>transfer list</b> passed as the second argument.\nThe transfer list is separate from the message payload. It identifies transferable objects\ncontained anywhere in the payload that should have their ownership moved instead of being cloned.\n\n```js\n// Clone: both objects remain usable in the panel.\nworker.postMessage({\n    bitmap: bitmap,\n    chunk: audioChunk\n});\n\n// Transfer: the message payload is still the first argument.\n// The transfer list only specifies which transferable objects inside that\n// payload move to the Worker instead of being cloned.\nworker.postMessage(\n    {\n        bitmap: bitmap,\n        chunk: audioChunk,\n        values: [1, 2, 3, 4]\n    },\n    [bitmap, audioChunk]\n);\n\n// After a successful transfer, bitmap and audioChunk are detached in the\n// panel. Other values in the message, such as \"values\", are cloned normally.\n```\n\nTransfers are atomic with respect to the transfer list. A call to <b>postMessage(value, transferList)</b> either transfers every transferable object\nin the list or transfers none of them.\n\nIf the message cannot be serialized, or any object in the transfer list cannot be transferred,\n{@link Worker#postMessage postMessage} fails <b>synchronously by throwing an exception in the sender</b>.\nThe message is not queued, all source objects remain usable, and no object in the transfer list is detached.\n\nAfter {@link Worker#postMessage postMessage} successfully serializes the message and commits the transfer,\nall objects listed in the transfer list are detached in the sender.\n\nA message is delivered only after sender-side serialization and transfer have completed successfully.\nIf the receiving realm then cannot reconstruct one of the message values, that endpoint receives a\n{@link Worker#onmessageerror messageerror} event and remains usable for later messages. This is a\nreceiver-side delivery failure and is therefore separate from a synchronous exception thrown by\n<b>postMessage</b> in the sender. A completed transfer is <b>not rolled back</b>, and transferred\nsource objects remain detached.\n\nJSplitter adds two diagnostic fields to that {@link MessageEvent}:\n{@link MessageEvent#errorMessage errorMessage} tells you why reconstruction failed, while\n{@link MessageEvent#direction direction} tells you whether the failed delivery was\n<b>panel-to-worker</b> or <b>worker-to-panel</b>. The original payload is not available because\nreconstruction did not complete, so {@link MessageEvent#data data} is <b>undefined</b>.\n\n```js\nworker.onmessageerror = function (event) {\n    // PANEL: a Worker result reached this panel but could not be reconstructed.\n    console.log('Failed direction: ' + event.direction);\n    console.log('Reason: ' + event.errorMessage);\n};\n```\n\nInside a Worker, Worker-global {@link WorkerGlobalScope#onmessageerror onmessageerror} exposes\nthe same fields; its direction is <b>panel-to-worker</b>. This is a delivery/structured-clone\nfailure, not an uncaught Worker exception, so it is separate from\n{@link Worker#onerror onerror}.\n\n<h2>Host objects in messages</h2>\nThe examples above cover normal structured data and transfer syntax. JSplitter also defines explicit messaging rules for its native host wrappers. The lists below are the reference for which wrappers may cross between the panel and Worker realms.\n\n<b>Cloneable host objects.</b> Sending one of these without a transfer list leaves the source object usable in the sender and creates an independent representation for the receiving realm.\n<details class=\"doc-capability-list\"><summary><b>Cloneable host objects</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link FbMetadbHandle}</li>\n<li>{@link FbMetadbHandleList}</li>\n<li>{@link FbFileInfo}</li>\n<li>{@link FbTitleFormat}</li>\n<li>{@link FbPlaybackQueueItem}</li>\n<li>{@link FbPlayingItemLocation}</li>\n<li>{@link FbAudioChunk}</li>\n<li>{@link DriveInfo}</li>\n<li>{@link RunResult}</li>\n<li>{@link GdiGraphics.MeasureStringInfo GDI MeasureStringInfo}</li>\n<li>{@link D2DGraphics.MeasureStringInfo D2D MeasureStringInfo}</li>\n<li>{@link D2DCompileInfo}</li>\n<li>{@link GdiBitmap}</li>\n<li>{@link GdiFont}</li>\n<li>{@link GdiBrush}</li>\n<li>{@link D2DBitmap}</li>\n<li>{@link D2DFont}</li>\n<li>{@link D2DBrush}</li>\n<li>{@link D2DStrokeStyle}</li>\n</ul>\n</details>\n\n<b>Transferable host objects.</b> These are the JSplitter host wrappers that support the transfer-list ownership model demonstrated above. After a successful transfer the source wrapper is detached and no longer usable on the sender side; if serialization itself fails, the transfer is rolled back and the source remains usable.\n\nTransfer support is intentionally limited to objects that own a significant dynamic resource whose ownership can be moved efficiently and unambiguously between realms. Smaller value-like objects are simply cloned, while shared or realm-bound resources are not made transferable.\n\n<details class=\"doc-capability-list\"><summary><b>Transferable host objects</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link FbAudioChunk}</li>\n<li>{@link GdiBitmap}</li>\n<li>{@link D2DBitmap}</li>\n</ul>\n<p>All three types are also cloneable. Choose ordinary cloning when both realms still need a usable object. Transfer moves bitmap pixel storage or the {@link FbAudioChunk} sample buffer to the receiving realm without keeping a usable source wrapper.</p>\n</details>\n\n<b>Realm-local host objects.</b> Other wrappers represent live services, graphics state or resources whose meaning is tied to the realm that created them. They can be used normally inside that realm, including inside a Worker when the relevant API is available there, but they cannot cross a structured-clone message boundary. Attempting to post one fails serialization rather than silently sharing the native object.\n\n<details class=\"doc-capability-list\"><summary><b>Realm-local host objects</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link FbProfiler}</li>\n<li>{@link FbUiSelectionHolder}</li>\n<li>{@link FbPlaylistRecycler}</li>\n<li>{@link HtmlDocument}</li>\n<li>{@link HtmlNode}</li>\n<li>{@link GdiRawBitmap}</li>\n<li>{@link GdiGraphics}</li>\n<li>{@link D2DGraphics}</li>\n<li>{@link D2DEffect}</li>\n</ul>\n<p>{@link MainMenuManager} and {@link ContextMenuManager} are additionally panel-only because their factories are not exposed in Workers.</p>\n</details>\n\n<h2>Panel realm versus Worker realm</h2>\nA Worker is not another panel. It has no panel HWND, no {@link window} object, no panel graphics render target, and no panel UI/input callbacks such as {@link module:Callbacks.on_paint on_paint}, {@link module:Callbacks.on_key_down on_key_down} or {@link module:Callbacks.on_mouse_move on_mouse_move}. This does not mean Worker code has no callbacks at all: message/event handlers and completion callbacks belonging to Worker-capable asynchronous host APIs remain available where documented. A Worker has its own {@link fb}, {@link plman}, {@link utils}, {@link gdi}, {@link console} and {@link performance} namespace objects. When Direct2D is initialized before the Worker is created, {@link d2d} is available as well.\n<div class=\"doc-note warning\"><b>Direct2D versions earlier than 1.1 are not supported in the Worker.</b><br>\nMinimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div>\n\nThese APIs are exposed in the Worker realm, but this does not mean that every operation runs on the Worker thread: methods marked <strong>MAIN THREAD</strong> cross to the main thread internally but, for example, GDI and Direct2D resources can be created and used by the Worker for offscreen rendering in its own thread.\n\nThe Worker environment implements the JSplitter subset of familiar Worker primitives: {@link EventTarget}, {@link Event}, {@link MessageEvent}, {@link ErrorEvent}, {@link PromiseRejectionEvent}, {@link WorkerGlobalScope}, timers and promises. The local JSplitter interface pages describe the supported surface and behaviour.\n\n<h2>Worker API coverage</h2>\nMost useful non-UI JSplitter API is available inside a Worker. Namespaces marked <b>mostly available</b> below expose the large majority of their normal surface; the relatively small set of exclusions is listed separately in <b>APIs intentionally unavailable in Workers</b>.\n\n<ul class=\"doc-article-list\">\n<li><b>Core Worker environment</b> — messaging, events, timers, promises, {@link include} are available.</li>\n<li>{@link fb} — <b>mostly available</b>. Playback, library/selection data, title formatting, DSP/output state and most non-modal host operations are exposed.</li>\n<li>{@link plman} — <b>mostly available</b>. Playlist manipulation, playback queue, sorting, undo/redo and the playlist recycler are exposed.</li>\n<li>{@link utils} — <b>mostly available</b>. Filesystem, hashing, text/binary/INI, package/system information, HTML parsing, drives, image/album-art loading, process, HTTP and download helpers are exposed.</li>\n<li>{@link gdi} — <b>fully available</b> as a DrawMode-aware Worker namespace. In GDI mode its factories create GDI+ resources; when the Worker is created from a Direct2D panel, the same <b>gdi.*</b> factories route to the Worker Direct2D backend and create the corresponding D2D resources.</li>\n<li>{@link d2d} — <b>fully available</b> as a Worker namespace when Direct2D is initialized before Worker creation, including effects, compile support and Worker-local offscreen rendering. Set {@link window.DrawMode} to <b>1</b> in the panel <b>before</b> creating a Worker that needs Direct2D.</li>\n<li>{@link console} — <b>fully available</b> inside a Worker.</li>\n<li>{@link performance} — <b>fully available</b> inside a Worker.</li>\n</ul>\n\n<h2>APIs intentionally unavailable in Workers</h2>\n<b>Panel and browser globals.</b> The panel {@link window} namespace, panel UI/input callbacks such as {@link module:Callbacks.on_paint on_paint}, {@link module:Callbacks.on_key_down on_key_down} and {@link module:Callbacks.on_mouse_move on_mouse_move}, tooltips, theme/HWND services and the panel graphics render target are not Worker concepts. In particular, the panel-provided {@link GdiGraphics} or {@link D2DGraphics} graphics context passed to UI painting callbacks is not available to Worker code. Also panel-only compatibility globals such as {@link ActiveXObject} and {@link Enumerator}, and nested {@link Worker} creation are also unavailable.\n\nThe mostly available namespaces listed above also omit a small number of operations that are modal, interactive, tied to live panel UI state, or otherwise unsuitable for a Worker:\n\n<details class=\"doc-capability-list\"><summary><b>fb</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link fb.AddDirectory}</li>\n<li>{@link fb.AddFiles}</li>\n<li>{@link fb.CreateContextMenuManager}</li>\n<li>{@link fb.CreateMainMenuManager}</li>\n<li>{@link fb.DoDragDrop}</li>\n<li>{@link fb.LoadPlaylist}</li>\n<li>{@link fb.RunContextCommand}</li>\n<li>{@link fb.RunContextCommandWithMetadb}</li>\n<li>{@link fb.RunMainMenuCommand}</li>\n<li>{@link fb.SavePlaylist}</li>\n</ul>\n</details>\n\n<details class=\"doc-capability-list\"><summary><b>plman</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link plman.ShowAutoPlaylistUI}</li>\n<li>{@link plman.ShowPlaylistLockUI}</li>\n</ul>\n</details>\n\n<details class=\"doc-capability-list\"><summary><b>utils</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link utils.ColourPicker}</li>\n<li>{@link utils.EditTextFile}</li>\n<li>{@link utils.FilePicker}</li>\n<li>{@link utils.FolderPicker}</li>\n<li>{@link utils.FontPicker}</li>\n<li>{@link utils.InputBox}</li>\n<li>{@link utils.MessageBox}</li>\n<li>{@link utils.ShowHtmlDialog}</li>\n</ul>\n</details>\n\n<h2>Main-thread host operations</h2>\nMany APIs are callable from Worker code but ultimately use foobar2000 services that can only execute on the main thread (this is a foobar2000 SDK requirement). When the Worker calls one of these APIs, it waits synchronously until that host operation finishes. Occasional calls are fine; a tight loop of them defeats much of the reason for moving work to a Worker.\n\n<div class=\"doc-article-diagram\">GOOD\npanel:  send one useful batch\n                   |\n                   v\nworker: process / aggregate / render\n                   |\n                   v\npanel:  receive compact result\n\nPOOR\nworker: main thread -> main thread -> main thread -> ...</div>\n\n<div class=\"doc-note warning\"><b>Avoid building a Worker around repeated main-thread calls.</b><br>\nIf most of a Worker consists of frequent synchronous host calls, moving that code to a Worker will usually provide no performance benefit and can make it slower because of repeated cross-thread synchronization. If the main thread is busy, the Worker waits too.</div>\n\nThe lists below show the Worker-accessible API that uses this synchronous main-thread bridge:\n\n<details class=\"doc-capability-list\"><summary><b>plman</b></summary>\n<p><b>EVERY</b> Worker-exposed {@link plman} function is main-thread bridged. These live properties also have main-thread accessors:</p>\n<ul class=\"doc-api-link-list\">\n<li>{@link plman.ActivePlaylist}</li>\n<li>{@link plman.PlaybackOrder}</li>\n<li>{@link plman.PlayingPlaylist}</li>\n<li>{@link plman.PlaylistCount}</li>\n</ul>\n<p>Reading {@link plman.PlaylistRecycler} itself only obtains the Worker-local {@link FbPlaylistRecycler} wrapper; its operations are main-thread bridged.</p>\n</details>\n\n<details class=\"doc-capability-list\"><summary><b>fb</b></summary>\n<h4>Functions</h4>\n<ul class=\"doc-api-link-list\">\n<li>{@link fb.AcquireUiSelectionHolder}</li>\n<li>{@link fb.AddLocationsAsync}</li>\n<li>{@link fb.CheckClipboardContents}</li>\n<li>{@link fb.ClearPlaylist}</li>\n<li>{@link fb.CopyHandleListToClipboard}</li>\n<li>{@link fb.Exit}</li>\n<li>{@link fb.EnumerateMainMenuCommands}</li>\n<li>{@link fb.GetActiveDSPs}</li>\n<li>{@link fb.GetClipboardContents}</li>\n<li>{@link fb.GetDSPPresets}</li>\n<li>{@link fb.GetFocusItem}</li>\n<li>{@link fb.GetLibraryItems}</li>\n<li>{@link fb.GetLibraryRelativePath}</li>\n<li>{@link fb.GetLibraryRoots}</li>\n<li>{@link fb.GetNowPlaying}</li>\n<li>{@link fb.GetSelection}</li>\n<li>{@link fb.GetSelections}</li>\n<li>{@link fb.GetSelectionType}</li>\n<li>{@link fb.IsLibraryEnabled}</li>\n<li>{@link fb.IsMainMenuCommandChecked}</li>\n<li>{@link fb.IsMetadbInMediaLibrary}</li>\n<li>{@link fb.Next}</li>\n<li>{@link fb.Pause}</li>\n<li>{@link fb.Play}</li>\n<li>{@link fb.PlayOrPause}</li>\n<li>{@link fb.Prev}</li>\n<li>{@link fb.Random}</li>\n<li>{@link fb.RegisterMainMenuCommand}</li>\n<li>{@link fb.Restart}</li>\n<li>{@link fb.SetDSPPreset}</li>\n<li>{@link fb.SetOutputDevice}</li>\n<li>{@link fb.ShowConsole}</li>\n<li>{@link fb.ShowLibrarySearchUI}</li>\n<li>{@link fb.ShowPictureViewer}</li>\n<li>{@link fb.ShowPlaylistSearchUI}</li>\n<li>{@link fb.ShowPreferences}</li>\n<li>{@link fb.Stop}</li>\n<li>{@link fb.UnregisterMainMenuCommand}</li>\n<li>{@link fb.VolumeDown}</li>\n<li>{@link fb.VolumeMute}</li>\n<li>{@link fb.VolumeUp}</li>\n</ul>\n<h4>Properties</h4>\n<ul class=\"doc-api-link-list\">\n<li>{@link fb.AlwaysOnTop}</li>\n<li>{@link fb.CursorFollowPlayback}</li>\n<li>{@link fb.CustomVolume}</li>\n<li>{@link fb.IsPaused}</li>\n<li>{@link fb.IsPlaying}</li>\n<li>{@link fb.PlaybackFollowCursor}</li>\n<li>{@link fb.PlaybackLength}</li>\n<li>{@link fb.PlaybackTime}</li>\n<li>{@link fb.ReplaygainMode}</li>\n<li>{@link fb.StopAfterCurrent}</li>\n<li>{@link fb.Volume}</li>\n</ul>\n</details>\n\n<details class=\"doc-capability-list\"><summary><b>utils / console</b></summary>\n<h4>utils</h4>\n<ul class=\"doc-api-link-list\">\n<li>{@link utils.CheckComponent}</li>\n<li>{@link utils.GetClipboardText}</li>\n<li>{@link utils.GetPackageInfo}</li>\n<li>{@link utils.GetPackagePath}</li>\n<li>{@link utils.RecyclePath}</li>\n<li>{@link utils.Run}</li>\n<li>{@link utils.SetClipboardText}</li>\n</ul>\n<h4>console</h4>\n<ul class=\"doc-api-link-list\">\n<li>{@link console.GetLines}</li>\n<li>{@link console.ClearBacklog}</li>\n</ul>\n<p>The console methods above use the foobar2000 main-thread console manager on foobar2000 2.0 and newer; the legacy JSplitter-owned console backlog path is thread-safe and direct.</p>\n</details>\n\n<details class=\"doc-capability-list\"><summary><b>Host wrapper methods</b></summary>\n<ul class=\"doc-api-link-list\">\n<li>{@link FbMetadbHandle#RefreshStats}</li>\n<li>{@link FbMetadbHandleList#GetLibraryRelativePaths}</li>\n<li>{@link FbMetadbHandleList#OptimiseFileLayout}</li>\n<li>{@link FbMetadbHandleList#OrderByRelativePath}</li>\n<li>{@link FbMetadbHandleList#RefreshStats}</li>\n<li>{@link FbMetadbHandleList#RemoveAttachedImage}</li>\n<li>{@link FbMetadbHandleList#RemoveAttachedImages}</li>\n<li>{@link FbMetadbHandleList#UpdateFileInfoFromJSON}</li>\n<li>{@link FbTitleFormat#Eval}</li>\n<li>{@link FbTitleFormat#EvalActivePlaylistItem}</li>\n<li>{@link FbTitleFormat#EvalPlaylistItem}</li>\n<li>{@link FbUiSelectionHolder#SetSelection}</li>\n<li>{@link FbUiSelectionHolder#SetPlaylistSelectionTracking}</li>\n<li>{@link FbUiSelectionHolder#SetPlaylistTracking}</li>\n<li>{@link FbPlaylistRecycler#Count}</li>\n<li>{@link FbPlaylistRecycler#GetName}</li>\n<li>{@link FbPlaylistRecycler#GetContent}</li>\n<li>{@link FbPlaylistRecycler#Purge}</li>\n<li>{@link FbPlaylistRecycler#Restore}</li>\n</ul>\n</details>\n\nA small note on {@link fb.GetAudioChunk fb.GetAudioChunk}: it's normally accesses the visualisation stream directly from the Worker but its first use may briefly synchronize with the main thread while that stream is initialized.\n\nA Worker waiting for a bridge call can normally be terminated cleanly. Once a main-thread callback has already begun executing, however, it cannot be interrupted halfway through; that in-progress host operation must return before it can be fully unwound. Blocking or modal host APIs are therefore deliberately excluded from the Worker surface.\n\n<h2>Capability badges and terms</h2>\nThe detailed API pages use four local badges for the concepts introduced above:\n\n<ul class=\"doc-article-list\">\n<li><span class=\"flag capability worker\">WORKER</span> — this API item is available from Worker code. Absence of this badge means the item is not part of the documented Worker surface.</li>\n<li><span class=\"flag capability main-thread\">MAIN THREAD</span> — as described in <b>Main-thread host operations</b> above, the item is callable from a Worker but its foobar2000 host operation executes synchronously on the main thread. The Worker waits for that operation to return, so repeated calls should be avoided in hot Worker loops.</li>\n<li><span class=\"flag capability cloneable\">CLONEABLE</span> — instances of this host type can be sent through {@link Worker#postMessage postMessage} using structured clone while the source remains usable.</li>\n<li><span class=\"flag capability transferable\">TRANSFERABLE</span> — instances can additionally be placed in the transfer list so ownership moves to the receiver; after a successful transfer the source wrapper is detached and no longer usable on the sender side.</li>\n</ul>\n\n<h2>One-shot work with {@link Worker.RunAsync}</h2>\nWhen work naturally has one input and one result, {@link Worker.RunAsync Worker.RunAsync} avoids building a message protocol around a short-lived Worker. Each call creates a normal temporary Worker realm and Worker thread with the same Worker-side API surface as {@link Worker} code. The callback arguments are structured-cloned into that realm, and the callback's return value (or the resolved value of its Promise) is structured-cloned back to the panel. The temporary Worker is terminated automatically after success or failure.\n\nBoth synchronous and asynchronous callbacks are supported:\n\n```js\nconst result = await Worker.RunAsync(\n    async (arg1, arg2) => {\n        // Runs in a separate Worker realm/thread.\n        return arg1 + arg2;\n    },\n    10,\n    12\n);\n\nconsole.log(result); // 22\n```\n\nThe callback is recreated from its JavaScript source in the Worker realm. Although the call syntax looks like an ordinary local callback, it therefore does <b>not</b> capture lexical variables from the panel. This is incorrect:\n\n```js\nconst factor = 10;\n\n// Wrong: factor exists only in the panel realm.\nconst result = await Worker.RunAsync(\n    value => value * factor,\n    5\n);\n// Rejects with ReferenceError: factor is not defined\n```\n\nPass every required value explicitly as an argument instead:\n\n```js\nconst factor = 10;\n\n// Correct: factor crosses the realm boundary through structured clone.\nconst result = await Worker.RunAsync(\n    (value, factor) => value * factor,\n    5,\n    factor\n);\n```\n\nUser-defined normal, arrow and <b>async</b> functions are supported. Native and bound functions cannot be recreated from source and are rejected. If the callback throws, returns a rejected Promise, or an argument/result cannot be structured-cloned, the Promise returned by {@link Worker.RunAsync} rejects, so ordinary <b>try...catch</b> around <b>await</b> can handle the failure. Relative {@link include} calls inside the callback keep the caller's script/package roots.\n\n{@link Worker.RunAsync} currently uses structured clone only and has no transfer-list parameter. Use an ordinary long-lived {@link Worker} with {@link Worker#postMessage postMessage} when explicit ownership transfer, repeated requests, persistent Worker state, or a custom message protocol is required. Each {@link Worker.RunAsync} call creates a fresh full Worker, so it is intended for reasonably coarse one-shot jobs rather than tiny operations in a hot loop.\n\nStreaming text I/O is a practical {@link Worker.RunAsync} example for larger or longer-running file operations: the work can be performed in a Worker while the panel remains responsive. \n\n```js\nconst summary = await Worker.RunAsync((input, output) => {\n    const reader = utils.OpenTextReader(input);\n    if (!reader) throw new Error('Unable to open input file');\n\n    const writer = utils.OpenTextWriter(output, false);\n    if (!writer) {\n        reader.Close();\n        throw new Error('Unable to create output file');\n    }\n\n    let lines = 0;\n    try {\n        for (;;) {\n            const line = reader.ReadLine();\n            if (line === null) break;\n            writer.WriteLine(line);\n            ++lines;\n        }\n    } finally {\n        reader.Close();\n        writer.Close();\n    }\n\n    return { lines };\n}, inputPath, outputPath);\n```\n\n<h2>Samples</h2>\nThe samples are intentionally ordered. Start with lifecycle/messaging, then move through batch data processing, CPU-bound work, asynchronous image processing and finally a real-time audio/render pipeline.\n\n<b>1. Basic Messaging.</b> The smallest complete lifecycle example: create a named inline Worker, send a structured object, receive a result, install parent/Worker <b>messageerror</b> diagnostics and a parent error handler, then let the Worker finish with Worker-global {@link WorkerGlobalScope#close close}. The unload handler also shows that parent {@link Worker#terminate terminate} is safe during panel teardown.\n\n```js\n// PANEL: create and immediately start a named Worker from prepared source text.\nconst worker = new Worker(source, 'basic-messaging');\n\n// PANEL: values sent by Worker-global postMessage(...) arrive here as event.data.\nworker.onmessage = event => console.log(event.data);\n\n// PANEL: send one object to this Worker. JSplitter structured-clones it before\n// the Worker's onmessage handler receives its own reconstructed copy.\nworker.postMessage({ values: [1, 2, 3, 4] });\n```\n\n<b>2. Playlist Statistics.</b> Presents Media Library and the existing playlists as an interactive source list. The panel obtains one {@link FbMetadbHandleList}, then the <b>Main / Worker</b> switch runs the same metadata and {@link FbFileInfo} aggregation either synchronously in the panel realm or on the cloned list in the Worker. The detail view reports calculation and end-to-end time, making the responsiveness/overhead trade-off visible on large real-world batches.\n\n```js\n// Panel: obtain one source batch. Media Library uses fb.GetLibraryItems();\n// playlists use plman.GetPlaylistItems(...).\nconst handles = source.library ? fb.GetLibraryItems() : plman.GetPlaylistItems(source.index);\n\n// Worker mode: clone the complete list once and aggregate it off the panel thread.\nworker.postMessage({ requestId, handles });\n\n// Main mode runs the same analyseHandles(handles) function in the panel realm.\n```\n\n<b>3. Fractal Renderer.</b> Demonstrates a CPU-bound render job that belongs entirely in a Worker. Pan and zoom reuse one completed frame locally for immediate feedback; drag sends one final viewport on release, while wheel and resize bursts are coalesced for 80 ms. The Worker renders only the settled viewport, transfers the completed bitmap, and stale results are rejected by view id. The <b>GDI / D2D</b> switch recreates the Worker so the same <b>gdi.*</b> facade can be compared in both rendering modes.\n\n<b>4. Playlist Album Gallery.</b> A practical artwork-loading A/B test. <b>Main / Worker</b> runs the same visible-cover pipeline either in the panel or in the Worker. In Worker mode the panel sends one cloneable {@link FbMetadbHandleList}; the Worker deduplicates it into albums, loads artwork with {@link utils.GetAlbumArtAsyncV2 GetAlbumArtAsyncV2}, resizes each image and transfers completed bitmaps back individually. Only the covers that fit in the current viewport are requested, changing cover size intentionally reloads them, and the sample has no artwork cache. <b>Concurrency</b> controls how many artwork requests may be in flight, while <b>GDI / D2D</b> selects the rendering backend. Targeted <b>RepaintRect</b> updates and timing counters make first display, loading, delivery and paint cost visible.\n\n<b>5. Spectrum Analyzer.</b> The real-time A/B test. <b>Main / Worker</b> runs the same audio-read, FFT and offscreen-render pipeline on either thread. Both paths allow only one completed frame at a time; the next frame starts only after the previous bitmap reaches <b>on_paint</b>, so the counters measure work that can actually be presented. Additional switches select <b>GDI / D2D</b>, FFT size, and either a <b>120 FPS</b> limiter or <b>Max</b> mode. The overlay reports frame/paint rate plus audio, FFT, render and total processing time. <b>Max</b> is useful for exposing fixed per-frame overhead, but the sample is not intended as a general GDI-versus-D2D benchmark.\n\n```js\n// Worker: read a short audio window and turn it into spectrum data.\nconst chunk = fb.GetAudioChunk(0.06, -0.03);\nanalyse(chunk);\n\n// Render a complete offscreen frame, then transfer its ownership to the panel.\nconst frame = renderSpectrum();\npostMessage({ bitmap: frame, timing }, [frame]);\n// frame is detached here after a successful transfer and must not be reused.\n\n// Panel: keep one completed frame and request presentation. Do not acknowledge\n// it yet: the Worker remains paused until this exact frame reaches on_paint.\nworker.onmessage = function (event) {\n    frame = event.data.bitmap;\n    window.Repaint();\n};\n\nfunction on_paint(gr) {\n    gr.DrawImage(frame, 0, 0, window.Width, window.Height, 0, 0, frame.Width, frame.Height);\n    worker.postMessage({ type: 'next' });\n}\n```",
     "params": [
       {
         "type": "(string|Object)",
@@ -51879,7 +52025,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 718
+      "line": 720
     }
   },
   {
@@ -51909,7 +52055,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 744
+      "line": 746
     }
   },
   {
@@ -51939,7 +52085,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 751
+      "line": 753
     }
   },
   {
@@ -51969,7 +52115,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 760
+      "line": 762
     }
   },
   {
@@ -52021,7 +52167,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 768
+      "line": 770
     }
   },
   {
@@ -52051,7 +52197,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 777
+      "line": 779
     }
   },
   {
@@ -52081,7 +52227,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 785
+      "line": 787
     }
   },
   {
@@ -52136,7 +52282,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 792
+      "line": 794
     }
   },
   {
@@ -52191,7 +52337,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 801
+      "line": 803
     }
   },
   {
@@ -52233,7 +52379,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 810
+      "line": 812
     }
   },
   {
@@ -52280,7 +52426,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 819
+      "line": 821
     }
   },
   {
@@ -52310,7 +52456,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 828
+      "line": 830
     }
   },
   {
@@ -52340,7 +52486,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 836
+      "line": 838
     }
   },
   {
@@ -52370,7 +52516,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 844
+      "line": 846
     }
   },
   {
@@ -52400,7 +52546,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 852
+      "line": 854
     }
   },
   {
@@ -52430,7 +52576,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 860
+      "line": 862
     }
   },
   {
@@ -52460,7 +52606,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 868
+      "line": 870
     }
   },
   {
@@ -52490,7 +52636,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 876
+      "line": 878
     }
   },
   {
@@ -52520,7 +52666,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 878
+      "line": 880
     }
   },
   {
@@ -52550,7 +52696,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 880
+      "line": 882
     }
   },
   {
@@ -52597,7 +52743,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 884
+      "line": 886
     }
   },
   {
@@ -52627,7 +52773,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 893
+      "line": 895
     }
   },
   {
@@ -52657,7 +52803,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 901
+      "line": 903
     }
   },
   {
@@ -52687,7 +52833,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 909
+      "line": 911
     }
   },
   {
@@ -52717,7 +52863,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 917
+      "line": 919
     }
   },
   {
@@ -52747,7 +52893,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 925
+      "line": 927
     }
   },
   {
@@ -52777,7 +52923,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 933
+      "line": 935
     }
   },
   {
@@ -52807,7 +52953,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 942
+      "line": 944
     }
   },
   {
@@ -52854,7 +53000,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 952
+      "line": 954
     }
   },
   {
@@ -52884,7 +53030,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 961
+      "line": 963
     }
   },
   {
@@ -52914,7 +53060,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 969
+      "line": 971
     }
   },
   {
@@ -52944,7 +53090,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 977
+      "line": 979
     }
   },
   {
@@ -52974,7 +53120,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 985
+      "line": 987
     }
   },
   {
@@ -53004,7 +53150,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 993
+      "line": 995
     }
   },
   {
@@ -53051,7 +53197,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 1002
+      "line": 1004
     }
   },
   {
@@ -53081,7 +53227,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 1011
+      "line": 1013
     }
   },
   {
@@ -53111,7 +53257,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 1019
+      "line": 1021
     }
   },
   {
@@ -53141,7 +53287,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 1028
+      "line": 1030
     }
   },
   {
@@ -53171,7 +53317,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 1036
+      "line": 1038
     }
   },
   {
@@ -53201,7 +53347,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 1044
+      "line": 1046
     }
   },
   {
@@ -53253,7 +53399,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 1053
+      "line": 1055
     }
   },
   {
@@ -53283,7 +53429,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 1063
+      "line": 1065
     }
   },
   {
@@ -53313,7 +53459,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 1071
+      "line": 1073
     }
   },
   {
@@ -53343,7 +53489,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 1078
+      "line": 1080
     }
   },
   {
@@ -53373,7 +53519,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 1086
+      "line": 1088
     }
   },
   {
@@ -53403,7 +53549,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 1093
+      "line": 1095
     }
   },
   {
@@ -53433,7 +53579,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 1100
+      "line": 1102
     }
   },
   {
@@ -53463,7 +53609,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/worker.js",
-      "line": 1107
+      "line": 1109
     }
   },
   {
