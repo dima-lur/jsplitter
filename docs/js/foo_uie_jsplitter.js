@@ -6133,6 +6133,31 @@ function FbTitleFormat(expression) {
     this.Eval = function (force) { }; // [force]
 
     /**
+     * Evaluates this title formatting expression for an item in the active playlist.
+     * Use this method to access playlist-specific fields such as <b>%list_index%</b>, <b>%list_total%</b> and <b>%isplaying%</b>.
+     *
+     * @param {number} playlistItemIndex Zero-based item index in the active playlist.
+     * @return {string}
+     * @throws {Error} If there is no active playlist or <b>playlistItemIndex</b> is invalid.
+     * @worker
+     * @mainthread
+     */
+    this.EvalActivePlaylistItem = function (playlistItemIndex) { };
+
+    /**
+     * Evaluates this title formatting expression for an item in a specific playlist.
+     * Use this method to access playlist-specific fields such as <b>%list_index%</b>, <b>%list_total%</b> and <b>%isplaying%</b>.
+     *
+     * @param {number} playlistIndex Zero-based playlist index.
+     * @param {number} playlistItemIndex Zero-based item index in the playlist.
+     * @return {string}
+     * @throws {Error} If <b>playlistIndex</b> or <b>playlistItemIndex</b> is invalid.
+     * @worker
+     * @mainthread
+     */
+    this.EvalPlaylistItem = function (playlistIndex, playlistItemIndex) { };
+
+    /**
      * @param {FbMetadbHandle} handle
      * @param {boolean} [want_full_info=false] This enables full retrieval of tags that have been blocked with [b][url=https://www.foobar2000.org/LargeFieldsConfig-v2]LargeFieldsConfig-v2[/url][/b] in the latest foobar2000 2.26 previews.
      * @return {string}
@@ -7482,6 +7507,15 @@ function MenuObject() {
      * @param {number} selected_item_id
      */
     this.CheckMenuRadioItem = function (first_item_id, last_item_id, selected_item_id) { }; // (void)
+
+    /**
+     * Sets a menu item as the default item. The default item is displayed in bold.
+     * Only one item can be set as default for each menu object.
+     *
+     * @param {number} item_id
+     * @throws {Error} If <b>item_id</b> does not exist.
+     */
+    this.SetDefault = function (item_id) { }; // (void)
 
     /**
      * @param {number} x

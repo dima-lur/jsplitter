@@ -290,13 +290,85 @@ console.log(tfo.Eval());</code></pre>
         
     </article>
 
+    <article class="api-item" id="EvalActivePlaylistItem" data-kind="method" data-name="evalactiveplaylistitem">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
+                <h2><a class="anchor" href="#EvalActivePlaylistItem">EvalActivePlaylistItem</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:6135</div>
+        </header>
+        <pre class="signature"><code>EvalActivePlaylistItem(playlistItemIndex)</code></pre>
+        
+        <div class="description"><p>Evaluates this title formatting expression for an item in the active playlist. Use this method to access playlist-specific fields such as <b>%list_index%</b>, <b>%list_total%</b> and <b>%isplaying%</b>.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistItemIndex</code></td><td><code>number</code></td><td><p>Zero-based item index in the active playlist.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>string</code></div>
+        </section>
+        
+        <section class="member-section compact-section">
+            <h3>Throws</h3>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If there is no active playlist or <b>playlistItemIndex</b> is invalid.</p></div>
+        </section>
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="EvalPlaylistItem" data-kind="method" data-name="evalplaylistitem">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
+                <h2><a class="anchor" href="#EvalPlaylistItem">EvalPlaylistItem</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:6147</div>
+        </header>
+        <pre class="signature"><code>EvalPlaylistItem(playlistIndex, playlistItemIndex)</code></pre>
+        
+        <div class="description"><p>Evaluates this title formatting expression for an item in a specific playlist. Use this method to access playlist-specific fields such as <b>%list_index%</b>, <b>%list_total%</b> and <b>%isplaying%</b>.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td><p>Zero-based playlist index.</p></td></tr><tr><td><code>playlistItemIndex</code></td><td><code>number</code></td><td><p>Zero-based item index in the playlist.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>string</code></div>
+        </section>
+        
+        <section class="member-section compact-section">
+            <h3>Throws</h3>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>playlistIndex</b> or <b>playlistItemIndex</b> is invalid.</p></div>
+        </section>
+        
+        
+        
+    </article>
+
     <article class="api-item" id="EvalWithMetadb" data-kind="method" data-name="evalwithmetadb">
         <header class="api-item-header">
             <div>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#EvalWithMetadb">EvalWithMetadb</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:6135</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:6160</div>
         </header>
         <pre class="signature"><code>EvalWithMetadb(handle, want_full_info)</code></pre>
         
@@ -333,7 +405,7 @@ console.log(tfo.EvalWithMetadb(fb.GetFocusItem()));</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#EvalWithMetadbs">EvalWithMetadbs</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:6147</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:6172</div>
         </header>
         <pre class="signature"><code>EvalWithMetadbs(handle_list)</code></pre>
         
