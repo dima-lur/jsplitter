@@ -357,7 +357,12 @@
     window.addEventListener('hashchange', () => {
         for (const link of sidebar.querySelectorAll('.nav-member-link.active')) link.classList.remove('active');
         const link = ensureActiveMemberBranch();
-        ensureVisible(link);
+
+        // Opening a root or member group changes the sidebar geometry. When a search
+        // result navigates to another member on the current page, hashchange fires
+        // before that new layout has been painted. Defer visibility adjustment by
+        // one frame so the active member is scrolled into view reliably.
+        requestAnimationFrame(() => ensureVisible(link));
     });
 
     const initialMember = ensureActiveMemberBranch();
