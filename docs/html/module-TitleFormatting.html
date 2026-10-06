@@ -261,7 +261,7 @@
 <h2>Using fields in JavaScript</h2>
 <p>Evaluate Title Formatting through <a href="fb.html#TitleFormat">fb.TitleFormat</a>; the field names are not JavaScript variables. <a href="FbTitleFormat.html#Eval">Eval</a> with <b>true</b> also evaluates the expression when playback is stopped:</p>
 <pre class="description-code language-js"><code><span class="tok-keyword">const</span> profile = fb.TitleFormat(<span class="tok-string">&#39;%jsplitter_fb2k_profile%&#39;</span>).Eval(<span class="tok-literal">true</span>);
-<span class="tok-keyword">const</span> imagePath = profile + <span class="tok-string">&#39;images\\cover.png&#39;</span>;</code></pre>
+<span class="tok-keyword">const</span> imagePath = profile + <span class="tok-string">&#39;\\images\\cover.png&#39;</span>;</code></pre>
 <p>Statistics fields refer to the track being formatted:</p>
 <pre class="description-code language-js"><code><span class="tok-keyword">const</span> track = fb.GetNowPlaying();
 <span class="tok-keyword">if</span> (track) {

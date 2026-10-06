@@ -37,7 +37,7 @@
  *
  * ```js
  * const profile = fb.TitleFormat('%jsplitter_fb2k_profile%').Eval(true);
- * const imagePath = profile + 'images\\cover.png';
+ * const imagePath = profile + '\\images\\cover.png';
  * ```
  * Statistics fields refer to the track being formatted:
  *
