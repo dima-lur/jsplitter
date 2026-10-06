@@ -257,7 +257,7 @@
 <tr id="jsplitter_fb2k_profile"><td><b>%jsplitter_fb2k_profile%</b></td><td>foobar2000 profile/configuration directory.</td><td><a href="fb.html#ProfilePath">fb.ProfilePath</a></td></tr>
 </tbody>
 </table>
-<p>Both values are native filesystem paths with a trailing backslash and support Unicode. They are initialized at startup and remain fixed for the session. The fields use the <b>jsplitter_</b> prefix so they do not register the unprefixed names used by other components.</p>
+<p>Both values are native filesystem paths and support Unicode. They are initialized at startup and remain fixed for the session. The fields use the <b>jsplitter_</b> prefix so they do not register the unprefixed names used by other components.</p>
 <h2>Using fields in JavaScript</h2>
 <p>Evaluate Title Formatting through <a href="fb.html#TitleFormat">fb.TitleFormat</a>; the field names are not JavaScript variables. <a href="FbTitleFormat.html#Eval">Eval</a> with <b>true</b> also evaluates the expression when playback is stopped:</p>
 <pre class="description-code language-js"><code><span class="tok-keyword">const</span> profile = fb.TitleFormat(<span class="tok-string">&#39;%jsplitter_fb2k_profile%&#39;</span>).Eval(<span class="tok-literal">true</span>);
