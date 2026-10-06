@@ -29,7 +29,7 @@
  * </tbody>
  * </table>
  *
- * Both values are native filesystem paths with a trailing backslash and support Unicode. They are initialized at startup and remain fixed for the session. The fields use the <b>jsplitter_</b> prefix so they do not register the unprefixed names used by other components.
+ * Both values are native filesystem paths and support Unicode. They are initialized at startup and remain fixed for the session. The fields use the <b>jsplitter_</b> prefix so they do not register the unprefixed names used by other components.
  *
  * <h2>Using fields in JavaScript</h2>
  *
