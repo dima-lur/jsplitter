@@ -21645,7 +21645,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 8064
+      "line": 8065
     }
   },
   {
@@ -48120,18 +48120,18 @@
     "name": "SetDefault",
     "kind": "method",
     "parent": "MenuObject",
-    "signature": "SetDefault(item_id)",
+    "signature": "SetDefault(item)",
     "type": null,
     "value": null,
-    "description": "Sets a menu item as the default item. The default item is displayed in bold.\nOnly one item can be set as default for each menu object.",
+    "description": "Sets a menu item or submenu as the default item. The default item is displayed in bold.<br>\nCalling this method again changes the default item.<br>\nOnly one item can be set as the default for each menu object.",
     "params": [
       {
-        "type": "number",
-        "name": "item_id",
-        "rawName": "item_id",
+        "type": "number|MenuObject",
+        "name": "item",
+        "rawName": "item",
         "optional": false,
         "variadic": false,
-        "description": ""
+        "description": "Menu item id or a submenu appended directly to this menu."
       }
     ],
     "properties": [],
@@ -48139,7 +48139,7 @@
     "throws": [
       {
         "type": "Error",
-        "description": "If <b>item_id</b> does not exist."
+        "description": "If the specified menu item does not exist or the submenu does not belong directly to this menu."
       }
     ],
     "examples": [],
@@ -48215,7 +48215,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7520
+      "line": 7521
     }
   },
   {
@@ -48245,7 +48245,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7529
+      "line": 7530
     }
   },
   {
@@ -48352,7 +48352,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7534
+      "line": 7535
     }
   },
   {
@@ -48394,7 +48394,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7547
+      "line": 7548
     }
   },
   {
@@ -48442,7 +48442,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7553
+      "line": 7554
     }
   },
   {
@@ -48472,7 +48472,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7562
+      "line": 7563
     }
   },
   {
@@ -48502,7 +48502,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7572
+      "line": 7573
     }
   },
   {
@@ -48532,7 +48532,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7584
+      "line": 7585
     }
   },
   {
@@ -48562,7 +48562,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7595
+      "line": 7596
     }
   },
   {
@@ -48592,7 +48592,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7606
+      "line": 7607
     }
   },
   {
@@ -48622,7 +48622,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7619
+      "line": 7620
     }
   },
   {
@@ -48654,7 +48654,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7633
+      "line": 7634
     }
   },
   {
@@ -48686,7 +48686,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7647
+      "line": 7648
     }
   },
   {
@@ -48718,7 +48718,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7660
+      "line": 7661
     }
   },
   {
@@ -48750,7 +48750,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7673
+      "line": 7674
     }
   },
   {
@@ -48782,7 +48782,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7686
+      "line": 7687
     }
   },
   {
@@ -48812,7 +48812,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7701
+      "line": 7702
     }
   },
   {
@@ -48844,7 +48844,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7711
+      "line": 7712
     }
   },
   {
@@ -48876,7 +48876,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7725
+      "line": 7726
     }
   },
   {
@@ -48920,7 +48920,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7738
+      "line": 7739
     }
   },
   {
@@ -48964,7 +48964,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7753
+      "line": 7754
     }
   },
   {
@@ -49008,7 +49008,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7769
+      "line": 7770
     }
   },
   {
@@ -49038,7 +49038,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7786
+      "line": 7787
     }
   },
   {
@@ -49070,7 +49070,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7796
+      "line": 7797
     }
   },
   {
@@ -49102,7 +49102,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7815
+      "line": 7816
     }
   },
   {
@@ -49134,7 +49134,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7829
+      "line": 7830
     }
   },
   {
@@ -49166,7 +49166,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7846
+      "line": 7847
     }
   },
   {
@@ -49196,7 +49196,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7863
+      "line": 7864
     }
   },
   {
@@ -49228,7 +49228,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7873
+      "line": 7874
     }
   },
   {
@@ -49260,7 +49260,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7887
+      "line": 7888
     }
   },
   {
@@ -49292,7 +49292,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7901
+      "line": 7902
     }
   },
   {
@@ -49324,7 +49324,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7924
+      "line": 7925
     }
   },
   {
@@ -49356,7 +49356,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7938
+      "line": 7939
     }
   },
   {
@@ -49400,7 +49400,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7954
+      "line": 7955
     }
   },
   {
@@ -49444,7 +49444,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7970
+      "line": 7971
     }
   },
   {
@@ -49488,7 +49488,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 7987
+      "line": 7988
     }
   },
   {
@@ -49532,7 +49532,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 8008
+      "line": 8009
     }
   },
   {
@@ -49576,7 +49576,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 8027
+      "line": 8028
     }
   },
   {
@@ -49620,7 +49620,7 @@
     "legacyEnumMarkup": false,
     "source": {
       "file": "js/foo_uie_jsplitter.js",
-      "line": 8045
+      "line": 8046
     }
   },
   {
