@@ -7509,13 +7509,14 @@ function MenuObject() {
     this.CheckMenuRadioItem = function (first_item_id, last_item_id, selected_item_id) { }; // (void)
 
     /**
-     * Sets a menu item as the default item. The default item is displayed in bold.
-     * Only one item can be set as default for each menu object.
+     * Sets a menu item or submenu as the default item. The default item is displayed in bold.<br>
+     * Calling this method again changes the default item.<br>
+     * Only one item can be set as the default for each menu object.
      *
-     * @param {number} item_id
-     * @throws {Error} If <b>item_id</b> does not exist.
+     * @param {number|MenuObject} item Menu item id or a submenu appended directly to this menu.
+     * @throws {Error} If the specified menu item does not exist or the submenu does not belong directly to this menu.
      */
-    this.SetDefault = function (item_id) { }; // (void)
+    this.SetDefault = function (item) { }; // (void)
 
     /**
      * @param {number} x

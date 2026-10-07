@@ -387,15 +387,15 @@
             </div>
             <div class="source-location">js/foo_uie_jsplitter.js:7511</div>
         </header>
-        <pre class="signature"><code>SetDefault(item_id)</code></pre>
+        <pre class="signature"><code>SetDefault(item)</code></pre>
         
-        <div class="description"><p>Sets a menu item as the default item. The default item is displayed in bold. Only one item can be set as default for each menu object.</p></div>
+        <div class="description"><p>Sets a menu item or submenu as the default item. The default item is displayed in bold.<br> Calling this method again changes the default item.<br> Only one item can be set as the default for each menu object.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>item_id</code></td><td><code>number</code></td><td></td></tr></tbody>
+                <tbody><tr><td><code>item</code></td><td><code>number|<a class="type-link" href="MenuObject.html#MenuObject">MenuObject</a></code></td><td><p>Menu item id or a submenu appended directly to this menu.</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -404,7 +404,7 @@
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>item_id</b> does not exist.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the specified menu item does not exist or the submenu does not belong directly to this menu.</p></div>
         </section>
         
         
@@ -417,7 +417,7 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#TrackPopupMenu">TrackPopupMenu</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7520</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:7521</div>
         </header>
         <pre class="signature"><code>TrackPopupMenu(x, y, flags)</code></pre>
         
