@@ -28,7 +28,7 @@ The splitter functionality works in both **DUI** and **CUI**.
 
 Layout editing is supported in both **DUI** and **CUI** using the traditional method.
 
-Panel placement in the splitter is also supported via the standard **Columns UI placer**.
+Panel placement in the splitter is also supported via the standard **Columns UI "Layout" settings**.
 
 ### 3. Spider Monkey Panel-based script host
 
@@ -44,17 +44,18 @@ Panels can be controlled programmatically, including:
 - hiding
 - resizing
 
-### 5. Button API
-
-A special API is available for quickly creating buttons in the root panel and handling their click events.
-
-### 6. GDI+ and Direct2D support
+### 5. GDI+ and Direct2D support
 
 The panel supports two drawing engines: GDI+ and Direct2D. This can be switched with one line of code (as the first line of script):
 
 ```js
 window.DrawMode = 1; // 0 - GDI+ by default
 ````
+
+### 6. Button API
+
+A special API is available for quickly creating buttons in the root panel and handling their click events.
+
 ## Note about versions
 
 Since the latest **ESR** — Extended Support Release — version of the SpiderMonkey JavaScript engine that supports **Windows 7** is **102.15.1esr**, I decided to fork the main version of JSplitter and create a separate **3.x** branch from it.
