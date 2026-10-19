@@ -28,7 +28,7 @@ The splitter functionality works in both **DUI** and **CUI**.
 
 Layout editing is supported in both **DUI** and **CUI** using the traditional method.
 
-Panel placement in the splitter is also supported via the standard **Columns UI placer**.
+Panel placement in the splitter is also supported via the standard **Columns UI "Layout" settings**.
 
 ### 3. Spider Monkey Panel-based script host
 
