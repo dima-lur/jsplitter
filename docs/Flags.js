@@ -1083,7 +1083,7 @@ const PlaybackStopReason = {
 };
 
 /**
- * Used in {@link module:Callbacks.on_playback_stop on_playback_stop}
+ * Used in {@link module:Callbacks.on_replaygain_mode_changed on_replaygain_mode_changed}
  * @memberof module:Flags
  * @enum {number}
  */
@@ -1230,9 +1230,9 @@ const UIInstanceType = {
 /**
  * Direct2D dash style. A value can be passed directly to D2D drawing methods as a shorthand,
  * or used as the <b>dashStyle</b> option of {@link D2DStrokeStyleOptions} when creating a reusable
- * {@link D2DStrokeStyle}.<br><b>Dot visibility:</b> Direct2D uses zero-length dash segments for <b>Dot</b> and the dot portions of <b>DashDot</b>/<b>DashDotDot</b>. JSplitter therefore uses {@link module:Flags.CapStyle CapStyle}.Round as the implicit dash cap for those predefined styles, both for the numeric drawing-method shorthand and for {@link d2d.StrokeStyle d2d.StrokeStyle} when <b>dashCap</b> is omitted. An explicit <b>dashCap</b> always overrides this default. See {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_dash_style Microsoft: D2D1_DASH_STYLE} and {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_cap_style Microsoft: D2D1_CAP_STYLE}.<br>
- * <b>Custom</b> requires a non-empty <b>dashes</b> array and is intended for
- * {@link d2d.StrokeStyle d2d.StrokeStyle}; do not pass <b>DashStyle.Custom</b> directly to a drawing method.
+ * {@link D2DStrokeStyle}.<br><b>Dot visibility:</b> Direct2D uses zero-length dash segments for {@link module:Flags.DashStyle.Dot Dot} and the dot portions of {@link module:Flags.DashStyle.DashDot DashDot}/{@link module:Flags.DashStyle.DashDotDot DashDotDot}. JSplitter therefore uses {@link module:Flags.CapStyle CapStyle}.Round as the implicit dash cap for those predefined styles, both for the numeric drawing-method shorthand and for {@link d2d.StrokeStyle d2d.StrokeStyle} when <b>dashCap</b> is omitted. An explicit <b>dashCap</b> always overrides this default. See {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_dash_style Microsoft: D2D1_DASH_STYLE} and {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_cap_style Microsoft: D2D1_CAP_STYLE}.<br>
+ * {@link module:Flags.DashStyle.Custom Custom} requires a non-empty <b>dashes</b> array and is intended for
+ * {@link d2d.StrokeStyle d2d.StrokeStyle}; do not pass {@link DashStyle.Custom Custom} directly to a drawing method.
  * @memberof module:Flags
  * @enum {number}
  */
@@ -1388,7 +1388,7 @@ const MessageBoxButtons = {
  * @enum {number}
  * @property None The message box contains no symbols.
  * @property Error The message box contains a symbol consisting of white X in a circle with a red background.
- * @property Stop The same as <b>Error</b>.
+ * @property Stop The same as {@link module:Flags.MessageBoxIcon.Error Error}.
  * @property Warning The same as <b>Exclamation</b>.
  * @property Information The message box contains a symbol consisting of a lowercase letter i in a circle.
  */
@@ -1455,11 +1455,11 @@ const AttachImage2Codec = {
  * @property Normal Activates and displays a window. If the window is minimized, maximized, or arranged, the system restores it to its original size and position. An application should specify this flag when displaying the window for the first time.
  * @property Minimized Activates the window and displays it as a minimized window.
  * @property Maximized Activates the window and displays it as a maximized window.
- * @property NoActivate Displays a window in its most recent size and position. This value is similar to <b>Normal</b>, except that the window is not activated.
+ * @property NoActivate Displays a window in its most recent size and position. This value is similar to {@link module:Flags.ShowWindow.Normal Normal}, except that the window is not activated.
  * @property Show Activates the window and displays it in its current size and position.
  * @property Minimize Minimizes the specified window and activates the next top-level window in the Z order.
- * @property MinNoActive Displays the window as a minimized window. This value is similar to <b>Minimized</b>, except the window is not activated.
- * @property NA Displays the window in its current size and position. This value is similar to <b>Show</b>, except that the window is not activated.
+ * @property MinNoActive Displays the window as a minimized window. This value is similar to {@link module:Flags.ShowWindow.Minimized Minimized}, except the window is not activated.
+ * @property NA Displays the window in its current size and position. This value is similar to {@link module:Flags.ShowWindow.Show Show}, except that the window is not activated.
  * @property Restore Activates and displays the window. If the window is minimized, maximized, or arranged, the system restores it to its original size and position. An application should specify this flag when restoring a minimized window.
  * @property Default Sets the show state based on the <b>ShowWindow</b> value specified in the <b>STARTUPINFO</b> structure passed to the <b>CreateProcess</b> function by the program that started the application.
  * @property ForceMinimize Minimizes a window, even if the thread that owns the window is not responding. This flag should only be used when minimizing windows from a different thread.
@@ -1524,7 +1524,7 @@ const RunVerb = {
  * };
  * 
  * === Colours ===
- * Used in GetColourCUI() as client_guid
+ * Used in {@link window.GetColourCUI GetColourCUI} as client_guid
  * NG Playlist: "{C882D3AC-C014-44DF-9C7E-2DADF37645A0}" Support Bits: 0x000001ff
  * Columns Playlist: "{0CF29D60-1262-4F55-A6E1-BC4AE6579D19}" Support Bits: 0x000001ff
  * Item Details: "{4E20CEED-42F6-4743-8EB3-610454457E19}" Support Bits: 0x00000009
@@ -1537,7 +1537,7 @@ const RunVerb = {
  * JSplitter: "{E1F81EB4-63D0-4ADE-99C2-E653A8C9858F}"
  * 
  * === Fonts ===
- * Used in GetFontCUI() as client_guid
+ * Used in {@link window.GetFontCUI GetFontCUI} as client_guid
  * Album List: "{06B856CC-86E7-4459-A75C-2DAB5B33B8BB}"
  * Item Properties: Group Titles: "{AF5A96A6-96ED-468F-8BA1-C22533C53491}"
  * Columns Playlist: Items: "{82196D79-69BC-4041-8E2A-E3B4406BB6FC}"
@@ -1558,3 +1558,29 @@ const RunVerb = {
  * Filter Panel: Items: "{D93F1EF3-4AEE-4632-B5BF-0220CEC76DED}"
  * JSplitter: "{CB659888-6550-4CC8-8410-78177A9E5E73}"
 */
+
+/**
+ * Selects the native audio source used by {@link vis.Create} and {@link vis.CreateAsync}.
+ * @memberof module:Flags
+ * @enum {number}
+ */
+const VisSourceType = {
+    Waveform: 0,
+    Spectrum: 1,
+    PeakMeter: 2,
+    VUMeter: 3,
+    Spectrogram: 4,
+    Vectorscope: 5
+};
+
+/**
+ * Identifies the renderer family exposed by {@link Visualization#RendererType Visualization.RendererType}.
+ * @memberof module:Flags
+ * @enum {number}
+ */
+const VisRendererType = {
+    Builtin: 0,
+    JavaScript: 1,
+    Shader: 2
+};
+

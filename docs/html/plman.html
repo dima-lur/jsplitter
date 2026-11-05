@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -236,6 +242,7 @@
         
         
         <div class="description"><p>Functions for managing foobar2000 playlists.</p></div>
+        
         
         
         
@@ -273,6 +280,7 @@
             <pre class="example"><code>console.log(plman.ActivePlaylist);</code></pre><pre class="example"><code>plman.ActivePlaylist = <span class="tok-number">1</span>; <span class="tok-comment">// Switches to 2nd playlist.</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="PlaybackOrder" data-kind="property" data-name="playbackorder">
@@ -295,6 +303,7 @@
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the assigned playback-order id is unknown.</p></div>
         </section>
+        
         
         
         
@@ -327,6 +336,7 @@
             <pre class="example"><code>console.log(plman.PlayingPlaylist);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="PlaylistCount" data-kind="property" data-name="playlistcount">
@@ -348,6 +358,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="PlaylistRecycler" data-kind="property" data-name="playlistrecycler">
@@ -361,6 +372,7 @@
         <pre class="signature"><code>PlaylistRecycler: <a class="type-link" href="FbPlaylistRecycler.html#FbPlaylistRecycler">FbPlaylistRecycler</a></code></pre>
         
         <div class="description"><p>A Recycle Bin for playlists.</p></div>
+        
         
         
         
@@ -398,6 +410,7 @@
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>handle</b> is null.</p></div>
         </section>
+        
         
         
         
@@ -440,6 +453,7 @@
 <span class="tok-comment">// after this line will run immediately without waiting for the job to finish.</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="AddPlaylistItemToPlaybackQueue" data-kind="method" data-name="addplaylistitemtoplaybackqueue">
@@ -461,6 +475,7 @@
                 <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>playlistItemIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -500,6 +515,7 @@
             <pre class="example"><code>plman.ClearPlaylist(plman.PlayingPlaylist);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="ClearPlaylistSelection" data-kind="method" data-name="clearplaylistselection">
@@ -531,6 +547,7 @@
             <h3>Example</h3>
             <pre class="example"><code>plman.ClearPlaylistSelection(plman.ActivePlaylist);</code></pre>
         </section>
+        
         
     </article>
 
@@ -565,6 +582,7 @@
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If foobar2000 rejects the autoplaylist query or sort expression.</p></div>
         </section>
+        
         
         
         
@@ -606,6 +624,7 @@ plman.CreatePlaylist(<span class="tok-number">0</span>, <span class="tok-string"
 plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favourites&#39;</span>);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="DuplicatePlaylist" data-kind="method" data-name="duplicateplaylist">
@@ -642,6 +661,7 @@ plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favou
         
         
         
+        
     </article>
 
     <article class="api-item" id="EnsurePlaylistItemVisible" data-kind="method" data-name="ensureplaylistitemvisible">
@@ -663,6 +683,7 @@ plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favou
                 <tbody><tr><td><code>playlistIndex</code></td><td><code>number</code></td><td></td></tr><tr><td><code>playlistItemIndex</code></td><td><code>number</code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -698,6 +719,7 @@ plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favou
             <h3>Returns</h3>
             <div><code>boolean</code> — <p>-1 on failure.</p></div>
         </section>
+        
         
         
         
@@ -738,6 +760,7 @@ plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favou
         
         
         
+        
     </article>
 
     <article class="api-item" id="FindOrCreatePlaylist" data-kind="method" data-name="findorcreateplaylist">
@@ -766,6 +789,7 @@ plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favou
             <h3>Returns</h3>
             <div><code>number</code> — <p>Index of the found or created playlist.</p></div>
         </section>
+        
         
         
         
@@ -806,6 +830,7 @@ plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favou
         
         
         
+        
     </article>
 
     <article class="api-item" id="FindPlaylist" data-kind="method" data-name="findplaylist">
@@ -838,6 +863,7 @@ plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favou
         
         
         
+        
     </article>
 
     <article class="api-item" id="FlushPlaybackQueue" data-kind="method" data-name="flushplaybackqueue">
@@ -851,6 +877,7 @@ plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favou
         <pre class="signature"><code>FlushPlaybackQueue()</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -899,6 +926,7 @@ plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favou
             <pre class="example"><code>console.log(plman.GetGUID(plman.ActivePlaylist));</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="GetPlaybackQueueContents" data-kind="method" data-name="getplaybackqueuecontents">
@@ -932,6 +960,7 @@ plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favou
 }</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="GetPlaybackQueueHandles" data-kind="method" data-name="getplaybackqueuehandles">
@@ -964,6 +993,7 @@ plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favou
 }</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="GetPlayingItemLocation" data-kind="method" data-name="getplayingitemlocation">
@@ -985,6 +1015,7 @@ plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favou
             <h3>Returns</h3>
             <div><code><a class="type-link" href="FbPlayingItemLocation.html#FbPlayingItemLocation">FbPlayingItemLocation</a></code></div>
         </section>
+        
         
         
         
@@ -1025,6 +1056,7 @@ plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favou
             <pre class="example"><code><span class="tok-keyword">let</span> focus_item_index = plman.GetPlaylistFocusItemIndex(plman.ActivePlaylist); <span class="tok-comment">// 0 would be the first item</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="GetPlaylistItems" data-kind="method" data-name="getplaylistitems">
@@ -1061,6 +1093,7 @@ plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favou
             <pre class="example"><code><span class="tok-keyword">let</span> handle_list = plman.GetPlaylistItems(plman.PlayingPlaylist);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="GetPlaylistLockedActions" data-kind="method" data-name="getplaylistlockedactions">
@@ -1094,6 +1127,7 @@ plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favou
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>playlistIndex</b> is out of bounds.</p></div>
         </section>
+        
         
         
         
@@ -1133,6 +1167,7 @@ plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favou
         
         
         
+        
     </article>
 
     <article class="api-item" id="GetPlaylistName" data-kind="method" data-name="getplaylistname">
@@ -1168,6 +1203,7 @@ plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favou
             <h3>Example</h3>
             <pre class="example"><code>console.log(plman.GetPlaylistName(plman.ActivePlaylist));</code></pre>
         </section>
+        
         
     </article>
 
@@ -1209,6 +1245,7 @@ plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favou
             <pre class="example"><code><span class="tok-keyword">let</span> selected_indexes = plman.GetPlaylistSelectedIndexes(plman.ActivePlaylist);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="GetPlaylistSelectedItems" data-kind="method" data-name="getplaylistselecteditems">
@@ -1244,6 +1281,7 @@ plman.CreatePlaylist(plman.PlaylistCount, <span class="tok-string">&#39;my favou
             <h3>Example</h3>
             <pre class="example"><code><span class="tok-keyword">let</span> selected_items = plman.GetPlaylistSelectedItems(plman.ActivePlaylist);</code></pre>
         </section>
+        
         
     </article>
 
@@ -1283,6 +1321,7 @@ plman.InsertPlaylistItems(ap, <span class="tok-number">0</span>, fb.GetLibraryIt
 plman.InsertPlaylistItems(ap, plman.PlaylistItemCount(ap), fb.GetLibraryItems());</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="InsertPlaylistItemsFilter" data-kind="method" data-name="insertplaylistitemsfilter">
@@ -1295,7 +1334,7 @@ plman.InsertPlaylistItems(ap, plman.PlaylistItemCount(ap), fb.GetLibraryItems())
         </header>
         <pre class="signature"><code>InsertPlaylistItemsFilter(playlistIndex, base, handle_list, select)</code></pre>
         
-        <div class="description"><p>Same as <a href="plman.html#InsertPlaylistItems">plman.InsertPlaylistItems</a> except any duplicates contained in handle_list are removed.</p></div>
+        <div class="description"><p>Same as <a href="plman.html#InsertPlaylistItems">InsertPlaylistItems</a> except any duplicates contained in handle_list are removed.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1312,6 +1351,7 @@ plman.InsertPlaylistItems(ap, plman.PlaylistItemCount(ap), fb.GetLibraryItems())
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>handles</b> is null.</p></div>
         </section>
+        
         
         
         
@@ -1344,6 +1384,7 @@ plman.InsertPlaylistItems(ap, plman.PlaylistItemCount(ap), fb.GetLibraryItems())
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>playlistIndex</b> is invalid.</p></div>
         </section>
+        
         
         
         
@@ -1383,6 +1424,7 @@ plman.InsertPlaylistItems(ap, plman.PlaylistItemCount(ap), fb.GetLibraryItems())
         
         
         
+        
     </article>
 
     <article class="api-item" id="IsPlaylistItemSelected" data-kind="method" data-name="isplaylistitemselected">
@@ -1415,6 +1457,7 @@ plman.InsertPlaylistItems(ap, plman.PlaylistItemCount(ap), fb.GetLibraryItems())
         
         
         
+        
     </article>
 
     <article class="api-item" id="IsPlaylistLocked" data-kind="method" data-name="isplaylistlocked">
@@ -1427,7 +1470,7 @@ plman.InsertPlaylistItems(ap, plman.PlaylistItemCount(ap), fb.GetLibraryItems())
         </header>
         <pre class="signature"><code>IsPlaylistLocked(playlistIndex)</code></pre>
         <div class="notice notice-deprecated"><b>Deprecated.</b></div>
-        <div class="description"><p>Note: returns true, if the playlist is an autoplaylist. To determine if a playlist is not an autoplaylist, but locked with something like <b>foo_utils</b> or <b>foo_playlist_attributes</b>, use with conjunction of <a href="plman.html#IsAutoPlaylist">plman.IsAutoPlaylist</a>. <br> Deprecated: use <a href="plman.html#GetPlaylistLockedActions">plman.GetPlaylistLockedActions</a>.</p></div>
+        <div class="description"><p>Note: returns true, if the playlist is an autoplaylist. To determine if a playlist is not an autoplaylist, but locked with something like <b>foo_utils</b> or <b>foo_playlist_attributes</b>, use with conjunction of <a href="plman.html#IsAutoPlaylist">IsAutoPlaylist</a>. <br> Deprecated: use <a href="plman.html#GetPlaylistLockedActions">GetPlaylistLockedActions</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1448,6 +1491,7 @@ plman.InsertPlaylistItems(ap, plman.PlaylistItemCount(ap), fb.GetLibraryItems())
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>playlistIndex</b> is out of bounds.</p></div>
         </section>
+        
         
         
         
@@ -1463,7 +1507,7 @@ plman.InsertPlaylistItems(ap, plman.PlaylistItemCount(ap), fb.GetLibraryItems())
         </header>
         <pre class="signature"><code>IsRedoAvailable(playlistIndex)</code></pre>
         
-        <div class="description"><p>Returns whether a redo restore point is available for specified playlist. <br> Related methods: <a href="plman.html#IsUndoAvailable">plman.IsUndoAvailable</a>, <a href="plman.html#Redo">plman.Redo</a>, <a href="plman.html#Undo">plman.Undo</a>, <a href="plman.html#UndoBackup">plman.UndoBackup</a></p></div>
+        <div class="description"><p>Returns whether a redo restore point is available for specified playlist. <br> Related methods: <a href="plman.html#IsUndoAvailable">IsUndoAvailable</a>, <a href="plman.html#Redo">Redo</a>, <a href="plman.html#Undo">Undo</a>, <a href="plman.html#UndoBackup">UndoBackup</a></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1484,6 +1528,7 @@ plman.InsertPlaylistItems(ap, plman.PlaylistItemCount(ap), fb.GetLibraryItems())
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>playlistIndex</b> is out of bounds.</p></div>
         </section>
+        
         
         
         
@@ -1499,7 +1544,7 @@ plman.InsertPlaylistItems(ap, plman.PlaylistItemCount(ap), fb.GetLibraryItems())
         </header>
         <pre class="signature"><code>IsUndoAvailable(playlistIndex)</code></pre>
         
-        <div class="description"><p>Returns whether an undo restore point is available for specified playlist. <br> Related methods: <a href="plman.html#IsRedoAvailable">plman.IsRedoAvailable</a>, <a href="plman.html#Redo">plman.Redo</a>, <a href="plman.html#Undo">plman.Undo</a>, <a href="plman.html#UndoBackup">plman.UndoBackup</a></p></div>
+        <div class="description"><p>Returns whether an undo restore point is available for specified playlist. <br> Related methods: <a href="plman.html#IsRedoAvailable">IsRedoAvailable</a>, <a href="plman.html#Redo">Redo</a>, <a href="plman.html#Undo">Undo</a>, <a href="plman.html#UndoBackup">UndoBackup</a></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1520,6 +1565,7 @@ plman.InsertPlaylistItems(ap, plman.PlaylistItemCount(ap), fb.GetLibraryItems())
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>playlistIndex</b> is out of bounds.</p></div>
         </section>
+        
         
         
         
@@ -1551,6 +1597,7 @@ plman.InsertPlaylistItems(ap, plman.PlaylistItemCount(ap), fb.GetLibraryItems())
             <h3>Returns</h3>
             <div><code>boolean</code></div>
         </section>
+        
         
         
         
@@ -1592,6 +1639,7 @@ plman.InsertPlaylistItems(ap, plman.PlaylistItemCount(ap), fb.GetLibraryItems())
 plman.MovePlaylistSelection(plman.ActivePlaylist, plman.PlaylistItemCount(plman.ActivePlaylist));</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="MovePlaylistSelectionV2" data-kind="method" data-name="moveplaylistselectionv2">
@@ -1604,7 +1652,7 @@ plman.MovePlaylistSelection(plman.ActivePlaylist, plman.PlaylistItemCount(plman.
         </header>
         <pre class="signature"><code>MovePlaylistSelectionV2(playlistIndex, new_pos)</code></pre>
         
-        <div class="description"><p>Unlike <a href="plman.html#MovePlaylistSelection">plman.MovePlaylistSelection</a>, this has full support for non-contiguous selections and all you have to do is supply the new position index.</p></div>
+        <div class="description"><p>Unlike <a href="plman.html#MovePlaylistSelection">MovePlaylistSelection</a>, this has full support for non-contiguous selections and all you have to do is supply the new position index.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1621,6 +1669,7 @@ plman.MovePlaylistSelection(plman.ActivePlaylist, plman.PlaylistItemCount(plman.
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>playlistIndex</b> is invalid.</p></div>
         </section>
+        
         
         
         
@@ -1660,6 +1709,7 @@ plman.MovePlaylistSelection(plman.ActivePlaylist, plman.PlaylistItemCount(plman.
             <pre class="example"><code>console.log(plman.PlaylistItemCount(plman.PlayingPlaylist)); <span class="tok-comment">// 12</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="Redo" data-kind="method" data-name="redo">
@@ -1672,7 +1722,7 @@ plman.MovePlaylistSelection(plman.ActivePlaylist, plman.PlaylistItemCount(plman.
         </header>
         <pre class="signature"><code>Redo(playlistIndex)</code></pre>
         
-        <div class="description"><p>Reverts specified playlist to the next redo restore point and generates an undo restore point.<br> Note: revert operation may be not applied if the corresponding action is locked. Use <a href="plman.html#GetPlaylistLockedActions">plman.GetPlaylistLockedActions</a> to check if there are any locks present.<br> <br> Related methods: <a href="plman.html#IsRedoAvailable">plman.IsRedoAvailable</a>, <a href="plman.html#IsUndoAvailable">plman.IsUndoAvailable</a>, <a href="plman.html#Undo">plman.Undo</a>, <a href="plman.html#UndoBackup">plman.UndoBackup</a></p></div>
+        <div class="description"><p>Reverts specified playlist to the next redo restore point and generates an undo restore point.<br> Note: revert operation may be not applied if the corresponding action is locked. Use <a href="plman.html#GetPlaylistLockedActions">GetPlaylistLockedActions</a> to check if there are any locks present.<br> <br> Related methods: <a href="plman.html#IsRedoAvailable">IsRedoAvailable</a>, <a href="plman.html#IsUndoAvailable">IsUndoAvailable</a>, <a href="plman.html#Undo">Undo</a>, <a href="plman.html#UndoBackup">UndoBackup</a></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1689,6 +1739,7 @@ plman.MovePlaylistSelection(plman.ActivePlaylist, plman.PlaylistItemCount(plman.
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>playlistIndex</b> is out of bounds or redo is not available.</p></div>
         </section>
+        
         
         
         
@@ -1713,6 +1764,7 @@ plman.MovePlaylistSelection(plman.ActivePlaylist, plman.PlaylistItemCount(plman.
                 <tbody><tr><td><code>index</code></td><td><code>number</code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -1748,6 +1800,7 @@ plman.MovePlaylistSelection(plman.ActivePlaylist, plman.PlaylistItemCount(plman.
         
         
         
+        
     </article>
 
     <article class="api-item" id="RemovePlaylist" data-kind="method" data-name="removeplaylist">
@@ -1760,7 +1813,7 @@ plman.MovePlaylistSelection(plman.ActivePlaylist, plman.PlaylistItemCount(plman.
         </header>
         <pre class="signature"><code>RemovePlaylist(playlistIndex)</code></pre>
         
-        <div class="description"><p>Removes the specified playlist.<br> Note: if removing the active playlist, no playlist will be active after using this. You'll need to set it manually or use <a href="plman.html#RemovePlaylistSwitch">plman.RemovePlaylistSwitch</a> instead.</p></div>
+        <div class="description"><p>Removes the specified playlist.<br> Note: if removing the active playlist, no playlist will be active after using this. You'll need to set it manually or use <a href="plman.html#RemovePlaylistSwitch">RemovePlaylistSwitch</a> instead.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1776,6 +1829,7 @@ plman.MovePlaylistSelection(plman.ActivePlaylist, plman.PlaylistItemCount(plman.
             <h3>Returns</h3>
             <div><code>boolean</code></div>
         </section>
+        
         
         
         
@@ -1809,10 +1863,9 @@ plman.MovePlaylistSelection(plman.ActivePlaylist, plman.PlaylistItemCount(plman.
         
         <section class="member-section">
             <h3>Examples</h3>
-            <pre class="example"><code>&lt;Remove selected items from playlist&gt;
-plman.RemovePlaylistSelection(plman.ActivePlaylist);</code></pre><pre class="example"><code>&lt;Remove items that are NOT selected&gt;
-plman.RemovePlaylistSelection(plman.ActivePlaylist, <span class="tok-literal">true</span>);</code></pre>
+            <div class="example-caption">Remove selected items from playlist</div><pre class="example"><code>plman.RemovePlaylistSelection(plman.ActivePlaylist);</code></pre><div class="example-caption">Remove items that are NOT selected</div><pre class="example"><code>plman.RemovePlaylistSelection(plman.ActivePlaylist, <span class="tok-literal">true</span>);</code></pre>
         </section>
+        
         
     </article>
 
@@ -1846,6 +1899,7 @@ plman.RemovePlaylistSelection(plman.ActivePlaylist, <span class="tok-literal">tr
         
         
         
+        
     </article>
 
     <article class="api-item" id="RenamePlaylist" data-kind="method" data-name="renameplaylist">
@@ -1874,6 +1928,7 @@ plman.RemovePlaylistSelection(plman.ActivePlaylist, <span class="tok-literal">tr
             <h3>Returns</h3>
             <div><code>boolean</code></div>
         </section>
+        
         
         
         
@@ -1919,6 +1974,7 @@ plman.RemovePlaylistSelection(plman.ActivePlaylist, <span class="tok-literal">tr
 <span class="tok-keyword">const</span> success = ReorderPlaylistItems(<span class="tok-number">0</span>, [<span class="tok-number">2</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>])</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="ReplacePlaylistItem" data-kind="method" data-name="replaceplaylistitem">
@@ -1948,6 +2004,7 @@ plman.RemovePlaylistSelection(plman.ActivePlaylist, <span class="tok-literal">tr
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>handle</b>, <b>playlistIndex</b>, or <b>playlistItemIndex</b> is invalid.</p></div>
         </section>
+        
         
         
         
@@ -1987,6 +2044,7 @@ plman.RemovePlaylistSelection(plman.ActivePlaylist, <span class="tok-literal">tr
         
         
         
+        
     </article>
 
     <article class="api-item" id="SetActivePlaylistContext" data-kind="method" data-name="setactiveplaylistcontext">
@@ -2017,6 +2075,7 @@ plman.RemovePlaylistSelection(plman.ActivePlaylist, <span class="tok-literal">tr
    }
 }</code></pre>
         </section>
+        
         
     </article>
 
@@ -2049,6 +2108,7 @@ plman.RemovePlaylistSelection(plman.ActivePlaylist, <span class="tok-literal">tr
             <h3>Example</h3>
             <pre class="example"><code>plman.SetPlaylistFocusItem(plman.ActivePlaylist, <span class="tok-number">0</span>);</code></pre>
         </section>
+        
         
     </article>
 
@@ -2088,6 +2148,7 @@ plman.RemovePlaylistSelection(plman.ActivePlaylist, <span class="tok-literal">tr
 plman.SetPlaylistFocusItemByHandle(ap, handle);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="SetPlaylistLockedActions" data-kind="method" data-name="setplaylistlockedactions">
@@ -2100,7 +2161,7 @@ plman.SetPlaylistFocusItemByHandle(ap, handle);</code></pre>
         </header>
         <pre class="signature"><code>SetPlaylistLockedActions(playlistIndex, lockedActions)</code></pre>
         
-        <div class="description"><p>Blocks requested actions.<br> Note: the lock can be changed only if there is no lock or if it's owned by <b>foo_uie_jsplitter</b>. The owner of the lock can be checked via <a href="plman.html#GetPlaylistLockName">plman.GetPlaylistLockName</a>.</p></div>
+        <div class="description"><p>Blocks requested actions.<br> Note: the lock can be changed only if there is no lock or if it's owned by <b>foo_uie_jsplitter</b>. The owner of the lock can be checked via <a href="plman.html#GetPlaylistLockName">GetPlaylistLockName</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2117,6 +2178,7 @@ plman.SetPlaylistFocusItemByHandle(ap, handle);</code></pre>
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>lockedActions</b> is invalid, <b>playlistIndex</b> is out of bounds, the lock belongs to another component, or an action name is unknown.</p></div>
         </section>
+        
         
         
         
@@ -2153,6 +2215,7 @@ plman.SetPlaylistFocusItemByHandle(ap, handle);</code></pre>
 plman.SetPlaylistSelection(plman.ActivePlaylist, [<span class="tok-number">0</span>, <span class="tok-number">2</span>, <span class="tok-number">4</span>], <span class="tok-literal">true</span>);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="SetPlaylistSelectionSingle" data-kind="method" data-name="setplaylistselectionsingle">
@@ -2188,6 +2251,7 @@ plman.SetPlaylistSelectionSingle(plman.ActivePlaylist, <span class="tok-number">
 plman.SetPlaylistSelectionSingle(ap, plman.PlaylistItemCount(ap) - <span class="tok-number">1</span>, <span class="tok-literal">true</span>);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="ShowAutoPlaylistUI" data-kind="method" data-name="showautoplaylistui">
@@ -2200,7 +2264,7 @@ plman.SetPlaylistSelectionSingle(ap, plman.PlaylistItemCount(ap) - <span class="
         </header>
         <pre class="signature"><code>ShowAutoPlaylistUI(playlistIndex)</code></pre>
         
-        <div class="description"><p>Shows popup window letting you edit certain autoplaylist properties.<br> Before using, check if your playlist is an autoplaylist by using <a href="plman.html#IsAutoPlaylist">plman.IsAutoPlaylist</a>;</p></div>
+        <div class="description"><p>Shows popup window letting you edit certain autoplaylist properties.<br> Before using, check if your playlist is an autoplaylist by using <a href="plman.html#IsAutoPlaylist">IsAutoPlaylist</a>;</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2227,6 +2291,7 @@ plman.SetPlaylistSelectionSingle(ap, plman.PlaylistItemCount(ap) - <span class="
             <h3>Example</h3>
             <pre class="example"><code>fb.ShowAutoPlaylistUI(plman.ActivePlaylist);</code></pre>
         </section>
+        
         
     </article>
 
@@ -2264,6 +2329,7 @@ plman.SetPlaylistSelectionSingle(ap, plman.PlaylistItemCount(ap) - <span class="
             <pre class="example"><code>fb.ShowPlaylistLockUI(plman.ActivePlaylist);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="SortByFormat" data-kind="method" data-name="sortbyformat">
@@ -2292,6 +2358,7 @@ plman.SetPlaylistSelectionSingle(ap, plman.PlaylistItemCount(ap) - <span class="
             <h3>Returns</h3>
             <div><code>boolean</code> — <p>true on success, false on failure (playlist locked etc).</p></div>
         </section>
+        
         
         
         
@@ -2328,6 +2395,7 @@ plman.SetPlaylistSelectionSingle(ap, plman.PlaylistItemCount(ap) - <span class="
         
         
         
+        
     </article>
 
     <article class="api-item" id="SortPlaylistsByName" data-kind="method" data-name="sortplaylistsbyname">
@@ -2356,6 +2424,7 @@ plman.SetPlaylistSelectionSingle(ap, plman.PlaylistItemCount(ap) - <span class="
         
         
         
+        
     </article>
 
     <article class="api-item" id="Undo" data-kind="method" data-name="undo">
@@ -2368,7 +2437,7 @@ plman.SetPlaylistSelectionSingle(ap, plman.PlaylistItemCount(ap) - <span class="
         </header>
         <pre class="signature"><code>Undo(playlistIndex)</code></pre>
         
-        <div class="description"><p>Reverts specified playlist to the last undo restore point and generates a redo restore point.<br> Note: revert operation may be not applied if the corresponding action is locked. Use <a href="plman.html#GetPlaylistLockedActions">plman.GetPlaylistLockedActions</a> to check if there are any locks present.<br> <br> Related methods: <a href="plman.html#IsRedoAvailable">plman.IsRedoAvailable</a>, <a href="plman.html#IsUndoAvailable">plman.IsUndoAvailable</a>, <a href="plman.html#Redo">plman.Redo</a>, <a href="plman.html#UndoBackup">plman.UndoBackup</a></p></div>
+        <div class="description"><p>Reverts specified playlist to the last undo restore point and generates a redo restore point.<br> Note: revert operation may be not applied if the corresponding action is locked. Use <a href="plman.html#GetPlaylistLockedActions">GetPlaylistLockedActions</a> to check if there are any locks present.<br> <br> Related methods: <a href="plman.html#IsRedoAvailable">IsRedoAvailable</a>, <a href="plman.html#IsUndoAvailable">IsUndoAvailable</a>, <a href="plman.html#Redo">Redo</a>, <a href="plman.html#UndoBackup">UndoBackup</a></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2388,6 +2457,7 @@ plman.SetPlaylistSelectionSingle(ap, plman.PlaylistItemCount(ap) - <span class="
         
         
         
+        
     </article>
 
     <article class="api-item" id="UndoBackup" data-kind="method" data-name="undobackup">
@@ -2400,7 +2470,7 @@ plman.SetPlaylistSelectionSingle(ap, plman.PlaylistItemCount(ap) - <span class="
         </header>
         <pre class="signature"><code>UndoBackup(playlistIndex)</code></pre>
         
-        <div class="description"><p>Creates an undo restore point for the specified playlist. This will enable <b>Edit</b>><b>Undo</b> menu item after calling other <a href="plman.html#plman">plman</a> methods that change playlist content.<br> Note: this method should be called before performing modification to the playlist.<br> <br> Related methods: <a href="plman.html#IsRedoAvailable">plman.IsRedoAvailable</a>, <a href="plman.html#IsUndoAvailable">plman.IsUndoAvailable</a>, <a href="plman.html#Redo">plman.Redo</a>, <a href="plman.html#Undo">plman.Undo</a></p></div>
+        <div class="description"><p>Creates an undo restore point for the specified playlist. This will enable <b>Edit</b>><a href="plman.html#Undo">Undo</a> menu item after calling other <a href="plman.html#plman">plman</a> methods that change playlist content.<br> Note: this method should be called before performing modification to the playlist.<br> <br> Related methods: <a href="plman.html#IsRedoAvailable">IsRedoAvailable</a>, <a href="plman.html#IsUndoAvailable">IsUndoAvailable</a>, <a href="plman.html#Redo">Redo</a>, <a href="plman.html#Undo">Undo</a></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2417,6 +2487,7 @@ plman.SetPlaylistSelectionSingle(ap, plman.PlaylistItemCount(ap) - <span class="
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>playlistIndex</b> is out of bounds.</p></div>
         </section>
+        
         
         
         

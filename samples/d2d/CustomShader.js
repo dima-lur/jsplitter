@@ -24,7 +24,7 @@ const shaderSource = `
         float4 color = InputTexture.Sample(InputSampler, input.texelSpacePos.xy);
 	
         // Invert RGB, keep alpha
-        return float4(1.0 - color.rgb, color.a) * color.a;
+        return float4((1.0 - color.rgb) * color.a, color.a);
     }
 `;
 

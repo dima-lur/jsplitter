@@ -1,4 +1,4 @@
-﻿:root {
+:root {
     color-scheme: light dark;
     --bg: #0f1115;
     --panel: #151922;
@@ -116,7 +116,7 @@ code { font-size: 0.93em; }
     padding-left: 4px;
 }
 .nav-page-link::before, .nav-member-summary::before {
-    content: "›";
+    content: "\203A";
     flex: 0 0 auto;
     color: var(--muted);
     transform-origin: 50% 50%;
@@ -231,20 +231,16 @@ code { font-size: 0.93em; }
 .compact-section > div, .compact-section > code { color: var(--muted); }
 .table-wrap { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; font-size: 14px; }
-.params-table { table-layout: auto; }
-.params-table th:nth-child(1),
-.params-table td:nth-child(1),
-.params-table th:nth-child(2),
-.params-table td:nth-child(2) {
+/* Keep API names, defaults, optional badges and types together. */
+:is(.params-table, .properties-table, .enum-table) { table-layout: auto; }
+:is(.params-table, .properties-table, .enum-table) > thead > tr > th:nth-child(-n+2),
+:is(.params-table, .properties-table, .enum-table) > tbody > tr > td:nth-child(-n+2):not([colspan]) {
     width: 1%;
     white-space: nowrap;
+    padding-right: 24px;
 }
-.params-table th:nth-child(1),
-.params-table td:nth-child(1) { padding-right: 24px; }
-.params-table th:nth-child(2),
-.params-table td:nth-child(2) { padding-right: 24px; }
-.params-table th:nth-child(3),
-.params-table td:nth-child(3) { width: auto; }
+:is(.params-table, .properties-table, .enum-table) > thead > tr > th:nth-child(3),
+:is(.params-table, .properties-table, .enum-table) > tbody > tr > td:nth-child(3) { width: auto; }
 th, td { text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); padding: 9px 10px 9px 0; }
 tbody tr:last-child > td { border-bottom: 0; }
 th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
@@ -257,6 +253,9 @@ td p { margin: 0; }
 .notice-deprecated { border-left-color: var(--danger); }
 .notice p { display: inline; }
 
+.see-also-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.see-also-list li { padding: 5px 9px; border: 1px solid var(--border); border-radius: 8px; background: var(--panel); }
+.see-also-list li p { margin: 0; }
 .source-links { display: grid; gap: 8px; max-width: 760px; }
 .source-link { display: flex; justify-content: space-between; gap: 15px; align-items: center; border: 1px solid var(--border); border-radius: 9px; padding: 10px 12px; background: var(--panel); }
 .source-link:hover { text-decoration: none; border-color: var(--accent); }
@@ -383,18 +382,6 @@ td p { margin: 0; }
     font-size: 11px;
     font-weight: 400;
 }
-.enum-table { table-layout: auto; }
-.enum-table th:nth-child(1),
-.enum-table td:nth-child(1),
-.enum-table th:nth-child(2),
-.enum-table td:nth-child(2) {
-    width: 1%;
-    white-space: nowrap;
-    padding-right: 24px;
-}
-.enum-table th:nth-child(3),
-.enum-table td:nth-child(3) { width: auto; }
-
 @media (prefers-color-scheme: light) {
     .flag.worker { color: #197947; border-color: rgba(25,121,71,.25); background: rgba(25,121,71,.06); }
     .flag.main-thread { color: #9b5f0b; border-color: rgba(155,95,11,.27); background: rgba(155,95,11,.06); }
@@ -465,4 +452,22 @@ td p { margin: 0; }
 
 .doc-capability-list > :last-child {
     margin-bottom: 0.85rem;
+}
+
+/* Visualization article: consistent settings tables and replaceable examples. */
+.description .vis-settings { table-layout: fixed; width: 100%; margin: 14px 0 24px; }
+.description .vis-settings col:nth-child(1) { width: 24%; }
+.description .vis-settings col:nth-child(2) { width: 23%; }
+.description .vis-settings col:nth-child(3) { width: 53%; }
+.description .vis-settings th { white-space: nowrap; }
+.description .vis-settings td { overflow-wrap: anywhere; }
+.description .vis-settings td:first-child { font-weight: 500; }
+.description .vis-figure { margin: 16px 0 24px; padding: 0; }
+.description .vis-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 9px; background: var(--panel); }
+.description .vis-figure figcaption { margin-top: 7px; color: var(--muted); font-size: 12px; }
+.description h3 { margin-top: 34px; }
+.description h4 { margin: 24px 0 8px; font-size: 16px; }
+@media (max-width: 680px) {
+ .description .vis-settings { font-size: 12px; }
+ .description .vis-settings th, .description .vis-settings td { padding-right: 7px; }
 }

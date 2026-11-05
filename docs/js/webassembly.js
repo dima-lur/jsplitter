@@ -1,6 +1,6 @@
-/**
- * JSplitter exposes the standard <b>WebAssembly</b> global in both panels and
- * {@link Worker Workers}. WebAssembly modules built from C, C++, Rust or other
+﻿/**
+ * JSplitter exposes the standard {@link module:WebAssembly WebAssembly} global in both panels and
+ * {@link Worker Workers}. {@link module:WebAssembly WebAssembly} modules built from C, C++, Rust or other
  * supported languages can run directly in SpiderMonkey without additional native
  * support from JSplitter.
  *
@@ -17,7 +17,7 @@
  * // Call instance.exports.someFunction(...)
  * ```
  *
- * For CPU-intensive tasks, consider running WebAssembly in a {@link Worker}
+ * For CPU-intensive tasks, consider running {@link module:WebAssembly WebAssembly} in a {@link Worker}
  * to keep the panel responsive.
  *
  * <h2>Ready-to-run example: album-art filters</h2>
@@ -42,8 +42,8 @@
  * <h2>How the example works</h2>
  * <ol>
  * <li>The panel obtains an image and extracts RGBA pixels using
- * {@link GdiBitmap.GetPixelData}, then transfers their buffer to a
- * file-backed {@link Worker} via {@link Worker#postMessage}.</li>
+ * {@link GdiBitmap#GetPixelData GdiBitmap.GetPixelData}, then transfers their buffer to a
+ * file-backed {@link Worker} via {@link Worker#postMessage Worker.postMessage}.</li>
  * <li>The Worker reads <b>album_art_filters.wasm</b> with
  * {@link utils.ReadBinaryFile}, then constructs its <b>WebAssembly.Module</b>
  * and <b>WebAssembly.Instance</b> once.</li>
@@ -75,10 +75,10 @@
  * </ul>
  *
  * <h2>Limitations</h2>
- * WebAssembly is not automatically a browser or operating-system runtime.
+ * {@link module:WebAssembly WebAssembly} is not automatically a browser or operating-system runtime.
  * Modules built for WASI, Emscripten, Node.js, the DOM, network access, or
  * multi-threading may require additional imports, JavaScript support, or APIs
- * that JSplitter does not provide. WebAssembly also does not guarantee a
+ * that JSplitter does not provide. {@link module:WebAssembly WebAssembly} also does not guarantee a
  * performance improvement over JavaScript or native code. The timer displayed
  * by this example includes the WASM function call and copying of its output
  * buffer, not full end-to-end rendering or image loading.
@@ -88,7 +88,7 @@
  * behavior and resource requirements you trust.
  *
  * <h2>Building the WASM module (optional)</h2>
- * The prebuilt <b>album_art_filters.wasm</b> is included and runs without a build step. To rebuild it after editing <b>source/album_art_filters.c</b>, install Clang with WebAssembly (wasm32) support and <b>wasm-ld</b>. Run the following from <b>component/samples/wasm</b>:
+ * The prebuilt <b>album_art_filters.wasm</b> is included and runs without a build step. To rebuild it after editing <b>source/album_art_filters.c</b>, install Clang with {@link module:WebAssembly WebAssembly} (wasm32) support and <b>wasm-ld</b>. Run the following from <b>component/samples/wasm</b>:
  *
  * ```sh
  * clang --target=wasm32-unknown-unknown -O3 -nostdlib \

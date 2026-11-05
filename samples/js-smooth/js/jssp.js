@@ -1,4 +1,4 @@
-var need_repaint = false;
+﻿var need_repaint = false;
 
 ppt = {
 	tf_artist: fb.TitleFormat("%artist%"),

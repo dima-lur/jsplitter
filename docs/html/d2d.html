@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -236,8 +242,9 @@
         
         
         <div class="description"><p>Functions for working with Direct2D graphics.</p>
-<div class="doc-note warning"><b>Direct2D versions earlier than 1.1 are not supported in the Worker.</b><br>
-Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div></div>
+<div class="doc-note warning"><b>Direct2D 1.1 or later is required.</b><br>
+Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.<br></div></div>
+        
         
         
         
@@ -258,7 +265,7 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
         </header>
         <pre class="signature"><code>Brush(type, param1, param2, param3, param4)</code></pre>
         
-        <div class="description"><p>Creates a drawing brush of the specified type. The meaning of the brush's input parameters depends on its type.<br> For type == <a href="module-Flags.html#BrushType">BrushType.Solid</a>:<br> - param1: brush colour in ARGB<br> For type == <a href="module-Flags.html#BrushType">BrushType.LinearGradient</a>:<br> - param1: start point coords of linear gradient in form of Array(2) (for ex.: [0, 0])<br> - param2: end point coords of linear gradient in form of Array(2) (for ex.: [100, 0])<br> - param3: gradient stops specified as an array with alternating position and color values for each stop (for ex.: [0.0, 0xFF000000, 0.5, 0xFFFF0000, 1.0, 0xFFFFFFFF])<br> - param4: wrap mode responsible for how the gradient is repeated when drawing. See <a href="module-Flags.html#BrushWrapMode">BrushWrapMode</a>. Default is <a href="module-Flags.html#BrushWrapMode">BrushWrapMode.Tile</a><br> For type == <a href="module-Flags.html#BrushType">BrushType.RadialGradient</a>:<br> - param1: center point coords of radial gradient in form of Array(2) (for ex.: [50, 50])<br> - param2: radius values for X and Y axes in form of Array(2) (for ex.: [50, 50])<br> - param3: gradient stops specified as an array with alternating position and color values for each stop (for ex.: [0.0, 0xFF000000, 0.5, 0xFFFF0000, 1.0, 0xFFFFFFFF])<br> - param4: wrap mode responsible for how the gradient is repeated when drawing. See <a href="module-Flags.html#BrushWrapMode">BrushWrapMode</a>. Default is <a href="module-Flags.html#BrushWrapMode">BrushWrapMode.Tile</a><br> For type == <a href="module-Flags.html#BrushType">BrushType.Bitmap</a>:<br> - param1: D2DBitmap object used for drawing by brush<br> - param2: wrap mode responsible for how the image is repeated when drawing. See <a href="module-Flags.html#BrushWrapMode">BrushWrapMode</a></p></div>
+        <div class="description"><p>Creates a drawing brush of the specified type. The meaning of the brush's input parameters depends on its type.<br> For type == <a href="module-Flags.html#BrushType">BrushType.Solid</a>:<br> - param1: brush colour in ARGB<br> For type == <a href="module-Flags.html#BrushType">BrushType.LinearGradient</a>:<br> - param1: start point coords of linear gradient in form of Array(2) (for ex.: [0, 0])<br> - param2: end point coords of linear gradient in form of Array(2) (for ex.: [100, 0])<br> - param3: gradient stops specified as an array with alternating position and color values for each stop (for ex.: [0.0, 0xFF000000, 0.5, 0xFFFF0000, 1.0, 0xFFFFFFFF])<br> - param4: wrap mode responsible for how the gradient is repeated when drawing. See <a href="module-Flags.html#BrushWrapMode">BrushWrapMode</a>. Default is <a href="module-Flags.html#BrushWrapMode">BrushWrapMode.Tile</a><br> For type == <a href="module-Flags.html#BrushType">BrushType.RadialGradient</a>:<br> - param1: center point coords of radial gradient in form of Array(2) (for ex.: [50, 50])<br> - param2: radius values for X and Y axes in form of Array(2) (for ex.: [50, 50])<br> - param3: gradient stops specified as an array with alternating position and color values for each stop (for ex.: [0.0, 0xFF000000, 0.5, 0xFFFF0000, 1.0, 0xFFFFFFFF])<br> - param4: wrap mode responsible for how the gradient is repeated when drawing. See <a href="module-Flags.html#BrushWrapMode">BrushWrapMode</a>. Default is <a href="module-Flags.html#BrushWrapMode">BrushWrapMode.Tile</a><br> For type == <a href="module-Flags.html#BrushType">BrushType.Bitmap</a>:<br> - param1: <a href="D2DBitmap.html#D2DBitmap">D2DBitmap</a> object used for drawing by brush<br> - param2: wrap mode responsible for how the image is repeated when drawing. See <a href="module-Flags.html#BrushWrapMode">BrushWrapMode</a></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -282,6 +289,7 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
         
         
         
+        
         <section class="member-section">
             <h3>Example source</h3>
             <div class="source-links"><a class="source-link" href="source-samples-basic-Brushes.js.html"><span>samples/basic/Brushes.js</span><small>open source</small></a></div>
@@ -294,17 +302,17 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Compile">Compile</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:1448</div>
+            <div class="source-location">js/d2d.js:1446</div>
         </header>
         <pre class="signature"><code>Compile(source, entryPoint, target, flags)</code></pre>
         
-        <div class="description"><p>Compiles Direct2D shader.</p></div>
+        <div class="description"><p>Compiles a Direct2D HLSL shader <b>synchronously</b>. The call blocks its JavaScript thread until compilation completes; for complex shaders or collections of presets, prefer <a href="d2d.html#CompileAsync">CompileAsync</a>. Both methods use the same native HLSL compiler and result format. They compile on every call and do not use the automatic shader cache exposed by <a href="vis.html#ShaderCacheStats">vis.ShaderCacheStats</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>source</code></td><td><code>string</code></td><td><p>Shader source code (ASCII HLSL code)</p></td></tr><tr><td><code>entryPoint = &quot;main&quot;</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>The name of the shader entry point function where shader execution begins.<br></p></td></tr><tr><td><code>target = &quot;&quot;</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>A string that specifies the shader target or set of shader features to compile against.<br> The shader target can be shader model 2, shader model 3, shader model 4, or shader model 5.<br> For full target list see <a href="https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/specifying-compiler-targets" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/specifying-compiler-targets</a><br> Default value: "ps_5_0" if Direct2D 1.1 or higher is available on the system, otherwise "ps_4_0".</p></td></tr><tr><td><code>flags = 0x4A008</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#D2DCompileFlags">D2DCompileFlags</a></code></td><td><p>Affects compiler flags. <a href="module-Flags.html#D2DCompileFlags">D2DCompileFlags</a><br> For flags values see: <a href="https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/d3dcompile-constants" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/d3dcompile-constants</a><br> <b>Default value</b>: D3DCOMPILE_OPTIMIZATION_LEVEL3 | D3DCOMPILE_IEEE_STRICTNESS | D3DCOMPILE_WARNINGS_ARE_ERRORS | D3DCOMPILE_PACK_MATRIX_ROW_MAJOR<br> <b>Example for debug build</b>: D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION | D3DCOMPILE_ALL_RESOURCES_BOUND | D3DCOMPILE_PACK_MATRIX_ROW_MAJOR</p></td></tr></tbody>
+                <tbody><tr><td><code>source</code></td><td><code>string</code></td><td><p>Shader source code (ASCII HLSL code)</p></td></tr><tr><td><code>entryPoint = &quot;main&quot;</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>The name of the shader entry point function where shader execution begins.<br></p></td></tr><tr><td><code>target = &quot;ps_4_0&quot;</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>A string that specifies the shader target or set of shader features to compile against.<br> The shader target can be shader model 2, shader model 3, shader model 4, or shader model 5.<br> For full target list see <a href="https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/specifying-compiler-targets" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/specifying-compiler-targets</a><br> Default value: "ps_4_0".</p></td></tr><tr><td><code>flags = 0x8008</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#D2DCompileFlags">D2DCompileFlags</a></code></td><td><p>Affects compiler flags. <a href="module-Flags.html#D2DCompileFlags">D2DCompileFlags</a><br> For flags values see: <a href="https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/d3dcompile-constants" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/d3dcompile-constants</a><br> <b>Default value</b>: D3DCOMPILE_OPTIMIZATION_LEVEL3 | D3DCOMPILE_PACK_MATRIX_ROW_MAJOR<br> <b>Example for debug build</b>: D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION | D3DCOMPILE_ALL_RESOURCES_BOUND | D3DCOMPILE_PACK_MATRIX_ROW_MAJOR</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -312,7 +320,7 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
         
         <section class="member-section compact-section">
             <h3>Returns</h3>
-            <div><code><a class="type-link" href="D2DCompileInfo.html#D2DCompileInfo">D2DCompileInfo</a></code> — <p>Result of compiling shader source</p></div>
+            <div><code><a class="type-link" href="D2DCompileInfo.html#D2DCompileInfo">D2DCompileInfo</a></code> — <p>Result of compiling shader source. HLSL compiler failures return a nonempty <a href="D2DCompileInfo.html#Error">D2DCompileInfo.Error</a> field; inspect it before using <a href="D2DCompileInfo.html#Code">D2DCompileInfo.Code</a>.</p></div>
         </section>
         
         <section class="member-section compact-section">
@@ -347,7 +355,7 @@ window.DrawMode = <span class="tok-number">1</span>;
         float4 color = InputTexture.Sample(InputSampler, input.texelSpacePos.xy);
 	
         // Invert RGB, keep alpha
-        return float4(1.0 - color.rgb, color.a) * color.a;
+        return float4((1.0 - color.rgb) * color.a, color.a);
     }
 `</span>;
 
@@ -364,6 +372,58 @@ effect.SetInput(<span class="tok-number">0</span>, img);
 <span class="tok-keyword">function</span> on_paint(dgr) {	
     dgr.DrawEffect(effect, <span class="tok-number">10</span>, <span class="tok-number">10</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>, img.Width, img.Height);
 }</code></pre>
+        </section>
+        
+        <section class="member-section">
+            <h3>See also</h3>
+            <ul class="see-also-list"><li><p><a href="d2d.html#CompileAsync">d2d.CompileAsync</a></p></li></ul>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="CompileAsync" data-kind="method" data-name="compileasync">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
+                <h2><a class="anchor" href="#CompileAsync">CompileAsync</a></h2>
+            </div>
+            <div class="source-location">js/d2d.js:1511</div>
+        </header>
+        <pre class="signature"><code>CompileAsync(source, entryPoint, target, flags)</code></pre>
+        
+        <div class="description"><p>Compiles HLSL <b>asynchronously</b> on JSplitter's shared background thread pool, without blocking the panel or Worker JavaScript thread. Arguments and defaults are identical to <a href="d2d.html#Compile">Compile</a>. Returns a Promise resolving to <a href="D2DCompileInfo.html#D2DCompileInfo">D2DCompileInfo</a> with a <b>Uint8Array Code</b> and <b>string Error</b>. An HLSL compilation error <b>resolves</b> with a nonempty <a href="D2DCompileInfo.html#Error">D2DCompileInfo.Error</a>, just like synchronous Compile(); setup or task failures <b>reject</b> the Promise. This differs from <a href="vis.html#CreateAsync">vis.CreateAsync</a>, whose shader compilation failures reject its Promise.</p>
+<p>The produced DXBC can be reused in <a href="vis.html#CreateAsync">vis.CreateAsync</a> or in a Direct2D CustomShader effect. Explicit <a href="d2d.html#CompileAsync">CompileAsync</a> calls compile on every call and do not use the automatic shader cache exposed by <a href="vis.html#ShaderCacheStats">vis.ShaderCacheStats</a>; that cache is for <a href="vis.html#CreateAsync">CreateAsync</a> HLSL stages. The method also works inside a Worker when Direct2D is available there.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>source</code></td><td><code>string</code></td><td><p>Shader source code (ASCII HLSL code).</p></td></tr><tr><td><code>entryPoint = &quot;main&quot;</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>HLSL entry point.</p></td></tr><tr><td><code>target = &quot;ps_4_0&quot;</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>Compiler target/profile. See <a href="https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/specifying-compiler-targets" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/specifying-compiler-targets</a>.</p></td></tr><tr><td><code>flags = 0x8008</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#D2DCompileFlags">D2DCompileFlags</a></code></td><td><p>D3DCompile flags, as for <a href="d2d.html#Compile">Compile</a>. See <a href="module-Flags.html#D2DCompileFlags">D2DCompileFlags</a>.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Promise&lt;<a class="type-link" href="D2DCompileInfo.html#D2DCompileInfo">D2DCompileInfo</a>&gt;</code> — <p>Promise resolving to compiled bytecode or a compiler error.</p></div>
+        </section>
+        
+        
+        
+        <section class="member-section">
+            <h3>Example</h3>
+            <pre class="example"><code><span class="tok-comment">// HLSL stored in shaderSource; safe to run while the panel paints.</span>
+<span class="tok-keyword">async</span> <span class="tok-keyword">function</span> prepareShader() {
+    <span class="tok-keyword">const</span> compiled = <span class="tok-keyword">await</span> d2d.CompileAsync(shaderSource);
+    <span class="tok-keyword">if</span> (compiled.Error) <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(compiled.Error);
+    <span class="tok-keyword">return</span> compiled.Code; <span class="tok-comment">// Uint8Array: can be reused by CreateAsync().</span>
+}</code></pre>
+        </section>
+        
+        <section class="member-section">
+            <h3>See also</h3>
+            <ul class="see-also-list"><li><p><a href="d2d.html#Compile">d2d.Compile</a></p></li><li><p><a href="vis.html#CreateAsync">vis.CreateAsync</a></p></li></ul>
         </section>
         
     </article>
@@ -402,6 +462,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="CreateImageFromPixelData" data-kind="method" data-name="createimagefrompixeldata">
@@ -414,7 +475,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         </header>
         <pre class="signature"><code>CreateImageFromPixelData(pixelData, width, height, format = &quot;bgra32&quot;)</code></pre>
         
-        <div class="description"><p>Create D2DBitmap from raw pixel data in memory.</p></div>
+        <div class="description"><p>Create <a href="D2DBitmap.html#D2DBitmap">D2DBitmap</a> from raw pixel data in memory.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -438,6 +499,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
         <section class="member-section">
             <h3>Example source</h3>
             <div class="source-links"><a class="source-link" href="source-samples-basic-CreateImageFromPixelData.js.html"><span>samples/basic/CreateImageFromPixelData.js</span><small>open source</small></a></div>
@@ -454,9 +516,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         </header>
         <pre class="signature"><code>Effect(CLSID)</code></pre>
         
-        <div class="description"><p>Creates Direct2D effect.<br></p>
-<div class="doc-note warning"><b>Direct2D versions earlier than 1.1 are not supported.</b><br>
-Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div></div>
+        <div class="description"><p>Creates Direct2D effect.<br></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -477,6 +537,7 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the Direct2D host is unavailable or Direct2D resources have not been initialized.</p></div>
         </section>
+        
         
         
         
@@ -516,6 +577,7 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
         
         
         
+        
     </article>
 
     <article class="api-item" id="Image" data-kind="method" data-name="image">
@@ -528,7 +590,7 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
         </header>
         <pre class="signature"><code>Image(path)</code></pre>
         
-        <div class="description"><p>Load image from file.<br> <br> Performance note: consider using <a href="d2d.html#LoadImageAsync">d2d.LoadImageAsync</a> or <a href="d2d.html#LoadImageAsyncV2">d2d.LoadImageAsyncV2</a> if there are a lot of images to load or if the image is big.</p>
+        <div class="description"><p>Load image from file.<br> <br> Performance note: consider using <a href="d2d.html#LoadImageAsync">LoadImageAsync</a> or <a href="d2d.html#LoadImageAsyncV2">LoadImageAsyncV2</a> if there are a lot of images to load or if the image is big.</p>
 <p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
@@ -556,6 +618,7 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
             <h3>Example</h3>
             <pre class="example"><code><span class="tok-keyword">let</span> img = d2d.Image(<span class="tok-string">&#39;e:\\images folder\\my_image.png&#39;</span>);</code></pre>
         </section>
+        
         
     </article>
 
@@ -591,6 +654,7 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the panel host is unavailable, Direct2D resources have not been initialized, or foobar2000 is not fully initialized.</p></div>
         </section>
+        
         
         
         
@@ -632,6 +696,7 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the panel host is unavailable, Direct2D resources have not been initialized, or foobar2000 is not fully initialized.</p></div>
         </section>
+        
         
         
         
@@ -688,6 +753,7 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
 }</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="StrokeStyle" data-kind="method" data-name="strokestyle">
@@ -700,13 +766,13 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
         </header>
         <pre class="signature"><code>StrokeStyle(options)</code></pre>
         
-        <div class="description"><p>Creates a reusable Direct2D stroke style for line and outline drawing.<br> The style controls start/end/dash caps, line joins, miter limit, dash pattern and dash offset.<br> Performance note: create commonly used styles once and reuse them from <a href="module-Callbacks.html#on_paint">on_paint</a>.<br><div class="doc-note"><b>Dotted strokes:</b> when <b>dashCap</b> is omitted, <b>DashStyle.Dot</b>, <b>DashStyle.DashDot</b> and <b>DashStyle.DashDotDot</b> automatically use <b>CapStyle.Round</b>. This makes <b>d2d.StrokeStyle({ dashStyle: DashStyle.Dot })</b> match the <b>DashStyle.Dot</b> drawing-method shorthand. An explicitly supplied <b>dashCap</b> is preserved, including <b>CapStyle.Flat</b>. See <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_dash_style" target="_blank" rel="noreferrer">Microsoft: D2D1_DASH_STYLE</a> and <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_cap_style" target="_blank" rel="noreferrer">Microsoft: D2D1_CAP_STYLE</a>.</div></p></div>
+        <div class="description"><p>Creates a reusable Direct2D stroke style for line and outline drawing.<br> The style controls start/end/dash caps, line joins, miter limit, dash pattern and dash offset.<br> Performance note: create commonly used styles once and reuse them from <a href="module-Callbacks.html#on_paint">on_paint</a>.<br><div class="doc-note"><b>Dotted strokes:</b> when <b>dashCap</b> is omitted, <a href="module-Flags.html#Dot">DashStyle.Dot</a>, <a href="module-Flags.html#DashDot">DashStyle.DashDot</a> and <a href="module-Flags.html#DashDotDot">DashStyle.DashDotDot</a> automatically use <a href="module-Flags.html#Round">CapStyle.Round</a>. Setting <b>dashStyle</b> to <a href="module-Flags.html#Dot">DashStyle.Dot</a> in <a href="d2d.html#StrokeStyle">StrokeStyle</a> therefore matches the <a href="module-Flags.html#Dot">DashStyle.Dot</a> drawing-method shorthand. An explicitly supplied <b>dashCap</b> is preserved, including <a href="module-Flags.html#Flat">CapStyle.Flat</a>. See <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_dash_style" target="_blank" rel="noreferrer">Microsoft: D2D1_DASH_STYLE</a> and <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_cap_style" target="_blank" rel="noreferrer">Microsoft: D2D1_CAP_STYLE</a>.</div></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>options = {}</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="globals.html#D2DStrokeStyleOptions">D2DStrokeStyleOptions</a></code></td><td><p>Stroke appearance options. Omitted properties use the defaults documented by D2DStrokeStyleOptions.</p></td></tr></tbody>
+                <tbody><tr><td><code>options = {}</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="globals.html#D2DStrokeStyleOptions">D2DStrokeStyleOptions</a></code></td><td><p>Stroke appearance options. Omitted properties use the defaults documented by <a href="globals.html#D2DStrokeStyleOptions">D2DStrokeStyleOptions</a>.</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -721,6 +787,7 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the Direct2D host is unavailable, Direct2D resources have not been initialized, or the stroke-style options are invalid.</p></div>
         </section>
+        
         
         
         

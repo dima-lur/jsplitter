@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Visualization — JSplitter API</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryReader">
+        <a class="nav-link nav-page-link" href="BinaryReader.html">BinaryReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryWriter">
+        <a class="nav-link nav-page-link" href="BinaryWriter.html">BinaryWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
+        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbWindow">
+        <a class="nav-link nav-page-link" href="FbWindow.html">FbWindow</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteDatabase">
+        <a class="nav-link nav-page-link" href="SQLiteDatabase.html">SQLiteDatabase</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteStatement">
+        <a class="nav-link nav-page-link" href="SQLiteStatement.html">SQLiteStatement</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextReader">
+        <a class="nav-link nav-page-link" href="TextReader.html">TextReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextWriter">
+        <a class="nav-link nav-page-link" href="TextWriter.html">TextWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link active" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><a class="nav-link" href="module-ESModules.html">ESModules</a><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Visualization</b></div>
+        
+    <article class="api-item" id="Visualization" data-kind="class" data-name="visualization">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-class">class</span></div>
+                <h2><a class="anchor" href="#Visualization">Visualization</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:294</div>
+        </header>
+        
+        
+        <div class="description"><p>Visualization object returned by <a href="vis.html#Create">vis.Create</a> and <a href="vis.html#CreateAsync">vis.CreateAsync</a>. This is a documentation-only instance description, not a constructor exposed by the <a href="vis.html#vis">vis</a> namespace. A visualization retains its native audio subscription while alive.<br> Source runtime properties are exposed directly on this object; built-in renderers add their renderer properties to the same object. Shader visualizations expose <a href="Visualization.html#FeedbackIntervalMs">FeedbackIntervalMs</a> and <a href="Visualization.html#InjectFeedback">InjectFeedback</a>. See <a href="module-Visualizations.html#Visualizations">Visualization API</a> for the complete property tables.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+        
+    <article class="api-item" id="DebugInfo" data-kind="property" data-name="debuginfo">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#DebugInfo">DebugInfo</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:391</div>
+        </header>
+        <pre class="signature"><code>DebugInfo: string</code></pre>
+        
+        <div class="description"><p>Diagnostic information about this visualization and its native audio engine, including source and feedback statistics when applicable.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="FeedbackIntervalMs" data-kind="property" data-name="feedbackintervalms">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#FeedbackIntervalMs">FeedbackIntervalMs</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:354</div>
+        </header>
+        <pre class="signature"><code>FeedbackIntervalMs: number = 0</code></pre>
+        
+        <div class="description"><p>Shader feedback interval in milliseconds. Use 0 to advance history on every <a href="Visualization.html#Draw">Draw</a>, or a finite number from 1 to 1000 for a fixed cadence; fractional values are supported. Positive values require a feedback pass. Without feedback, the property reads 0 and accepts only 0.</p>
+<p>Changing the value preserves history and other visualization state. The next eligible <a href="Visualization.html#Draw">Draw</a> uses the new cadence; assigning the same value leaves the current schedule intact. This property does not create a timer or request a repaint, and missed history steps are skipped. See <a href="module-Visualizations.html#Visualizations">Visualization API</a> for shader timing details.</p>
+<pre class="description-code language-js"><code><span class="tok-comment">// visual already has a feedback pass; keep requesting panel repaints.</span>
+visual.FeedbackIntervalMs = <span class="tok-number">1000</span> / <span class="tok-number">120</span>; <span class="tok-comment">// Fixed 120-Hz history step.</span>
+<span class="tok-keyword">const</span> interval = visual.FeedbackIntervalMs;
+visual.FeedbackIntervalMs = <span class="tok-number">0</span>;          <span class="tok-comment">// History advances on each Draw.</span></code></pre></div>
+        
+        
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Throws</h3>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the value is not a finite number equal to 0 or within 1..1000, or a positive value is assigned without a feedback pass.</p></div>
+        </section>
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="RendererType" data-kind="property" data-name="renderertype">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#RendererType">RendererType</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:384</div>
+        </header>
+        <pre class="signature"><code>RendererType: number</code></pre>
+        
+        <div class="description"><p>Renderer family: built-in, JavaScript callback, or shader. See <a href="module-Flags.html#VisRendererType">VisRendererType</a></p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="SourceType" data-kind="property" data-name="sourcetype">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#SourceType">SourceType</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:377</div>
+        </header>
+        <pre class="signature"><code>SourceType: number</code></pre>
+        
+        <div class="description"><p>Numeric native source type used to create this visualization. See <a href="module-Flags.html#VisSourceType">VisSourceType</a></p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Draw" data-kind="method" data-name="draw">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#Draw">Draw</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:306</div>
+        </header>
+        <pre class="signature"><code>Draw(gr, x, y, width, height)</code></pre>
+        
+        <div class="description"><p>Draws this visualization within the specified rectangle. Call from <a href="module-Callbacks.html#on_paint">on_paint</a> using the current graphics context. The method does not change <a href="vis.html#UpdateIntervalMs">vis.UpdateIntervalMs</a> or schedule another repaint. With shader feedback enabled, it also advances history when a step is due.<br> Built-in and JavaScript callback renderers support GDI and Direct2D; shader renderers created with <a href="vis.html#CreateAsync">CreateAsync</a> require Direct2D.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>gr</code></td><td><code><a class="type-link" href="D2DGraphics.html#D2DGraphics">D2DGraphics</a>|<a class="type-link" href="GdiGraphics.html#GdiGraphics">GdiGraphics</a></code></td><td><p>Current drawing context.</p></td></tr><tr><td><code>x</code></td><td><code>number</code></td><td><p>Left edge in panel pixels.</p></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td><p>Top edge in panel pixels.</p></td></tr><tr><td><code>width</code></td><td><code>number</code></td><td><p>Destination width in pixels.</p></td></tr><tr><td><code>height</code></td><td><code>number</code></td><td><p>Destination height in pixels.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="InjectFeedback" data-kind="method" data-name="injectfeedback">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#InjectFeedback">InjectFeedback</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:321</div>
+        </header>
+        <pre class="signature"><code>InjectFeedback(bitmap)</code></pre>
+        
+        <div class="description"><p>Queues a <a href="D2DBitmap.html#D2DBitmap">D2DBitmap</a> for the next actual feedback-history update of a shader visualization. The image is alpha-composited after the feedback and source passes and before history is saved; post passes run afterwards. The injection is one-shot and does not force a repaint or an early history update.</p>
+<p>The bitmap is copied on the GPU when this method is called and may then be modified or released. If several injections are queued before the next history update, only the latest is retained. The bitmap must use the same Direct2D device as the visualization and is scaled to the history area. Maximum size: <b>4096 px</b> per side and <b>4194304 pixels</b> total. A graphics-device reset can discard a pending injection. Available only when the shader visualization has a <b>feedback</b> pass. <p><b>Example:</b></p></p>
+<pre class="description-code language-js"><code><span class="tok-comment">// &#39;visual&#39; is a shader visualization created with a feedback pass.</span>
+<span class="tok-keyword">const</span> image = d2d.CreateImage(<span class="tok-number">512</span>, <span class="tok-number">128</span>);
+<span class="tok-keyword">const</span> g = image.GetGraphics();
+<span class="tok-keyword">try</span> {
+    g.DrawString(<span class="tok-string">&#39;Next track&#39;</span>, d2d.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">28</span>),
+        <span class="tok-number">0xffffffff</span>, <span class="tok-number">10</span>, <span class="tok-number">20</span>, <span class="tok-number">492</span>, <span class="tok-number">70</span>);
+} <span class="tok-keyword">finally</span> {
+    image.ReleaseGraphics(g);
+}
+visual.InjectFeedback(image); <span class="tok-comment">// One next history step, not every Draw().</span></code></pre></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>bitmap</code></td><td><code><a class="type-link" href="D2DBitmap.html#D2DBitmap">D2DBitmap</a></code></td><td><p>Direct2D bitmap with the image to add to history, normally on a transparent background.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>void</code></div>
+        </section>
+        
+        <section class="member-section compact-section">
+            <h3>Throws</h3>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If feedback is absent, the bitmap is invalid, exceeds the feedback limits or uses an incompatible Direct2D device.</p></div>
+        </section>
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example source</h3>
+            <div class="source-links"><a class="source-link" href="source-samples-vis-Shader---MilkDrop-ALL.js.html"><span>samples/vis/Shader - MilkDrop ALL.js</span><small>open source</small></a></div>
+        </section>
+    </article></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

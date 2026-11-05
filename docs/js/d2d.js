@@ -29,7 +29,7 @@ function D2DBitmap(arg) {
     this.ApplyAlpha = function (alpha) { }; // (D2DBitmap)
 
     /**
-     * Apllies alpha for entire image. Unlike {@link D2DBitmap#ApplyAlpha} changes the current object
+     * Applies alpha to the entire image. Unlike {@link D2DBitmap#ApplyAlpha ApplyAlpha}, it modifies the current object.
      * @param {number} alpha Valid values 0-255.
      * @worker
      */
@@ -56,7 +56,7 @@ function D2DBitmap(arg) {
     this.ApplyMaskNew = function (mask) { };
 
     /**
-     * Create partial copy of image represented by D2DBitmap object
+     * Create partial copy of image represented by {@link D2DBitmap D2DBitmap} object
      * 
      * @param {number} x
      * @param {number} y
@@ -68,7 +68,7 @@ function D2DBitmap(arg) {
     this.Clone = function (x, y, w, h) { }; // (D2DBitmap)
 
     /**
-     * Create clone bitmap from D2DBitmap object
+     * Create clone bitmap from {@link D2DBitmap D2DBitmap} object
      *
      * @return {D2DBitmap}
      * @worker
@@ -136,7 +136,7 @@ function D2DBitmap(arg) {
     /**
      * Builds an image-derived UI colour scheme for styling interface surfaces, text and interaction states from the bitmap.<br>
      * <br>
-     * The image is analysed in <b>OKLab</b> using the same weighted <b>K-means++</b> palette extraction as {@link D2DBitmap#GetColourSchemeJSONV2 GetColourSchemeJSONV2}</b>.<br>
+     * The image is analysed in <b>OKLab</b> using the same weighted <b>K-means++</b> palette extraction as {@link D2DBitmap#GetColourSchemeJSONV2 GetColourSchemeJSONV2}.<br>
      * The palette stage uses <b>paletteSize</b> centroids after which colours are assigned to five semantic UI roles:<br>
      * <b>Background</b>, <b>Text</b>, <b>Playing background</b>, <b>Focus frame</b> and <b>Selection background</b>.<br>
      * <br>
@@ -174,8 +174,8 @@ function D2DBitmap(arg) {
     this.GetThemeColourSchemeJSON = function (paletteSize) { }; // (string)
 
     /**
-     * <b>IMPORTANT</b>: You MUST call {@link D2DBitmap#ReleaseGraphics ReleaseGraphics} after work on D2DGraphics is done!<br>
-     * It is illegal to call any methods of D2DBitmap object while working with the obtained D2DGraphics object until {@link D2DBitmap#ReleaseGraphics ReleaseGraphics} is called.
+     * <b>IMPORTANT</b>: You MUST call {@link D2DBitmap#ReleaseGraphics ReleaseGraphics} after work on {@link D2DGraphics D2DGraphics} is done!<br>
+     * It is illegal to call any methods of {@link D2DBitmap D2DBitmap} object while working with the obtained {@link D2DGraphics D2DGraphics} object until {@link D2DBitmap#ReleaseGraphics ReleaseGraphics} is called.
      *
      * @return {D2DGraphics}
      * @worker
@@ -216,17 +216,17 @@ function D2DBitmap(arg) {
     /**
      * @param {number} w
      * @param {number} h
-     * @param {number=} [mode=0] See {@link module:Flags.AlbumArtId InterpolationMode}
+     * @param {number=} [mode=0] See {@link module:Flags.InterpolationMode InterpolationMode}
      * @return {D2DBitmap}
      * @worker
      */
     this.Resize = function (w, h, mode) { }; // (D2DBitmap)
 
     /**
-     * Resizes image. Unlike {@link D2DBitmap#Resize} changes the current object
+     * Resizes image. Unlike {@link D2DBitmap#Resize Resize} changes the current object
      * @param {number} w
      * @param {number} h
-     * @param {number=} [mode=0] See {@link module:Flags.AlbumArtId InterpolationMode}
+     * @param {number=} [mode=0] See {@link module:Flags.InterpolationMode InterpolationMode}
      * @param {number=} [sharpness=0.0]
      * @param {number=} [border_hard=false]
      * @param {number=} [cx=0] Scale center point x
@@ -238,7 +238,7 @@ function D2DBitmap(arg) {
     /**
      * Changes will be saved in the current bitmap.
      *
-     * @param {number} mode See {@link module:Flags.AlbumArtId RotateFlipType}
+     * @param {number} mode See {@link module:Flags.RotateFlipType RotateFlipType}
      * @worker
      */
     this.RotateFlip = function (mode) { }; // (void)
@@ -271,10 +271,10 @@ function D2DBitmap(arg) {
      *
      * @param {number} radius Valid values 2-254.
      *
-     * @example <caption>Blur image<caption>
+     * @example <caption>Blur image</caption>
      * // `samples/basic/StackBlur (image).js`
      *
-     * @example <caption>Blur text<caption>
+     * @example <caption>Blur text</caption>
      * // `samples/basic/StackBlur (text).js`
      * @worker
      */
@@ -349,8 +349,6 @@ function D2DFont(name, size_px, style) {
 
 /**
  * Creates Direct2D effect.
- * <div class="doc-note warning"><b>Direct2D versions earlier than 1.1 are not supported.</b><br>
- * Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div>
  * @constructor
  * @param {string} CLSID CLSID of Direct2D effect. See {@link module:Effects Effects} for effects' CLSID.
  * @worker
@@ -521,7 +519,7 @@ function D2DBrush(arg) {
     this.WrapMode = undefined;// (uint) (read, write)
 
     /**
-     * Applies translation matrix to the current D2DBrush matrix.<br>
+     * Applies translation matrix to the current {@link D2DBrush D2DBrush} matrix.<br>
      * For more information see {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-translation(d2d1_size_f)}
      *
      * @param {number} dx
@@ -531,7 +529,7 @@ function D2DBrush(arg) {
     this.Translate = function(dx, dy) {}
 
     /**
-     * Applies rotation matrix to the current D2DBrush matrix.<br>
+     * Applies rotation matrix to the current {@link D2DBrush D2DBrush} matrix.<br>
      * For more information see {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-rotation}
      *
      * @param {float} angle Angle of rotation in degrees
@@ -542,7 +540,7 @@ function D2DBrush(arg) {
     this.Rotate = function(angle, cx, cy) {}
 
     /**
-     * Applies scale matrix to the current D2DBrush matrix.<br>
+     * Applies scale matrix to the current {@link D2DBrush D2DBrush} matrix.<br>
      * For more information see {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-scale(d2d1_size_f_d2d1_point_2f)}
      *
      * @param {float} sx The x-axis scale factor
@@ -554,7 +552,7 @@ function D2DBrush(arg) {
     this.Scale = function(sz, sy, cx, cy) {}
     
     /**
-     * Applies skew matrix to the current D2DBrush matrix.<br>
+     * Applies skew matrix to the current {@link D2DBrush D2DBrush} matrix.<br>
      * For more information see {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-skew}
      *
      * @param {float} angleX The x-axis skew angle, which is measured in degrees counterclockwise from the y-axis.
@@ -566,19 +564,19 @@ function D2DBrush(arg) {
     this.Skew = function(angleX, angleY, cx, cy) {}
 
     /**
-     * Saves current D2DBrush matrix in internal stack. To restore the matrix use {@link D2DGraphics#PopTransform PopTransform}.
+     * Saves current {@link D2DBrush D2DBrush} matrix in internal stack. To restore the matrix use {@link D2DBrush#PopTransform PopTransform}.
      * @worker
      */
     this.PushTransform = function() {}
 
     /**
-     * Restores D2DBrush matrix from internal stack pushed previously by {@link D2DGraphics#PushTransform PushTransform}.
+     * Restores {@link D2DBrush D2DBrush} matrix from internal stack pushed previously by {@link D2DBrush#PushTransform PushTransform}.
      * @worker
      */
     this.PopTransform = function() {}
 
     /**
-     * Gets D2DBrush current transformation matrix of 3x2 size (Float32Array(6))<br>
+     * Gets {@link D2DBrush D2DBrush} current transformation matrix of 3x2 size (Float32Array(6))<br>
      * Matrix3x2 helper class from the component/docs/Matrix.js will be useful
      * @return {Float32Array}
      * 
@@ -588,7 +586,7 @@ function D2DBrush(arg) {
     this.GetTransform = function() {}
 
     /**
-     * Replaces the current D2DBrush matrix with specified transformation matrix of 3x2 size.<br>
+     * Replaces the current {@link D2DBrush D2DBrush} matrix with specified transformation matrix of 3x2 size.<br>
      * Matrix3x2 helper class from the component/docs/Matrix.js will be useful
      * @param {Float32Array} matrix Array that presents 3x2 matrix for transformation (length = 6)
      * 
@@ -598,13 +596,13 @@ function D2DBrush(arg) {
     this.SetTransform = function(matrix) {}
 
     /**
-     * Resets current D2DBrush matrix to original identity matrix.
+     * Resets current {@link D2DBrush D2DBrush} matrix to original identity matrix.
      * @worker
      */
     this.ResetTransform = function () {}
 
     /**
-     * Applies specified transformation matrix of 3x2 size to the current D2DBrush matrix.<br>
+     * Applies specified transformation matrix of 3x2 size to the current {@link D2DBrush D2DBrush} matrix.<br>
      * Matrix3x2 helper class from the component/docs/Matrix.js will be useful
      * @param {Float32Array} matrix Array that presents 3x2 matrix for transformation (length = 6)
      * 
@@ -619,18 +617,18 @@ function D2DBrush(arg) {
  * @typedef {Object} D2DStrokeStyleOptions
  * @property {CapStyle} [startCap=CapStyle.Flat] Cap at the start of an open stroke.
  * @property {CapStyle} [endCap=CapStyle.Flat] Cap at the end of an open stroke.
- * @property {CapStyle} [dashCap] Cap applied to each dash segment. If omitted, JSplitter uses CapStyle.Round for DashStyle.Dot, DashStyle.DashDot and DashStyle.DashDotDot so their zero-length dot segments are visible; other dash styles use CapStyle.Flat. An explicitly supplied dashCap is always used as-is.
+ * @property {CapStyle} [dashCap] Cap applied to each dash segment. If omitted, JSplitter uses {@link CapStyle.Round CapStyle.Round} for {@link DashStyle.Dot DashStyle.Dot}, {@link DashStyle.DashDot DashStyle.DashDot} and {@link DashStyle.DashDotDot DashStyle.DashDotDot} so their zero-length dot segments are visible; other dash styles use {@link CapStyle.Flat CapStyle.Flat}. An explicitly supplied dashCap is always used as-is.
  * @property {LineJoin} [lineJoin=LineJoin.Miter] Join used where consecutive line segments meet.
  * @property {number} [miterLimit=10] Positive miter limit used by miter-based joins.
- * @property {DashStyle} [dashStyle=DashStyle.Solid] Dash pattern. DashStyle.Custom requires a non-empty dashes array.
+ * @property {DashStyle} [dashStyle=DashStyle.Solid] Dash pattern. {@link DashStyle.Custom DashStyle.Custom} requires a non-empty dashes array.
  * @property {number} [dashOffset=0] Offset into the dash sequence.
- * @property {Array<number>} [dashes] Custom dash lengths expressed as multiples of the stroke width. Supplying this array selects DashStyle.Custom automatically.
+ * @property {Array<number>} [dashes] Custom dash lengths expressed as multiples of the stroke width. Supplying this array selects {@link DashStyle.Custom DashStyle.Custom} automatically.
  * @worker
  */
 
 /**
  * Reusable Direct2D stroke style describing line caps, joins and dash behaviour.<br>
- * Create with {@link d2d.StrokeStyle d2d.StrokeStyle} and reuse it across drawing calls instead of rebuilding the same stroke configuration every frame.<br><div class="doc-note"><b>Dotted strokes:</b> Direct2D defines the dot portions of <b>DashStyle.Dot</b>, <b>DashStyle.DashDot</b> and <b>DashStyle.DashDotDot</b> as zero-length dash segments. When <b>dashCap</b> is omitted, JSplitter automatically uses <b>CapStyle.Round</b> for those predefined styles, matching the numeric <b>DashStyle</b> shorthand used by D2D drawing methods. Specify <b>dashCap</b> explicitly to override this behaviour. See Microsoft documentation for {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_dash_style D2D1_DASH_STYLE} and {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_cap_style D2D1_CAP_STYLE}.</div>
+ * Create with {@link d2d.StrokeStyle d2d.StrokeStyle} and reuse it across drawing calls instead of rebuilding the same stroke configuration every frame.<br><div class="doc-note"><b>Dotted strokes:</b> Direct2D defines the dot portions of {@link DashStyle.Dot DashStyle.Dot}, {@link DashStyle.DashDot DashStyle.DashDot} and {@link DashStyle.DashDotDot DashStyle.DashDotDot} as zero-length dash segments. When <b>dashCap</b> is omitted, JSplitter automatically uses {@link CapStyle.Round CapStyle.Round} for those predefined styles, matching the numeric {@link module:Flags.DashStyle DashStyle} shorthand used by D2D drawing methods. Specify <b>dashCap</b> explicitly to override this behaviour. See Microsoft documentation for {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_dash_style D2D1_DASH_STYLE} and {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_cap_style D2D1_CAP_STYLE}.</div>
  * @cloneable
  * @constructor
  * @hideconstructor
@@ -697,10 +695,12 @@ function D2DStrokeStyle() {
 
 /**
  * Typically used inside {@link module:Callbacks.on_paint on_paint}.<br>
- * Use on_paint(dgr) for D2DGraphics members hints in auto-completion list.<br>
+ * Use on_paint(dgr) for {@link D2DGraphics D2DGraphics} members hints in auto-completion list.<br>
+ * <div class="doc-note warning"><b>Direct2D 1.1 or later is required.</b><br>
+ * Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.<br></div>
  * Note: there are many different ways to get colours:
- * window.GetColourDUI/window.GetColourCUI,
- * RGB function from Helpers.js, utils.ColourPicker and
+ * {@link window.GetColourDUI window.GetColourDUI}/{@link window.GetColourCUI window.GetColourCUI},
+ * RGB function from Helpers.js, {@link utils.ColourPicker utils.ColourPicker} and
  * etc.
  *
  * @constructor
@@ -800,8 +800,8 @@ function D2DGraphics() {
      * @param {number} line_width
      * @param {*} colour_or_brush colour ARGB or {@link D2DBrush} object
      * @param {(DashStyle|D2DStrokeStyle)=} [strokeStyle=DashStyle.Solid] {@link module:Flags.DashStyle DashStyle} shorthand or reusable {@link D2DStrokeStyle}
-     * @param {CapStyle=} [startCap=CapStyle.Flat] Legacy start cap used only when strokeStyle is a DashStyle value. A D2DStrokeStyle carries its own caps.
-     * @param {CapStyle=} [endCap=CapStyle.Flat] Legacy end cap used only when strokeStyle is a DashStyle value. A D2DStrokeStyle carries its own caps.
+     * @param {CapStyle=} [startCap=CapStyle.Flat] Legacy start cap used only when strokeStyle is a {@link module:Flags.DashStyle DashStyle} value. A {@link D2DStrokeStyle D2DStrokeStyle} carries its own caps.
+     * @param {CapStyle=} [endCap=CapStyle.Flat] Legacy end cap used only when strokeStyle is a {@link module:Flags.DashStyle DashStyle} value. A {@link D2DStrokeStyle D2DStrokeStyle} carries its own caps.
      * @sourceFile ../../component/samples/d2d/StrokeStyle.js
      * @worker
      */
@@ -995,7 +995,7 @@ function D2DGraphics() {
      * Provides faster and better rendering than {@link D2DGraphics#DrawString DrawString}.<br>
      * <br>
      * Do not use this to draw text on transparent background or
-     * with D2DGraphics other than the one passed in {@link module:Callbacks.on_paint on_paint} callback:
+     * with {@link D2DGraphics D2DGraphics} other than the one passed in {@link module:Callbacks.on_paint on_paint} callback:
      * this will result in visual artifacts caused by ClearType hinting.<br>
      * Use {@link D2DGraphics#DrawString DrawString} instead in such cases.<br>
      * <br>
@@ -1068,7 +1068,7 @@ function D2DGraphics() {
     this.PopClip = function() { };
 
     /**
-     * Applies translation matrix to the current D2DGraphics matrix.<br>
+     * Applies translation matrix to the current {@link D2DGraphics D2DGraphics} matrix.<br>
      * For more information see {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-translation(d2d1_size_f)}
      *
      * @param {number} dx
@@ -1078,7 +1078,7 @@ function D2DGraphics() {
     this.Translate = function(dx, dy) { }
 
     /**
-     * Applies rotation matrix to the current D2DGraphics matrix.<br>
+     * Applies rotation matrix to the current {@link D2DGraphics D2DGraphics} matrix.<br>
      * For more information see {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-rotation}
      *
      * @param {float} angle Angle of rotation in degrees
@@ -1089,7 +1089,7 @@ function D2DGraphics() {
     this.Rotate = function(angle, cx, cy) { };
 
     /**
-     * Applies scale matrix to the current D2DGraphics matrix.<br>
+     * Applies scale matrix to the current {@link D2DGraphics D2DGraphics} matrix.<br>
      * For more information see {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-scale(d2d1_size_f_d2d1_point_2f)}
      *
      * @param {float} sx The x-axis scale factor
@@ -1101,7 +1101,7 @@ function D2DGraphics() {
     this.Scale = function(sz, sy, cx, cy) { }
     
     /**
-     * Applies skew matrix to the current D2DGraphics matrix.<br>
+     * Applies skew matrix to the current {@link D2DGraphics D2DGraphics} matrix.<br>
      * For more information see {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-skew}
      *
      * @param {float} angleX The x-axis skew angle, which is measured in degrees counterclockwise from the y-axis.
@@ -1113,19 +1113,19 @@ function D2DGraphics() {
     this.Skew = function(angleX, angleY, cx, cy) {}
 
     /**
-     * Saves current D2DGraphics matrix in internal stack. To restore the matrix use {@link D2DGraphics#PopTransform PopTransform}.
+     * Saves current {@link D2DGraphics D2DGraphics} matrix in internal stack. To restore the matrix use {@link D2DGraphics#PopTransform PopTransform}.
      * @worker
      */
     this.PushTransform = function() {}
 
     /**
-     * Restores D2DGraphics matrix from internal stack pushed previously by {@link D2DGraphics#PushTransform PushTransform}.
+     * Restores {@link D2DGraphics D2DGraphics} matrix from internal stack pushed previously by {@link D2DGraphics#PushTransform PushTransform}.
      * @worker
      */
     this.PopTransform = function() {}
 
     /**
-     * Gets D2DGraphics current transformation matrix of 3x2 size (Float32Array(6))<br>
+     * Gets {@link D2DGraphics D2DGraphics} current transformation matrix of 3x2 size (Float32Array(6))<br>
      * Matrix3x2 helper class from the component/docs/Matrix.js will be useful
      * @return {Float32Array}
      * 
@@ -1135,7 +1135,7 @@ function D2DGraphics() {
     this.GetTransform = function() {}
 
     /**
-     * Replaces the current D2DGraphics matrix with specified transformation matrix of 3x2 size.<br>
+     * Replaces the current {@link D2DGraphics D2DGraphics} matrix with specified transformation matrix of 3x2 size.<br>
      * Matrix3x2 helper class from the component/docs/Matrix.js will be useful
      * @param {Float32Array} matrix Array that presents 3x2 matrix for transformation (length = 6)
      * 
@@ -1145,13 +1145,13 @@ function D2DGraphics() {
     this.SetTransform = function(matrix) {}
 
     /**
-     * Resets current D2DGraphics matrix to original identity matrix.
+     * Resets current {@link D2DGraphics D2DGraphics} matrix to original identity matrix.
      * @worker
      */
     this.ResetTransform = function () {}
 
     /**
-     * Applies specified transformation matrix of 3x2 size to the current D2DGraphics matrix.<br>
+     * Applies specified transformation matrix of 3x2 size to the current {@link D2DGraphics D2DGraphics} matrix.<br>
      * Matrix3x2 helper class from the component/docs/Matrix.js will be useful
      * @param {Float32Array} matrix Array that presents 3x2 matrix for transformation (length = 6)
      * 
@@ -1265,8 +1265,8 @@ function D2DGraphics() {
 
 /**
  * Functions for working with Direct2D graphics.
- * <div class="doc-note warning"><b>Direct2D versions earlier than 1.1 are not supported in the Worker.</b><br>
- * Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div>
+ * <div class="doc-note warning"><b>Direct2D 1.1 or later is required.</b><br>
+ * Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.<br></div>
  *
  * @namespace
  * @worker
@@ -1288,7 +1288,7 @@ let d2d = {
      * - param3: gradient stops specified as an array with alternating position and color values for each stop (for ex.: [0.0, 0xFF000000, 0.5, 0xFFFF0000, 1.0, 0xFFFFFFFF])<br>
      * - param4: wrap mode responsible for how the gradient is repeated when drawing. See {@link module:Flags.BrushWrapMode BrushWrapMode}. Default is {@link module:Flags.BrushWrapMode BrushWrapMode.Tile}<br>
      * For type == {@link module:Flags.BrushType BrushType.Bitmap}:<br>
-     * - param1: D2DBitmap object used for drawing by brush<br>
+     * - param1: {@link D2DBitmap D2DBitmap} object used for drawing by brush<br>
      * - param2: wrap mode responsible for how the image is repeated when drawing. See {@link module:Flags.BrushWrapMode BrushWrapMode}
      * 
      * @param {BrushType} type
@@ -1307,9 +1307,9 @@ let d2d = {
     /**
      * Creates a reusable Direct2D stroke style for line and outline drawing.<br>
      * The style controls start/end/dash caps, line joins, miter limit, dash pattern and dash offset.<br>
-     * Performance note: create commonly used styles once and reuse them from {@link module:Callbacks.on_paint on_paint}.<br><div class="doc-note"><b>Dotted strokes:</b> when <b>dashCap</b> is omitted, <b>DashStyle.Dot</b>, <b>DashStyle.DashDot</b> and <b>DashStyle.DashDotDot</b> automatically use <b>CapStyle.Round</b>. This makes <b>d2d.StrokeStyle({ dashStyle: DashStyle.Dot })</b> match the <b>DashStyle.Dot</b> drawing-method shorthand. An explicitly supplied <b>dashCap</b> is preserved, including <b>CapStyle.Flat</b>. See {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_dash_style Microsoft: D2D1_DASH_STYLE} and {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_cap_style Microsoft: D2D1_CAP_STYLE}.</div>
+     * Performance note: create commonly used styles once and reuse them from {@link module:Callbacks.on_paint on_paint}.<br><div class="doc-note"><b>Dotted strokes:</b> when <b>dashCap</b> is omitted, {@link DashStyle.Dot DashStyle.Dot}, {@link DashStyle.DashDot DashStyle.DashDot} and {@link DashStyle.DashDotDot DashStyle.DashDotDot} automatically use {@link CapStyle.Round CapStyle.Round}. Setting <b>dashStyle</b> to {@link DashStyle.Dot DashStyle.Dot} in {@link d2d.StrokeStyle StrokeStyle} therefore matches the {@link DashStyle.Dot DashStyle.Dot} drawing-method shorthand. An explicitly supplied <b>dashCap</b> is preserved, including {@link CapStyle.Flat CapStyle.Flat}. See {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_dash_style Microsoft: D2D1_DASH_STYLE} and {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_cap_style Microsoft: D2D1_CAP_STYLE}.</div>
      *
-     * @param {D2DStrokeStyleOptions=} [options={}] Stroke appearance options. Omitted properties use the defaults documented by D2DStrokeStyleOptions.
+     * @param {D2DStrokeStyleOptions=} [options={}] Stroke appearance options. Omitted properties use the defaults documented by {@link D2DStrokeStyleOptions D2DStrokeStyleOptions}.
      * @return {D2DStrokeStyle}
      * @throws {Error} If the Direct2D host is unavailable, Direct2D resources have not been initialized, or the stroke-style options are invalid.
      * @sourceFile ../../component/samples/d2d/StrokeStyle.js
@@ -1327,7 +1327,7 @@ let d2d = {
     CreateImage: function (w, h) { }, // (D2DBitmap)
 
     /**
-     * Create D2DBitmap from raw pixel data in memory.
+     * Create {@link D2DBitmap D2DBitmap} from raw pixel data in memory.
      *
      * @param {Uint8Array} pixelData Raw pixel bytes
      * @param {number} width Image width in pixels
@@ -1364,7 +1364,7 @@ let d2d = {
     /**
      * Load image from file.<br>
      * <br>
-     * Performance note: consider using {@link d2d.LoadImageAsync} or {@link d2d.LoadImageAsyncV2} if there are a lot of images to load
+     * Performance note: consider using {@link d2d.LoadImageAsync LoadImageAsync} or {@link d2d.LoadImageAsyncV2 LoadImageAsyncV2} if there are a lot of images to load
      * or if the image is big.
      *
      * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
@@ -1436,8 +1436,6 @@ let d2d = {
 
     /**
      * Creates Direct2D effect.<br>
-     * <div class="doc-note warning"><b>Direct2D versions earlier than 1.1 are not supported.</b><br>
-     * Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div>
      * @param {string} CLSID CLSID of Direct2D effect. See {@link module:Effects Effects} for effects' CLSID.
      * @return {D2DEffect}
      * @throws {Error} If the Direct2D host is unavailable or Direct2D resources have not been initialized.
@@ -1446,19 +1444,24 @@ let d2d = {
     Effect: function (CLSID) { },
 
     /**
-     * Compiles Direct2D shader.
+     * Compiles a Direct2D HLSL shader <b>synchronously</b>. The call blocks
+     * its JavaScript thread until compilation completes; for complex shaders
+     * or collections of presets, prefer {@link d2d.CompileAsync CompileAsync}. Both methods
+     * use the same native HLSL compiler and result format. They compile on every call and do not
+     * use the automatic shader cache exposed by {@link vis.ShaderCacheStats}.
      * @param {string} source Shader source code (ASCII HLSL code)
      * @param {string} [entryPoint="main"] The name of the shader entry point function where shader execution begins.<br>
-     * @param {string} [target=""] A string that specifies the shader target or set of shader features to compile against.<br>
+     * @param {string} [target="ps_4_0"] A string that specifies the shader target or set of shader features to compile against.<br>
      * The shader target can be shader model 2, shader model 3, shader model 4, or shader model 5.<br>
      * For full target list see {@link https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/specifying-compiler-targets}<br>
-     * Default value: "ps_5_0" if Direct2D 1.1 or higher is available on the system, otherwise "ps_4_0".
-     * @param {D2DCompileFlags} [flags=0x4A008] Affects compiler flags. {@link module:Flags.D2DCompileFlags D2DCompileFlags}<br>
+     * Default value: "ps_4_0".
+     * @param {D2DCompileFlags} [flags=0x8008] Affects compiler flags. {@link module:Flags.D2DCompileFlags D2DCompileFlags}<br>
      * For flags values see: {@link https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/d3dcompile-constants}<br>
-     * <b>Default value</b>: D3DCOMPILE_OPTIMIZATION_LEVEL3 | D3DCOMPILE_IEEE_STRICTNESS | D3DCOMPILE_WARNINGS_ARE_ERRORS | D3DCOMPILE_PACK_MATRIX_ROW_MAJOR<br>
+     * <b>Default value</b>: D3DCOMPILE_OPTIMIZATION_LEVEL3 | D3DCOMPILE_PACK_MATRIX_ROW_MAJOR<br>
      * <b>Example for debug build</b>: D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION | D3DCOMPILE_ALL_RESOURCES_BOUND | D3DCOMPILE_PACK_MATRIX_ROW_MAJOR
-     * @return {D2DCompileInfo} Result of compiling shader source
+     * @return {D2DCompileInfo} Result of compiling shader source. HLSL compiler failures return a nonempty {@link D2DCompileInfo#Error D2DCompileInfo.Error} field; inspect it before using {@link D2DCompileInfo#Code D2DCompileInfo.Code}.
      * @throws {Error} If the Direct2D host is unavailable or Direct2D resources have not been initialized.
+     * @see d2d.CompileAsync
      * @example
      * include(`${fb.ComponentPath}\\docs\\Effects.js`);
      * 
@@ -1484,7 +1487,7 @@ let d2d = {
      *         float4 color = InputTexture.Sample(InputSampler, input.texelSpacePos.xy);
      * 	
      *         // Invert RGB, keep alpha
-     *         return float4(1.0 - color.rgb, color.a) * color.a;
+     *         return float4((1.0 - color.rgb) * color.a, color.a);
      *     }
      * `;
      * 
@@ -1504,10 +1507,44 @@ let d2d = {
      * @worker
      */
     Compile: function (source, entryPoint, target, flags) { },
+
+    /**
+     * Compiles HLSL <b>asynchronously</b> on JSplitter's shared background
+     * thread pool, without blocking the panel or Worker JavaScript thread.
+     * Arguments and defaults are identical to {@link d2d.Compile Compile}.
+     * Returns a Promise resolving to {@link D2DCompileInfo} with a
+     * <b>Uint8Array Code</b> and <b>string Error</b>.
+     * An HLSL compilation error <b>resolves</b> with a nonempty {@link D2DCompileInfo#Error D2DCompileInfo.Error},
+     * just like synchronous Compile(); setup or task failures <b>reject</b>
+     * the Promise. This differs from {@link vis.CreateAsync}, whose shader
+     * compilation failures reject its Promise.
+     *
+     * The produced DXBC can be reused in {@link vis.CreateAsync} or in a
+     * Direct2D CustomShader effect. Explicit {@link d2d.CompileAsync CompileAsync} calls compile
+     * on every call and do not use the automatic shader cache exposed by
+     * {@link vis.ShaderCacheStats}; that cache is for {@link vis.CreateAsync CreateAsync} HLSL stages.
+     * The method also works inside a Worker when Direct2D is available there.
+     * @param {string} source Shader source code (ASCII HLSL code).
+     * @param {string} [entryPoint="main"] HLSL entry point.
+     * @param {string} [target="ps_4_0"] Compiler target/profile. See {@link https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/specifying-compiler-targets}.
+     * @param {D2DCompileFlags} [flags=0x8008] D3DCompile flags, as for {@link d2d.Compile Compile}. See {@link module:Flags.D2DCompileFlags D2DCompileFlags}.
+     * @returns {Promise<D2DCompileInfo>} Promise resolving to compiled bytecode or a compiler error.
+     * @see d2d.Compile
+     * @see vis.CreateAsync
+     * @example
+     * // HLSL stored in shaderSource; safe to run while the panel paints.
+     * async function prepareShader() {
+     *     const compiled = await d2d.CompileAsync(shaderSource);
+     *     if (compiled.Error) throw new Error(compiled.Error);
+     *     return compiled.Code; // Uint8Array: can be reused by CreateAsync().
+     * }
+     * @worker
+     */
+    CompileAsync: function (source, entryPoint, target, flags) { },
 };
 
 /**
- * Result of {@link d2d.Compile}
+ * Result of {@link d2d.Compile} or {@link d2d.CompileAsync}
  * @constructor
  * @hideconstructor
  * @worker
@@ -1524,7 +1561,9 @@ function D2DCompileInfo() {
     this.Code = [];
 
     /**
-     * If there's error after {@link d2d.Compile} call it contains non-empty string representing a compiler error message.
+     * Nonempty compiler diagnostic when {@link d2d.Compile} or {@link d2d.CompileAsync}
+     * cannot compile the supplied HLSL. For asynchronous compilation this is
+     * returned in a resolved Promise, not as a Promise rejection.
      * @type {string}
      * @readonly
      * @worker

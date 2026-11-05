@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="405" viewBox="0 0 1200 405" role="img" aria-labelledby="diagramTitle diagramDescription">
+  <title id="diagramTitle">JSplitter multi-pass visualization pipeline</title>
+  <desc id="diagramDescription">Current audio passes through the source shader, combines with feedback from a previous history image, is saved for the next update, and then passes through optional post effects to the panel. The saved history is processed by the feedback shader on the next update, whereas post effects never alter saved history.</desc>
+  <defs>
+    <marker id="mainArrow" markerWidth="8" markerHeight="8" refX="6.4" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#c4d2e2"/>
+    </marker>
+    <marker id="historyArrow" markerWidth="8" markerHeight="8" refX="6.4" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#b4a9e8"/>
+    </marker>
+    <style>
+      .node { stroke-width: 1.5; }
+      .node-title { font: 600 20px 'Segoe UI', Arial, sans-serif; fill: #f5f7fc; text-anchor: middle; }
+      .node-subtitle { font: 500 17px 'Segoe UI', Arial, sans-serif; fill: #e6eef6; text-anchor: middle; }
+      .small-label { font: 500 16px 'Segoe UI', Arial, sans-serif; fill: #aabbd0; }
+      .history-label { font: 500 16px 'Segoe UI', Arial, sans-serif; fill: #c5b9f2; }
+      .main-line { stroke: #c4d2e2; stroke-width: 3; fill: none; stroke-linejoin: round; marker-end: url(#mainArrow); }
+      .history-line { stroke: #b4a9e8; stroke-width: 3; fill: none; stroke-linejoin: round; marker-end: url(#historyArrow); }
+    </style>
+  </defs>
+  <rect x="1" y="1" width="1198" height="403" rx="18" fill="#191f2b" stroke="#354054" stroke-width="2" />
+  <g aria-hidden="true">
+    <text x="35" y="59" class="small-label" letter-spacing="1.2">CURRENT FRAME</text>
+    <text x="424" y="231" class="history-label" letter-spacing="1.2">FEEDBACK LOOP</text>
+    <text x="832" y="59" class="small-label" letter-spacing="1.2">DISPLAY ONLY</text>
+
+    <!-- Straight main processing path. -->
+    <g class="main-line">
+      <path d="M186 126 H221"/>
+      <path d="M377 126 H412"/>
+      <path d="M588 126 H623"/>
+      <path d="M782 126 H817"/>
+      <path d="M973 126 H1008"/>
+    </g>
+
+    <!-- The persisted image becomes input to feedback on the next history update. -->
+    <g class="history-line">
+      <path d="M706.5 166 V304 H595"/>
+      <path d="M502 267 V173"/>
+    </g>
+    <text x="724" y="247" class="history-label">next history update</text>
+    <text x="632" y="289" class="history-label">saved image</text>
+
+    <!-- Main row. -->
+    <rect x="34" y="87" width="152" height="78" rx="12" fill="#31465d" stroke="#566a84" class="node"/>
+    <text x="110" y="121" class="node-title">Native audio</text><text x="110" y="145" class="node-title">source</text>
+
+    <rect x="229" y="87" width="148" height="78" rx="12" fill="#29596b" stroke="#4d8293" class="node"/>
+    <text x="303" y="121" class="node-title">Source</text><text x="303" y="145" class="node-title">shader</text>
+
+    <rect x="420" y="87" width="168" height="78" rx="12" fill="#325568" stroke="#608396" class="node"/>
+    <text x="504" y="120" class="node-title">Composite</text><text x="504" y="145" class="node-subtitle">source + history</text>
+
+    <rect x="631" y="87" width="151" height="78" rx="12" fill="#545476" stroke="#8885b0" class="node"/>
+    <text x="706.5" y="121" class="node-title">Save</text><text x="706.5" y="145" class="node-title">history</text>
+
+    <rect x="825" y="87" width="148" height="78" rx="12" fill="#336165" stroke="#639092" class="node"/>
+    <text x="899" y="120" class="node-title">Post</text><text x="899" y="145" class="node-title">passes</text>
+
+    <rect x="1016" y="87" width="150" height="78" rx="12" fill="#31594f" stroke="#5f8676" class="node"/>
+    <text x="1091" y="120" class="node-title">Panel /</text><text x="1091" y="145" class="node-title">screen</text>
+
+    <!-- Feedback is the only lower branch. -->
+    <rect x="420" y="267" width="167" height="74" rx="12" fill="#55547c" stroke="#8886ba" class="node"/>
+    <text x="503.5" y="298" class="node-title">Feedback</text><text x="503.5" y="323" class="node-title">shader</text>
+    <text x="421" y="374" class="small-label">Stored history is reused, not the post-processed image.</text>
+  </g>
+</svg>

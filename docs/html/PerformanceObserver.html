@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -252,6 +258,7 @@
         
         
         
+        
         <section class="member-section">
             <h3>Example source</h3>
             <div class="source-links"><a class="source-link" href="source-samples-basic-Performance.js.html"><span>samples/basic/Performance.js</span><small>open source</small></a></div>
@@ -268,7 +275,8 @@
         </header>
         <pre class="signature"><code>supportedEntryTypes: Array&lt;string&gt; = PerformanceObserver.supportedEntryTypes</code></pre>
         
-        <div class="description"><p>JSplitter compatibility alias for the standard static <a href="PerformanceObserver.html#supportedEntryTypes">PerformanceObserver.supportedEntryTypes</a> property.<br> Returns the same frozen array object as the static property.</p></div>
+        <div class="description"><p>JSplitter compatibility alias for the standard static <a href="PerformanceObserver.html#PerformanceObserver">PerformanceObserver.supportedEntryTypes</a> property.<br> Returns the same frozen array object as the static property.</p></div>
+        
         
         
         
@@ -298,6 +306,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="observe" data-kind="method" data-name="observe">
@@ -311,7 +320,7 @@
         <pre class="signature"><code>observe(options)</code></pre>
         
         <div class="description"><p>Registers performance entry types to observe.<br></p>
-<p>Use either <b>entryTypes</b> or <b>type</b> for a given observer until <a href="PerformanceObserver.html#disconnect">disconnect</a> is called. Switching between the two modes throws an error.<br> Repeated calls using the same mode add supported types to the observer's current set. Unsupported entry types are ignored.<br> JSplitter currently supports only <b>entryTypes</b> and <b>type</b>; the Web Performance Timeline <b>buffered</b> option is not implemented.</p></div>
+<p>Use either <a href="globals.html#entryTypes">entryTypes</a> or <a href="globals.html#type">type</a> for a given observer until <a href="PerformanceObserver.html#disconnect">disconnect</a> is called. Switching between the two modes throws an error.<br> Repeated calls using the same mode add supported types to the observer's current set. Unsupported entry types are ignored.<br> JSplitter currently supports only <a href="globals.html#entryTypes">entryTypes</a> and <a href="globals.html#type">type</a>; the Web Performance Timeline <b>buffered</b> option is not implemented.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -326,7 +335,7 @@
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>options</b> is not an object or if the observer switches between <b>entryTypes</b> and <b>type</b> modes without first calling <a href="PerformanceObserver.html#disconnect">disconnect</a>.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>options</b> is not an object or if the observer switches between <a href="globals.html#entryTypes">entryTypes</a> and <a href="globals.html#type">type</a> modes without first calling <a href="PerformanceObserver.html#disconnect">disconnect</a>.</p></div>
         </section>
         
         
@@ -346,6 +355,7 @@
 <span class="tok-keyword">const</span> observer = <span class="tok-keyword">new</span> PerformanceObserver(perfObserver);
 observer.observe({ entryTypes: [<span class="tok-string">&quot;mark&quot;</span>, <span class="tok-string">&quot;measure&quot;</span>] });</code></pre>
         </section>
+        
         
     </article>
 
@@ -368,6 +378,7 @@ observer.observe({ entryTypes: [<span class="tok-string">&quot;mark&quot;</span>
             <h3>Returns</h3>
             <div><code>Array&lt;<a class="type-link" href="globals.html#PerformanceEntry">PerformanceEntry</a>&gt;</code></div>
         </section>
+        
         
         
         

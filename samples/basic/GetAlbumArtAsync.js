@@ -1,4 +1,4 @@
-window.DefineScript('GetAlbumArtAsync', { author: 'T.P Wang' });
+﻿window.DefineScript('GetAlbumArtAsync', { author: 'T.P Wang' });
 include('docs/Flags.js');
 include('docs/Helpers.js');
 

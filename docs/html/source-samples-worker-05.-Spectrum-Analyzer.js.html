@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -248,11 +254,8 @@
 <span class="tok-keyword">let</span> engineMode = <span class="tok-string">&#39;worker&#39;</span>;
 <span class="tok-keyword">let</span> drawMode = <span class="tok-number">1</span>;
 <span class="tok-keyword">let</span> fftSize = <span class="tok-number">4096</span>;
-<span class="tok-keyword">let</span> rateMode = <span class="tok-string">&#39;120&#39;</span>;
+<span class="tok-keyword">let</span> rateMode = <span class="tok-string">&#39;60&#39;</span>;
 window.DrawMode = drawMode;
-
-<span class="tok-keyword">const</span> TARGET_FPS = <span class="tok-number">120</span>;
-<span class="tok-keyword">const</span> FRAME_TIME = <span class="tok-number">1000</span> / TARGET_FPS;
 <span class="tok-keyword">const</span> BAR_WIDTH = <span class="tok-number">5</span>;
 <span class="tok-keyword">const</span> BAR_GAP = <span class="tok-number">2</span>;
 <span class="tok-keyword">const</span> BAR_COLOUR = <span class="tok-number">0xFF42A5F5</span>;
@@ -556,8 +559,8 @@ window.DrawMode = drawMode;
                 : <span class="tok-literal">null</span>;
         },
 
-        renderFrame: <span class="tok-keyword">function</span> (interval) {
-            <span class="tok-keyword">const</span> dt = Math.max(<span class="tok-number">0.001</span>, Math.min(<span class="tok-number">0.2</span>, (interval &gt; <span class="tok-number">0</span> ? interval : FRAME_TIME) / <span class="tok-number">1000</span>));
+        renderFrame: <span class="tok-keyword">function</span> (interval, frameTime) {
+            <span class="tok-keyword">const</span> dt = Math.max(<span class="tok-number">0.001</span>, Math.min(<span class="tok-number">0.2</span>, (interval &gt; <span class="tok-number">0</span> ? interval : frameTime) / <span class="tok-number">1000</span>));
             <span class="tok-keyword">const</span> audioStart = performance.now();
             <span class="tok-keyword">let</span> data = <span class="tok-literal">null</span>;
             <span class="tok-keyword">let</span> sampleCount = <span class="tok-number">0</span>;
@@ -610,13 +613,13 @@ window.DrawMode = drawMode;
     };
 }
 
-<span class="tok-keyword">function</span> makeWorkerSource(currentFftSize, uncapped) {
+<span class="tok-keyword">function</span> makeWorkerSource(currentFftSize, currentRate) {
     <span class="tok-keyword">return</span> String.raw<span class="tok-string">`
 &#39;use strict&#39;;
 
-const TARGET_FPS = ${TARGET_FPS};
+const TARGET_FPS = ${currentRate === &#39;60&#39; ? 60 : 120};
 const FRAME_TIME = 1000 / TARGET_FPS;
-const UNCAPPED = ${uncapped};
+const UNCAPPED = ${currentRate === &#39;max&#39;};
 const createSpectrumEngine = ${createSpectrumEngine.toString()};
 const engine = createSpectrumEngine(${currentFftSize}, ${MIN_FREQUENCY}, ${MAX_FREQUENCY});
 
@@ -645,7 +648,7 @@ function produceFrame() {
     const interval = lastFrameStart ? frameStart - lastFrameStart : 0;
     lastFrameStart = frameStart;
 
-    const result = engine.renderFrame(interval);
+    const result = engine.renderFrame(interval, FRAME_TIME);
     const frame = result.frame;
 
     // Ownership of this ArrayBuffer moves to the panel. The Worker does not retain another
@@ -740,10 +743,14 @@ onmessage = function (event) {
     mainWaitingForPaint = <span class="tok-literal">false</span>;
 }
 
+<span class="tok-keyword">function</span> getFrameTime() {
+    <span class="tok-keyword">return</span> <span class="tok-number">1000</span> / (rateMode === <span class="tok-string">&#39;60&#39;</span> ? <span class="tok-number">60</span> : <span class="tok-number">120</span>);
+}
+
 <span class="tok-keyword">function</span> scheduleMain() {
     <span class="tok-keyword">if</span> (engineMode !== <span class="tok-string">&#39;main&#39;</span> || !mainEngine || mainTimerId || mainWaitingForPaint) <span class="tok-keyword">return</span>;
     <span class="tok-keyword">const</span> elapsed = performance.now() - mainLastFrameStart;
-    <span class="tok-keyword">const</span> delay = rateMode === <span class="tok-string">&#39;max&#39;</span> ? <span class="tok-number">0</span> : Math.max(<span class="tok-number">0</span>, FRAME_TIME - elapsed);
+    <span class="tok-keyword">const</span> delay = rateMode === <span class="tok-string">&#39;max&#39;</span> ? <span class="tok-number">0</span> : Math.max(<span class="tok-number">0</span>, getFrameTime() - elapsed);
 
     mainTimerId = setTimeout(<span class="tok-keyword">function</span> () {
         mainTimerId = <span class="tok-number">0</span>;
@@ -758,7 +765,7 @@ onmessage = function (event) {
     <span class="tok-keyword">const</span> interval = mainLastFrameStart ? frameStart - mainLastFrameStart : <span class="tok-number">0</span>;
     mainLastFrameStart = frameStart;
 
-    <span class="tok-keyword">const</span> result = mainEngine.renderFrame(interval);
+    <span class="tok-keyword">const</span> result = mainEngine.renderFrame(interval, getFrameTime());
     mainWaitingForPaint = <span class="tok-literal">true</span>;
     recordFrame(result.frame, ++mainSequence, result.timing);
 }
@@ -776,7 +783,7 @@ onmessage = function (event) {
     }
 
     <span class="tok-keyword">if</span> (engineMode === <span class="tok-string">&#39;worker&#39;</span>) {
-        <span class="tok-keyword">const</span> currentWorker = <span class="tok-keyword">new</span> Worker(makeWorkerSource(fftSize, rateMode === <span class="tok-string">&#39;max&#39;</span>), <span class="tok-string">&#39;spectrum-analyzer&#39;</span>);
+        <span class="tok-keyword">const</span> currentWorker = <span class="tok-keyword">new</span> Worker(makeWorkerSource(fftSize, rateMode), <span class="tok-string">&#39;spectrum-analyzer&#39;</span>);
         worker = currentWorker;
 
         currentWorker.onmessage = <span class="tok-keyword">function</span> (event) {
@@ -822,8 +829,9 @@ onmessage = function (event) {
 <span class="tok-keyword">const</span> FFT_1024 = { x: <span class="tok-number">426</span>, y: SETTINGS_Y, w: <span class="tok-number">52</span>, h: SETTINGS_H };
 <span class="tok-keyword">const</span> FFT_2048 = { x: <span class="tok-number">482</span>, y: SETTINGS_Y, w: <span class="tok-number">52</span>, h: SETTINGS_H };
 <span class="tok-keyword">const</span> FFT_4096 = { x: <span class="tok-number">538</span>, y: SETTINGS_Y, w: <span class="tok-number">52</span>, h: SETTINGS_H };
-<span class="tok-keyword">const</span> RATE_120 = { x: <span class="tok-number">644</span>, y: SETTINGS_Y, w: <span class="tok-number">46</span>, h: SETTINGS_H };
-<span class="tok-keyword">const</span> RATE_MAX = { x: <span class="tok-number">694</span>, y: SETTINGS_Y, w: <span class="tok-number">46</span>, h: SETTINGS_H };
+<span class="tok-keyword">const</span> RATE_60 = { x: <span class="tok-number">644</span>, y: SETTINGS_Y, w: <span class="tok-number">40</span>, h: SETTINGS_H };
+<span class="tok-keyword">const</span> RATE_120 = { x: <span class="tok-number">688</span>, y: SETTINGS_Y, w: <span class="tok-number">46</span>, h: SETTINGS_H };
+<span class="tok-keyword">const</span> RATE_MAX = { x: <span class="tok-number">738</span>, y: SETTINGS_Y, w: <span class="tok-number">46</span>, h: SETTINGS_H };
 
 <span class="tok-keyword">function</span> contains(rect, x, y) {
     <span class="tok-keyword">return</span> x &gt;= rect.x &amp;&amp; x &lt; rect.x + rect.w &amp;&amp; y &gt;= rect.y &amp;&amp; y &lt; rect.y + rect.h;
@@ -848,6 +856,7 @@ onmessage = function (event) {
     <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (contains(FFT_1024, x, y)) nextFft = <span class="tok-number">1024</span>;
     <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (contains(FFT_2048, x, y)) nextFft = <span class="tok-number">2048</span>;
     <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (contains(FFT_4096, x, y)) nextFft = <span class="tok-number">4096</span>;
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (contains(RATE_60, x, y)) nextRate = <span class="tok-string">&#39;60&#39;</span>;
     <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (contains(RATE_120, x, y)) nextRate = <span class="tok-string">&#39;120&#39;</span>;
     <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (contains(RATE_MAX, x, y)) nextRate = <span class="tok-string">&#39;max&#39;</span>;
     <span class="tok-keyword">else</span> <span class="tok-keyword">return</span>;
@@ -959,6 +968,7 @@ onmessage = function (event) {
 
     gr.DrawText(<span class="tok-string">&#39;Rate:&#39;</span>, INFO_FONT, <span class="tok-number">0xFFB7C1CB</span>, <span class="tok-number">604</span>, SETTINGS_Y, <span class="tok-number">36</span>, SETTINGS_H,
         DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+    drawChoice(gr, RATE_60, <span class="tok-string">&#39;60&#39;</span>, rateMode === <span class="tok-string">&#39;60&#39;</span>);
     drawChoice(gr, RATE_120, <span class="tok-string">&#39;120&#39;</span>, rateMode === <span class="tok-string">&#39;120&#39;</span>);
     drawChoice(gr, RATE_MAX, <span class="tok-string">&#39;Max&#39;</span>, rateMode === <span class="tok-string">&#39;max&#39;</span>);
 

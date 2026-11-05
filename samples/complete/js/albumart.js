@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 function _albumart (x, y, w, h) {
 	this.paint = (gr) => {

@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -235,7 +241,8 @@
         </header>
         
         
-        <div class="description"><p>DrawMode-aware graphics facade. With <b>window.DrawMode == 0</b> its resource factories use GDI+; with <b>window.DrawMode == 1</b> they create the corresponding Direct2D resources instead. A Worker uses the DrawMode captured when that Worker is created, so the same <b>gdi.*</b> calls match the parent panel graphics backend.</p></div>
+        <div class="description"><p><a href="window.html#DrawMode">DrawMode</a>-aware graphics facade. With <a href="window.html#DrawMode">window.DrawMode</a> set to <b>0</b> its resource factories use GDI+; with <a href="window.html#DrawMode">window.DrawMode</a> set to <b>1</b> they create the corresponding Direct2D resources instead. A Worker uses the <a href="window.html#DrawMode">DrawMode</a> captured when that Worker is created, so the same <b>gdi.*</b> calls match the parent panel graphics backend.</p></div>
+        
         
         
         
@@ -256,7 +263,7 @@
         </header>
         <pre class="signature"><code>Brush(type, param1, param2, param3, param4)</code></pre>
         
-        <div class="description"><p>Creates a drawing brush of the specified type. The meaning of the brush's input parameters depends on its type.<br> For type == <a href="module-Flags.html#BrushType">BrushType.Solid</a>:<br> - param1: brush colour in ARGB<br> For type == <a href="module-Flags.html#BrushType">BrushType.LinearGradient</a>:<br> - param1: start point coords of linear gradient in form of Array(2) (for ex.: [0, 0])<br> - param2: end point coords of linear gradient in form of Array(2) (for ex.: [100, 0])<br> - param3: gradient stops specified as an array with alternating position and color values for each stop (for ex.: [0.0, 0xFF000000, 0.5, 0xFFFF0000, 1.0, 0xFFFFFFFF])<br> - param4: wrap mode responsible for how the gradient is repeated when drawing. See <a href="module-Flags.html#BrushWrapMode">BrushWrapMode</a>. Default is <a href="module-Flags.html#BrushWrapMode">BrushWrapMode.Tile</a><br> For type == <a href="module-Flags.html#BrushType">BrushType.RadialGradient</a>:<br> - param1: center point coords of radial gradient in form of Array(2) (for ex.: [50, 50])<br> - param2: radius values for X and Y axes in form of Array(2) (for ex.: [50, 50])<br> - param3: gradient stops specified as an array with alternating position and color values for each stop (for ex.: [0.0, 0xFF000000, 0.5, 0xFFFF0000, 1.0, 0xFFFFFFFF])<br> - param4: wrap mode responsible for how the gradient is repeated when drawing. See <a href="module-Flags.html#BrushWrapMode">BrushWrapMode</a>. Default is <a href="module-Flags.html#BrushWrapMode">BrushWrapMode.Tile</a><br> For type == <a href="module-Flags.html#BrushType">BrushType.Bitmap</a>:<br> - param1: GdiBitmap object used for drawing by brush<br> - param2: wrap mode responsible for how the image is repeated when drawing. See <a href="module-Flags.html#BrushWrapMode">BrushWrapMode</a></p></div>
+        <div class="description"><p>Creates a drawing brush of the specified type. The meaning of the brush's input parameters depends on its type.<br> For type == <a href="module-Flags.html#BrushType">BrushType.Solid</a>:<br> - param1: brush colour in ARGB<br> For type == <a href="module-Flags.html#BrushType">BrushType.LinearGradient</a>:<br> - param1: start point coords of linear gradient in form of Array(2) (for ex.: [0, 0])<br> - param2: end point coords of linear gradient in form of Array(2) (for ex.: [100, 0])<br> - param3: gradient stops specified as an array with alternating position and color values for each stop (for ex.: [0.0, 0xFF000000, 0.5, 0xFFFF0000, 1.0, 0xFFFFFFFF])<br> - param4: wrap mode responsible for how the gradient is repeated when drawing. See <a href="module-Flags.html#BrushWrapMode">BrushWrapMode</a>. Default is <a href="module-Flags.html#BrushWrapMode">BrushWrapMode.Tile</a><br> For type == <a href="module-Flags.html#BrushType">BrushType.RadialGradient</a>:<br> - param1: center point coords of radial gradient in form of Array(2) (for ex.: [50, 50])<br> - param2: radius values for X and Y axes in form of Array(2) (for ex.: [50, 50])<br> - param3: gradient stops specified as an array with alternating position and color values for each stop (for ex.: [0.0, 0xFF000000, 0.5, 0xFFFF0000, 1.0, 0xFFFFFFFF])<br> - param4: wrap mode responsible for how the gradient is repeated when drawing. See <a href="module-Flags.html#BrushWrapMode">BrushWrapMode</a>. Default is <a href="module-Flags.html#BrushWrapMode">BrushWrapMode.Tile</a><br> For type == <a href="module-Flags.html#BrushType">BrushType.Bitmap</a>:<br> - param1: <a href="GdiBitmap.html#GdiBitmap">GdiBitmap</a> object used for drawing by brush<br> - param2: wrap mode responsible for how the image is repeated when drawing. See <a href="module-Flags.html#BrushWrapMode">BrushWrapMode</a></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -277,6 +284,7 @@
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the brush parameters are invalid, including malformed points, radius values, gradient stops, or bitmap input.</p></div>
         </section>
+        
         
         
         
@@ -316,6 +324,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="CreateImageFromPixelData" data-kind="method" data-name="createimagefrompixeldata">
@@ -328,7 +337,7 @@
         </header>
         <pre class="signature"><code>CreateImageFromPixelData(pixelData, width, height, format = &quot;bgra32&quot;)</code></pre>
         
-        <div class="description"><p>Create GdiBitmap from raw pixel data in memory.</p></div>
+        <div class="description"><p>Create <a href="GdiBitmap.html#GdiBitmap">GdiBitmap</a> from raw pixel data in memory.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -349,6 +358,7 @@
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>data</b> is not a non-empty <b>Uint8Array</b>.</p></div>
         </section>
+        
         
         
         
@@ -388,6 +398,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="Image" data-kind="method" data-name="image">
@@ -400,7 +411,7 @@
         </header>
         <pre class="signature"><code>Image(path)</code></pre>
         
-        <div class="description"><p>Load image from file.<br> <br> Performance note: consider using <a href="gdi.html#LoadImageAsync">gdi.LoadImageAsync</a> or <a href="gdi.html#LoadImageAsyncV2">gdi.LoadImageAsyncV2</a> if there are a lot of images to load or if the image is big.</p>
+        <div class="description"><p>Load image from file.<br> <br> Performance note: consider using <a href="gdi.html#LoadImageAsync">LoadImageAsync</a> or <a href="gdi.html#LoadImageAsyncV2">LoadImageAsyncV2</a> if there are a lot of images to load or if the image is big.</p>
 <p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
@@ -424,6 +435,7 @@
             <h3>Example</h3>
             <pre class="example"><code><span class="tok-keyword">let</span> img = gdi.Image(<span class="tok-string">&#39;e:\\images folder\\my_image.png&#39;</span>);</code></pre>
         </section>
+        
         
     </article>
 
@@ -459,6 +471,7 @@
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the panel host is unavailable or foobar2000 is not fully initialized.</p></div>
         </section>
+        
         
         
         
@@ -500,6 +513,7 @@
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the panel host is unavailable or foobar2000 is not fully initialized.</p></div>
         </section>
+        
         
         
         
@@ -551,6 +565,7 @@
     gr.DrawImage(large, original.Width, <span class="tok-number">0</span>, large.Width, large.Height, <span class="tok-number">0</span>, <span class="tok-number">0</span>, large.Width, large.Height);
 }</code></pre>
         </section>
+        
         
     </article></main>
     <script src="assets/search-data.js"></script><script src="assets/app.js"></script>

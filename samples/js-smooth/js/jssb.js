@@ -1,4 +1,4 @@
-var need_repaint = false;
+﻿var need_repaint = false;
 
 images = {
 	path: fb.ComponentPath + "samples\\js-smooth\\images\\",

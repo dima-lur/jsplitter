@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 //29/10/24
 
 window.DefineScript('Last.fm Similar Artists + User Charts + Recent Tracks', {author:'marc2003 & regorxxx'});

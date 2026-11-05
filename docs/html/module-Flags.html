@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -236,6 +242,7 @@
         
         
         <div class="description"></div>
+        
         
         
         
@@ -272,6 +279,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="AttachImage2Codec" data-kind="enum" data-name="attachimage2codec">
@@ -295,6 +303,7 @@
                 <tbody><tr id="Jpeg"><td><code>Jpeg</code></td><td><code>0</code></td><td><p>lossy, maximum compatibility</p></td></tr><tr id="WebP"><td><code>WebP</code></td><td><code>1</code></td><td><p>WebP lossless if quality = 100, otherwise WebP lossy</p></td></tr><tr id="Png"><td><code>Png</code></td><td><code>2</code></td><td><p>always lossless, compatibility-first</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -328,6 +337,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="BrushWrapMode" data-kind="enum" data-name="brushwrapmode">
@@ -351,6 +361,7 @@
                 <tbody><tr id="Tile"><td><code>Tile</code></td><td><code>0</code></td><td><p>Specifies tiling without flipping.</p></td></tr><tr id="TileFlipX"><td><code>TileFlipX</code></td><td><code>1</code></td><td><p>Specifies that tiles are flipped horizontally as you move from one tile to the next in a row.</p></td></tr><tr id="TileFlipY"><td><code>TileFlipY</code></td><td><code>2</code></td><td><p>Specifies that tiles are flipped vertically as you move from one tile to the next in a column.</p></td></tr><tr id="TileFlipXY"><td><code>TileFlipXY</code></td><td><code>3</code></td><td><p>Specifies that tiles are flipped horizontally as you move along a row and flipped vertically as you move along a column.</p></td></tr><tr id="Clamp"><td><code>Clamp</code></td><td><code>4</code></td><td><p>Specifies that no tiling takes place. In D2D mode extends the edges of the source out by clamping sample points outside the source to the edges. In GDI: simply stops the output and for linear gradient brushes is not valid parameter.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -384,6 +395,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="ColourTypeCUI" data-kind="enum" data-name="colourtypecui">
@@ -407,6 +419,7 @@
                 <tbody><tr id="text"><td><code>text</code></td><td><code>0</code></td><td></td></tr><tr id="selection_text"><td><code>selection_text</code></td><td><code>1</code></td><td></td></tr><tr id="inactive_selection_text"><td><code>inactive_selection_text</code></td><td><code>2</code></td><td></td></tr><tr id="background"><td><code>background</code></td><td><code>3</code></td><td></td></tr><tr id="selection_background"><td><code>selection_background</code></td><td><code>4</code></td><td></td></tr><tr id="inactive_selection_background"><td><code>inactive_selection_background</code></td><td><code>5</code></td><td></td></tr><tr id="active_item_frame"><td><code>active_item_frame</code></td><td><code>6</code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -440,6 +453,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="CompositeMode" data-kind="enum" data-name="compositemode">
@@ -463,6 +477,7 @@
                 <tbody><tr id="SourceOver"><td><code>SourceOver</code></td><td><code>0</code></td><td></td></tr><tr id="DestinationOver"><td><code>DestinationOver</code></td><td><code>1</code></td><td></td></tr><tr id="SourceIn"><td><code>SourceIn</code></td><td><code>2</code></td><td></td></tr><tr id="DestinationIn"><td><code>DestinationIn</code></td><td><code>3</code></td><td></td></tr><tr id="SourceOut"><td><code>SourceOut</code></td><td><code>4</code></td><td></td></tr><tr id="DestinationOut"><td><code>DestinationOut</code></td><td><code>5</code></td><td></td></tr><tr id="SourceAtop"><td><code>SourceAtop</code></td><td><code>6</code></td><td></td></tr><tr id="DestinationAtop"><td><code>DestinationAtop</code></td><td><code>7</code></td><td></td></tr><tr id="Xor"><td><code>Xor</code></td><td><code>8</code></td><td></td></tr><tr id="Plus"><td><code>Plus</code></td><td><code>9</code></td><td></td></tr><tr id="SourceCopy"><td><code>SourceCopy</code></td><td><code>10</code></td><td></td></tr><tr id="BoundedSourceCopy"><td><code>BoundedSourceCopy</code></td><td><code>11</code></td><td></td></tr><tr id="MaskInvert"><td><code>MaskInvert</code></td><td><code>12</code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -496,6 +511,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="DashStyle" data-kind="enum" data-name="dashstyle">
@@ -508,7 +524,7 @@
         </header>
         
         
-        <div class="description"><p>Direct2D dash style. A value can be passed directly to D2D drawing methods as a shorthand, or used as the <b>dashStyle</b> option of <a href="globals.html#D2DStrokeStyleOptions">D2DStrokeStyleOptions</a> when creating a reusable <a href="D2DStrokeStyle.html#D2DStrokeStyle">D2DStrokeStyle</a>.<br><b>Dot visibility:</b> Direct2D uses zero-length dash segments for <b>Dot</b> and the dot portions of <b>DashDot</b>/<b>DashDotDot</b>. JSplitter therefore uses <a href="module-Flags.html#CapStyle">CapStyle</a>.Round as the implicit dash cap for those predefined styles, both for the numeric drawing-method shorthand and for <a href="d2d.html#StrokeStyle">d2d.StrokeStyle</a> when <b>dashCap</b> is omitted. An explicit <b>dashCap</b> always overrides this default. See <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_dash_style" target="_blank" rel="noreferrer">Microsoft: D2D1_DASH_STYLE</a> and <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_cap_style" target="_blank" rel="noreferrer">Microsoft: D2D1_CAP_STYLE</a>.<br> <b>Custom</b> requires a non-empty <b>dashes</b> array and is intended for <a href="d2d.html#StrokeStyle">d2d.StrokeStyle</a>; do not pass <b>DashStyle.Custom</b> directly to a drawing method.</p></div>
+        <div class="description"><p>Direct2D dash style. A value can be passed directly to D2D drawing methods as a shorthand, or used as the <b>dashStyle</b> option of <a href="globals.html#D2DStrokeStyleOptions">D2DStrokeStyleOptions</a> when creating a reusable <a href="D2DStrokeStyle.html#D2DStrokeStyle">D2DStrokeStyle</a>.<br><b>Dot visibility:</b> Direct2D uses zero-length dash segments for <a href="module-Flags.html#Dot">Dot</a> and the dot portions of <a href="module-Flags.html#DashDot">DashDot</a>/<a href="module-Flags.html#DashDotDot">DashDotDot</a>. JSplitter therefore uses <a href="module-Flags.html#CapStyle">CapStyle</a>.Round as the implicit dash cap for those predefined styles, both for the numeric drawing-method shorthand and for <a href="d2d.html#StrokeStyle">d2d.StrokeStyle</a> when <b>dashCap</b> is omitted. An explicit <b>dashCap</b> always overrides this default. See <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_dash_style" target="_blank" rel="noreferrer">Microsoft: D2D1_DASH_STYLE</a> and <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_cap_style" target="_blank" rel="noreferrer">Microsoft: D2D1_CAP_STYLE</a>.<br> <a href="module-Flags.html#Custom">Custom</a> requires a non-empty <b>dashes</b> array and is intended for <a href="d2d.html#StrokeStyle">d2d.StrokeStyle</a>; do not pass <a href="module-Flags.html#Custom">Custom</a> directly to a drawing method.</p></div>
         
         
         
@@ -519,6 +535,7 @@
                 <tbody><tr id="Solid"><td><code>Solid</code></td><td><code>0</code></td><td></td></tr><tr id="Dash"><td><code>Dash</code></td><td><code>1</code></td><td></td></tr><tr id="Dot"><td><code>Dot</code></td><td><code>2</code></td><td></td></tr><tr id="DashDot"><td><code>DashDot</code></td><td><code>3</code></td><td></td></tr><tr id="DashDotDot"><td><code>DashDotDot</code></td><td><code>4</code></td><td></td></tr><tr id="Custom"><td><code>Custom</code></td><td><code>5</code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -552,6 +569,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="FontStyle" data-kind="enum" data-name="fontstyle">
@@ -575,6 +593,7 @@
                 <tbody><tr id="Regular"><td><code>Regular</code></td><td><code>0</code></td><td></td></tr><tr id="Bold"><td><code>Bold</code></td><td><code>1</code></td><td></td></tr><tr id="Italic"><td><code>Italic</code></td><td><code>2</code></td><td></td></tr><tr id="BoldItalic"><td><code>BoldItalic</code></td><td><code>3</code></td><td></td></tr><tr id="Underline"><td><code>Underline</code></td><td><code>4</code></td><td></td></tr><tr id="Strikeout"><td><code>Strikeout</code></td><td><code>8</code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -608,6 +627,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="FontTypeDUI" data-kind="enum" data-name="fonttypedui">
@@ -631,6 +651,7 @@
                 <tbody><tr id="defaults"><td><code>defaults</code></td><td><code>0</code></td><td></td></tr><tr id="tabs"><td><code>tabs</code></td><td><code>1</code></td><td></td></tr><tr id="lists"><td><code>lists</code></td><td><code>2</code></td><td></td></tr><tr id="playlists"><td><code>playlists</code></td><td><code>3</code></td><td></td></tr><tr id="statusbar"><td><code>statusbar</code></td><td><code>4</code></td><td></td></tr><tr id="console"><td><code>console</code></td><td><code>5</code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -664,6 +685,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="InterpolationMode" data-kind="enum" data-name="interpolationmode">
@@ -687,6 +709,7 @@
                 <tbody><tr id="InterpolationMode.Invalid"><td><code>Invalid</code></td><td><code>-1</code></td><td></td></tr><tr id="InterpolationMode.Default"><td><code>Default</code></td><td><code>0</code></td><td></td></tr><tr id="LowQuality"><td><code>LowQuality</code></td><td><code>1</code></td><td></td></tr><tr id="InterpolationMode.HighQuality"><td><code>HighQuality</code></td><td><code>2</code></td><td></td></tr><tr id="Bilinear"><td><code>Bilinear</code></td><td><code>3</code></td><td></td></tr><tr id="Bicubic"><td><code>Bicubic</code></td><td><code>4</code></td><td></td></tr><tr id="NearestNeighbor"><td><code>NearestNeighbor</code></td><td><code>5</code></td><td></td></tr><tr id="HighQualityBilinear"><td><code>HighQualityBilinear</code></td><td><code>6</code></td><td></td></tr><tr id="HighQualityBicubic"><td><code>HighQualityBicubic</code></td><td><code>7</code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -720,6 +743,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="MessageBoxButtons" data-kind="enum" data-name="messageboxbuttons">
@@ -743,6 +767,7 @@
                 <tbody><tr id="OK"><td><code>OK</code></td><td><code>0</code></td><td><p>The message box contains an OK button.</p></td></tr><tr id="OKCancel"><td><code>OKCancel</code></td><td><code>1</code></td><td><p>The message box contains OK and Cancel buttons.</p></td></tr><tr id="AbortRetryIgnore"><td><code>AbortRetryIgnore</code></td><td><code>2</code></td><td><p>The message box contains Abort, Retry, and Ignore buttons.</p></td></tr><tr id="YesNoCancel"><td><code>YesNoCancel</code></td><td><code>3</code></td><td><p>The message box contains Yes, No, and Cancel buttons.</p></td></tr><tr id="YesNo"><td><code>YesNo</code></td><td><code>4</code></td><td><p>The message box contains Yes and No buttons.</p></td></tr><tr id="RetryCancel"><td><code>RetryCancel</code></td><td><code>5</code></td><td><p>The message box contains Retry and Cancel buttons.</p></td></tr><tr id="CancelTryContinue"><td><code>CancelTryContinue</code></td><td><code>6</code></td><td><p>Specifies that the message box contains Cancel, Try Again, and Continue buttons.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -776,6 +801,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="MessageBoxIcon" data-kind="enum" data-name="messageboxicon">
@@ -796,9 +822,10 @@
             <h3>Values <span class="enum-type">number</span></h3>
             <div class="table-wrap"><table class="enum-table">
                 <thead><tr><th>Name</th><th>Value</th><th>Description</th></tr></thead>
-                <tbody><tr id="MessageBoxIcon.None"><td><code>None</code></td><td><code>0</code></td><td><p>The message box contains no symbols.</p></td></tr><tr id="Error"><td><code>Error</code></td><td><code>16</code></td><td><p>The message box contains a symbol consisting of white X in a circle with a red background.</p></td></tr><tr id="Stop"><td><code>Stop</code></td><td><code>16</code></td><td><p>The same as <b>Error</b>.</p></td></tr><tr id="Question"><td><code>Question</code></td><td><code>32</code></td><td></td></tr><tr id="Warning"><td><code>Warning</code></td><td><code>48</code></td><td><p>The same as <b>Exclamation</b>.</p></td></tr><tr id="Information"><td><code>Information</code></td><td><code>64</code></td><td><p>The message box contains a symbol consisting of a lowercase letter i in a circle.</p></td></tr></tbody>
+                <tbody><tr id="MessageBoxIcon.None"><td><code>None</code></td><td><code>0</code></td><td><p>The message box contains no symbols.</p></td></tr><tr id="Error"><td><code>Error</code></td><td><code>16</code></td><td><p>The message box contains a symbol consisting of white X in a circle with a red background.</p></td></tr><tr id="Stop"><td><code>Stop</code></td><td><code>16</code></td><td><p>The same as <a href="module-Flags.html#Error">Error</a>.</p></td></tr><tr id="Question"><td><code>Question</code></td><td><code>32</code></td><td></td></tr><tr id="Warning"><td><code>Warning</code></td><td><code>48</code></td><td><p>The same as <b>Exclamation</b>.</p></td></tr><tr id="Information"><td><code>Information</code></td><td><code>64</code></td><td><p>The message box contains a symbol consisting of a lowercase letter i in a circle.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -832,6 +859,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="PlaybackStartCmd" data-kind="enum" data-name="playbackstartcmd">
@@ -855,6 +883,7 @@
                 <tbody><tr id="PlaybackStartCmd.Default"><td><code>Default</code></td><td><code>0</code></td><td></td></tr><tr id="Play"><td><code>Play</code></td><td><code>1</code></td><td></td></tr><tr id="PlayNext"><td><code>PlayNext</code></td><td><code>2</code></td><td></td></tr><tr id="PlayPrevious"><td><code>PlayPrevious</code></td><td><code>3</code></td><td></td></tr><tr id="SetTrack"><td><code>SetTrack</code></td><td><code>4</code></td><td></td></tr><tr id="PlayRandom"><td><code>PlayRandom</code></td><td><code>5</code></td><td></td></tr><tr id="Resume"><td><code>Resume</code></td><td><code>6</code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -888,6 +917,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="QueueChangeOrigin" data-kind="enum" data-name="queuechangeorigin">
@@ -916,6 +946,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="ReplayGainMode" data-kind="enum" data-name="replaygainmode">
@@ -928,7 +959,7 @@
         </header>
         
         
-        <div class="description"><p>Used in <a href="module-Callbacks.html#on_playback_stop">on_playback_stop</a></p></div>
+        <div class="description"><p>Used in <a href="module-Callbacks.html#on_replaygain_mode_changed">on_replaygain_mode_changed</a></p></div>
         
         
         
@@ -939,6 +970,7 @@
                 <tbody><tr id="ReplayGainMode.None"><td><code>None</code></td><td><code>0</code></td><td></td></tr><tr id="Track"><td><code>Track</code></td><td><code>1</code></td><td></td></tr><tr id="Album"><td><code>Album</code></td><td><code>2</code></td><td></td></tr><tr id="TrackAlbumByPlaybackOrder"><td><code>TrackAlbumByPlaybackOrder</code></td><td><code>3</code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -972,6 +1004,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="RunVerb" data-kind="enum" data-name="runverb">
@@ -995,6 +1028,7 @@
                 <tbody><tr id="RunVerb.Default"><td><code>Default</code></td><td><code>&quot;&quot;</code></td><td></td></tr><tr id="Open"><td><code>Open</code></td><td><code>&quot;open&quot;</code></td><td><p>Opens the file specified by the lpFile parameter. The file can be an executable file, a document file, or a folder.</p></td></tr><tr id="Edit"><td><code>Edit</code></td><td><code>&quot;edit&quot;</code></td><td><p>Launches an editor and opens the document for editing. If <b>target</b> is not a document file, the function will fail.</p></td></tr><tr id="Explore"><td><code>Explore</code></td><td><code>&quot;explore&quot;</code></td><td><p>Explores the folder specified by lpFile.</p></td></tr><tr id="Find"><td><code>Find</code></td><td><code>&quot;find&quot;</code></td><td><p>Initiates a search starting from the specified directory.</p></td></tr><tr id="OpenAs"><td><code>OpenAs</code></td><td><code>&quot;openas&quot;</code></td><td><p>Launches a picker UI allowing the user to select an app with which to open the file specified by the <b>target</b> parameter.</p></td></tr><tr id="Print"><td><code>Print</code></td><td><code>&quot;print&quot;</code></td><td><p>Prints the document file specified by lpFile. If lpFile is not a document file, the function will fail.</p></td></tr><tr id="Properties"><td><code>Properties</code></td><td><code>&quot;properties&quot;</code></td><td><p>Displays the file or folder's properties.</p></td></tr><tr id="RunAs"><td><code>RunAs</code></td><td><code>&quot;runas&quot;</code></td><td><p>Launches an application as Administrator. User Account Control (UAC) will prompt the user for consent to run the application elevated or enter the credentials of an administrator account used to run the application.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -1028,6 +1062,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="ShowWindow" data-kind="enum" data-name="showwindow">
@@ -1048,9 +1083,10 @@
             <h3>Values <span class="enum-type">number</span></h3>
             <div class="table-wrap"><table class="enum-table">
                 <thead><tr><th>Name</th><th>Value</th><th>Description</th></tr></thead>
-                <tbody><tr id="Hide"><td><code>Hide</code></td><td><code>0</code></td><td><p>Hides the window and activates another window.</p></td></tr><tr id="Normal"><td><code>Normal</code></td><td><code>1</code></td><td><p>Activates and displays a window. If the window is minimized, maximized, or arranged, the system restores it to its original size and position. An application should specify this flag when displaying the window for the first time.</p></td></tr><tr id="Minimized"><td><code>Minimized</code></td><td><code>2</code></td><td><p>Activates the window and displays it as a minimized window.</p></td></tr><tr id="Maximized"><td><code>Maximized</code></td><td><code>3</code></td><td><p>Activates the window and displays it as a maximized window.</p></td></tr><tr id="NoActivate"><td><code>NoActivate</code></td><td><code>4</code></td><td><p>Displays a window in its most recent size and position. This value is similar to <b>Normal</b>, except that the window is not activated.</p></td></tr><tr id="Show"><td><code>Show</code></td><td><code>5</code></td><td><p>Activates the window and displays it in its current size and position.</p></td></tr><tr id="Minimize"><td><code>Minimize</code></td><td><code>6</code></td><td><p>Minimizes the specified window and activates the next top-level window in the Z order.</p></td></tr><tr id="MinNoActive"><td><code>MinNoActive</code></td><td><code>7</code></td><td><p>Displays the window as a minimized window. This value is similar to <b>Minimized</b>, except the window is not activated.</p></td></tr><tr id="NA"><td><code>NA</code></td><td><code>8</code></td><td><p>Displays the window in its current size and position. This value is similar to <b>Show</b>, except that the window is not activated.</p></td></tr><tr id="Restore"><td><code>Restore</code></td><td><code>9</code></td><td><p>Activates and displays the window. If the window is minimized, maximized, or arranged, the system restores it to its original size and position. An application should specify this flag when restoring a minimized window.</p></td></tr><tr id="ShowWindow.Default"><td><code>Default</code></td><td><code>10</code></td><td><p>Sets the show state based on the <b>ShowWindow</b> value specified in the <b>STARTUPINFO</b> structure passed to the <b>CreateProcess</b> function by the program that started the application.</p></td></tr><tr id="ForceMinimize"><td><code>ForceMinimize</code></td><td><code>11</code></td><td><p>Minimizes a window, even if the thread that owns the window is not responding. This flag should only be used when minimizing windows from a different thread.</p></td></tr></tbody>
+                <tbody><tr id="Hide"><td><code>Hide</code></td><td><code>0</code></td><td><p>Hides the window and activates another window.</p></td></tr><tr id="Normal"><td><code>Normal</code></td><td><code>1</code></td><td><p>Activates and displays a window. If the window is minimized, maximized, or arranged, the system restores it to its original size and position. An application should specify this flag when displaying the window for the first time.</p></td></tr><tr id="Minimized"><td><code>Minimized</code></td><td><code>2</code></td><td><p>Activates the window and displays it as a minimized window.</p></td></tr><tr id="Maximized"><td><code>Maximized</code></td><td><code>3</code></td><td><p>Activates the window and displays it as a maximized window.</p></td></tr><tr id="NoActivate"><td><code>NoActivate</code></td><td><code>4</code></td><td><p>Displays a window in its most recent size and position. This value is similar to <a href="module-Flags.html#Normal">Normal</a>, except that the window is not activated.</p></td></tr><tr id="Show"><td><code>Show</code></td><td><code>5</code></td><td><p>Activates the window and displays it in its current size and position.</p></td></tr><tr id="Minimize"><td><code>Minimize</code></td><td><code>6</code></td><td><p>Minimizes the specified window and activates the next top-level window in the Z order.</p></td></tr><tr id="MinNoActive"><td><code>MinNoActive</code></td><td><code>7</code></td><td><p>Displays the window as a minimized window. This value is similar to <a href="module-Flags.html#Minimized">Minimized</a>, except the window is not activated.</p></td></tr><tr id="NA"><td><code>NA</code></td><td><code>8</code></td><td><p>Displays the window in its current size and position. This value is similar to <a href="module-Flags.html#Show">Show</a>, except that the window is not activated.</p></td></tr><tr id="Restore"><td><code>Restore</code></td><td><code>9</code></td><td><p>Activates and displays the window. If the window is minimized, maximized, or arranged, the system restores it to its original size and position. An application should specify this flag when restoring a minimized window.</p></td></tr><tr id="ShowWindow.Default"><td><code>Default</code></td><td><code>10</code></td><td><p>Sets the show state based on the <b>ShowWindow</b> value specified in the <b>STARTUPINFO</b> structure passed to the <b>CreateProcess</b> function by the program that started the application.</p></td></tr><tr id="ForceMinimize"><td><code>ForceMinimize</code></td><td><code>11</code></td><td><p>Minimizes a window, even if the thread that owns the window is not responding. This flag should only be used when minimizing windows from a different thread.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -1084,6 +1120,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="StringAlignment" data-kind="enum" data-name="stringalignment">
@@ -1107,6 +1144,7 @@
                 <tbody><tr id="Near"><td><code>Near</code></td><td><code>0</code></td><td></td></tr><tr id="Center"><td><code>Center</code></td><td><code>1</code></td><td></td></tr><tr id="Far"><td><code>Far</code></td><td><code>2</code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -1140,6 +1178,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="StringTrimming" data-kind="enum" data-name="stringtrimming">
@@ -1163,6 +1202,7 @@
                 <tbody><tr id="StringTrimming.None"><td><code>None</code></td><td><code>0</code></td><td></td></tr><tr id="Character"><td><code>Character</code></td><td><code>1</code></td><td></td></tr><tr id="Word"><td><code>Word</code></td><td><code>2</code></td><td></td></tr><tr id="EllipsisCharacter"><td><code>EllipsisCharacter</code></td><td><code>3</code></td><td></td></tr><tr id="EllipsisWord"><td><code>EllipsisWord</code></td><td><code>4</code></td><td></td></tr><tr id="EllipsisPath"><td><code>EllipsisPath</code></td><td><code>5</code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -1196,6 +1236,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="UIInstanceType" data-kind="enum" data-name="uiinstancetype">
@@ -1219,6 +1260,65 @@
                 <tbody><tr id="ColumnsUI"><td><code>ColumnsUI</code></td><td><code>0</code></td><td></td></tr><tr id="DefaultUI"><td><code>DefaultUI</code></td><td><code>1</code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="VisRendererType" data-kind="enum" data-name="visrenderertype">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
+                <h2><a class="anchor" href="#VisRendererType">VisRendererType</a></h2>
+            </div>
+            <div class="source-location">Flags.js:1576</div>
+        </header>
+        
+        
+        <div class="description"><p>Identifies the renderer family exposed by <a href="Visualization.html#RendererType">Visualization.RendererType</a>.</p></div>
+        
+        
+        
+        <section class="member-section enum-section">
+            <h3>Values <span class="enum-type">number</span></h3>
+            <div class="table-wrap"><table class="enum-table">
+                <thead><tr><th>Name</th><th>Value</th><th>Description</th></tr></thead>
+                <tbody><tr id="Builtin"><td><code>Builtin</code></td><td><code>0</code></td><td></td></tr><tr id="JavaScript"><td><code>JavaScript</code></td><td><code>1</code></td><td></td></tr><tr id="Shader"><td><code>Shader</code></td><td><code>2</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="VisSourceType" data-kind="enum" data-name="vissourcetype">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
+                <h2><a class="anchor" href="#VisSourceType">VisSourceType</a></h2>
+            </div>
+            <div class="source-location">Flags.js:1562</div>
+        </header>
+        
+        
+        <div class="description"><p>Selects the native audio source used by <a href="vis.html#Create">vis.Create</a> and <a href="vis.html#CreateAsync">vis.CreateAsync</a>.</p></div>
+        
+        
+        
+        <section class="member-section enum-section">
+            <h3>Values <span class="enum-type">number</span></h3>
+            <div class="table-wrap"><table class="enum-table">
+                <thead><tr><th>Name</th><th>Value</th><th>Description</th></tr></thead>
+                <tbody><tr id="Waveform"><td><code>Waveform</code></td><td><code>0</code></td><td></td></tr><tr id="Spectrum"><td><code>Spectrum</code></td><td><code>1</code></td><td></td></tr><tr id="PeakMeter"><td><code>PeakMeter</code></td><td><code>2</code></td><td></td></tr><tr id="VUMeter"><td><code>VUMeter</code></td><td><code>3</code></td><td></td></tr><tr id="Spectrogram"><td><code>Spectrogram</code></td><td><code>4</code></td><td></td></tr><tr id="Vectorscope"><td><code>Vectorscope</code></td><td><code>5</code></td><td></td></tr></tbody>
+            </table></div>
+        </section>
+        
         
         
         
@@ -1249,6 +1349,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="DLGC_DEFPUSHBUTTON" data-kind="constant" data-name="dlgc_defpushbutton">
@@ -1272,6 +1373,7 @@
             <h3>Default</h3>
             <code>0x0010</code>
         </section>
+        
         
         
     </article>
@@ -1299,6 +1401,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="DLGC_RADIOBUTTON" data-kind="constant" data-name="dlgc_radiobutton">
@@ -1322,6 +1425,7 @@
             <h3>Default</h3>
             <code>0x0040</code>
         </section>
+        
         
         
     </article>
@@ -1349,6 +1453,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="DLGC_UNDEFPUSHBUTTON" data-kind="constant" data-name="dlgc_undefpushbutton">
@@ -1372,6 +1477,7 @@
             <h3>Default</h3>
             <code>0x0020</code>
         </section>
+        
         
         
     </article>
@@ -1399,6 +1505,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="DLGC_WANTARROWS" data-kind="constant" data-name="dlgc_wantarrows">
@@ -1422,6 +1529,7 @@
             <h3>Default</h3>
             <code>0x0001</code>
         </section>
+        
         
         
     </article>
@@ -1449,6 +1557,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="DLGC_WANTMESSAGE" data-kind="constant" data-name="dlgc_wantmessage">
@@ -1472,6 +1581,7 @@
             <h3>Default</h3>
             <code>0x0004</code>
         </section>
+        
         
         
     </article>
@@ -1499,6 +1609,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="DT_BOTTOM" data-kind="constant" data-name="dt_bottom">
@@ -1522,6 +1633,7 @@
             <h3>Default</h3>
             <code>0x00000008</code>
         </section>
+        
         
         
     </article>
@@ -1549,6 +1661,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="DT_CENTER" data-kind="constant" data-name="dt_center">
@@ -1572,6 +1685,7 @@
             <h3>Default</h3>
             <code>0x00000001</code>
         </section>
+        
         
         
     </article>
@@ -1599,6 +1713,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="DT_END_ELLIPSIS" data-kind="constant" data-name="dt_end_ellipsis">
@@ -1622,6 +1737,7 @@
             <h3>Default</h3>
             <code>0x00008000</code>
         </section>
+        
         
         
     </article>
@@ -1649,6 +1765,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="DT_EXTERNALLEADING" data-kind="constant" data-name="dt_externalleading">
@@ -1672,6 +1789,7 @@
             <h3>Default</h3>
             <code>0x00000200</code>
         </section>
+        
         
         
     </article>
@@ -1699,6 +1817,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="DT_INTERNAL" data-kind="constant" data-name="dt_internal">
@@ -1722,6 +1841,7 @@
             <h3>Default</h3>
             <code>0x00001000</code>
         </section>
+        
         
         
     </article>
@@ -1749,6 +1869,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="DT_MODIFYSTRING" data-kind="constant" data-name="dt_modifystring">
@@ -1772,6 +1893,7 @@
             <h3>Default</h3>
             <code>0x00010000</code>
         </section>
+        
         
         
     </article>
@@ -1799,6 +1921,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="DT_NOFULLWIDTHCHARBREAK" data-kind="constant" data-name="dt_nofullwidthcharbreak">
@@ -1822,6 +1945,7 @@
             <h3>Default</h3>
             <code>0x00080000</code>
         </section>
+        
         
         
     </article>
@@ -1849,6 +1973,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="DT_PATH_ELLIPSIS" data-kind="constant" data-name="dt_path_ellipsis">
@@ -1872,6 +1997,7 @@
             <h3>Default</h3>
             <code>0x00004000</code>
         </section>
+        
         
         
     </article>
@@ -1899,6 +2025,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="DT_RIGHT" data-kind="constant" data-name="dt_right">
@@ -1922,6 +2049,7 @@
             <h3>Default</h3>
             <code>0x00000002</code>
         </section>
+        
         
         
     </article>
@@ -1949,6 +2077,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="DT_SINGLELINE" data-kind="constant" data-name="dt_singleline">
@@ -1972,6 +2101,7 @@
             <h3>Default</h3>
             <code>0x00000020</code>
         </section>
+        
         
         
     </article>
@@ -1999,6 +2129,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="DT_TOP" data-kind="constant" data-name="dt_top">
@@ -2022,6 +2153,7 @@
             <h3>Default</h3>
             <code>0x00000000</code>
         </section>
+        
         
         
     </article>
@@ -2049,6 +2181,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="DT_WORD_ELLIPSIS" data-kind="constant" data-name="dt_word_ellipsis">
@@ -2072,6 +2205,7 @@
             <h3>Default</h3>
             <code>0x00040000</code>
         </section>
+        
         
         
     </article>
@@ -2099,6 +2233,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="FILE_ATTRIBUTE_ARCHIVE" data-kind="constant" data-name="file_attribute_archive">
@@ -2122,6 +2257,7 @@
             <h3>Default</h3>
             <code>0x00000020</code>
         </section>
+        
         
         
     </article>
@@ -2149,6 +2285,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="FILE_ATTRIBUTE_DIRECTORY" data-kind="constant" data-name="file_attribute_directory">
@@ -2172,6 +2309,7 @@
             <h3>Default</h3>
             <code>0x00000010</code>
         </section>
+        
         
         
     </article>
@@ -2199,6 +2337,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="FILE_ATTRIBUTE_HIDDEN" data-kind="constant" data-name="file_attribute_hidden">
@@ -2222,6 +2361,7 @@
             <h3>Default</h3>
             <code>0x00000002</code>
         </section>
+        
         
         
     </article>
@@ -2249,6 +2389,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="FILE_ATTRIBUTE_NOT_CONTENT_INDEXED" data-kind="constant" data-name="file_attribute_not_content_indexed">
@@ -2272,6 +2413,7 @@
             <h3>Default</h3>
             <code>0x00002000</code>
         </section>
+        
         
         
     </article>
@@ -2299,6 +2441,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="FILE_ATTRIBUTE_READONLY" data-kind="constant" data-name="file_attribute_readonly">
@@ -2322,6 +2465,7 @@
             <h3>Default</h3>
             <code>0x00000001</code>
         </section>
+        
         
         
     </article>
@@ -2349,6 +2493,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="FILE_ATTRIBUTE_SPARSE_FILE" data-kind="constant" data-name="file_attribute_sparse_file">
@@ -2372,6 +2517,7 @@
             <h3>Default</h3>
             <code>0x00000200</code>
         </section>
+        
         
         
     </article>
@@ -2399,6 +2545,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="FILE_ATTRIBUTE_TEMPORARY" data-kind="constant" data-name="file_attribute_temporary">
@@ -2422,6 +2569,7 @@
             <h3>Default</h3>
             <code>0x00000100</code>
         </section>
+        
         
         
     </article>
@@ -2449,6 +2597,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="IDC_ARROW" data-kind="constant" data-name="idc_arrow">
@@ -2472,6 +2621,7 @@
             <h3>Default</h3>
             <code>32512</code>
         </section>
+        
         
         
     </article>
@@ -2499,6 +2649,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="IDC_HAND" data-kind="constant" data-name="idc_hand">
@@ -2522,6 +2673,7 @@
             <h3>Default</h3>
             <code>32649</code>
         </section>
+        
         
         
     </article>
@@ -2549,6 +2701,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="IDC_IBEAM" data-kind="constant" data-name="idc_ibeam">
@@ -2572,6 +2725,7 @@
             <h3>Default</h3>
             <code>32513</code>
         </section>
+        
         
         
     </article>
@@ -2599,6 +2753,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="IDC_NO" data-kind="constant" data-name="idc_no">
@@ -2622,6 +2777,7 @@
             <h3>Default</h3>
             <code>32648</code>
         </section>
+        
         
         
     </article>
@@ -2649,6 +2805,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="IDC_SIZEALL" data-kind="constant" data-name="idc_sizeall">
@@ -2672,6 +2829,7 @@
             <h3>Default</h3>
             <code>32646</code>
         </section>
+        
         
         
     </article>
@@ -2699,6 +2857,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="IDC_SIZENS" data-kind="constant" data-name="idc_sizens">
@@ -2722,6 +2881,7 @@
             <h3>Default</h3>
             <code>32645</code>
         </section>
+        
         
         
     </article>
@@ -2749,6 +2909,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="IDC_SIZEWE" data-kind="constant" data-name="idc_sizewe">
@@ -2772,6 +2933,7 @@
             <h3>Default</h3>
             <code>32644</code>
         </section>
+        
         
         
     </article>
@@ -2799,6 +2961,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="IDC_WAIT" data-kind="constant" data-name="idc_wait">
@@ -2822,6 +2985,7 @@
             <h3>Default</h3>
             <code>32514</code>
         </section>
+        
         
         
     </article>
@@ -2849,6 +3013,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="LCMAP_FULLWIDTH" data-kind="constant" data-name="lcmap_fullwidth">
@@ -2872,6 +3037,7 @@
             <h3>Default</h3>
             <code>0x00800000</code>
         </section>
+        
         
         
     </article>
@@ -2899,6 +3065,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="LCMAP_HIRAGANA" data-kind="constant" data-name="lcmap_hiragana">
@@ -2922,6 +3089,7 @@
             <h3>Default</h3>
             <code>0x00100000</code>
         </section>
+        
         
         
     </article>
@@ -2949,6 +3117,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="LCMAP_LINGUISTIC_CASING" data-kind="constant" data-name="lcmap_linguistic_casing">
@@ -2972,6 +3141,7 @@
             <h3>Default</h3>
             <code>0x01000000</code>
         </section>
+        
         
         
     </article>
@@ -2999,6 +3169,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="LCMAP_SIMPLIFIED_CHINESE" data-kind="constant" data-name="lcmap_simplified_chinese">
@@ -3022,6 +3193,7 @@
             <h3>Default</h3>
             <code>0x02000000</code>
         </section>
+        
         
         
     </article>
@@ -3049,6 +3221,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="LCMAP_TITLECASE" data-kind="constant" data-name="lcmap_titlecase">
@@ -3072,6 +3245,7 @@
             <h3>Default</h3>
             <code>0x00000300</code>
         </section>
+        
         
         
     </article>
@@ -3099,6 +3273,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="LCMAP_UPPERCASE" data-kind="constant" data-name="lcmap_uppercase">
@@ -3122,6 +3297,7 @@
             <h3>Default</h3>
             <code>0x00000200</code>
         </section>
+        
         
         
     </article>
@@ -3149,6 +3325,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="MF_DISABLED" data-kind="constant" data-name="mf_disabled">
@@ -3172,6 +3349,7 @@
             <h3>Default</h3>
             <code>0x00000002</code>
         </section>
+        
         
         
     </article>
@@ -3199,6 +3377,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="MF_GRAYED" data-kind="constant" data-name="mf_grayed">
@@ -3222,6 +3401,7 @@
             <h3>Default</h3>
             <code>0x00000001</code>
         </section>
+        
         
         
     </article>
@@ -3249,6 +3429,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="MF_MENUBREAK" data-kind="constant" data-name="mf_menubreak">
@@ -3272,6 +3453,7 @@
             <h3>Default</h3>
             <code>0x00000040</code>
         </section>
+        
         
         
     </article>
@@ -3299,6 +3481,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="MF_STRING" data-kind="constant" data-name="mf_string">
@@ -3322,6 +3505,7 @@
             <h3>Default</h3>
             <code>0x00000000</code>
         </section>
+        
         
         
     </article>
@@ -3349,6 +3533,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="MK_CONTROL" data-kind="constant" data-name="mk_control">
@@ -3372,6 +3557,7 @@
             <h3>Default</h3>
             <code>0x0008</code>
         </section>
+        
         
         
     </article>
@@ -3399,6 +3585,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="MK_MBUTTON" data-kind="constant" data-name="mk_mbutton">
@@ -3422,6 +3609,7 @@
             <h3>Default</h3>
             <code>0x0010</code>
         </section>
+        
         
         
     </article>
@@ -3449,6 +3637,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="MK_SHIFT" data-kind="constant" data-name="mk_shift">
@@ -3472,6 +3661,7 @@
             <h3>Default</h3>
             <code>0x0004</code>
         </section>
+        
         
         
     </article>
@@ -3499,6 +3689,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="MK_XBUTTON2" data-kind="constant" data-name="mk_xbutton2">
@@ -3522,6 +3713,7 @@
             <h3>Default</h3>
             <code>0x0040</code>
         </section>
+        
         
         
     </article>
@@ -3549,6 +3741,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="TPM_CENTERALIGN" data-kind="constant" data-name="tpm_centeralign">
@@ -3572,6 +3765,7 @@
             <h3>Default</h3>
             <code>0x0004</code>
         </section>
+        
         
         
     </article>
@@ -3599,6 +3793,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="TPM_HORNEGANIMATION" data-kind="constant" data-name="tpm_horneganimation">
@@ -3622,6 +3817,7 @@
             <h3>Default</h3>
             <code>0x0800</code>
         </section>
+        
         
         
     </article>
@@ -3649,6 +3845,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="TPM_LEFTALIGN" data-kind="constant" data-name="tpm_leftalign">
@@ -3672,6 +3869,7 @@
             <h3>Default</h3>
             <code>0x0000</code>
         </section>
+        
         
         
     </article>
@@ -3699,6 +3897,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="TPM_RIGHTALIGN" data-kind="constant" data-name="tpm_rightalign">
@@ -3722,6 +3921,7 @@
             <h3>Default</h3>
             <code>0x0008</code>
         </section>
+        
         
         
     </article>
@@ -3749,6 +3949,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="TPM_VCENTERALIGN" data-kind="constant" data-name="tpm_vcenteralign">
@@ -3772,6 +3973,7 @@
             <h3>Default</h3>
             <code>0x0010</code>
         </section>
+        
         
         
     </article>
@@ -3799,6 +4001,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="TPM_VERPOSANIMATION" data-kind="constant" data-name="tpm_verposanimation">
@@ -3822,6 +4025,7 @@
             <h3>Default</h3>
             <code>0x1000</code>
         </section>
+        
         
         
     </article>
@@ -3849,6 +4053,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="TTDT_AUTOMATIC" data-kind="constant" data-name="ttdt_automatic">
@@ -3872,6 +4077,7 @@
             <h3>Default</h3>
             <code>0</code>
         </section>
+        
         
         
     </article>
@@ -3899,6 +4105,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="TTDT_INITIAL" data-kind="constant" data-name="ttdt_initial">
@@ -3922,6 +4129,7 @@
             <h3>Default</h3>
             <code>3</code>
         </section>
+        
         
         
     </article>
@@ -3949,6 +4157,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="VK_ALT" data-kind="constant" data-name="vk_alt">
@@ -3972,6 +4181,7 @@
             <h3>Default</h3>
             <code>0x12</code>
         </section>
+        
         
         
     </article>
@@ -3999,6 +4209,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="VK_CONTROL" data-kind="constant" data-name="vk_control">
@@ -4022,6 +4233,7 @@
             <h3>Default</h3>
             <code>0x11</code>
         </section>
+        
         
         
     </article>
@@ -4049,6 +4261,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="VK_DOWN" data-kind="constant" data-name="vk_down">
@@ -4072,6 +4285,7 @@
             <h3>Default</h3>
             <code>0x28</code>
         </section>
+        
         
         
     </article>
@@ -4099,6 +4313,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="VK_ESCAPE" data-kind="constant" data-name="vk_escape">
@@ -4122,6 +4337,7 @@
             <h3>Default</h3>
             <code>0x1B</code>
         </section>
+        
         
         
     </article>
@@ -4149,6 +4365,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="VK_INSERT" data-kind="constant" data-name="vk_insert">
@@ -4172,6 +4389,7 @@
             <h3>Default</h3>
             <code>0x2D</code>
         </section>
+        
         
         
     </article>
@@ -4199,6 +4417,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="VK_PGDN" data-kind="constant" data-name="vk_pgdn">
@@ -4222,6 +4441,7 @@
             <h3>Default</h3>
             <code>0x22</code>
         </section>
+        
         
         
     </article>
@@ -4249,6 +4469,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="VK_RETURN" data-kind="constant" data-name="vk_return">
@@ -4272,6 +4493,7 @@
             <h3>Default</h3>
             <code>0x0D</code>
         </section>
+        
         
         
     </article>
@@ -4299,6 +4521,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="VK_SHIFT" data-kind="constant" data-name="vk_shift">
@@ -4322,6 +4545,7 @@
             <h3>Default</h3>
             <code>0x10</code>
         </section>
+        
         
         
     </article>
@@ -4349,6 +4573,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="VK_TAB" data-kind="constant" data-name="vk_tab">
@@ -4374,6 +4599,7 @@
         </section>
         
         
+        
     </article>
 
     <article class="api-item" id="VK_UP" data-kind="constant" data-name="vk_up">
@@ -4397,6 +4623,7 @@
             <h3>Default</h3>
             <code>0x26</code>
         </section>
+        
         
         
     </article></main>

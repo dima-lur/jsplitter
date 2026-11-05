@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Shader - Feedback and Two Posts.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryReader">
+        <a class="nav-link nav-page-link" href="BinaryReader.html">BinaryReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryWriter">
+        <a class="nav-link nav-page-link" href="BinaryWriter.html">BinaryWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
+        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbWindow">
+        <a class="nav-link nav-page-link" href="FbWindow.html">FbWindow</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteDatabase">
+        <a class="nav-link nav-page-link" href="SQLiteDatabase.html">SQLiteDatabase</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteStatement">
+        <a class="nav-link nav-page-link" href="SQLiteStatement.html">SQLiteStatement</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextReader">
+        <a class="nav-link nav-page-link" href="TextReader.html">TextReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextWriter">
+        <a class="nav-link nav-page-link" href="TextWriter.html">TextWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><a class="nav-link" href="module-ESModules.html">ESModules</a><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/vis/Shader - Feedback and Two Posts.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="vis.html#CreateAsync">vis.CreateAsync</a></div>
+        </header>
+        <pre class="source-code"><code>include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
+window.DrawMode = <span class="tok-number">1</span>;
+<span class="tok-comment">// Demonstrates an image-shader chain over the native waveform source.</span>
+<span class="tok-comment">// Click to switch between source-only rendering, accumulated feedback,</span>
+<span class="tok-comment">// glow post-processing and a second color/vignette post pass.</span>
+<span class="tok-comment">// The feedback and post shaders sample images from t0/s0, not audio PCM.</span>
+<span class="tok-comment">// Re-creating the visualization when switching modes resets its history.</span>
+
+vis.UpdateIntervalMs = <span class="tok-number">16</span>; <span class="tok-comment">// Default: 16 ms; allowed: unsigned integer 1..4294967295 ms.</span>
+
+<span class="tok-keyword">const</span> sourceShader = <span class="tok-string">`
+Texture2D&lt;float&gt; Waveform : register(t0);
+cbuffer VisConstants : register(b0) {
+    float2 viewportSize;
+    float time;
+    float pointCount;
+};
+struct PSInput { float4 clipSpacePos:SV_POSITION; float4 sceneSpacePos:SCENE_POS; };
+float4 main(PSInput p) : SV_Target {
+    float2 sz = max(viewportSize, float2(1.0, 1.0));
+    int count = max(1, (int)pointCount);
+    int index = clamp((int)(p.sceneSpacePos.x / sz.x * count), 0, count - 1);
+    float value = Waveform.Load(int3(index, 0, 0)).r;
+    float targetY = (1.0 - value) * 0.5 * sz.y;
+    float opacity = (1.0 - smoothstep(0.2, 1.8,
+        abs(p.sceneSpacePos.y - targetY))) * saturate(abs(value) * 8.0);
+    return float4(0.10, 0.85, 0.72, 1.0) * opacity; // Premultiplied; no silence floor.
+}`</span>;
+
+<span class="tok-keyword">const</span> feedbackShader = <span class="tok-string">`
+Texture2D Previous : register(t0);
+SamplerState InputSampler : register(s0);
+cbuffer ImageConstants : register(b0) {
+    float2 viewportSize;
+    float time;
+    float frameStep;
+};
+struct PSInput {
+    float4 clipSpacePos:SV_POSITION;
+    float4 sceneSpacePos:SCENE_POS;
+    float4 texelSpacePos:TEXEL_POS;
+};
+float4 main(PSInput p) : SV_Target {
+    float2 px = 1.0 / max(viewportSize, float2(1.0, 1.0));
+    float2 uv = p.texelSpacePos.xy - float2(0.0, 0.7) * px * frameStep;
+    if (any(uv &lt; 0.0) || any(uv &gt; 1.0)) return float4(0, 0, 0, 1);
+    float3 prev = Previous.SampleLevel(InputSampler, uv, 0.0).rgb;
+    return float4(prev * pow(0.94, frameStep), 1.0);
+}`</span>;
+
+<span class="tok-keyword">const</span> glowShader = <span class="tok-string">`
+Texture2D Frame : register(t0);
+SamplerState InputSampler : register(s0);
+cbuffer ImageConstants : register(b0) {
+    float2 viewportSize;
+    float time;
+    float frameStep;
+};
+struct PSInput {
+    float4 clipSpacePos:SV_POSITION;
+    float4 sceneSpacePos:SCENE_POS;
+    float4 texelSpacePos:TEXEL_POS;
+};
+float4 main(PSInput p) : SV_Target {
+    float2 uv = p.texelSpacePos.xy;
+    float2 px = 2.0 / max(viewportSize, float2(1.0, 1.0));
+    float3 core = Frame.SampleLevel(InputSampler, uv, 0.0).rgb;
+    float3 halo = (
+        Frame.SampleLevel(InputSampler, uv + float2(px.x, 0), 0).rgb +
+        Frame.SampleLevel(InputSampler, uv - float2(px.x, 0), 0).rgb +
+        Frame.SampleLevel(InputSampler, uv + float2(0, px.y), 0).rgb +
+        Frame.SampleLevel(InputSampler, uv - float2(0, px.y), 0).rgb +
+        Frame.SampleLevel(InputSampler, uv + px, 0).rgb +
+        Frame.SampleLevel(InputSampler, uv - px, 0).rgb +
+        Frame.SampleLevel(InputSampler, uv + float2(px.x, -px.y), 0).rgb +
+        Frame.SampleLevel(InputSampler, uv + float2(-px.x, px.y), 0).rgb
+    ) * 0.125;
+    return float4(saturate(max(core, halo * 1.7)), 1.0);
+}`</span>;
+
+<span class="tok-keyword">const</span> colorShader = <span class="tok-string">`
+Texture2D Frame : register(t0);
+SamplerState InputSampler : register(s0);
+cbuffer ImageConstants : register(b0) {
+    float2 viewportSize;
+    float time;
+    float frameStep;
+};
+struct PSInput {
+    float4 clipSpacePos:SV_POSITION;
+    float4 sceneSpacePos:SCENE_POS;
+    float4 texelSpacePos:TEXEL_POS;
+};
+float4 main(PSInput p) : SV_Target {
+    float3 rgb = Frame.SampleLevel(InputSampler, p.texelSpacePos.xy, 0.0).rgb;
+    float intensity = max(rgb.r, max(rgb.g, rgb.b));
+    float2 q = (p.sceneSpacePos.xy - 0.5 * viewportSize) /
+        max(viewportSize, float2(1.0, 1.0));
+    float vignette = 1.0 - 0.55 * saturate(dot(q, q) * 2.0);
+    return float4(saturate(float3(1.0, 0.20, 0.68) * intensity * vignette), 1.0);
+}`</span>;
+
+<span class="tok-keyword">const</span> labels = [
+    <span class="tok-string">&quot;0: source only (cyan)&quot;</span>,
+    <span class="tok-string">&quot;1: source + feedback (trails)&quot;</span>,
+    <span class="tok-string">&quot;2: feedback + glow (wide halos)&quot;</span>,
+    <span class="tok-string">&quot;3: feedback + glow + color (magenta)&quot;</span>
+];
+<span class="tok-keyword">const</span> font = d2d.Font(<span class="tok-string">&quot;Segoe UI&quot;</span>, <span class="tok-number">14</span>);
+<span class="tok-keyword">let</span> stage = <span class="tok-number">3</span>;
+<span class="tok-keyword">let</span> visual = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> requestId = <span class="tok-number">0</span>;
+
+<span class="tok-keyword">function</span> rebuild() {
+    <span class="tok-keyword">const</span> currentRequest = ++requestId;
+    <span class="tok-keyword">const</span> render = { shader: sourceShader };
+    <span class="tok-keyword">if</span> (stage &gt;= <span class="tok-number">1</span>) render.feedback = feedbackShader;
+    <span class="tok-keyword">if</span> (stage &gt;= <span class="tok-number">2</span>) render.post = stage === <span class="tok-number">2</span> ? glowShader : [glowShader, colorShader];
+    vis.CreateAsync(VisSourceType.Waveform, <span class="tok-literal">null</span>, render)
+        .then(value =&gt; {
+            <span class="tok-keyword">if</span> (currentRequest !== requestId) <span class="tok-keyword">return</span>;
+            visual = value;
+            window.Repaint();
+        })
+        .<span class="tok-keyword">catch</span>(error =&gt; console.log(<span class="tok-string">&quot;Shader chain: &quot;</span> + error));
+}
+rebuild();
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_up() {
+    stage = (stage + <span class="tok-number">1</span>) % labels.length;
+    visual = <span class="tok-literal">null</span>;
+    rebuild();
+}
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    <span class="tok-keyword">const</span> w = window.Width, h = window.Height;
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, w, h, <span class="tok-number">0xff000000</span>);
+    <span class="tok-keyword">if</span> (visual &amp;&amp; w &gt; <span class="tok-number">0</span> &amp;&amp; h &gt; <span class="tok-number">0</span>) visual.Draw(gr, <span class="tok-number">0</span>, <span class="tok-number">0</span>, w, h);
+    gr.DrawString(labels[stage] + <span class="tok-string">&quot;  |  click to switch&quot;</span>, font, <span class="tok-number">0xffbdbdbd</span>,
+        <span class="tok-number">10</span>, <span class="tok-number">8</span>, Math.max(w - <span class="tok-number">20</span>, <span class="tok-number">0</span>), <span class="tok-number">25</span>);
+}
+setInterval(() =&gt; window.Repaint(), <span class="tok-number">33</span>);
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -231,11 +237,15 @@
                 <div class="eyebrow"><span class="kind kind-class">class</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#D2DGraphics">D2DGraphics</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:698</div>
+            <div class="source-location">js/d2d.js:696</div>
         </header>
         
         
-        <div class="description"><p>Typically used inside <a href="module-Callbacks.html#on_paint">on_paint</a>.<br> Use on_paint(dgr) for D2DGraphics members hints in auto-completion list.<br> Note: there are many different ways to get colours: window.GetColourDUI/window.GetColourCUI, RGB function from Helpers.js, utils.ColourPicker and etc.</p></div>
+        <div class="description"><p>Typically used inside <a href="module-Callbacks.html#on_paint">on_paint</a>.<br> Use on_paint(dgr) for <a href="D2DGraphics.html#D2DGraphics">D2DGraphics</a> members hints in auto-completion list.<br></p>
+<div class="doc-note warning"><b>Direct2D 1.1 or later is required.</b><br>
+Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.<br></div>
+<p>Note: there are many different ways to get colours: <a href="window.html#GetColourDUI">window.GetColourDUI</a>/<a href="window.html#GetColourCUI">window.GetColourCUI</a>, RGB function from Helpers.js, <a href="utils.html#ColourPicker">utils.ColourPicker</a> and etc.</p></div>
+        
         
         
         
@@ -284,6 +294,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
 }</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="Chars" data-kind="property" data-name="chars">
@@ -297,6 +308,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         <pre class="signature"><code>Chars: number</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -326,6 +338,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="D2DGraphics.Height" data-kind="property" data-name="height">
@@ -339,6 +352,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         <pre class="signature"><code>Height: number = 480</code></pre>
         
         <div class="description"><p>Currect height of device context surface.</p></div>
+        
         
         
         
@@ -368,6 +382,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="Width" data-kind="property" data-name="width">
@@ -381,6 +396,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         <pre class="signature"><code>Width: <a class="type-link" href="globals.html#float">float</a></code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -410,6 +426,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="X" data-kind="property" data-name="x">
@@ -431,6 +448,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="Y" data-kind="property" data-name="y">
@@ -444,6 +462,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         <pre class="signature"><code>Y: <a class="type-link" href="globals.html#float">float</a></code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -480,6 +499,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="ApplyTransform" data-kind="method" data-name="applytransform">
@@ -492,7 +512,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         </header>
         <pre class="signature"><code>ApplyTransform(matrix)</code></pre>
         
-        <div class="description"><p>Applies specified transformation matrix of 3x2 size to the current D2DGraphics matrix.<br> Matrix3x2 helper class from the component/docs/Matrix.js will be useful</p></div>
+        <div class="description"><p>Applies specified transformation matrix of 3x2 size to the current <a href="D2DGraphics.html#D2DGraphics">D2DGraphics</a> matrix.<br> Matrix3x2 helper class from the component/docs/Matrix.js will be useful</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -501,6 +521,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
                 <tbody><tr><td><code>matrix</code></td><td><code>Float32Array</code></td><td><p>Array that presents 3x2 matrix for transformation (length = 6)</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -544,6 +565,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="CalcTextWidth" data-kind="method" data-name="calctextwidth">
@@ -577,6 +599,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="DrawEffect" data-kind="method" data-name="draweffect">
@@ -605,6 +628,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="DrawEllipse" data-kind="method" data-name="drawellipse">
@@ -626,6 +650,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
                 <tbody><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>w</code></td><td><code>number</code></td><td></td></tr><tr><td><code>h</code></td><td><code>number</code></td><td></td></tr><tr><td><code>line_width</code></td><td><code>number</code></td><td></td></tr><tr><td><code>colour_or_brush</code></td><td><code>*</code></td><td><p>colour ARGB or <a href="D2DBrush.html#D2DBrush">D2DBrush</a> object</p></td></tr><tr><td><code>strokeStyle = DashStyle.Solid</code><span class="mini-flag">optional</span></td><td><code>(<a class="type-link" href="module-Flags.html#DashStyle">DashStyle</a>|<a class="type-link" href="D2DStrokeStyle.html#D2DStrokeStyle">D2DStrokeStyle</a>)</code></td><td><p><a href="module-Flags.html#DashStyle">DashStyle</a> shorthand or reusable <a href="D2DStrokeStyle.html#D2DStrokeStyle">D2DStrokeStyle</a></p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -665,6 +690,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="DrawLine" data-kind="method" data-name="drawline">
@@ -683,9 +709,10 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>x1</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y1</code></td><td><code>number</code></td><td></td></tr><tr><td><code>x2</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y2</code></td><td><code>number</code></td><td></td></tr><tr><td><code>line_width</code></td><td><code>number</code></td><td></td></tr><tr><td><code>colour_or_brush</code></td><td><code>*</code></td><td><p>colour ARGB or <a href="D2DBrush.html#D2DBrush">D2DBrush</a> object</p></td></tr><tr><td><code>strokeStyle = DashStyle.Solid</code><span class="mini-flag">optional</span></td><td><code>(<a class="type-link" href="module-Flags.html#DashStyle">DashStyle</a>|<a class="type-link" href="D2DStrokeStyle.html#D2DStrokeStyle">D2DStrokeStyle</a>)</code></td><td><p><a href="module-Flags.html#DashStyle">DashStyle</a> shorthand or reusable <a href="D2DStrokeStyle.html#D2DStrokeStyle">D2DStrokeStyle</a></p></td></tr><tr><td><code>startCap = CapStyle.Flat</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#CapStyle">CapStyle</a></code></td><td><p>Legacy start cap used only when strokeStyle is a DashStyle value. A D2DStrokeStyle carries its own caps.</p></td></tr><tr><td><code>endCap = CapStyle.Flat</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#CapStyle">CapStyle</a></code></td><td><p>Legacy end cap used only when strokeStyle is a DashStyle value. A D2DStrokeStyle carries its own caps.</p></td></tr></tbody>
+                <tbody><tr><td><code>x1</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y1</code></td><td><code>number</code></td><td></td></tr><tr><td><code>x2</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y2</code></td><td><code>number</code></td><td></td></tr><tr><td><code>line_width</code></td><td><code>number</code></td><td></td></tr><tr><td><code>colour_or_brush</code></td><td><code>*</code></td><td><p>colour ARGB or <a href="D2DBrush.html#D2DBrush">D2DBrush</a> object</p></td></tr><tr><td><code>strokeStyle = DashStyle.Solid</code><span class="mini-flag">optional</span></td><td><code>(<a class="type-link" href="module-Flags.html#DashStyle">DashStyle</a>|<a class="type-link" href="D2DStrokeStyle.html#D2DStrokeStyle">D2DStrokeStyle</a>)</code></td><td><p><a href="module-Flags.html#DashStyle">DashStyle</a> shorthand or reusable <a href="D2DStrokeStyle.html#D2DStrokeStyle">D2DStrokeStyle</a></p></td></tr><tr><td><code>startCap = CapStyle.Flat</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#CapStyle">CapStyle</a></code></td><td><p>Legacy start cap used only when strokeStyle is a <a href="module-Flags.html#DashStyle">DashStyle</a> value. A <a href="D2DStrokeStyle.html#D2DStrokeStyle">D2DStrokeStyle</a> carries its own caps.</p></td></tr><tr><td><code>endCap = CapStyle.Flat</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#CapStyle">CapStyle</a></code></td><td><p>Legacy end cap used only when strokeStyle is a <a href="module-Flags.html#DashStyle">DashStyle</a> value. A <a href="D2DStrokeStyle.html#D2DStrokeStyle">D2DStrokeStyle</a> carries its own caps.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -725,6 +752,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
         <section class="member-section">
             <h3>Example source</h3>
             <div class="source-links"><a class="source-link" href="source-samples-d2d-StrokeStyle.js.html"><span>samples/d2d/StrokeStyle.js</span><small>open source</small></a></div>
@@ -750,6 +778,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
                 <tbody><tr><td><code>colour_or_brush</code></td><td><code>*</code></td><td><p>colour ARGB or <a href="D2DBrush.html#D2DBrush">D2DBrush</a> object</p></td></tr><tr><td><code>line_width</code></td><td><code>number</code></td><td></td></tr><tr><td><code>points</code></td><td><code>Array&lt;number&gt;</code></td><td><p>array of connected points [x1, y1, x2, y2, ...]</p></td></tr><tr><td><code>strokeStyle = DashStyle.Solid</code><span class="mini-flag">optional</span></td><td><code>(<a class="type-link" href="module-Flags.html#DashStyle">DashStyle</a>|<a class="type-link" href="D2DStrokeStyle.html#D2DStrokeStyle">D2DStrokeStyle</a>)</code></td><td><p><a href="module-Flags.html#DashStyle">DashStyle</a> shorthand or reusable <a href="D2DStrokeStyle.html#D2DStrokeStyle">D2DStrokeStyle</a></p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -789,6 +818,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
         <section class="member-section">
             <h3>Example source</h3>
             <div class="source-links"><a class="source-link" href="source-samples-d2d-StrokeStyle.js.html"><span>samples/d2d/StrokeStyle.js</span><small>open source</small></a></div>
@@ -814,6 +844,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
                 <tbody><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>w</code></td><td><code>number</code></td><td></td></tr><tr><td><code>h</code></td><td><code>number</code></td><td></td></tr><tr><td><code>arc_width</code></td><td><code>number</code></td><td></td></tr><tr><td><code>arc_height</code></td><td><code>number</code></td><td></td></tr><tr><td><code>line_width</code></td><td><code>number</code></td><td></td></tr><tr><td><code>colour_or_brush</code></td><td><code>*</code></td><td><p>colour ARGB or <a href="D2DBrush.html#D2DBrush">D2DBrush</a> object</p></td></tr><tr><td><code>strokeStyle = DashStyle.Solid</code><span class="mini-flag">optional</span></td><td><code>(<a class="type-link" href="module-Flags.html#DashStyle">DashStyle</a>|<a class="type-link" href="D2DStrokeStyle.html#D2DStrokeStyle">D2DStrokeStyle</a>)</code></td><td><p><a href="module-Flags.html#DashStyle">DashStyle</a> shorthand or reusable <a href="D2DStrokeStyle.html#D2DStrokeStyle">D2DStrokeStyle</a></p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -853,6 +884,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="DrawStrokedText" data-kind="method" data-name="drawstrokedtext">
@@ -881,6 +913,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="DrawText" data-kind="method" data-name="drawtext">
@@ -893,7 +926,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         </header>
         <pre class="signature"><code>DrawText(str, font, colour_or_brush, x, y, w, h, format)</code></pre>
         
-        <div class="description"><p>Provides faster and better rendering than <a href="D2DGraphics.html#DrawString">DrawString</a>.<br> <br> Do not use this to draw text on transparent background or with D2DGraphics other than the one passed in <a href="module-Callbacks.html#on_paint">on_paint</a> callback: this will result in visual artifacts caused by ClearType hinting.<br> Use <a href="D2DGraphics.html#DrawString">DrawString</a> instead in such cases.<br> <br> To calculate text dimensions use <a href="D2DGraphics.html#CalcTextHeight">CalcTextHeight</a>, <a href="D2DGraphics.html#CalcTextWidth">CalcTextWidth</a>.<br> <br> Note: uses special rules for <b>&</b> character by default, which consumes the <b>&</b> and causes the next character to be underscored. This behaviour can be changed (or disabled) via <b>format</b> parameter.</p></div>
+        <div class="description"><p>Provides faster and better rendering than <a href="D2DGraphics.html#DrawString">DrawString</a>.<br> <br> Do not use this to draw text on transparent background or with <a href="D2DGraphics.html#D2DGraphics">D2DGraphics</a> other than the one passed in <a href="module-Callbacks.html#on_paint">on_paint</a> callback: this will result in visual artifacts caused by ClearType hinting.<br> Use <a href="D2DGraphics.html#DrawString">DrawString</a> instead in such cases.<br> <br> To calculate text dimensions use <a href="D2DGraphics.html#CalcTextHeight">CalcTextHeight</a>, <a href="D2DGraphics.html#CalcTextWidth">CalcTextWidth</a>.<br> <br> Note: uses special rules for <b>&</b> character by default, which consumes the <b>&</b> and causes the next character to be underscored. This behaviour can be changed (or disabled) via <b>format</b> parameter.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -902,6 +935,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
                 <tbody><tr><td><code>str</code></td><td><code>string</code></td><td></td></tr><tr><td><code>font</code></td><td><code><a class="type-link" href="D2DFont.html#D2DFont">D2DFont</a></code></td><td></td></tr><tr><td><code>colour_or_brush</code></td><td><code>*</code></td><td><p>colour ARGB or <a href="D2DBrush.html#D2DBrush">D2DBrush</a> object</p></td></tr><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>w</code></td><td><code>number</code></td><td></td></tr><tr><td><code>h</code></td><td><code>number</code></td><td></td></tr><tr><td><code>format = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>See flags like <a href="module-Flags.html#DT_LEFT">DT_LEFT</a></p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -941,6 +975,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="FillEllipse" data-kind="method" data-name="fillellipse">
@@ -969,6 +1004,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="FillGradRect" data-kind="method" data-name="fillgradrect">
@@ -990,6 +1026,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
                 <tbody><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>w</code></td><td><code>number</code></td><td></td></tr><tr><td><code>h</code></td><td><code>number</code></td><td></td></tr><tr><td><code>angle</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td></td></tr><tr><td><code>colour1</code></td><td><code>number</code></td><td></td></tr><tr><td><code>colour2</code></td><td><code>number</code></td><td></td></tr><tr><td><code>focus = 1.0</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td><p>Specify where the centred colour will be at its highest intensity. Valid values between 0 and 1.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -1029,6 +1066,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
             <pre class="example"><code>dgr.FillGradRectV2(<span class="tok-number">10</span>, <span class="tok-number">10</span>, <span class="tok-number">200</span>, <span class="tok-number">100</span>, <span class="tok-number">0</span>, [<span class="tok-number">0.0</span>, <span class="tok-number">0xFF0000FF</span>, <span class="tok-number">0.5</span>, <span class="tok-number">0xFFFF0000</span>, <span class="tok-number">1.0</span>, <span class="tok-number">0xFF000000</span>]);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="FillPolygon" data-kind="method" data-name="fillpolygon">
@@ -1050,6 +1088,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
                 <tbody><tr><td><code>colour_or_brush</code></td><td><code>*</code></td><td><p>colour ARGB or <a href="D2DBrush.html#D2DBrush">D2DBrush</a> object</p></td></tr><tr><td><code>fillmode</code></td><td><code>number</code></td><td><p>0 alternate, 1 winding.</p></td></tr><tr><td><code>points</code></td><td><code>Array&lt;Array&lt;number&gt;&gt;</code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -1085,6 +1124,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="FillSolidRect" data-kind="method" data-name="fillsolidrect">
@@ -1106,6 +1146,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
                 <tbody><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>w</code></td><td><code>number</code></td><td></td></tr><tr><td><code>h</code></td><td><code>number</code></td><td></td></tr><tr><td><code>colour_or_brush</code></td><td><code>*</code></td><td><p>colour ARGB or <a href="D2DBrush.html#D2DBrush">D2DBrush</a> object</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -1141,6 +1182,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="GdiDrawBitmap" data-kind="method" data-name="gdidrawbitmap">
@@ -1169,6 +1211,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="GetTransform" data-kind="method" data-name="gettransform">
@@ -1181,7 +1224,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         </header>
         <pre class="signature"><code>GetTransform()</code></pre>
         
-        <div class="description"><p>Gets D2DGraphics current transformation matrix of 3x2 size (Float32Array(6))<br> Matrix3x2 helper class from the component/docs/Matrix.js will be useful</p></div>
+        <div class="description"><p>Gets <a href="D2DGraphics.html#D2DGraphics">D2DGraphics</a> current transformation matrix of 3x2 size (Float32Array(6))<br> Matrix3x2 helper class from the component/docs/Matrix.js will be useful</p></div>
         
         
         
@@ -1190,6 +1233,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
             <h3>Returns</h3>
             <div><code>Float32Array</code></div>
         </section>
+        
         
         
         
@@ -1230,6 +1274,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="PopClip" data-kind="method" data-name="popclip">
@@ -1251,6 +1296,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="PopTransform" data-kind="method" data-name="poptransform">
@@ -1263,7 +1309,8 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         </header>
         <pre class="signature"><code>PopTransform()</code></pre>
         
-        <div class="description"><p>Restores D2DGraphics matrix from internal stack pushed previously by <a href="D2DGraphics.html#PushTransform">PushTransform</a>.</p></div>
+        <div class="description"><p>Restores <a href="D2DGraphics.html#D2DGraphics">D2DGraphics</a> matrix from internal stack pushed previously by <a href="D2DGraphics.html#PushTransform">PushTransform</a>.</p></div>
+        
         
         
         
@@ -1300,6 +1347,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="PushTransform" data-kind="method" data-name="pushtransform">
@@ -1312,7 +1360,8 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         </header>
         <pre class="signature"><code>PushTransform()</code></pre>
         
-        <div class="description"><p>Saves current D2DGraphics matrix in internal stack. To restore the matrix use <a href="D2DGraphics.html#PopTransform">PopTransform</a>.</p></div>
+        <div class="description"><p>Saves current <a href="D2DGraphics.html#D2DGraphics">D2DGraphics</a> matrix in internal stack. To restore the matrix use <a href="D2DGraphics.html#PopTransform">PopTransform</a>.</p></div>
+        
         
         
         
@@ -1333,7 +1382,8 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         </header>
         <pre class="signature"><code>ResetTransform()</code></pre>
         
-        <div class="description"><p>Resets current D2DGraphics matrix to original identity matrix.</p></div>
+        <div class="description"><p>Resets current <a href="D2DGraphics.html#D2DGraphics">D2DGraphics</a> matrix to original identity matrix.</p></div>
+        
         
         
         
@@ -1354,7 +1404,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         </header>
         <pre class="signature"><code>Rotate(angle, cx, cy)</code></pre>
         
-        <div class="description"><p>Applies rotation matrix to the current D2DGraphics matrix.<br> For more information see <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-rotation" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-rotation</a></p></div>
+        <div class="description"><p>Applies rotation matrix to the current <a href="D2DGraphics.html#D2DGraphics">D2DGraphics</a> matrix.<br> For more information see <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-rotation" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-rotation</a></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1363,6 +1413,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
                 <tbody><tr><td><code>angle</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td><p>Angle of rotation in degrees</p></td></tr><tr><td><code>cx = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Rotation center point x coord</p></td></tr><tr><td><code>cy = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Rotation center point y coord</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -1382,7 +1433,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         </header>
         <pre class="signature"><code>Scale(sz, sy, cx, cy)</code></pre>
         
-        <div class="description"><p>Applies scale matrix to the current D2DGraphics matrix.<br> For more information see <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-scale(d2d1_size_f_d2d1_point_2f)" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-scale(d2d1_size_f_d2d1_point_2f)</a></p></div>
+        <div class="description"><p>Applies scale matrix to the current <a href="D2DGraphics.html#D2DGraphics">D2DGraphics</a> matrix.<br> For more information see <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-scale(d2d1_size_f_d2d1_point_2f)" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-scale(d2d1_size_f_d2d1_point_2f)</a></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1391,6 +1442,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
                 <tbody><tr><td><code>sx</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td><p>The x-axis scale factor</p></td></tr><tr><td><code>sy = 0</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td><p>The y-axis scale factor. If zero sx will be used as sy</p></td></tr><tr><td><code>cx = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Scale center point x coord</p></td></tr><tr><td><code>cy = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Scale center point y coord</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -1426,6 +1478,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="SetSmoothingMode" data-kind="method" data-name="setsmoothingmode">
@@ -1447,6 +1500,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
                 <tbody><tr><td><code>mode = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>See <a href="module-Flags.html#SmoothingMode">SmoothingMode</a> enum</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -1482,6 +1536,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         
         
         
+        
     </article>
 
     <article class="api-item" id="SetTransform" data-kind="method" data-name="settransform">
@@ -1494,7 +1549,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         </header>
         <pre class="signature"><code>SetTransform(matrix)</code></pre>
         
-        <div class="description"><p>Replaces the current D2DGraphics matrix with specified transformation matrix of 3x2 size.<br> Matrix3x2 helper class from the component/docs/Matrix.js will be useful</p></div>
+        <div class="description"><p>Replaces the current <a href="D2DGraphics.html#D2DGraphics">D2DGraphics</a> matrix with specified transformation matrix of 3x2 size.<br> Matrix3x2 helper class from the component/docs/Matrix.js will be useful</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1503,6 +1558,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
                 <tbody><tr><td><code>matrix</code></td><td><code>Float32Array</code></td><td><p>Array that presents 3x2 matrix for transformation (length = 6)</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -1526,7 +1582,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         </header>
         <pre class="signature"><code>Skew(angleX, angleY, cx, cy)</code></pre>
         
-        <div class="description"><p>Applies skew matrix to the current D2DGraphics matrix.<br> For more information see <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-skew" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-skew</a></p></div>
+        <div class="description"><p>Applies skew matrix to the current <a href="D2DGraphics.html#D2DGraphics">D2DGraphics</a> matrix.<br> For more information see <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-skew" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-skew</a></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1535,6 +1591,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
                 <tbody><tr><td><code>angleX</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td><p>The x-axis skew angle, which is measured in degrees counterclockwise from the y-axis.</p></td></tr><tr><td><code>angleY</code></td><td><code><a class="type-link" href="globals.html#float">float</a></code></td><td><p>The y-axis skew angle, which is measured in degrees clockwise from the x-axis.</p></td></tr><tr><td><code>cx = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Skew center point x coord</p></td></tr><tr><td><code>cy = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Skew center point y coord</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -1554,7 +1611,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
         </header>
         <pre class="signature"><code>Translate(dx, dy)</code></pre>
         
-        <div class="description"><p>Applies translation matrix to the current D2DGraphics matrix.<br> For more information see <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-translation(d2d1_size_f)" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-translation(d2d1_size_f)</a></p></div>
+        <div class="description"><p>Applies translation matrix to the current <a href="D2DGraphics.html#D2DGraphics">D2DGraphics</a> matrix.<br> For more information see <a href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-translation(d2d1_size_f)" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-translation(d2d1_size_f)</a></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1563,6 +1620,7 @@ include(<span class="tok-string">`${fb.ComponentPath}docs\\Helpers.js`</span>);
                 <tbody><tr><td><code>dx</code></td><td><code>number</code></td><td></td></tr><tr><td><code>dy</code></td><td><code>number</code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         

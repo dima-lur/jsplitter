@@ -1,10 +1,10 @@
 # WebAssembly album-art filters
 
-Select **WebAssembly Image Filters.js** via **Script → File** in a JSplitter panel.
+Select **WebAssembly Image Filters.js** via **Script -> File** in a JSplitter panel.
 The **.worker.js** and **.wasm** dependencies must remain beside it. They are
 already included in this folder. The example runs without playback and shows a
 procedurally generated fallback if there is no cover art. Use a panel roughly
-650 × 350 or larger for side-by-side viewing.
+650 x 350 or larger for side-by-side viewing.
 
 - **Left click:** Pencil / Neon / Ink filter modes.
 - **Mouse wheel:** edge-detection threshold.

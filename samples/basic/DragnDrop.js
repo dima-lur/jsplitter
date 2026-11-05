@@ -1,4 +1,4 @@
-// This sample demonstrates a basic drag-n-drop implementation.
+﻿// This sample demonstrates a basic drag-n-drop implementation.
 // Don't forget to open some playlist viewer to see all the performed actions.
 //
 // CTRL, SHIFT, ALT and their combination will modify the action

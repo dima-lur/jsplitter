@@ -88,7 +88,7 @@
  * ```
  *
  * <h2>include()</h2>
- * {@link include include()} is not available while executing an ES module. Use static <b>import</b> statements instead.
+ * {@link include include} is not available while executing an ES module. Use static <b>import</b> statements instead.
  *
  * <h2>Error handling</h2>
  * Module loading, parsing and evaluation errors are reported through the normal JSplitter script error path. This includes a missing imported file, a syntax error in a dependency, or an exception thrown while a dependency is being evaluated.

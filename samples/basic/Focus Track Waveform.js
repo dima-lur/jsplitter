@@ -1,4 +1,4 @@
-// JSplitter sample: Focus Track Waveform
+﻿// JSplitter sample: Focus Track Waveform
 //
 // Recommended pattern for a waveform that should appear while decoding:
 // 1. Call GetWaveformAsync() once for the whole requested range.

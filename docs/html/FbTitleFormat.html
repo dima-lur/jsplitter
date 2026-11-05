@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -231,11 +237,11 @@
                 <div class="eyebrow"><span class="kind kind-class">class</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability cloneable" title="Instances can be sent through postMessage() using structured clone.">CLONEABLE</span></div>
                 <h2><a class="anchor" href="#FbTitleFormat">FbTitleFormat</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:6107</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:6147</div>
         </header>
         <pre class="signature"><code>FbTitleFormat(expression)</code></pre>
         
-        <div class="description"><p>Performance note: if you use the same query frequently, try caching FbTitleFormat object (by storing it somewhere), instead of creating it every time.</p></div>
+        <div class="description"><p>Performance note: if you use the same query frequently, try caching <a href="FbTitleFormat.html#FbTitleFormat">FbTitleFormat</a> object (by storing it somewhere), instead of creating it every time.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -251,6 +257,7 @@
         
         
         
+        
     </article>
         
     <article class="api-item" id="Eval" data-kind="method" data-name="eval">
@@ -259,11 +266,11 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#Eval">Eval</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:6118</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:6158</div>
         </header>
         <pre class="signature"><code>Eval(force)</code></pre>
         
-        <div class="description"><p>Always use Eval when you want dynamic info such as %playback_time%, %bitrate% etc.<br> <a href="FbTitleFormat.html#EvalWithMetadb">FbTitleFormat#EvalWithMetadb</a>(fb.GetNowplaying()) will not give the results you want.</p></div>
+        <div class="description"><p>Always use Eval when you want dynamic info such as %playback_time%, %bitrate% etc.<br> <a href="FbTitleFormat.html#EvalWithMetadb">EvalWithMetadb</a>(fb.GetNowplaying()) will not give the results you want.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -288,6 +295,7 @@
 console.log(tfo.Eval());</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="EvalActivePlaylistItem" data-kind="method" data-name="evalactiveplaylistitem">
@@ -296,7 +304,7 @@ console.log(tfo.Eval());</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#EvalActivePlaylistItem">EvalActivePlaylistItem</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:6135</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:6175</div>
         </header>
         <pre class="signature"><code>EvalActivePlaylistItem(playlistItemIndex)</code></pre>
         
@@ -324,6 +332,7 @@ console.log(tfo.Eval());</code></pre>
         
         
         
+        
     </article>
 
     <article class="api-item" id="EvalPlaylistItem" data-kind="method" data-name="evalplaylistitem">
@@ -332,7 +341,7 @@ console.log(tfo.Eval());</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#EvalPlaylistItem">EvalPlaylistItem</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:6147</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:6187</div>
         </header>
         <pre class="signature"><code>EvalPlaylistItem(playlistIndex, playlistItemIndex)</code></pre>
         
@@ -360,6 +369,7 @@ console.log(tfo.Eval());</code></pre>
         
         
         
+        
     </article>
 
     <article class="api-item" id="EvalWithMetadb" data-kind="method" data-name="evalwithmetadb">
@@ -368,7 +378,7 @@ console.log(tfo.Eval());</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#EvalWithMetadb">EvalWithMetadb</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:6160</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:6200</div>
         </header>
         <pre class="signature"><code>EvalWithMetadb(handle, want_full_info)</code></pre>
         
@@ -397,6 +407,7 @@ console.log(tfo.Eval());</code></pre>
 console.log(tfo.EvalWithMetadb(fb.GetFocusItem()));</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="EvalWithMetadbs" data-kind="method" data-name="evalwithmetadbs">
@@ -405,7 +416,7 @@ console.log(tfo.EvalWithMetadb(fb.GetFocusItem()));</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#EvalWithMetadbs">EvalWithMetadbs</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:6172</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:6212</div>
         </header>
         <pre class="signature"><code>EvalWithMetadbs(handle_list)</code></pre>
         
@@ -435,6 +446,7 @@ console.log(tfo.EvalWithMetadb(fb.GetFocusItem()));</code></pre>
 <span class="tok-keyword">let</span> artists = tfo.EvalWithMetadbs(handle_list);
 console.log(handle_list.Count === artists.length); <span class="tok-comment">// should always be true!</span></code></pre>
         </section>
+        
         
     </article></main>
     <script src="assets/search-data.js"></script><script src="assets/app.js"></script>

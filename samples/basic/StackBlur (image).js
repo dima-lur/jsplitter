@@ -1,4 +1,4 @@
-window.DefineScript('StackBlur', {author: 'marc2003'});
+﻿window.DefineScript('StackBlur', {author: 'marc2003'});
 include('docs/Flags.js');
 include('docs/Helpers.js');
 

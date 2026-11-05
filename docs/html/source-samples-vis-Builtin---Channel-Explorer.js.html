@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Builtin - Channel Explorer.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryReader">
+        <a class="nav-link nav-page-link" href="BinaryReader.html">BinaryReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryWriter">
+        <a class="nav-link nav-page-link" href="BinaryWriter.html">BinaryWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
+        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbWindow">
+        <a class="nav-link nav-page-link" href="FbWindow.html">FbWindow</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteDatabase">
+        <a class="nav-link nav-page-link" href="SQLiteDatabase.html">SQLiteDatabase</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteStatement">
+        <a class="nav-link nav-page-link" href="SQLiteStatement.html">SQLiteStatement</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextReader">
+        <a class="nav-link nav-page-link" href="TextReader.html">TextReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextWriter">
+        <a class="nav-link nav-page-link" href="TextWriter.html">TextWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><a class="nav-link" href="module-ESModules.html">ESModules</a><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/vis/Builtin - Channel Explorer.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="vis.html#AudioFormat">vis.AudioFormat</a></div>
+        </header>
+        <pre class="source-code"><code>include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
+
+<span class="tok-comment">// JSplitter vis sample: current PCM channel map and interactive source routing.</span>
+<span class="tok-comment">//</span>
+<span class="tok-comment">// vis.AudioFormat describes the post-processing stream received by the</span>
+<span class="tok-comment">// visualization engine. Click a channel card to route it to the highlighted</span>
+<span class="tok-comment">// Peak Meter. The active route alternates A/B after every assignment; clicking</span>
+<span class="tok-comment">// a meter row selects that route explicitly.</span>
+<span class="tok-comment">//</span>
+<span class="tok-comment">// Named channels use Names[0], the canonical selector. A channel whose flag is</span>
+<span class="tok-comment">// unknown to JSplitter has Names=[] and remains selectable by its numeric Index.</span>
+
+<span class="tok-keyword">const</span> INITIAL_UPDATE_INTERVAL = vis.UpdateIntervalMs;
+vis.UpdateIntervalMs = <span class="tok-number">16</span>;
+
+<span class="tok-keyword">const</span> COLOR = {
+    background: <span class="tok-number">0xff0b0e13</span>,
+    header: <span class="tok-number">0xff111722</span>,
+    panel: <span class="tok-number">0xff101620</span>,
+    card: <span class="tok-number">0xff151d29</span>,
+    cardHover: <span class="tok-number">0xff1c2837</span>,
+    border: <span class="tok-number">0xff2b3747</span>,
+    text: <span class="tok-number">0xffedf3f8</span>,
+    muted: <span class="tok-number">0xff91a0b2</span>,
+    faint: <span class="tok-number">0xff647286</span>,
+    routeA: <span class="tok-number">0xff38d6c5</span>,
+    routeB: <span class="tok-number">0xffa987ff</span>,
+    green: <span class="tok-number">0xff5bd982</span>,
+    yellow: <span class="tok-number">0xffffcf5c</span>,
+    red: <span class="tok-number">0xffff6577</span>,
+    white: <span class="tok-number">0xffffffff</span>
+};
+
+<span class="tok-keyword">const</span> FONT_TITLE = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">18</span>, <span class="tok-number">1</span>);
+<span class="tok-keyword">const</span> FONT_SUBTITLE = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">10</span>);
+<span class="tok-keyword">const</span> FONT_CARD = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">11</span>, <span class="tok-number">1</span>);
+<span class="tok-keyword">const</span> FONT_META = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">9</span>);
+<span class="tok-keyword">const</span> FONT_LANE = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">15</span>, <span class="tok-number">1</span>);
+
+<span class="tok-keyword">const</span> METER_RANGES = [
+    {to: -<span class="tok-number">18</span>, color: COLOR.green},
+    {to: -<span class="tok-number">6</span>, color: COLOR.yellow},
+    {to: <span class="tok-number">0</span>, color: COLOR.red}
+];
+
+<span class="tok-keyword">const</span> meters = [
+    vis.Create(VisSourceType.PeakMeter, {
+        channel: <span class="tok-string">&#39;mix&#39;</span>, minDb: -<span class="tok-number">60</span>, maxDb: <span class="tok-number">0</span>, attackMs: <span class="tok-number">0</span>,
+        releaseMs: <span class="tok-number">170</span>, peakHoldMs: <span class="tok-number">500</span>, peakGravity: <span class="tok-number">3</span>, clipHoldMs: <span class="tok-number">1000</span>
+    }, {
+        ranges: METER_RANGES,
+        segmentSize: <span class="tok-number">6</span>, segmentGap: <span class="tok-number">2</span>, colorMode: <span class="tok-string">&#39;gradient&#39;</span>,
+        peakColor: COLOR.white, peakSize: <span class="tok-number">2</span>, showPeak: <span class="tok-literal">true</span>,
+        showClip: <span class="tok-literal">true</span>, clipWidth: <span class="tok-number">4</span>, clipColor: COLOR.red
+    }),
+    vis.Create(VisSourceType.PeakMeter, {
+        channel: <span class="tok-string">&#39;mix&#39;</span>, minDb: -<span class="tok-number">60</span>, maxDb: <span class="tok-number">0</span>, attackMs: <span class="tok-number">0</span>,
+        releaseMs: <span class="tok-number">170</span>, peakHoldMs: <span class="tok-number">500</span>, peakGravity: <span class="tok-number">3</span>, clipHoldMs: <span class="tok-number">1000</span>
+    }, {
+        ranges: METER_RANGES,
+        segmentSize: <span class="tok-number">6</span>, segmentGap: <span class="tok-number">2</span>, colorMode: <span class="tok-string">&#39;gradient&#39;</span>,
+        peakColor: COLOR.white, peakSize: <span class="tok-number">2</span>, showPeak: <span class="tok-literal">true</span>,
+        showClip: <span class="tok-literal">true</span>, clipWidth: <span class="tok-number">4</span>, clipColor: COLOR.red
+    })
+];
+
+<span class="tok-keyword">let</span> audioFormat = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> formatSignature = <span class="tok-string">&#39;&#39;</span>;
+<span class="tok-keyword">let</span> selectors = [<span class="tok-string">&#39;mix&#39;</span>, <span class="tok-string">&#39;mix&#39;</span>];
+<span class="tok-keyword">let</span> autoSelectionDone = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> activeRoute = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> hoveredCard = -<span class="tok-number">1</span>;
+<span class="tok-keyword">let</span> hoveredLane = -<span class="tok-number">1</span>;
+<span class="tok-keyword">let</span> channelRects = [];
+<span class="tok-keyword">let</span> laneRects = [];
+
+<span class="tok-keyword">function</span> hex32(value) {
+    <span class="tok-keyword">return</span> <span class="tok-string">&#39;0x&#39;</span> + (<span class="tok-string">&#39;00000000&#39;</span> + (value &gt;&gt;&gt; <span class="tok-number">0</span>).toString(<span class="tok-number">16</span>).toUpperCase()).slice(-<span class="tok-number">8</span>);
+}
+
+<span class="tok-keyword">function</span> rateText(rate) {
+    <span class="tok-keyword">const</span> khz = rate / <span class="tok-number">1000</span>;
+    <span class="tok-keyword">return</span> (Math.round(khz * <span class="tok-number">10</span>) / <span class="tok-number">10</span>).toFixed(khz % <span class="tok-number">1</span> ? <span class="tok-number">1</span> : <span class="tok-number">0</span>) + <span class="tok-string">&#39; kHz&#39;</span>;
+}
+
+<span class="tok-keyword">function</span> selectorText(value) {
+    <span class="tok-keyword">if</span> (value === <span class="tok-string">&#39;mix&#39;</span>) <span class="tok-keyword">return</span> <span class="tok-string">&#39;mix&#39;</span>;
+    <span class="tok-keyword">return</span> <span class="tok-keyword">typeof</span> value === <span class="tok-string">&#39;number&#39;</span> ? <span class="tok-string">&#39;index &#39;</span> + value : value;
+}
+
+<span class="tok-keyword">function</span> selectorCode(value) {
+    <span class="tok-keyword">return</span> <span class="tok-keyword">typeof</span> value === <span class="tok-string">&#39;string&#39;</span> ? <span class="tok-string">&#39;Channel = &quot;&#39;</span> + value + <span class="tok-string">&#39;&quot;&#39;</span> : <span class="tok-string">&#39;Channel = &#39;</span> + value;
+}
+
+<span class="tok-keyword">function</span> selectorFor(channel) {
+    <span class="tok-keyword">return</span> channel.Names &amp;&amp; channel.Names.length ? channel.Names[<span class="tok-number">0</span>] : channel.Index;
+}
+
+<span class="tok-keyword">function</span> selectorMatches(channel, selector) {
+    <span class="tok-keyword">if</span> (<span class="tok-keyword">typeof</span> selector === <span class="tok-string">&#39;number&#39;</span>) <span class="tok-keyword">return</span> selector === channel.Index;
+    <span class="tok-keyword">return</span> channel.Names &amp;&amp; channel.Names.indexOf(selector) !== -<span class="tok-number">1</span>;
+}
+
+<span class="tok-keyword">function</span> selectorAvailable(format, selector) {
+    <span class="tok-keyword">if</span> (selector === <span class="tok-string">&#39;mix&#39;</span>) <span class="tok-keyword">return</span> <span class="tok-literal">true</span>;
+    <span class="tok-keyword">return</span> format.Channels.some(channel =&gt; selectorMatches(channel, selector));
+}
+
+<span class="tok-keyword">function</span> setRoute(slot, selector) {
+    meters[slot].Channel = selector;
+    <span class="tok-comment">// The getter demonstrates canonicalization: &quot;left&quot; would read back as</span>
+    <span class="tok-comment">// &quot;front-left&quot;. Unknown flags retain their numeric index.</span>
+    selectors[slot] = meters[slot].Channel;
+}
+
+<span class="tok-keyword">function</span> defaultSelector(format, slot) {
+    <span class="tok-keyword">if</span> (!format.Channels.length) <span class="tok-keyword">return</span> <span class="tok-string">&#39;mix&#39;</span>;
+    <span class="tok-keyword">return</span> selectorFor(format.Channels[Math.min(slot, format.Channels.length - <span class="tok-number">1</span>)]);
+}
+
+<span class="tok-keyword">function</span> reconcileRoutes(format) {
+    <span class="tok-keyword">if</span> (!autoSelectionDone) {
+        setRoute(<span class="tok-number">0</span>, defaultSelector(format, <span class="tok-number">0</span>));
+        setRoute(<span class="tok-number">1</span>, defaultSelector(format, <span class="tok-number">1</span>));
+        autoSelectionDone = <span class="tok-literal">true</span>;
+        <span class="tok-keyword">return</span>;
+    }
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> slot = <span class="tok-number">0</span>; slot &lt; meters.length; ++slot) {
+        <span class="tok-keyword">if</span> (!selectorAvailable(format, selectors[slot])) {
+            setRoute(slot, defaultSelector(format, slot));
+        }
+    }
+}
+
+<span class="tok-keyword">function</span> signatureOf(format) {
+    <span class="tok-keyword">if</span> (!format) <span class="tok-keyword">return</span> <span class="tok-string">&#39;&#39;</span>;
+    <span class="tok-keyword">return</span> [format.SampleRate, format.ChannelCount, format.ChannelConfig]
+        .concat(format.Channels.map(channel =&gt;
+            channel.Index + <span class="tok-string">&#39;:&#39;</span> + channel.Flag + <span class="tok-string">&#39;:&#39;</span> + channel.Names.join(<span class="tok-string">&#39;,&#39;</span>)))
+        .join(<span class="tok-string">&#39;|&#39;</span>);
+}
+
+<span class="tok-keyword">function</span> syncAudioFormat() {
+    <span class="tok-keyword">const</span> next = vis.AudioFormat;
+    <span class="tok-keyword">const</span> nextSignature = signatureOf(next);
+    <span class="tok-keyword">if</span> (nextSignature === formatSignature &amp;&amp; Boolean(next) === Boolean(audioFormat)) <span class="tok-keyword">return</span>;
+    audioFormat = next;
+    formatSignature = nextSignature;
+    <span class="tok-keyword">if</span> (audioFormat) reconcileRoutes(audioFormat);
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> contains(rect, x, y) {
+    <span class="tok-keyword">return</span> x &gt;= rect.x &amp;&amp; y &gt;= rect.y &amp;&amp; x &lt; rect.x + rect.w &amp;&amp; y &lt; rect.y + rect.h;
+}
+
+<span class="tok-keyword">function</span> updateLayout() {
+    <span class="tok-keyword">const</span> w = window.Width;
+    <span class="tok-keyword">const</span> h = window.Height;
+    <span class="tok-keyword">const</span> margin = <span class="tok-number">14</span>;
+    <span class="tok-keyword">const</span> gap = <span class="tok-number">8</span>;
+    <span class="tok-keyword">const</span> headerH = <span class="tok-number">94</span>;
+    <span class="tok-keyword">const</span> meterAreaH = Math.min(<span class="tok-number">174</span>, Math.max(<span class="tok-number">118</span>, h * <span class="tok-number">0.29</span>));
+    <span class="tok-keyword">const</span> metersTop = Math.max(headerH + <span class="tok-number">48</span>, h - meterAreaH);
+
+    laneRects = [];
+    <span class="tok-keyword">const</span> laneGap = <span class="tok-number">9</span>;
+    <span class="tok-keyword">const</span> laneH = Math.max(<span class="tok-number">42</span>, (h - metersTop - margin - laneGap) / <span class="tok-number">2</span>);
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; <span class="tok-number">2</span>; ++i) {
+        laneRects.push({
+            x: margin,
+            y: metersTop + i * (laneH + laneGap),
+            w: Math.max(<span class="tok-number">0</span>, w - margin * <span class="tok-number">2</span>),
+            h: laneH
+        });
+    }
+
+    channelRects = [];
+    <span class="tok-keyword">if</span> (!audioFormat || !audioFormat.Channels.length) <span class="tok-keyword">return</span>;
+
+    <span class="tok-keyword">const</span> areaTop = headerH + <span class="tok-number">8</span>;
+    <span class="tok-keyword">const</span> areaBottom = metersTop - <span class="tok-number">18</span>;
+    <span class="tok-keyword">const</span> areaW = Math.max(<span class="tok-number">0</span>, w - margin * <span class="tok-number">2</span>);
+    <span class="tok-keyword">const</span> areaH = Math.max(<span class="tok-number">0</span>, areaBottom - areaTop);
+    <span class="tok-keyword">const</span> count = audioFormat.Channels.length;
+    <span class="tok-keyword">const</span> columns = Math.max(<span class="tok-number">1</span>, Math.min(count, Math.floor((areaW + gap) / (<span class="tok-number">158</span> + gap))));
+    <span class="tok-keyword">const</span> rows = Math.ceil(count / columns);
+    <span class="tok-keyword">const</span> cardW = (areaW - gap * (columns - <span class="tok-number">1</span>)) / columns;
+    <span class="tok-keyword">const</span> cardH = Math.max(<span class="tok-number">30</span>, Math.min(<span class="tok-number">72</span>, (areaH - gap * (rows - <span class="tok-number">1</span>)) / rows));
+
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; count; ++i) {
+        <span class="tok-keyword">const</span> column = i % columns;
+        <span class="tok-keyword">const</span> row = Math.floor(i / columns);
+        channelRects.push({
+            x: margin + column * (cardW + gap),
+            y: areaTop + row * (cardH + gap),
+            w: cardW,
+            h: cardH
+        });
+    }
+}
+
+<span class="tok-keyword">function</span> hitTest(rects, x, y) {
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; rects.length; ++i) {
+        <span class="tok-keyword">if</span> (contains(rects[i], x, y)) <span class="tok-keyword">return</span> i;
+    }
+    <span class="tok-keyword">return</span> -<span class="tok-number">1</span>;
+}
+
+<span class="tok-keyword">function</span> selectedCard(slot) {
+    <span class="tok-keyword">if</span> (!audioFormat) <span class="tok-keyword">return</span> -<span class="tok-number">1</span>;
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; audioFormat.Channels.length; ++i) {
+        <span class="tok-keyword">if</span> (selectorMatches(audioFormat.Channels[i], selectors[slot])) <span class="tok-keyword">return</span> i;
+    }
+    <span class="tok-keyword">return</span> -<span class="tok-number">1</span>;
+}
+
+<span class="tok-keyword">function</span> drawStatus(gr) {
+    <span class="tok-keyword">const</span> w = window.Width;
+    <span class="tok-keyword">const</span> state = audioFormat ? (fb.IsPaused ? <span class="tok-string">&#39;PAUSED&#39;</span> : <span class="tok-string">&#39;LIVE&#39;</span>)
+        : (fb.IsPlaying ? <span class="tok-string">&#39;SYNCING&#39;</span> : <span class="tok-string">&#39;NO STREAM&#39;</span>);
+    <span class="tok-keyword">const</span> stateColor = audioFormat ? (fb.IsPaused ? COLOR.yellow : COLOR.green) : COLOR.faint;
+    <span class="tok-keyword">const</span> statusW = <span class="tok-number">86</span>;
+    <span class="tok-keyword">const</span> statusX = Math.max(<span class="tok-number">14</span>, w - statusW - <span class="tok-number">14</span>);
+    gr.FillSolidRect(statusX, <span class="tok-number">14</span>, statusW, <span class="tok-number">24</span>, COLOR.card);
+    gr.DrawRect(statusX + <span class="tok-number">0.5</span>, <span class="tok-number">14.5</span>, statusW - <span class="tok-number">1</span>, <span class="tok-number">23</span>, <span class="tok-number">1</span>, stateColor);
+    <span class="tok-keyword">const</span> textW = gr.CalcTextWidth(state, FONT_META);
+    gr.DrawString(state, FONT_META, stateColor,
+        statusX + (statusW - textW) / <span class="tok-number">2</span>, <span class="tok-number">19</span>, textW + <span class="tok-number">2</span>, <span class="tok-number">16</span>);
+}
+
+<span class="tok-keyword">function</span> drawHeader(gr) {
+    <span class="tok-keyword">const</span> w = window.Width;
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, w, <span class="tok-number">94</span>, COLOR.header);
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">93</span>, w, <span class="tok-number">1</span>, COLOR.border);
+    gr.DrawString(<span class="tok-string">&#39;PCM channel explorer&#39;</span>, FONT_TITLE, COLOR.text,
+        <span class="tok-number">14</span>, <span class="tok-number">10</span>, Math.max(<span class="tok-number">0</span>, w - <span class="tok-number">120</span>), <span class="tok-number">28</span>);
+    drawStatus(gr);
+
+    <span class="tok-keyword">if</span> (audioFormat) {
+        <span class="tok-keyword">const</span> summary = rateText(audioFormat.SampleRate) + <span class="tok-string">&#39;  ·  &#39;</span> +
+            audioFormat.ChannelCount + (audioFormat.ChannelCount === <span class="tok-number">1</span> ? <span class="tok-string">&#39; channel&#39;</span> : <span class="tok-string">&#39; channels&#39;</span>) +
+            <span class="tok-string">&#39;  ·  ChannelConfig &#39;</span> + hex32(audioFormat.ChannelConfig);
+        gr.DrawString(summary, FONT_SUBTITLE, COLOR.muted,
+            <span class="tok-number">15</span>, <span class="tok-number">43</span>, Math.max(<span class="tok-number">0</span>, w - <span class="tok-number">30</span>), <span class="tok-number">18</span>);
+        gr.DrawString(<span class="tok-string">&#39;Click a PCM position to route it to the highlighted meter. Names[0] is used as the selector.&#39;</span>,
+            FONT_META, COLOR.faint, <span class="tok-number">15</span>, <span class="tok-number">67</span>, Math.max(<span class="tok-number">0</span>, w - <span class="tok-number">30</span>), <span class="tok-number">17</span>);
+    } <span class="tok-keyword">else</span> {
+        gr.DrawString(<span class="tok-string">&#39;vis.AudioFormat → null&#39;</span>, FONT_SUBTITLE, COLOR.muted,
+            <span class="tok-number">15</span>, <span class="tok-number">43</span>, Math.max(<span class="tok-number">0</span>, w - <span class="tok-number">30</span>), <span class="tok-number">18</span>);
+        gr.DrawString(<span class="tok-string">&#39;Start playback to inspect the post-processing stream.&#39;</span>,
+            FONT_META, COLOR.faint, <span class="tok-number">15</span>, <span class="tok-number">67</span>, Math.max(<span class="tok-number">0</span>, w - <span class="tok-number">30</span>), <span class="tok-number">17</span>);
+    }
+}
+
+<span class="tok-keyword">function</span> drawRoutes(gr) {
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> slot = <span class="tok-number">0</span>; slot &lt; <span class="tok-number">2</span>; ++slot) {
+        <span class="tok-keyword">const</span> card = selectedCard(slot);
+        <span class="tok-keyword">if</span> (card &lt; <span class="tok-number">0</span> || !channelRects[card] || !laneRects[slot]) <span class="tok-keyword">continue</span>;
+        <span class="tok-keyword">const</span> source = channelRects[card];
+        <span class="tok-keyword">const</span> target = laneRects[slot];
+        <span class="tok-keyword">const</span> color = slot === <span class="tok-number">0</span> ? COLOR.routeA : COLOR.routeB;
+        <span class="tok-keyword">const</span> startX = source.x + source.w / <span class="tok-number">2</span>;
+        <span class="tok-keyword">const</span> startY = source.y + source.h;
+        <span class="tok-keyword">const</span> bridgeY = target.y - <span class="tok-number">7</span> + slot * <span class="tok-number">3</span>;
+        <span class="tok-keyword">const</span> endX = target.x + <span class="tok-number">27</span>;
+        gr.DrawLine(startX, startY, startX, bridgeY, <span class="tok-number">2</span>, color);
+        gr.DrawLine(startX, bridgeY, endX, bridgeY, <span class="tok-number">2</span>, color);
+        gr.DrawLine(endX, bridgeY, endX, target.y, <span class="tok-number">2</span>, color);
+    }
+}
+
+<span class="tok-keyword">function</span> drawBadge(gr, text, x, y, color) {
+    gr.FillSolidRect(x, y, <span class="tok-number">20</span>, <span class="tok-number">18</span>, color);
+    <span class="tok-keyword">const</span> width = gr.CalcTextWidth(text, FONT_META);
+    gr.DrawString(text, FONT_META, COLOR.background,
+        x + (<span class="tok-number">20</span> - width) / <span class="tok-number">2</span>, y + <span class="tok-number">2</span>, width + <span class="tok-number">2</span>, <span class="tok-number">14</span>);
+}
+
+<span class="tok-keyword">function</span> drawChannelCard(gr, channel, rect, index) {
+    <span class="tok-keyword">if</span> (!rect || rect.w &lt;= <span class="tok-number">2</span> || rect.h &lt;= <span class="tok-number">2</span>) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">const</span> hover = index === hoveredCard;
+    <span class="tok-keyword">const</span> selectedA = selectorMatches(channel, selectors[<span class="tok-number">0</span>]);
+    <span class="tok-keyword">const</span> selectedB = selectorMatches(channel, selectors[<span class="tok-number">1</span>]);
+    gr.FillSolidRect(rect.x, rect.y, rect.w, rect.h,
+        hover ? COLOR.cardHover : COLOR.card);
+    gr.DrawRect(rect.x + <span class="tok-number">0.5</span>, rect.y + <span class="tok-number">0.5</span>, rect.w - <span class="tok-number">1</span>, rect.h - <span class="tok-number">1</span>,
+        <span class="tok-number">1</span>, hover ? COLOR.text : COLOR.border);
+    <span class="tok-keyword">if</span> (selectedA) gr.DrawRect(rect.x + <span class="tok-number">2</span>, rect.y + <span class="tok-number">2</span>, rect.w - <span class="tok-number">4</span>, rect.h - <span class="tok-number">4</span>,
+        <span class="tok-number">2</span>, COLOR.routeA);
+    <span class="tok-keyword">if</span> (selectedB) gr.DrawRect(rect.x + <span class="tok-number">5</span>, rect.y + <span class="tok-number">5</span>, rect.w - <span class="tok-number">10</span>, rect.h - <span class="tok-number">10</span>,
+        <span class="tok-number">2</span>, COLOR.routeB);
+
+    <span class="tok-keyword">const</span> names = channel.Names || [];
+    <span class="tok-keyword">const</span> canonical = names.length ? names[<span class="tok-number">0</span>] : <span class="tok-string">&#39;unknown position&#39;</span>;
+    <span class="tok-keyword">const</span> aliases = names.length &gt; <span class="tok-number">1</span> ? names.slice(<span class="tok-number">1</span>).join(<span class="tok-string">&#39; · &#39;</span>) : <span class="tok-string">&#39;index-only selector&#39;</span>;
+    <span class="tok-keyword">const</span> textX = rect.x + <span class="tok-number">10</span>;
+    <span class="tok-keyword">const</span> badgeSpace = (selectedA ? <span class="tok-number">25</span> : <span class="tok-number">0</span>) + (selectedB ? <span class="tok-number">25</span> : <span class="tok-number">0</span>);
+    gr.DrawString(<span class="tok-string">&#39;#&#39;</span> + channel.Index + <span class="tok-string">&#39;  &#39;</span> + canonical, FONT_CARD, COLOR.text,
+        textX, rect.y + <span class="tok-number">7</span>, Math.max(<span class="tok-number">0</span>, rect.w - <span class="tok-number">20</span> - badgeSpace), <span class="tok-number">19</span>);
+
+    <span class="tok-keyword">if</span> (rect.h &gt;= <span class="tok-number">52</span>) {
+        gr.DrawString(aliases, FONT_META, COLOR.muted,
+            textX, rect.y + <span class="tok-number">28</span>, Math.max(<span class="tok-number">0</span>, rect.w - <span class="tok-number">20</span>), <span class="tok-number">16</span>);
+        gr.DrawString(<span class="tok-string">&#39;Flag &#39;</span> + hex32(channel.Flag), FONT_META, COLOR.faint,
+            textX, rect.y + rect.h - <span class="tok-number">18</span>, Math.max(<span class="tok-number">0</span>, rect.w - <span class="tok-number">20</span>), <span class="tok-number">15</span>);
+    } <span class="tok-keyword">else</span> {
+        gr.DrawString(hex32(channel.Flag), FONT_META, COLOR.faint,
+            textX, rect.y + rect.h - <span class="tok-number">17</span>, Math.max(<span class="tok-number">0</span>, rect.w - <span class="tok-number">20</span>), <span class="tok-number">14</span>);
+    }
+
+    <span class="tok-keyword">let</span> badgeX = rect.x + rect.w - <span class="tok-number">26</span>;
+    <span class="tok-keyword">if</span> (selectedB) {
+        drawBadge(gr, <span class="tok-string">&#39;B&#39;</span>, badgeX, rect.y + <span class="tok-number">6</span>, COLOR.routeB);
+        badgeX -= <span class="tok-number">25</span>;
+    }
+    <span class="tok-keyword">if</span> (selectedA) drawBadge(gr, <span class="tok-string">&#39;A&#39;</span>, badgeX, rect.y + <span class="tok-number">6</span>, COLOR.routeA);
+}
+
+<span class="tok-keyword">function</span> drawEmptyState(gr) {
+    <span class="tok-keyword">const</span> top = <span class="tok-number">110</span>;
+    <span class="tok-keyword">const</span> bottom = laneRects.length ? laneRects[<span class="tok-number">0</span>].y - <span class="tok-number">18</span> : window.Height - <span class="tok-number">20</span>;
+    <span class="tok-keyword">const</span> height = Math.max(<span class="tok-number">30</span>, bottom - top);
+    <span class="tok-keyword">const</span> title = fb.IsPlaying ? <span class="tok-string">&#39;Waiting for the first PCM chunk…&#39;</span> : <span class="tok-string">&#39;No current audio stream&#39;</span>;
+    <span class="tok-keyword">const</span> width = gr.CalcTextWidth(title, FONT_CARD);
+    gr.DrawString(title, FONT_CARD, COLOR.muted,
+        Math.max(<span class="tok-number">14</span>, (window.Width - width) / <span class="tok-number">2</span>), top + height / <span class="tok-number">2</span> - <span class="tok-number">10</span>,
+        Math.min(width + <span class="tok-number">4</span>, Math.max(<span class="tok-number">0</span>, window.Width - <span class="tok-number">28</span>)), <span class="tok-number">22</span>);
+}
+
+<span class="tok-keyword">function</span> drawLane(gr, slot, rect) {
+    <span class="tok-keyword">if</span> (!rect || rect.w &lt;= <span class="tok-number">2</span> || rect.h &lt;= <span class="tok-number">2</span>) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">const</span> active = slot === activeRoute;
+    <span class="tok-keyword">const</span> color = slot === <span class="tok-number">0</span> ? COLOR.routeA : COLOR.routeB;
+    gr.FillSolidRect(rect.x, rect.y, rect.w, rect.h,
+        slot === hoveredLane ? COLOR.cardHover : COLOR.panel);
+    gr.DrawRect(rect.x + <span class="tok-number">0.5</span>, rect.y + <span class="tok-number">0.5</span>, rect.w - <span class="tok-number">1</span>, rect.h - <span class="tok-number">1</span>,
+        active ? <span class="tok-number">2</span> : <span class="tok-number">1</span>, active ? color : COLOR.border);
+    gr.FillSolidRect(rect.x + <span class="tok-number">9</span>, rect.y + <span class="tok-number">9</span>, <span class="tok-number">35</span>, Math.max(<span class="tok-number">20</span>, rect.h - <span class="tok-number">18</span>), color);
+    gr.DrawString(slot === <span class="tok-number">0</span> ? <span class="tok-string">&#39;A&#39;</span> : <span class="tok-string">&#39;B&#39;</span>, FONT_LANE, COLOR.background,
+        rect.x + <span class="tok-number">18</span>, rect.y + Math.max(<span class="tok-number">8</span>, (rect.h - <span class="tok-number">25</span>) / <span class="tok-number">2</span>), <span class="tok-number">20</span>, <span class="tok-number">25</span>);
+
+    <span class="tok-keyword">const</span> labelX = rect.x + <span class="tok-number">55</span>;
+    <span class="tok-keyword">const</span> meterX = rect.x + Math.min(<span class="tok-number">205</span>, Math.max(<span class="tok-number">150</span>, rect.w * <span class="tok-number">0.42</span>));
+    <span class="tok-keyword">const</span> labelW = Math.max(<span class="tok-number">0</span>, meterX - labelX - <span class="tok-number">8</span>);
+    gr.DrawString(selectorText(selectors[slot]), FONT_CARD, COLOR.text,
+        labelX, rect.y + <span class="tok-number">8</span>, labelW, <span class="tok-number">20</span>);
+    gr.DrawString(selectorCode(selectors[slot]), FONT_META, active ? color : COLOR.muted,
+        labelX, rect.y + <span class="tok-number">29</span>, labelW, Math.max(<span class="tok-number">14</span>, rect.h - <span class="tok-number">33</span>));
+
+    <span class="tok-keyword">const</span> meterW = Math.max(<span class="tok-number">0</span>, rect.x + rect.w - meterX - <span class="tok-number">12</span>);
+    <span class="tok-keyword">const</span> meterY = rect.y + <span class="tok-number">12</span>;
+    <span class="tok-keyword">const</span> meterH = Math.max(<span class="tok-number">0</span>, rect.h - <span class="tok-number">24</span>);
+    <span class="tok-keyword">if</span> (meterW &gt; <span class="tok-number">0</span> &amp;&amp; meterH &gt; <span class="tok-number">0</span>)
+        meters[slot].Draw(gr, meterX, meterY, meterW, meterH);
+}
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, window.Width, window.Height, COLOR.background);
+    updateLayout();
+    drawHeader(gr);
+    drawRoutes(gr);
+    <span class="tok-keyword">if</span> (audioFormat &amp;&amp; audioFormat.Channels.length) {
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; audioFormat.Channels.length; ++i) {
+            drawChannelCard(gr, audioFormat.Channels[i], channelRects[i], i);
+        }
+    } <span class="tok-keyword">else</span> {
+        drawEmptyState(gr);
+    }
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; laneRects.length; ++i) drawLane(gr, i, laneRects[i]);
+}
+
+<span class="tok-keyword">function</span> on_mouse_move(x, y) {
+    updateLayout();
+    <span class="tok-keyword">const</span> nextCard = hitTest(channelRects, x, y);
+    <span class="tok-keyword">const</span> nextLane = nextCard === -<span class="tok-number">1</span> ? hitTest(laneRects, x, y) : -<span class="tok-number">1</span>;
+    <span class="tok-keyword">if</span> (nextCard !== hoveredCard || nextLane !== hoveredLane) {
+        hoveredCard = nextCard;
+        hoveredLane = nextLane;
+        window.Repaint();
+    }
+}
+
+<span class="tok-keyword">function</span> on_mouse_leave() {
+    <span class="tok-keyword">if</span> (hoveredCard !== -<span class="tok-number">1</span> || hoveredLane !== -<span class="tok-number">1</span>) {
+        hoveredCard = -<span class="tok-number">1</span>;
+        hoveredLane = -<span class="tok-number">1</span>;
+        window.Repaint();
+    }
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_up(x, y) {
+    updateLayout();
+    <span class="tok-keyword">const</span> card = hitTest(channelRects, x, y);
+    <span class="tok-keyword">if</span> (card !== -<span class="tok-number">1</span> &amp;&amp; audioFormat) {
+        setRoute(activeRoute, selectorFor(audioFormat.Channels[card]));
+        activeRoute = <span class="tok-number">1</span> - activeRoute;
+        window.Repaint();
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">const</span> lane = hitTest(laneRects, x, y);
+    <span class="tok-keyword">if</span> (lane !== -<span class="tok-number">1</span>) {
+        activeRoute = lane;
+        window.Repaint();
+    }
+}
+
+<span class="tok-keyword">function</span> on_playback_new_track() { syncAudioFormat(); }
+<span class="tok-keyword">function</span> on_playback_pause() { syncAudioFormat(); }
+<span class="tok-keyword">function</span> on_playback_stop() { syncAudioFormat(); }
+
+<span class="tok-keyword">const</span> formatTimer = setInterval(syncAudioFormat, <span class="tok-number">200</span>);
+<span class="tok-keyword">const</span> paintTimer = setInterval(() =&gt; window.Repaint(), <span class="tok-number">33</span>);
+
+<span class="tok-keyword">function</span> on_script_unload() {
+    clearInterval(formatTimer);
+    clearInterval(paintTimer);
+    vis.UpdateIntervalMs = INITIAL_UPDATE_INTERVAL;
+}
+
+syncAudioFormat();
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

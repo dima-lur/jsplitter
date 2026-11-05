@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 window.DefineScript('Vu Meter', {author:'Case + marc2003', options:{grab_focus:false}});
 include(fb.ComponentPath + 'samples\\complete\\js\\lodash.min.js');

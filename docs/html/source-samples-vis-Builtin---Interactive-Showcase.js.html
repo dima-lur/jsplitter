@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Builtin - Interactive Showcase.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryReader">
+        <a class="nav-link nav-page-link" href="BinaryReader.html">BinaryReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryWriter">
+        <a class="nav-link nav-page-link" href="BinaryWriter.html">BinaryWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
+        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbWindow">
+        <a class="nav-link nav-page-link" href="FbWindow.html">FbWindow</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteDatabase">
+        <a class="nav-link nav-page-link" href="SQLiteDatabase.html">SQLiteDatabase</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteStatement">
+        <a class="nav-link nav-page-link" href="SQLiteStatement.html">SQLiteStatement</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextReader">
+        <a class="nav-link nav-page-link" href="TextReader.html">TextReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextWriter">
+        <a class="nav-link nav-page-link" href="TextWriter.html">TextWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><a class="nav-link" href="module-ESModules.html">ESModules</a><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/vis/Builtin - Interactive Showcase.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="vis.html#Create">vis.Create</a></div>
+        </header>
+        <pre class="source-code"><code>include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
+
+<span class="tok-comment">// JSplitter vis: interactive built-in visualization showcase.</span>
+<span class="tok-comment">// Click the controls to change the analysis cadence, paint rate and GDI/D2D backend.</span>
+<span class="tok-comment">// Click any visualization tile to cycle a compact preset of its most visible</span>
+<span class="tok-comment">// source and renderer properties. Playback is never started or changed here.</span>
+
+<span class="tok-keyword">const</span> ENGINE_INTERVALS = [<span class="tok-number">8</span>, <span class="tok-number">16</span>, <span class="tok-number">32</span>];
+<span class="tok-keyword">const</span> PAINT_RATES = [<span class="tok-number">30</span>, <span class="tok-number">60</span>, <span class="tok-number">120</span>];
+<span class="tok-keyword">const</span> DRAW_MODES = [
+    {value:<span class="tok-number">0</span>, text:<span class="tok-string">&#39;GDI&#39;</span>},
+    {value:<span class="tok-number">1</span>, text:<span class="tok-string">&#39;D2D&#39;</span>}
+];
+<span class="tok-keyword">const</span> INITIAL_ENGINE_INTERVAL = vis.UpdateIntervalMs;
+
+<span class="tok-keyword">const</span> COLOR = {
+    background: <span class="tok-number">0xff101317</span>,
+    header:     <span class="tok-number">0xff151a20</span>,
+    tile:       <span class="tok-number">0xff12171c</span>,
+    tileHover:  <span class="tok-number">0xff1a222b</span>,
+    border:     <span class="tok-number">0xff2a333d</span>,
+    text:       <span class="tok-number">0xffe7edf3</span>,
+    muted:      <span class="tok-number">0xff91a0ae</span>,
+    accent:     <span class="tok-number">0xff5aa9ff</span>,
+    button:     <span class="tok-number">0xff232b34</span>,
+    buttonHover:<span class="tok-number">0xff303b47</span>,
+    white:      <span class="tok-number">0xffedf2f7</span>,
+    blue:       <span class="tok-number">0xff63a4ff</span>,
+    cyan:       <span class="tok-number">0xff55d6d9</span>,
+    green:      <span class="tok-number">0xff63d471</span>,
+    yellow:     <span class="tok-number">0xffffd166</span>,
+    orange:     <span class="tok-number">0xffff9f43</span>,
+    red:        <span class="tok-number">0xffff5d73</span>,
+    purple:     <span class="tok-number">0xffc792ea</span>,
+    black:      <span class="tok-number">0xff000000</span>
+};
+
+<span class="tok-keyword">let</span> TITLE_FONT = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> CONTROL_FONT = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> LABEL_FONT = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> META_FONT = <span class="tok-literal">null</span>;
+
+<span class="tok-keyword">const</span> HEADER_H = <span class="tok-number">64</span>;
+<span class="tok-keyword">const</span> GRID_MARGIN = <span class="tok-number">8</span>;
+<span class="tok-keyword">const</span> GRID_GAP = <span class="tok-number">7</span>;
+<span class="tok-keyword">const</span> TILE_LABEL_H = <span class="tok-number">22</span>;
+
+<span class="tok-keyword">const</span> SPEC_RANGES_A = [
+    {to:-<span class="tok-number">36</span>, color:COLOR.blue},
+    {to:-<span class="tok-number">18</span>, color:COLOR.green},
+    {to:-<span class="tok-number">6</span>, color:COLOR.yellow},
+    {to:<span class="tok-number">0</span>, color:COLOR.red}
+];
+<span class="tok-keyword">const</span> SPEC_RANGES_B = [
+    {to:-<span class="tok-number">48</span>, color:COLOR.purple},
+    {to:-<span class="tok-number">24</span>, color:COLOR.cyan},
+    {to:-<span class="tok-number">12</span>, color:COLOR.green},
+    {to:<span class="tok-number">0</span>, color:COLOR.orange}
+];
+<span class="tok-keyword">const</span> METER_RANGES_A = [
+    {to:-<span class="tok-number">18</span>, color:COLOR.green},
+    {to:-<span class="tok-number">6</span>, color:COLOR.yellow},
+    {to:<span class="tok-number">0</span>, color:COLOR.red}
+];
+<span class="tok-keyword">const</span> METER_RANGES_B = [
+    {to:-<span class="tok-number">24</span>, color:COLOR.blue},
+    {to:-<span class="tok-number">9</span>, color:COLOR.green},
+    {to:-<span class="tok-number">3</span>, color:COLOR.yellow},
+    {to:<span class="tok-number">0</span>, color:COLOR.red}
+];
+<span class="tok-keyword">const</span> VU_RANGES_A = [
+    {to:-<span class="tok-number">10</span>, color:COLOR.green},
+    {to:<span class="tok-number">0</span>, color:COLOR.yellow},
+    {to:<span class="tok-number">3</span>, color:COLOR.red}
+];
+<span class="tok-keyword">const</span> VU_RANGES_B = [
+    {to:-<span class="tok-number">12</span>, color:COLOR.cyan},
+    {to:-<span class="tok-number">3</span>, color:COLOR.green},
+    {to:<span class="tok-number">0</span>, color:COLOR.yellow},
+    {to:<span class="tok-number">6</span>, color:COLOR.red}
+];
+
+<span class="tok-keyword">function</span> preset(name, values) {
+    <span class="tok-keyword">return</span> {name, values};
+}
+
+<span class="tok-keyword">function</span> spectrum(overrides) {
+    <span class="tok-keyword">return</span> Object.assign({
+        Channel:<span class="tok-string">&#39;mix&#39;</span>, FftSize:<span class="tok-number">4096</span>, Bands:<span class="tok-number">96</span>, BarWidth:<span class="tok-number">0</span>, Gap:<span class="tok-number">1</span>,
+        SegmentSize:<span class="tok-number">6</span>, SegmentGap:<span class="tok-number">0</span>, ColorMode:<span class="tok-string">&#39;gradient&#39;</span>,
+        MinFrequency:<span class="tok-number">40</span>, MaxFrequency:<span class="tok-number">20000</span>, MinDb:-<span class="tok-number">78</span>, MaxDb:<span class="tok-number">0</span>,
+        AttackMs:<span class="tok-number">18</span>, ReleaseMs:<span class="tok-number">120</span>, PeakHoldMs:<span class="tok-number">180</span>, PeakGravity:<span class="tok-number">3</span>,
+        Gain:<span class="tok-number">1</span>, Ranges:SPEC_RANGES_A, ShowPeak:<span class="tok-literal">true</span>,
+        PeakColor:COLOR.white, PeakSize:<span class="tok-number">1</span>
+    }, overrides || {});
+}
+
+<span class="tok-keyword">function</span> waveform(overrides) {
+    <span class="tok-keyword">return</span> Object.assign({
+        Channel:<span class="tok-string">&#39;mix&#39;</span>, Points:<span class="tok-string">&#39;auto&#39;</span>, DurationMs:<span class="tok-number">300</span>, Gain:<span class="tok-number">1</span>,
+        LineWidth:<span class="tok-number">1.25</span>, GlowStrength:<span class="tok-number">0.2</span>, GlowRadius:<span class="tok-number">3</span>, Smoothing:<span class="tok-number">0.1</span>,
+        Style:<span class="tok-string">&#39;line&#39;</span>, Color:COLOR.cyan
+    }, overrides || {});
+}
+
+<span class="tok-keyword">function</span> peak(overrides) {
+    <span class="tok-keyword">return</span> Object.assign({
+        Channel:<span class="tok-string">&#39;mix&#39;</span>, MinDb:-<span class="tok-number">60</span>, MaxDb:<span class="tok-number">0</span>, AttackMs:<span class="tok-number">0</span>, ReleaseMs:<span class="tok-number">150</span>,
+        PeakHoldMs:<span class="tok-number">500</span>, PeakGravity:<span class="tok-number">3</span>, Ranges:METER_RANGES_A,
+        SegmentSize:<span class="tok-number">6</span>, SegmentGap:<span class="tok-number">0</span>, ColorMode:<span class="tok-string">&#39;gradient&#39;</span>,
+        PeakColor:COLOR.white, PeakSize:<span class="tok-number">1</span>, ShowPeak:<span class="tok-literal">true</span>,
+        ClipWidth:<span class="tok-number">4</span>, ShowClip:<span class="tok-literal">false</span>, ClipHoldMs:<span class="tok-number">1000</span>, ClipColor:COLOR.red
+    }, overrides || {});
+}
+
+<span class="tok-keyword">function</span> vu(overrides) {
+    <span class="tok-keyword">return</span> Object.assign({
+        Channel:<span class="tok-string">&#39;mix&#39;</span>, ReferenceDbfs:-<span class="tok-number">18</span>, MinVu:-<span class="tok-number">20</span>, MaxVu:<span class="tok-number">3</span>,
+        AttackMs:<span class="tok-number">300</span>, ReleaseMs:<span class="tok-number">300</span>, PeakHoldMs:<span class="tok-number">150</span>, PeakGravity:<span class="tok-number">3</span>,
+        Ranges:VU_RANGES_A, SegmentSize:<span class="tok-number">6</span>, SegmentGap:<span class="tok-number">0</span>,
+        ColorMode:<span class="tok-string">&#39;gradient&#39;</span>, PeakColor:COLOR.white,
+        PeakSize:<span class="tok-number">1</span>, ShowPeak:<span class="tok-literal">false</span>
+    }, overrides || {});
+}
+
+<span class="tok-keyword">function</span> spectrogram(overrides) {
+    <span class="tok-keyword">return</span> Object.assign({
+        Channel:<span class="tok-string">&#39;mix&#39;</span>, Style:<span class="tok-string">&#39;scrolling&#39;</span>, FftSize:<span class="tok-number">4096</span>,
+        ColumnIntervalMs:<span class="tok-number">16</span>, MinFrequency:<span class="tok-number">40</span>, MaxFrequency:<span class="tok-number">20000</span>,
+        MinDb:-<span class="tok-number">84</span>, MaxDb:<span class="tok-number">0</span>, Gain:<span class="tok-number">1</span>, Scale:<span class="tok-string">&#39;log&#39;</span>, Palette:<span class="tok-string">&#39;inferno&#39;</span>,
+        Color:COLOR.white, BackgroundColor:COLOR.black
+    }, overrides || {});
+}
+
+<span class="tok-keyword">function</span> vectorscope(overrides) {
+    <span class="tok-keyword">return</span> Object.assign({
+        DurationMs:<span class="tok-number">40</span>, Points:<span class="tok-number">1024</span>, LeftChannel:<span class="tok-number">0</span>, RightChannel:<span class="tok-number">1</span>,
+        Color:COLOR.cyan, Mode:<span class="tok-string">&#39;points&#39;</span>, Scale:<span class="tok-number">1</span>, AspectScale:<span class="tok-literal">true</span>,
+        PointSize:<span class="tok-number">1.5</span>, LineWidth:<span class="tok-number">1</span>, GlowStrength:<span class="tok-number">0.25</span>, GlowRadius:<span class="tok-number">3</span>,
+        PersistenceMs:<span class="tok-number">300</span>
+    }, overrides || {});
+}
+
+<span class="tok-keyword">const</span> SPECTRUM_PRESETS = [
+    preset(<span class="tok-string">&#39;Smooth&#39;</span>, spectrum()),
+    preset(<span class="tok-string">&#39;Detail&#39;</span>, spectrum({
+        <span class="tok-comment">// Keep the dense preset away from a 1 px bar/gap checkerboard. Two</span>
+        <span class="tok-comment">// adjacent tiles with that pattern produce display-scaling moire.</span>
+        FftSize:<span class="tok-number">16384</span>, Bands:<span class="tok-number">192</span>, Gap:<span class="tok-number">0</span>, SegmentSize:<span class="tok-number">5</span>, SegmentGap:<span class="tok-number">2</span>,
+        ColorMode:<span class="tok-string">&#39;discrete&#39;</span>, MinFrequency:<span class="tok-number">25</span>, MaxFrequency:<span class="tok-number">22000</span>,
+        MinDb:-<span class="tok-number">96</span>, ReleaseMs:<span class="tok-number">170</span>, PeakHoldMs:<span class="tok-number">320</span>, PeakGravity:<span class="tok-number">2</span>,
+        Ranges:SPEC_RANGES_B, PeakSize:<span class="tok-number">2</span>
+    })),
+    preset(<span class="tok-string">&#39;Bars&#39;</span>, spectrum({
+        FftSize:<span class="tok-number">2048</span>, Bands:<span class="tok-number">80</span>, BarWidth:<span class="tok-number">5</span>, Gap:<span class="tok-number">2</span>,
+        SegmentSize:<span class="tok-number">7</span>, SegmentGap:<span class="tok-number">3</span>, ColorMode:<span class="tok-string">&#39;discrete&#39;</span>,
+        MinDb:-<span class="tok-number">72</span>, AttackMs:<span class="tok-number">8</span>, ReleaseMs:<span class="tok-number">80</span>, Gain:<span class="tok-number">1.15</span>,
+        Ranges:SPEC_RANGES_A, ShowPeak:<span class="tok-literal">false</span>
+    })),
+    preset(<span class="tok-string">&#39;Gradient&#39;</span>, spectrum({
+        FftSize:<span class="tok-number">4096</span>, Bands:<span class="tok-number">112</span>, BarWidth:<span class="tok-number">0</span>, Gap:<span class="tok-number">1</span>,
+        SegmentSize:<span class="tok-number">5</span>, SegmentGap:<span class="tok-number">2</span>, ColorMode:<span class="tok-string">&#39;gradient&#39;</span>,
+        MinFrequency:<span class="tok-number">35</span>, MaxFrequency:<span class="tok-number">20000</span>, MinDb:-<span class="tok-number">84</span>,
+        AttackMs:<span class="tok-number">12</span>, ReleaseMs:<span class="tok-number">130</span>, PeakHoldMs:<span class="tok-number">220</span>, PeakGravity:<span class="tok-number">3</span>,
+        Ranges:SPEC_RANGES_B, PeakSize:<span class="tok-number">2</span>
+    }))
+];
+
+<span class="tok-keyword">const</span> WAVEFORM_PRESETS = [
+    preset(<span class="tok-string">&#39;Trace&#39;</span>, waveform()),
+    preset(<span class="tok-string">&#39;Envelope&#39;</span>, waveform({
+        Points:<span class="tok-number">512</span>, DurationMs:<span class="tok-number">500</span>, Gain:<span class="tok-number">1.25</span>, LineWidth:<span class="tok-number">2</span>,
+        GlowStrength:<span class="tok-number">0.5</span>, GlowRadius:<span class="tok-number">7</span>, Smoothing:<span class="tok-number">0.4</span>,
+        Style:<span class="tok-string">&#39;envelope&#39;</span>, Color:COLOR.purple
+    })),
+    preset(<span class="tok-string">&#39;Fast&#39;</span>, waveform({
+        Points:<span class="tok-number">192</span>, DurationMs:<span class="tok-number">80</span>, Gain:<span class="tok-number">1.4</span>, LineWidth:<span class="tok-number">1.5</span>,
+        GlowStrength:<span class="tok-number">0.15</span>, GlowRadius:<span class="tok-number">2</span>, Smoothing:<span class="tok-number">0.05</span>,
+        Style:<span class="tok-string">&#39;line&#39;</span>, Color:COLOR.green
+    })),
+    preset(<span class="tok-string">&#39;Glow&#39;</span>, waveform({
+        Points:<span class="tok-number">384</span>, DurationMs:<span class="tok-number">220</span>, Gain:<span class="tok-number">1.35</span>, LineWidth:<span class="tok-number">1</span>,
+        GlowStrength:<span class="tok-number">0.5</span>, GlowRadius:<span class="tok-number">4</span>, Smoothing:<span class="tok-number">0.25</span>,
+        Style:<span class="tok-string">&#39;line&#39;</span>, Color:COLOR.blue
+    }))
+];
+
+<span class="tok-keyword">const</span> PEAK_PRESETS = [
+    preset(<span class="tok-string">&#39;Smooth&#39;</span>, peak()),
+    preset(<span class="tok-string">&#39;Gradient&#39;</span>, peak({
+        MinDb:-<span class="tok-number">66</span>, ReleaseMs:<span class="tok-number">180</span>, PeakHoldMs:<span class="tok-number">600</span>, PeakGravity:<span class="tok-number">2.5</span>,
+        Ranges:METER_RANGES_B, SegmentSize:<span class="tok-number">6</span>, SegmentGap:<span class="tok-number">2</span>,
+        ColorMode:<span class="tok-string">&#39;gradient&#39;</span>, PeakSize:<span class="tok-number">2</span>, ShowClip:<span class="tok-literal">true</span>,
+        ClipWidth:<span class="tok-number">4</span>, ClipHoldMs:<span class="tok-number">1200</span>
+    })),
+    preset(<span class="tok-string">&#39;Discrete&#39;</span>, peak({
+        MinDb:-<span class="tok-number">72</span>, ReleaseMs:<span class="tok-number">220</span>, PeakHoldMs:<span class="tok-number">750</span>, PeakGravity:<span class="tok-number">2</span>,
+        Ranges:METER_RANGES_B, SegmentSize:<span class="tok-number">5</span>, SegmentGap:<span class="tok-number">2</span>,
+        ColorMode:<span class="tok-string">&#39;discrete&#39;</span>, PeakSize:<span class="tok-number">3</span>, ShowClip:<span class="tok-literal">true</span>,
+        ClipWidth:<span class="tok-number">5</span>, ClipHoldMs:<span class="tok-number">1500</span>
+    })),
+    preset(<span class="tok-string">&#39;Quick&#39;</span>, peak({
+        MinDb:-<span class="tok-number">48</span>, ReleaseMs:<span class="tok-number">70</span>, PeakHoldMs:<span class="tok-number">100</span>, PeakGravity:<span class="tok-number">6</span>,
+        SegmentSize:<span class="tok-number">3</span>, SegmentGap:<span class="tok-number">1</span>, ColorMode:<span class="tok-string">&#39;discrete&#39;</span>,
+        PeakSize:<span class="tok-number">1</span>, ShowClip:<span class="tok-literal">true</span>, ClipWidth:<span class="tok-number">3</span>, ClipHoldMs:<span class="tok-number">400</span>
+    }))
+];
+
+<span class="tok-keyword">const</span> VU_PRESETS = [
+    preset(<span class="tok-string">&#39;Classic&#39;</span>, vu()),
+    preset(<span class="tok-string">&#39;Gradient&#39;</span>, vu({
+        ReferenceDbfs:-<span class="tok-number">18</span>, MinVu:-<span class="tok-number">24</span>, MaxVu:<span class="tok-number">3</span>,
+        AttackMs:<span class="tok-number">260</span>, ReleaseMs:<span class="tok-number">320</span>, PeakHoldMs:<span class="tok-number">250</span>, PeakGravity:<span class="tok-number">3</span>,
+        Ranges:VU_RANGES_B, SegmentSize:<span class="tok-number">6</span>, SegmentGap:<span class="tok-number">2</span>,
+        ColorMode:<span class="tok-string">&#39;gradient&#39;</span>, PeakSize:<span class="tok-number">2</span>, ShowPeak:<span class="tok-literal">true</span>
+    })),
+    preset(<span class="tok-string">&#39;Wide&#39;</span>, vu({
+        ReferenceDbfs:-<span class="tok-number">20</span>, MinVu:-<span class="tok-number">40</span>, MaxVu:<span class="tok-number">6</span>,
+        AttackMs:<span class="tok-number">500</span>, ReleaseMs:<span class="tok-number">550</span>, PeakHoldMs:<span class="tok-number">500</span>, PeakGravity:<span class="tok-number">1.5</span>,
+        Ranges:VU_RANGES_B,
+        SegmentSize:<span class="tok-number">8</span>, SegmentGap:<span class="tok-number">0</span>, ColorMode:<span class="tok-string">&#39;gradient&#39;</span>,
+        PeakSize:<span class="tok-number">3</span>, ShowPeak:<span class="tok-literal">true</span>
+    })),
+    preset(<span class="tok-string">&#39;Discrete&#39;</span>, vu({
+        ReferenceDbfs:-<span class="tok-number">18</span>, MinVu:-<span class="tok-number">24</span>, MaxVu:<span class="tok-number">3</span>,
+        AttackMs:<span class="tok-number">180</span>, ReleaseMs:<span class="tok-number">220</span>, PeakHoldMs:<span class="tok-number">100</span>, PeakGravity:<span class="tok-number">5</span>,
+        SegmentSize:<span class="tok-number">5</span>, SegmentGap:<span class="tok-number">2</span>, ColorMode:<span class="tok-string">&#39;discrete&#39;</span>,
+        PeakSize:<span class="tok-number">2</span>, ShowPeak:<span class="tok-literal">true</span>
+    }))
+];
+
+<span class="tok-keyword">const</span> SPECTROGRAM_PRESETS = [
+    preset(<span class="tok-string">&#39;Scroll&#39;</span>, spectrogram()),
+    preset(<span class="tok-string">&#39;Stationary&#39;</span>, spectrogram({
+        Style:<span class="tok-string">&#39;stationary&#39;</span>, FftSize:<span class="tok-number">8192</span>, ColumnIntervalMs:<span class="tok-number">32</span>,
+        MinFrequency:<span class="tok-number">30</span>, MaxFrequency:<span class="tok-number">18000</span>, MinDb:-<span class="tok-number">96</span>,
+        Gain:<span class="tok-number">1.15</span>, Scale:<span class="tok-string">&#39;linear&#39;</span>, Palette:<span class="tok-string">&#39;grayscale&#39;</span>, Color:COLOR.cyan
+    })),
+    preset(<span class="tok-string">&#39;Fast&#39;</span>, spectrogram({
+        Style:<span class="tok-string">&#39;scrolling&#39;</span>, FftSize:<span class="tok-number">2048</span>, ColumnIntervalMs:<span class="tok-number">8</span>,
+        MinFrequency:<span class="tok-number">60</span>, MaxFrequency:<span class="tok-number">16000</span>, MinDb:-<span class="tok-number">72</span>,
+        Gain:<span class="tok-number">1.2</span>, Scale:<span class="tok-string">&#39;log&#39;</span>, Palette:<span class="tok-string">&#39;inferno&#39;</span>
+    }))
+];
+
+<span class="tok-keyword">const</span> VECTORSCOPE_PRESETS = [
+    preset(<span class="tok-string">&#39;Points&#39;</span>, vectorscope()),
+    preset(<span class="tok-string">&#39;Lines&#39;</span>, vectorscope({
+        DurationMs:<span class="tok-number">80</span>, Points:<span class="tok-number">2048</span>, Mode:<span class="tok-string">&#39;lines&#39;</span>, Scale:<span class="tok-number">1.15</span>, LineWidth:<span class="tok-number">1.5</span>,
+        GlowStrength:<span class="tok-number">0.55</span>, GlowRadius:<span class="tok-number">7</span>, PersistenceMs:<span class="tok-number">700</span>,
+        Color:COLOR.purple
+    })),
+    preset(<span class="tok-string">&#39;Wide&#39;</span>, vectorscope({
+        DurationMs:<span class="tok-number">160</span>, Points:<span class="tok-number">4096</span>, Mode:<span class="tok-string">&#39;points&#39;</span>, Scale:<span class="tok-number">1.4</span>,
+        AspectScale:<span class="tok-literal">false</span>, PointSize:<span class="tok-number">2.25</span>, GlowStrength:<span class="tok-number">0.5</span>,
+        GlowRadius:<span class="tok-number">7</span>, PersistenceMs:<span class="tok-number">1100</span>, Color:COLOR.orange
+    }))
+];
+
+<span class="tok-keyword">const</span> tiles = [
+    {name:<span class="tok-string">&#39;Spectrum A&#39;</span>, type:<span class="tok-string">&#39;spectrum&#39;</span>, source:VisSourceType.Spectrum, presets:SPECTRUM_PRESETS, index:<span class="tok-number">0</span>},
+    {name:<span class="tok-string">&#39;Spectrum B&#39;</span>, type:<span class="tok-string">&#39;spectrum&#39;</span>, source:VisSourceType.Spectrum, presets:SPECTRUM_PRESETS, index:<span class="tok-number">1</span>},
+    {name:<span class="tok-string">&#39;Waveform A&#39;</span>, type:<span class="tok-string">&#39;waveform&#39;</span>, source:VisSourceType.Waveform, presets:WAVEFORM_PRESETS, index:<span class="tok-number">0</span>},
+    {name:<span class="tok-string">&#39;Waveform B&#39;</span>, type:<span class="tok-string">&#39;waveform&#39;</span>, source:VisSourceType.Waveform, presets:WAVEFORM_PRESETS, index:<span class="tok-number">1</span>},
+    {name:<span class="tok-string">&#39;Peak Meter&#39;</span>, type:<span class="tok-string">&#39;peak&#39;</span>, source:VisSourceType.PeakMeter, presets:PEAK_PRESETS, index:<span class="tok-number">0</span>},
+    {name:<span class="tok-string">&#39;VU Meter&#39;</span>, type:<span class="tok-string">&#39;vu&#39;</span>, source:VisSourceType.VUMeter, presets:VU_PRESETS, index:<span class="tok-number">0</span>},
+    {name:<span class="tok-string">&#39;Spectrogram A&#39;</span>, type:<span class="tok-string">&#39;spectrogram&#39;</span>, source:VisSourceType.Spectrogram, presets:SPECTROGRAM_PRESETS, index:<span class="tok-number">0</span>},
+    {name:<span class="tok-string">&#39;Spectrogram B&#39;</span>, type:<span class="tok-string">&#39;spectrogram&#39;</span>, source:VisSourceType.Spectrogram, presets:SPECTROGRAM_PRESETS, index:<span class="tok-number">1</span>},
+    {name:<span class="tok-string">&#39;Vectorscope&#39;</span>, type:<span class="tok-string">&#39;vectorscope&#39;</span>, source:VisSourceType.Vectorscope, presets:VECTORSCOPE_PRESETS, index:<span class="tok-number">0</span>}
+];
+
+<span class="tok-keyword">let</span> engineInterval = <span class="tok-number">16</span>;
+<span class="tok-keyword">let</span> paintRate = <span class="tok-number">30</span>;
+<span class="tok-keyword">let</span> drawMode = window.DrawMode === <span class="tok-number">1</span> ? <span class="tok-number">1</span> : <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> paintTimer = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> switchingBackend = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> hoveredControl = -<span class="tok-number">1</span>;
+<span class="tok-keyword">let</span> hoveredTile = -<span class="tok-number">1</span>;
+<span class="tok-keyword">let</span> controlRects = [];
+<span class="tok-keyword">let</span> tileRects = [];
+
+<span class="tok-keyword">function</span> releaseDrawingResources() {
+    TITLE_FONT = <span class="tok-literal">null</span>;
+    CONTROL_FONT = <span class="tok-literal">null</span>;
+    LABEL_FONT = <span class="tok-literal">null</span>;
+    META_FONT = <span class="tok-literal">null</span>;
+
+    <span class="tok-comment">// Visualization instances own backend-specific bitmap/history caches.</span>
+    <span class="tok-comment">// Drop them together with script drawing resources before DrawMode changes.</span>
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> tile <span class="tok-keyword">of</span> tiles) {
+        tile.visual = <span class="tok-literal">null</span>;
+        tile.visuals = <span class="tok-literal">null</span>;
+    }
+}
+
+<span class="tok-keyword">function</span> createDrawingResources() {
+    <span class="tok-comment">// gdi.Font() follows window.DrawMode and creates GdiFont or D2DFont.</span>
+    TITLE_FONT = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">13</span>);
+    CONTROL_FONT = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">10</span>);
+    LABEL_FONT = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">11</span>);
+    META_FONT = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">9</span>);
+
+    <span class="tok-comment">// This sample has no script-owned bitmaps. Any added later must be created</span>
+    <span class="tok-comment">// here as well because gdi.Image/CreateImage also follow window.DrawMode.</span>
+}
+
+<span class="tok-keyword">function</span> currentPreset(tile) {
+    <span class="tok-keyword">return</span> tile.presets[tile.index];
+}
+
+<span class="tok-keyword">function</span> applyProperties(object, values) {
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> key <span class="tok-keyword">of</span> Object.keys(values)) object[key] = values[key];
+}
+
+<span class="tok-keyword">function</span> isStereoMeter(tile) {
+    <span class="tok-keyword">return</span> tile.type === <span class="tok-string">&#39;peak&#39;</span> || tile.type === <span class="tok-string">&#39;vu&#39;</span>;
+}
+
+<span class="tok-keyword">function</span> createOrUpdateTile(tile, recreate) {
+    <span class="tok-keyword">const</span> selected = currentPreset(tile);
+    <span class="tok-keyword">if</span> (isStereoMeter(tile)) {
+        <span class="tok-keyword">if</span> (!tile.visuals || recreate) {
+            tile.visuals = [
+                vis.Create(tile.source, {}, {}),
+                vis.Create(tile.source, {}, {})
+            ];
+        }
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> channel = <span class="tok-number">0</span>; channel &lt; tile.visuals.length; ++channel) {
+            applyProperties(tile.visuals[channel], selected.values);
+            tile.visuals[channel].Channel = channel;
+        }
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">if</span> (!tile.visual || recreate) tile.visual = vis.Create(tile.source, {}, {});
+    applyProperties(tile.visual, selected.values);
+}
+
+<span class="tok-keyword">function</span> cycleTile(index) {
+    <span class="tok-keyword">const</span> tile = tiles[index];
+    tile.index = (tile.index + <span class="tok-number">1</span>) % tile.presets.length;
+    createOrUpdateTile(tile, <span class="tok-literal">false</span>);
+}
+
+<span class="tok-keyword">function</span> setEngineInterval(value) {
+    engineInterval = value;
+    vis.UpdateIntervalMs = value;
+}
+
+<span class="tok-keyword">function</span> setPaintRate(value) {
+    paintRate = value;
+    <span class="tok-keyword">if</span> (paintTimer) clearInterval(paintTimer);
+    paintTimer = setInterval(() =&gt; window.Repaint(), <span class="tok-number">1000</span> / value);
+}
+
+<span class="tok-keyword">function</span> setDrawMode(value) {
+    value = value === <span class="tok-number">1</span> ? <span class="tok-number">1</span> : <span class="tok-number">0</span>;
+    <span class="tok-keyword">if</span> (value === drawMode) <span class="tok-keyword">return</span>;
+
+    <span class="tok-comment">// DrawMode performs a synchronous repaint. Keep on_paint away from resources</span>
+    <span class="tok-comment">// that belong to the old backend until replacements have been created.</span>
+    switchingBackend = <span class="tok-literal">true</span>;
+    <span class="tok-keyword">try</span> {
+        releaseDrawingResources();
+        window.DrawMode = value;
+        drawMode = window.DrawMode === <span class="tok-number">1</span> ? <span class="tok-number">1</span> : <span class="tok-number">0</span>;
+        createDrawingResources();
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> tile <span class="tok-keyword">of</span> tiles) createOrUpdateTile(tile, <span class="tok-literal">true</span>);
+    } <span class="tok-keyword">finally</span> {
+        switchingBackend = <span class="tok-literal">false</span>;
+    }
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> addControl(group, value, text, x, y, w, h) {
+    controlRects.push({group, value, text, x, y, w, h});
+}
+
+<span class="tok-keyword">function</span> updateLayout() {
+    controlRects = [];
+    <span class="tok-keyword">const</span> buttonY = <span class="tok-number">33</span>;
+    <span class="tok-keyword">const</span> buttonH = <span class="tok-number">23</span>;
+    <span class="tok-keyword">const</span> buttonW = <span class="tok-number">42</span>;
+    <span class="tok-keyword">const</span> buttonGap = <span class="tok-number">4</span>;
+
+    <span class="tok-keyword">let</span> x = <span class="tok-number">82</span>;
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> value <span class="tok-keyword">of</span> ENGINE_INTERVALS) {
+        addControl(<span class="tok-string">&#39;engine&#39;</span>, value, String(value), x, buttonY, buttonW, buttonH);
+        x += buttonW + buttonGap;
+    }
+    x += <span class="tok-number">84</span>;
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> value <span class="tok-keyword">of</span> PAINT_RATES) {
+        addControl(<span class="tok-string">&#39;paint&#39;</span>, value, String(value), x, buttonY, buttonW, buttonH);
+        x += buttonW + buttonGap;
+    }
+    x += <span class="tok-number">70</span>;
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> mode <span class="tok-keyword">of</span> DRAW_MODES) {
+        addControl(<span class="tok-string">&#39;backend&#39;</span>, mode.value, mode.text, x, buttonY, <span class="tok-number">52</span>, buttonH);
+        x += <span class="tok-number">52</span> + buttonGap;
+    }
+
+    tileRects = [];
+    <span class="tok-keyword">const</span> availableW = Math.max(<span class="tok-number">0</span>, window.Width - GRID_MARGIN * <span class="tok-number">2</span> - GRID_GAP * <span class="tok-number">2</span>);
+    <span class="tok-keyword">const</span> availableH = Math.max(<span class="tok-number">0</span>, window.Height - HEADER_H - GRID_MARGIN - GRID_GAP * <span class="tok-number">2</span>);
+    <span class="tok-keyword">const</span> cellW = availableW / <span class="tok-number">3</span>;
+    <span class="tok-keyword">const</span> cellH = availableH / <span class="tok-number">3</span>;
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; tiles.length; ++i) {
+        <span class="tok-keyword">const</span> col = i % <span class="tok-number">3</span>;
+        <span class="tok-keyword">const</span> row = Math.floor(i / <span class="tok-number">3</span>);
+        tileRects.push({
+            x:GRID_MARGIN + col * (cellW + GRID_GAP),
+            y:HEADER_H + row * (cellH + GRID_GAP),
+            w:cellW,
+            h:cellH
+        });
+    }
+}
+
+<span class="tok-keyword">function</span> contains(rect, x, y) {
+    <span class="tok-keyword">return</span> x &gt;= rect.x &amp;&amp; y &gt;= rect.y &amp;&amp; x &lt; rect.x + rect.w &amp;&amp; y &lt; rect.y + rect.h;
+}
+
+<span class="tok-keyword">function</span> hitControl(x, y) {
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; controlRects.length; ++i) {
+        <span class="tok-keyword">if</span> (contains(controlRects[i], x, y)) <span class="tok-keyword">return</span> i;
+    }
+    <span class="tok-keyword">return</span> -<span class="tok-number">1</span>;
+}
+
+<span class="tok-keyword">function</span> hitTile(x, y) {
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; tileRects.length; ++i) {
+        <span class="tok-keyword">if</span> (contains(tileRects[i], x, y)) <span class="tok-keyword">return</span> i;
+    }
+    <span class="tok-keyword">return</span> -<span class="tok-number">1</span>;
+}
+
+<span class="tok-keyword">function</span> formatChannel(value) {
+    <span class="tok-keyword">return</span> value === <span class="tok-string">&#39;mix&#39;</span> ? <span class="tok-string">&#39;mix&#39;</span> : <span class="tok-string">&#39;ch &#39;</span> + (Number(value) + <span class="tok-number">1</span>);
+}
+
+<span class="tok-keyword">function</span> describeTile(tile) {
+    <span class="tok-keyword">const</span> selected = currentPreset(tile);
+    <span class="tok-keyword">if</span> (tile.type === <span class="tok-string">&#39;vectorscope&#39;</span>) {
+        <span class="tok-keyword">return</span> selected.name + <span class="tok-string">&#39; · &#39;</span> + selected.values.Points + <span class="tok-string">&#39; pts · &#39;</span> +
+            selected.values.DurationMs + <span class="tok-string">&#39; ms · &#39;</span> + selected.values.Mode +
+            <span class="tok-string">&#39; · trail &#39;</span> + selected.values.PersistenceMs + <span class="tok-string">&#39; ms&#39;</span>;
+    }
+
+    <span class="tok-keyword">const</span> value = selected.values;
+    <span class="tok-keyword">switch</span> (tile.type) {
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;spectrum&#39;</span>:
+            <span class="tok-keyword">return</span> selected.name + <span class="tok-string">&#39; · FFT &#39;</span> + value.FftSize + <span class="tok-string">&#39; · &#39;</span> + value.Bands +
+                <span class="tok-string">&#39; bands · &#39;</span> + value.ColorMode;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;waveform&#39;</span>: {
+            <span class="tok-keyword">let</span> points = value.Points;
+            <span class="tok-keyword">if</span> (points === <span class="tok-string">&#39;auto&#39;</span> &amp;&amp; tile.visual) points = <span class="tok-string">&#39;auto/&#39;</span> + tile.visual.ActualPoints;
+            <span class="tok-keyword">return</span> selected.name + <span class="tok-string">&#39; · &#39;</span> + points + <span class="tok-string">&#39; pts · &#39;</span> + value.DurationMs +
+                <span class="tok-string">&#39; ms · &#39;</span> + value.Style + <span class="tok-string">&#39; · smooth &#39;</span> + value.Smoothing;
+        }
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;peak&#39;</span>:
+            <span class="tok-keyword">return</span> selected.name + <span class="tok-string">&#39; · stereo · &#39;</span> + value.MinDb + <span class="tok-string">&#39;..&#39;</span> + value.MaxDb +
+                <span class="tok-string">&#39; dB · release &#39;</span> + value.ReleaseMs + <span class="tok-string">&#39; ms · &#39;</span> + value.ColorMode;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;vu&#39;</span>:
+            <span class="tok-keyword">return</span> selected.name + <span class="tok-string">&#39; · stereo · 0 VU=&#39;</span> + value.ReferenceDbfs + <span class="tok-string">&#39; dBFS · &#39;</span> +
+                value.MinVu + <span class="tok-string">&#39;..+&#39;</span> + value.MaxVu + <span class="tok-string">&#39; · &#39;</span> + value.ColorMode;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;spectrogram&#39;</span>:
+            <span class="tok-keyword">return</span> selected.name + <span class="tok-string">&#39; · FFT &#39;</span> + value.FftSize + <span class="tok-string">&#39; · &#39;</span> +
+                value.ColumnIntervalMs + <span class="tok-string">&#39; ms · &#39;</span> + value.Scale + <span class="tok-string">&#39; · &#39;</span> + value.Palette;
+    }
+    <span class="tok-keyword">return</span> selected.name + <span class="tok-string">&#39; · &#39;</span> + formatChannel(value.Channel);
+}
+
+<span class="tok-keyword">function</span> drawButton(gr, rect, index) {
+    <span class="tok-keyword">const</span> active = rect.group === <span class="tok-string">&#39;engine&#39;</span> ? rect.value === engineInterval
+        : rect.group === <span class="tok-string">&#39;paint&#39;</span> ? rect.value === paintRate
+        : rect.value === drawMode;
+    <span class="tok-keyword">const</span> hovered = index === hoveredControl;
+    <span class="tok-keyword">const</span> fill = active ? COLOR.accent : hovered ? COLOR.buttonHover : COLOR.button;
+    <span class="tok-keyword">const</span> textColor = active ? COLOR.black : COLOR.text;
+    gr.FillSolidRect(rect.x, rect.y, rect.w, rect.h, fill);
+    gr.DrawRect(rect.x + <span class="tok-number">0.5</span>, rect.y + <span class="tok-number">0.5</span>, rect.w - <span class="tok-number">1</span>, rect.h - <span class="tok-number">1</span>,
+        <span class="tok-number">1</span>, active ? COLOR.accent : COLOR.border);
+    <span class="tok-keyword">const</span> textW = gr.CalcTextWidth(rect.text, CONTROL_FONT);
+    gr.DrawString(rect.text, CONTROL_FONT, textColor,
+        rect.x + (rect.w - textW) * <span class="tok-number">0.5</span>, rect.y + <span class="tok-number">3</span>, textW + <span class="tok-number">2</span>, rect.h - <span class="tok-number">4</span>);
+}
+
+<span class="tok-keyword">function</span> drawHeader(gr) {
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, window.Width, HEADER_H, COLOR.header);
+    gr.FillSolidRect(<span class="tok-number">0</span>, HEADER_H - <span class="tok-number">1</span>, window.Width, <span class="tok-number">1</span>, COLOR.border);
+    gr.DrawString(<span class="tok-string">&#39;Visualization demo&#39;</span>, TITLE_FONT, COLOR.text,
+        <span class="tok-number">10</span>, <span class="tok-number">6</span>, Math.max(<span class="tok-number">0</span>, window.Width - <span class="tok-number">20</span>), <span class="tok-number">22</span>);
+    gr.DrawString(<span class="tok-string">&#39;Engine ms&#39;</span>, CONTROL_FONT, COLOR.muted, <span class="tok-number">10</span>, <span class="tok-number">37</span>, <span class="tok-number">70</span>, <span class="tok-number">18</span>);
+    gr.DrawString(<span class="tok-string">&#39;Paint fps&#39;</span>, CONTROL_FONT, COLOR.muted, <span class="tok-number">236</span>, <span class="tok-number">37</span>, <span class="tok-number">70</span>, <span class="tok-number">18</span>);
+    gr.DrawString(<span class="tok-string">&#39;Backend&#39;</span>, CONTROL_FONT, COLOR.muted, <span class="tok-number">448</span>, <span class="tok-number">37</span>, <span class="tok-number">60</span>, <span class="tok-number">18</span>);
+    gr.SetSmoothingMode(SmoothingMode.HighQuality);
+    <span class="tok-keyword">try</span> {
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; controlRects.length; ++i) drawButton(gr, controlRects[i], i);
+    }
+    <span class="tok-keyword">finally</span> {
+        gr.SetSmoothingMode(SmoothingMode.Default);
+    }
+
+    <span class="tok-keyword">const</span> hintX = <span class="tok-number">640</span>;
+    <span class="tok-keyword">if</span> (window.Width &gt; hintX + <span class="tok-number">120</span>) {
+        gr.DrawString(<span class="tok-string">&#39;Click any tile to switch its preset&#39;</span>, CONTROL_FONT, COLOR.muted,
+            hintX, <span class="tok-number">38</span>, window.Width - hintX - <span class="tok-number">10</span>, <span class="tok-number">18</span>);
+    }
+}
+
+<span class="tok-keyword">function</span> drawTile(gr, tile, rect, index) {
+    <span class="tok-keyword">if</span> (rect.w &lt;= <span class="tok-number">0</span> || rect.h &lt;= <span class="tok-number">0</span>) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">const</span> hovered = index === hoveredTile;
+    gr.FillSolidRect(rect.x, rect.y, rect.w, rect.h,
+        hovered ? COLOR.tileHover : COLOR.tile);
+
+    <span class="tok-keyword">const</span> drawX = rect.x + <span class="tok-number">4</span>;
+    <span class="tok-keyword">const</span> drawY = rect.y + TILE_LABEL_H;
+    <span class="tok-keyword">const</span> drawW = Math.max(<span class="tok-number">0</span>, rect.w - <span class="tok-number">8</span>);
+    <span class="tok-keyword">const</span> drawH = Math.max(<span class="tok-number">0</span>, rect.h - TILE_LABEL_H - <span class="tok-number">4</span>);
+    <span class="tok-keyword">if</span> (isStereoMeter(tile) &amp;&amp; tile.visuals &amp;&amp; drawW &gt; <span class="tok-number">0</span> &amp;&amp; drawH &gt; <span class="tok-number">0</span>) {
+        <span class="tok-keyword">const</span> channelGap = <span class="tok-number">4</span>;
+        <span class="tok-keyword">const</span> firstH = Math.max(<span class="tok-number">0</span>, Math.floor((drawH - channelGap) * <span class="tok-number">0.5</span>));
+        <span class="tok-keyword">const</span> secondH = Math.max(<span class="tok-number">0</span>, drawH - channelGap - firstH);
+        <span class="tok-keyword">try</span> {
+            tile.visuals[<span class="tok-number">0</span>].Draw(gr, drawX, drawY, drawW, firstH);
+            tile.visuals[<span class="tok-number">1</span>].Draw(gr, drawX, drawY + firstH + channelGap, drawW, secondH);
+        } <span class="tok-keyword">catch</span> (e) {
+            console.log(<span class="tok-string">&#39;Visualization showcase: &#39;</span> + tile.name + <span class="tok-string">&#39;: &#39;</span> + e);
+        }
+    } <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (tile.visual &amp;&amp; drawW &gt; <span class="tok-number">0</span> &amp;&amp; drawH &gt; <span class="tok-number">0</span>) {
+        <span class="tok-keyword">try</span> {
+            tile.visual.Draw(gr, drawX, drawY, drawW, drawH);
+        } <span class="tok-keyword">catch</span> (e) {
+            console.log(<span class="tok-string">&#39;Visualization showcase: &#39;</span> + tile.name + <span class="tok-string">&#39;: &#39;</span> + e);
+        }
+    }
+
+    gr.FillSolidRect(rect.x, rect.y, rect.w, TILE_LABEL_H,
+        hovered ? COLOR.tileHover : COLOR.tile);
+    <span class="tok-keyword">const</span> labelX = rect.x + <span class="tok-number">6</span>;
+    <span class="tok-keyword">const</span> labelY = rect.y + <span class="tok-number">2</span>;
+    gr.DrawString(tile.name, LABEL_FONT, COLOR.text,
+        labelX, labelY, Math.max(<span class="tok-number">0</span>, rect.w - <span class="tok-number">12</span>), TILE_LABEL_H - <span class="tok-number">2</span>);
+    <span class="tok-keyword">const</span> nameW = gr.CalcTextWidth(tile.name, LABEL_FONT);
+    <span class="tok-keyword">const</span> metaX = labelX + nameW + <span class="tok-number">5</span>;
+    gr.DrawString(<span class="tok-string">&#39;| &#39;</span> + describeTile(tile), META_FONT, COLOR.muted,
+        metaX, labelY + <span class="tok-number">2</span>, Math.max(<span class="tok-number">0</span>, rect.x + rect.w - metaX - <span class="tok-number">5</span>), TILE_LABEL_H - <span class="tok-number">4</span>);
+
+    gr.DrawRect(rect.x + <span class="tok-number">0.5</span>, rect.y + <span class="tok-number">0.5</span>, Math.max(<span class="tok-number">0</span>, rect.w - <span class="tok-number">1</span>),
+        Math.max(<span class="tok-number">0</span>, rect.h - <span class="tok-number">1</span>), hovered ? <span class="tok-number">1.5</span> : <span class="tok-number">1</span>,
+        hovered ? COLOR.accent : COLOR.border);
+}
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, window.Width, window.Height, COLOR.background);
+    <span class="tok-keyword">if</span> (switchingBackend) <span class="tok-keyword">return</span>;
+    updateLayout();
+    drawHeader(gr);
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; tiles.length; ++i) drawTile(gr, tiles[i], tileRects[i], i);
+}
+
+<span class="tok-keyword">function</span> on_mouse_move(x, y) {
+    updateLayout();
+    <span class="tok-keyword">const</span> nextControl = hitControl(x, y);
+    <span class="tok-keyword">const</span> nextTile = nextControl === -<span class="tok-number">1</span> ? hitTile(x, y) : -<span class="tok-number">1</span>;
+    <span class="tok-keyword">if</span> (nextControl !== hoveredControl || nextTile !== hoveredTile) {
+        hoveredControl = nextControl;
+        hoveredTile = nextTile;
+        window.Repaint();
+    }
+}
+
+<span class="tok-keyword">function</span> on_mouse_leave() {
+    <span class="tok-keyword">if</span> (hoveredControl !== -<span class="tok-number">1</span> || hoveredTile !== -<span class="tok-number">1</span>) {
+        hoveredControl = -<span class="tok-number">1</span>;
+        hoveredTile = -<span class="tok-number">1</span>;
+        window.Repaint();
+    }
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_up(x, y) {
+    updateLayout();
+    <span class="tok-keyword">const</span> control = hitControl(x, y);
+    <span class="tok-keyword">if</span> (control !== -<span class="tok-number">1</span>) {
+        <span class="tok-keyword">const</span> selected = controlRects[control];
+        <span class="tok-keyword">if</span> (selected.group === <span class="tok-string">&#39;engine&#39;</span>) setEngineInterval(selected.value);
+        <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (selected.group === <span class="tok-string">&#39;paint&#39;</span>) setPaintRate(selected.value);
+        <span class="tok-keyword">else</span> setDrawMode(selected.value);
+        window.Repaint();
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">const</span> tile = hitTile(x, y);
+    <span class="tok-keyword">if</span> (tile !== -<span class="tok-number">1</span>) {
+        cycleTile(tile);
+        window.Repaint();
+    }
+}
+
+<span class="tok-keyword">function</span> on_script_unload() {
+    <span class="tok-keyword">if</span> (paintTimer) clearInterval(paintTimer);
+    vis.UpdateIntervalMs = INITIAL_ENGINE_INTERVAL;
+}
+
+setEngineInterval(engineInterval);
+createDrawingResources();
+<span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> tile <span class="tok-keyword">of</span> tiles) createOrUpdateTile(tile, <span class="tok-literal">true</span>);
+setPaintRate(paintRate);
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

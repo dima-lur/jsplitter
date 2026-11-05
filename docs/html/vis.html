@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>vis — JSplitter API</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link active" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryReader">
+        <a class="nav-link nav-page-link" href="BinaryReader.html">BinaryReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryWriter">
+        <a class="nav-link nav-page-link" href="BinaryWriter.html">BinaryWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
+        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbWindow">
+        <a class="nav-link nav-page-link" href="FbWindow.html">FbWindow</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteDatabase">
+        <a class="nav-link nav-page-link" href="SQLiteDatabase.html">SQLiteDatabase</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteStatement">
+        <a class="nav-link nav-page-link" href="SQLiteStatement.html">SQLiteStatement</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextReader">
+        <a class="nav-link nav-page-link" href="TextReader.html">TextReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextWriter">
+        <a class="nav-link nav-page-link" href="TextWriter.html">TextWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><a class="nav-link" href="module-ESModules.html">ESModules</a><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>vis</b></div>
+        
+    <article class="api-item" id="vis" data-kind="namespace" data-name="vis">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-namespace">namespace</span></div>
+                <h2><a class="anchor" href="#vis">vis</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:108</div>
+        </header>
+        
+        
+        <div class="description"><p>Creates visualizations and manages the per-panel native audio analysis service.<br> For a guided introduction, see <a href="module-Visualizations.html#Visualizations">Visualization API</a>.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+        
+    <article class="api-item" id="AudioFormat" data-kind="property" data-name="audioformat">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#AudioFormat">AudioFormat</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:123</div>
+        </header>
+        <pre class="signature"><code>AudioFormat: ?<a class="type-link" href="globals.html#AudioFormat">AudioFormat</a></code></pre>
+        
+        <div class="description"><p>Returns a fresh snapshot of the PCM format currently received by the panel's visualization engine, or <b>null</b> when there is no current audio stream. See <a href="globals.html#AudioFormat">AudioFormat</a> for the returned object properties.<br> Channel names can be passed to visualization <b>Channel</b>, <b>LeftChannel</b>, and <b>RightChannel</b> properties.<br> Paused playback retains the last format. The property is <b>null</b> when the engine has no current format, including stopped playback or before the first audio chunk. Reading it does not create or start the visualization engine. <p><b>Example:</b></p></p>
+<pre class="description-code language-js"><code><span class="tok-keyword">const</span> format = vis.AudioFormat;
+<span class="tok-keyword">if</span> (format) {
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> channel <span class="tok-keyword">of</span> format.Channels) {
+        console.log(channel.Index + <span class="tok-string">&quot;: &quot;</span> + channel.Names.join(<span class="tok-string">&quot;, &quot;</span>));
+    }
+}</code></pre></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example source</h3>
+            <div class="source-links"><a class="source-link" href="source-samples-vis-Builtin---Channel-Explorer.js.html"><span>samples/vis/Builtin - Channel Explorer.js</span><small>open source</small></a></div>
+        </section>
+    </article>
+
+    <article class="api-item" id="ShaderCacheMaxBytes" data-kind="property" data-name="shadercachemaxbytes">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#ShaderCacheMaxBytes">ShaderCacheMaxBytes</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:185</div>
+        </header>
+        <pre class="signature"><code>ShaderCacheMaxBytes: number = 16777216</code></pre>
+        
+        <div class="description"><p>Approximate CPU-memory limit for retained HLSL source/profile strings and compiled DXBC in the shared native LRU cache, in <b>bytes</b>. Default: <b>16777216</b> (16 MiB); allowed range: <b>0–1073741824</b> (1 GiB). Both the byte limit and <a href="vis.html#ShaderCacheMaxEntries">ShaderCacheMaxEntries</a> must be satisfied; zero in either property disables caching. Changes take effect immediately and are not persisted across restarts. Does not include GPU memory.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>See also</h3>
+            <ul class="see-also-list"><li><p><a href="vis.html#ShaderCacheStats">vis.ShaderCacheStats</a></p></li></ul>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="ShaderCacheMaxEntries" data-kind="property" data-name="shadercachemaxentries">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#ShaderCacheMaxEntries">ShaderCacheMaxEntries</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:172</div>
+        </header>
+        <pre class="signature"><code>ShaderCacheMaxEntries: number = 128</code></pre>
+        
+        <div class="description"><p>Maximum number of HLSL-to-DXBC programs retained in the shared native LRU cache. Default: <b>128</b>; allowed range: <b>0–4096</b>. The limit applies across all JSplitter panels and takes effect immediately. Set to zero to disable this cache. Changing the value can evict entries, but does not interrupt shader visualizations that are already running. This setting is not persisted across foobar2000 restarts.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>See also</h3>
+            <ul class="see-also-list"><li><p><a href="vis.html#ShaderCacheMaxBytes">vis.ShaderCacheMaxBytes</a></p></li><li><p><a href="vis.html#ShaderCacheStats">vis.ShaderCacheStats</a></p></li></ul>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="ShaderCacheStats" data-kind="property" data-name="shadercachestats">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#ShaderCacheStats">ShaderCacheStats</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:198</div>
+        </header>
+        <pre class="signature"><code>ShaderCacheStats: <a class="type-link" href="globals.html#ShaderCacheStats">ShaderCacheStats</a></code></pre>
+        
+        <div class="description"><p>Snapshot of five statistics from the process-wide HLSL compilation cache. Each read creates a new object; the numbers are not live-updating properties. See <a href="globals.html#ShaderCacheStats">ShaderCacheStats</a> for its five fields. Read the limits separately via <a href="vis.html#ShaderCacheMaxEntries">ShaderCacheMaxEntries</a> and <a href="vis.html#ShaderCacheMaxBytes">ShaderCacheMaxBytes</a>. <a href="d2d.html#Compile">d2d.Compile</a> and <a href="d2d.html#CompileAsync">d2d.CompileAsync</a> do not populate this cache; shader HLSL compiled by <a href="vis.html#CreateAsync">CreateAsync</a> does. <p><b>Example:</b></p></p>
+<pre class="description-code language-js"><code><span class="tok-keyword">const</span> s = vis.ShaderCacheStats;
+console.log(<span class="tok-string">`${s.Entries}/${vis.ShaderCacheMaxEntries} shaders, `</span> +
+    <span class="tok-string">`${(s.Bytes / 1048576).toFixed(2)} MiB; `</span> +
+    <span class="tok-string">`${s.Hits} hits, ${s.Misses} misses, ${s.Evictions} evictions`</span>);</code></pre></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="ShaderFlags" data-kind="property" data-name="shaderflags">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#ShaderFlags">ShaderFlags</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:159</div>
+        </header>
+        <pre class="signature"><code>ShaderFlags: number = 0x8008</code></pre>
+        
+        <div class="description"><p>HLSL compiler flags used by subsequent <a href="vis.html#CreateAsync">CreateAsync</a> calls in this panel. Default: <b>0x8008</b>, combining optimization level 3 and row-major matrix packing. Accepts an unsigned 32-bit bitmask; see <a href="module-Flags.html#D2DCompileFlags">D2DCompileFlags</a>. The mask is forwarded unchanged to the compiler for every HLSL stage in the call. Like <a href="vis.html#ShaderTarget">ShaderTarget</a>, it is captured at creation time and does not affect supplied DXBC or the separate defaults of <a href="d2d.html#Compile">d2d.Compile</a> and <a href="d2d.html#CompileAsync">d2d.CompileAsync</a>. Target and flags are part of the native shader-cache key.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>See also</h3>
+            <ul class="see-also-list"><li><p><a href="vis.html#ShaderTarget">vis.ShaderTarget</a></p></li></ul>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="ShaderTarget" data-kind="property" data-name="shadertarget">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#ShaderTarget">ShaderTarget</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:147</div>
+        </header>
+        <pre class="signature"><code>ShaderTarget: string = &quot;ps_4_0&quot;</code></pre>
+        
+        <div class="description"><p>HLSL compiler profile used by subsequent <a href="vis.html#CreateAsync">CreateAsync</a> calls in this panel. Default: <b>"ps_4_0"</b>. Allowed: <b>"ps_4_0"</b>, <b>"ps_4_1"</b>, <b>"ps_5_0"</b>. Each call captures the profile for all its HLSL stages. Changing it does not alter pending compilations, existing visualizations or supplied DXBC. The chosen profile must be supported by the GPU. This property does not change the defaults of <a href="d2d.html#Compile">d2d.Compile</a> or <a href="d2d.html#CompileAsync">d2d.CompileAsync</a>.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>See also</h3>
+            <ul class="see-also-list"><li><p><a href="vis.html#ShaderFlags">vis.ShaderFlags</a></p></li></ul>
+        </section>
+        
+    </article>
+
+    <article class="api-item" id="UpdateIntervalMs" data-kind="property" data-name="updateintervalms">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span></div>
+                <h2><a class="anchor" href="#UpdateIntervalMs">UpdateIntervalMs</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:114</div>
+        </header>
+        <pre class="signature"><code>UpdateIntervalMs: number = 16</code></pre>
+        
+        <div class="description"><p>Native audio analysis update interval, in milliseconds.<br> Default: <b>16</b>. Accepts unsigned integer milliseconds from 1 to 4,294,967,295. This changes the cadence of the shared audio engine, not the panel repaint interval or shader feedback cadence.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="Create" data-kind="method" data-name="create">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#Create">Create</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:218</div>
+        </header>
+        <pre class="signature"><code>Create(source_id, source_params, renderer)</code></pre>
+        
+        <div class="description"><p>Creates a visualization with a built-in renderer or JavaScript drawing callback synchronously.<br> <b>source_id</b> selects one of six native audio sources. Use a numeric source ID (0–5) or a named constant from <a href="module-Flags.html#VisSourceType">VisSourceType</a> after loading <b>docs/Flags.js</b> with <a href="globals.html#include">include</a>. Omitted, null or undefined <b>source_params</b> and <b>renderer</b> use the defaults. When a source snapshot is available, a callback receives <b>(gr, x, y, width, height, data)</b> when <a href="Visualization.html#Draw">Draw</a> is called; native analysis still prepares its data. See <a href="module-Visualizations.html#Visualizations">Visualization API</a> for source settings, built-in renderer settings and callback data. Use <a href="vis.html#CreateAsync">CreateAsync</a> for HLSL/DXBC renderers. <p><b>Example:</b></p></p>
+<pre class="description-code language-js"><code>include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
+<span class="tok-keyword">const</span> waveform = vis.Create(VisSourceType.Waveform);
+<span class="tok-keyword">const</span> envelope = vis.Create(VisSourceType.Waveform, { points: <span class="tok-number">256</span> }, { style: <span class="tok-string">&quot;envelope&quot;</span> });</code></pre></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>source_id</code></td><td><code>number</code></td><td><p>Numeric audio source ID (0-5). See <a href="module-Flags.html#VisSourceType">VisSourceType</a></p></td></tr><tr><td><code>source_params</code><span class="mini-flag">optional</span></td><td><code>Object</code></td><td><p>Initial native source analysis settings or null.</p></td></tr><tr><td><code>renderer</code><span class="mini-flag">optional</span></td><td><code>Object|function</code></td><td><p>Built-in display settings or JS drawing callback.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code><a class="type-link" href="Visualization.html#Visualization">Visualization</a></code></div>
+        </section>
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example sources</h3>
+            <div class="source-links"><a class="source-link" href="source-samples-vis-Builtin---Waveform.js.html"><span>samples/vis/Builtin - Waveform.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-Builtin---Spectrum.js.html"><span>samples/vis/Builtin - Spectrum.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-Builtin---Peak-Meter.js.html"><span>samples/vis/Builtin - Peak Meter.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-Builtin---VU-Meter.js.html"><span>samples/vis/Builtin - VU Meter.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-Builtin---Spectrogram.js.html"><span>samples/vis/Builtin - Spectrogram.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-Builtin---Vectorscope.js.html"><span>samples/vis/Builtin - Vectorscope.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-Builtin---Interactive-Showcase.js.html"><span>samples/vis/Builtin - Interactive Showcase.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-JS---Waveform.js.html"><span>samples/vis/JS - Waveform.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-JS---Spectrum.js.html"><span>samples/vis/JS - Spectrum.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-JS---Peak-Meter.js.html"><span>samples/vis/JS - Peak Meter.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-JS---VU-Meter.js.html"><span>samples/vis/JS - VU Meter.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-JS---Spectrogram.js.html"><span>samples/vis/JS - Spectrogram.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-JS---Vectorscope.js.html"><span>samples/vis/JS - Vectorscope.js</span><small>open source</small></a></div>
+        </section>
+    </article>
+
+    <article class="api-item" id="CreateAsync" data-kind="method" data-name="createasync">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#CreateAsync">CreateAsync</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:254</div>
+        </header>
+        <pre class="signature"><code>CreateAsync(source_id, source_params, renderer)</code></pre>
+        
+        <div class="description"><p>Creates a shader visualization and returns a Promise resolving to it. Requires a <a href="globals.html#VisualizationShaderRenderer">VisualizationShaderRenderer</a>; built-in settings and JavaScript drawing callbacks use <a href="vis.html#Create">Create</a> instead. <p>HLSL stages are compiled off the UI thread using the current <a href="vis.html#ShaderTarget">ShaderTarget</a> and <a href="vis.html#ShaderFlags">ShaderFlags</a> and can be reused through the shared shader cache. Precompiled DXBC bypasses HLSL compilation. Configuration, compilation and creation failures reject the Promise.</p> <p>Draw only after the Promise resolves, with <a href="window.html#DrawMode">window.DrawMode</a> set to 1 (Direct2D). Creation does not schedule repaints. Source runtime properties remain available; shader programs and pipeline structure are fixed at creation time, while <a href="Visualization.html#FeedbackIntervalMs">FeedbackIntervalMs</a> remains adjustable.</p> <p><b>Example:</b></p></p>
+<pre class="description-code language-js"><code>include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
+window.DrawMode = <span class="tok-number">1</span>;
+<span class="tok-keyword">let</span> visual = <span class="tok-literal">null</span>;
+<span class="tok-comment">// &#39;hlsl&#39; contains a complete source shader; see the linked examples.</span>
+vis.CreateAsync(VisSourceType.Waveform, <span class="tok-literal">null</span>, { shader: hlsl })
+    .then(v =&gt; { visual = v; window.Repaint(); })
+    .<span class="tok-keyword">catch</span>(e =&gt; console.log(<span class="tok-string">&quot;Visualization creation failed: &quot;</span> + e));</code></pre></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>source_id</code></td><td><code>number</code></td><td><p>Numeric audio source ID (0–5). See <a href="module-Flags.html#VisSourceType">VisSourceType</a></p></td></tr><tr><td><code>source_params</code></td><td><code>Object</code></td><td><p>Initial native source analysis settings, or null/undefined to use defaults.</p></td></tr><tr><td><code>renderer</code></td><td><code><a class="type-link" href="globals.html#VisualizationShaderRenderer">VisualizationShaderRenderer</a></code></td><td><p>Shader pipeline configuration.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        <section class="member-section compact-section">
+            <h3>Returns</h3>
+            <div><code>Promise&lt;<a class="type-link" href="Visualization.html#Visualization">Visualization</a>&gt;</code></div>
+        </section>
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example sources</h3>
+            <div class="source-links"><a class="source-link" href="source-samples-vis-Shader---Waveform.js.html"><span>samples/vis/Shader - Waveform.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-Shader---Spectrum.js.html"><span>samples/vis/Shader - Spectrum.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-Shader---Peak-Meter.js.html"><span>samples/vis/Shader - Peak Meter.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-Shader---VU-Meter.js.html"><span>samples/vis/Shader - VU Meter.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-Shader---Spectrogram.js.html"><span>samples/vis/Shader - Spectrogram.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-Shader---Vectorscope.js.html"><span>samples/vis/Shader - Vectorscope.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-Shader---Image-Post.js.html"><span>samples/vis/Shader - Image Post.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-Shader---Feedback-and-Two-Posts.js.html"><span>samples/vis/Shader - Feedback and Two Posts.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-Shader---MilkDrop-0101.js.html"><span>samples/vis/Shader - MilkDrop 0101.js</span><small>open source</small></a><a class="source-link" href="source-samples-vis-Shader---MilkDrop-ALL.js.html"><span>samples/vis/Shader - MilkDrop ALL.js</span><small>open source</small></a></div>
+        </section>
+    </article></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

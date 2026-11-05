@@ -132,6 +132,50 @@ function on_font_changed() { }
 function on_get_album_art_done(handle, art_id, image, image_path) { }
 
 /**
+ * Called when an Input Method Editor (IME) starts composing temporary text for the focused panel.
+ * This includes input methods such as Windows handwriting recognition and East Asian IMEs.<br>
+ * <br>
+ * The composition is not committed text: it may change or be cancelled before input is finalized.
+ * Use {@link module:Callbacks.on_ime_update on_ime_update} to display the current temporary text.
+ * Final committed characters are delivered separately through {@link module:Callbacks.on_char on_char}.<br>
+ * <br>
+ * The panel must have keyboard focus. Scripts implementing a text field should enable
+ * <b>features.grab_focus</b> in {@link window.DefineScript}. For custom-drawn text fields, the script can use
+ * {@link window.SetImePosition} whenever its insertion point moves so Windows can place IME UI nearby.
+ *
+ * @sourceFile ../../component/samples/basic/IME Input.js
+ * @memberof module:Callbacks
+ */
+function on_ime_start() { }
+
+/**
+ * Called when the temporary text currently being composed by an Input Method Editor (IME) changes.<br>
+ * <br>
+ * The supplied text is a live preview, not committed input. It can grow, shrink, be replaced,
+ * become empty, or be cancelled entirely before {@link module:Callbacks.on_ime_end on_ime_end}.
+ * Do not append it permanently to your text buffer; committed characters are delivered through
+ * {@link module:Callbacks.on_char on_char}.
+ *
+ * @sourceFile ../../component/samples/basic/IME Input.js
+ * @memberof module:Callbacks
+ * @param {string} text Current temporary IME text.
+ * @param {number} cursor Cursor position within <b>text</b>.
+ */
+function on_ime_update(text, cursor) { }
+
+/**
+ * Called when the current Input Method Editor (IME) composition ends.<br>
+ * <br>
+ * This callback only reports that the active IME composition has ended. If the IME commits text,
+ * the final characters are delivered separately through {@link module:Callbacks.on_char on_char};
+ * if it ends without committing text, no corresponding character callbacks are generated.
+ *
+ * @sourceFile ../../component/samples/basic/IME Input.js
+ * @memberof module:Callbacks
+ */
+function on_ime_end() { }
+
+/**
  * Called when focused item in playlist has been changed.
  *
  * @memberof module:Callbacks
@@ -370,7 +414,7 @@ function on_mouse_wheel_h(step) { }
 
 /**
  * Called in other panels after {@link window.NotifyOthers} is executed.<br>
- * This callback belongs to the legacy NotifyOthers compatibility path. New code that needs asynchronous structured-clone messaging between panels and/or Workers should prefer {@link BroadcastChannel}.<br>
+ * This callback belongs to the legacy {@link window.NotifyOthers NotifyOthers} compatibility path. New code that needs asynchronous structured-clone messaging between panels and/or Workers should prefer {@link BroadcastChannel}.<br>
  * <br>
  * <b>!!! Beware !!!</b><br>
  * 1. Data from <b>info</b> argument is only accessible inside {@link module:Callbacks.on_notify_data on_notify_data} callback:
@@ -456,7 +500,7 @@ function on_playback_order_changed(new_order_index) { }
  * @memberof module:Callbacks
  * @param {boolean} state true when paused, false when unpaused.
  */
-function on_playback_pauseQueueChangeType(state) { }
+function on_playback_pause(state) { }
 
 /**
  * @memberof module:Callbacks
@@ -694,12 +738,12 @@ function on_http_request_done(task_id, success, response_text, status, response_
 function PerformanceObserverCallback (entries, observer) { }
 
 /**
- * Called when a process started by utils.RunCmdAsync finishes, fails to start, or times out.
+ * Called when a process started by {@link utils.RunCmdAsync utils.RunCmdAsync} finishes, fails to start, or times out.
  * 
  * @memberof module:Callbacks
  *
  * @param {number} task_id
- * Task id returned by utils.RunCmdAsync.<br>
+ * Task id returned by {@link utils.RunCmdAsync utils.RunCmdAsync}.<br>
  * @param {boolean} success
  * true only when the process was started, finished before timeout, and exited with code 0.<br>
  * false when the process fails to start, times out, or exits with a non-zero code.<br>

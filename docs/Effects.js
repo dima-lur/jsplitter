@@ -1,7 +1,5 @@
-/**
+﻿/**
  * Direct2D effects<br>
- * <div class="doc-note warning"><b>Direct2D versions earlier than 1.1 are not supported.</b><br>
- * Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div>
  * 
  * Not all effects in this module supported by minimum Direct2D version.<br>
  * {@link d2d.Effect} returns null if effect is not supported.<br>
@@ -70,7 +68,7 @@
  *         float4 color = InputTexture.Sample(InputSampler, input.texelSpacePos.xy);
  * 	
  *         // Invert RGB, keep alpha
- *         return float4(1.0 - color.rgb, color.a) * color.a;
+ *         return float4((1.0 - color.rgb) * color.a, color.a);
  *     }
  * `;
  * 
@@ -1347,7 +1345,7 @@ const StraightenScaleMode = {
 };
 
 /**
- * Used in {@link module:Effects.Effects Effects.Scale}<br>
+ * Used in {@link Effects.ConvolveMatrix Effects.ConvolveMatrix}<br>
  * @memberof module:Effects
  * @enum {number}
  * @property NearestNeighbor Samples the nearest single point and uses that. This mode uses less processing time, but outputs the lowest quality image.
@@ -1538,7 +1536,7 @@ const HdrToneMapDisplayMode = {
 };
 
 /**
- * Used in {@link module:Effects Effects.TurbulenceNoise}<br>
+ * Used in {@link Effects.Turbulence Effects.Turbulence}<br>
  * @memberof module:Effects
  * @enum {number}
  * @property FractalSum Computes a sum of the octaves, shifting the output range from [-1, 1], to [0, 1].

@@ -4,7 +4,7 @@
 
 /**
  * Evaluates JavaScript from a file in the current panel or Worker realm.<br>
- * Similar to <b>eval({@link utils.ReadTextFile}(path))</b>, but provides more features:<br>
+ * Evaluates the text loaded by {@link utils.ReadTextFile} and provides additional features:<br>
  * - Has <b>include guards</b> - a file is evaluated only once per realm unless <b>always_evaluate</b> is used.<br>
  * - Panel-side includes also use compiled-script caching; Worker includes keep their own per-Worker include guard.<br>
  * - Has better error reporting.<br>
@@ -12,7 +12,7 @@
  * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. The currently executing script file is tried first when available.<br>
  * For a file-backed Worker, this makes its own directory the natural root for nested relative {@link include} calls.<br>
  * Configured panel/package script roots are then considered where applicable.<br>
- * <b>${fb.ComponentPath}</b> is the final fallback.
+ * {@link fb.ComponentPath} is the final fallback.
  * @worker
  * @param {string} path Absolute or relative path to JavaScript file.
  * @param {object=} [options=undefined]
@@ -72,7 +72,7 @@ function setTimeout(func, delay, ...func_args) { } // (uint)
 function ActiveXObject(name) {
 
     /**
-     * Creates an <b>ActiveXObject</b> that contains an object of type (VT_ARRAY|SOME_TYPE).
+     * Creates an {@link ActiveXObject ActiveXObject} that contains an object of type (VT_ARRAY|SOME_TYPE).
      *
      * @static
      * 
@@ -561,8 +561,8 @@ let fb = {
 
     /** 
      * It can be used for displaying the volume from UPnP devices.<br>
-     * It will return a value of -1 when using a normal device and that also indicates that fb.Volume is writable.<br>
-     * When a custom volume control is active, you can not use {@link fb.Volume} and must use {@link fb.VolumeUp} / {@link fb.VolumeDown} / {@link fb.VolumeMute}.
+     * It will return a value of -1 when using a normal device and that also indicates that {@link fb.Volume Volume} is writable.<br>
+     * When a custom volume control is active, you can not use {@link fb.Volume Volume} and must use {@link fb.VolumeUp VolumeUp} / {@link fb.VolumeDown VolumeDown} / {@link fb.VolumeMute VolumeMute}.
      * @type {boolean}
      * @readonly
      * @worker
@@ -717,7 +717,7 @@ let fb = {
 
     /**
      * Checks Clipboard contents are handles or a file selection from Windows Explorer. Use in conjunction
-     * with {@link fb.GetClipboardContents}.
+     * with {@link fb.GetClipboardContents GetClipboardContents}.
      *
      * @return {boolean}
      * @worker
@@ -795,7 +795,7 @@ let fb = {
      * <br>
      * Quick tips:<br>
      * - If you need only to drag from your panel with copy (i.e. without physically moving them):
-     *      use only fb.DoDragDrop(handles, DROPEFFECT_COPY | DROPEFFECT_LINK).<br>
+     *      use only {@link fb.DoDragDrop DoDragDrop}(handles, DROPEFFECT_COPY | DROPEFFECT_LINK).<br>
      * - If you need only to receive drop to your panel with copy:
      *      handle <b>on_drop_*()</b> callbacks, while setting action.effect argument to (DROPEFFECT_COPY | DROPEFFECT_LINK).<br>
      * <br>
@@ -811,8 +811,8 @@ let fb = {
      * - DROPEFFECT_LINK should be used as fallback in case effect argument does not have DROPEFFECT_COPY (===1), since some external drops only allow DROPEFFECT_LINK effect.<br>
      * - Changing effect on key modifiers is nice (to be in line with native Windows behaviour): see the example below.<br>
      * <br>
-     * Note: due to the asynchronous nature of event handling, {@link fb.DoDragDrop} might exit before {@link module:Callbacks.on_drag_drop on_drag_drop} callback is triggered
-     * when dropping data on the same panel as the one that had a call to {@link fb.DoDragDrop}.<br>
+     * Note: due to the asynchronous nature of event handling, {@link fb.DoDragDrop DoDragDrop} might exit before {@link module:Callbacks.on_drag_drop on_drag_drop} callback is triggered
+     * when dropping data on the same panel as the one that had a call to {@link fb.DoDragDrop DoDragDrop}.<br>
      * <br>
      * Related callbacks: {@link module:Callbacks.on_drag_enter on_drag_enter}, {@link module:Callbacks.on_drag_drop on_drag_drop},
      * {@link module:Callbacks.on_drag_over on_drag_over}, {@link module:Callbacks.on_drag_leave on_drag_leave}
@@ -853,7 +853,7 @@ let fb = {
      * Every item of the array is object with the following properties:<br>
      * <b>Checked</b>: boolean<br>
      * <b>Disabled</b>: boolean<br>
-     * <b>FullPath</b>: string, the same full path you'd supply to fb.RunMainMenuCommand<br>
+     * <b>FullPath</b>: string, the same full path you'd supply to {@link fb.RunMainMenuCommand RunMainMenuCommand}<br>
      * <b>HiddenByDefault</b>: boolean<br>
      * <b>Radio</b>: boolean<br>
      * <b>Type</b>: string ("Fixed" or "Dynamic")<br>
@@ -885,7 +885,7 @@ let fb = {
     /**
      * Returns the audio streams exposed by the input decoder for <b>handle</b> as array of {@link AudioStreamInfo} objects.<br>
      * Returns an empty array when the file's input decoder does not expose stream information.
-     * Related methods: {@link fb.SetAudioStream}.
+     * Related methods: {@link fb.SetAudioStream SetAudioStream}.
      *
      * @param {FbMetadbHandle} handle
      * @return {Array<AudioStreamInfo>}
@@ -910,7 +910,7 @@ let fb = {
     /**
      * Returns PCM data from the foobar2000 visualisation stream.<br>
      * The stream is created lazily. A negative <b>offset</b> requests data before the current visualisation time; JSplitter automatically maintains the native backlog required for that offset. The first stream initialization may briefly synchronize with the foobar2000 main thread.<br>
-     * For repeated real-time processing, prefer {@link fb.GetAudioChunkTo} to write directly into a reusable <b>Float32Array</b> without creating a transient {@link FbAudioChunk}. {@link FbAudioChunk#CopyDataTo CopyDataTo} remains useful when a chunk object is already required, while {@link FbAudioChunk#Data Data} preserves its legacy allocating <b>Array</b> behaviour for compatibility.
+     * For repeated real-time processing, prefer {@link fb.GetAudioChunkTo GetAudioChunkTo} to write directly into a reusable <b>Float32Array</b> without creating a transient {@link FbAudioChunk}. {@link FbAudioChunk#CopyDataTo CopyDataTo} remains useful when a chunk object is already required, while {@link FbAudioChunk#Data Data} preserves its legacy allocating <b>Array</b> behaviour for compatibility.
      *
      * @param {number} requested_length 
      * @param {number=} [offset=0] 
@@ -924,8 +924,8 @@ let fb = {
 
     /**
      * Writes interleaved PCM samples from the foobar2000 visualisation stream directly into an existing <b>Float32Array</b>.
-     * Unlike {@link fb.GetAudioChunk}, this method does not create an {@link FbAudioChunk}; after the first sufficiently large native scratch buffer has been established, repeated calls can reuse both the native scratch storage and the JavaScript destination buffer.<br>
-     * A negative <b>offset</b> has the same backlog semantics as {@link fb.GetAudioChunk}. If <b>info</b> is supplied, it is updated in place with <b>SampleCount</b>, <b>ChannelCount</b>, <b>SampleRate</b> and <b>ChannelConfig</b>.
+     * Unlike {@link fb.GetAudioChunk GetAudioChunk}, this method does not create an {@link FbAudioChunk}; after the first sufficiently large native scratch buffer has been established, repeated calls can reuse both the native scratch storage and the JavaScript destination buffer.<br>
+     * A negative <b>offset</b> has the same backlog semantics as {@link fb.GetAudioChunk GetAudioChunk}. If <b>info</b> is supplied, it is updated in place with <b>SampleCount</b>, <b>ChannelCount</b>, <b>SampleRate</b> and <b>ChannelConfig</b>.
      *
      * @param {Float32Array} destination Destination buffer. It must have room for all interleaved PCM sample values.
      * @param {number} requested_length
@@ -939,9 +939,9 @@ let fb = {
 
     /**
      * Note: clipboard contents can be handles copied to the clipboard in other components,
-     * from {@link fb.CopyHandleListToClipboard} or a file selection, from Windows Explorer and etc.<br>
+     * from {@link fb.CopyHandleListToClipboard CopyHandleListToClipboard} or a file selection, from Windows Explorer and etc.<br>
      * <br>
-     * Performance note: validate clipboard content with {@link fb.CheckClipboardContents} before calling this method.
+     * Performance note: validate clipboard content with {@link fb.CheckClipboardContents CheckClipboardContents} before calling this method.
      *
      * @param {number=} [window_id=0] unused
      * @return {FbMetadbHandleList}
@@ -968,7 +968,7 @@ let fb = {
      * Available only in foobar2000 v1.4 and above. Throws a script error on v1.3. * <br>
      * Returns a JSON array in string form so you need to use JSON.parse() on the result.
      * <br>
-     * Related methods: {@link fb.SetDSPPreset}.
+     * Related methods: {@link fb.SetDSPPreset SetDSPPreset}.
      * 
      * @return {string}
      *
@@ -1055,7 +1055,7 @@ let fb = {
      * Available only in foobar2000 v1.4 and above. Throws a script error on v1.3. * <br>
      * Returns a JSON array in string form so you need to use JSON.parse() on the result.
      * <br>
-     * Related methods: {@link fb.SetOutputDevice}.
+     * Related methods: {@link fb.SetOutputDevice SetOutputDevice}.
      * 
      * @return {string}
      *
@@ -1131,7 +1131,7 @@ let fb = {
     GetSelection: function () { }, // (FbMetadbHandle)
 
     /**
-     * Works like {@link fb.GetSelection}, but returns a handle list.<br>
+     * Works like {@link fb.GetSelection GetSelection}, but returns a handle list.<br>
      *
      * @param {number=} [flags=0] 1 - no now playing
      * @return {FbMetadbHandleList}
@@ -1254,7 +1254,7 @@ let fb = {
      * Note: JSplitter uses a combination of panel name and command id to identify and bind the command. Hence all corresponding binds will fail
      * if the id or the panel name is changed. This also means that collision WILL occur if there are two panels with the same name.<br>
      * <br>
-     * Related methods: {@link fb.UnregisterMainMenuCommand}<br>
+     * Related methods: {@link fb.UnregisterMainMenuCommand UnregisterMainMenuCommand}<br>
      * Related callbacks: {@link module:Callbacks.on_main_menu_dynamic on_main_menu_dynamic}
      * 
      * @param {number} id
@@ -1294,9 +1294,9 @@ let fb = {
      *
      * @param {string} command
      * @param {FbMetadbHandle|FbMetadbHandleList} handle_or_handle_list Handles on which to apply context menu
-     * @param {number=} flags Same flags as {@link fb.RunContextCommand}
+     * @param {number=} flags Same flags as {@link fb.RunContextCommand RunContextCommand}
      * @return {boolean}
-     * @throws {Error} If <b>handle_or_handle_list</b> is not an <b>FbMetadbHandle</b> or <b>FbMetadbHandleList</b> object.
+     * @throws {Error} If <b>handle_or_handle_list</b> is not an {@link FbMetadbHandle FbMetadbHandle} or {@link FbMetadbHandleList FbMetadbHandleList} object.
      */
     RunContextCommandWithMetadb: function (command, handle_or_handle_list, flags) { }, // (boolean) [, flags]
 
@@ -1315,7 +1315,7 @@ let fb = {
     /**
      * Available only in foobar2000 v1.4 and above. Throws a script error on v1.3.<br>
      * <br>
-     * Related methods: {@link fb.GetDSPPresets}.
+     * Related methods: {@link fb.GetDSPPresets GetDSPPresets}.
      *
      * @param {number} idx
      *
@@ -1335,10 +1335,10 @@ let fb = {
      * <b>Available only in foobar2000 v2.0 and above</b>. Throws an {@link Error} when API is unavailable, the file does not support stream selection, or <b>index</b> is out of bounds.<br>
      * If the file is currently playing and the effective selection changes, playback is restarted so the new stream is applied immediately.<br>
      * <br>
-     * Related methods: {@link fb.GetAudioStreams}.
+     * Related methods: {@link fb.GetAudioStreams GetAudioStreams}.
      *
      * @param {FbMetadbHandle} handle
-     * @param {number} index Zero-based stream index returned by {@link fb.GetAudioStreams}.
+     * @param {number} index Zero-based stream index returned by {@link fb.GetAudioStreams GetAudioStreams}.
      * @throws {Error} If <b>handle</b> is null, foobar2000 2.0 stream selection is unavailable, the file does not support audio stream selection, or <b>index</b> is out of bounds.
      * @example
      * const handle = fb.GetFocusItem();
@@ -1356,7 +1356,7 @@ let fb = {
     /**
      * Available only in foobar2000 v1.4 and above. Throws a script error on v1.3.<br>
      * <br>
-     * Related methods: {@link fb.GetOutputDevices}.
+     * Related methods: {@link fb.GetOutputDevices GetOutputDevices}.
      *
      * @param {string} output
      * @param {string} device
@@ -1392,7 +1392,7 @@ let fb = {
     ShowLibrarySearchUI: function (query) { }, // (void)
 
     /**
-     * Opens the image viewer built in to <b>foobar2000</b>. Pass an image file path, or an {@link FbMetadbHandle}; with a handle, {@link module:Flags.AlbumArtId AlbumArtId} defaults to <b>AlbumArtId.front</b>. Album art is resolved by foobar2000 and may be embedded or external.
+     * Opens the image viewer built in to <b>foobar2000</b>. Pass an image file path, or an {@link FbMetadbHandle}; with a handle, {@link module:Flags.AlbumArtId AlbumArtId} defaults to {@link AlbumArtId.front AlbumArtId.front}. Album art is resolved by foobar2000 and may be embedded or external.
      *
      * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. This applies to the image-file argument; track handles use foobar2000 artwork lookup.
      *
@@ -1435,7 +1435,7 @@ let fb = {
 
     /**
      * Performance note: if you use the same query frequently,
-     * try caching FbTitleFormat object (by storing it somewhere),
+     * try caching {@link FbTitleFormat FbTitleFormat} object (by storing it somewhere),
      * instead of creating it every time.
      *
      * @param {string} expression
@@ -1447,7 +1447,7 @@ let fb = {
     /**
      * Unregisters a main menu item.<br>
      * <br>
-     * Related methods: {@link fb.RegisterMainMenuCommand}
+     * Related methods: {@link fb.RegisterMainMenuCommand RegisterMainMenuCommand}
      *
      * @param {number} id
      * @throws {Error} If the panel host is not fully initialized or <b>id</b> is not a registered dynamic main-menu command.
@@ -1479,7 +1479,7 @@ let fb = {
 };
 
 /**
- * DrawMode-aware graphics facade. With <b>window.DrawMode == 0</b> its resource factories use GDI+; with <b>window.DrawMode == 1</b> they create the corresponding Direct2D resources instead. A Worker uses the DrawMode captured when that Worker is created, so the same <b>gdi.*</b> calls match the parent panel graphics backend.
+ * {@link window.DrawMode DrawMode}-aware graphics facade. With {@link window.DrawMode} set to <b>0</b> its resource factories use GDI+; with {@link window.DrawMode} set to <b>1</b> they create the corresponding Direct2D resources instead. A Worker uses the {@link window.DrawMode DrawMode} captured when that Worker is created, so the same <b>gdi.*</b> calls match the parent panel graphics backend.
  *
  * @namespace
  * @worker
@@ -1501,7 +1501,7 @@ let gdi = {
      * - param3: gradient stops specified as an array with alternating position and color values for each stop (for ex.: [0.0, 0xFF000000, 0.5, 0xFFFF0000, 1.0, 0xFFFFFFFF])<br>
      * - param4: wrap mode responsible for how the gradient is repeated when drawing. See {@link module:Flags.BrushWrapMode BrushWrapMode}. Default is {@link module:Flags.BrushWrapMode BrushWrapMode.Tile}<br>
      * For type == {@link module:Flags.BrushType BrushType.Bitmap}:<br>
-     * - param1: GdiBitmap object used for drawing by brush<br>
+     * - param1: {@link GdiBitmap GdiBitmap} object used for drawing by brush<br>
      * - param2: wrap mode responsible for how the image is repeated when drawing. See {@link module:Flags.BrushWrapMode BrushWrapMode}
      * 
      * @param {BrushType} type
@@ -1526,7 +1526,7 @@ let gdi = {
     CreateImage: function (w, h) { }, // (GdiBitmap)
 
     /**
-     * Create GdiBitmap from raw pixel data in memory.
+     * Create {@link GdiBitmap GdiBitmap} from raw pixel data in memory.
      *
      * @param {Uint8Array} pixelData Raw pixel bytes
      * @param {number} width Image width in pixels
@@ -1562,7 +1562,7 @@ let gdi = {
     /**
      * Load image from file.<br>
      * <br>
-     * Performance note: consider using {@link gdi.LoadImageAsync} or {@link gdi.LoadImageAsyncV2} if there are a lot of images to load
+     * Performance note: consider using {@link gdi.LoadImageAsync LoadImageAsync} or {@link gdi.LoadImageAsyncV2 LoadImageAsyncV2} if there are a lot of images to load
      * or if the image is big.
      *
      * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
@@ -1963,7 +1963,7 @@ let plman = {
     InsertPlaylistItems: function (playlistIndex, base, handle_list, select) { }, // (void) [, select]
 
     /**
-     * Same as {@link plman.InsertPlaylistItems} except any duplicates contained in handle_list are removed.
+     * Same as {@link plman.InsertPlaylistItems InsertPlaylistItems} except any duplicates contained in handle_list are removed.
      *
      * @param {number} playlistIndex
      * @param {number} base Position in playlist
@@ -2003,9 +2003,9 @@ let plman = {
 
     /**
      * Note: returns true, if the playlist is an autoplaylist. To determine if a playlist is not an autoplaylist,
-     * but locked with something like <b>foo_utils</b> or <b>foo_playlist_attributes</b>, use with conjunction of {@link plman.IsAutoPlaylist}.
+     * but locked with something like <b>foo_utils</b> or <b>foo_playlist_attributes</b>, use with conjunction of {@link plman.IsAutoPlaylist IsAutoPlaylist}.
      * <br>
-     * Deprecated: use {@link plman.GetPlaylistLockedActions}.
+     * Deprecated: use {@link plman.GetPlaylistLockedActions GetPlaylistLockedActions}.
      *
      * @throws {Error} If <b>playlistIndex</b> is out of bounds.
      * @deprecated
@@ -2020,7 +2020,7 @@ let plman = {
     /**
      * Returns whether a redo restore point is available for specified playlist.
      * <br>
-     * Related methods: {@link plman.IsUndoAvailable}, {@link plman.Redo}, {@link plman.Undo}, {@link plman.UndoBackup}
+     * Related methods: {@link plman.IsUndoAvailable IsUndoAvailable}, {@link plman.Redo Redo}, {@link plman.Undo Undo}, {@link plman.UndoBackup UndoBackup}
      *
      * @param {number} playlistIndex
      * @return {boolean}
@@ -2033,7 +2033,7 @@ let plman = {
     /**
      * Returns whether an undo restore point is available for specified playlist.
      * <br>
-     * Related methods: {@link plman.IsRedoAvailable}, {@link plman.Redo}, {@link plman.Undo}, {@link plman.UndoBackup}
+     * Related methods: {@link plman.IsRedoAvailable IsRedoAvailable}, {@link plman.Redo Redo}, {@link plman.Undo Undo}, {@link plman.UndoBackup UndoBackup}
      *
      * @param {number} playlistIndex
      * @return {boolean}
@@ -2066,7 +2066,7 @@ let plman = {
     MovePlaylistSelection: function (playlistIndex, delta) { }, // (boolean)
 
     /**
-     * Unlike {@link plman.MovePlaylistSelection}, this has full support for non-contiguous selections and all you have to do is supply the new position index.
+     * Unlike {@link plman.MovePlaylistSelection MovePlaylistSelection}, this has full support for non-contiguous selections and all you have to do is supply the new position index.
      * 
      * @param {number} playlistIndex
      * @param {number} new_pos
@@ -2090,9 +2090,9 @@ let plman = {
     /**
      * Reverts specified playlist to the next redo restore point and generates an undo restore point.<br>
      * Note: revert operation may be not applied if the corresponding action is locked.
-     * Use {@link plman.GetPlaylistLockedActions} to check if there are any locks present.<br>
+     * Use {@link plman.GetPlaylistLockedActions GetPlaylistLockedActions} to check if there are any locks present.<br>
      * <br>
-     * Related methods: {@link plman.IsRedoAvailable}, {@link plman.IsUndoAvailable}, {@link plman.Undo}, {@link plman.UndoBackup}
+     * Related methods: {@link plman.IsRedoAvailable IsRedoAvailable}, {@link plman.IsUndoAvailable IsUndoAvailable}, {@link plman.Undo Undo}, {@link plman.UndoBackup UndoBackup}
      *
      * @param {number} playlistIndex
      * @throws {Error} If <b>playlistIndex</b> is out of bounds or redo is not available.
@@ -2104,7 +2104,7 @@ let plman = {
     /**
      * Removes the specified playlist.<br>
      * Note: if removing the active playlist, no playlist will be active after using this. You'll
-     * need to set it manually or use {@link plman.RemovePlaylistSwitch} instead.
+     * need to set it manually or use {@link plman.RemovePlaylistSwitch RemovePlaylistSwitch} instead.
      *
      * @param {number} playlistIndex
      * @return {boolean}
@@ -2117,10 +2117,10 @@ let plman = {
      * @param {number} playlistIndex
      * @param {boolean=} [crop=false] If true, then removes items that are NOT selected.
      *
-     * @example <Remove selected items from playlist>
+     * @example <caption>Remove selected items from playlist</caption>
      * plman.RemovePlaylistSelection(plman.ActivePlaylist);
      *
-     * @example <Remove items that are NOT selected>
+     * @example <caption>Remove items that are NOT selected</caption>
      * plman.RemovePlaylistSelection(plman.ActivePlaylist, true);
      * @worker
      * @mainthread
@@ -2234,7 +2234,7 @@ let plman = {
     /**
      * Blocks requested actions.<br>
      * Note: the lock can be changed only if there is no lock or if it's owned by <b>foo_uie_jsplitter</b>.
-     * The owner of the lock can be checked via {@link plman.GetPlaylistLockName}.
+     * The owner of the lock can be checked via {@link plman.GetPlaylistLockName GetPlaylistLockName}.
      * 
      * @param {number} playlistIndex
      * @param {Array<string>} lockedActions May contain the following:<br>
@@ -2284,7 +2284,7 @@ let plman = {
 
     /**
      * Shows popup window letting you edit certain autoplaylist properties.<br>
-     * Before using, check if your playlist is an autoplaylist by using {@link plman.IsAutoPlaylist};
+     * Before using, check if your playlist is an autoplaylist by using {@link plman.IsAutoPlaylist IsAutoPlaylist};
      *
      * @param {number} playlistIndex
      * @return {boolean}
@@ -2341,9 +2341,9 @@ let plman = {
     /**
      * Reverts specified playlist to the last undo restore point and generates a redo restore point.<br>
      * Note: revert operation may be not applied if the corresponding action is locked.
-     * Use {@link plman.GetPlaylistLockedActions} to check if there are any locks present.<br>
+     * Use {@link plman.GetPlaylistLockedActions GetPlaylistLockedActions} to check if there are any locks present.<br>
      * <br>
-     * Related methods: {@link plman.IsRedoAvailable}, {@link plman.IsUndoAvailable}, {@link plman.Redo}, {@link plman.UndoBackup}
+     * Related methods: {@link plman.IsRedoAvailable IsRedoAvailable}, {@link plman.IsUndoAvailable IsUndoAvailable}, {@link plman.Redo Redo}, {@link plman.UndoBackup UndoBackup}
      *
      * @param {number} playlistIndex
      * @throws {Error} If <b>playlistIndex</b> is out of bounds or undo is not available.
@@ -2353,10 +2353,10 @@ let plman = {
     Undo: function (playlistIndex) { }, // (void)
 
     /**
-     * Creates an undo restore point for the specified playlist. This will enable <b>Edit</b>><b>Undo</b> menu item after calling other {@link plman} methods that change playlist content.<br>
+     * Creates an undo restore point for the specified playlist. This will enable <b>Edit</b>>{@link plman.Undo Undo} menu item after calling other {@link plman} methods that change playlist content.<br>
      * Note: this method should be called before performing modification to the playlist.<br>
      * <br>
-     * Related methods: {@link plman.IsRedoAvailable}, {@link plman.IsUndoAvailable}, {@link plman.Redo}, {@link plman.Undo}
+     * Related methods: {@link plman.IsRedoAvailable IsRedoAvailable}, {@link plman.IsUndoAvailable IsUndoAvailable}, {@link plman.Redo Redo}, {@link plman.Undo Undo}
      * 
      * @param {number} playlistIndex
      * @throws {Error} If <b>playlistIndex</b> is out of bounds.
@@ -2538,7 +2538,7 @@ let utils = {
 
     /**
      * Indicates whether the current foobar2000 process architecture is 64-bit.
-     * This does not describe the operating system architecture; use {@link utils.IsOS64Bit} for that.
+     * This does not describe the operating system architecture; use {@link utils.IsOS64Bit IsOS64Bit} for that.
      *
      * @type {boolean}
      * @readonly
@@ -2548,7 +2548,7 @@ let utils = {
 
     /**
      * Indicates whether the operating system architecture is 64-bit.
-     * Unlike {@link utils.Is64Bit}, this value describes Windows itself and remains true when 32-bit foobar2000 runs on 64-bit Windows.
+     * Unlike {@link utils.Is64Bit Is64Bit}, this value describes Windows itself and remains true when 32-bit foobar2000 runs on 64-bit Windows.
      *
      * @type {boolean}
      * @readonly
@@ -2590,7 +2590,7 @@ let utils = {
 
     /**
      * Checks whether a font family is available to the current foobar2000 process.
-     * This includes system-installed fonts and fonts loaded with {@link utils.LoadFont}.<br>     
+     * This includes system-installed fonts and fonts loaded with {@link utils.LoadFont LoadFont}.<br>
      *
      * @param {string} name Font family name. Can be either in English or the localised name in your OS.
      * @return {boolean}
@@ -2626,7 +2626,7 @@ let utils = {
     /**
      * Copies a file.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} from
      * @param {string} to
@@ -2639,7 +2639,7 @@ let utils = {
     /**
      * Copies a folder.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} from
      * @param {string} to
@@ -2653,7 +2653,7 @@ let utils = {
     /**
      * Creates a folder.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} path
      * @return {boolean}
@@ -2673,7 +2673,7 @@ let utils = {
     /**
      * Calculates CRC32 value for file content
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} path input file path
      * @return {number} CRC32 value for input file content. If it was an error while reading file or file is empty returns 0
@@ -2689,7 +2689,7 @@ let utils = {
      * 
      * Performance note: detection algorithm is quite slow, so results should be cached as much as possible.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {number} path Path to file
      * @return {number} Codepage number on success, 0 if codepage detection failed
@@ -2702,7 +2702,7 @@ let utils = {
      * Downloads file from specified URL to save file path.
      * Result of asyncronous operation can be found in callback {@link module:Callbacks.on_download_file_done on_download_file_done}
      * 
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} url File URL
      * @param {string} path Save file path
@@ -2755,7 +2755,7 @@ let utils = {
      * Edit a text file with the default text editor. <br>
      * Default text editor can be changed via <b>Edit</b> button on the main tab of {@link window.ShowConfigureV2}.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {number} path Path to file
      * @throws {Error} If called before foobar2000 is fully initialized.
@@ -2763,7 +2763,7 @@ let utils = {
     EditTextFile: function (path) { }, // (uint)
 
     /**
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {number} path Path to file
      * @return {boolean} true, if file exists.
@@ -2774,7 +2774,7 @@ let utils = {
     /**
      * Opens system file picker dialog window
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string=} [title=undefined] Title of dialog. If empty it will be the title by system default
      * @param {string=} [default_path=undefined] Default file path to choose. If only path without file name is specified it will open specified folder
@@ -2789,10 +2789,10 @@ let utils = {
     /**
      * Various utility functions for working with file.<br>
      * <br>
-     * Deprecated: use {@link utils.DetectCharset}, {@link utils.FileExists}, {@link utils.GetFileSize},
-     * {@link utils.IsDirectory}, {@link utils.IsFile} and {@link utils.SplitFilePath} instead.
+     * Deprecated: use {@link utils.DetectCharset DetectCharset}, {@link utils.FileExists FileExists}, {@link utils.GetFileSize GetFileSize},
+     * {@link utils.IsDirectory IsDirectory}, {@link utils.IsFile IsFile} and {@link utils.SplitFilePath SplitFilePath} instead.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. This applies only to modes that access the filesystem; <b>split</b> only splits the supplied path string.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}. This applies only to modes that access the filesystem; <b>split</b> only splits the supplied path string.
      *
      * @throws {Error} If <b>mode</b> is not one of the supported values.
      * @deprecated
@@ -2819,7 +2819,7 @@ let utils = {
     /**
      * Opens system folder picker dialog window
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string=} [title=undefined] Title of dialog. If empty it will be the title by system default
      * @param {string=} [default_path=undefined] Default folder path to choose
@@ -2832,9 +2832,9 @@ let utils = {
     /**
      * Opens system font picker dialog window (with pixel size field extension).
      *
-     * @param {GdiFont=} [default_font=undefined] (or D2DFont if window.DrawMode=1) If specified, it will be selected in the dialog, otherwise the default system message font will be selected
+     * @param {GdiFont=} [default_font=undefined] (or {@link D2DFont D2DFont} if {@link window.DrawMode window.DrawMode}=1) If specified, it will be selected in the dialog, otherwise the default system message font will be selected
      * @param {number=} [window_id=0] Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window.
-     * @return {?GdiFont} (or D2DFont if window.DrawMode=1) Chosen font or default_font if cancelled (if default_font is undefined returns null)
+     * @return {?GdiFont} (or {@link D2DFont D2DFont} if {@link window.DrawMode window.DrawMode}=1) Chosen font or default_font if cancelled (if default_font is undefined returns null)
      *
      * @throws {Error} If no valid owner window is supplied and the panel host is not fully initialized, or <b>default_font</b> is not compatible with the current draw mode.
      * @sourceFile ../../component/samples/basic/FontPicker.js
@@ -2904,9 +2904,9 @@ let utils = {
     /**
      * Load embedded art image for the track.<br>
      * <br>
-     * Performance note: consider using {@link utils.GetAlbumArtAsync} or {@link utils.GetAlbumArtAsyncV2} if there are a lot of images to load.
+     * Performance note: consider using {@link utils.GetAlbumArtAsync GetAlbumArtAsync} or {@link utils.GetAlbumArtAsyncV2 GetAlbumArtAsyncV2} if there are a lot of images to load.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. URLs and foobar2000 URI paths are passed through unchanged.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}. URLs and foobar2000 URI paths are passed through unchanged.
      *
      * @param {string} rawpath Path to track file
      * @param {number=} [art_id=0] See {@link module:Flags.AlbumArtId AlbumArtId} enum
@@ -2921,7 +2921,7 @@ let utils = {
     /**
      * Load art image for the track.<br>
      * <br>
-     * Performance note: consider using {@link utils.GetAlbumArtAsync} or {@link utils.GetAlbumArtAsyncV2} if there are a lot of images to load.
+     * Performance note: consider using {@link utils.GetAlbumArtAsync GetAlbumArtAsync} or {@link utils.GetAlbumArtAsyncV2 GetAlbumArtAsyncV2} if there are a lot of images to load.
      *
      * @param {FbMetadbHandle} handle
      * @param {number=} [art_id=0] See {@link module:Flags.AlbumArtId AlbumArtId} enum
@@ -2944,10 +2944,10 @@ let utils = {
     /**
      * Returns string code for display country flag with {@link https://github.com/mozilla/twemoji-colr "Twemoji Mozilla"} font<br>
      * <b>ATTENTION!</b> Country flags are displayed correctly only in Direct2D draw mode ({@link window.DrawMode} == 1); GDI+ does not render "Twemoji Mozilla" color glyphs.
-     * @param {string} country_or_code Case is not important. You can supply the code or full name. A few examples (full list see in the EXAMPLE file):<br>
-     * "by" "Belarus"<br>
-     * "gb" "United Kingdom"<br>
-     * "cn" "China"<br>
+     * @param {string} country_or_code Case is not important. You can supply an ISO alpha-2 code, an ISO alpha-3 code, a full name or a supported alias. A few examples (full list see in the EXAMPLE file):<br>
+     * "by" "BLR" "Belarus"<br>
+     * "gb" "GBR" "United Kingdom"<br>
+     * "kp" "PRK" "North Korea"<br>
      * @return {string} Country string code 
      * @sourceFile ../../component/docs/countries.json
      * @worker
@@ -2956,10 +2956,10 @@ let utils = {
 
     /**
      * Returns information about a logical drive or volume containing the supplied path.<br>
-     * The method also works with drive roots returned by {@link utils.GetDrives}.<br>
+     * The method also works with drive roots returned by {@link utils.GetDrives GetDrives}.<br>
      * Unready removable/CD drives still return an object with <b>IsReady == false</b> when the drive itself exists.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} path Drive root or path on the drive
      * @return {?DriveInfo} Drive information, or null if the path cannot be resolved to a drive
@@ -2971,7 +2971,7 @@ let utils = {
 
     /**
      * Returns logical drive roots known to Windows, including mapped network drives and removable drives.<br>
-     * A returned removable/CD drive may not currently be ready; use {@link utils.GetDriveInfo} to query its state.
+     * A returned removable/CD drive may not currently be ready; use {@link utils.GetDriveInfo GetDriveInfo} to query its state.
      *
      * @return {Array<string>} Drive root paths, for example <b>["C:\\", "D:\\"]</b>
      * 
@@ -2981,7 +2981,7 @@ let utils = {
     GetDrives: function () { },
 
     /**
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} path
      * @return {number} File size, in bytes
@@ -2994,7 +2994,7 @@ let utils = {
      * Directory reparse points are not followed. Entries that cannot be accessed are skipped.<br>
      * This is a synchronous operation and may take time for large directory trees.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} path Directory path
      * @return {number} Total size in bytes, or 0 if the path is not a directory
@@ -3006,12 +3006,12 @@ let utils = {
 
     /**
      * Calculates the total size of files contained in a directory and its subdirectories asynchronously.<br>
-     * For synchronous calculation, use {@link utils.GetFolderSize utils.GetFolderSize}.<br>
+     * For synchronous calculation, use {@link utils.GetFolderSize GetFolderSize}.<br>
      * Directory reparse points are not followed. Entries that cannot be accessed are skipped.<br>
      * The method returns a task id immediately, and the result is delivered later to {@link module:Callbacks.on_get_folder_size_done on_get_folder_size_done}.<br>
      * Use the returned task id to match the result with the original call.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} path Directory path
      * @return {number} Task id of the asynchronous operation
@@ -3024,7 +3024,7 @@ let utils = {
 
     /**
      * Gets "last modified" attribute for file
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} path
      * @return {number} UNIX-time (seconds)
@@ -3036,7 +3036,7 @@ let utils = {
      * Converts an existing path to its Windows short (8.3) form.<br>
      * Returns an empty string if the path does not exist, the conversion fails, or short-name generation is unavailable for the path.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} path File or directory path
      * @return {string} Short path or an empty string on failure
@@ -3078,7 +3078,7 @@ let utils = {
      * Get path to a package directory with the specified id.<br>
      * Throws exception if package is not found. <br>
      * <br>
-     * Deprecated: use {@link utils.GetPackageInfo} instead.
+     * Deprecated: use {@link utils.GetPackageInfo GetPackageInfo} instead.
      * 
      * @throws {Error} If no package with <b>package_id</b> exists.
      * @deprecated
@@ -3116,7 +3116,7 @@ let utils = {
      * Decoding uses one sequential decoder pass. Decoded PCM data is not exposed to JavaScript.<br>
      * <br>
      * If <b>on_progress</b> is supplied, finalized contiguous ranges of the output envelope are delivered while decoding is still in progress. The callback receives a <b>Float32Array</b> containing the new values and the zero-based output index where that range begins. Progress chunk size and delivery frequency are implementation details and must not be relied on.<br>
-     * <b>For waveform UIs that should appear while decoding, this progressive form is the recommended approach.</b> Use one {@link utils.GetWaveformAsync} call for the whole requested range instead of splitting the track into repeated range calls. One decoder remains open for the sequential pass, avoiding repeated open/seek/decode overhead. For visually smooth rendering, store progress chunks immediately but animate a separate visible front toward the loaded front rather than exposing the native chunk boundaries directly.<br>
+     * <b>For waveform UIs that should appear while decoding, this progressive form is the recommended approach.</b> Use one {@link utils.GetWaveformAsync GetWaveformAsync} call for the whole requested range instead of splitting the track into repeated range calls. One decoder remains open for the sequential pass, avoiding repeated open/seek/decode overhead. For visually smooth rendering, store progress chunks immediately but animate a separate visible front toward the loaded front rather than exposing the native chunk boundaries directly.<br>
      * Return <b>false</b> from <b>on_progress</b> to cancel the native decode. This is recommended when a progressive request becomes obsolete, for example after the focused or playing track changes. Cancellation rejects the returned Promise. Any other return value continues decoding.<br>
      * The Promise still resolves with the complete <b>Float32Array</b> when decoding finishes normally, whether or not a progress callback is used.<br>
      * <br>
@@ -3206,7 +3206,7 @@ let utils = {
     /**
      * Retrieves filepaths that match the supplied pattern.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} pattern For the path, you can use the * and ? wildcards for any intermediate directory and for the file name.
      * @param {number=} [exc_mask=0x10] Mask to exclude files. Default is {@link module:Flags.FILE_ATTRIBUTE_DIRECTORY FILE_ATTRIBUTE_DIRECTORY}. See flags like {@link module:Flags.FILE_ATTRIBUTE_NORMAL FILE_ATTRIBUTE_NORMAL} etc.
@@ -3249,7 +3249,24 @@ let utils = {
     InputBox: function (window_id, prompt, caption, default_val, error_on_cancel, help_text) { }, // (string)
 
     /**
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Displays a resizable dialog with a multi-line text edit area.
+     *
+     * @param {number} window_id Native window handle (HWND) to use as the dialog owner. Pass 0 to use the default foobar2000 window.
+     * @param {string} prompt
+     * @param {string} caption
+     * @param {string=} [default_val='']
+     * @param {boolean=} [error_on_cancel=false] If set to true, cancelling the dialog throws an error.
+     * @param {string=} [help_text=''] If not empty, a Help button will show in the dialog. If <b>help_text</b> begins with "http://" or "https://", it will launch a web browser otherwise it will open a popup window containing the text.
+     * @return {string}
+     *
+     * @throws {Error} If no valid owner window is supplied and the panel host is not fully initialized, or the dialog is cancelled while <b>error_on_cancel</b> is true.
+     * @example
+     * let text = utils.TextBox(0, "Enter text", "JSplitter", "First line\nSecond line");
+     */
+    TextBox: function (window_id, prompt, caption, default_val, error_on_cancel, help_text) { }, // (string)
+
+    /**
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} path
      * @return {boolean} true, if location exists and it's a directory
@@ -3258,7 +3275,7 @@ let utils = {
     IsDirectory: function (path) { },
 
     /**
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} path
      * @return {boolean} true, if location exists and it's a file
@@ -3281,14 +3298,14 @@ let utils = {
      * After a successful call the font becomes available to the foobar2000 process. It can be used by {@link gdi.Font} and {@link d2d.Font} and is visible to other JSplitter panels and Workers.
      * The font is registered privately for the foobar2000 process rather than for JSplitter alone. As a result, it may also become available to native foobar2000 UI and other components that use the Windows font APIs, depending on when they enumerate or create their fonts.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
-     * The file is registered (cached) once by its normalised absolute path. Calling <b>LoadFont</b> again with the
+     * The file is registered (cached) once by its normalised absolute path. Calling {@link utils.LoadFont LoadFont} again with the
      * same file returns <b>true</b> without registering it again. Loaded fonts remain available for the
      * lifetime of the foobar2000 process; there is no corresponding unload operation.
      *
      * A font may expose different legacy/GDI and typographic/DirectWrite family names. 
-     * {@link utils.CheckFont} can be used to verify a family name after loading, while {@link utils.ListFonts} shows the names reported by the GDI and DirectWrite backends.
+     * {@link utils.CheckFont CheckFont} can be used to verify a family name after loading, while {@link utils.ListFonts ListFonts} shows the names reported by the GDI and DirectWrite backends.
      *
      * @param {string} path Path to a font file, typically a <b>.ttf</b> or <b>.otf</b> file.
      * @return {boolean} <b>true</b> if the font is already loaded or was loaded successfully; <b>false</b> if the
@@ -3304,7 +3321,7 @@ let utils = {
     LoadFont: function (path) { },
 
     /**
-     * Gets an array of available font family names. Fonts loaded with {@link utils.LoadFont} are included.
+     * Gets an array of available font family names. Fonts loaded with {@link utils.LoadFont LoadFont} are included.
      * GDI and DirectWrite can expose different family names for the same font file.
      * @param {number} [mode=0] 0 - Auto, 1 - GDI fonts, 2 - DirectWrite fonts
      * @return {Array<string>} array of font family names
@@ -3335,7 +3352,7 @@ let utils = {
     /**
      * Calculates MD5 value for file content
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} path input file path
      * @return {string} MD5 value for input file content in hex format string. If it was an error while reading file returns empty string. If file is empty returns "d41d8cd98f00b204e9800998ecf8427e"
@@ -3366,7 +3383,7 @@ let utils = {
      * - The input must be HTML text, not a file path.<br>
      * - The returned API is DOM-like, but it is not a full browser DOM.<br>
      * - CSS, layout, visibility, scripts, network loading, and browser events are not processed.<br>
-     * - <b>innerText</b> is currently an alias of <b>textContent</b>.<br>
+     * - {@link HtmlDocument#innerText innerText} is currently an alias of {@link HtmlDocument#textContent textContent}.<br>
      * - The method returns null if the document could not be created.<br>
      *
      * @param {string} html HTML source text.
@@ -3395,11 +3412,11 @@ let utils = {
     /**
      * Opens a binary file for incremental reading into a caller-provided <b>Uint8Array</b>.<br>
      * The buffer is reused by the caller, so repeated reads do not allocate a new typed array for every chunk.
-     * This is intended for large files or other cases where whole-file {@link utils.ReadBinaryFile} would be inefficient.<br>
+     * This is intended for large files or other cases where whole-file {@link utils.ReadBinaryFile ReadBinaryFile} would be inefficient.<br>
      * Reading is synchronous. For one-shot large-file processing, use the reader inside {@link Worker.RunAsync}; for persistent pipelines, use it from a {@link Worker}. Both approaches keep blocking file I/O off the panel UI thread.<br>
      * Ordinary read failures are reported through {@link BinaryReader#Read Read} and {@link BinaryReader#EOF EOF}>; they are not thrown as exceptions.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} filename File to open.
      * @return {?BinaryReader} Open streaming reader, or <b>null</b> if the reader could not be created. Ordinary file open/setup failures are reported as <b>null</b>, not exceptions.
@@ -3433,7 +3450,7 @@ let utils = {
      * 
      * Writing is synchronous. For long-running processing, use the writer from a {@link Worker} to avoid blocking the panel UI.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} filename File to create or overwrite.
      * @return {?BinaryWriter} Open streaming writer, or <b>null</b> if the writer could not be created. Ordinary file creation/open failures are reported as <b>null</b>, not exceptions.
@@ -3458,7 +3475,7 @@ let utils = {
      * Database work is synchronous, so large imports or expensive queries should be run from a {@link Worker} to avoid blocking the panel UI thread.<br>
      * SQL values should be passed through the optional parameter array instead of being concatenated into the SQL text. Supported parameter types are <b>null, boolean, number, string, ArrayBuffer</b>, and typed-array views.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} filename Absolute or script-relative database filename, or <b>:memory:</b>.
      * @return {?SQLiteDatabase} Open database handle, or <b>null</b> if the database could not be opened or created. Ordinary open/create failures are reported as <b>null</b>, matching the other <b>Open*</b> resource factories. SQL and database-operation errors after a successful open are reported as exceptions.
@@ -3487,14 +3504,14 @@ let utils = {
 
     /**
      * Opens a text file for incremental, line-by-line reading.<br>
-     * Unlike {@link utils.ReadTextFile}, the whole file is not materialized as one JavaScript string. This makes it suitable for processing large text files incrementally, one line at a time, without requiring the entire file contents to fit in the JavaScript heap.<br>
+     * Unlike {@link utils.ReadTextFile ReadTextFile}, the whole file is not materialized as one JavaScript string. This makes it suitable for processing large text files incrementally, one line at a time, without requiring the entire file contents to fit in the JavaScript heap.<br>
      * {@link TextReader#ReadLine ReadLine} removes the line terminator. A return value of <b>null</b> means that no next line could be returned; in that case, {@link TextReader#EOF EOF} is <b>true</b> for a clean end of file and <b>false</b> for a read or decoding failure.
      * UTF-16LE/BE and UTF-32LE/BE are supported with codepages 1200/1201 and 12000/12001 respectively.<br>
-     * Pass codepage 0 to use automatic charset detection, matching {@link utils.ReadTextFile}.<br>
+     * Pass codepage 0 to use automatic charset detection, matching {@link utils.ReadTextFile ReadTextFile}.<br>
      * Reading is synchronous. For long-running processing, use the reader from a {@link Worker} to avoid blocking the panel UI.<br>
      * Ordinary read and decoding failures are reported through {@link TextReader#ReadLine ReadLine} and {@link TextReader#EOF EOF}; they are not thrown as exceptions.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} filename File to open.
      * @param {number=} [codepage=65001] Windows codepage used to decode each line. UTF-16LE/BE use 1200/1201, UTF-32LE/BE use 12000/12001, and 0 enables automatic detection. See Codepages.js.
@@ -3525,8 +3542,8 @@ let utils = {
 
     /**
      * Performance note: supply codepage argument if it is known, since codepage detection might take some time.<br>
-     * UTF-8, UTF-16LE/BE, UTF-32LE/BE, and supported Windows codepages use the same decoding rules as {@link utils.OpenTextReader}. A matching BOM is removed for UTF encodings.<br>
-     * For large line-oriented files, consider {@link utils.OpenTextReader}; it avoids creating one JavaScript string containing the entire file.
+     * UTF-8, UTF-16LE/BE, UTF-32LE/BE, and supported Windows codepages use the same decoding rules as {@link utils.OpenTextReader OpenTextReader}. A matching BOM is removed for UTF encodings.<br>
+     * For large line-oriented files, consider {@link utils.OpenTextReader OpenTextReader}; it avoids creating one JavaScript string containing the entire file.
      *
      * <div class="doc-note warning">
      * <b>Filesystem path resolution:</b> absolute paths are used as-is. Relative paths are resolved against the file containing the current call. For the main script this is the main script directory; for an included script or a file-backed Worker it is that script's own directory. If there is no file-backed caller, the existing host fallback is used (the Worker's relative-path root, or the component directory for an in-memory panel script).
@@ -3545,9 +3562,9 @@ let utils = {
     /**
      * Returns a string. Will be empty if path doesn't exist or there was an error opening it.
      * 
-     * For UTF8 files with or without BOM. If you're unsure about the file encoding, continue to use {@link utils.ReadTextFile}
+     * For UTF8 files with or without BOM. If you're unsure about the file encoding, continue to use {@link utils.ReadTextFile ReadTextFile}
      * 
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} path
      * @return {string}
@@ -3558,7 +3575,7 @@ let utils = {
     /**
      * Moves a file or directory to the Recycle Bin.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} path path to a file or directory
      * @returns {boolean} true on success, false otherwise
@@ -3570,7 +3587,7 @@ let utils = {
     /**
      * Returns a number to indicate how many files/folders were removed.<br>
      * May be 0 if the path did not exist or -1 if some other internal error occurred.
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} path
      * @return {number}
@@ -3581,7 +3598,7 @@ let utils = {
     /**
      * Renames file or folder path.
      * 
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} from
      * @param {string} to
@@ -3602,8 +3619,8 @@ let utils = {
     
     /**
      * Read a file as raw binary.<br>
-     * For large files, consider {@link utils.OpenBinaryReader}; it reads incrementally into a reusable caller-provided buffer instead of allocating one typed array for the whole file.
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * For large files, consider {@link utils.OpenBinaryReader OpenBinaryReader}; it reads incrementally into a reusable caller-provided buffer instead of allocating one typed array for the whole file.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} path Absolute or script-relative file path.
      * @returns {Uint8Array} File bytes, or null if was an error
@@ -3616,7 +3633,7 @@ let utils = {
     /**
      * Note: this only returns up to 255 characters per value.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} filename
      * @param {string} section
@@ -3635,11 +3652,11 @@ let utils = {
      * This method uses ShellExecuteEx, so it supports shell verbs, file associations, URLs, and elevation through "runas".<br>
      * Unlike {@link utils.RunCmdAsync RunCmdAsync}, this method does not capture stdout or stderr and does not provide timeout handling.<br>
      * If wait is true, the call blocks until the launched process exits, when a process handle is available.<br>
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. This applies only to <b>working_dir</b>; <b>target</b> is not path-resolved.<br>
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}. This applies only to <b>working_dir</b>; <b>target</b> is not path-resolved.<br>
      *
      * @param {string} target
      * File, executable, URL, or document to run/open.<br>
-     * If this value is empty, the method returns a RunResult with OK=false and Win32Error=ERROR_INVALID_PARAMETER.<br>
+     * If this value is empty, the method returns a {@link RunResult RunResult} with OK=false and Win32Error=ERROR_INVALID_PARAMETER.<br>
      *
      * @param {string|string[]} [args]
      * Command line arguments.<br>
@@ -3660,7 +3677,7 @@ let utils = {
      *
      * @param {number} [show=ShowWindow.Hide]
      * Requested window display mode.<br>
-     * Use one of the ShowWindow values, for example ShowWindow.Hide or ShowWindow.Show.<br>
+     * Use one of the {@link module:Flags.ShowWindow ShowWindow} values, for example {@link ShowWindow.Hide ShowWindow.Hide} or {@link ShowWindow.Show ShowWindow.Show}.<br>
      * The target application or shell handler may ignore this value.<br>
      *
      * @param {boolean} [wait=false]
@@ -3671,7 +3688,7 @@ let utils = {
      * A non-zero process exit code is reported as OK=false, with Win32Error usually remaining 0.<br>
      * If wait=true but no process handle is available, OK=false and Win32Error=ERROR_INVALID_HANDLE.<br>
      * Be careful: wait=true blocks the current script until the process exits and has no timeout.<br>
-     * Use RunCmdAsync if you need asynchronous completion, stdout/stderr capture, or timeout handling.<br>
+     * Use {@link utils.RunCmdAsync RunCmdAsync} if you need asynchronous completion, stdout/stderr capture, or timeout handling.<br>
      *
      * @returns {RunResult}
      * Result object.<br>
@@ -3718,11 +3735,11 @@ let utils = {
      * Runs an external process asynchronously.<br>
      * Standard output and standard error are captured separately.<br>
      * The method returns a task id immediately, and the result is delivered later to on_run_cmd_async_done.<br>
-     * Completion callbacks may arrive in a different order than the RunCmdAsync calls were made.<br>
-     * Use the returned task id to match the result with the original RunCmdAsync call.<br>
+     * Completion callbacks may arrive in a different order than the {@link utils.RunCmdAsync RunCmdAsync} calls were made.<br>
+     * Use the returned task id to match the result with the original {@link utils.RunCmdAsync RunCmdAsync} call.<br>
      * If the process does not finish before timeout_ms, the whole process tree is terminated.<br>
      * Pass 0 as timeout_ms to wait indefinitely.<br>
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}. This applies only to <b>working_dir</b>; <b>app</b> is not path-resolved.<br>
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}. This applies only to <b>working_dir</b>; <b>app</b> is not path-resolved.<br>
      *
      * @param {string} app
      * Full path or executable name to run.<br>
@@ -3771,7 +3788,7 @@ let utils = {
     /**
      * Calculates SHA1 value for file content
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} path input file path
      * @return {string} SHA1 value for input file content in hex format string. If it was an error while reading file returns empty string. If file is empty returns "da39a3ee5e6b4b0d3255bfef95601890afd80709"
@@ -3804,7 +3821,7 @@ let utils = {
      *     passing them and restore them with <b>JSON.parse()</b> inside html.
      *   </li>
      * </ul>
-     * JSplitter objects such as <b>FbMetadbHandle</b>, <b>GdiBitmap</b> and <b>D2DBitmap</b>
+     * JSplitter objects such as {@link FbMetadbHandle FbMetadbHandle}, {@link GdiBitmap GdiBitmap} and {@link D2DBitmap}
      * cannot be passed through this bridge.<br>
      * <br>
      * The following properties are available through <b>window.external</b> inside the html dialog:<br>
@@ -3813,14 +3830,15 @@ let utils = {
      *   <li>
      *     <b>dialogWindow</b> - read-only native window handle (HWND) of the html dialog, represented as a number.<br>
      *     It can be passed as <b>window_id</b> to JSplitter modal dialog functions to make the html dialog their owner, e.g.<br>
-     *     {@link utils.ColourPicker}<br>
-     *     {@link utils.FontPicker}<br>
-     *     {@link utils.InputBox}<br>
+     *     {@link utils.ColourPicker ColourPicker}<br>
+     *     {@link utils.FontPicker FontPicker}<br>
+     *     {@link utils.InputBox InputBox}<br>
+     *     {@link utils.TextBox TextBox}<br>
      *     {@link plman.ShowPlaylistLockUI}<br>
-     *     {@link utils.FilePicker}<br>
-     *     {@link utils.FolderPicker}<br>
-     *     {@link utils.MessageBox}<br>
-     *     {@link utils.ShowHtmlDialog}<br>
+     *     {@link utils.FilePicker FilePicker}<br>
+     *     {@link utils.FolderPicker FolderPicker}<br>
+     *     {@link utils.MessageBox MessageBox}<br>
+     *     {@link utils.ShowHtmlDialog ShowHtmlDialog}<br>
      *     The handle is valid only while the html dialog exists.
      *   </li>
      * </ul>
@@ -3862,8 +3880,8 @@ let utils = {
 
     /**
      * Write raw binary data to a file.<br>
-     * For large output, consider {@link utils.OpenBinaryWriter}; it writes incrementally from a reusable caller-provided buffer.
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * For large output, consider {@link utils.OpenBinaryWriter OpenBinaryWriter}; it writes incrementally from a reusable caller-provided buffer.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} path Absolute or script-relative file path.
      * @param {Uint8Array} data Bytes to write
@@ -3888,7 +3906,7 @@ let utils = {
     WriteBinaryFile: function(path, data) { },
 
     /**
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} filename
      * @param {string} section
@@ -3910,7 +3928,7 @@ let utils = {
      * Use {@link TextWriter#Write Write} to append text without a line terminator or {@link TextWriter#WriteLine WriteLine} to append text followed by CRLF. Encoding and I/O failures are reported through boolean return values. This avoids building one large JavaScript string before writing a large file.<br>
      * Writing is synchronous. For one-shot large-file generation, use the writer inside {@link Worker.RunAsync}; for persistent pipelines, use it from a {@link Worker}. Both approaches keep blocking file I/O off the panel UI thread.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} filename File to create or overwrite.
      * @param {boolean=} [write_bom=true] If true, writes a BOM for UTF-8/UTF-16/UTF-32.
@@ -3940,11 +3958,11 @@ let utils = {
 
     /**
      * Note: the parent folder must already exist.<br>
-     * UTF-8 is used by default, matching {@link utils.OpenTextWriter}. UTF-16LE (1200), UTF-16BE (1201), UTF-32LE (12000), UTF-32BE (12001), and other valid Windows codepages are also supported.<br>
+     * UTF-8 is used by default, matching {@link utils.OpenTextWriter OpenTextWriter}. UTF-16LE (1200), UTF-16BE (1201), UTF-32LE (12000), UTF-32BE (12001), and other valid Windows codepages are also supported.<br>
      * If <b>write_bom</b> is true, the matching BOM is written for UTF-8, UTF-16, and UTF-32. Other Windows codepages do not have a BOM and ignore this option.<br>
-     * For large output, consider {@link utils.OpenTextWriter}; it writes incrementally and does not require one large JavaScript string containing the entire file.
+     * For large output, consider {@link utils.OpenTextWriter OpenTextWriter}; it writes incrementally and does not require one large JavaScript string containing the entire file.
      *
-     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
+     * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
      *
      * @param {string} filename
      * @param {string} content
@@ -4017,7 +4035,7 @@ function BinaryReader() {
 
     /**
      * Indicates that the current read position has reached the file length recorded when the reader was opened.<br>
-     * This property does not report a closed reader or a read failure. Use the return value of {@link BinaryReader#Read Read} to drive the read loop; <b>EOF</b> is status information used to distinguish a clean end of file from a failed read.
+     * This property does not report a closed reader or a read failure. Use the return value of {@link BinaryReader#Read Read} to drive the read loop; {@link BinaryReader#EOF EOF} is status information used to distinguish a clean end of file from a failed read.
      *
      * @type {boolean}
      * @readonly
@@ -4585,7 +4603,7 @@ let window = {
      * <b>IMPORTANT</b>: After switching the rendering mode, all drawing objects created for the other mode will be unavailable for use in the current mode.<br>
      * Therefore, the developer should create all drawing objects only after changing the mode.<br>
      * Ideally, the mode change should be made in the VERY first line of the main script to avoid accidentally creating objects of the wrong type.<br>
-     * Also, calling any of d2d.* methods for creating objects like fonts, bitmaps or effects, will cause a script crash until the DrawMode is set to 1 at least once (in this case, the resources required for D2D operation are initialized).
+     * Also, calling any of d2d.* methods for creating objects like fonts, bitmaps or effects, will cause a script crash until the {@link window.DrawMode DrawMode} is set to 1 at least once (in this case, the resources required for D2D operation are initialized).
      * D2D rendering may differ from GDI and methods for both backends can not be expected to be 100% pixel equivalent.
      * @type {number}
      */
@@ -4656,7 +4674,7 @@ let window = {
     *    The Worker's immutable constructor name, identical to Worker-global <b>self.name</b>. The value is an empty string if no name was supplied. The same identity is used by unhandled Worker exception diagnostics, where an empty name is displayed as <b>&lt;unnamed&gt;</b>.
     * @property {number} HeapUsage
     *    SpiderMonkey heap usage of this Worker (in bytes). The per-Worker heap limit is configured by
-    *    <b>Worker maximum heap size (in MB, per Worker)</b>; see <a href="globals.html#JsMemoryStats-WorkerHeapLimit"><b>JsMemoryStats.WorkerHeapLimit</b></a>.
+    *    <b>Worker maximum heap size (in MB, per Worker)</b>; see {@link JsMemoryStats.WorkerHeapLimit JsMemoryStats.WorkerHeapLimit}.
     *    Automatic GC based on heap growth is controlled by <b>Heap growth before GC (in MB)</b>.
     * @property {number} ExternalUsage
     *    Tracked native/external memory retained by this Worker (in bytes). This is an accounting estimate,
@@ -4669,14 +4687,14 @@ let window = {
     * <br>
     * Panel scripts run on the main thread and share one SpiderMonkey heap. Per-panel heap usage is therefore
     * not available. Native/external memory is tracked separately for the current panel. Each Worker has its own
-    * SpiderMonkey context and is reported separately in <a href="globals.html#JsMemoryStats-Workers"><b>JsMemoryStats.Workers</b></a>.<br>
+    * SpiderMonkey context and is reported separately in {@link JsMemoryStats.Workers Workers}.<br>
     * <br>
     * Related GC settings are under <b>Advanced &gt; JSplitter &gt; Performance: restart is required &gt; GC</b>.
     *
     * @typedef {Object} JsMemoryStats
     * @property {number} MainThreadHeapUsage
     *    SpiderMonkey heap usage shared by all JSplitter panel scripts running on the main thread (in bytes).
-    *    The maximum is configured by <b>Main thread maximum heap size (in MB)</b>; see <b>MainThreadHeapLimit</b>.
+    *    The maximum is configured by <b>Main thread maximum heap size (in MB)</b>; see {@link JsMemoryStats.MainThreadHeapLimit MainThreadHeapLimit}.
     *    Automatic GC based on heap growth is controlled by <b>Heap growth before GC (in MB)</b>.
     * @property {number} MainThreadHeapLimit
     *    Maximum SpiderMonkey heap size for main-thread panel scripts (in bytes). External memory does not count
@@ -4709,7 +4727,15 @@ let window = {
     Height: undefined, // (uint) (read)
 
     /**
-     * {@link window.MaxHeight}, {@link window.MaxWidth}, {@link window.MinHeight} and {@link window.MinWidth} can be used to lock the panel size.<br>
+     * Returns the title of the nearest named container hosting the panel.
+     *
+     * @type {string}
+     * @readonly
+     */
+    HostWindowTitle: undefined, // (string) (read)
+
+    /**
+     * {@link window.MaxHeight MaxHeight}, {@link window.MaxWidth MaxWidth}, {@link window.MinHeight MinHeight} and {@link window.MinWidth MinWidth} can be used to lock the panel size.<br>
      * Do not use if panels are contained within Panel Stack Splitter (Columns UI component) or JSplitter itself
      *
      * @type {number}
@@ -4717,28 +4743,28 @@ let window = {
     MaxHeight: undefined, // (uint) (read, write)
 
     /**
-     * See {@link window.MaxHeight}.
+     * See {@link window.MaxHeight MaxHeight}.
      *
      * @type {number}
      */
     MaxWidth: undefined, // (uint) (read, write)
 
     /**
-     * See {@link window.MaxHeight}.
+     * See {@link window.MaxHeight MaxHeight}.
      *
      * @type {number}
      */
     MinHeight: undefined, // (uint) (read, write)
 
     /**
-     * See {@link window.MaxHeight}.
+     * See {@link window.MaxHeight MaxHeight}.
      *
      * @type {number}
      */
     MinWidth: undefined, // (uint) (read, write)
 
     /**
-     * Returns the panel name set in {@link window.ShowConfigureV2}.
+     * Returns the panel name set in {@link window.ShowConfigureV2 ShowConfigureV2}.
      *
      * @type {string}
      * @readonly
@@ -4747,10 +4773,10 @@ let window = {
 
     /**
      * Return value of {@link window.ScriptInfo}.<br>
-     * <b>PackageId</b> is only present when the panel script is an SMP package.
+     * {@link ScriptInfo.PackageId PackageId} is only present when the panel script is an SMP package.
      *
-     * <b>Path</b> is always present. It contains the full native filesystem path of the panel's main script: the selected file for a File script, the sample file in the component folder for a Sample script, or the actual entry file for a package (main.js for an SMP package). For a script stored in panel memory, it is an empty string. This is a filesystem path, not a file URL.
-     * The value always identifies the main script, including when read from an included file or an imported module. Relative filesystem paths used by supported methods are resolved from the calling file as described in {@link utils.ReadTextFile}; they do not necessarily use the directory of <b>Path</b>.
+     * {@link ScriptInfo.Path Path} is always present. It contains the full native filesystem path of the panel's main script: the selected file for a File script, the sample file in the component folder for a Sample script, or the actual entry file for a package (main.js for an SMP package). For a script stored in panel memory, it is an empty string. This is a filesystem path, not a file URL.
+     * The value always identifies the main script, including when read from an included file or an imported module. Relative filesystem paths used by supported methods are resolved from the calling file as described in {@link utils.ReadTextFile}; they do not necessarily use the directory of {@link ScriptInfo.Path Path}.
      *
     * @typedef {Object} ScriptInfo
     * @property {string} Name
@@ -4761,7 +4787,7 @@ let window = {
     */
 
     /**
-     * Information about the panel's main script. The <b>Path</b> property contains its full native filesystem path, or an empty string for an in-memory script. See {@link ScriptInfo} for all properties and source types.
+     * Information about the panel's main script. The {@link ScriptInfo.Path Path} property contains its full native filesystem path, or an empty string for an in-memory script. See {@link ScriptInfo} for all properties and source types.
      *
      * @type {ScriptInfo}
      * @readonly
@@ -4783,7 +4809,7 @@ let window = {
     Width: undefined, // (uint) (read)
 
     /**
-     * Clears all current panel properties set by {@link window.SetProperty}, {@link window.SetProperties} or {@link window.ImportProperties}
+     * Clears all current panel properties set by {@link window.SetProperty SetProperty}, {@link window.SetProperties SetProperties} or {@link window.ImportProperties ImportProperties}
      *
      * @param {boolean=} [reload_panel=false] If true, reloads panel script after clearing
      */
@@ -4808,8 +4834,8 @@ let window = {
      * Can be called only once, so it's better to define it
      * directly in the panel Configure menu.<br>
      * <br>
-     * Deprecated: use {@link window.DefineScript} instead.
-     * Panel name can be changed via {@link window.ShowConfigureV2}.
+     * Deprecated: use {@link window.DefineScript DefineScript} instead.
+     * Panel name can be changed via {@link window.ShowConfigureV2 ShowConfigureV2}.
      *
      * @throws {Error} If called for a package script, called more than once, or <b>options</b> / <b>options.features</b> is not an object.
      * @deprecated
@@ -4840,12 +4866,12 @@ let window = {
 
      /**
      * Open the current panel script in the default text editor.<br>
-     * Default text editor can be changed via <b>Edit</b> button on the main tab of {@link window.ShowConfigureV2}.
+     * Default text editor can be changed via <b>Edit</b> button on the main tab of {@link window.ShowConfigureV2 ShowConfigureV2}.
      */
     EditScript: function () { },
 
     /**
-     * Exports all current panel properties set by {@link window.SetProperty} to file
+     * Exports all current panel properties set by {@link window.SetProperty SetProperty} to file
      *
      * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile}.
      *
@@ -4873,7 +4899,7 @@ let window = {
      * Note: a single panel can have only a single tooltip object.
      * Creating a new tooltip will replace the previous one.<br>
      * <br>
-     * Deprecated: use {@link window.Tooltip} and {@link FbTooltip#SetFont SetFont} instead.
+     * Deprecated: use {@link window.Tooltip Tooltip} and {@link FbTooltip#SetFont SetFont} instead.
      *
      * @deprecated
      * 
@@ -4900,7 +4926,7 @@ let window = {
     GetColourDUI: function (type) { }, // (uint)
 
     /**
-     * Note: see the example in {@link window.GetFontDUI}.
+     * Note: see the example in {@link window.GetFontDUI GetFontDUI}.
      *
      * @param {number} type See {@link module:Flags.FontTypeCUI FontTypeCUI} enum
      * @param {string=} client_guid Client GUID
@@ -4926,7 +4952,7 @@ let window = {
     GetFontDUI: function (type) { }, // (GdiFont)
 
     /**
-     * Get all current panel properties set by {@link window.SetProperty}, {@link window.SetProperties} or {@link window.ImportProperties}
+     * Get all current panel properties set by {@link window.SetProperty SetProperty}, {@link window.SetProperties SetProperties} or {@link window.ImportProperties ImportProperties}
      *
      * @return {Map} Map of panel properties
      * @example
@@ -4964,7 +4990,7 @@ let window = {
      * This will <b>synchronously</b> trigger {@link module:Callbacks.on_notify_data on_notify_data}(name, info) in other panels.<br>
      * <b>!!! Beware !!!</b>: data passed via <b>info</b> argument must NOT be used or modified in the source panel after invoking this method.
      * <div class="doc-note warning">
-     * <b>Legacy compatibility API</b><br>Existing scripts can keep using NotifyOthers unchanged. For new asynchronous structured-clone messaging between panels and Workers, prefer {@link BroadcastChannel}.<br></div>
+     * <b>Legacy compatibility API</b><br>Existing scripts can keep using {@link window.NotifyOthers NotifyOthers} unchanged. For new asynchronous structured-clone messaging between panels and Workers, prefer {@link BroadcastChannel}.<br></div>
      *
      * @param {string} name
      * @param {*} info
@@ -4997,10 +5023,10 @@ let window = {
 
     /**
      * Repaints a part of the screen.<br>
-     * Use this instead of {@link window.Repaint} on frequently updated areas
+     * Use this instead of {@link window.Repaint Repaint} on frequently updated areas
      * such as time, bitrate, seekbar, etc.<br>
      * <br>
-     * Performance note: see Performance note in {@link window.Repaint}.
+     * Performance note: see Performance note in {@link window.Repaint Repaint}.
      *
      * @param {number} x
      * @param {number} y
@@ -5017,6 +5043,20 @@ let window = {
      * @param {number} id See {@link module:Flags Flags} for flags like {@link module:Flags.IDC_ARROW IDC_ARROW}
      */
     SetCursor: function (id) { }, // (void)
+
+    /**
+     * Sets the text insertion point used to position system IME UI for a custom-drawn text field.
+     * Coordinates are in panel client pixels. The component does not track or move the insertion
+     * point automatically; call this again whenever your script moves its caret.<br>
+     * <br>
+     * This method does not create or draw a system caret. It only supplies the current insertion
+     * position to the IME so handwriting/candidate UI can be placed near the field.
+     *
+     * @sourceFile ../../component/samples/basic/IME Input.js
+     * @param {number} x Insertion-point x-coordinate.
+     * @param {number} y Insertion-point y-coordinate.
+     */
+    SetImePosition: function (x, y) { }, // (void)
 
     /**
      * See {@link setInterval}.
@@ -5078,7 +5118,7 @@ let window = {
     /**
      * Show configuration window of current panel.
      * <br>
-     * Deprecated: use {@link window.ShowConfigureV2} to configure panel and {@link window.EditScript} to edit script.
+     * Deprecated: use {@link window.ShowConfigureV2 ShowConfigureV2} to configure panel and {@link window.EditScript EditScript} to edit script.
      *
      * @deprecated
      * 
@@ -5406,7 +5446,7 @@ function FbMetadbHandle() {
 
     /**
      * Compare two {@link FbMetadbHandle} instances, pointer only.<br>
-     * If you want to compare them physically, use the {@link FbMetadbHandle#RawPath} property.
+     * If you want to compare them physically, use the {@link FbMetadbHandle#RawPath RawPath} property.
      *
      * @param {FbMetadbHandle} handle
      * @return {boolean}
@@ -5588,7 +5628,7 @@ function FbMetadbHandleList(arg) {
     this.AttachImage = function (image_path, art_id) { }; //(bool)
 
     /**
-     * Embeds covers of the specified type from exisiting GdiBitmap or D2DBitmap object. Supports JPEG, WEBP and PNG codecs for encoding image before embedding.<br>
+     * Embeds covers of the specified type from exisiting {@link GdiBitmap GdiBitmap} or {@link D2DBitmap D2DBitmap} object. Supports JPEG, WEBP and PNG codecs for encoding image before embedding.<br>
      * Any existing artwork of the specified type will be overwritten!<br>
      * Embedding covers is an asynchronous operation, so its result is not controlled here in any way. However, all the work of the method up to this point (encoding, creating art data) will return false in case of an error.
      * 
@@ -5722,7 +5762,7 @@ function FbMetadbHandleList(arg) {
     this.InsertRange = function (index, handle_list) { }; // (void)
 
     /**
-     * Note: sort with {@link FbMetadbHandleList#Sort} before using.
+     * Note: sort with {@link FbMetadbHandleList#Sort Sort} before using.
      *
      * @param {FbMetadbHandleList} handle_list Sorted handle list.
      *
@@ -5787,7 +5827,7 @@ function FbMetadbHandleList(arg) {
     this.OptimiseFileLayout = function (minimise) { }; // (void)
 
     /**
-     * @param {FbTitleFormat} tfo An instance of FbTitleFormat.
+     * @param {FbTitleFormat} tfo An instance of {@link FbTitleFormat FbTitleFormat}.
      * @param {number} direction > 0 - ascending.
      *
      * @example
@@ -6106,7 +6146,7 @@ function FbProfiler(name) {
 
 /**
  * Performance note: if you use the same query frequently,
- * try caching FbTitleFormat object (by storing it somewhere),
+ * try caching {@link FbTitleFormat FbTitleFormat} object (by storing it somewhere),
  * instead of creating it every time.
  *
  * @constructor
@@ -6117,7 +6157,7 @@ function FbProfiler(name) {
 function FbTitleFormat(expression) {
     /**
      * Always use Eval when you want dynamic info such as %playback_time%, %bitrate% etc.<br>
-     * {@link FbTitleFormat#EvalWithMetadb}(fb.GetNowplaying()) will not give the results you want.
+     * {@link FbTitleFormat#EvalWithMetadb EvalWithMetadb}(fb.GetNowplaying()) will not give the results you want.
      *
      * @param {boolean=} [force=false] If true, you can process text that doesn't contain
      *     title formatting even when foobar2000 isn't playing. When playing, you
@@ -6391,7 +6431,7 @@ function GdiBitmap(arg) {
     this.Clone = function (x, y, w, h) { }; // (GdiBitmap)
 
     /**
-     * Create a DDB bitmap from GdiBitmap, which is used in {@link GdiGraphics#GdiDrawBitmap GdiDrawBitmap}
+     * Create a DDB bitmap from {@link GdiBitmap GdiBitmap}, which is used in {@link GdiGraphics#GdiDrawBitmap GdiDrawBitmap}
      *
      * @return {GdiRawBitmap}
      * @worker
@@ -6459,7 +6499,7 @@ function GdiBitmap(arg) {
     /**
      * Builds an image-derived UI colour scheme for styling interface surfaces, text and interaction states from the bitmap.<br>
      * <br>
-     * The image is analysed in <b>OKLab</b> using the same weighted <b>K-means++</b> palette extraction as {@link GdiBitmap#GetColourSchemeJSONV2 GetColourSchemeJSONV2}</b>.<br>
+     * The image is analysed in <b>OKLab</b> using the same weighted <b>K-means++</b> palette extraction as {@link GdiBitmap#GetColourSchemeJSONV2 GetColourSchemeJSONV2}.<br>
      * The palette stage uses <b>paletteSize</b> centroids, after which colours are assigned to five semantic UI roles:<br>
      * <b>Background</b>, <b>Text</b>, <b>Playing background</b>, <b>Focus frame</b> and <b>Selection background</b>.<br>
      * <br>
@@ -6497,7 +6537,7 @@ function GdiBitmap(arg) {
     this.GetThemeColourSchemeJSON = function (paletteSize) { }; // (string)
     
     /**
-     * Note: don't forget to use {@link GdiBitmap#ReleaseGraphics ReleaseGraphics} after work on GdiGraphics is done!
+     * Note: don't forget to use {@link GdiBitmap#ReleaseGraphics ReleaseGraphics} after work on {@link GdiGraphics GdiGraphics} is done!
      *
      * @return {GdiGraphics}
      * @worker
@@ -6549,7 +6589,7 @@ function GdiBitmap(arg) {
     /**
      * @param {number} w
      * @param {number} h
-     * @param {number=} [mode=0] See {@link module:Flags.AlbumArtId InterpolationMode}
+     * @param {number=} [mode=0] See {@link module:Flags.InterpolationMode InterpolationMode}
      * @return {GdiBitmap}
      * @worker
      */
@@ -6558,7 +6598,7 @@ function GdiBitmap(arg) {
     /**
      * Changes will be saved in the current bitmap.
      *
-     * @param {number} mode See {@link module:Flags.AlbumArtId RotateFlipType}
+     * @param {number} mode See {@link module:Flags.RotateFlipType RotateFlipType}
      * @worker
      */
     this.RotateFlip = function (mode) { }; // (void)
@@ -6591,10 +6631,10 @@ function GdiBitmap(arg) {
      *
      * @param {number} radius Valid values 2-254.
      *
-     * @example <caption>Blur image<caption>
+     * @example <caption>Blur image</caption>
      * // `samples/basic/StackBlur (image).js`
      *
-     * @example <caption>Blur text<caption>
+     * @example <caption>Blur text</caption>
      * // `samples/basic/StackBlur (text).js`
      * @worker
      */
@@ -6698,7 +6738,7 @@ function GdiBrush(arg) {
     this.WrapMode = undefined;// (uint) (read, write)
 
     /**
-     * Applies translation matrix to the current GdiBrush matrix.<br>
+     * Applies translation matrix to the current {@link GdiBrush GdiBrush} matrix.<br>
      * For more information see {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-translation(d2d1_size_f)}
      *
      * @param {number} dx
@@ -6708,7 +6748,7 @@ function GdiBrush(arg) {
     this.Translate = function(dx, dy) {}
 
     /**
-     * Applies rotation matrix to the current GdiBrush matrix.<br>
+     * Applies rotation matrix to the current {@link GdiBrush GdiBrush} matrix.<br>
      * For more information see {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-rotation}
      *
      * @param {float} angle Angle of rotation in degrees
@@ -6719,7 +6759,7 @@ function GdiBrush(arg) {
     this.Rotate = function(angle, cx, cy) {}
 
     /**
-     * Applies scale matrix to the current GdiBrush matrix.<br>
+     * Applies scale matrix to the current {@link GdiBrush GdiBrush} matrix.<br>
      * For more information see {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-scale(d2d1_size_f_d2d1_point_2f)}
      *
      * @param {float} sx The x-axis scale factor
@@ -6731,7 +6771,7 @@ function GdiBrush(arg) {
     this.Scale = function(sz, sy, cx, cy) {}
     
     /**
-     * Applies skew matrix to the current GdiBrush matrix.<br>
+     * Applies skew matrix to the current {@link GdiBrush GdiBrush} matrix.<br>
      * For more information see {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-skew}
      *
      * @param {float} angleX The x-axis skew angle, which is measured in degrees counterclockwise from the y-axis.
@@ -6743,19 +6783,19 @@ function GdiBrush(arg) {
     this.Skew = function(angleX, angleY, cx, cy) {}
 
     /**
-     * Saves current GdiBrush matrix in internal stack. To restore the matrix use {@link GdiGraphics#PopTransform PopTransform}.
+     * Saves current {@link GdiBrush GdiBrush} matrix in internal stack. To restore the matrix use {@link GdiBrush#PopTransform PopTransform}.
      * @worker
      */
     this.PushTransform = function() {}
 
     /**
-     * Restores GdiBrush matrix from internal stack pushed previously by {@link GdiGraphics#PushTransform PushTransform}.
+     * Restores {@link GdiBrush GdiBrush} matrix from internal stack pushed previously by {@link GdiBrush#PushTransform PushTransform}.
      * @worker
      */
     this.PopTransform = function() {}
 
     /**
-     * Gets GdiBrush current transformation matrix of 3x2 size (Float32Array(6))<br>
+     * Gets {@link GdiBrush GdiBrush} current transformation matrix of 3x2 size (Float32Array(6))<br>
      * Matrix3x2 helper class from the component/docs/Matrix.js will be useful
      * @return {Float32Array}
      * 
@@ -6765,7 +6805,7 @@ function GdiBrush(arg) {
     this.GetTransform = function() {}
 
     /**
-     * Replaces the current GdiBrush matrix with specified transformation matrix of 3x2 size.<br>
+     * Replaces the current {@link GdiBrush GdiBrush} matrix with specified transformation matrix of 3x2 size.<br>
      * Matrix3x2 helper class from the component/docs/Matrix.js will be useful
      * @param {Float32Array} matrix Array that presents 3x2 matrix for transformation (length = 6)
      * 
@@ -6775,13 +6815,13 @@ function GdiBrush(arg) {
     this.SetTransform = function(matrix) {}
 
     /**
-     * Resets current GdiBrush matrix to original identity matrix.
+     * Resets current {@link GdiBrush GdiBrush} matrix to original identity matrix.
      * @worker
      */
     this.ResetTransform = function () {}
 
     /**
-     * Applies specified transformation matrix of 3x2 size to the current GdiBrush matrix.<br>
+     * Applies specified transformation matrix of 3x2 size to the current {@link GdiBrush GdiBrush} matrix.<br>
      * Matrix3x2 helper class from the component/docs/Matrix.js will be useful
      * @param {Float32Array} matrix Array that presents 3x2 matrix for transformation (length = 6)
      * 
@@ -6795,8 +6835,8 @@ function GdiBrush(arg) {
  * Typically used inside {@link module:Callbacks.on_paint on_paint}.<br>
  *
  * Note: there are many different ways to get colours:
- * window.GetColourDUI/window.GetColourCUI,
- * RGB function from Helpers.js, utils.ColourPicker and
+ * {@link window.GetColourDUI window.GetColourDUI}/{@link window.GetColourCUI window.GetColourCUI},
+ * RGB function from Helpers.js, {@link utils.ColourPicker utils.ColourPicker} and
  * etc.
  *
  * @constructor
@@ -7065,7 +7105,7 @@ function GdiGraphics() {
      * Provides faster and better rendering than {@link GdiGraphics#DrawString DrawString}.<br>
      * <br>
      * Do not use this to draw text on transparent background or
-     * with GdiGraphics other than the one passed in {@link module:Callbacks.on_paint on_paint} callback:
+     * with {@link GdiGraphics GdiGraphics} other than the one passed in {@link module:Callbacks.on_paint on_paint} callback:
      * this will result in visual artifacts caused by ClearType hinting.<br>
      * Use {@link GdiGraphics#DrawString DrawString} instead in such cases.<br>
      * <br>
@@ -7139,7 +7179,7 @@ function GdiGraphics() {
     this.PopClip = function() { };
 
     /**
-     * Applies translation matrix to the current GdiGraphics matrix.<br>
+     * Applies translation matrix to the current {@link GdiGraphics GdiGraphics} matrix.<br>
      * For more information see {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-translation(d2d1_size_f)}
      *
      * @param {number} dx
@@ -7149,7 +7189,7 @@ function GdiGraphics() {
     this.Translate = function(dx, dy) {}
 
     /**
-     * Applies rotation matrix to the current GdiGraphics matrix.<br>
+     * Applies rotation matrix to the current {@link GdiGraphics GdiGraphics} matrix.<br>
      * For more information see {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-rotation}
      *
      * @param {float} angle Angle of rotation in degrees
@@ -7160,7 +7200,7 @@ function GdiGraphics() {
     this.Rotate = function(angle, cx, cy) {}
 
     /**
-     * Applies scale matrix to the current GdiGraphics matrix.<br>
+     * Applies scale matrix to the current {@link GdiGraphics GdiGraphics} matrix.<br>
      * For more information see {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-scale(d2d1_size_f_d2d1_point_2f)}
      *
      * @param {float} sx The x-axis scale factor
@@ -7172,7 +7212,7 @@ function GdiGraphics() {
     this.Scale = function(sz, sy, cx, cy) {}
     
     /**
-     * Applies skew matrix to the current GdiGraphics matrix.<br>
+     * Applies skew matrix to the current {@link GdiGraphics GdiGraphics} matrix.<br>
      * For more information see {@link https://learn.microsoft.com/en-us/windows/win32/api/d2d1helper/nf-d2d1helper-matrix3x2f-skew}
      *
      * @param {float} angleX The x-axis skew angle, which is measured in degrees counterclockwise from the y-axis.
@@ -7184,19 +7224,19 @@ function GdiGraphics() {
     this.Skew = function(angleX, angleY, cx, cy) {}
 
     /**
-     * Saves current GdiGraphics matrix in internal stack. To restore the matrix use {@link GdiGraphics#PopTransform PopTransform}.
+     * Saves current {@link GdiGraphics GdiGraphics} matrix in internal stack. To restore the matrix use {@link GdiGraphics#PopTransform PopTransform}.
      * @worker
      */
     this.PushTransform = function() {}
 
     /**
-     * Restores current GdiGraphics matrix from internal stack pushed previously by {@link GdiGraphics#PushTransform PushTransform}.
+     * Restores current {@link GdiGraphics GdiGraphics} matrix from internal stack pushed previously by {@link GdiGraphics#PushTransform PushTransform}.
      * @worker
      */
     this.PopTransform = function() {}
 
     /**
-     * Gets GdiGraphics current transformation matrix of 3x2 size (Float32Array(6))
+     * Gets {@link GdiGraphics GdiGraphics} current transformation matrix of 3x2 size (Float32Array(6))
      * Matrix helpers from the component/docs/Matrix.js will be useful
      * @return {Float32Array}
      * 
@@ -7206,7 +7246,7 @@ function GdiGraphics() {
     this.GetTransform = function() {}
 
     /**
-     * Replaces the current GdiGraphics matrix with specified transformation matrix of 3x2 size.<br>
+     * Replaces the current {@link GdiGraphics GdiGraphics} matrix with specified transformation matrix of 3x2 size.<br>
      * Matrix helpers from the component/docs/Matrix.js will be useful
      * @param {Float32Array} matrix Array that presents 3x2 matrix for transformation (length = 6)
      * 
@@ -7216,13 +7256,13 @@ function GdiGraphics() {
     this.SetTransform = function(matrix) {}
 
     /**
-     * Resets current GdiGraphics matrix to original identity matrix.
+     * Resets current {@link GdiGraphics GdiGraphics} matrix to original identity matrix.
      * @worker
      */
     this.ResetTransform = function () {}
 
     /**
-     * Applies specified transformation matrix of 3x2 size to the current GdiGraphics matrix.<br>
+     * Applies specified transformation matrix of 3x2 size to the current {@link GdiGraphics GdiGraphics} matrix.<br>
      * Matrix helpers from the component/docs/Matrix.js will be useful
      * @param {Float32Array} matrix Array that presents 3x2 matrix for transformation (length = 6)
      * 
@@ -7625,7 +7665,7 @@ function RunResult() {
  * Notes:<br>
  * - This is not a full browser DOM.<br>
  * - Scripts, CSS, layout, external resources and browser events are not processed.<br>
- * - <b>innerText</b> is currently an alias of <b>textContent</b>.<br>
+ * - {@link HtmlDocument#innerText innerText} is currently an alias of {@link HtmlDocument#textContent textContent}.<br>
  *
  * @hideconstructor
  * @worker
@@ -7701,7 +7741,7 @@ class HtmlDocument {
 
     /**
      * Alias of {@link HtmlDocument#textContent textContent}.<br>
-     * Since this parser has no browser layout engine, <b>innerText</b> does not emulate CSS visibility, rendered line wrapping, or layout-dependent text extraction.
+     * Since this parser has no browser layout engine, {@link HtmlDocument#innerText innerText} does not emulate CSS visibility, rendered line wrapping, or layout-dependent text extraction.
      *
      * @type {string}
      * @readonly
@@ -7787,8 +7827,8 @@ class HtmlDocument {
 /**
  * Lightweight DOM-like HTML node.<br>
  *<br>
- * HtmlNode can represent an element node, text node, comment node, or another parsed DOM node type. Some operations, such as attributes and class checks, only make sense for element nodes.<br>
- * <b>NOTE</b>: HtmlNode objects keep the underlying native document alive while they exist.
+ * {@link HtmlNode HtmlNode} can represent an element node, text node, comment node, or another parsed DOM node type. Some operations, such as attributes and class checks, only make sense for element nodes.<br>
+ * <b>NOTE</b>: {@link HtmlNode HtmlNode} objects keep the underlying native document alive while they exist.
  *
  * @hideconstructor
  * @worker
@@ -7863,7 +7903,7 @@ class HtmlNode {
 
     /**
      * Alias of {@link HtmlNode#textContent textContent}.<br>
-     * Since this parser has no browser layout engine, <b>innerText</b> does not emulate CSS visibility, rendered line wrapping, or layout-dependent text extraction.
+     * Since this parser has no browser layout engine, {@link HtmlNode#innerText innerText} does not emulate CSS visibility, rendered line wrapping, or layout-dependent text extraction.
      *
      * @type {string}
      * @readonly
@@ -7988,7 +8028,7 @@ class HtmlNode {
     /**
      * Checks whether the element has a CSS class token.<br>
      * This checks class tokens, not arbitrary substrings.<br>
-     * For example, <b>hasClass("album")</b> matches <b>class="album featured"</b>, but not <b>class="album-list"</b>.<br>
+     * For example, passing <b>"album"</b> to {@link HtmlNode#hasClass hasClass} matches <b>class="album featured"</b>, but not <b>class="album-list"</b>.<br>
      * For non-element nodes, returns false.<br>
      * 
      * @method

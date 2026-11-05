@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 function _panel(custom_background = false) {
 	this.item_focus_change = () => {

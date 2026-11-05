@@ -57,7 +57,7 @@
  *
  * <h2>Relative paths inside scripts</h2>
  *
- * Supported file and image methods resolve relative paths as described in {@link utils.ReadTextFile}. To obtain the main script's own full path for custom path handling or external tools, use the <b>Path</b> property of {@link window.ScriptInfo}. Directory fields identify foobar2000 directories, not the main script's directory.
+ * Supported file and image methods resolve relative paths as described in {@link utils.ReadTextFile}. To obtain the main script's own full path for custom path handling or external tools, use the {@link ScriptInfo.Path Path} property of {@link window.ScriptInfo}. Directory fields identify foobar2000 directories, not the main script's directory.
  *
  * @module TitleFormatting
  */
