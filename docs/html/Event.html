@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -231,7 +237,7 @@
                 <div class="eyebrow"><span class="kind kind-class">class</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Event">Event</a></h2>
             </div>
-            <div class="source-location">js/worker.js:821</div>
+            <div class="source-location">js/worker.js:818</div>
         </header>
         <pre class="signature"><code>Event(type, options)</code></pre>
         
@@ -251,6 +257,7 @@
         
         
         
+        
     </article>
         
     <article class="api-item" id="bubbles" data-kind="property" data-name="bubbles">
@@ -259,11 +266,12 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#bubbles">bubbles</a></h2>
             </div>
-            <div class="source-location">js/worker.js:870</div>
+            <div class="source-location">js/worker.js:867</div>
         </header>
         <pre class="signature"><code>bubbles: boolean = false</code></pre>
         
         <div class="description"><p>Whether the event participates in bubbling through an event-target hierarchy.</p></div>
+        
         
         
         
@@ -280,11 +288,12 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#cancelable">cancelable</a></h2>
             </div>
-            <div class="source-location">js/worker.js:862</div>
+            <div class="source-location">js/worker.js:859</div>
         </header>
         <pre class="signature"><code>cancelable: boolean = false</code></pre>
         
         <div class="description"><p>Whether <a href="Event.html#preventDefault">preventDefault</a> can cancel this event.</p></div>
+        
         
         
         
@@ -301,11 +310,12 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#currentTarget">currentTarget</a></h2>
             </div>
-            <div class="source-location">js/worker.js:846</div>
+            <div class="source-location">js/worker.js:843</div>
         </header>
         <pre class="signature"><code>currentTarget: ?<a class="type-link" href="EventTarget.html#EventTarget">EventTarget</a> = null</code></pre>
         
         <div class="description"><p>Event target whose listener is currently being invoked. It is <b>null</b> outside listener dispatch.</p></div>
+        
         
         
         
@@ -322,11 +332,12 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#defaultPrevented">defaultPrevented</a></h2>
             </div>
-            <div class="source-location">js/worker.js:854</div>
+            <div class="source-location">js/worker.js:851</div>
         </header>
         <pre class="signature"><code>defaultPrevented: boolean = false</code></pre>
         
         <div class="description"><p><b>true</b> when <a href="Event.html#preventDefault">preventDefault</a> successfully canceled the event's default action.</p></div>
+        
         
         
         
@@ -343,11 +354,12 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#target">target</a></h2>
             </div>
-            <div class="source-location">js/worker.js:838</div>
+            <div class="source-location">js/worker.js:835</div>
         </header>
         <pre class="signature"><code>target: ?<a class="type-link" href="EventTarget.html#EventTarget">EventTarget</a> = null</code></pre>
         
         <div class="description"><p>Event target on which the event was originally dispatched. It is <b>null</b> before dispatch.</p></div>
+        
         
         
         
@@ -364,11 +376,12 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#type">type</a></h2>
             </div>
-            <div class="source-location">js/worker.js:830</div>
+            <div class="source-location">js/worker.js:827</div>
         </header>
         <pre class="signature"><code>type: string = &quot;&quot;</code></pre>
         
         <div class="description"><p>Event type supplied when the event was created, for example <b>message</b> or <b>error</b>.</p></div>
+        
         
         
         
@@ -385,11 +398,12 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#preventDefault">preventDefault</a></h2>
             </div>
-            <div class="source-location">js/worker.js:878</div>
+            <div class="source-location">js/worker.js:875</div>
         </header>
         <pre class="signature"><code>preventDefault()</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -406,11 +420,12 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#stopImmediatePropagation">stopImmediatePropagation</a></h2>
             </div>
-            <div class="source-location">js/worker.js:882</div>
+            <div class="source-location">js/worker.js:879</div>
         </header>
         <pre class="signature"><code>stopImmediatePropagation()</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -427,11 +442,12 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#stopPropagation">stopPropagation</a></h2>
             </div>
-            <div class="source-location">js/worker.js:880</div>
+            <div class="source-location">js/worker.js:877</div>
         </header>
         <pre class="signature"><code>stopPropagation()</code></pre>
         
         <div class="description"></div>
+        
         
         
         

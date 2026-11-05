@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link active" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link active" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -235,7 +241,7 @@
         </header>
         
         
-        <div class="description"><p>JSplitter exposes the standard <b>WebAssembly</b> global in both panels and <a href="Worker.html#Worker">Workers</a>. WebAssembly modules built from C, C++, Rust or other supported languages can run directly in SpiderMonkey without additional native support from JSplitter.</p>
+        <div class="description"><p>JSplitter exposes the standard <a href="module-WebAssembly.html#WebAssembly">WebAssembly</a> global in both panels and <a href="Worker.html#Worker">Workers</a>. <a href="module-WebAssembly.html#WebAssembly">WebAssembly</a> modules built from C, C++, Rust or other supported languages can run directly in SpiderMonkey without additional native support from JSplitter.</p>
 <h2>Loading a module</h2>
 <p>The simplest approach is to read a local <b>.wasm</b> file as bytes with <a href="utils.html#ReadBinaryFile">utils.ReadBinaryFile</a>, then create a module and an instance:</p>
 <pre class="description-code language-js"><code><span class="tok-keyword">const</span> bytes = utils.ReadBinaryFile(<span class="tok-string">&#39;algorithm.wasm&#39;</span>);
@@ -244,7 +250,7 @@
 <span class="tok-keyword">const</span> module = <span class="tok-keyword">new</span> WebAssembly.Module(bytes);
 <span class="tok-keyword">const</span> instance = <span class="tok-keyword">new</span> WebAssembly.Instance(module);
 <span class="tok-comment">// Call instance.exports.someFunction(...)</span></code></pre>
-<p>For CPU-intensive tasks, consider running WebAssembly in a <a href="Worker.html#Worker">Worker</a> to keep the panel responsive.</p>
+<p>For CPU-intensive tasks, consider running <a href="module-WebAssembly.html#WebAssembly">WebAssembly</a> in a <a href="Worker.html#Worker">Worker</a> to keep the panel responsive.</p>
 <h2>Ready-to-run example: album-art filters</h2>
 <p>The <b>samples/wasm</b> folder contains a practical example of Sobel edge detection, implemented in C and compiled to a standalone WASM module. It loads the playing or focused track's cover using <a href="utils.html#GetAlbumArtV2">utils.GetAlbumArtV2</a>. When no artwork is available, it displays a generated test image instead. GDI shows the original and filtered artwork side by side.</p>
 <p><b>To run:</b> select <b>Script → File</b> in a JSplitter panel and choose <b>samples/wasm/WebAssembly Image Filters.js</b>. Do not move this file separately from its Worker or WASM dependencies. The script is ready to run from the distributed samples directory; no build step or additional runtime is necessary. A panel of roughly <b>650 × 350</b> pixels works well.</p>
@@ -257,7 +263,7 @@
 <ol>
 <li>The panel obtains an image and extracts RGBA pixels using
 <a href="GdiBitmap.html#GetPixelData">GdiBitmap.GetPixelData</a>, then transfers their buffer to a
-file-backed <a href="Worker.html#Worker">Worker</a> via <a href="Worker.html#postMessage">Worker#postMessage</a>.</li>
+file-backed <a href="Worker.html#Worker">Worker</a> via <a href="Worker.html#postMessage">Worker.postMessage</a>.</li>
 <li>The Worker reads <b>album_art_filters.wasm</b> with
 <a href="utils.html#ReadBinaryFile">utils.ReadBinaryFile</a>, then constructs its <b>WebAssembly.Module</b>
 and <b>WebAssembly.Instance</b> once.</li>
@@ -280,15 +286,16 @@ pixels in the Worker. Only small parameters need to be sent again.</li>
 <li><b>README.md</b> — optional Clang build command.</li>
 </ul>
 <h2>Limitations</h2>
-<p>WebAssembly is not automatically a browser or operating-system runtime. Modules built for WASI, Emscripten, Node.js, the DOM, network access, or multi-threading may require additional imports, JavaScript support, or APIs that JSplitter does not provide. WebAssembly also does not guarantee a performance improvement over JavaScript or native code. The timer displayed by this example includes the WASM function call and copying of its output buffer, not full end-to-end rendering or image loading.</p>
+<p><a href="module-WebAssembly.html#WebAssembly">WebAssembly</a> is not automatically a browser or operating-system runtime. Modules built for WASI, Emscripten, Node.js, the DOM, network access, or multi-threading may require additional imports, JavaScript support, or APIs that JSplitter does not provide. <a href="module-WebAssembly.html#WebAssembly">WebAssembly</a> also does not guarantee a performance improvement over JavaScript or native code. The timer displayed by this example includes the WASM function call and copying of its output buffer, not full end-to-end rendering or image loading.</p>
 <p>The example limits image dimensions to 384 pixels per side to bound memory and CPU cost, including on 32-bit foobar2000. Only use WASM modules whose behavior and resource requirements you trust.</p>
 <h2>Building the WASM module (optional)</h2>
-<p>The prebuilt <b>album_art_filters.wasm</b> is included and runs without a build step. To rebuild it after editing <b>source/album_art_filters.c</b>, install Clang with WebAssembly (wasm32) support and <b>wasm-ld</b>. Run the following from <b>component/samples/wasm</b>:</p>
+<p>The prebuilt <b>album_art_filters.wasm</b> is included and runs without a build step. To rebuild it after editing <b>source/album_art_filters.c</b>, install Clang with <a href="module-WebAssembly.html#WebAssembly">WebAssembly</a> (wasm32) support and <b>wasm-ld</b>. Run the following from <b>component/samples/wasm</b>:</p>
 <pre class="description-code language-text"><code>clang --target=wasm32-unknown-unknown -O3 -nostdlib \
   -Wl,--no-entry -Wl,--export=filter -Wl,--export-memory \
   -Wl,--export=__heap_base -Wl,--initial-memory=131072 \
   -o album_art_filters.wasm source/album_art_filters.c</code></pre>
 <p>On Windows, enter the command on a single line, removing the backslashes used for line continuation. The command writes <b>album_art_filters.wasm</b> next to the Worker script. The <b>-nostdlib</b> and <b>--no-entry</b> options avoid a C runtime entry point; the linker exports the <b>filter</b> function, linear memory and <b>__heap_base</b> needed by the Worker. This is a build-time step outside JSplitter. The panel and Worker simply load the already-built module.</p></div>
+        
         
         
         

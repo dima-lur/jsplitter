@@ -1,4 +1,4 @@
-window.DefinePanel("JS Smooth Browser", { author : "Br3tt aka Falstaff" });
+﻿window.DefinePanel("JS Smooth Browser", { author : "Br3tt aka Falstaff" });
 include(fb.ComponentPath + "samples\\js-smooth\\js\\JScommon.js");
 include(fb.ComponentPath + "samples\\js-smooth\\js\\JSinputbox.js");
 include(fb.ComponentPath + "samples\\js-smooth\\js\\jssb.js");

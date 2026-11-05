@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -236,8 +242,6 @@
         
         
         <div class="description"><p>Direct2D effects<br></p>
-<div class="doc-note warning"><b>Direct2D versions earlier than 1.1 are not supported.</b><br>
-Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div>
 <p>Not all effects in this module supported by minimum Direct2D version.<br> <a href="d2d.html#Effect">d2d.Effect</a> returns null if effect is not supported.<br> See examples on top and bottom of this page.</p></div>
         
         
@@ -304,7 +308,7 @@ window.DrawMode = <span class="tok-number">1</span>;
         float4 color = InputTexture.Sample(InputSampler, input.texelSpacePos.xy);
 	
         // Invert RGB, keep alpha
-        return float4(1.0 - color.rgb, color.a) * color.a;
+        return float4((1.0 - color.rgb) * color.a, color.a);
     }
 `</span>;
 
@@ -323,6 +327,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
 }</code></pre>
         </section>
         
+        
     </article>
         
     <article class="api-item" id="AlphaMode" data-kind="enum" data-name="alphamode">
@@ -331,7 +336,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#AlphaMode">AlphaMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1287</div>
+            <div class="source-location">Effects.js:1285</div>
         </header>
         
         
@@ -351,6 +356,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="BlendMode" data-kind="enum" data-name="blendmode">
@@ -359,7 +365,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#BlendMode">BlendMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1463</div>
+            <div class="source-location">Effects.js:1461</div>
         </header>
         
         
@@ -379,6 +385,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="BorderEdgeMode" data-kind="enum" data-name="borderedgemode">
@@ -387,7 +394,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#BorderEdgeMode">BorderEdgeMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1449</div>
+            <div class="source-location">Effects.js:1447</div>
         </header>
         
         
@@ -407,6 +414,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="BorderMode" data-kind="enum" data-name="bordermode">
@@ -415,7 +423,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#BorderMode">BorderMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1247</div>
+            <div class="source-location">Effects.js:1245</div>
         </header>
         
         
@@ -435,6 +443,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="ChannelSelector" data-kind="enum" data-name="channelselector">
@@ -443,7 +452,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#ChannelSelector">ChannelSelector</a></h2>
             </div>
-            <div class="source-location">Effects.js:1315</div>
+            <div class="source-location">Effects.js:1313</div>
         </header>
         
         
@@ -463,6 +472,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="ColorMatrixAlphaMode" data-kind="enum" data-name="colormatrixalphamode">
@@ -471,7 +481,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#ColorMatrixAlphaMode">ColorMatrixAlphaMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1512</div>
+            <div class="source-location">Effects.js:1510</div>
         </header>
         
         
@@ -491,6 +501,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="ConvolveMatrixScaleMode" data-kind="enum" data-name="convolvematrixscalemode">
@@ -499,11 +510,11 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#ConvolveMatrixScaleMode">ConvolveMatrixScaleMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1349</div>
+            <div class="source-location">Effects.js:1347</div>
         </header>
         
         
-        <div class="description"><p>Used in <a href="module-Effects.html#Effects.Effects">Effects.Scale</a><br></p></div>
+        <div class="description"><p>Used in <a href="module-Effects.html#ConvolveMatrix">Effects.ConvolveMatrix</a><br></p></div>
         
         
         
@@ -519,6 +530,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="D2DAffinetransformInterpolationMode" data-kind="enum" data-name="d2daffinetransforminterpolationmode">
@@ -527,7 +539,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#D2DAffinetransformInterpolationMode">D2DAffinetransformInterpolationMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1393</div>
+            <div class="source-location">Effects.js:1391</div>
         </header>
         
         
@@ -547,6 +559,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="D2DEffectPropertyType" data-kind="enum" data-name="d2deffectpropertytype">
@@ -555,7 +568,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#D2DEffectPropertyType">D2DEffectPropertyType</a></h2>
             </div>
-            <div class="source-location">Effects.js:1199</div>
+            <div class="source-location">Effects.js:1197</div>
         </header>
         
         
@@ -575,6 +588,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="D3DPerspectiveTransformInterpolationMode" data-kind="enum" data-name="d3dperspectivetransforminterpolationmode">
@@ -583,7 +597,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#D3DPerspectiveTransformInterpolationMode">D3DPerspectiveTransformInterpolationMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1431</div>
+            <div class="source-location">Effects.js:1429</div>
         </header>
         
         
@@ -603,6 +617,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="D3DTransformInterpolationMode" data-kind="enum" data-name="d3dtransforminterpolationmode">
@@ -611,7 +626,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#D3DTransformInterpolationMode">D3DTransformInterpolationMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1413</div>
+            <div class="source-location">Effects.js:1411</div>
         </header>
         
         
@@ -631,6 +646,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="DirectionalBlurOptimization" data-kind="enum" data-name="directionalbluroptimization">
@@ -639,7 +655,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#DirectionalBlurOptimization">DirectionalBlurOptimization</a></h2>
             </div>
-            <div class="source-location">Effects.js:1259</div>
+            <div class="source-location">Effects.js:1257</div>
         </header>
         
         
@@ -659,6 +675,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="EdgeDetectionMode" data-kind="enum" data-name="edgedetectionmode">
@@ -667,7 +684,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#EdgeDetectionMode">EdgeDetectionMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1369</div>
+            <div class="source-location">Effects.js:1367</div>
         </header>
         
         
@@ -687,6 +704,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="GaussianBlurOptimization" data-kind="enum" data-name="gaussianbluroptimization">
@@ -695,7 +713,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#GaussianBlurOptimization">GaussianBlurOptimization</a></h2>
             </div>
-            <div class="source-location">Effects.js:1273</div>
+            <div class="source-location">Effects.js:1271</div>
         </header>
         
         
@@ -715,6 +733,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="HdrToneMapDisplayMode" data-kind="enum" data-name="hdrtonemapdisplaymode">
@@ -723,7 +742,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#HdrToneMapDisplayMode">HdrToneMapDisplayMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1528</div>
+            <div class="source-location">Effects.js:1526</div>
         </header>
         
         
@@ -743,6 +762,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="InputGamma" data-kind="enum" data-name="inputgamma">
@@ -751,7 +771,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#InputGamma">InputGamma</a></h2>
             </div>
-            <div class="source-location">Effects.js:1303</div>
+            <div class="source-location">Effects.js:1301</div>
         </header>
         
         
@@ -771,6 +791,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="MorphologyMode" data-kind="enum" data-name="morphologymode">
@@ -779,7 +800,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#MorphologyMode">MorphologyMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1381</div>
+            <div class="source-location">Effects.js:1379</div>
         </header>
         
         
@@ -799,6 +820,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="ScaleInterpolationMode" data-kind="enum" data-name="scaleinterpolationmode">
@@ -807,7 +829,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#ScaleInterpolationMode">ScaleInterpolationMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1227</div>
+            <div class="source-location">Effects.js:1225</div>
         </header>
         
         
@@ -827,6 +849,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="ShadowOptimization" data-kind="enum" data-name="shadowoptimization">
@@ -835,7 +858,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#ShadowOptimization">ShadowOptimization</a></h2>
             </div>
-            <div class="source-location">Effects.js:1498</div>
+            <div class="source-location">Effects.js:1496</div>
         </header>
         
         
@@ -855,6 +878,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="StraightenScaleMode" data-kind="enum" data-name="straightenscalemode">
@@ -863,7 +887,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#StraightenScaleMode">StraightenScaleMode</a></h2>
             </div>
-            <div class="source-location">Effects.js:1331</div>
+            <div class="source-location">Effects.js:1329</div>
         </header>
         
         
@@ -883,6 +907,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="TurbulenceNoise" data-kind="enum" data-name="turbulencenoise">
@@ -891,11 +916,11 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-enum">enum</span></div>
                 <h2><a class="anchor" href="#TurbulenceNoise">TurbulenceNoise</a></h2>
             </div>
-            <div class="source-location">Effects.js:1540</div>
+            <div class="source-location">Effects.js:1538</div>
         </header>
         
         
-        <div class="description"><p>Used in <a href="module-Effects.html#Effects">Effects.TurbulenceNoise</a><br></p></div>
+        <div class="description"><p>Used in <a href="module-Effects.html#Turbulence">Effects.Turbulence</a><br></p></div>
         
         
         
@@ -911,6 +936,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         
         
+        
     </article>
 
     <article class="api-item" id="Effects.Effects" data-kind="object" data-name="effects">
@@ -919,7 +945,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
                 <div class="eyebrow"><span class="kind kind-object">object</span></div>
                 <h2><a class="anchor" href="#Effects.Effects">Effects</a></h2>
             </div>
-            <div class="source-location">Effects.js:92</div>
+            <div class="source-location">Effects.js:90</div>
         </header>
         
         
@@ -928,7 +954,7 @@ effect.SetInput(<span class="tok-number">0</span>, img);
         
         <section class="member-section">
             <h3>Properties</h3>
-            <div class="table-wrap"><table>
+            <div class="table-wrap"><table class="properties-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
                 <tbody><tr id="ColorMatrix" class="property-group-main"><td><code>ColorMatrix</code></td><td><code>Object</code></td><td><p>Use the color matrix effect to alter the RGBA values of a bitmap.<br> You can use this effect to: <br> - Remove a color channel from an image.<br> - Reduce the color in an image.<br> - Swap color channels.<br> - Combine color channels.<br> Many built-in effects are specializations of color matrix that are optimized for the intended use of the effects. Examples include saturation, hue rotate, sepia, and temperature and tint.<br> For more information, see: <a href="https://learn.microsoft.com/en-us/windows/win32/direct2d/color-matrix" target="_blank" rel="noreferrer">https://learn.microsoft.com/en-us/windows/win32/direct2d/color-matrix</a></p></td></tr>
             <tr class="property-group-children"><td colspan="3">
@@ -1383,6 +1409,7 @@ window.SetInterval(() =&gt; {
   dgr.DrawEffect(transform, <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>, ww, wh);
 }</code></pre>
         </section>
+        
         
     </article></main>
     <script src="assets/search-data.js"></script><script src="assets/app.js"></script>

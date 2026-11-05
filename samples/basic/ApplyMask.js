@@ -1,4 +1,4 @@
-window.DefineScript('ApplyMask', { author: 'T.P Wang / marc2003' });
+﻿window.DefineScript('ApplyMask', { author: 'T.P Wang / marc2003' });
 include('docs/Flags.js');
 include('docs/Helpers.js');
 

@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 //29/10/24
 window.DefineScript('Last.fm Bio', {author:'marc2003 & regorxxx'});
 include(fb.ComponentPath + 'samples\\complete\\js\\lodash.min.js');

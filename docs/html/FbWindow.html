@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -279,6 +285,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
 <span class="tok-comment">// Panel A&#39;s still-live FrameStyle.NoBorder request becomes effective again.</span></code></pre>
         </section>
         
+        
     </article>
         
     <article class="api-item" id="FrameStyle" data-kind="property" data-name="framestyle">
@@ -310,6 +317,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
         
         
+        
     </article>
 
     <article class="api-item" id="Fullscreen" data-kind="property" data-name="fullscreen">
@@ -333,6 +341,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
         
         
+        
     </article>
 
     <article class="api-item" id="Height" data-kind="property" data-name="height">
@@ -346,6 +355,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         <pre class="signature"><code>Height: number = 0</code></pre>
         
         <div class="description"><p>Height of the outer main-window rectangle, including the non-client frame when present.</p></div>
+        
         
         
         
@@ -376,6 +386,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
         
         
+        
     </article>
 
     <article class="api-item" id="IsMinimized" data-kind="property" data-name="isminimized">
@@ -390,6 +401,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
         <div class="description"><p><b>true</b> when the main foobar2000 window is currently minimized.</p>
 <p>This property is read-only and reports the actual native window state.</p></div>
+        
         
         
         
@@ -423,6 +435,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
         
         
+        
     </article>
 
     <article class="api-item" id="MaxHeight" data-kind="property" data-name="maxheight">
@@ -436,6 +449,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         <pre class="signature"><code>MaxHeight: number = 0</code></pre>
         
         <div class="description"><p>Maximum height of the outer main-window rectangle when <a href="FbWindow.html#MaxSize">MaxSize</a> is enabled. A value of <b>0</b> disables the maximum-height constraint while leaving the maximum-width constraint independent.</p></div>
+        
         
         
         
@@ -465,6 +479,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
         
         
+        
     </article>
 
     <article class="api-item" id="MaxWidth" data-kind="property" data-name="maxwidth">
@@ -478,6 +493,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         <pre class="signature"><code>MaxWidth: number = 0</code></pre>
         
         <div class="description"><p>Maximum width of the outer main-window rectangle when <a href="FbWindow.html#MaxSize">MaxSize</a> is enabled. A value of <b>0</b> disables the maximum-width constraint while leaving the maximum-height constraint independent.</p></div>
+        
         
         
         
@@ -507,6 +523,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
         
         
+        
     </article>
 
     <article class="api-item" id="MinSize" data-kind="property" data-name="minsize">
@@ -528,6 +545,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
         
         
+        
     </article>
 
     <article class="api-item" id="MinWidth" data-kind="property" data-name="minwidth">
@@ -541,6 +559,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         <pre class="signature"><code>MinWidth: number = 0</code></pre>
         
         <div class="description"><p>Minimum width of the outer main-window rectangle when <a href="FbWindow.html#MinSize">MinSize</a> is enabled. A value of 0 disables the minimum-width constraint while leaving the minimum-height constraint independent.</p></div>
+        
         
         
         
@@ -574,6 +593,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
         
         
+        
     </article>
 
     <article class="api-item" id="Width" data-kind="property" data-name="width">
@@ -587,6 +607,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         <pre class="signature"><code>Width: number = 0</code></pre>
         
         <div class="description"><p>Width of the outer main-window rectangle, including the non-client frame when present.</p></div>
+        
         
         
         
@@ -616,6 +637,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
         
         
+        
     </article>
 
     <article class="api-item" id="Y" data-kind="property" data-name="y">
@@ -629,6 +651,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         <pre class="signature"><code>Y: number = 0</code></pre>
         
         <div class="description"><p>Y coordinate of the outer main-window rectangle in screen coordinates.</p></div>
+        
         
         
         
@@ -658,6 +681,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
         
         
+        
     </article>
 
     <article class="api-item" id="Close" data-kind="method" data-name="close">
@@ -672,6 +696,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
         
         <div class="description"><p>Requests the main foobar2000 window to close using the normal native Windows system command. This follows the same close path as closing the application window normally, rather than terminating the process directly.</p>
 <p>The command is posted asynchronously.</p></div>
+        
         
         
         
@@ -708,6 +733,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
 }</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="Minimize" data-kind="method" data-name="minimize">
@@ -734,6 +760,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
             <pre class="example"><code>fb.Window.Minimize();</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="Move" data-kind="method" data-name="move">
@@ -755,6 +782,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
                 <tbody><tr><td><code>x</code></td><td><code>number</code></td><td><p>X coordinate in screen coordinates.</p></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td><p>Y coordinate in screen coordinates.</p></td></tr><tr><td><code>width</code></td><td><code>number</code></td><td><p>Outer window width.</p></td></tr><tr><td><code>height</code></td><td><code>number</code></td><td><p>Outer window height.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -791,6 +819,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
 }</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="Restore" data-kind="method" data-name="restore">
@@ -818,6 +847,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
     fb.Window.Restore();
 }</code></pre>
         </section>
+        
         
     </article>
 
@@ -859,6 +889,7 @@ fb.Window.FrameStyle = FrameStyle.Default;
             <pre class="example"><code>fb.Window.FrameStyle = FrameStyle.NoBorder;
 fb.Window.SetPseudoCaption(<span class="tok-number">8</span>, <span class="tok-number">8</span>, <span class="tok-number">400</span>, <span class="tok-number">32</span>, <span class="tok-literal">true</span>);</code></pre>
         </section>
+        
         
     </article></main>
     <script src="assets/search-data.js"></script><script src="assets/app.js"></script>

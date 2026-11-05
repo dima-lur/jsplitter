@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -231,7 +237,7 @@
                 <div class="eyebrow"><span class="kind kind-class">class</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability cloneable" title="Instances can be sent through postMessage() using structured clone.">CLONEABLE</span></div>
                 <h2><a class="anchor" href="#FbMetadbHandleList">FbMetadbHandleList</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5520</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5560</div>
         </header>
         <pre class="signature"><code>FbMetadbHandleList(arg)</code></pre>
         
@@ -251,6 +257,7 @@
         
         
         
+        
     </article>
         
     <article class="api-item" id="Count" data-kind="property" data-name="count">
@@ -259,7 +266,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#Count">Count</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5529</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5569</div>
         </header>
         <pre class="signature"><code>Count: number</code></pre>
         
@@ -277,6 +284,7 @@
 console.log(handle_list.Count);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="Add" data-kind="method" data-name="add">
@@ -285,7 +293,7 @@ console.log(handle_list.Count);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Add">Add</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5540</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5580</div>
         </header>
         <pre class="signature"><code>Add(handle)</code></pre>
         
@@ -313,6 +321,7 @@ console.log(handle_list.Count);</code></pre>
             <pre class="example"><code>handle_list.Add(fb.GetNowPlaying());</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="AddRange" data-kind="method" data-name="addrange">
@@ -321,7 +330,7 @@ console.log(handle_list.Count);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#AddRange">AddRange</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5550</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5590</div>
         </header>
         <pre class="signature"><code>AddRange(handle_list)</code></pre>
         
@@ -345,6 +354,7 @@ console.log(handle_list.Count);</code></pre>
             <pre class="example"><code>handle_list.AddRange(fb.GetLibraryItems());</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="AttachImage" data-kind="method" data-name="attachimage">
@@ -353,7 +363,7 @@ console.log(handle_list.Count);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#AttachImage">AttachImage</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5559</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5599</div>
         </header>
         <pre class="signature"><code>AttachImage(image_path, art_id)</code></pre>
         
@@ -393,6 +403,7 @@ console.log(handle_list.Count);</code></pre>
 handle_list.AttachImage(img_path, AlbumArtId.front);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="AttachImage2" data-kind="method" data-name="attachimage2">
@@ -401,11 +412,11 @@ handle_list.AttachImage(img_path, AlbumArtId.front);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#AttachImage2">AttachImage2</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5590</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5630</div>
         </header>
         <pre class="signature"><code>AttachImage2(image, art_id, codec, quality)</code></pre>
         
-        <div class="description"><p>Embeds covers of the specified type from exisiting GdiBitmap or D2DBitmap object. Supports JPEG, WEBP and PNG codecs for encoding image before embedding.<br> Any existing artwork of the specified type will be overwritten!<br> Embedding covers is an asynchronous operation, so its result is not controlled here in any way. However, all the work of the method up to this point (encoding, creating art data) will return false in case of an error.</p></div>
+        <div class="description"><p>Embeds covers of the specified type from exisiting <a href="GdiBitmap.html#GdiBitmap">GdiBitmap</a> or <a href="D2DBitmap.html#D2DBitmap">D2DBitmap</a> object. Supports JPEG, WEBP and PNG codecs for encoding image before embedding.<br> Any existing artwork of the specified type will be overwritten!<br> Embedding covers is an asynchronous operation, so its result is not controlled here in any way. However, all the work of the method up to this point (encoding, creating art data) will return false in case of an error.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -440,6 +451,7 @@ handle_list.AttachImage(img_path, AlbumArtId.front);</code></pre>
 handle_list.AttachImage2(img, AlbumArtId.front, AttachImage2Codec.WebP, <span class="tok-number">60</span>);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="BSearch" data-kind="method" data-name="bsearch">
@@ -448,7 +460,7 @@ handle_list.AttachImage2(img, AlbumArtId.front, AttachImage2Codec.WebP, <span cl
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#BSearch">BSearch</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5621</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5661</div>
         </header>
         <pre class="signature"><code>BSearch(handle)</code></pre>
         
@@ -472,6 +484,7 @@ handle_list.AttachImage2(img, AlbumArtId.front, AttachImage2Codec.WebP, <span cl
         
         
         
+        
     </article>
 
     <article class="api-item" id="CalcTotalDuration" data-kind="method" data-name="calctotalduration">
@@ -480,7 +493,7 @@ handle_list.AttachImage2(img, AlbumArtId.front, AttachImage2Codec.WebP, <span cl
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#CalcTotalDuration">CalcTotalDuration</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5630</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5670</div>
         </header>
         <pre class="signature"><code>CalcTotalDuration()</code></pre>
         
@@ -497,6 +510,7 @@ handle_list.AttachImage2(img, AlbumArtId.front, AttachImage2Codec.WebP, <span cl
         
         
         
+        
     </article>
 
     <article class="api-item" id="CalcTotalSize" data-kind="method" data-name="calctotalsize">
@@ -505,7 +519,7 @@ handle_list.AttachImage2(img, AlbumArtId.front, AttachImage2Codec.WebP, <span cl
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#CalcTotalSize">CalcTotalSize</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5636</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5676</div>
         </header>
         <pre class="signature"><code>CalcTotalSize()</code></pre>
         
@@ -522,6 +536,7 @@ handle_list.AttachImage2(img, AlbumArtId.front, AttachImage2Codec.WebP, <span cl
         
         
         
+        
     </article>
 
     <article class="api-item" id="Clone" data-kind="method" data-name="clone">
@@ -530,7 +545,7 @@ handle_list.AttachImage2(img, AlbumArtId.front, AttachImage2Codec.WebP, <span cl
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Clone">Clone</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5642</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5682</div>
         </header>
         <pre class="signature"><code>Clone()</code></pre>
         
@@ -551,6 +566,7 @@ handle_list.AttachImage2(img, AlbumArtId.front, AttachImage2Codec.WebP, <span cl
             <pre class="example"><code><span class="tok-keyword">let</span> handle_list2 = handle_list.Clone();</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="Convert" data-kind="method" data-name="convert">
@@ -559,7 +575,7 @@ handle_list.AttachImage2(img, AlbumArtId.front, AttachImage2Codec.WebP, <span cl
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Convert">Convert</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5651</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5691</div>
         </header>
         <pre class="signature"><code>Convert()</code></pre>
         
@@ -583,6 +599,7 @@ handle_list.AttachImage2(img, AlbumArtId.front, AttachImage2Codec.WebP, <span cl
 }</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="Find" data-kind="method" data-name="find">
@@ -591,7 +608,7 @@ handle_list.AttachImage2(img, AlbumArtId.front, AttachImage2Codec.WebP, <span cl
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Find">Find</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5667</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5707</div>
         </header>
         <pre class="signature"><code>Find(handle)</code></pre>
         
@@ -615,6 +632,7 @@ handle_list.AttachImage2(img, AlbumArtId.front, AttachImage2Codec.WebP, <span cl
         
         
         
+        
     </article>
 
     <article class="api-item" id="GetLibraryRelativePaths" data-kind="method" data-name="getlibraryrelativepaths">
@@ -623,7 +641,7 @@ handle_list.AttachImage2(img, AlbumArtId.front, AttachImage2Codec.WebP, <span cl
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#GetLibraryRelativePaths">GetLibraryRelativePaths</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5676</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5716</div>
         </header>
         <pre class="signature"><code>GetLibraryRelativePaths()</code></pre>
         
@@ -646,6 +664,7 @@ handle_list.OrderByRelativePath();
 <span class="tok-keyword">let</span> relative_paths = handle_list.GetLibraryRelativePaths();</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="GetOtherInfo" data-kind="method" data-name="getotherinfo">
@@ -654,7 +673,7 @@ handle_list.OrderByRelativePath();
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#GetOtherInfo">GetOtherInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5692</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5732</div>
         </header>
         <pre class="signature"><code>GetOtherInfo()</code></pre>
         
@@ -677,6 +696,7 @@ handle_list.OrderByRelativePath();
 console.log(str);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="Insert" data-kind="method" data-name="insert">
@@ -685,7 +705,7 @@ console.log(str);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Insert">Insert</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5706</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5746</div>
         </header>
         <pre class="signature"><code>Insert(index, handle)</code></pre>
         
@@ -710,6 +730,7 @@ console.log(str);</code></pre>
 handle_list.Insert(handle_list.Count, fb.GetNowPlaying());</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="InsertRange" data-kind="method" data-name="insertrange">
@@ -718,7 +739,7 @@ handle_list.Insert(handle_list.Count, fb.GetNowPlaying());</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#InsertRange">InsertRange</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5717</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5757</div>
         </header>
         <pre class="signature"><code>InsertRange(index, handle_list)</code></pre>
         
@@ -738,6 +759,7 @@ handle_list.Insert(handle_list.Count, fb.GetNowPlaying());</code></pre>
         
         
         
+        
     </article>
 
     <article class="api-item" id="MakeDifference" data-kind="method" data-name="makedifference">
@@ -746,11 +768,11 @@ handle_list.Insert(handle_list.Count, fb.GetNowPlaying());</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#MakeDifference">MakeDifference</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5724</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5764</div>
         </header>
         <pre class="signature"><code>MakeDifference(handle_list)</code></pre>
         
-        <div class="description"><p>Note: sort with <a href="FbMetadbHandleList.html#Sort">FbMetadbHandleList#Sort</a> before using.</p></div>
+        <div class="description"><p>Note: sort with <a href="FbMetadbHandleList.html#Sort">Sort</a> before using.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -778,6 +800,7 @@ one.MakeDifference(two);
 <span class="tok-comment">// Anything that also existed in &quot;two&quot; will have been removed.</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="MakeIntersection" data-kind="method" data-name="makeintersection">
@@ -786,7 +809,7 @@ one.MakeDifference(two);
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#MakeIntersection">MakeIntersection</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5743</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5783</div>
         </header>
         <pre class="signature"><code>MakeIntersection(handle_list)</code></pre>
         
@@ -817,6 +840,7 @@ one.MakeIntersection(two);
 <span class="tok-comment">// &quot;one&quot; now only contains handles that were in BOTH &quot;one&quot; AND &quot;two&quot;</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="MakeUnion" data-kind="method" data-name="makeunion">
@@ -825,7 +849,7 @@ one.MakeIntersection(two);
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#MakeUnion">MakeUnion</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5761</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5801</div>
         </header>
         <pre class="signature"><code>MakeUnion(handle_list)</code></pre>
         
@@ -856,6 +880,7 @@ one.MakeUnion(two);
 <span class="tok-comment">// &quot;one&quot; now contains all handles from &quot;one&quot; AND &quot;two&quot; with any duplicates removed</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="OptimiseFileLayout" data-kind="method" data-name="optimisefilelayout">
@@ -864,7 +889,7 @@ one.MakeUnion(two);
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#OptimiseFileLayout">OptimiseFileLayout</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5779</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5819</div>
         </header>
         <pre class="signature"><code>OptimiseFileLayout(minimise)</code></pre>
         
@@ -884,6 +909,7 @@ one.MakeUnion(two);
         
         
         
+        
     </article>
 
     <article class="api-item" id="OrderByFormat" data-kind="method" data-name="orderbyformat">
@@ -892,7 +918,7 @@ one.MakeUnion(two);
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#OrderByFormat">OrderByFormat</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5789</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5829</div>
         </header>
         <pre class="signature"><code>OrderByFormat(tfo, direction)</code></pre>
         
@@ -902,7 +928,7 @@ one.MakeUnion(two);
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>tfo</code></td><td><code><a class="type-link" href="FbTitleFormat.html#FbTitleFormat">FbTitleFormat</a></code></td><td><p>An instance of FbTitleFormat.</p></td></tr><tr><td><code>direction</code></td><td><code>number</code></td><td><p>> 0 - ascending.</p></td></tr></tbody>
+                <tbody><tr><td><code>tfo</code></td><td><code><a class="type-link" href="FbTitleFormat.html#FbTitleFormat">FbTitleFormat</a></code></td><td><p>An instance of <a href="FbTitleFormat.html#FbTitleFormat">FbTitleFormat</a>.</p></td></tr><tr><td><code>direction</code></td><td><code>number</code></td><td><p>> 0 - ascending.</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -918,6 +944,7 @@ one.MakeUnion(two);
 handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="OrderByPath" data-kind="method" data-name="orderbypath">
@@ -926,11 +953,12 @@ handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#OrderByPath">OrderByPath</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5801</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5841</div>
         </header>
         <pre class="signature"><code>OrderByPath()</code></pre>
         
         <div class="description"><p>Note: this method should only be used on a handle list containing items that are monitored as part of the Media Library.</p></div>
+        
         
         
         
@@ -947,11 +975,12 @@ handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#OrderByRelativePath">OrderByRelativePath</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5809</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5849</div>
         </header>
         <pre class="signature"><code>OrderByRelativePath()</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -968,11 +997,12 @@ handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#RefreshStats">RefreshStats</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5816</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5856</div>
         </header>
         <pre class="signature"><code>RefreshStats()</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -989,7 +1019,7 @@ handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Remove">Remove</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5823</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5863</div>
         </header>
         <pre class="signature"><code>Remove(handle)</code></pre>
         
@@ -1009,6 +1039,7 @@ handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
         
         
         
+        
     </article>
 
     <article class="api-item" id="RemoveAll" data-kind="method" data-name="removeall">
@@ -1017,11 +1048,12 @@ handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#RemoveAll">RemoveAll</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5829</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5869</div>
         </header>
         <pre class="signature"><code>RemoveAll()</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -1038,7 +1070,7 @@ handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#RemoveAttachedImage">RemoveAttachedImage</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5835</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5875</div>
         </header>
         <pre class="signature"><code>RemoveAttachedImage(art_id)</code></pre>
         
@@ -1058,6 +1090,7 @@ handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
         
         
         
+        
     </article>
 
     <article class="api-item" id="RemoveAttachedImages" data-kind="method" data-name="removeattachedimages">
@@ -1066,12 +1099,13 @@ handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#RemoveAttachedImages">RemoveAttachedImages</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5844</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5884</div>
         </header>
         <pre class="signature"><code>RemoveAttachedImages()</code></pre>
         
         <div class="description"><p>Removes all attached images.</p>
 <p>Note: a progress dialog will be shown for larger file selections.</p></div>
+        
         
         
         
@@ -1088,7 +1122,7 @@ handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#RemoveById">RemoveById</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5853</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5893</div>
         </header>
         <pre class="signature"><code>RemoveById(idx)</code></pre>
         
@@ -1112,6 +1146,7 @@ handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
             <pre class="example"><code>handle_list.RemoveById(<span class="tok-number">0</span>);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="RemoveRange" data-kind="method" data-name="removerange">
@@ -1120,7 +1155,7 @@ handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#RemoveRange">RemoveRange</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5862</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5902</div>
         </header>
         <pre class="signature"><code>RemoveRange(from, num)</code></pre>
         
@@ -1144,6 +1179,7 @@ handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
             <pre class="example"><code>handle_list.RemoveRange(<span class="tok-number">10</span>, <span class="tok-number">20</span>);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="Reverse" data-kind="method" data-name="reverse">
@@ -1152,11 +1188,12 @@ handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Reverse">Reverse</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5872</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5912</div>
         </header>
         <pre class="signature"><code>Reverse()</code></pre>
         
         <div class="description"><p>Reverses the order of the items in the handle list.</p></div>
+        
         
         
         
@@ -1173,7 +1210,7 @@ handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#SaveAs">SaveAs</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5884</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5924</div>
         </header>
         <pre class="signature"><code>SaveAs(path)</code></pre>
         
@@ -1194,6 +1231,7 @@ handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
         
         
         
+        
     </article>
 
     <article class="api-item" id="Shuffle" data-kind="method" data-name="shuffle">
@@ -1202,11 +1240,12 @@ handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Shuffle">Shuffle</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5878</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5918</div>
         </header>
         <pre class="signature"><code>Shuffle()</code></pre>
         
         <div class="description"><p>Randomly shuffles the items in the handle list.</p></div>
+        
         
         
         
@@ -1223,11 +1262,12 @@ handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Sort">Sort</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5895</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5935</div>
         </header>
         <pre class="signature"><code>Sort()</code></pre>
         
         <div class="description"><p>Remove duplicates and optimise for other handle list operations</p></div>
+        
         
         
         
@@ -1244,7 +1284,7 @@ handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability main-thread" title="Available in Worker, but the host operation executes on the foobar2000 main thread.">MAIN THREAD</span></div>
                 <h2><a class="anchor" href="#UpdateFileInfoFromJSON">UpdateFileInfoFromJSON</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5903</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5943</div>
         </header>
         <pre class="signature"><code>UpdateFileInfoFromJSON(str)</code></pre>
         
@@ -1282,6 +1322,7 @@ handle_list.OrderByFormat(tfo, <span class="tok-number">1</span>);</code></pre>
 
 handles.UpdateFileInfoFromJSON(JSON.stringify(arr));</code></pre>
         </section>
+        
         
     </article></main>
     <script src="assets/search-data.js"></script><script src="assets/app.js"></script>

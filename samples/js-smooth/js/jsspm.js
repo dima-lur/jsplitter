@@ -1,4 +1,4 @@
-var need_repaint = false;
+﻿var need_repaint = false;
 
 ppt = {
 	defaultRowHeight: window.GetProperty("_PROPERTY: Row Height", 35),

@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Shader - Vectorscope.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryReader">
+        <a class="nav-link nav-page-link" href="BinaryReader.html">BinaryReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryWriter">
+        <a class="nav-link nav-page-link" href="BinaryWriter.html">BinaryWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
+        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbWindow">
+        <a class="nav-link nav-page-link" href="FbWindow.html">FbWindow</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteDatabase">
+        <a class="nav-link nav-page-link" href="SQLiteDatabase.html">SQLiteDatabase</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteStatement">
+        <a class="nav-link nav-page-link" href="SQLiteStatement.html">SQLiteStatement</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextReader">
+        <a class="nav-link nav-page-link" href="TextReader.html">TextReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextWriter">
+        <a class="nav-link nav-page-link" href="TextWriter.html">TextWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><a class="nav-link" href="module-ESModules.html">ESModules</a><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/vis/Shader - Vectorscope.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="vis.html#CreateAsync">vis.CreateAsync</a></div>
+        </header>
+        <pre class="source-code"><code>include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
+window.DrawMode = <span class="tok-number">1</span>;
+<span class="tok-comment">// JSplitter vis sample: Vectorscope | HLSL shader pipeline.</span>
+<span class="tok-comment">// An open, pixel-shader approximation of the built-in phosphor vectorscope.</span>
+<span class="tok-comment">// No native compute shader or private GPU buffers are used.</span>
+<span class="tok-comment">//</span>
+<span class="tok-comment">// Pipeline:</span>
+<span class="tok-comment">//   shader   - stereo PCM -&gt; round pixel hits + radial glow, accumulated</span>
+<span class="tok-comment">//              with the built-in CPU formulas within the current PCM frame.</span>
+<span class="tok-comment">//   feedback - previous image -&gt; time-based persistence (300 ms).</span>
+<span class="tok-comment">//   post     - saved intensity -&gt; DUI/CUI text color for display.</span>
+<span class="tok-comment">//</span>
+<span class="tok-comment">// The public shader interface exposes ps_4_0 image passes, not D3D11</span>
+<span class="tok-comment">// compute/structured buffers. Every source-shader pixel must search PCM</span>
+<span class="tok-comment">// samples, so this example bounds the search to 256 distributed stereo pairs</span>
+<span class="tok-comment">// from the native source&#39;s default 1024. At larger panel sizes this can be</span>
+<span class="tok-comment">// significantly more expensive than the built-in CPU or compute renderer.</span>
+<span class="tok-comment">// The feedback history is one 8-bit premultiplied image; unlike the native</span>
+<span class="tok-comment">// compute implementation it cannot separately retain full-precision core</span>
+<span class="tok-comment">// and glow intensities. Pause/new-source-revision behavior can also differ.</span>
+
+vis.UpdateIntervalMs = <span class="tok-number">16</span>; <span class="tok-comment">// Default: 16 ms; allowed: unsigned integer 1..4294967295 ms.</span>
+
+<span class="tok-comment">// Built-in defaults for the visible shape: pointSize=1, scale=1,</span>
+<span class="tok-comment">// aspectScale=true, glowStrength=0.4, glowRadius=4, persistenceMs=300.</span>
+<span class="tok-comment">// These are constants inside the HLSL demonstration, not new API options.</span>
+<span class="tok-keyword">const</span> textColor = window.InstanceType === <span class="tok-number">1</span>
+    ? window.GetColourDUI(<span class="tok-number">0</span>) : window.GetColourCUI(<span class="tok-number">0</span>);
+<span class="tok-keyword">const</span> backgroundColor = window.InstanceType === <span class="tok-number">1</span>
+    ? window.GetColourDUI(<span class="tok-number">1</span>) : window.GetColourCUI(<span class="tok-number">1</span>);
+
+<span class="tok-comment">// Convert the theme&#39;s ARGB value into compile-time HLSL literals.</span>
+<span class="tok-keyword">const</span> colorComponent = shift =&gt; (((textColor &gt;&gt;&gt; shift) &amp; <span class="tok-number">255</span>) / <span class="tok-number">255</span>).toFixed(<span class="tok-number">6</span>);
+<span class="tok-keyword">const</span> tint = <span class="tok-string">`float3(${colorComponent(16)}, ${colorComponent(8)}, ${colorComponent(0)})`</span>;
+<span class="tok-keyword">const</span> themeAlpha = colorComponent(<span class="tok-number">24</span>);
+
+<span class="tok-comment">// Source pass: texture t0 = left PCM, t1 = right PCM (paired R32F rows).</span>
+<span class="tok-comment">// Constants b0 = Draw width, height, effect time, available stereo pairs.</span>
+<span class="tok-comment">// CPU-style core and radial halo are combined into premultiplied coverage</span>
+<span class="tok-comment">// for a single PCM window; source-over blending accumulates the windows.</span>
+<span class="tok-keyword">const</span> sourceShader = <span class="tok-string">`
+Texture2D&lt;float&gt; LeftPCM : register(t0);
+Texture2D&lt;float&gt; RightPCM : register(t1);
+cbuffer VisConstants : register(b0) {
+    float2 viewportSize;
+    float time;
+    float pointCount;
+};
+struct PSInput {
+    float4 clipSpacePos : SV_POSITION;
+    float4 sceneSpacePos : SCENE_POS;
+};
+float4 main(PSInput input) : SV_Target {
+    float2 size = max(viewportSize, float2(1.0, 1.0));
+    float2 pixel = floor(input.sceneSpacePos.xy);
+    float2 center = size * 0.5;
+
+    // Corresponds to the built-in Vectorscope&#39;s default render settings.
+    const float pointSize = 1.0;
+    const float glowRadius = 4.0;
+    const float glowStrength = 0.4;
+    const float scale = 1.0;
+    float margin = max(1.0, pointSize * 0.5 + glowRadius + 1.0);
+    float2 radius = max(float2(0.0, 0.0), center - margin);
+    int splat = max(0, (int)ceil(pointSize * 0.5) - 1);
+
+    int count = max(0, (int)pointCount);
+    int plotted = min(count, 256); // Bounded per-pixel cost, not source.points.
+    float core = 0.0;
+    float glow = 0.0;
+    [loop]
+    for (int i = 0; i &lt; plotted; ++i) {
+        int index = min(count - 1, (int)floor(
+            ((float)i + 0.5) * (float)count / (float)plotted));
+        float l = LeftPCM.Load(int3(index, 0, 0)).r;
+        float r = RightPCM.Load(int3(index, 0, 0)).r;
+        float2 spot = center + 0.5 * float2(l - r, -(l + r)) * radius * scale;
+        float2 delta = pixel - floor(spot + 0.5);
+        if (abs(delta.x) &lt;= splat &amp;&amp; abs(delta.y) &lt;= splat)
+            core += 0.55 * (1.0 - core);
+        float d2 = dot(delta, delta) / (glowRadius * glowRadius);
+        if (d2 &lt; 1.0) {
+            float weight = 1.0 - d2;
+            float contribution = 0.22 * glowStrength * weight * weight;
+            glow += contribution * (1.0 - glow);
+        }
+    }
+    float coverage = saturate(core + glow * (1.0 - core));
+    return float4(coverage, coverage, coverage, coverage);
+}`</span>;
+
+<span class="tok-comment">// Feedback pass: previous image (t0/s0), one step per Draw().</span>
+<span class="tok-comment">// frameStep is measured in 60-Hz frames; exp(-3*dt/300ms) matches the</span>
+<span class="tok-comment">// built-in&#39;s persistence equation. The tiny subtraction prevents 8-bit</span>
+<span class="tok-comment">// history from retaining nearly invisible pixels forever after quantization.</span>
+<span class="tok-keyword">const</span> feedbackShader = <span class="tok-string">`
+Texture2D Previous : register(t0);
+SamplerState PreviousSampler : register(s0);
+cbuffer ImageConstants : register(b0) {
+    float2 viewportSize;
+    float time;
+    float frameStep;
+};
+struct PSInput {
+    float4 clipSpacePos : SV_POSITION;
+    float4 sceneSpacePos : SCENE_POS;
+    float4 texelSpacePos : TEXEL_POS;
+};
+float4 main(PSInput input) : SV_Target {
+    float4 previous = Previous.SampleLevel(PreviousSampler,
+                                          input.texelSpacePos.xy, 0.0);
+    float fade = exp(-3.0 * (frameStep * (1000.0 / 60.0)) / 300.0);
+    // The native history bitmap is cleared to opaque black: alpha is always 1.
+    // Luminance (RGB), not alpha, carries the accumulated signal.
+    float coverage = max(0.0, previous.r * fade -
+                        (0.5 / 255.0) * saturate(frameStep));
+    return float4(coverage, coverage, coverage, coverage);
+}`</span>;
+
+<span class="tok-comment">// Post pass: tint the saved grayscale intensity without changing history.</span>
+<span class="tok-comment">// RGB is premultiplied by alpha, as required by the shader image pipeline.</span>
+<span class="tok-keyword">const</span> postShader = <span class="tok-string">`
+Texture2D History : register(t0);
+SamplerState HistorySampler : register(s0);
+cbuffer ImageConstants : register(b0) {
+    float2 viewportSize;
+    float time;
+    float frameStep;
+};
+struct PSInput {
+    float4 clipSpacePos : SV_POSITION;
+    float4 sceneSpacePos : SCENE_POS;
+    float4 texelSpacePos : TEXEL_POS;
+};
+float4 main(PSInput input) : SV_Target {
+    float4 previous = History.SampleLevel(HistorySampler,
+                                         input.texelSpacePos.xy, 0.0);
+    // Read history luminance, since the history bitmap is opaque.
+    float opacity = saturate(previous.r * ${themeAlpha});
+    float3 color = ${tint};
+    return float4(color * opacity, opacity);
+}`</span>;
+
+<span class="tok-comment">// Native vectorscope source settings are all at their API defaults.</span>
+<span class="tok-keyword">const</span> source = {
+    leftChannel: <span class="tok-number">0</span>, <span class="tok-comment">// Default: 0; also accepts a vis.AudioFormat channel name; &quot;mix&quot; is invalid.</span>
+    rightChannel: <span class="tok-number">1</span>, <span class="tok-comment">// Default: 1; also accepts a vis.AudioFormat channel name; &quot;mix&quot; is invalid.</span>
+    durationMs: <span class="tok-number">40</span>, <span class="tok-comment">// Default: 40; allowed: integer 10..500 ms.</span>
+    points: <span class="tok-number">1024</span> <span class="tok-comment">// Default: 1024; allowed: integer 32..8192.</span>
+};
+
+<span class="tok-keyword">let</span> vectorscope = <span class="tok-literal">null</span>;
+vis.CreateAsync(VisSourceType.Vectorscope, source, {
+    shader: sourceShader,
+    feedback: feedbackShader,
+    post: postShader,
+    stopOnPause: <span class="tok-literal">true</span> <span class="tok-comment">// Default: false; allowed: true or false. Freeze the accumulated vectorscope image on pause.</span>
+})
+    .then(value =&gt; {
+        vectorscope = value;
+        window.Repaint();
+    })
+    .<span class="tok-keyword">catch</span>(error =&gt; console.log(<span class="tok-string">&quot;Vectorscope shader pipeline failed: &quot;</span> + error));
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    <span class="tok-keyword">const</span> w = window.Width, h = window.Height;
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, w, h, backgroundColor);
+    <span class="tok-keyword">if</span> (vectorscope &amp;&amp; w &gt; <span class="tok-number">0</span> &amp;&amp; h &gt; <span class="tok-number">0</span>)
+        vectorscope.Draw(gr, <span class="tok-number">0</span>, <span class="tok-number">0</span>, w, h);
+}
+
+setInterval(() =&gt; window.Repaint(), <span class="tok-number">33</span>);
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

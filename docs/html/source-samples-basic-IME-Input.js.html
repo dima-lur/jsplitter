@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>IME Input.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryReader">
+        <a class="nav-link nav-page-link" href="BinaryReader.html">BinaryReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryWriter">
+        <a class="nav-link nav-page-link" href="BinaryWriter.html">BinaryWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
+        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbWindow">
+        <a class="nav-link nav-page-link" href="FbWindow.html">FbWindow</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteDatabase">
+        <a class="nav-link nav-page-link" href="SQLiteDatabase.html">SQLiteDatabase</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteStatement">
+        <a class="nav-link nav-page-link" href="SQLiteStatement.html">SQLiteStatement</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextReader">
+        <a class="nav-link nav-page-link" href="TextReader.html">TextReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextWriter">
+        <a class="nav-link nav-page-link" href="TextWriter.html">TextWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><a class="nav-link" href="module-ESModules.html">ESModules</a><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/basic/IME Input.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="module-Callbacks.html#on_ime_start">module:Callbacks.on_ime_start</a><a href="module-Callbacks.html#on_ime_update">module:Callbacks.on_ime_update</a><a href="module-Callbacks.html#on_ime_end">module:Callbacks.on_ime_end</a><a href="window.html#SetImePosition">window.SetImePosition</a></div>
+        </header>
+        <pre class="source-code"><code><span class="tok-string">&quot;use strict&quot;</span>;
+
+window.DefineScript(<span class="tok-string">&quot;IME Input&quot;</span>, {
+    author: <span class="tok-string">&quot;LUR&quot;</span>,
+    features: {grab_focus: <span class="tok-literal">true</span>}
+});
+
+include(<span class="tok-string">&quot;docs/Flags.js&quot;</span>);
+
+<span class="tok-comment">// Receive regular character input after the IME commits its result.</span>
+window.DlgCode = DLGC_WANTALLKEYS | DLGC_WANTCHARS;
+
+<span class="tok-keyword">const</span> fontTitle = gdi.Font(<span class="tok-string">&quot;Segoe UI&quot;</span>, <span class="tok-number">18</span>, <span class="tok-number">1</span>);
+<span class="tok-keyword">const</span> fontText = gdi.Font(<span class="tok-string">&quot;Segoe UI&quot;</span>, <span class="tok-number">13</span>);
+<span class="tok-keyword">const</span> fontSmall = gdi.Font(<span class="tok-string">&quot;Segoe UI&quot;</span>, <span class="tok-number">11</span>);
+<span class="tok-keyword">const</span> fontInput = gdi.Font(<span class="tok-string">&quot;Segoe UI&quot;</span>, <span class="tok-number">17</span>);
+
+<span class="tok-keyword">const</span> BG = <span class="tok-number">0xFFF7F7F7</span>;
+<span class="tok-keyword">const</span> TEXT = <span class="tok-number">0xFF202020</span>;
+<span class="tok-keyword">const</span> TEXT_DIM = <span class="tok-number">0xFF686868</span>;
+<span class="tok-keyword">const</span> BORDER = <span class="tok-number">0xFFB8B8B8</span>;
+<span class="tok-keyword">const</span> BORDER_ACTIVE = <span class="tok-number">0xFF2D72D9</span>;
+<span class="tok-keyword">const</span> ACCENT = <span class="tok-number">0xFF2D72D9</span>;
+<span class="tok-keyword">const</span> ACCENT_BG = <span class="tok-number">0xFFEAF2FF</span>;
+<span class="tok-keyword">const</span> WHITE = <span class="tok-number">0xFFFFFFFF</span>;
+
+<span class="tok-keyword">const</span> MARGIN = <span class="tok-number">20</span>;
+<span class="tok-keyword">const</span> FIELD_Y = <span class="tok-number">178</span>;
+<span class="tok-keyword">const</span> FIELD_H = <span class="tok-number">46</span>;
+<span class="tok-keyword">const</span> FIELD_PAD = <span class="tok-number">10</span>;
+
+<span class="tok-keyword">let</span> hasFocus = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> fieldActive = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> committedText = <span class="tok-string">&quot;&quot;</span>;
+<span class="tok-keyword">let</span> imeActive = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> imeText = <span class="tok-string">&quot;&quot;</span>;
+<span class="tok-keyword">let</span> imeCursor = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> imePositionKey = <span class="tok-string">&quot;&quot;</span>;
+
+<span class="tok-keyword">function</span> fieldRect() {
+    <span class="tok-keyword">return</span> {
+        x: MARGIN,
+        y: FIELD_Y,
+        w: Math.max(<span class="tok-number">0</span>, window.Width - MARGIN * <span class="tok-number">2</span>),
+        h: FIELD_H
+    };
+}
+
+<span class="tok-keyword">function</span> pointInRect(x, y, r) {
+    <span class="tok-keyword">return</span> x &gt;= r.x &amp;&amp; x &lt;= r.x + r.w &amp;&amp; y &gt;= r.y &amp;&amp; y &lt;= r.y + r.h;
+}
+
+<span class="tok-keyword">function</span> syncImePosition(active, x, y) {
+    <span class="tok-keyword">const</span> key = active ? <span class="tok-string">`${x},${y}`</span> : <span class="tok-string">&quot;off&quot;</span>;
+    <span class="tok-keyword">if</span> (key === imePositionKey) {
+        <span class="tok-keyword">return</span>;
+    }
+
+    imePositionKey = key;
+    <span class="tok-keyword">if</span> (active) {
+        window.SetImePosition(x, y);
+    }
+}
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    <span class="tok-keyword">const</span> w = window.Width;
+    <span class="tok-keyword">const</span> h = window.Height;
+    <span class="tok-keyword">const</span> field = fieldRect();
+    <span class="tok-keyword">const</span> active = hasFocus &amp;&amp; fieldActive;
+
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, w, h, BG);
+
+    gr.GdiDrawText(<span class="tok-string">&quot;IME / Handwriting Input&quot;</span>, fontTitle, TEXT,
+        MARGIN, <span class="tok-number">16</span>, Math.max(<span class="tok-number">0</span>, w - MARGIN * <span class="tok-number">2</span>), <span class="tok-number">28</span>,
+        DT_SINGLELINE | DT_NOPREFIX);
+
+    gr.GdiDrawText(
+        <span class="tok-string">&quot;Click the field below, then use an IME or Windows handwriting keyboard. &quot;</span> +
+        <span class="tok-string">&quot;Temporary IME text is shown in blue before it is committed. The script owns the field, preview text, and caret.&quot;</span>,
+        fontText, TEXT_DIM,
+        MARGIN, <span class="tok-number">50</span>, Math.max(<span class="tok-number">0</span>, w - MARGIN * <span class="tok-number">2</span>), <span class="tok-number">54</span>,
+        DT_WORDBREAK | DT_NOPREFIX);
+
+    <span class="tok-keyword">const</span> hintY = <span class="tok-number">112</span>;
+    <span class="tok-keyword">const</span> hintW = Math.max(<span class="tok-number">0</span>, w - MARGIN * <span class="tok-number">2</span>);
+    gr.FillSolidRect(MARGIN, hintY, hintW, <span class="tok-number">46</span>, ACCENT_BG);
+    gr.GdiDrawText(
+        <span class="tok-string">&quot;Blue underlined = temporary IME text    •    Black = committed on_char text&quot;</span>,
+        fontSmall, ACCENT,
+        MARGIN + <span class="tok-number">10</span>, hintY + <span class="tok-number">4</span>, Math.max(<span class="tok-number">0</span>, hintW - <span class="tok-number">20</span>), <span class="tok-number">38</span>,
+        DT_VCENTER | DT_SINGLELINE | DT_END_ELLIPSIS | DT_NOPREFIX);
+
+    gr.FillSolidRect(field.x, field.y, field.w, field.h, WHITE);
+    gr.DrawRect(field.x, field.y, field.w, field.h, <span class="tok-number">1</span>, active ? BORDER_ACTIVE : BORDER);
+
+    <span class="tok-keyword">const</span> textX = field.x + FIELD_PAD;
+    <span class="tok-keyword">const</span> textY = field.y;
+    <span class="tok-keyword">const</span> textW = Math.max(<span class="tok-number">0</span>, field.w - FIELD_PAD * <span class="tok-number">2</span>);
+
+    <span class="tok-keyword">const</span> committedWidth = gr.CalcTextWidth(committedText, fontInput, <span class="tok-literal">true</span>);
+    <span class="tok-keyword">let</span> caretX = textX + committedWidth;
+
+    <span class="tok-keyword">if</span> (!committedText &amp;&amp; !imeText) {
+        gr.GdiDrawText(active ? <span class="tok-string">&quot;Write here…&quot;</span> : <span class="tok-string">&quot;Click here to start&quot;</span>, fontInput, <span class="tok-number">0xFF8A8A8A</span>,
+            textX, textY, textW, field.h,
+            DT_VCENTER | DT_SINGLELINE | DT_END_ELLIPSIS | DT_NOPREFIX);
+    }
+    <span class="tok-keyword">else</span> {
+        gr.GdiDrawText(committedText, fontInput, TEXT,
+            textX, textY, textW, field.h,
+            DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+
+        <span class="tok-keyword">if</span> (imeActive) {
+            <span class="tok-keyword">const</span> imeX = textX + committedWidth;
+            <span class="tok-keyword">const</span> remaining = Math.max(<span class="tok-number">0</span>, field.x + field.w - FIELD_PAD - imeX);
+            gr.GdiDrawText(imeText, fontInput, ACCENT,
+                imeX, textY, remaining, field.h,
+                DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+
+            <span class="tok-keyword">const</span> imeWidth = gr.CalcTextWidth(imeText, fontInput, <span class="tok-literal">true</span>);
+            <span class="tok-keyword">if</span> (imeWidth &gt; <span class="tok-number">0</span>) {
+                gr.FillSolidRect(imeX, field.y + field.h - <span class="tok-number">8</span>, Math.min(imeWidth, remaining), <span class="tok-number">2</span>, ACCENT);
+            }
+
+            <span class="tok-keyword">const</span> beforeCursor = imeText.slice(<span class="tok-number">0</span>, imeCursor);
+            caretX = imeX + gr.CalcTextWidth(beforeCursor, fontInput, <span class="tok-literal">true</span>);
+        }
+    }
+
+    caretX = Math.min(caretX, field.x + field.w - FIELD_PAD);
+
+    <span class="tok-comment">// The script owns the visual caret. SetImePosition() only tells Windows where</span>
+    <span class="tok-comment">// the current insertion point is so handwriting/candidate UI can be placed nearby.</span>
+    <span class="tok-keyword">if</span> (active) {
+        gr.FillSolidRect(caretX, field.y + <span class="tok-number">10</span>, <span class="tok-number">1</span>, field.h - <span class="tok-number">20</span>, imeActive ? ACCENT : TEXT);
+    }
+    syncImePosition(active, caretX, field.y + field.h);
+
+    <span class="tok-keyword">const</span> statusY = FIELD_Y + FIELD_H + <span class="tok-number">18</span>;
+    <span class="tok-keyword">const</span> fieldStatus = fieldActive ? <span class="tok-string">&quot;active&quot;</span> : <span class="tok-string">&quot;inactive&quot;</span>;
+    <span class="tok-keyword">const</span> focusStatus = hasFocus ? <span class="tok-string">&quot;focused&quot;</span> : <span class="tok-string">&quot;not focused&quot;</span>;
+    <span class="tok-keyword">const</span> imeStatus = imeActive ? <span class="tok-string">&quot;composing&quot;</span> : <span class="tok-string">&quot;idle&quot;</span>;
+
+    gr.GdiDrawText(<span class="tok-string">`Field: ${fieldStatus}    Panel: ${focusStatus}    IME: ${imeStatus}`</span>,
+        fontSmall, imeActive ? ACCENT : TEXT_DIM,
+        MARGIN, statusY, Math.max(<span class="tok-number">0</span>, w - MARGIN * <span class="tok-number">2</span>), <span class="tok-number">22</span>,
+        DT_SINGLELINE | DT_NOPREFIX);
+
+    gr.GdiDrawText(
+        <span class="tok-string">&quot;During composition, on_ime_update() may replace, shorten, or clear the preview. &quot;</span> +
+        <span class="tok-string">&quot;The script draws and moves its own caret, then calls window.SetImePosition() so Windows knows where IME UI belongs. &quot;</span> +
+        <span class="tok-string">&quot;Committed characters arrive through on_char().&quot;</span>,
+        fontSmall, TEXT_DIM,
+        MARGIN, statusY + <span class="tok-number">30</span>, Math.max(<span class="tok-number">0</span>, w - MARGIN * <span class="tok-number">2</span>), Math.max(<span class="tok-number">0</span>, h - statusY - <span class="tok-number">40</span>),
+        DT_WORDBREAK | DT_NOPREFIX);
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_down(x, y) {
+    fieldActive = pointInRect(x, y, fieldRect());
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> on_focus(isFocused) {
+    hasFocus = isFocused;
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> on_ime_start() {
+    <span class="tok-keyword">if</span> (!fieldActive) {
+        <span class="tok-keyword">return</span>;
+    }
+
+    imeActive = <span class="tok-literal">true</span>;
+    imeText = <span class="tok-string">&quot;&quot;</span>;
+    imeCursor = <span class="tok-number">0</span>;
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> on_ime_update(text, cursor) {
+    <span class="tok-keyword">if</span> (!fieldActive) {
+        <span class="tok-keyword">return</span>;
+    }
+
+    imeActive = <span class="tok-literal">true</span>;
+    imeText = text;
+    imeCursor = cursor;
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> on_ime_end() {
+    imeActive = <span class="tok-literal">false</span>;
+    imeText = <span class="tok-string">&quot;&quot;</span>;
+    imeCursor = <span class="tok-number">0</span>;
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> on_char(code) {
+    <span class="tok-keyword">if</span> (!fieldActive) {
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">if</span> (code === <span class="tok-number">8</span>) { <span class="tok-comment">// Backspace outside an active IME composition.</span>
+        committedText = Array.from(committedText).slice(<span class="tok-number">0</span>, -<span class="tok-number">1</span>).join(<span class="tok-string">&quot;&quot;</span>);
+        window.Repaint();
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">if</span> (code &lt; <span class="tok-number">32</span>) { <span class="tok-comment">// Keep this demo as a single-line field (ignore Enter, Tab, etc.).</span>
+        <span class="tok-keyword">return</span>;
+    }
+
+    committedText += String.fromCharCode(code);
+    window.Repaint();
+}
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

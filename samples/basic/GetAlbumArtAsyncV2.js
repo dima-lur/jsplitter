@@ -1,4 +1,4 @@
-window.DefineScript('GetAlbumArtAsyncV2', { author: 'TheQwertiest' });
+﻿window.DefineScript('GetAlbumArtAsyncV2', { author: 'TheQwertiest' });
 include('docs/Flags.js');
 include('docs/Helpers.js');
 

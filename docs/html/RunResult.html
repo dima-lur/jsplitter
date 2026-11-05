@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -231,11 +237,12 @@
                 <div class="eyebrow"><span class="kind kind-class">class</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag capability cloneable" title="Instances can be sent through postMessage() using structured clone.">CLONEABLE</span></div>
                 <h2><a class="anchor" href="#RunResult">RunResult</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7563</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:7603</div>
         </header>
         
         
         <div class="description"><p>Object returned by <a href="utils.html#Run">utils.Run</a>.<br></p></div>
+        
         
         
         
@@ -252,11 +259,12 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#ExitCode">ExitCode</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7585</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:7625</div>
         </header>
         <pre class="signature"><code>ExitCode: number = 0</code></pre>
         
         <div class="description"><p>Process exit code.<br> This value is meaningful when wait=true and the launched process handle was available.<br> If wait=false, this value is usually 0.<br></p></div>
+        
         
         
         
@@ -273,11 +281,12 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#OK">OK</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7573</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:7613</div>
         </header>
         <pre class="signature"><code>OK: boolean = false</code></pre>
         
         <div class="description"><p>High-level operation result.<br> If wait=false, true means that ShellExecuteEx accepted the shell request.<br> If wait=true and a process exit code is available, true means that the process exited with code 0.<br> A non-zero process exit code is reported as OK=false, while Win32Error usually remains 0.<br></p></div>
+        
         
         
         
@@ -294,11 +303,12 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#ShellCode">ShellCode</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7607</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:7647</div>
         </header>
         <pre class="signature"><code>ShellCode: number = 0</code></pre>
         
         <div class="description"><p>Native ShellExecuteEx result code.<br> Values greater than 32 usually indicate a successful shell-level operation.<br> Values less than or equal to 32 indicate a shell-level error, such as file not found, access denied, no association, or invalid executable format.<br> This value describes the shell operation itself, not the launched process exit code.<br></p></div>
+        
         
         
         
@@ -315,11 +325,12 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#Win32Error">Win32Error</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7596</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:7636</div>
         </header>
         <pre class="signature"><code>Win32Error: number = 0</code></pre>
         
         <div class="description"><p>Win32 error code returned by GetLastError, or an internally assigned Win32 error code.<br> This is 0 on success.<br> If OK=false and Win32Error is 0, the process was usually started successfully but returned a non-zero ExitCode.<br></p></div>
+        
         
         
         

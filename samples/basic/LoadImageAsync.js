@@ -1,4 +1,4 @@
-window.DefineScript('LoadImageAsync', { author: 'T.P Wang' });
+﻿window.DefineScript('LoadImageAsync', { author: 'T.P Wang' });
 
 // Get a list of jpg files from a folder
 const g_image_list = utils.Glob(`${fb.ComponentPath}samples/basic/images/*.jpg`);

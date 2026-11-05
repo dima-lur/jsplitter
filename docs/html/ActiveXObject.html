@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -255,6 +261,7 @@
             <pre class="example"><code><span class="tok-keyword">const</span> xmlhttp = <span class="tok-keyword">new</span> ActiveXObject(<span class="tok-string">&#39;Microsoft.XMLHTTP&#39;</span>);</code></pre>
         </section>
         
+        
     </article>
         
     <article class="api-item" id="ActiveX_CreateArray" data-kind="method" data-name="activex_createarray">
@@ -267,7 +274,7 @@
         </header>
         <pre class="signature"><code>ActiveX_CreateArray(arr, element_variant_type)</code></pre>
         
-        <div class="description"><p>Creates an <b>ActiveXObject</b> that contains an object of type (VT_ARRAY|SOME_TYPE).</p></div>
+        <div class="description"><p>Creates an <a href="ActiveXObject.html#ActiveXObject">ActiveXObject</a> that contains an object of type (VT_ARRAY|SOME_TYPE).</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -300,6 +307,7 @@ stm.Write(com_bin_data);
 stm.SaveToFile(filename, <span class="tok-number">2</span>);
 stm.Close();</code></pre>
         </section>
+        
         
     </article>
 
@@ -339,6 +347,7 @@ stm.Close();</code></pre>
 <span class="tok-comment">// some_activex.Item(&#39;property_name&#39;, &#39;additional_info&#39;).DoSmth();</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="ActiveX_Set" data-kind="method" data-name="activex_set">
@@ -372,6 +381,7 @@ stm.Close();</code></pre>
 <span class="tok-comment">// in COM:</span>
 <span class="tok-comment">// some_activex.Item(&#39;property_name&#39;, &#39;additional_info&#39;) = &quot;new_value&quot;;</span></code></pre>
         </section>
+        
         
     </article></main>
     <script src="assets/search-data.js"></script><script src="assets/app.js"></script>

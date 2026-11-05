@@ -9,9 +9,9 @@
 /**
  * Named asynchronous messaging channel shared by JSplitter panel and Worker realms.<br>
  *
- * <b>BroadcastChannel</b> is the recommended API for new many-to-many communication between independent JSplitter panels and Workers. Every open channel with the same name participates in the same process-wide JSplitter namespace. A sender publishes a value with {@link BroadcastChannel#postMessage postMessage}, and every other currently open channel with that name receives a {@link MessageEvent}. The sending channel itself does not receive its own message.<br>
+ * {@link BroadcastChannel BroadcastChannel} is the recommended API for new many-to-many communication between independent JSplitter panels and Workers. Every open channel with the same name participates in the same process-wide JSplitter namespace. A sender publishes a value with {@link BroadcastChannel#postMessage postMessage}, and every other currently open channel with that name receives a {@link MessageEvent}. The sending channel itself does not receive its own message.<br>
  *
- * Unlike {@link Worker#postMessage Worker.postMessage}, which addresses one specific Worker owned by one panel, BroadcastChannel is intentionally decoupled: the sender does not need to know which panels or Workers are listening. 
+ * Unlike {@link Worker#postMessage Worker.postMessage}, which addresses one specific Worker owned by one panel, {@link BroadcastChannel BroadcastChannel} is intentionally decoupled: the sender does not need to know which panels or Workers are listening.
  * <div class="doc-note warning">
  *     <b>For new code, prefer {@link BroadcastChannel} over {@link window.NotifyOthers}.</b><br>
  *     The legacy {@link window.NotifyOthers} mechanism is synchronous and exposes the same live JavaScript value to other panels. This tightly couples the sender and receivers: changes made to a shared object can be visible across panels, and notification handling can directly affect the sender's execution.<br>
@@ -41,10 +41,10 @@
  *     index: 34
  * });
  * ```
- * The other panel receives an independent structured-clone copy of the object. The sending <b>channel object</b> does not receive its own post. If the same realm (panel or worker) creates a second BroadcastChannel with the same name, that second channel is a separate receiver and can receive the message.
+ * The other panel receives an independent structured-clone copy of the object. The sending <b>channel object</b> does not receive its own post. If the same realm (panel or worker) creates a second {@link BroadcastChannel BroadcastChannel} with the same name, that second channel is a separate receiver and can receive the message.
  *
  * <h2>Panel and Worker use the same API</h2>
- * BroadcastChannel is also available inside Workers. This makes it useful when a Worker should publish state to panels or to other Workers without routing every message through its parent Worker object.
+ * {@link BroadcastChannel BroadcastChannel} is also available inside Workers. This makes it useful when a Worker should publish state to panels or to other Workers without routing every message through its parent Worker object.
  *
  * ```js
  * // PANEL
@@ -63,20 +63,20 @@
  * `, 'analyser');
  * ```
  *
- * Use direct {@link Worker#postMessage Worker.postMessage} when the message belongs to one known parent/Worker pair. Use BroadcastChannel when the relationship is naturally publish/subscribe or when several panels and/or Workers may participate.
+ * Use direct {@link Worker#postMessage Worker.postMessage} when the message belongs to one known parent/Worker pair. Use {@link BroadcastChannel BroadcastChannel} when the relationship is naturally publish/subscribe or when several panels and/or Workers may participate.
  *
  * <h2>Channel names and scope</h2>
  * The constructor name is converted to a string. Use a stable, sufficiently specific name such as <b>my.package.playback-state</b> to avoid accidental collisions with unrelated scripts. Symbols cannot be converted to a channel name and throw a TypeError.<br>
  *
- * JSplitter does not have browser origins or storage partitions. All live JSplitter panel and Worker realms inside the same foobar2000 process share one BroadcastChannel namespace. Channels do not cross process boundaries and are not persistent; closing foobar2000 destroys the namespace.
+ * JSplitter does not have browser origins or storage partitions. All live JSplitter panel and Worker realms inside the same foobar2000 process share one {@link BroadcastChannel BroadcastChannel} namespace. Channels do not cross process boundaries and are not persistent; closing foobar2000 destroys the namespace.
  *
  * <h2>Messages and structured clone</h2>
  * {@link BroadcastChannel#postMessage postMessage} uses the same structured-clone infrastructure as Worker messaging. Ordinary supported JavaScript values are copied, and supported JSplitter host wrappers can be reconstructed in the destination realm. See the <b>Host objects in messages</b> section of {@link Worker} for the current cloneable host-object list.<br>
  *
  * <h2>No ownership transfer</h2>
- * BroadcastChannel has <b>no transfer-list argument</b>. Its {@link BroadcastChannel#postMessage postMessage} accepts the message value only. This is different from direct {@link Worker#postMessage Worker.postMessage} and Worker-global {@link WorkerGlobalScope#postMessage postMessage}, where a second transfer-list argument can move ownership of selected transferable objects to one specific destination.<br>
+ * {@link BroadcastChannel BroadcastChannel} has <b>no transfer-list argument</b>. Its {@link BroadcastChannel#postMessage postMessage} accepts the message value only. This is different from direct {@link Worker#postMessage Worker.postMessage} and Worker-global {@link WorkerGlobalScope#postMessage postMessage}, where a second transfer-list argument can move ownership of selected transferable objects to one specific destination.<br>
  *
- * A broadcast may have zero, one, or many receivers. There is no single receiver that can take ownership of a transferred resource, so BroadcastChannel always uses clone semantics. If a host object is cloneable, every receiver gets its own reconstructed representation and the sender's source object remains usable. No object is detached by BroadcastChannel.<br>
+ * A broadcast may have zero, one, or many receivers. There is no single receiver that can take ownership of a transferred resource, so {@link BroadcastChannel BroadcastChannel} always uses clone semantics. If a host object is cloneable, every receiver gets its own reconstructed representation and the sender's source object remains usable. No object is detached by {@link BroadcastChannel BroadcastChannel}.<br>
  *
  * ```js
  * // BroadcastChannel: clone. The sender keeps a usable bitmap.
@@ -89,7 +89,7 @@
  * // bitmap is detached here after a successful transfer
  * ```
  *
- * Use BroadcastChannel when several independent panels and/or Workers should receive cloned data by channel name. Use direct Worker messaging when one known destination should take ownership of a transferable resource. See <b>Transferring ownership</b> in {@link Worker} for the transfer model and the current transferable host-object list.<br>
+ * Use {@link BroadcastChannel BroadcastChannel} when several independent panels and/or Workers should receive cloned data by channel name. Use direct Worker messaging when one known destination should take ownership of a transferable resource. See <b>Transferring ownership</b> in {@link Worker} for the transfer model and the current transferable host-object list.<br>
  *
  * Serialization is performed synchronously by {@link BroadcastChannel#postMessage postMessage}. Before delivering the message, JSplitter first serializes it for all current receivers. If serialization fails for any receiver, {@link BroadcastChannel#postMessage postMessage} throws and no message is delivered, preventing a partial broadcast.
  * 
@@ -99,21 +99,21 @@
  * JSplitter currently performs an independent structured serialization for each receiver because some native host-object snapshots are destination-owned. Consequently, side-effectful getters or Proxy traps in the value being serialized can run once per receiver. Avoid side effects in values passed to {@link BroadcastChannel#postMessage postMessage}.</div>
  *
  * <h2>Receiving messages</h2>
- * Use {@link BroadcastChannel#onmessage onmessage} or the inherited {@link EventTarget#addEventListener addEventListener('message', ...)} API. Delivery is asynchronous. Messages posted sequentially by one sender are queued in the same order for a given receiver.
+ * Use {@link BroadcastChannel#onmessage onmessage} or the inherited {@link EventTarget#addEventListener addEventListener} API. Delivery is asynchronous. Messages posted sequentially by one sender are queued in the same order for a given receiver.
  *
- * Trusted BroadcastChannel <b>message</b> events are {@link MessageEvent} objects. In JSplitter they use:
+ * Trusted {@link BroadcastChannel BroadcastChannel} <b>message</b> events are {@link MessageEvent} objects. In JSplitter they use:
  * <ul class="doc-article-list">
- * <li><b>event.data</b> — the reconstructed payload.</li>
- * <li><b>event.origin</b> — empty string.</li>
- * <li><b>event.source</b> — <b>null</b>.</li>
- * <li><b>event.ports</b> — empty frozen array.</li>
- * <li><b>event.direction</b> — <b>"broadcast"</b>.</li>
+ * <li>{@link MessageEvent#data event.data} — the reconstructed payload.</li>
+ * <li>{@link MessageEvent#origin event.origin} — empty string.</li>
+ * <li>{@link MessageEvent#source event.source} — <b>null</b>.</li>
+ * <li>{@link MessageEvent#ports event.ports} — empty frozen array.</li>
+ * <li>{@link MessageEvent#direction event.direction} — <b>"broadcast"</b>.</li>
  * </ul>
  *
- * If a receiver cannot reconstruct a serialized value, its {@link BroadcastChannel#onmessageerror onmessageerror} handler receives a MessageEvent whose <b>data</b> is <b>null</b>, <b>direction</b> is <b>"broadcast"</b>, and {@link MessageEvent#errorMessage errorMessage} contains a JSplitter diagnostic string.
+ * If a receiver cannot reconstruct a serialized value, its {@link BroadcastChannel#onmessageerror onmessageerror} handler receives a {@link MessageEvent MessageEvent} whose {@link MessageEvent#data MessageEvent.data} is <b>null</b>, {@link MessageEvent#direction MessageEvent.direction} is <b>"broadcast"</b>, and {@link MessageEvent#errorMessage errorMessage} contains a JSplitter diagnostic string.
  *
  * <h2>Lifetime and {@link BroadcastChannel#close close}</h2>
- * Call {@link BroadcastChannel#close close} when a BroadcastChannel instance is no longer needed. This disconnects only that instance from the named channel: it can no longer send or receive messages, while other instances with the same name continue to work normally. Closing is idempotent. A queued delivery is ignored if the destination instance is closed before it runs.
+ * Call {@link BroadcastChannel#close close} when a {@link BroadcastChannel BroadcastChannel} instance is no longer needed. This disconnects only that instance from the named channel: it can no longer send or receive messages, while other instances with the same name continue to work normally. Closing is idempotent. A queued delivery is ignored if the destination instance is closed before it runs.
  *
  * JSplitter automatically cleans up channels when a panel script is reloaded/unloaded or when a Worker terminates. An open channel with a <b>message</b> or <b>messageerror</b> listener is kept alive while its realm lives, matching the useful lifetime behaviour of the Web API; closing the channel releases that listener root. An unreachable open channel with no message listeners may be garbage-collected and removed automatically.
  *
@@ -152,9 +152,9 @@ function BroadcastChannel(name) {
     this.onmessageerror = null;
 
     /**
-     * Serializes and asynchronously broadcasts a value to every other currently open BroadcastChannel with the same {@link BroadcastChannel#name name}. The sending channel itself is excluded.<br>
+     * Serializes and asynchronously broadcasts a value to every other currently open {@link BroadcastChannel BroadcastChannel} with the same {@link BroadcastChannel#name name}. The sending channel itself is excluded.<br>
      *
-     * There is no transfer-list argument and BroadcastChannel never transfers ownership. Cloneable values are reconstructed for receivers while the sender's source value remains usable. Use direct Worker messaging when transferable ownership semantics are required. Clone errors are reported synchronously and no destination receives the message if serialization fails for any current destination.
+     * There is no transfer-list argument and {@link BroadcastChannel BroadcastChannel} never transfers ownership. Cloneable values are reconstructed for receivers while the sender's source value remains usable. Use direct Worker messaging when transferable ownership semantics are required. Clone errors are reported synchronously and no destination receives the message if serialization fails for any current destination.
      *
      * @param {*} message Value to broadcast. An explicit <b>undefined</b> is valid; omitting the argument is not.
      * @throws {TypeError} If the message argument is omitted.

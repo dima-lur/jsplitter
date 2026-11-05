@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -284,11 +290,12 @@ globalThis.on_paint = <span class="tok-keyword">function</span> (gr) {
 <p><b>import.meta.url</b> is available and contains the module's <b>file://</b> URL:</p>
 <pre class="description-code language-js"><code>console.log(<span class="tok-keyword">import</span>.meta.url);</code></pre>
 <h2>include()</h2>
-<p><a href="globals.html#include">include()</a> is not available while executing an ES module. Use static <b>import</b> statements instead.</p>
+<p><a href="globals.html#include">include</a> is not available while executing an ES module. Use static <b>import</b> statements instead.</p>
 <h2>Error handling</h2>
 <p>Module loading, parsing and evaluation errors are reported through the normal JSplitter script error path. This includes a missing imported file, a syntax error in a dependency, or an exception thrown while a dependency is being evaluated.</p>
 <h2>Current documented scope</h2>
 <p>The documented ES-module feature covers <b>.mjs</b> panel File scripts and local static imports. Dynamic <b>import()</b>, import maps, network modules and bare/package module specifiers are not part of the documented public contract.</p></div>
+        
         
         
         

@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -244,6 +250,7 @@
         
         
         
+        
         <section class="member-section">
             <h3>Example source</h3>
             <div class="source-links"><a class="source-link" href="source-samples-basic-Performance.js.html"><span>samples/basic/Performance.js</span><small>open source</small></a></div>
@@ -256,11 +263,12 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#timeOrigin">timeOrigin</a></h2>
             </div>
-            <div class="source-location">js/performance.js:320</div>
+            <div class="source-location">js/performance.js:325</div>
         </header>
         <pre class="signature"><code>timeOrigin: number = 0.0</code></pre>
         
-        <div class="description"><p>Read-only Unix timestamp in milliseconds corresponding to the origin used by this performance timeline.<br> <a href="performance.html#now">performance.now</a> values are measured relative to this origin.</p></div>
+        <div class="description"><p>Read-only Unix timestamp in milliseconds corresponding to the origin used by this performance timeline.<br> <a href="performance.html#now">now</a> values are measured relative to this origin.</p></div>
+        
         
         
         
@@ -277,11 +285,11 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#clearMarks">clearMarks</a></h2>
             </div>
-            <div class="source-location">js/performance.js:286</div>
+            <div class="source-location">js/performance.js:291</div>
         </header>
         <pre class="signature"><code>clearMarks(name)</code></pre>
         
-        <div class="description"><p>Removes mark entries from the performance timeline.<br> If <b>name</b> is supplied, all marks with that name are removed. If omitted, all mark entries are removed. Clearing a mark also removes it from subsequent named-mark lookup by <a href="performance.html#measure">performance.measure</a>.</p></div>
+        <div class="description"><p>Removes mark entries from the performance timeline.<br> If <b>name</b> is supplied, all marks with that name are removed. If omitted, all mark entries are removed. Clearing a mark also removes it from subsequent named-mark lookup by <a href="performance.html#measure">measure</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -301,6 +309,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="clearMeasures" data-kind="method" data-name="clearmeasures">
@@ -309,7 +318,7 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#clearMeasures">clearMeasures</a></h2>
             </div>
-            <div class="source-location">js/performance.js:295</div>
+            <div class="source-location">js/performance.js:300</div>
         </header>
         <pre class="signature"><code>clearMeasures(name)</code></pre>
         
@@ -333,6 +342,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="getEntries" data-kind="method" data-name="getentries">
@@ -341,7 +351,7 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#getEntries">getEntries</a></h2>
             </div>
-            <div class="source-location">js/performance.js:262</div>
+            <div class="source-location">js/performance.js:267</div>
         </header>
         <pre class="signature"><code>getEntries()</code></pre>
         
@@ -358,6 +368,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="getEntriesByName" data-kind="method" data-name="getentriesbyname">
@@ -366,7 +377,7 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#getEntriesByName">getEntriesByName</a></h2>
             </div>
-            <div class="source-location">js/performance.js:277</div>
+            <div class="source-location">js/performance.js:282</div>
         </header>
         <pre class="signature"><code>getEntriesByName(name, type)</code></pre>
         
@@ -390,6 +401,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="getEntriesByType" data-kind="method" data-name="getentriesbytype">
@@ -398,7 +410,7 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#getEntriesByType">getEntriesByType</a></h2>
             </div>
-            <div class="source-location">js/performance.js:269</div>
+            <div class="source-location">js/performance.js:274</div>
         </header>
         <pre class="signature"><code>getEntriesByType(type)</code></pre>
         
@@ -422,6 +434,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="mark" data-kind="method" data-name="mark">
@@ -434,7 +447,7 @@
         </header>
         <pre class="signature"><code>mark(name, markOptions)</code></pre>
         
-        <div class="description"><p>Creates a named <a href="globals.html#PerformanceEntry">PerformanceEntry</a> with <b>entryType</b> "mark" and adds it to the performance timeline.<br> Multiple marks may use the same name. All marks remain in the timeline until cleared; when a mark name is later used by <a href="performance.html#measure">performance.measure</a>, the most recently created matching mark is used.</p></div>
+        <div class="description"><p>Creates a named <a href="globals.html#PerformanceEntry">PerformanceEntry</a> with <a href="globals.html#entryType">entryType</a> "mark" and adds it to the performance timeline.<br> Multiple marks may use the same name. All marks remain in the timeline until cleared; when a mark name is later used by <a href="performance.html#measure">measure</a>, the most recently created matching mark is used.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -473,6 +486,7 @@ performance.clearMarks();
 performance.clearMeasures();</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="measure" data-kind="method" data-name="measure">
@@ -485,8 +499,14 @@ performance.clearMeasures();</code></pre>
         </header>
         <pre class="signature"><code>measure(measureName, startOrMeasureOptions, endMark, legacyMeasureOptions)</code></pre>
         
-        <div class="description"><p>Creates a named <a href="globals.html#PerformanceEntry">PerformanceEntry</a> with <b>entryType</b> "measure" and adds it to the performance timeline.<br></p>
-<p>Standard forms supported by JSplitter:<br> <b>performance.measure(name)</b> - measures from timestamp 0 to <a href="performance.html#now">performance.now</a>.<br> <b>performance.measure(name, startMark)</b> - measures from the most recent named start mark to now.<br> <b>performance.measure(name, startMark, endMark)</b> - measures between the most recent matching named marks.<br> <b>performance.measure(name, options)</b> - derives start/end times from <a href="globals.html#PerformanceMeasureOptions">PerformanceMeasureOptions</a>.<br> <b>performance.measure(name, {}, endMark)</b> - measures from timestamp 0 to the named end mark.<br></p>
+        <div class="description"><p>Creates a named <a href="globals.html#PerformanceEntry">PerformanceEntry</a> with <a href="globals.html#entryType">entryType</a> "measure" and adds it to the performance timeline.<br></p>
+<p>Standard forms of <a href="performance.html#measure">measure</a> supported by JSplitter:</p>
+<pre class="description-code language-js"><code>performance.measure(name);                     <span class="tok-comment">// Timestamp 0 to performance.now().</span>
+performance.measure(name, startMark);          <span class="tok-comment">// Most recent start mark to now.</span>
+performance.measure(name, startMark, endMark); <span class="tok-comment">// Between the named marks.</span>
+performance.measure(name, options);            <span class="tok-comment">// Explicit start/end/duration options.</span>
+performance.measure(name, {}, endMark);        <span class="tok-comment">// Timestamp 0 to the named end mark.</span></code></pre>
+<p>See <a href="globals.html#PerformanceMeasureOptions">PerformanceMeasureOptions</a> for the options object.</p>
 <p>In <b>options</b>, <b>start</b> and <b>end</b> may be either mark names or finite non-negative timestamps. <b>duration</b> may be supplied with exactly one of <b>start</b> or <b>end</b>. If an explicitly named mark does not exist, an error is thrown.<br> Multiple measures may use the same name. Named mark lookup always uses the most recently created matching mark.<br></p>
 <p><b>Compatibility note:</b> for historical JSplitter compatibility, a fourth <b>legacyMeasureOptions</b> argument is also accepted. This form preserves the previous JSplitter precedence rules: existing explicit <b>startMark</b>/<b>endMark</b> values take precedence, while numeric <b>start</b>, <b>end</b>, or <b>duration</b> options fill missing values. New code should prefer the standard forms above.<br> For backward compatibility, an empty positional mark name (<b>""</b>) is treated as omitted rather than as a mark named with an empty string.</p></div>
         
@@ -524,6 +544,7 @@ console.log(byMarks.duration);
 console.log(byTimestamp.duration);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="now" data-kind="method" data-name="now">
@@ -536,7 +557,7 @@ console.log(byTimestamp.duration);</code></pre>
         </header>
         <pre class="signature"><code>now()</code></pre>
         
-        <div class="description"><p>Returns a monotonically increasing high-resolution timestamp in milliseconds relative to <a href="performance.html#timeOrigin">performance.timeOrigin</a>. The value may contain a fractional part; actual resolution depends on the underlying system clock.<br> Unlike <b>Date.now()</b>, this timestamp is intended for measuring elapsed time and is not affected by wall-clock adjustments.</p></div>
+        <div class="description"><p>Returns a monotonically increasing high-resolution timestamp in milliseconds relative to <a href="performance.html#timeOrigin">timeOrigin</a>. The value may contain a fractional part; actual resolution depends on the underlying system clock.<br> Unlike <b>Date.now()</b>, this timestamp is intended for measuring elapsed time and is not affected by wall-clock adjustments.</p></div>
         
         
         
@@ -556,6 +577,7 @@ doSomething();
 console.log(<span class="tok-string">`Call to doSomething took ${t1 - t0} milliseconds.`</span>);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="Observer" data-kind="method" data-name="observer">
@@ -564,11 +586,11 @@ console.log(<span class="tok-string">`Call to doSomething took ${t1 - t0} millis
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Observer">Observer</a></h2>
             </div>
-            <div class="source-location">js/performance.js:311</div>
+            <div class="source-location">js/performance.js:316</div>
         </header>
         <pre class="signature"><code>Observer(callback)</code></pre>
         
-        <div class="description"><p>JSplitter compatibility factory that creates a <a href="PerformanceObserver.html#PerformanceObserver">PerformanceObserver</a>.<br> New code may use the standard <b>new PerformanceObserver(callback)</b> form instead.</p></div>
+        <div class="description"><p>JSplitter compatibility factory that creates a <a href="PerformanceObserver.html#PerformanceObserver">PerformanceObserver</a>.<br> New code may use the standard <a href="PerformanceObserver.html#PerformanceObserver">PerformanceObserver</a> constructor with a <b>callback</b> argument instead.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -588,6 +610,7 @@ console.log(<span class="tok-string">`Call to doSomething took ${t1 - t0} millis
         
         
         
+        
     </article>
 
     <article class="api-item" id="toString" data-kind="method" data-name="tostring">
@@ -596,7 +619,7 @@ console.log(<span class="tok-string">`Call to doSomething took ${t1 - t0} millis
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#toString">toString</a></h2>
             </div>
-            <div class="source-location">js/performance.js:304</div>
+            <div class="source-location">js/performance.js:309</div>
         </header>
         <pre class="signature"><code>toString()</code></pre>
         
@@ -609,6 +632,7 @@ console.log(<span class="tok-string">`Call to doSomething took ${t1 - t0} millis
             <h3>Returns</h3>
             <div><code>string</code></div>
         </section>
+        
         
         
         

@@ -1,4 +1,4 @@
-window.DefineScript('Tooltip', { author: 'T.P Wang' });
+﻿window.DefineScript('Tooltip', { author: 'T.P Wang' });
 include('docs/Helpers.js');
 
 const g_font = gdi.Font('Segoe UI', 14, 1);

@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -236,6 +242,7 @@
         
         
         <div class="description"></div>
+        
         
         
         
@@ -272,6 +279,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_button_click" data-kind="function" data-name="on_button_click">
@@ -280,7 +288,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_button_click">on_button_click</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:609</div>
+            <div class="source-location">Callbacks.js:653</div>
         </header>
         <pre class="signature"><code>on_button_click(id)</code></pre>
         
@@ -293,6 +301,7 @@
                 <tbody><tr><td><code>id</code></td><td><code>number</code></td><td><p>of button created with <a href="window.html#CreateButton">window.CreateButton</a> and accessed by <a href="ButtonObject.html#ID">ButtonObject.ID</a> property.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -328,6 +337,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_colours_changed" data-kind="function" data-name="on_colours_changed">
@@ -349,6 +359,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_console_refresh" data-kind="function" data-name="on_console_refresh">
@@ -362,6 +373,7 @@
         <pre class="signature"><code>on_console_refresh()</code></pre>
         
         <div class="description"><p>Called when new records are appended to foobar2000 console log.<br> Note: Can used with <a href="console.html#GetLines">console.GetLines</a> or <a href="console.html#ClearBacklog">console.ClearBacklog</a><br> CAUTION: Don't call <a href="console.html#log">console.log</a> in this callback</p></div>
+        
         
         
         
@@ -398,6 +410,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_download_file_done" data-kind="function" data-name="on_download_file_done">
@@ -406,7 +419,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#on_download_file_done">on_download_file_done</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:642</div>
+            <div class="source-location">Callbacks.js:686</div>
         </header>
         <pre class="signature"><code>on_download_file_done(path, success, error_text)</code></pre>
         
@@ -419,6 +432,7 @@
                 <tbody><tr><td><code>path</code></td><td><code>string</code></td><td><p>of downloaded file</p></td></tr><tr><td><code>success</code></td><td><code>boolean</code></td><td></td></tr><tr><td><code>error_text</code></td><td><code>string</code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -447,6 +461,7 @@
                 <tbody><tr><td><code>action</code></td><td><code><a class="type-link" href="DropTargetAction.html#DropTargetAction">DropTargetAction</a></code></td><td></td></tr><tr><td><code>x</code></td><td><code>number</code></td><td></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td></td></tr><tr><td><code>mask</code></td><td><code>number</code></td><td><p>Mask for mouse callbacks, see flags like <a href="module-Flags.html#MK_LBUTTON">MK_LBUTTON</a></p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -486,6 +501,7 @@
         
         
         
+        
         <section class="member-section">
             <h3>Example source</h3>
             <div class="source-links"><a class="source-link" href="source-samples-basic-DragnDrop.js.html"><span>samples/basic/DragnDrop.js</span><small>open source</small></a></div>
@@ -503,6 +519,7 @@
         <pre class="signature"><code>on_drag_leave()</code></pre>
         
         <div class="description"><p>See <a href="fb.html#DoDragDrop">fb.DoDragDrop</a> documentation and</p></div>
+        
         
         
         
@@ -543,6 +560,7 @@
         
         
         
+        
         <section class="member-section">
             <h3>Example source</h3>
             <div class="source-links"><a class="source-link" href="source-samples-basic-DragnDrop.js.html"><span>samples/basic/DragnDrop.js</span><small>open source</small></a></div>
@@ -560,6 +578,7 @@
         <pre class="signature"><code>on_dsp_preset_changed()</code></pre>
         
         <div class="description"><p>Called when DSP preset changes.<br> Note: this callback is only available in foobar2000 v1.4 and later.<br> Note2: does not get called when presets are added or removed.</p></div>
+        
         
         
         
@@ -596,6 +615,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_font_changed" data-kind="function" data-name="on_font_changed">
@@ -609,6 +629,7 @@
         <pre class="signature"><code>on_font_changed()</code></pre>
         
         <div class="description"><p>Called when fonts are changed via DUI or CUI preferences. Note: you can retrieve fonts using <a href="window.html#GetFontDUI">window.GetFontDUI</a> / <a href="window.html#GetFontCUI">window.GetFontCUI</a>.</p></div>
+        
         
         
         
@@ -645,6 +666,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_get_folder_size_done" data-kind="function" data-name="on_get_folder_size_done">
@@ -653,7 +675,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#on_get_folder_size_done">on_get_folder_size_done</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:717</div>
+            <div class="source-location">Callbacks.js:761</div>
         </header>
         <pre class="signature"><code>on_get_folder_size_done(task_id, success, size, error_text)</code></pre>
         
@@ -673,6 +695,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_http_request_done" data-kind="function" data-name="on_http_request_done">
@@ -681,7 +704,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#on_http_request_done">on_http_request_done</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:675</div>
+            <div class="source-location">Callbacks.js:719</div>
         </header>
         <pre class="signature"><code>on_http_request_done(task_id, success, response_text, status, response_headers)</code></pre>
         
@@ -701,6 +724,92 @@
         
         
         
+        
+    </article>
+
+    <article class="api-item" id="on_ime_end" data-kind="function" data-name="on_ime_end">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#on_ime_end">on_ime_end</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:166</div>
+        </header>
+        <pre class="signature"><code>on_ime_end()</code></pre>
+        
+        <div class="description"><p>Called when the current Input Method Editor (IME) composition ends.<br> <br> This callback only reports that the active IME composition has ended. If the IME commits text, the final characters are delivered separately through <a href="module-Callbacks.html#on_char">on_char</a>; if it ends without committing text, no corresponding character callbacks are generated.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example source</h3>
+            <div class="source-links"><a class="source-link" href="source-samples-basic-IME-Input.js.html"><span>samples/basic/IME Input.js</span><small>open source</small></a></div>
+        </section>
+    </article>
+
+    <article class="api-item" id="on_ime_start" data-kind="function" data-name="on_ime_start">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#on_ime_start">on_ime_start</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:134</div>
+        </header>
+        <pre class="signature"><code>on_ime_start()</code></pre>
+        
+        <div class="description"><p>Called when an Input Method Editor (IME) starts composing temporary text for the focused panel. This includes input methods such as Windows handwriting recognition and East Asian IMEs.<br> <br> The composition is not committed text: it may change or be cancelled before input is finalized. Use <a href="module-Callbacks.html#on_ime_update">on_ime_update</a> to display the current temporary text. Final committed characters are delivered separately through <a href="module-Callbacks.html#on_char">on_char</a>.<br> <br> The panel must have keyboard focus. Scripts implementing a text field should enable <b>features.grab_focus</b> in <a href="window.html#DefineScript">window.DefineScript</a>. For custom-drawn text fields, the script can use <a href="window.html#SetImePosition">window.SetImePosition</a> whenever its insertion point moves so Windows can place IME UI nearby.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example source</h3>
+            <div class="source-links"><a class="source-link" href="source-samples-basic-IME-Input.js.html"><span>samples/basic/IME Input.js</span><small>open source</small></a></div>
+        </section>
+    </article>
+
+    <article class="api-item" id="on_ime_update" data-kind="function" data-name="on_ime_update">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-function">function</span></div>
+                <h2><a class="anchor" href="#on_ime_update">on_ime_update</a></h2>
+            </div>
+            <div class="source-location">Callbacks.js:151</div>
+        </header>
+        <pre class="signature"><code>on_ime_update(text, cursor)</code></pre>
+        
+        <div class="description"><p>Called when the temporary text currently being composed by an Input Method Editor (IME) changes.<br> <br> The supplied text is a live preview, not committed input. It can grow, shrink, be replaced, become empty, or be cancelled entirely before <a href="module-Callbacks.html#on_ime_end">on_ime_end</a>. Do not append it permanently to your text buffer; committed characters are delivered through <a href="module-Callbacks.html#on_char">on_char</a>.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>text</code></td><td><code>string</code></td><td><p>Current temporary IME text.</p></td></tr><tr><td><code>cursor</code></td><td><code>number</code></td><td><p>Cursor position within <b>text</b>.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example source</h3>
+            <div class="source-links"><a class="source-link" href="source-samples-basic-IME-Input.js.html"><span>samples/basic/IME Input.js</span><small>open source</small></a></div>
+        </section>
     </article>
 
     <article class="api-item" id="on_item_focus_change" data-kind="function" data-name="on_item_focus_change">
@@ -709,7 +818,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_item_focus_change">on_item_focus_change</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:134</div>
+            <div class="source-location">Callbacks.js:178</div>
         </header>
         <pre class="signature"><code>on_item_focus_change(playlistIndex, from, to)</code></pre>
         
@@ -729,6 +838,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_item_played" data-kind="function" data-name="on_item_played">
@@ -737,7 +847,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_item_played">on_item_played</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:144</div>
+            <div class="source-location">Callbacks.js:188</div>
         </header>
         <pre class="signature"><code>on_item_played(handle)</code></pre>
         
@@ -757,6 +867,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_key_down" data-kind="function" data-name="on_key_down">
@@ -765,7 +876,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_key_down">on_key_down</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:153</div>
+            <div class="source-location">Callbacks.js:197</div>
         </header>
         <pre class="signature"><code>on_key_down(vkey)</code></pre>
         
@@ -785,6 +896,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_key_up" data-kind="function" data-name="on_key_up">
@@ -793,7 +905,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_key_up">on_key_up</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:165</div>
+            <div class="source-location">Callbacks.js:209</div>
         </header>
         <pre class="signature"><code>on_key_up(vkey)</code></pre>
         
@@ -813,6 +925,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_library_items_added" data-kind="function" data-name="on_library_items_added">
@@ -821,7 +934,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_library_items_added">on_library_items_added</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:174</div>
+            <div class="source-location">Callbacks.js:218</div>
         </header>
         <pre class="signature"><code>on_library_items_added(handle_list)</code></pre>
         
@@ -841,6 +954,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_library_items_changed" data-kind="function" data-name="on_library_items_changed">
@@ -849,7 +963,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_library_items_changed">on_library_items_changed</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:180</div>
+            <div class="source-location">Callbacks.js:224</div>
         </header>
         <pre class="signature"><code>on_library_items_changed(handle_list)</code></pre>
         
@@ -869,6 +983,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_library_items_removed" data-kind="function" data-name="on_library_items_removed">
@@ -877,7 +992,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_library_items_removed">on_library_items_removed</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:186</div>
+            <div class="source-location">Callbacks.js:230</div>
         </header>
         <pre class="signature"><code>on_library_items_removed(handle_list)</code></pre>
         
@@ -897,6 +1012,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_load_image_done" data-kind="function" data-name="on_load_image_done">
@@ -905,7 +1021,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#on_load_image_done">on_load_image_done</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:192</div>
+            <div class="source-location">Callbacks.js:236</div>
         </header>
         <pre class="signature"><code>on_load_image_done(cookie, image, image_path)</code></pre>
         
@@ -925,6 +1041,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_locations_added" data-kind="function" data-name="on_locations_added">
@@ -933,7 +1050,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#on_locations_added">on_locations_added</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:653</div>
+            <div class="source-location">Callbacks.js:697</div>
         </header>
         <pre class="signature"><code>on_locations_added(task_id, handles)</code></pre>
         
@@ -966,6 +1083,7 @@
 }</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="on_main_menu" data-kind="function" data-name="on_main_menu">
@@ -974,7 +1092,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span><span class="flag deprecated">deprecated</span></div>
                 <h2><a class="anchor" href="#on_main_menu">on_main_menu</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:203</div>
+            <div class="source-location">Callbacks.js:247</div>
         </header>
         <pre class="signature"><code>on_main_menu(index)</code></pre>
         <div class="notice notice-deprecated"><b>Deprecated.</b></div>
@@ -1008,6 +1126,7 @@
 }</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="on_main_menu_dynamic" data-kind="function" data-name="on_main_menu_dynamic">
@@ -1016,7 +1135,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_main_menu_dynamic">on_main_menu_dynamic</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:234</div>
+            <div class="source-location">Callbacks.js:278</div>
         </header>
         <pre class="signature"><code>on_main_menu_dynamic(command_id)</code></pre>
         
@@ -1036,6 +1155,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_metadb_changed" data-kind="function" data-name="on_metadb_changed">
@@ -1044,7 +1164,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_metadb_changed">on_metadb_changed</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:244</div>
+            <div class="source-location">Callbacks.js:288</div>
         </header>
         <pre class="signature"><code>on_metadb_changed(handle_list, fromhook)</code></pre>
         
@@ -1064,6 +1184,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_mouse_lbtn_dblclk" data-kind="function" data-name="on_mouse_lbtn_dblclk">
@@ -1072,7 +1193,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_mouse_lbtn_dblclk">on_mouse_lbtn_dblclk</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:254</div>
+            <div class="source-location">Callbacks.js:298</div>
         </header>
         <pre class="signature"><code>on_mouse_lbtn_dblclk(x, y, mask)</code></pre>
         
@@ -1092,6 +1213,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_mouse_lbtn_down" data-kind="function" data-name="on_mouse_lbtn_down">
@@ -1100,7 +1222,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_mouse_lbtn_down">on_mouse_lbtn_down</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:263</div>
+            <div class="source-location">Callbacks.js:307</div>
         </header>
         <pre class="signature"><code>on_mouse_lbtn_down(x, y, mask)</code></pre>
         
@@ -1120,6 +1242,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_mouse_lbtn_up" data-kind="function" data-name="on_mouse_lbtn_up">
@@ -1128,7 +1251,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_mouse_lbtn_up">on_mouse_lbtn_up</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:272</div>
+            <div class="source-location">Callbacks.js:316</div>
         </header>
         <pre class="signature"><code>on_mouse_lbtn_up(x, y, mask)</code></pre>
         
@@ -1148,6 +1271,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_mouse_leave" data-kind="function" data-name="on_mouse_leave">
@@ -1156,11 +1280,12 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_mouse_leave">on_mouse_leave</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:281</div>
+            <div class="source-location">Callbacks.js:325</div>
         </header>
         <pre class="signature"><code>on_mouse_leave()</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -1177,7 +1302,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_mouse_mbtn_dblclk">on_mouse_mbtn_dblclk</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:286</div>
+            <div class="source-location">Callbacks.js:330</div>
         </header>
         <pre class="signature"><code>on_mouse_mbtn_dblclk(x, y, mask)</code></pre>
         
@@ -1197,6 +1322,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_mouse_mbtn_down" data-kind="function" data-name="on_mouse_mbtn_down">
@@ -1205,7 +1331,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_mouse_mbtn_down">on_mouse_mbtn_down</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:295</div>
+            <div class="source-location">Callbacks.js:339</div>
         </header>
         <pre class="signature"><code>on_mouse_mbtn_down(x, y, mask)</code></pre>
         
@@ -1225,6 +1351,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_mouse_mbtn_up" data-kind="function" data-name="on_mouse_mbtn_up">
@@ -1233,7 +1360,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_mouse_mbtn_up">on_mouse_mbtn_up</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:304</div>
+            <div class="source-location">Callbacks.js:348</div>
         </header>
         <pre class="signature"><code>on_mouse_mbtn_up(x, y, mask)</code></pre>
         
@@ -1253,6 +1380,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_mouse_move" data-kind="function" data-name="on_mouse_move">
@@ -1261,7 +1389,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_mouse_move">on_mouse_move</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:313</div>
+            <div class="source-location">Callbacks.js:357</div>
         </header>
         <pre class="signature"><code>on_mouse_move(x, y, mask)</code></pre>
         
@@ -1281,6 +1409,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_mouse_rbtn_dblclk" data-kind="function" data-name="on_mouse_rbtn_dblclk">
@@ -1289,7 +1418,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_mouse_rbtn_dblclk">on_mouse_rbtn_dblclk</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:322</div>
+            <div class="source-location">Callbacks.js:366</div>
         </header>
         <pre class="signature"><code>on_mouse_rbtn_dblclk(x, y, mask)</code></pre>
         
@@ -1309,6 +1438,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_mouse_rbtn_down" data-kind="function" data-name="on_mouse_rbtn_down">
@@ -1317,7 +1447,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_mouse_rbtn_down">on_mouse_rbtn_down</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:331</div>
+            <div class="source-location">Callbacks.js:375</div>
         </header>
         <pre class="signature"><code>on_mouse_rbtn_down(x, y, mask)</code></pre>
         
@@ -1337,6 +1467,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_mouse_rbtn_up" data-kind="function" data-name="on_mouse_rbtn_up">
@@ -1345,7 +1476,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_mouse_rbtn_up">on_mouse_rbtn_up</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:340</div>
+            <div class="source-location">Callbacks.js:384</div>
         </header>
         <pre class="signature"><code>on_mouse_rbtn_up(x, y, mask)</code></pre>
         
@@ -1369,6 +1500,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_mouse_wheel" data-kind="function" data-name="on_mouse_wheel">
@@ -1377,7 +1509,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_mouse_wheel">on_mouse_wheel</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:354</div>
+            <div class="source-location">Callbacks.js:398</div>
         </header>
         <pre class="signature"><code>on_mouse_wheel(step)</code></pre>
         
@@ -1397,6 +1529,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_mouse_wheel_h" data-kind="function" data-name="on_mouse_wheel_h">
@@ -1405,7 +1538,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_mouse_wheel_h">on_mouse_wheel_h</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:363</div>
+            <div class="source-location">Callbacks.js:407</div>
         </header>
         <pre class="signature"><code>on_mouse_wheel_h(step)</code></pre>
         
@@ -1425,6 +1558,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_notify_data" data-kind="function" data-name="on_notify_data">
@@ -1433,11 +1567,11 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_notify_data">on_notify_data</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:371</div>
+            <div class="source-location">Callbacks.js:415</div>
         </header>
         <pre class="signature"><code>on_notify_data(name, info)</code></pre>
         
-        <div class="description"><p>Called in other panels after <a href="window.html#NotifyOthers">window.NotifyOthers</a> is executed.<br> This callback belongs to the legacy NotifyOthers compatibility path. New code that needs asynchronous structured-clone messaging between panels and/or Workers should prefer <a href="BroadcastChannel.html#BroadcastChannel">BroadcastChannel</a>.<br> <br> <b>!!! Beware !!!</b><br> 1. Data from <b>info</b> argument is only accessible inside <a href="module-Callbacks.html#on_notify_data">on_notify_data</a> callback: if stored and accessed outside of the callback it will throw JS error.<br> This also applies to the data produced from that <b>info</b>: e.g. storing <a href="FbMetadbHandle.html#Path">info.Path</a> directly (if <b>info</b> is <a href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a>).<br> 2. If you want to store the data from <b>info</b> you have to perform a deep copy:<br> - <b>String(info)</b> for strings.<br> - <b>JSON.parse(JSON.stringify(info))</b> for serializable objects.<br> - <b>new ObjectType(info)</b> for objects that have an approppriate constructor available, e.g. <a href="GdiBitmap.html#GdiBitmap">GdiBitmap</a> or <a href="FbMetadbHandleList.html#FbMetadbHandleList">FbMetadbHandleList</a>.<br> 3. <b>info</b> argument is shared between panels, so it should NOT be modified in any way.</p></div>
+        <div class="description"><p>Called in other panels after <a href="window.html#NotifyOthers">window.NotifyOthers</a> is executed.<br> This callback belongs to the legacy <a href="window.html#NotifyOthers">NotifyOthers</a> compatibility path. New code that needs asynchronous structured-clone messaging between panels and/or Workers should prefer <a href="BroadcastChannel.html#BroadcastChannel">BroadcastChannel</a>.<br> <br> <b>!!! Beware !!!</b><br> 1. Data from <b>info</b> argument is only accessible inside <a href="module-Callbacks.html#on_notify_data">on_notify_data</a> callback: if stored and accessed outside of the callback it will throw JS error.<br> This also applies to the data produced from that <b>info</b>: e.g. storing <a href="FbMetadbHandle.html#Path">info.Path</a> directly (if <b>info</b> is <a href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a>).<br> 2. If you want to store the data from <b>info</b> you have to perform a deep copy:<br> - <b>String(info)</b> for strings.<br> - <b>JSON.parse(JSON.stringify(info))</b> for serializable objects.<br> - <b>new ObjectType(info)</b> for objects that have an approppriate constructor available, e.g. <a href="GdiBitmap.html#GdiBitmap">GdiBitmap</a> or <a href="FbMetadbHandleList.html#FbMetadbHandleList">FbMetadbHandleList</a>.<br> 3. <b>info</b> argument is shared between panels, so it should NOT be modified in any way.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1453,6 +1587,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_output_device_changed" data-kind="function" data-name="on_output_device_changed">
@@ -1461,11 +1596,12 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_output_device_changed">on_output_device_changed</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:391</div>
+            <div class="source-location">Callbacks.js:435</div>
         </header>
         <pre class="signature"><code>on_output_device_changed()</code></pre>
         
         <div class="description"><p>Called when output device changes. Use <a href="fb.html#GetOutputDevices">fb.GetOutputDevices</a> to retrieve settings.<br> Note: available only in foobar2000 v1.4 and later.</p></div>
+        
         
         
         
@@ -1482,7 +1618,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_paint">on_paint</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:399</div>
+            <div class="source-location">Callbacks.js:443</div>
         </header>
         <pre class="signature"><code>on_paint(gr)</code></pre>
         
@@ -1502,6 +1638,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_panel_mouse_enter" data-kind="function" data-name="on_panel_mouse_enter">
@@ -1510,7 +1647,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_panel_mouse_enter">on_panel_mouse_enter</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:615</div>
+            <div class="source-location">Callbacks.js:659</div>
         </header>
         <pre class="signature"><code>on_panel_mouse_enter(name)</code></pre>
         
@@ -1530,6 +1667,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_panel_mouse_leave" data-kind="function" data-name="on_panel_mouse_leave">
@@ -1538,7 +1676,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_panel_mouse_leave">on_panel_mouse_leave</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:634</div>
+            <div class="source-location">Callbacks.js:678</div>
         </header>
         <pre class="signature"><code>on_panel_mouse_leave(name)</code></pre>
         
@@ -1558,6 +1696,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_panel_mouse_move" data-kind="function" data-name="on_panel_mouse_move">
@@ -1566,7 +1705,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_panel_mouse_move">on_panel_mouse_move</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:623</div>
+            <div class="source-location">Callbacks.js:667</div>
         </header>
         <pre class="signature"><code>on_panel_mouse_move(name, x, y, mask)</code></pre>
         
@@ -1586,6 +1725,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_playback_dynamic_info" data-kind="function" data-name="on_playback_dynamic_info">
@@ -1594,11 +1734,12 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_playback_dynamic_info">on_playback_dynamic_info</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:415</div>
+            <div class="source-location">Callbacks.js:459</div>
         </header>
         <pre class="signature"><code>on_playback_dynamic_info()</code></pre>
         
         <div class="description"><p>Called when dynamic info (VBR bitrate etc) changes.</p></div>
+        
         
         
         
@@ -1615,11 +1756,12 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_playback_dynamic_info_track">on_playback_dynamic_info_track</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:422</div>
+            <div class="source-location">Callbacks.js:466</div>
         </header>
         <pre class="signature"><code>on_playback_dynamic_info_track()</code></pre>
         
         <div class="description"><p>Called when Per-track dynamic info (stream track titles etc) changes.<br> Happens less often than <a href="module-Callbacks.html#on_playback_dynamic_info">on_playback_dynamic_info</a>.</p></div>
+        
         
         
         
@@ -1636,7 +1778,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_playback_edited">on_playback_edited</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:430</div>
+            <div class="source-location">Callbacks.js:474</div>
         </header>
         <pre class="signature"><code>on_playback_edited(handle)</code></pre>
         
@@ -1656,6 +1798,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_playback_follow_cursor_changed" data-kind="function" data-name="on_playback_follow_cursor_changed">
@@ -1664,7 +1807,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_playback_follow_cursor_changed">on_playback_follow_cursor_changed</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:407</div>
+            <div class="source-location">Callbacks.js:451</div>
         </header>
         <pre class="signature"><code>on_playback_follow_cursor_changed(state)</code></pre>
         
@@ -1684,6 +1827,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_playback_new_track" data-kind="function" data-name="on_playback_new_track">
@@ -1692,7 +1836,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_playback_new_track">on_playback_new_track</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:439</div>
+            <div class="source-location">Callbacks.js:483</div>
         </header>
         <pre class="signature"><code>on_playback_new_track(handle)</code></pre>
         
@@ -1712,6 +1856,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_playback_order_changed" data-kind="function" data-name="on_playback_order_changed">
@@ -1720,7 +1865,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_playback_order_changed">on_playback_order_changed</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:447</div>
+            <div class="source-location">Callbacks.js:491</div>
         </header>
         <pre class="signature"><code>on_playback_order_changed(new_order_index)</code></pre>
         
@@ -1740,17 +1885,18 @@
         
         
         
+        
     </article>
 
-    <article class="api-item" id="on_playback_pauseQueueChangeType" data-kind="function" data-name="on_playback_pausequeuechangetype">
+    <article class="api-item" id="on_playback_pause" data-kind="function" data-name="on_playback_pause">
         <header class="api-item-header">
             <div>
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
-                <h2><a class="anchor" href="#on_playback_pauseQueueChangeType">on_playback_pauseQueueChangeType</a></h2>
+                <h2><a class="anchor" href="#on_playback_pause">on_playback_pause</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:455</div>
+            <div class="source-location">Callbacks.js:499</div>
         </header>
-        <pre class="signature"><code>on_playback_pauseQueueChangeType(state)</code></pre>
+        <pre class="signature"><code>on_playback_pause(state)</code></pre>
         
         <div class="description"></div>
         
@@ -1768,6 +1914,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_playback_queue_changed" data-kind="function" data-name="on_playback_queue_changed">
@@ -1776,7 +1923,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_playback_queue_changed">on_playback_queue_changed</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:461</div>
+            <div class="source-location">Callbacks.js:505</div>
         </header>
         <pre class="signature"><code>on_playback_queue_changed(origin)</code></pre>
         
@@ -1796,6 +1943,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_playback_seek" data-kind="function" data-name="on_playback_seek">
@@ -1804,7 +1952,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_playback_seek">on_playback_seek</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:467</div>
+            <div class="source-location">Callbacks.js:511</div>
         </header>
         <pre class="signature"><code>on_playback_seek(time)</code></pre>
         
@@ -1824,6 +1972,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_playback_starting" data-kind="function" data-name="on_playback_starting">
@@ -1832,7 +1981,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_playback_starting">on_playback_starting</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:473</div>
+            <div class="source-location">Callbacks.js:517</div>
         </header>
         <pre class="signature"><code>on_playback_starting(cmd, is_paused)</code></pre>
         
@@ -1852,6 +2001,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_playback_stop" data-kind="function" data-name="on_playback_stop">
@@ -1860,7 +2010,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_playback_stop">on_playback_stop</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:491</div>
+            <div class="source-location">Callbacks.js:535</div>
         </header>
         <pre class="signature"><code>on_playback_stop(reason)</code></pre>
         
@@ -1880,6 +2030,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_playback_time" data-kind="function" data-name="on_playback_time">
@@ -1888,7 +2039,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_playback_time">on_playback_time</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:497</div>
+            <div class="source-location">Callbacks.js:541</div>
         </header>
         <pre class="signature"><code>on_playback_time(time)</code></pre>
         
@@ -1908,6 +2059,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_playlist_item_ensure_visible" data-kind="function" data-name="on_playlist_item_ensure_visible">
@@ -1916,7 +2068,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_playlist_item_ensure_visible">on_playlist_item_ensure_visible</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:505</div>
+            <div class="source-location">Callbacks.js:549</div>
         </header>
         <pre class="signature"><code>on_playlist_item_ensure_visible(playlistIndex, playlistItemIndex)</code></pre>
         
@@ -1936,6 +2088,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_playlist_items_added" data-kind="function" data-name="on_playlist_items_added">
@@ -1944,7 +2097,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_playlist_items_added">on_playlist_items_added</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:512</div>
+            <div class="source-location">Callbacks.js:556</div>
         </header>
         <pre class="signature"><code>on_playlist_items_added(playlistIndex)</code></pre>
         
@@ -1964,6 +2117,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_playlist_items_removed" data-kind="function" data-name="on_playlist_items_removed">
@@ -1972,7 +2126,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_playlist_items_removed">on_playlist_items_removed</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:518</div>
+            <div class="source-location">Callbacks.js:562</div>
         </header>
         <pre class="signature"><code>on_playlist_items_removed(playlistIndex, new_count)</code></pre>
         
@@ -1992,6 +2146,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_playlist_items_reordered" data-kind="function" data-name="on_playlist_items_reordered">
@@ -2000,7 +2155,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_playlist_items_reordered">on_playlist_items_reordered</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:525</div>
+            <div class="source-location">Callbacks.js:569</div>
         </header>
         <pre class="signature"><code>on_playlist_items_reordered(playlistIndex)</code></pre>
         
@@ -2020,6 +2175,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_playlist_items_selection_change" data-kind="function" data-name="on_playlist_items_selection_change">
@@ -2028,11 +2184,12 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_playlist_items_selection_change">on_playlist_items_selection_change</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:533</div>
+            <div class="source-location">Callbacks.js:577</div>
         </header>
         <pre class="signature"><code>on_playlist_items_selection_change()</code></pre>
         
         <div class="description"><p>Workaround for some 3rd party playlist viewers not working with <a href="module-Callbacks.html#on_selection_changed">on_selection_changed</a>.</p></div>
+        
         
         
         
@@ -2049,7 +2206,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_playlist_stop_after_current_changed">on_playlist_stop_after_current_changed</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:540</div>
+            <div class="source-location">Callbacks.js:584</div>
         </header>
         <pre class="signature"><code>on_playlist_stop_after_current_changed(state)</code></pre>
         
@@ -2069,6 +2226,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_playlist_switch" data-kind="function" data-name="on_playlist_switch">
@@ -2077,11 +2235,12 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_playlist_switch">on_playlist_switch</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:548</div>
+            <div class="source-location">Callbacks.js:592</div>
         </header>
         <pre class="signature"><code>on_playlist_switch()</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -2098,11 +2257,12 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_playlists_changed">on_playlists_changed</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:553</div>
+            <div class="source-location">Callbacks.js:597</div>
         </header>
         <pre class="signature"><code>on_playlists_changed()</code></pre>
         
         <div class="description"><p>Called when:<br> - Playlists are added/removed/reordered/renamed.<br> - A playlist's lock status changes through the use of <a href="plman.html#SetPlaylistLockedActions">plman.SetPlaylistLockedActions</a> or components such as <b>foo_utils</b> or <b>foo_playlist_attributes</b>.</p></div>
+        
         
         
         
@@ -2119,7 +2279,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_replaygain_mode_changed">on_replaygain_mode_changed</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:563</div>
+            <div class="source-location">Callbacks.js:607</div>
         </header>
         <pre class="signature"><code>on_replaygain_mode_changed(new_mode)</code></pre>
         
@@ -2139,6 +2299,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_run_cmd_async_done" data-kind="function" data-name="on_run_cmd_async_done">
@@ -2147,19 +2308,20 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#on_run_cmd_async_done">on_run_cmd_async_done</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:696</div>
+            <div class="source-location">Callbacks.js:740</div>
         </header>
         <pre class="signature"><code>on_run_cmd_async_done(task_id, success, exit_code, stdout, stderr)</code></pre>
         
-        <div class="description"><p>Called when a process started by utils.RunCmdAsync finishes, fails to start, or times out.</p></div>
+        <div class="description"><p>Called when a process started by <a href="utils.html#RunCmdAsync">utils.RunCmdAsync</a> finishes, fails to start, or times out.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>task_id</code></td><td><code>number</code></td><td><p>Task id returned by utils.RunCmdAsync.<br></p></td></tr><tr><td><code>success</code></td><td><code>boolean</code></td><td><p>true only when the process was started, finished before timeout, and exited with code 0.<br> false when the process fails to start, times out, or exits with a non-zero code.<br></p></td></tr><tr><td><code>exit_code</code></td><td><code>number</code></td><td><p>Process exit code.<br> If the process timed out, this value is 0xFFFFFFFF.<br></p></td></tr><tr><td><code>stdout</code></td><td><code>string</code></td><td><p>Captured standard output.<br></p></td></tr><tr><td><code>stderr</code></td><td><code>string</code></td><td><p>Captured standard error and internal error messages.<br></p></td></tr></tbody>
+                <tbody><tr><td><code>task_id</code></td><td><code>number</code></td><td><p>Task id returned by <a href="utils.html#RunCmdAsync">utils.RunCmdAsync</a>.<br></p></td></tr><tr><td><code>success</code></td><td><code>boolean</code></td><td><p>true only when the process was started, finished before timeout, and exited with code 0.<br> false when the process fails to start, times out, or exits with a non-zero code.<br></p></td></tr><tr><td><code>exit_code</code></td><td><code>number</code></td><td><p>Process exit code.<br> If the process timed out, this value is 0xFFFFFFFF.<br></p></td></tr><tr><td><code>stdout</code></td><td><code>string</code></td><td><p>Captured standard output.<br></p></td></tr><tr><td><code>stderr</code></td><td><code>string</code></td><td><p>Captured standard error and internal error messages.<br></p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -2175,11 +2337,12 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_script_unload">on_script_unload</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:571</div>
+            <div class="source-location">Callbacks.js:615</div>
         </header>
         <pre class="signature"><code>on_script_unload()</code></pre>
         
         <div class="description"><p>Called when:<br> - Panel script is reloaded via context menu > Reload.<br> - Panel script is changed via panel menu > Configure.<br> - fb2k is exiting normally.<br> Not called when:<br> - Script fails with error.<br> - fb2k closed externally (e.g. killed with process manager).<br> - fb2k fails with exception.</p></div>
+        
         
         
         
@@ -2196,11 +2359,12 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_selection_changed">on_selection_changed</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:585</div>
+            <div class="source-location">Callbacks.js:629</div>
         </header>
         <pre class="signature"><code>on_selection_changed()</code></pre>
         
         <div class="description"><p>Called when selection changes based on "File>Preferences>Display>Selection viewers".</p></div>
+        
         
         
         
@@ -2217,7 +2381,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_size">on_size</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:592</div>
+            <div class="source-location">Callbacks.js:636</div>
         </header>
         <pre class="signature"><code>on_size(width, height)</code></pre>
         
@@ -2237,6 +2401,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="on_volume_change" data-kind="function" data-name="on_volume_change">
@@ -2245,7 +2410,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#on_volume_change">on_volume_change</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:603</div>
+            <div class="source-location">Callbacks.js:647</div>
         </header>
         <pre class="signature"><code>on_volume_change(val)</code></pre>
         
@@ -2265,6 +2430,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="PerformanceObserverCallback" data-kind="function" data-name="performanceobservercallback">
@@ -2273,7 +2439,7 @@
                 <div class="eyebrow"><span class="kind kind-function">function</span></div>
                 <h2><a class="anchor" href="#PerformanceObserverCallback">PerformanceObserverCallback</a></h2>
             </div>
-            <div class="source-location">Callbacks.js:688</div>
+            <div class="source-location">Callbacks.js:732</div>
         </header>
         <pre class="signature"><code>PerformanceObserverCallback(entries, observer)</code></pre>
         
@@ -2286,6 +2452,7 @@
                 <tbody><tr><td><code>entries</code></td><td><code><a class="type-link" href="PerformanceObserverEntryList.html#PerformanceObserverEntryList">PerformanceObserverEntryList</a></code></td><td><p>The list of performance observer entries.</p></td></tr><tr><td><code>observer</code></td><td><code><a class="type-link" href="PerformanceObserver.html#PerformanceObserver">PerformanceObserver</a></code></td><td><p>The observer object that is receiving the above entries.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         

@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -236,6 +242,7 @@
         
         
         <div class="description"><p>Functions for controlling foobar2000 and accessing it's data.</p></div>
+        
         
         
         
@@ -269,6 +276,7 @@
             <pre class="example"><code>fb.AlwaysOnTop = !fb.AlwaysOnTop; <span class="tok-comment">// Toggles the current value.</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="ComponentPath" data-kind="property" data-name="componentpath">
@@ -294,6 +302,7 @@
             <pre class="example"><code>console.log(fb.ComponentPath); <span class="tok-comment">// C:\Users\User\AppData\Roaming\foobar2000\user-components\foo_uie_jsplitter\</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="CursorFollowPlayback" data-kind="property" data-name="cursorfollowplayback">
@@ -315,6 +324,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="CustomVolume" data-kind="property" data-name="customvolume">
@@ -327,7 +337,8 @@
         </header>
         <pre class="signature"><code>CustomVolume: boolean</code></pre>
         
-        <div class="description"><p>It can be used for displaying the volume from UPnP devices.<br> It will return a value of -1 when using a normal device and that also indicates that fb.Volume is writable.<br> When a custom volume control is active, you can not use <a href="fb.html#Volume">fb.Volume</a> and must use <a href="fb.html#VolumeUp">fb.VolumeUp</a> / <a href="fb.html#VolumeDown">fb.VolumeDown</a> / <a href="fb.html#VolumeMute">fb.VolumeMute</a>.</p></div>
+        <div class="description"><p>It can be used for displaying the volume from UPnP devices.<br> It will return a value of -1 when using a normal device and that also indicates that <a href="fb.html#Volume">Volume</a> is writable.<br> When a custom volume control is active, you can not use <a href="fb.html#Volume">Volume</a> and must use <a href="fb.html#VolumeUp">VolumeUp</a> / <a href="fb.html#VolumeDown">VolumeDown</a> / <a href="fb.html#VolumeMute">VolumeMute</a>.</p></div>
+        
         
         
         
@@ -357,6 +368,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="IsPaused" data-kind="property" data-name="ispaused">
@@ -370,6 +382,7 @@
         <pre class="signature"><code>IsPaused: boolean</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -399,6 +412,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="PlaybackFollowCursor" data-kind="property" data-name="playbackfollowcursor">
@@ -412,6 +426,7 @@
         <pre class="signature"><code>PlaybackFollowCursor: boolean</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -445,6 +460,7 @@
             <pre class="example"><code>console.log(fb.PlaybackLength); <span class="tok-comment">// 322.843414966166</span></code></pre><pre class="example"><code>console.log(Math.round(fb.PlaybackLength)); <span class="tok-comment">// 323</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="PlaybackTime" data-kind="property" data-name="playbacktime">
@@ -470,6 +486,7 @@
             <pre class="example"><code>fb.PlaybackTime = <span class="tok-number">60</span>; <span class="tok-comment">// Jumps to the 1 minute mark.</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="ProfilePath" data-kind="property" data-name="profilepath">
@@ -483,6 +500,7 @@
         <pre class="signature"><code>ProfilePath: string</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -516,6 +534,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="StopAfterCurrent" data-kind="property" data-name="stopaftercurrent">
@@ -540,6 +559,7 @@
             <h3>Example</h3>
             <pre class="example"><code>fb.StopAfterCurrent = !fb.StopAfterCurrent; <span class="tok-comment">// Toggles the current value.</span></code></pre>
         </section>
+        
         
     </article>
 
@@ -567,6 +587,7 @@
 <span class="tok-comment">// 1.4.1</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="Volume" data-kind="property" data-name="volume">
@@ -592,6 +613,7 @@
             <pre class="example"><code>fb.Volume = <span class="tok-number">0</span>; <span class="tok-comment">// Sets the volume to max. -100 is the minimum.</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="Window" data-kind="property" data-name="window">
@@ -605,6 +627,7 @@
         <pre class="signature"><code>Window: <a class="type-link" href="FbWindow.html#FbWindow">FbWindow</a></code></pre>
         
         <div class="description"><p>Access to the main foobar2000 application window. See <a href="FbWindow.html#FbWindow">FbWindow</a> for global state, multi-panel ownership and UI-specific behavior.</p></div>
+        
         
         
         
@@ -638,6 +661,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="AddDirectory" data-kind="method" data-name="adddirectory">
@@ -659,6 +683,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="AddFiles" data-kind="method" data-name="addfiles">
@@ -672,6 +697,7 @@
         <pre class="signature"><code>AddFiles()</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -730,6 +756,7 @@
 }</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="CheckClipboardContents" data-kind="method" data-name="checkclipboardcontents">
@@ -742,7 +769,7 @@
         </header>
         <pre class="signature"><code>CheckClipboardContents()</code></pre>
         
-        <div class="description"><p>Checks Clipboard contents are handles or a file selection from Windows Explorer. Use in conjunction with <a href="fb.html#GetClipboardContents">fb.GetClipboardContents</a>.</p></div>
+        <div class="description"><p>Checks Clipboard contents are handles or a file selection from Windows Explorer. Use in conjunction with <a href="fb.html#GetClipboardContents">GetClipboardContents</a>.</p></div>
         
         
         
@@ -751,6 +778,7 @@
             <h3>Returns</h3>
             <div><code>boolean</code></div>
         </section>
+        
         
         
         
@@ -768,6 +796,7 @@
         <pre class="signature"><code>ClearPlaylist()</code></pre>
         
         <div class="description"><p>Clears active playlist.<br> If you wish to clear a specific playlist, use <a href="plman.html#ClearPlaylist">plman.ClearPlaylist</a>(playlistIndex).</p></div>
+        
         
         
         
@@ -824,6 +853,7 @@ fb.CopyHandleListToClipboard(handle_list);</code></pre><div class="example-capti
  }</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="CreateContextMenuManager" data-kind="method" data-name="createcontextmenumanager">
@@ -845,6 +875,7 @@ fb.CopyHandleListToClipboard(handle_list);</code></pre><div class="example-capti
             <h3>Returns</h3>
             <div><code><a class="type-link" href="ContextMenuManager.html#ContextMenuManager">ContextMenuManager</a></code></div>
         </section>
+        
         
         
         
@@ -878,6 +909,7 @@ fb.CopyHandleListToClipboard(handle_list);</code></pre><div class="example-capti
         
         
         
+        
     </article>
 
     <article class="api-item" id="CreateMainMenuManager" data-kind="method" data-name="createmainmenumanager">
@@ -899,6 +931,7 @@ fb.CopyHandleListToClipboard(handle_list);</code></pre><div class="example-capti
             <h3>Returns</h3>
             <div><code><a class="type-link" href="MainMenuManager.html#MainMenuManager">MainMenuManager</a></code></div>
         </section>
+        
         
         
         
@@ -939,6 +972,7 @@ fb.CopyHandleListToClipboard(handle_list);</code></pre><div class="example-capti
         
         
         
+        
     </article>
 
     <article class="api-item" id="DoDragDrop" data-kind="method" data-name="dodragdrop">
@@ -951,7 +985,7 @@ fb.CopyHandleListToClipboard(handle_list);</code></pre><div class="example-capti
         </header>
         <pre class="signature"><code>DoDragDrop(window_id, handle_list, effect, options)</code></pre>
         
-        <div class="description"><p>Invokes drag-n-drop operation (see <a href="https://docs.microsoft.com/en-us/windows/win32/api/ole2/nf-ole2-dodragdrop" target="_blank" rel="noreferrer">https://docs.microsoft.com/en-us/windows/win32/api/ole2/nf-ole2-dodragdrop</a>).<br> <br> Quick tips:<br> - If you need only to drag from your panel with copy (i.e. without physically moving them): use only fb.DoDragDrop(handles, DROPEFFECT_COPY | DROPEFFECT_LINK).<br> - If you need only to receive drop to your panel with copy: handle <b>on_drop_*()</b> callbacks, while setting action.effect argument to (DROPEFFECT_COPY | DROPEFFECT_LINK).<br> <br> Full drag-n-drop interface description:<br> - Drag-n-drop interface is based on Microsoft IDropSource and IDropTarget interfaces, so a lot of info (including examples) could be gathered from MSDN (IDropSource, IDropTarget, DoDragDrop, DROPEFFECT).<br> - Drag operation is started with DoDragDrop (whether it is called by your panel, or externally) with okEffects argument supplied.<br> - DoDragDrop blocks code execution until the drag operation is finished (callbacks will be called properly though). It returns effect from Action.Effect from on_drag_drop after completion.<br> - (Spider Monkey Panel specific) Drag operation is canceled when any mouse button is pressed.<br> - (Spider Monkey Panel specific) All mouse callbacks are suppressed during drag operation (including on_mouse_lbtn_up, but excluding on_mouse_mbtn_up and on_mouse_rbtn_up).<br> - Every drag callback receives Action argument. Action.Effect contains okEffects from DoDragDrop call. Action.Effect should be changed to the desired effect in the callback. If the returned Action.Effect was not in okEffects or is equal to DROPEFFECT_NONE (=== 0), then drop will be denied: cursor icon will be changed, on_drag_drop won't be called after releasing lmbtn, on_drag_leave will be called instead.<br> - DROPEFFECT_LINK should be used as fallback in case effect argument does not have DROPEFFECT_COPY (===1), since some external drops only allow DROPEFFECT_LINK effect.<br> - Changing effect on key modifiers is nice (to be in line with native Windows behaviour): see the example below.<br> <br> Note: due to the asynchronous nature of event handling, <a href="fb.html#DoDragDrop">fb.DoDragDrop</a> might exit before <a href="module-Callbacks.html#on_drag_drop">on_drag_drop</a> callback is triggered when dropping data on the same panel as the one that had a call to <a href="fb.html#DoDragDrop">fb.DoDragDrop</a>.<br> <br> Related callbacks: <a href="module-Callbacks.html#on_drag_enter">on_drag_enter</a>, <a href="module-Callbacks.html#on_drag_drop">on_drag_drop</a>, <a href="module-Callbacks.html#on_drag_over">on_drag_over</a>, <a href="module-Callbacks.html#on_drag_leave">on_drag_leave</a></p></div>
+        <div class="description"><p>Invokes drag-n-drop operation (see <a href="https://docs.microsoft.com/en-us/windows/win32/api/ole2/nf-ole2-dodragdrop" target="_blank" rel="noreferrer">https://docs.microsoft.com/en-us/windows/win32/api/ole2/nf-ole2-dodragdrop</a>).<br> <br> Quick tips:<br> - If you need only to drag from your panel with copy (i.e. without physically moving them): use only <a href="fb.html#DoDragDrop">DoDragDrop</a>(handles, DROPEFFECT_COPY | DROPEFFECT_LINK).<br> - If you need only to receive drop to your panel with copy: handle <b>on_drop_*()</b> callbacks, while setting action.effect argument to (DROPEFFECT_COPY | DROPEFFECT_LINK).<br> <br> Full drag-n-drop interface description:<br> - Drag-n-drop interface is based on Microsoft IDropSource and IDropTarget interfaces, so a lot of info (including examples) could be gathered from MSDN (IDropSource, IDropTarget, DoDragDrop, DROPEFFECT).<br> - Drag operation is started with DoDragDrop (whether it is called by your panel, or externally) with okEffects argument supplied.<br> - DoDragDrop blocks code execution until the drag operation is finished (callbacks will be called properly though). It returns effect from Action.Effect from on_drag_drop after completion.<br> - (Spider Monkey Panel specific) Drag operation is canceled when any mouse button is pressed.<br> - (Spider Monkey Panel specific) All mouse callbacks are suppressed during drag operation (including on_mouse_lbtn_up, but excluding on_mouse_mbtn_up and on_mouse_rbtn_up).<br> - Every drag callback receives Action argument. Action.Effect contains okEffects from DoDragDrop call. Action.Effect should be changed to the desired effect in the callback. If the returned Action.Effect was not in okEffects or is equal to DROPEFFECT_NONE (=== 0), then drop will be denied: cursor icon will be changed, on_drag_drop won't be called after releasing lmbtn, on_drag_leave will be called instead.<br> - DROPEFFECT_LINK should be used as fallback in case effect argument does not have DROPEFFECT_COPY (===1), since some external drops only allow DROPEFFECT_LINK effect.<br> - Changing effect on key modifiers is nice (to be in line with native Windows behaviour): see the example below.<br> <br> Note: due to the asynchronous nature of event handling, <a href="fb.html#DoDragDrop">DoDragDrop</a> might exit before <a href="module-Callbacks.html#on_drag_drop">on_drag_drop</a> callback is triggered when dropping data on the same panel as the one that had a call to <a href="fb.html#DoDragDrop">DoDragDrop</a>.<br> <br> Related callbacks: <a href="module-Callbacks.html#on_drag_enter">on_drag_enter</a>, <a href="module-Callbacks.html#on_drag_drop">on_drag_drop</a>, <a href="module-Callbacks.html#on_drag_over">on_drag_over</a>, <a href="module-Callbacks.html#on_drag_leave">on_drag_leave</a></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -972,6 +1006,7 @@ fb.CopyHandleListToClipboard(handle_list);</code></pre><div class="example-capti
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>handle_list</b> is null, <b>options</b> is not an object, or the panel host is not fully initialized.</p></div>
         </section>
+        
         
         
         
@@ -1000,6 +1035,7 @@ fb.CopyHandleListToClipboard(handle_list);</code></pre><div class="example-capti
         
         
         
+        
     </article>
 
     <article class="api-item" id="EnumerateMainMenuCommands" data-kind="method" data-name="enumeratemainmenucommands">
@@ -1012,7 +1048,7 @@ fb.CopyHandleListToClipboard(handle_list);</code></pre><div class="example-capti
         </header>
         <pre class="signature"><code>EnumerateMainMenuCommands()</code></pre>
         
-        <div class="description"><p>Returns all main menu items recursivley.<br> It is a JSON array in string form so you need to use JSON.parse on the result.<br> Every item of the array is object with the following properties:<br> <b>Checked</b>: boolean<br> <b>Disabled</b>: boolean<br> <b>FullPath</b>: string, the same full path you'd supply to fb.RunMainMenuCommand<br> <b>HiddenByDefault</b>: boolean<br> <b>Radio</b>: boolean<br> <b>Type</b>: string ("Fixed" or "Dynamic")<br> <b>Visible</b>: boolean<br></p></div>
+        <div class="description"><p>Returns all main menu items recursivley.<br> It is a JSON array in string form so you need to use JSON.parse on the result.<br> Every item of the array is object with the following properties:<br> <b>Checked</b>: boolean<br> <b>Disabled</b>: boolean<br> <b>FullPath</b>: string, the same full path you'd supply to <a href="fb.html#RunMainMenuCommand">RunMainMenuCommand</a><br> <b>HiddenByDefault</b>: boolean<br> <b>Radio</b>: boolean<br> <b>Type</b>: string ("Fixed" or "Dynamic")<br> <b>Visible</b>: boolean<br></p></div>
         
         
         
@@ -1034,6 +1070,7 @@ menuCommands
     .forEach(({ FullPath }) =&gt; console.log(FullPath));</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="Exit" data-kind="method" data-name="exit">
@@ -1047,6 +1084,7 @@ menuCommands
         <pre class="signature"><code>Exit()</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -1080,6 +1118,7 @@ menuCommands
         
         
         
+        
     </article>
 
     <article class="api-item" id="GetAudioChunk" data-kind="method" data-name="getaudiochunk">
@@ -1092,7 +1131,7 @@ menuCommands
         </header>
         <pre class="signature"><code>GetAudioChunk(requested_length, offset)</code></pre>
         
-        <div class="description"><p>Returns PCM data from the foobar2000 visualisation stream.<br> The stream is created lazily. A negative <b>offset</b> requests data before the current visualisation time; JSplitter automatically maintains the native backlog required for that offset. The first stream initialization may briefly synchronize with the foobar2000 main thread.<br> For repeated real-time processing, prefer <a href="fb.html#GetAudioChunkTo">fb.GetAudioChunkTo</a> to write directly into a reusable <b>Float32Array</b> without creating a transient <a href="FbAudioChunk.html#FbAudioChunk">FbAudioChunk</a>. <a href="FbAudioChunk.html#CopyDataTo">CopyDataTo</a> remains useful when a chunk object is already required, while <a href="FbAudioChunk.html#Data">Data</a> preserves its legacy allocating <b>Array</b> behaviour for compatibility.</p></div>
+        <div class="description"><p>Returns PCM data from the foobar2000 visualisation stream.<br> The stream is created lazily. A negative <b>offset</b> requests data before the current visualisation time; JSplitter automatically maintains the native backlog required for that offset. The first stream initialization may briefly synchronize with the foobar2000 main thread.<br> For repeated real-time processing, prefer <a href="fb.html#GetAudioChunkTo">GetAudioChunkTo</a> to write directly into a reusable <b>Float32Array</b> without creating a transient <a href="FbAudioChunk.html#FbAudioChunk">FbAudioChunk</a>. <a href="FbAudioChunk.html#CopyDataTo">CopyDataTo</a> remains useful when a chunk object is already required, while <a href="FbAudioChunk.html#Data">Data</a> preserves its legacy allocating <b>Array</b> behaviour for compatibility.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1116,6 +1155,7 @@ menuCommands
         
         
         
+        
         <section class="member-section">
             <h3>Example source</h3>
             <div class="source-links"><a class="source-link" href="source-samples-complete-js-vu_meter.js.html"><span>samples/complete/js/vu_meter.js</span><small>open source</small></a></div>
@@ -1132,7 +1172,7 @@ menuCommands
         </header>
         <pre class="signature"><code>GetAudioChunkTo(destination, requested_length, offset, info)</code></pre>
         
-        <div class="description"><p>Writes interleaved PCM samples from the foobar2000 visualisation stream directly into an existing <b>Float32Array</b>. Unlike <a href="fb.html#GetAudioChunk">fb.GetAudioChunk</a>, this method does not create an <a href="FbAudioChunk.html#FbAudioChunk">FbAudioChunk</a>; after the first sufficiently large native scratch buffer has been established, repeated calls can reuse both the native scratch storage and the JavaScript destination buffer.<br> A negative <b>offset</b> has the same backlog semantics as <a href="fb.html#GetAudioChunk">fb.GetAudioChunk</a>. If <b>info</b> is supplied, it is updated in place with <b>SampleCount</b>, <b>ChannelCount</b>, <b>SampleRate</b> and <b>ChannelConfig</b>.</p></div>
+        <div class="description"><p>Writes interleaved PCM samples from the foobar2000 visualisation stream directly into an existing <b>Float32Array</b>. Unlike <a href="fb.html#GetAudioChunk">GetAudioChunk</a>, this method does not create an <a href="FbAudioChunk.html#FbAudioChunk">FbAudioChunk</a>; after the first sufficiently large native scratch buffer has been established, repeated calls can reuse both the native scratch storage and the JavaScript destination buffer.<br> A negative <b>offset</b> has the same backlog semantics as <a href="fb.html#GetAudioChunk">GetAudioChunk</a>. If <b>info</b> is supplied, it is updated in place with <b>SampleCount</b>, <b>ChannelCount</b>, <b>SampleRate</b> and <b>ChannelConfig</b>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1156,6 +1196,7 @@ menuCommands
         
         
         
+        
     </article>
 
     <article class="api-item" id="GetAudioStreams" data-kind="method" data-name="getaudiostreams">
@@ -1168,7 +1209,7 @@ menuCommands
         </header>
         <pre class="signature"><code>GetAudioStreams(handle)</code></pre>
         
-        <div class="description"><p>Returns the audio streams exposed by the input decoder for <b>handle</b> as array of <a href="globals.html#AudioStreamInfo">AudioStreamInfo</a> objects.<br> Returns an empty array when the file's input decoder does not expose stream information. Related methods: <a href="fb.html#SetAudioStream">fb.SetAudioStream</a>.</p></div>
+        <div class="description"><p>Returns the audio streams exposed by the input decoder for <b>handle</b> as array of <a href="globals.html#AudioStreamInfo">AudioStreamInfo</a> objects.<br> Returns an empty array when the file's input decoder does not expose stream information. Related methods: <a href="fb.html#SetAudioStream">SetAudioStream</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1205,6 +1246,7 @@ menuCommands
 }</code></pre>
         </section>
         
+        
         <section class="member-section">
             <h3>Example source</h3>
             <div class="source-links"><a class="source-link" href="source-samples-basic-Audio-Stream-Selector.js.html"><span>samples/basic/Audio Stream Selector.js</span><small>open source</small></a></div>
@@ -1221,7 +1263,7 @@ menuCommands
         </header>
         <pre class="signature"><code>GetClipboardContents(window_id)</code></pre>
         
-        <div class="description"><p>Note: clipboard contents can be handles copied to the clipboard in other components, from <a href="fb.html#CopyHandleListToClipboard">fb.CopyHandleListToClipboard</a> or a file selection, from Windows Explorer and etc.<br> <br> Performance note: validate clipboard content with <a href="fb.html#CheckClipboardContents">fb.CheckClipboardContents</a> before calling this method.</p></div>
+        <div class="description"><p>Note: clipboard contents can be handles copied to the clipboard in other components, from <a href="fb.html#CopyHandleListToClipboard">CopyHandleListToClipboard</a> or a file selection, from Windows Explorer and etc.<br> <br> Performance note: validate clipboard content with <a href="fb.html#CheckClipboardContents">CheckClipboardContents</a> before calling this method.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1259,6 +1301,7 @@ menuCommands
 }</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="GetDSPPresets" data-kind="method" data-name="getdsppresets">
@@ -1271,7 +1314,7 @@ menuCommands
         </header>
         <pre class="signature"><code>GetDSPPresets()</code></pre>
         
-        <div class="description"><p>Available only in foobar2000 v1.4 and above. Throws a script error on v1.3. * <br> Returns a JSON array in string form so you need to use JSON.parse() on the result. <br> Related methods: <a href="fb.html#SetDSPPreset">fb.SetDSPPreset</a>.</p></div>
+        <div class="description"><p>Available only in foobar2000 v1.4 and above. Throws a script error on v1.3. * <br> Returns a JSON array in string form so you need to use JSON.parse() on the result. <br> Related methods: <a href="fb.html#SetDSPPreset">SetDSPPreset</a>.</p></div>
         
         
         
@@ -1303,6 +1346,7 @@ console.log(JSON.stringify(arr, <span class="tok-literal">null</span>, <span cla
 <span class="tok-comment">//     }</span>
 <span class="tok-comment">// ]</span></code></pre>
         </section>
+        
         
     </article>
 
@@ -1336,6 +1380,7 @@ console.log(JSON.stringify(arr, <span class="tok-literal">null</span>, <span cla
         
         
         
+        
     </article>
 
     <article class="api-item" id="GetLibraryItems" data-kind="method" data-name="getlibraryitems">
@@ -1357,6 +1402,7 @@ console.log(JSON.stringify(arr, <span class="tok-literal">null</span>, <span cla
             <h3>Returns</h3>
             <div><code><a class="type-link" href="FbMetadbHandleList.html#FbMetadbHandleList">FbMetadbHandleList</a></code></div>
         </section>
+        
         
         
         
@@ -1404,6 +1450,7 @@ console.log(JSON.stringify(arr, <span class="tok-literal">null</span>, <span cla
 console.log(fb.GetLibraryRelativePath(handle)); <span class="tok-comment">// Albums\Artist\Some Album\Some Song.flac*</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="GetLibraryRoots" data-kind="method" data-name="getlibraryroots">
@@ -1425,6 +1472,7 @@ console.log(fb.GetLibraryRelativePath(handle)); <span class="tok-comment">// Alb
             <h3>Returns</h3>
             <div><code>Array&lt;string&gt;</code> — <p>Media Library root paths</p></div>
         </section>
+        
         
         
         
@@ -1454,6 +1502,7 @@ console.log(fb.GetLibraryRelativePath(handle)); <span class="tok-comment">// Alb
         
         
         
+        
     </article>
 
     <article class="api-item" id="GetOutputDevices" data-kind="method" data-name="getoutputdevices">
@@ -1466,7 +1515,7 @@ console.log(fb.GetLibraryRelativePath(handle)); <span class="tok-comment">// Alb
         </header>
         <pre class="signature"><code>GetOutputDevices()</code></pre>
         
-        <div class="description"><p>Available only in foobar2000 v1.4 and above. Throws a script error on v1.3. * <br> Returns a JSON array in string form so you need to use JSON.parse() on the result. <br> Related methods: <a href="fb.html#SetOutputDevice">fb.SetOutputDevice</a>.</p></div>
+        <div class="description"><p>Available only in foobar2000 v1.4 and above. Throws a script error on v1.3. * <br> Returns a JSON array in string form so you need to use JSON.parse() on the result. <br> Related methods: <a href="fb.html#SetOutputDevice">SetOutputDevice</a>.</p></div>
         
         
         
@@ -1521,6 +1570,7 @@ console.log(JSON.stringify(arr, <span class="tok-literal">null</span>, <span cla
 <span class="tok-comment">// may contain no active item.</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="GetQueryItems" data-kind="method" data-name="getqueryitems">
@@ -1561,6 +1611,7 @@ console.log(JSON.stringify(arr, <span class="tok-literal">null</span>, <span cla
             <pre class="example"><code><span class="tok-keyword">let</span> a = fb.GetQueryItems(plman.GetPlaylistItems(plman.ActivePlaylist), <span class="tok-string">&quot;rating IS 5&quot;</span>);</code></pre><pre class="example"><code><span class="tok-keyword">let</span> b = fb.GetQueryItems(fb.GetLibraryItems(), <span class="tok-string">&quot;rating IS 5&quot;</span>);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="GetSelection" data-kind="method" data-name="getselection">
@@ -1586,6 +1637,7 @@ console.log(JSON.stringify(arr, <span class="tok-literal">null</span>, <span cla
         
         
         
+        
     </article>
 
     <article class="api-item" id="GetSelections" data-kind="method" data-name="getselections">
@@ -1598,7 +1650,7 @@ console.log(JSON.stringify(arr, <span class="tok-literal">null</span>, <span cla
         </header>
         <pre class="signature"><code>GetSelections(flags)</code></pre>
         
-        <div class="description"><p>Works like <a href="fb.html#GetSelection">fb.GetSelection</a>, but returns a handle list.<br></p></div>
+        <div class="description"><p>Works like <a href="fb.html#GetSelection">GetSelection</a>, but returns a handle list.<br></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1614,6 +1666,7 @@ console.log(JSON.stringify(arr, <span class="tok-literal">null</span>, <span cla
             <h3>Returns</h3>
             <div><code><a class="type-link" href="FbMetadbHandleList.html#FbMetadbHandleList">FbMetadbHandleList</a></code></div>
         </section>
+        
         
         
         
@@ -1643,6 +1696,7 @@ console.log(JSON.stringify(arr, <span class="tok-literal">null</span>, <span cla
         
         
         
+        
     </article>
 
     <article class="api-item" id="IsLibraryEnabled" data-kind="method" data-name="islibraryenabled">
@@ -1668,6 +1722,7 @@ console.log(JSON.stringify(arr, <span class="tok-literal">null</span>, <span cla
         
         
         
+        
     </article>
 
     <article class="api-item" id="IsLibraryInitialised" data-kind="method" data-name="islibraryinitialised">
@@ -1689,6 +1744,7 @@ console.log(JSON.stringify(arr, <span class="tok-literal">null</span>, <span cla
             <h3>Returns</h3>
             <div><code>boolean</code></div>
         </section>
+        
         
         
         
@@ -1728,6 +1784,7 @@ console.log(JSON.stringify(arr, <span class="tok-literal">null</span>, <span cla
             <h3>Example</h3>
             <pre class="example"><code>fb.RunMainMenuCommand(<span class="tok-string">&quot;Playback/Scrobble Tracks&quot;</span>); <span class="tok-comment">// available with foo_scrobble</span></code></pre>
         </section>
+        
         
     </article>
 
@@ -1770,6 +1827,7 @@ console.log(JSON.stringify(arr, <span class="tok-literal">null</span>, <span cla
 console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If false, playing track is not in Media Library.</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="LoadPlaylist" data-kind="method" data-name="loadplaylist">
@@ -1783,6 +1841,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
         <pre class="signature"><code>LoadPlaylist()</code></pre>
         
         <div class="description"><p>Loads playlist from file. Equivalent to <b>File</b>><b>Load Playlist...</b>.</p></div>
+        
         
         
         
@@ -1812,6 +1871,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
         
         
         
+        
     </article>
 
     <article class="api-item" id="Pause" data-kind="method" data-name="pause">
@@ -1825,6 +1885,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
         <pre class="signature"><code>Pause()</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -1854,6 +1915,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
         
         
         
+        
     </article>
 
     <article class="api-item" id="PlayOrPause" data-kind="method" data-name="playorpause">
@@ -1867,6 +1929,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
         <pre class="signature"><code>PlayOrPause()</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -1896,6 +1959,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
         
         
         
+        
     </article>
 
     <article class="api-item" id="Random" data-kind="method" data-name="random">
@@ -1917,6 +1981,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
         
         
         
+        
     </article>
 
     <article class="api-item" id="RegisterMainMenuCommand" data-kind="method" data-name="registermainmenucommand">
@@ -1929,7 +1994,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
         </header>
         <pre class="signature"><code>RegisterMainMenuCommand(id, name, description)</code></pre>
         
-        <div class="description"><p>Registers a main menu item that will be displayed under <b>main menu</b> > <b>File</b> > <b>JSplitter</b> > <b>Script commands</b> > <b>{Current panel name}</b>.<br> Being main menu item means you can bind it to global keyboard shortcuts, standard toolbar buttons, panel stack splitter buttons and etc.<br> Execution of the correspoding menu item will trigger <a href="module-Callbacks.html#on_main_menu_dynamic">on_main_menu_dynamic</a> callback.<br> <br> Note: JSplitter uses a combination of panel name and command id to identify and bind the command. Hence all corresponding binds will fail if the id or the panel name is changed. This also means that collision WILL occur if there are two panels with the same name.<br> <br> Related methods: <a href="fb.html#UnregisterMainMenuCommand">fb.UnregisterMainMenuCommand</a><br> Related callbacks: <a href="module-Callbacks.html#on_main_menu_dynamic">on_main_menu_dynamic</a></p></div>
+        <div class="description"><p>Registers a main menu item that will be displayed under <b>main menu</b> > <b>File</b> > <b>JSplitter</b> > <b>Script commands</b> > <b>{Current panel name}</b>.<br> Being main menu item means you can bind it to global keyboard shortcuts, standard toolbar buttons, panel stack splitter buttons and etc.<br> Execution of the correspoding menu item will trigger <a href="module-Callbacks.html#on_main_menu_dynamic">on_main_menu_dynamic</a> callback.<br> <br> Note: JSplitter uses a combination of panel name and command id to identify and bind the command. Hence all corresponding binds will fail if the id or the panel name is changed. This also means that collision WILL occur if there are two panels with the same name.<br> <br> Related methods: <a href="fb.html#UnregisterMainMenuCommand">UnregisterMainMenuCommand</a><br> Related callbacks: <a href="module-Callbacks.html#on_main_menu_dynamic">on_main_menu_dynamic</a></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1949,6 +2014,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
         
         
         
+        
     </article>
 
     <article class="api-item" id="Restart" data-kind="method" data-name="restart">
@@ -1962,6 +2028,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
         <pre class="signature"><code>Restart()</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -2006,6 +2073,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
             <pre class="example"><code>fb.RunContextCommand(<span class="tok-string">&quot;Properties&quot;</span>);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="RunContextCommandWithMetadb" data-kind="method" data-name="runcontextcommandwithmetadb">
@@ -2024,7 +2092,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>command</code></td><td><code>string</code></td><td></td></tr><tr><td><code>handle_or_handle_list</code></td><td><code><a class="type-link" href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a>|<a class="type-link" href="FbMetadbHandleList.html#FbMetadbHandleList">FbMetadbHandleList</a></code></td><td><p>Handles on which to apply context menu</p></td></tr><tr><td><code>flags</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Same flags as <a href="fb.html#RunContextCommand">fb.RunContextCommand</a></p></td></tr></tbody>
+                <tbody><tr><td><code>command</code></td><td><code>string</code></td><td></td></tr><tr><td><code>handle_or_handle_list</code></td><td><code><a class="type-link" href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a>|<a class="type-link" href="FbMetadbHandleList.html#FbMetadbHandleList">FbMetadbHandleList</a></code></td><td><p>Handles on which to apply context menu</p></td></tr><tr><td><code>flags</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Same flags as <a href="fb.html#RunContextCommand">RunContextCommand</a></p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -2037,8 +2105,9 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>handle_or_handle_list</b> is not an <b>FbMetadbHandle</b> or <b>FbMetadbHandleList</b> object.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>handle_or_handle_list</b> is not an <a href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a> or <a href="FbMetadbHandleList.html#FbMetadbHandleList">FbMetadbHandleList</a> object.</p></div>
         </section>
+        
         
         
         
@@ -2078,6 +2147,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
             <pre class="example"><code>fb.RunMainMenuCommand(<span class="tok-string">&quot;File/Add Location...&quot;</span>);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="SavePlaylist" data-kind="method" data-name="saveplaylist">
@@ -2099,6 +2169,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
         
         
         
+        
     </article>
 
     <article class="api-item" id="SetAudioStream" data-kind="method" data-name="setaudiostream">
@@ -2111,13 +2182,13 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
         </header>
         <pre class="signature"><code>SetAudioStream(handle, index)</code></pre>
         
-        <div class="description"><p>Selects an audio stream for <b>handle</b> and stores it as the user's stream preference.<br> <b>Available only in foobar2000 v2.0 and above</b>. Throws an <a href="globals.html#Error">Error</a> when API is unavailable, the file does not support stream selection, or <b>index</b> is out of bounds.<br> If the file is currently playing and the effective selection changes, playback is restarted so the new stream is applied immediately.<br> <br> Related methods: <a href="fb.html#GetAudioStreams">fb.GetAudioStreams</a>.</p></div>
+        <div class="description"><p>Selects an audio stream for <b>handle</b> and stores it as the user's stream preference.<br> <b>Available only in foobar2000 v2.0 and above</b>. Throws an <a href="globals.html#Error">Error</a> when API is unavailable, the file does not support stream selection, or <b>index</b> is out of bounds.<br> If the file is currently playing and the effective selection changes, playback is restarted so the new stream is applied immediately.<br> <br> Related methods: <a href="fb.html#GetAudioStreams">GetAudioStreams</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>handle</code></td><td><code><a class="type-link" href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a></code></td><td></td></tr><tr><td><code>index</code></td><td><code>number</code></td><td><p>Zero-based stream index returned by <a href="fb.html#GetAudioStreams">fb.GetAudioStreams</a>.</p></td></tr></tbody>
+                <tbody><tr><td><code>handle</code></td><td><code><a class="type-link" href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a></code></td><td></td></tr><tr><td><code>index</code></td><td><code>number</code></td><td><p>Zero-based stream index returned by <a href="fb.html#GetAudioStreams">GetAudioStreams</a>.</p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -2141,6 +2212,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
 }</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="SetDSPPreset" data-kind="method" data-name="setdsppreset">
@@ -2153,7 +2225,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
         </header>
         <pre class="signature"><code>SetDSPPreset(idx)</code></pre>
         
-        <div class="description"><p>Available only in foobar2000 v1.4 and above. Throws a script error on v1.3.<br> <br> Related methods: <a href="fb.html#GetDSPPresets">fb.GetDSPPresets</a>.</p></div>
+        <div class="description"><p>Available only in foobar2000 v1.4 and above. Throws a script error on v1.3.<br> <br> Related methods: <a href="fb.html#GetDSPPresets">GetDSPPresets</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2180,6 +2252,7 @@ console.log(fb.IsMetadbInMediaLibrary(np)); <span class="tok-comment">// If fals
 fb.SetDSPPreset(idx);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="SetOutputDevice" data-kind="method" data-name="setoutputdevice">
@@ -2192,7 +2265,7 @@ fb.SetDSPPreset(idx);</code></pre>
         </header>
         <pre class="signature"><code>SetOutputDevice(output, device)</code></pre>
         
-        <div class="description"><p>Available only in foobar2000 v1.4 and above. Throws a script error on v1.3.<br> <br> Related methods: <a href="fb.html#GetOutputDevices">fb.GetOutputDevices</a>.</p></div>
+        <div class="description"><p>Available only in foobar2000 v1.4 and above. Throws a script error on v1.3.<br> <br> Related methods: <a href="fb.html#GetOutputDevices">GetOutputDevices</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2217,6 +2290,7 @@ fb.SetDSPPreset(idx);</code></pre>
 fb.SetOutputDevice(arr[<span class="tok-number">4</span>].output_id, arr[<span class="tok-number">4</span>].device_id);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="ShowConsole" data-kind="method" data-name="showconsole">
@@ -2238,6 +2312,7 @@ fb.SetOutputDevice(arr[<span class="tok-number">4</span>].output_id, arr[<span c
                 <tbody><tr><td><code>show = true</code><span class="mini-flag">optional</span></td><td><code>boolean</code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -2273,6 +2348,7 @@ fb.SetOutputDevice(arr[<span class="tok-number">4</span>].output_id, arr[<span c
         
         
         
+        
     </article>
 
     <article class="api-item" id="ShowPictureViewer" data-kind="method" data-name="showpictureviewer">
@@ -2285,7 +2361,7 @@ fb.SetOutputDevice(arr[<span class="tok-number">4</span>].output_id, arr[<span c
         </header>
         <pre class="signature"><code>ShowPictureViewer(image_path_or_handle, art_id)</code></pre>
         
-        <div class="description"><p>Opens the image viewer built in to <b>foobar2000</b>. Pass an image file path, or an <a href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a>; with a handle, <a href="module-Flags.html#AlbumArtId">AlbumArtId</a> defaults to <b>AlbumArtId.front</b>. Album art is resolved by foobar2000 and may be embedded or external.</p>
+        <div class="description"><p>Opens the image viewer built in to <b>foobar2000</b>. Pass an image file path, or an <a href="FbMetadbHandle.html#FbMetadbHandle">FbMetadbHandle</a>; with a handle, <a href="module-Flags.html#AlbumArtId">AlbumArtId</a> defaults to <a href="module-Flags.html#front">AlbumArtId.front</a>. Album art is resolved by foobar2000 and may be embedded or external.</p>
 <p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>. This applies to the image-file argument; track handles use foobar2000 artwork lookup.</p></div>
         
         <section class="member-section">
@@ -2306,6 +2382,7 @@ fb.SetOutputDevice(arr[<span class="tok-number">4</span>].output_id, arr[<span c
         
         
         
+        
     </article>
 
     <article class="api-item" id="ShowPlaylistSearchUI" data-kind="method" data-name="showplaylistsearchui">
@@ -2319,6 +2396,7 @@ fb.SetOutputDevice(arr[<span class="tok-number">4</span>].output_id, arr[<span c
         <pre class="signature"><code>ShowPlaylistSearchUI()</code></pre>
         
         <div class="description"><p>Opens the "Playlist Search" window</p></div>
+        
         
         
         
@@ -2355,6 +2433,7 @@ fb.SetOutputDevice(arr[<span class="tok-number">4</span>].output_id, arr[<span c
         
         
         
+        
     </article>
 
     <article class="api-item" id="ShowPreferences" data-kind="method" data-name="showpreferences">
@@ -2368,6 +2447,7 @@ fb.SetOutputDevice(arr[<span class="tok-number">4</span>].output_id, arr[<span c
         <pre class="signature"><code>ShowPreferences()</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -2397,6 +2477,7 @@ fb.SetOutputDevice(arr[<span class="tok-number">4</span>].output_id, arr[<span c
         
         
         
+        
     </article>
 
     <article class="api-item" id="TitleFormat" data-kind="method" data-name="titleformat">
@@ -2409,7 +2490,7 @@ fb.SetOutputDevice(arr[<span class="tok-number">4</span>].output_id, arr[<span c
         </header>
         <pre class="signature"><code>TitleFormat(expression)</code></pre>
         
-        <div class="description"><p>Performance note: if you use the same query frequently, try caching FbTitleFormat object (by storing it somewhere), instead of creating it every time.</p></div>
+        <div class="description"><p>Performance note: if you use the same query frequently, try caching <a href="FbTitleFormat.html#FbTitleFormat">FbTitleFormat</a> object (by storing it somewhere), instead of creating it every time.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2429,6 +2510,7 @@ fb.SetOutputDevice(arr[<span class="tok-number">4</span>].output_id, arr[<span c
         
         
         
+        
     </article>
 
     <article class="api-item" id="UnregisterMainMenuCommand" data-kind="method" data-name="unregistermainmenucommand">
@@ -2441,7 +2523,7 @@ fb.SetOutputDevice(arr[<span class="tok-number">4</span>].output_id, arr[<span c
         </header>
         <pre class="signature"><code>UnregisterMainMenuCommand(id, name, description)</code></pre>
         
-        <div class="description"><p>Unregisters a main menu item.<br> <br> Related methods: <a href="fb.html#RegisterMainMenuCommand">fb.RegisterMainMenuCommand</a></p></div>
+        <div class="description"><p>Unregisters a main menu item.<br> <br> Related methods: <a href="fb.html#RegisterMainMenuCommand">RegisterMainMenuCommand</a></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -2461,6 +2543,7 @@ fb.SetOutputDevice(arr[<span class="tok-number">4</span>].output_id, arr[<span c
         
         
         
+        
     </article>
 
     <article class="api-item" id="VolumeDown" data-kind="method" data-name="volumedown">
@@ -2474,6 +2557,7 @@ fb.SetOutputDevice(arr[<span class="tok-number">4</span>].output_id, arr[<span c
         <pre class="signature"><code>VolumeDown()</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -2503,6 +2587,7 @@ fb.SetOutputDevice(arr[<span class="tok-number">4</span>].output_id, arr[<span c
         
         
         
+        
     </article>
 
     <article class="api-item" id="VolumeUp" data-kind="method" data-name="volumeup">
@@ -2516,6 +2601,7 @@ fb.SetOutputDevice(arr[<span class="tok-number">4</span>].output_id, arr[<span c
         <pre class="signature"><code>VolumeUp()</code></pre>
         
         <div class="description"></div>
+        
         
         
         

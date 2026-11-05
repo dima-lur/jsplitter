@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 window.DefineScript('Properties', {author:'marc2003'});
 include(fb.ComponentPath + 'samples\\complete\\js\\lodash.min.js');

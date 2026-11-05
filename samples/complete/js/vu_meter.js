@@ -1,4 +1,4 @@
-function Clamp(value, min, max) {
+﻿function Clamp(value, min, max) {
 	if (value < min)
 		return min;
 	else if (value > max)

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Panel object returned by {@link window.GetPanel} or {@link window.GetPanelByIndex}
  * @hideconstructor
  */

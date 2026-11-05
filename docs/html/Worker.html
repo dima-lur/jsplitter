@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link active" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -236,7 +242,7 @@
         <div class="signatures"><pre class="signature"><code>Worker(source[, name])</code></pre><pre class="signature"><code>Worker({ file }[, name])</code></pre></div>
         
         <div class="description"><p>Runs JavaScript in a separate JSplitter Worker realm and Worker thread.<br> JSplitter Workers use a Web-Worker-inspired programming model, but this page describes the actual JSplitter behaviour and should be treated as the primary guide. A Worker has its own global scope and event loop, communicates with its parent panel through structured-clone messages, and has no direct access to the panel UI.</p>
-<p>Workers can also run computationally intensive WebAssembly modules; see the <a href="module-WebAssembly.html#WebAssembly">WebAssembly guide</a> for a complete example.</p>
+<p>Workers can also run computationally intensive <a href="module-WebAssembly.html#WebAssembly">WebAssembly</a> modules; see the <a href="module-WebAssembly.html#WebAssembly">WebAssembly guide</a> for a complete example.</p>
 <h2>Why use a Worker?</h2>
 <p>A panel script shares its thread with panel/UI work. Expensive JavaScript, large metadata aggregation, image processing, or repeated frame preparation performed there can make the interface less responsive. A Worker moves suitable work to another thread and lets the panel remain focused on interaction and presentation.</p>
 <div class="doc-article-diagram">Panel realm                         Worker realm
@@ -256,8 +262,8 @@ UI / callbacks                       own JS realm + event loop
 <h2>Creating a Worker</h2>
 <p>The <a href="Worker.html#Worker">Worker</a> constructor has two explicit startup forms:</p>
 <ul class="doc-article-list">
-<li><b>new Worker(source[, name])</b> — evaluates JavaScript <b>source</b> text supplied by the panel script.</li>
-<li><b>new Worker({ file: 'path/to/worker.js' }[, name])</b> — reads and evaluates a JavaScript file.</li>
+<li><a href="Worker.html#Worker">Worker</a> with <b>source</b> and optional <b>name</b> arguments — evaluates JavaScript <b>source</b> text supplied by the panel script.</li>
+<li><a href="Worker.html#Worker">Worker</a> with a <b>file</b> options object and optional <b>name</b> argument — reads and evaluates a JavaScript file.</li>
 </ul>
 <p>In the file-backed form, <b>file</b> may be an absolute or relative path. Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>. The caller/package/component search roots are considered, and the resolved file becomes the Worker's startup script origin.</p>
 <p>The optional second <b>name</b> argument has the same meaning in both startup forms: it is the Worker's immutable identity for its lifetime. Supply it when the Worker is created; inside the Worker the same value is exposed through read-only <a href="WorkerGlobalScope.html#name">self.name</a>. JSplitter also uses this exact name in <a href="window.html#JsMemoryStats">window.JsMemoryStats</a> (<b>Workers[].Name</b>) and as the first diagnostic metadata line of every unhandled Worker exception (see below). Giving long-lived or multiple concurrent Workers short descriptive names therefore makes both memory inspection and failures much easier to identify.</p>
@@ -271,7 +277,7 @@ UI / callbacks                       own JS realm + event loop
     { file: <span class="tok-string">&#39;workers/main.js&#39;</span> },
     <span class="tok-string">&#39;file-worker&#39;</span>
 );</code></pre>
-<p>This also means an inline Worker based on source text can be any piece of executable JavaScript code or only a tiny bootstrap that <a href="globals.html#include">include</a>s ordinary files, while a file-backed Worker can start from the same file directly. Relative paths are resolved from the currently executing script file first when one exists, so a file-backed <b>workers/main.js</b> can <b>include('./helpers.js')</b>; otherwise the Worker's inherited script/package roots and component path are used.</p>
+<p>This also means an inline Worker based on source text can be any piece of executable JavaScript code or only a tiny bootstrap that <a href="globals.html#include">include</a>s ordinary files, while a file-backed Worker can start from the same file directly. Relative paths are resolved from the currently executing script file first when one exists, so a file-backed <b>workers/main.js</b> can load <b>./helpers.js</b> through <a href="globals.html#include">include</a>; otherwise the Worker's inherited script/package roots and component path are used.</p>
 <p>Source text passed to <a href="Worker.html#Worker">Worker</a> is ordinary JavaScript. JSplitter evaluates it in a new Worker realm running on its own thread:</p>
 <pre class="description-code language-js"><code><span class="tok-keyword">const</span> worker = <span class="tok-keyword">new</span> Worker(<span class="tok-string">`
     const value = 21 * 2;
@@ -321,7 +327,7 @@ worker.postMessage(<span class="tok-string">&#39;stop&#39;</span>);
 <span class="tok-comment">// worker.terminate();</span></code></pre>
 <p>JSplitter automatically terminates all Workers still owned by a panel when that panel is unloaded, so explicit cleanup is not required merely for panel teardown. Explicit <a href="Worker.html#terminate">terminate</a> is for ending a Worker <b>earlier</b>, while the panel continues to live. Conversely, while the panel remains loaded, a Worker that is still kept alive and is never closed or terminated will remain waiting in its event loop and will continue to hold its Worker realm and associated resources.</p>
 <div class="doc-note warning"><b>Do not treat a Worker created with <b>new Worker(...)</b> as a one-shot function call.</b><br>
-If the panel keeps an ordinary Worker alive after its useful work is finished, returning from the Worker source or from its last message handler does not dispose it. Call <a href="Worker.html#terminate">terminate</a> when the panel is done with it, design the Worker protocol so Worker-global <a href="WorkerGlobalScope.html#close">close</a> is called when the Worker knows it is finished, or use <a href="Worker.html#RunAsync">Worker.RunAsync</a> when the task is naturally one-shot.</div>
+If the panel keeps an ordinary Worker alive after its useful work is finished, returning from the Worker source or from its last message handler does not dispose it. Call <a href="Worker.html#terminate">terminate</a> when the panel is done with it, design the Worker protocol so Worker-global <a href="WorkerGlobalScope.html#close">close</a> is called when the Worker knows it is finished, or use <a href="Worker.html#RunAsync">RunAsync</a> when the task is naturally one-shot.</div>
 <h2>Handling Worker errors</h2>
 <p>An exception that is <strong>not caught by Worker code</strong> and escapes Worker startup code, a Worker message handler, a timer callback, or another Worker task is reported as an <a href="ErrorEvent.html#ErrorEvent">ErrorEvent</a>. A normal <b>try...catch</b> handles the exception locally and prevents this error-reporting path from being used.</p>
 <p>For uncaught exceptions, Worker-local handling comes first: if Worker-global <a href="WorkerGlobalScope.html#onerror">onerror</a> or an <strong><b>error</b></strong> listener is installed, the error is handled there and is not forwarded to the parent. Otherwise it is forwarded to the parent side, where <a href="Worker.html#onerror">Worker.onerror</a> or an <strong><b>error</b></strong> listener can handle it.</p>
@@ -389,7 +395,7 @@ worker.postMessage({
 });</code></pre>
 <p>Ordinary JavaScript objects, arrays, maps, sets, typed arrays, ArrayBuffers and other supported structured-clone values can be sent this way. Selected JSplitter host wrappers can also cross the message boundary; the exact types and their ownership rules are listed later under <b>Host objects in messages</b>.</p>
 <h2>Broadcasting between panels and Workers</h2>
-<p><a href="Worker.html#postMessage">Worker.postMessage</a> is a direct channel between one panel and one specific Worker. When several independent panels and/or Workers should publish and receive messages by a shared name, use <a href="BroadcastChannel.html#BroadcastChannel">BroadcastChannel</a> instead. BroadcastChannel uses asynchronous structured-clone delivery and does not require the sender to keep references to every receiver.</p>
+<p><a href="Worker.html#postMessage">Worker.postMessage</a> is a direct channel between one panel and one specific Worker. When several independent panels and/or Workers should publish and receive messages by a shared name, use <a href="BroadcastChannel.html#BroadcastChannel">BroadcastChannel</a> instead. <a href="BroadcastChannel.html#BroadcastChannel">BroadcastChannel</a> uses asynchronous structured-clone delivery and does not require the sender to keep references to every receiver.</p>
 <pre class="description-code language-js"><code><span class="tok-keyword">const</span> channel = <span class="tok-keyword">new</span> BroadcastChannel(<span class="tok-string">&#39;playback-state&#39;</span>);
 channel.onmessage = event =&gt; console.log(event.data);
 channel.postMessage({ playing: <span class="tok-literal">true</span>, track: <span class="tok-number">12</span> });</code></pre>
@@ -424,10 +430,10 @@ worker.postMessage(
 
 <span class="tok-comment">// After a successful transfer, bitmap and audioChunk are detached in the</span>
 <span class="tok-comment">// panel. Other values in the message, such as &quot;values&quot;, are cloned normally.</span></code></pre>
-<p>Transfers are atomic with respect to the transfer list. A call to <b>postMessage(value, transferList)</b> either transfers every transferable object in the list or transfers none of them.</p>
+<p>Transfers are atomic with respect to the transfer list. A call to <a href="Worker.html#postMessage">postMessage</a> with <b>value</b> and <b>transferList</b> either transfers every transferable object in the list or transfers none of them.</p>
 <p>If the message cannot be serialized, or any object in the transfer list cannot be transferred, <a href="Worker.html#postMessage">postMessage</a> fails <b>synchronously by throwing an exception in the sender</b>. The message is not queued, all source objects remain usable, and no object in the transfer list is detached.</p>
 <p>After <a href="Worker.html#postMessage">postMessage</a> successfully serializes the message and commits the transfer, all objects listed in the transfer list are detached in the sender.</p>
-<p>A message is delivered only after sender-side serialization and transfer have completed successfully. If the receiving realm then cannot reconstruct one of the message values, that endpoint receives a <a href="Worker.html#onmessageerror">messageerror</a> event and remains usable for later messages. This is a receiver-side delivery failure and is therefore separate from a synchronous exception thrown by <b>postMessage</b> in the sender. A completed transfer is <b>not rolled back</b>, and transferred source objects remain detached.</p>
+<p>A message is delivered only after sender-side serialization and transfer have completed successfully. If the receiving realm then cannot reconstruct one of the message values, that endpoint receives a <a href="Worker.html#onmessageerror">messageerror</a> event and remains usable for later messages. This is a receiver-side delivery failure and is therefore separate from a synchronous exception thrown by <a href="Worker.html#postMessage">postMessage</a> in the sender. A completed transfer is <b>not rolled back</b>, and transferred source objects remain detached.</p>
 <p>JSplitter adds two diagnostic fields to that <a href="MessageEvent.html#MessageEvent">MessageEvent</a>: <a href="MessageEvent.html#errorMessage">errorMessage</a> tells you why reconstruction failed, while <a href="MessageEvent.html#direction">direction</a> tells you whether the failed delivery was <b>panel-to-worker</b> or <b>worker-to-panel</b>. The original payload is not available because reconstruction did not complete, so <a href="MessageEvent.html#data">data</a> is <b>undefined</b>.</p>
 <pre class="description-code language-js"><code>worker.onmessageerror = <span class="tok-keyword">function</span> (event) {
     <span class="tok-comment">// PANEL: a Worker result reached this panel but could not be reconstructed.</span>
@@ -487,10 +493,7 @@ worker.postMessage(
 <p><a href="MainMenuManager.html#MainMenuManager">MainMenuManager</a> and <a href="ContextMenuManager.html#ContextMenuManager">ContextMenuManager</a> are additionally panel-only because their factories are not exposed in Workers.</p>
 </details>
 <h2>Panel realm versus Worker realm</h2>
-<p>A Worker is not another panel. It has no panel HWND, no <a href="window.html#window">window</a> object, no panel graphics render target, and no panel UI/input callbacks such as <a href="module-Callbacks.html#on_paint">on_paint</a>, <a href="module-Callbacks.html#on_key_down">on_key_down</a> or <a href="module-Callbacks.html#on_mouse_move">on_mouse_move</a>. This does not mean Worker code has no callbacks at all: message/event handlers and completion callbacks belonging to Worker-capable asynchronous host APIs remain available where documented. A Worker has its own <a href="fb.html#fb">fb</a>, <a href="plman.html#plman">plman</a>, <a href="utils.html#utils">utils</a>, <a href="gdi.html#gdi">gdi</a>, <a href="console.html#console">console</a> and <a href="performance.html#performance">performance</a> namespace objects. When Direct2D is initialized before the Worker is created, <a href="d2d.html#d2d">d2d</a> is available as well.</p>
-<div class="doc-note warning"><b>Direct2D versions earlier than 1.1 are not supported in the Worker.</b><br>
-Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platform Update for Windows 7 installed.</b><br></div>
-<p>These APIs are exposed in the Worker realm, but this does not mean that every operation runs on the Worker thread: methods marked <strong>MAIN THREAD</strong> cross to the main thread internally but, for example, GDI and Direct2D resources can be created and used by the Worker for offscreen rendering in its own thread.</p>
+<p>A Worker is not another panel. It has no panel HWND, no <a href="window.html#window">window</a> object, no panel graphics render target, and no panel UI/input callbacks such as <a href="module-Callbacks.html#on_paint">on_paint</a>, <a href="module-Callbacks.html#on_key_down">on_key_down</a> or <a href="module-Callbacks.html#on_mouse_move">on_mouse_move</a>. This does not mean Worker code has no callbacks at all: message/event handlers and completion callbacks belonging to Worker-capable asynchronous host APIs remain available where documented. A Worker has its own <a href="fb.html#fb">fb</a>, <a href="plman.html#plman">plman</a>, <a href="utils.html#utils">utils</a>, <a href="gdi.html#gdi">gdi</a>, <a href="console.html#console">console</a> and <a href="performance.html#performance">performance</a> namespace objects. When Direct2D is initialized before the Worker is created, <a href="d2d.html#d2d">d2d</a> is available as well. These APIs are exposed in the Worker realm, but this does not mean that every operation runs on the Worker thread: methods marked <strong>MAIN THREAD</strong> cross to the main thread internally but, for example, GDI and Direct2D resources can be created and used by the Worker for offscreen rendering in its own thread.</p>
 <p>The Worker environment implements the JSplitter subset of familiar Worker primitives: <a href="EventTarget.html#EventTarget">EventTarget</a>, <a href="Event.html#Event">Event</a>, <a href="MessageEvent.html#MessageEvent">MessageEvent</a>, <a href="ErrorEvent.html#ErrorEvent">ErrorEvent</a>, <a href="PromiseRejectionEvent.html#PromiseRejectionEvent">PromiseRejectionEvent</a>, <a href="WorkerGlobalScope.html#WorkerGlobalScope">WorkerGlobalScope</a>, timers and promises. The local JSplitter interface pages describe the supported surface and behaviour.</p>
 <h2>Worker API coverage</h2>
 <p>Most useful non-UI JSplitter API is available inside a Worker. Namespaces marked <b>mostly available</b> below expose the large majority of their normal surface; the relatively small set of exclusions is listed separately in <b>APIs intentionally unavailable in Workers</b>.</p>
@@ -499,15 +502,15 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
 <li><a href="fb.html#fb">fb</a> — <b>mostly available</b>. Playback, library/selection data, title formatting, DSP/output state and most non-modal host operations are exposed.</li>
 <li><a href="plman.html#plman">plman</a> — <b>mostly available</b>. Playlist manipulation, playback queue, sorting, undo/redo and the playlist recycler are exposed.</li>
 <li><a href="utils.html#utils">utils</a> — <b>mostly available</b>. Filesystem, hashing, text/binary/INI, package/system information, HTML parsing, drives, image/album-art loading, process, HTTP and download helpers are exposed.</li>
-<li><a href="gdi.html#gdi">gdi</a> — <b>fully available</b> as a DrawMode-aware Worker namespace. In GDI mode its factories create GDI+ resources; when the Worker is created from a Direct2D panel, the same <b>gdi.*</b> factories route to the Worker Direct2D backend and create the corresponding D2D resources.</li>
-<li><a href="d2d.html#d2d">d2d</a> — <b>fully available</b> as a Worker namespace when Direct2D is initialized before Worker creation, including effects, compile support and Worker-local offscreen rendering. Set <a href="window.html#DrawMode">window.DrawMode</a> to <b>1</b> in the panel <b>before</b> creating a Worker that needs Direct2D.</li>
+<li><a href="gdi.html#gdi">gdi</a> — <b>fully available</b> as a <a href="window.html#DrawMode">DrawMode</a>-aware Worker namespace. In GDI mode its factories create GDI+ resources; when the Worker is created from a Direct2D panel, the same <b>gdi.*</b> factories route to the Worker Direct2D backend and create the corresponding D2D resources.</li>
+<li><a href="d2d.html#d2d">d2d</a> — <b>fully available</b> as a Worker namespace when Direct2D is initialized before Worker creation, including effects, <a href="d2d.html#CompileAsync">asynchronous HLSL compilation</a> and Worker-local offscreen rendering. <a href="d2d.html#CompileAsync">d2d.CompileAsync</a> returns a Promise of <a href="D2DCompileInfo.html#D2DCompileInfo">D2DCompileInfo</a>; the resulting DXBC bytes can be sent to the panel. Compiler errors resolve in <a href="D2DCompileInfo.html#Error">D2DCompileInfo.Error</a>, rather than rejecting the Promise. Set <a href="window.html#DrawMode">window.DrawMode</a> to <b>1</b> in the panel <b>before</b> creating a Worker that needs Direct2D.</li>
 <li><a href="console.html#console">console</a> — <b>fully available</b> inside a Worker.</li>
 <li><a href="performance.html#performance">performance</a> — <b>fully available</b> inside a Worker.</li>
 </ul>
 <h2>APIs intentionally unavailable in Workers</h2>
 <p><b>Panel and browser globals.</b> The panel <a href="window.html#window">window</a> namespace, panel UI/input callbacks such as <a href="module-Callbacks.html#on_paint">on_paint</a>, <a href="module-Callbacks.html#on_key_down">on_key_down</a> and <a href="module-Callbacks.html#on_mouse_move">on_mouse_move</a>, tooltips, theme/HWND services and the panel graphics render target are not Worker concepts. In particular, the panel-provided <a href="GdiGraphics.html#GdiGraphics">GdiGraphics</a> or <a href="D2DGraphics.html#D2DGraphics">D2DGraphics</a> graphics context passed to UI painting callbacks is not available to Worker code. Also panel-only compatibility globals such as <a href="ActiveXObject.html#ActiveXObject">ActiveXObject</a> and <a href="Enumerator.html#Enumerator">Enumerator</a>, and nested <a href="Worker.html#Worker">Worker</a> creation are also unavailable.</p>
 <p>The mostly available namespaces listed above also omit a small number of operations that are modal, interactive, tied to live panel UI state, or otherwise unsuitable for a Worker:</p>
-<details class="doc-capability-list"><summary><b>fb</b></summary>
+<details class="doc-capability-list"><summary><a href="fb.html#fb">fb</a></summary>
 <ul class="doc-api-link-list">
 <li><a href="fb.html#AddDirectory">fb.AddDirectory</a></li>
 <li><a href="fb.html#AddFiles">fb.AddFiles</a></li>
@@ -521,13 +524,13 @@ Minimum OS requirements: Windows 8+ or Windows 7 Service Pack 1 with the Platfor
 <li><a href="fb.html#SavePlaylist">fb.SavePlaylist</a></li>
 </ul>
 </details>
-<details class="doc-capability-list"><summary><b>plman</b></summary>
+<details class="doc-capability-list"><summary><a href="plman.html#plman">plman</a></summary>
 <ul class="doc-api-link-list">
 <li><a href="plman.html#ShowAutoPlaylistUI">plman.ShowAutoPlaylistUI</a></li>
 <li><a href="plman.html#ShowPlaylistLockUI">plman.ShowPlaylistLockUI</a></li>
 </ul>
 </details>
-<details class="doc-capability-list"><summary><b>utils</b></summary>
+<details class="doc-capability-list"><summary><a href="utils.html#utils">utils</a></summary>
 <ul class="doc-api-link-list">
 <li><a href="utils.html#ColourPicker">utils.ColourPicker</a></li>
 <li><a href="utils.html#EditTextFile">utils.EditTextFile</a></li>
@@ -555,7 +558,7 @@ worker: main thread -> main thread -> main thread -> ...</div>
 <div class="doc-note warning"><b>Avoid building a Worker around repeated main-thread calls.</b><br>
 If most of a Worker consists of frequent synchronous host calls, moving that code to a Worker will usually provide no performance benefit and can make it slower because of repeated cross-thread synchronization. If the main thread is busy, the Worker waits too.</div>
 <p>The lists below show the Worker-accessible API that uses this synchronous main-thread bridge:</p>
-<details class="doc-capability-list"><summary><b>plman</b></summary>
+<details class="doc-capability-list"><summary><a href="plman.html#plman">plman</a></summary>
 <p><b>EVERY</b> Worker-exposed <a href="plman.html#plman">plman</a> function is main-thread bridged. These live properties also have main-thread accessors:</p>
 <ul class="doc-api-link-list">
 <li><a href="plman.html#ActivePlaylist">plman.ActivePlaylist</a></li>
@@ -565,7 +568,7 @@ If most of a Worker consists of frequent synchronous host calls, moving that cod
 </ul>
 <p>Reading <a href="plman.html#PlaylistRecycler">plman.PlaylistRecycler</a> itself only obtains the Worker-local <a href="FbPlaylistRecycler.html#FbPlaylistRecycler">FbPlaylistRecycler</a> wrapper; its operations are main-thread bridged.</p>
 </details>
-<details class="doc-capability-list"><summary><b>fb</b></summary>
+<details class="doc-capability-list"><summary><a href="fb.html#fb">fb</a></summary>
 <h4>Functions</h4>
 <ul class="doc-api-link-list">
 <li><a href="fb.html#AcquireUiSelectionHolder">fb.AcquireUiSelectionHolder</a></li>
@@ -645,25 +648,25 @@ If most of a Worker consists of frequent synchronous host calls, moving that cod
 </details>
 <details class="doc-capability-list"><summary><b>Host wrapper methods</b></summary>
 <ul class="doc-api-link-list">
-<li><a href="FbMetadbHandle.html#RefreshStats">FbMetadbHandle#RefreshStats</a></li>
-<li><a href="FbMetadbHandleList.html#GetLibraryRelativePaths">FbMetadbHandleList#GetLibraryRelativePaths</a></li>
-<li><a href="FbMetadbHandleList.html#OptimiseFileLayout">FbMetadbHandleList#OptimiseFileLayout</a></li>
-<li><a href="FbMetadbHandleList.html#OrderByRelativePath">FbMetadbHandleList#OrderByRelativePath</a></li>
-<li><a href="FbMetadbHandleList.html#RefreshStats">FbMetadbHandleList#RefreshStats</a></li>
-<li><a href="FbMetadbHandleList.html#RemoveAttachedImage">FbMetadbHandleList#RemoveAttachedImage</a></li>
-<li><a href="FbMetadbHandleList.html#RemoveAttachedImages">FbMetadbHandleList#RemoveAttachedImages</a></li>
-<li><a href="FbMetadbHandleList.html#UpdateFileInfoFromJSON">FbMetadbHandleList#UpdateFileInfoFromJSON</a></li>
-<li><a href="FbTitleFormat.html#Eval">FbTitleFormat#Eval</a></li>
-<li><a href="FbTitleFormat.html#EvalActivePlaylistItem">FbTitleFormat#EvalActivePlaylistItem</a></li>
-<li><a href="FbTitleFormat.html#EvalPlaylistItem">FbTitleFormat#EvalPlaylistItem</a></li>
-<li><a href="FbUiSelectionHolder.html#SetSelection">FbUiSelectionHolder#SetSelection</a></li>
-<li><a href="FbUiSelectionHolder.html#SetPlaylistSelectionTracking">FbUiSelectionHolder#SetPlaylistSelectionTracking</a></li>
-<li><a href="FbUiSelectionHolder.html#SetPlaylistTracking">FbUiSelectionHolder#SetPlaylistTracking</a></li>
-<li><a href="FbPlaylistRecycler.html#Count">FbPlaylistRecycler#Count</a></li>
-<li><a href="FbPlaylistRecycler.html#GetName">FbPlaylistRecycler#GetName</a></li>
-<li><a href="FbPlaylistRecycler.html#GetContent">FbPlaylistRecycler#GetContent</a></li>
-<li><a href="FbPlaylistRecycler.html#Purge">FbPlaylistRecycler#Purge</a></li>
-<li><a href="FbPlaylistRecycler.html#Restore">FbPlaylistRecycler#Restore</a></li>
+<li><a href="FbMetadbHandle.html#RefreshStats">FbMetadbHandle.RefreshStats</a></li>
+<li><a href="FbMetadbHandleList.html#GetLibraryRelativePaths">FbMetadbHandleList.GetLibraryRelativePaths</a></li>
+<li><a href="FbMetadbHandleList.html#OptimiseFileLayout">FbMetadbHandleList.OptimiseFileLayout</a></li>
+<li><a href="FbMetadbHandleList.html#OrderByRelativePath">FbMetadbHandleList.OrderByRelativePath</a></li>
+<li><a href="FbMetadbHandleList.html#RefreshStats">FbMetadbHandleList.RefreshStats</a></li>
+<li><a href="FbMetadbHandleList.html#RemoveAttachedImage">FbMetadbHandleList.RemoveAttachedImage</a></li>
+<li><a href="FbMetadbHandleList.html#RemoveAttachedImages">FbMetadbHandleList.RemoveAttachedImages</a></li>
+<li><a href="FbMetadbHandleList.html#UpdateFileInfoFromJSON">FbMetadbHandleList.UpdateFileInfoFromJSON</a></li>
+<li><a href="FbTitleFormat.html#Eval">FbTitleFormat.Eval</a></li>
+<li><a href="FbTitleFormat.html#EvalActivePlaylistItem">FbTitleFormat.EvalActivePlaylistItem</a></li>
+<li><a href="FbTitleFormat.html#EvalPlaylistItem">FbTitleFormat.EvalPlaylistItem</a></li>
+<li><a href="FbUiSelectionHolder.html#SetSelection">FbUiSelectionHolder.SetSelection</a></li>
+<li><a href="FbUiSelectionHolder.html#SetPlaylistSelectionTracking">FbUiSelectionHolder.SetPlaylistSelectionTracking</a></li>
+<li><a href="FbUiSelectionHolder.html#SetPlaylistTracking">FbUiSelectionHolder.SetPlaylistTracking</a></li>
+<li><a href="FbPlaylistRecycler.html#Count">FbPlaylistRecycler.Count</a></li>
+<li><a href="FbPlaylistRecycler.html#GetName">FbPlaylistRecycler.GetName</a></li>
+<li><a href="FbPlaylistRecycler.html#GetContent">FbPlaylistRecycler.GetContent</a></li>
+<li><a href="FbPlaylistRecycler.html#Purge">FbPlaylistRecycler.Purge</a></li>
+<li><a href="FbPlaylistRecycler.html#Restore">FbPlaylistRecycler.Restore</a></li>
 </ul>
 </details>
 <p>A small note on <a href="fb.html#GetAudioChunk">fb.GetAudioChunk</a>: it's normally accesses the visualisation stream directly from the Worker but its first use may briefly synchronize with the main thread while that stream is initialized.</p>
@@ -676,8 +679,8 @@ If most of a Worker consists of frequent synchronous host calls, moving that cod
 <li><span class="flag capability cloneable">CLONEABLE</span> — instances of this host type can be sent through <a href="Worker.html#postMessage">postMessage</a> using structured clone while the source remains usable.</li>
 <li><span class="flag capability transferable">TRANSFERABLE</span> — instances can additionally be placed in the transfer list so ownership moves to the receiver; after a successful transfer the source wrapper is detached and no longer usable on the sender side.</li>
 </ul>
-<h2>One-shot work with <a href="Worker.html#RunAsync">Worker.RunAsync</a></h2>
-<p>When work naturally has one input and one result, <a href="Worker.html#RunAsync">Worker.RunAsync</a> avoids building a message protocol around a short-lived Worker. Each call creates a normal temporary Worker realm and Worker thread with the same Worker-side API surface as <a href="Worker.html#Worker">Worker</a> code. The callback arguments are structured-cloned into that realm, and the callback's return value (or the resolved value of its Promise) is structured-cloned back to the panel. The temporary Worker is terminated automatically after success or failure.</p>
+<h2>One-shot work with <a href="Worker.html#RunAsync">RunAsync</a></h2>
+<p>When work naturally has one input and one result, <a href="Worker.html#RunAsync">RunAsync</a> avoids building a message protocol around a short-lived Worker. Each call creates a normal temporary Worker realm and Worker thread with the same Worker-side API surface as <a href="Worker.html#Worker">Worker</a> code. The callback arguments are structured-cloned into that realm, and the callback's return value (or the resolved value of its Promise) is structured-cloned back to the panel. The temporary Worker is terminated automatically after success or failure.</p>
 <p>Both synchronous and asynchronous callbacks are supported:</p>
 <pre class="description-code language-js"><code><span class="tok-keyword">const</span> result = <span class="tok-keyword">await</span> Worker.RunAsync(
     <span class="tok-keyword">async</span> (arg1, arg2) =&gt; {
@@ -707,9 +710,9 @@ console.log(result); <span class="tok-comment">// 22</span></code></pre>
     <span class="tok-number">5</span>,
     factor
 );</code></pre>
-<p>User-defined normal, arrow and <b>async</b> functions are supported. Native and bound functions cannot be recreated from source and are rejected. If the callback throws, returns a rejected Promise, or an argument/result cannot be structured-cloned, the Promise returned by <a href="Worker.html#RunAsync">Worker.RunAsync</a> rejects, so ordinary <b>try...catch</b> around <b>await</b> can handle the failure. Relative <a href="globals.html#include">include</a> calls inside the callback keep the caller's script/package roots.</p>
-<p><a href="Worker.html#RunAsync">Worker.RunAsync</a> currently uses structured clone only and has no transfer-list parameter. Use an ordinary long-lived <a href="Worker.html#Worker">Worker</a> with <a href="Worker.html#postMessage">postMessage</a> when explicit ownership transfer, repeated requests, persistent Worker state, or a custom message protocol is required. Each <a href="Worker.html#RunAsync">Worker.RunAsync</a> call creates a fresh full Worker, so it is intended for reasonably coarse one-shot jobs rather than tiny operations in a hot loop.</p>
-<p>Streaming text I/O is a practical <a href="Worker.html#RunAsync">Worker.RunAsync</a> example for larger or longer-running file operations: the work can be performed in a Worker while the panel remains responsive.</p>
+<p>User-defined normal, arrow and <b>async</b> functions are supported. Native and bound functions cannot be recreated from source and are rejected. If the callback throws, returns a rejected Promise, or an argument/result cannot be structured-cloned, the Promise returned by <a href="Worker.html#RunAsync">RunAsync</a> rejects, so ordinary <b>try...catch</b> around <b>await</b> can handle the failure. Relative <a href="globals.html#include">include</a> calls inside the callback keep the caller's script/package roots.</p>
+<p><a href="Worker.html#RunAsync">RunAsync</a> currently uses structured clone only and has no transfer-list parameter. Use an ordinary long-lived <a href="Worker.html#Worker">Worker</a> with <a href="Worker.html#postMessage">postMessage</a> when explicit ownership transfer, repeated requests, persistent Worker state, or a custom message protocol is required. Each <a href="Worker.html#RunAsync">RunAsync</a> call creates a fresh full Worker, so it is intended for reasonably coarse one-shot jobs rather than tiny operations in a hot loop.</p>
+<p>Streaming text I/O is a practical <a href="Worker.html#RunAsync">RunAsync</a> example for larger or longer-running file operations: the work can be performed in a Worker while the panel remains responsive.</p>
 <pre class="description-code language-js"><code><span class="tok-keyword">const</span> summary = <span class="tok-keyword">await</span> Worker.RunAsync((input, output) =&gt; {
     <span class="tok-keyword">const</span> reader = utils.OpenTextReader(input);
     <span class="tok-keyword">if</span> (!reader) <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;Unable to open input file&#39;</span>);
@@ -757,8 +760,8 @@ worker.postMessage({ requestId, handles });
 
 <span class="tok-comment">// Main mode runs the same analyseHandles(handles) function in the panel realm.</span></code></pre>
 <p><b>3. Fractal Renderer.</b> Demonstrates a CPU-bound render job that belongs entirely in a Worker. Pan and zoom reuse one completed frame locally for immediate feedback; drag sends one final viewport on release, while wheel and resize bursts are coalesced for 80 ms. The Worker renders only the settled viewport, transfers the completed bitmap, and stale results are rejected by view id. The <b>GDI / D2D</b> switch recreates the Worker so the same <b>gdi.*</b> facade can be compared in both rendering modes.</p>
-<p><b>4. Playlist Album Gallery.</b> A practical artwork-loading A/B test. <b>Main / Worker</b> runs the same visible-cover pipeline either in the panel or in the Worker. In Worker mode the panel sends one cloneable <a href="FbMetadbHandleList.html#FbMetadbHandleList">FbMetadbHandleList</a>; the Worker deduplicates it into albums, loads artwork with <a href="utils.html#GetAlbumArtAsyncV2">GetAlbumArtAsyncV2</a>, resizes each image and transfers completed bitmaps back individually. Only the covers that fit in the current viewport are requested, changing cover size intentionally reloads them, and the sample has no artwork cache. <b>Concurrency</b> controls how many artwork requests may be in flight, while <b>GDI / D2D</b> selects the rendering backend. Targeted <b>RepaintRect</b> updates and timing counters make first display, loading, delivery and paint cost visible.</p>
-<p><b>5. Spectrum Analyzer.</b> The real-time A/B test. <b>Main / Worker</b> runs the same audio-read, FFT and offscreen-render pipeline on either thread. Both paths allow only one completed frame at a time; the next frame starts only after the previous bitmap reaches <b>on_paint</b>, so the counters measure work that can actually be presented. Additional switches select <b>GDI / D2D</b>, FFT size, and either a <b>120 FPS</b> limiter or <b>Max</b> mode. The overlay reports frame/paint rate plus audio, FFT, render and total processing time. <b>Max</b> is useful for exposing fixed per-frame overhead, but the sample is not intended as a general GDI-versus-D2D benchmark.</p>
+<p><b>4. Playlist Album Gallery.</b> A practical artwork-loading A/B test. <b>Main / Worker</b> runs the same visible-cover pipeline either in the panel or in the Worker. In Worker mode the panel sends one cloneable <a href="FbMetadbHandleList.html#FbMetadbHandleList">FbMetadbHandleList</a>; the Worker deduplicates it into albums, loads artwork with <a href="utils.html#GetAlbumArtAsyncV2">GetAlbumArtAsyncV2</a>, resizes each image and transfers completed bitmaps back individually. Only the covers that fit in the current viewport are requested, changing cover size intentionally reloads them, and the sample has no artwork cache. <b>Concurrency</b> controls how many artwork requests may be in flight, while <b>GDI / D2D</b> selects the rendering backend. Targeted <a href="window.html#RepaintRect">RepaintRect</a> updates and timing counters make first display, loading, delivery and paint cost visible.</p>
+<p><b>5. Spectrum Analyzer.</b> The real-time A/B test. <b>Main / Worker</b> runs the same audio-read, FFT and offscreen-render pipeline on either thread. Both paths allow only one completed frame at a time; the next frame starts only after the previous bitmap reaches <a href="module-Callbacks.html#on_paint">on_paint</a>, so the counters measure work that can actually be presented. Additional switches select <b>GDI / D2D</b>, FFT size, and either a <b>120 FPS</b> limiter or <b>Max</b> mode. The overlay reports frame/paint rate plus audio, FFT, render and total processing time. <b>Max</b> is useful for exposing fixed per-frame overhead, but the sample is not intended as a general GDI-versus-D2D benchmark.</p>
 <pre class="description-code language-js"><code><span class="tok-comment">// Worker: read a short audio window and turn it into spectrum data.</span>
 <span class="tok-keyword">const</span> chunk = fb.GetAudioChunk(<span class="tok-number">0.06</span>, -<span class="tok-number">0.03</span>);
 analyse(chunk);
@@ -798,6 +801,7 @@ worker.onmessage = <span class="tok-keyword">function</span> (event) {
         
         
         
+        
         <section class="member-section">
             <h3>Example sources</h3>
             <div class="source-links"><a class="source-link" href="source-samples-worker-01.-Basic-Messaging.js.html"><span>samples/worker/01. Basic Messaging.js</span><small>open source</small></a><a class="source-link" href="source-samples-worker-02.-Playlist-Statistics.js.html"><span>samples/worker/02. Playlist Statistics.js</span><small>open source</small></a><a class="source-link" href="source-samples-worker-03.-Fractal-Renderer.js.html"><span>samples/worker/03. Fractal Renderer.js</span><small>open source</small></a><a class="source-link" href="source-samples-worker-04.-Playlist-Album-Gallery.js.html"><span>samples/worker/04. Playlist Album Gallery.js</span><small>open source</small></a><a class="source-link" href="source-samples-worker-05.-Spectrum-Analyzer.js.html"><span>samples/worker/05. Spectrum Analyzer.js</span><small>open source</small></a></div>
@@ -810,11 +814,12 @@ worker.onmessage = <span class="tok-keyword">function</span> (event) {
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#onerror">onerror</a></h2>
             </div>
-            <div class="source-location">js/worker.js:753</div>
+            <div class="source-location">js/worker.js:750</div>
         </header>
         <pre class="signature"><code>onerror: ?<a class="type-link" href="globals.html#WorkerErrorCallback">WorkerErrorCallback</a> = null</code></pre>
         
         <div class="description"><p>Receives uncaught Worker errors reported to the parent endpoint as an <a href="ErrorEvent.html#ErrorEvent">ErrorEvent</a>. The callback argument exposes the error text through <a href="ErrorEvent.html#message">message</a> and the original Worker source location through <a href="ErrorEvent.html#filename">filename</a>, <a href="ErrorEvent.html#lineno">lineno</a> and <a href="ErrorEvent.html#colno">colno</a>. If no parent error handler exists, the Worker error is promoted to the normal panel-script error UI/failure path. Throwing from this handler likewise propagates as a normal panel script exception, whose stack begins in the parent handler.</p></div>
+        
         
         
         
@@ -831,11 +836,12 @@ worker.onmessage = <span class="tok-keyword">function</span> (event) {
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#onmessage">onmessage</a></h2>
             </div>
-            <div class="source-location">js/worker.js:746</div>
+            <div class="source-location">js/worker.js:743</div>
         </header>
         <pre class="signature"><code>onmessage: ?<a class="type-link" href="globals.html#WorkerMessageCallback">WorkerMessageCallback</a> = null</code></pre>
         
         <div class="description"><p>Receives messages sent from the Worker through Worker-global <a href="WorkerGlobalScope.html#postMessage">postMessage</a>.</p></div>
+        
         
         
         
@@ -852,11 +858,12 @@ worker.onmessage = <span class="tok-keyword">function</span> (event) {
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#onmessageerror">onmessageerror</a></h2>
             </div>
-            <div class="source-location">js/worker.js:762</div>
+            <div class="source-location">js/worker.js:759</div>
         </header>
         <pre class="signature"><code>onmessageerror: ?<a class="type-link" href="globals.html#WorkerMessageCallback">WorkerMessageCallback</a> = null</code></pre>
         
         <div class="description"><p>Receives a <a href="MessageEvent.html#MessageEvent">MessageEvent</a> when a serialized message cannot be reconstructed by the parent endpoint. <a href="MessageEvent.html#errorMessage">errorMessage</a> contains the reconstruction failure and <a href="MessageEvent.html#direction">direction</a> is <b>worker-to-panel</b>.</p></div>
+        
         
         
         
@@ -873,7 +880,7 @@ worker.onmessage = <span class="tok-keyword">function</span> (event) {
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#postMessage">postMessage</a></h2>
             </div>
-            <div class="source-location">js/worker.js:770</div>
+            <div class="source-location">js/worker.js:767</div>
         </header>
         <pre class="signature"><code>postMessage(data, transfer)</code></pre>
         
@@ -897,6 +904,7 @@ worker.onmessage = <span class="tok-keyword">function</span> (event) {
         
         
         
+        
     </article>
 
     <article class="api-item" id="RunAsync" data-kind="method" data-name="runasync">
@@ -905,7 +913,7 @@ worker.onmessage = <span class="tok-keyword">function</span> (event) {
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag">static</span></div>
                 <h2><a class="anchor" href="#RunAsync">RunAsync</a></h2>
             </div>
-            <div class="source-location">js/worker.js:720</div>
+            <div class="source-location">js/worker.js:717</div>
         </header>
         <pre class="signature"><code>RunAsync(callback, ...args)</code></pre>
         
@@ -928,7 +936,7 @@ worker.onmessage = <span class="tok-keyword">function</span> (event) {
         
         <section class="member-section compact-section">
             <h3>Throws</h3>
-            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>callback</b> is not callable or the RunAsync helper itself cannot be initialized.</p></div>
+            <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If <b>callback</b> is not callable or the <a href="Worker.html#RunAsync">RunAsync</a> helper itself cannot be initialized.</p></div>
         </section>
         
         
@@ -944,6 +952,7 @@ worker.onmessage = <span class="tok-keyword">function</span> (event) {
 console.log(result); <span class="tok-comment">// 22</span></code></pre>
         </section>
         
+        
         <section class="member-section">
             <h3>Example source</h3>
             <div class="source-links"><a class="source-link" href="source-samples-basic-Streaming-Text-IO.js.html"><span>samples/basic/Streaming Text IO.js</span><small>open source</small></a></div>
@@ -956,11 +965,12 @@ console.log(result); <span class="tok-comment">// 22</span></code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#terminate">terminate</a></h2>
             </div>
-            <div class="source-location">js/worker.js:779</div>
+            <div class="source-location">js/worker.js:776</div>
         </header>
         <pre class="signature"><code>terminate()</code></pre>
         
         <div class="description"><p>Stops this Worker from the parent panel and releases pending Worker-side state. Use this when the panel no longer needs the Worker; Workers are terminated automatically when their parent panel is unloaded. A main-thread host callback that has already begun executing cannot be interrupted halfway through.</p></div>
+        
         
         
         

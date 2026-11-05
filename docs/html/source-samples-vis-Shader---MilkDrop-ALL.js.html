@@ -1,0 +1,1618 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Shader - MilkDrop ALL.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryReader">
+        <a class="nav-link nav-page-link" href="BinaryReader.html">BinaryReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryWriter">
+        <a class="nav-link nav-page-link" href="BinaryWriter.html">BinaryWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
+        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbWindow">
+        <a class="nav-link nav-page-link" href="FbWindow.html">FbWindow</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteDatabase">
+        <a class="nav-link nav-page-link" href="SQLiteDatabase.html">SQLiteDatabase</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteStatement">
+        <a class="nav-link nav-page-link" href="SQLiteStatement.html">SQLiteStatement</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextReader">
+        <a class="nav-link nav-page-link" href="TextReader.html">TextReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextWriter">
+        <a class="nav-link nav-page-link" href="TextWriter.html">TextWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><a class="nav-link" href="module-ESModules.html">ESModules</a><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/vis/Shader - MilkDrop ALL.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="vis.html#CreateAsync">vis.CreateAsync</a><a href="Visualization.html#InjectFeedback">Visualization#InjectFeedback</a></div>
+        </header>
+        <pre class="source-code"><code><span class="tok-comment">// MilkDrop preset browser. Drop a four-digit .js file into the adjacent</span>
+<span class="tok-comment">// MilkDrop directory, then reload this sample to discover it automatically.</span>
+<span class="tok-comment">// Each preset is a commented JavaScript factory returning the ordinary</span>
+<span class="tok-comment">// CreateAsync source/renderer objects. History normally advances on each Draw;</span>
+<span class="tok-comment">// presets may request a fixed feedbackIntervalMs for cadence-sensitive effects.</span>
+<span class="tok-comment">// Preset files are executable JavaScript: load only trusted local files.</span>
+<span class="tok-comment">// Presets use the component&#39;s O3 shader setting. These ports also require</span>
+<span class="tok-comment">// source b0 float #5 = frameStep (new source ABI), so FPS changes can reuse</span>
+<span class="tok-comment">// the same visualization, including its history and accumulated state.</span>
+<span class="tok-comment">// Compile time is CreateAsync wall time (including cache/task overhead);</span>
+<span class="tok-comment">// Draw CPU is the visual.Draw() call duration, not GPU execution time.</span>
+window.DrawMode = <span class="tok-number">1</span>;
+
+<span class="tok-comment">// For recieiving all keys</span>
+window.DlgCode = <span class="tok-number">0x0004</span>;
+
+<span class="tok-keyword">const</span> FPS_OPTIONS = [<span class="tok-number">30</span>, <span class="tok-number">60</span>, <span class="tok-number">120</span>];
+<span class="tok-comment">// 30 Hz is the port reference; repaint requests are capped at 1000 FPS.</span>
+<span class="tok-keyword">const</span> MIN_FPS = <span class="tok-number">30</span>, MAX_FPS = <span class="tok-number">1000</span>;
+<span class="tok-keyword">const</span> CUSTOM_FPS_Y = <span class="tok-number">99</span>;
+<span class="tok-comment">// D3DCompile optimization bits. O3 remains fixed now that the selector is gone.</span>
+<span class="tok-keyword">const</span> OPTIMIZATION_MASK = <span class="tok-number">0xC000</span>;
+<span class="tok-keyword">const</span> OPTIMIZATION_LEVEL3 = <span class="tok-number">0x8000</span>;
+<span class="tok-keyword">const</span> COMPILE_INDICATOR_DELAY_MS = <span class="tok-number">150</span>;
+<span class="tok-comment">// InjectFeedback accepts at most 4096x4096 and 4 Mi pixels.</span>
+<span class="tok-keyword">const</span> MAX_CAPTURE_SIDE = <span class="tok-number">4096</span>;
+<span class="tok-keyword">const</span> MAX_CAPTURE_PIXELS = <span class="tok-number">4</span> * <span class="tok-number">1024</span> * <span class="tok-number">1024</span>;
+<span class="tok-keyword">const</span> SIDEBAR_MAX = <span class="tok-number">228</span>;
+<span class="tok-keyword">const</span> SIDEBAR_MIN = <span class="tok-number">170</span>;
+<span class="tok-keyword">const</span> ROW_HEIGHT = <span class="tok-number">38</span>;
+<span class="tok-keyword">const</span> AUTO_SWITCH_INTERVAL_MS = <span class="tok-number">16000</span>;
+<span class="tok-keyword">const</span> TRACK_NOTICE_DURATION_MS = <span class="tok-number">2000</span>;
+<span class="tok-keyword">const</span> AUTO_SWITCH_BUTTON_Y = <span class="tok-number">155</span>;
+<span class="tok-keyword">const</span> PRESET_ORDER_BUTTON_Y = <span class="tok-number">191</span>;
+<span class="tok-keyword">const</span> AUTO_HIDE_PLAYLIST_BUTTON_Y = <span class="tok-number">227</span>;
+<span class="tok-keyword">const</span> PRESETS_LABEL_Y = <span class="tok-number">271</span>;
+<span class="tok-keyword">const</span> LIST_TOP = <span class="tok-number">295</span>;
+<span class="tok-keyword">const</span> FOOTER_HEIGHT = <span class="tok-number">182</span>;
+<span class="tok-keyword">const</span> PLAYLIST_ROW_HEIGHT = <span class="tok-number">32</span>;
+<span class="tok-keyword">const</span> PLAYLIST_MARGIN = <span class="tok-number">28</span>;
+<span class="tok-keyword">const</span> PLAYLIST_SCROLLBAR_WIDTH = <span class="tok-number">9</span>;
+
+<span class="tok-keyword">const</span> C = {
+    background: <span class="tok-number">0xff080b10</span>,
+    sidebar:    <span class="tok-number">0xff171c25</span>,
+    panel:      <span class="tok-number">0xff222a35</span>,
+    hover:      <span class="tok-number">0xff2b3642</span>,
+    border:     <span class="tok-number">0xff394451</span>,
+    text:       <span class="tok-number">0xffe5edf5</span>,
+    muted:      <span class="tok-number">0xff92a3b3</span>,
+    faint:      <span class="tok-number">0xff697987</span>,
+    accent:     <span class="tok-number">0xffffc66d</span>,
+    accentText: <span class="tok-number">0xff1b1c1e</span>,
+    error:      <span class="tok-number">0xffff857d</span>
+};
+
+<span class="tok-keyword">const</span> fontTitle = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">16</span>);
+<span class="tok-keyword">const</span> fontMain = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">12</span>);
+<span class="tok-keyword">const</span> fontSmall = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">10</span>);
+<span class="tok-keyword">const</span> fontRow = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">12</span>);
+<span class="tok-keyword">const</span> fontCompile = gdi.Font(<span class="tok-string">&#39;Segoe UI Semibold&#39;</span>, <span class="tok-number">28</span>);
+<span class="tok-keyword">const</span> fontCompileSmall = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">13</span>);
+<span class="tok-keyword">const</span> fontPlaylistTitle = gdi.Font(<span class="tok-string">&#39;Segoe UI Semibold&#39;</span>, <span class="tok-number">17</span>);
+<span class="tok-keyword">const</span> fontPlaylistHeader = gdi.Font(<span class="tok-string">&#39;Segoe UI Semibold&#39;</span>, <span class="tok-number">12</span>);
+<span class="tok-keyword">const</span> fontPlaylistRow = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">14</span>);
+<span class="tok-keyword">const</span> fontTrackArtist = gdi.Font(<span class="tok-string">&#39;Segoe UI Semibold&#39;</span>, <span class="tok-number">34</span>);
+<span class="tok-keyword">const</span> fontTrackTitle = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">30</span>);
+
+<span class="tok-comment">// The absolute fallback also works when a sample is pasted into the script</span>
+<span class="tok-comment">// editor rather than selected as a file-backed sample.</span>
+<span class="tok-keyword">const</span> scriptPath = window.ScriptInfo &amp;&amp; window.ScriptInfo.Path;
+<span class="tok-keyword">const</span> scriptDir = scriptPath
+    ? scriptPath.replace(/[^\\/]+$/, <span class="tok-string">&#39;&#39;</span>)
+    : fb.ComponentPath.replace(/[\\/]+$/, <span class="tok-string">&#39;&#39;</span>) + <span class="tok-string">&#39;\\samples\\vis\\&#39;</span>;
+<span class="tok-keyword">const</span> presetDir = scriptDir + <span class="tok-string">&#39;MilkDrop\\&#39;</span>;
+
+<span class="tok-comment">// include() evaluates a preset in this panel&#39;s realm. A global registry makes</span>
+<span class="tok-comment">// these factories visible without evaluating the HLSL or using eval().</span>
+<span class="tok-keyword">var</span> MilkDropPresets = Object.create(<span class="tok-literal">null</span>);
+
+<span class="tok-keyword">const</span> presets = utils.Glob(presetDir + <span class="tok-string">&#39;*.js&#39;</span>)
+    .map(path =&gt; {
+        <span class="tok-keyword">const</span> match = /(?:^|[\\/])(\d{<span class="tok-number">4</span>})\.js$/i.exec(path);
+        <span class="tok-keyword">return</span> match ? {id: match[<span class="tok-number">1</span>], path} : <span class="tok-literal">null</span>;
+    })
+    .filter(Boolean)
+    .sort((a, b) =&gt; a.id.localeCompare(b.id));
+
+<span class="tok-keyword">const</span> oldFps = Number(window.GetProperty(<span class="tok-string">&#39;MilkDrop.FPS&#39;</span>, <span class="tok-number">60</span>));
+<span class="tok-keyword">let</span> fps = validFps(oldFps) ? oldFps : <span class="tok-number">60</span>;
+<span class="tok-keyword">let</span> fpsText = String(fps);
+<span class="tok-keyword">let</span> fpsEditing = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> fpsSelectAll = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> fpsCaret = fpsText.length;
+<span class="tok-keyword">let</span> fpsInputError = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> autoSwitchEnabled = !!window.GetProperty(<span class="tok-string">&#39;MilkDrop.AutoSwitch&#39;</span>, <span class="tok-literal">false</span>);
+<span class="tok-keyword">let</span> randomPresetOrder = !!window.GetProperty(<span class="tok-string">&#39;MilkDrop.RandomOrder&#39;</span>, <span class="tok-literal">false</span>);
+<span class="tok-keyword">let</span> autoHidePlaylist = !!window.GetProperty(<span class="tok-string">&#39;MilkDrop.AutoHidePlaylist&#39;</span>, <span class="tok-literal">true</span>);
+<span class="tok-keyword">const</span> oldId = String(window.GetProperty(<span class="tok-string">&#39;MilkDrop.Preset&#39;</span>, <span class="tok-string">&#39;&#39;</span>));
+<span class="tok-keyword">let</span> currentIndex = Math.max(<span class="tok-number">0</span>, presets.findIndex(item =&gt; item.id === oldId));
+<span class="tok-keyword">let</span> visual = <span class="tok-literal">null</span>;
+<span class="tok-comment">// The visible preset can differ from the selection while CreateAsync runs.</span>
+<span class="tok-keyword">let</span> visualPresetId = <span class="tok-literal">null</span>;
+<span class="tok-comment">// Re-evaluate only the cadence of an opted-in preset when display FPS changes.</span>
+<span class="tok-keyword">let</span> visualFeedbackCadence = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> status = <span class="tok-string">&#39;idle&#39;</span>;
+<span class="tok-keyword">let</span> errorText = <span class="tok-string">&#39;&#39;</span>;
+<span class="tok-keyword">let</span> requestId = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> repaintTimer = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> autoSwitchTimer = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> scrollY = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> initialScrollPending = <span class="tok-literal">true</span>;
+<span class="tok-keyword">let</span> mouseX = -<span class="tok-number">1</span>;
+<span class="tok-keyword">let</span> mouseY = -<span class="tok-number">1</span>;
+<span class="tok-keyword">let</span> hoverTarget = <span class="tok-string">&#39;&#39;</span>;
+<span class="tok-keyword">let</span> draggingThumb = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> thumbGrab = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> draggingPlaylistThumb = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> playlistThumbGrab = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> shaderCacheSnapshot = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> shaderCacheSampleTime = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> compilingLabel = <span class="tok-string">&#39;&#39;</span>;
+<span class="tok-keyword">let</span> compileStartedAt = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> compileIndicatorShown = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> lastCompileMs = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> drawCpuAvgMs = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> paintRate = <span class="tok-literal">null</span>;
+<span class="tok-keyword">let</span> paintWindowStartedAt = performance.now();
+<span class="tok-keyword">let</span> paintWindowFrames = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> playlistVisible = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> playlistIndex = -<span class="tok-number">1</span>;
+<span class="tok-keyword">let</span> playlistName = <span class="tok-string">&#39;&#39;</span>;
+<span class="tok-keyword">let</span> playlistRows = [];
+<span class="tok-keyword">let</span> playlistScroll = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> playlistFocusIndex = -<span class="tok-number">1</span>;
+<span class="tok-keyword">let</span> suppressDrawingClickUntil = <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> trackNoticeArtist = <span class="tok-string">&#39;&#39;</span>;
+<span class="tok-keyword">let</span> trackNoticeTitle = <span class="tok-string">&#39;&#39;</span>;
+<span class="tok-keyword">let</span> trackNoticeVisible = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> trackNoticeTimer = <span class="tok-literal">null</span>;
+
+<span class="tok-keyword">const</span> playlistArtistFormat = fb.TitleFormat(<span class="tok-string">&#39;$if2(%artist%,)&#39;</span>);
+<span class="tok-keyword">const</span> playlistTitleFormat = fb.TitleFormat(<span class="tok-string">&#39;$if2(%title%,)&#39;</span>);
+<span class="tok-keyword">const</span> playlistLengthFormat = fb.TitleFormat(<span class="tok-string">&#39;$if2(%length%,)&#39;</span>);
+<span class="tok-keyword">const</span> trackArtistFormat = fb.TitleFormat(<span class="tok-string">&#39;$if2(%artist%,Unknown artist)&#39;</span>);
+<span class="tok-keyword">const</span> trackTitleFormat = fb.TitleFormat(<span class="tok-string">&#39;$if2(%title%,Untitled)&#39;</span>);
+
+<span class="tok-comment">// ShaderFlags is panel-local; preserve unrelated bits and keep this sample at O3.</span>
+<span class="tok-keyword">function</span> setDefaultOptimizationFlags() {
+    <span class="tok-keyword">if</span> (<span class="tok-keyword">typeof</span> vis.ShaderFlags !== <span class="tok-string">&#39;number&#39;</span>) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">try</span> {
+        vis.ShaderFlags = (vis.ShaderFlags &amp; ~OPTIMIZATION_MASK) |
+            OPTIMIZATION_LEVEL3;
+    } <span class="tok-keyword">catch</span> (e) {
+        <span class="tok-comment">// Older builds can still use their default compiler flags.</span>
+        console.log(<span class="tok-string">&#39;MilkDrop optimizer: &#39;</span> + String(e));
+    }
+}
+
+<span class="tok-keyword">function</span> resetFrameMetrics() {
+    drawCpuAvgMs = <span class="tok-literal">null</span>;
+    paintRate = <span class="tok-literal">null</span>;
+    paintWindowFrames = <span class="tok-number">0</span>;
+    paintWindowStartedAt = performance.now();
+}
+
+<span class="tok-keyword">function</span> recordDrawCpuTime(elapsedMs) {
+    <span class="tok-comment">// Exponentially smoothed CPU time inside visual.Draw(); NOT GPU frame time.</span>
+    drawCpuAvgMs = drawCpuAvgMs === <span class="tok-literal">null</span> ? elapsedMs :
+        drawCpuAvgMs * <span class="tok-number">0.9</span> + elapsedMs * <span class="tok-number">0.1</span>;
+    ++paintWindowFrames;
+    <span class="tok-keyword">const</span> now = performance.now();
+    <span class="tok-keyword">const</span> interval = now - paintWindowStartedAt;
+    <span class="tok-keyword">if</span> (interval &gt;= <span class="tok-number">1000</span>) {
+        <span class="tok-comment">// Actual on_paint callback rate; not guaranteed display/GPU FPS.</span>
+        paintRate = paintWindowFrames * <span class="tok-number">1000</span> / interval;
+        paintWindowFrames = <span class="tok-number">0</span>;
+        paintWindowStartedAt = now;
+    }
+}
+
+<span class="tok-keyword">function</span> formatTime(ms) {
+    <span class="tok-keyword">return</span> ms &lt; <span class="tok-number">1000</span> ? ms.toFixed(<span class="tok-number">1</span>) : ms.toFixed(<span class="tok-number">0</span>);
+}
+
+<span class="tok-comment">// The native HLSL -&gt; DXBC LRU is process-wide, not local to this panel.</span>
+<span class="tok-comment">// Its defaults are 128 entries and 16 MiB; inspect without overriding them.</span>
+<span class="tok-keyword">function</span> cacheStats() {
+    <span class="tok-keyword">const</span> now = Date.now();
+    <span class="tok-keyword">if</span> (!shaderCacheSnapshot || now - shaderCacheSampleTime &gt;= <span class="tok-number">400</span>) {
+        shaderCacheSnapshot = vis.ShaderCacheStats;
+        shaderCacheSampleTime = now;
+    }
+    <span class="tok-keyword">return</span> shaderCacheSnapshot;
+}
+
+<span class="tok-keyword">function</span> clamp(value, lo, hi) {
+    <span class="tok-keyword">return</span> Math.max(lo, Math.min(hi, value));
+}
+
+<span class="tok-keyword">function</span> layout() {
+    <span class="tok-keyword">const</span> w = window.Width, h = window.Height;
+    <span class="tok-keyword">const</span> side = clamp(Math.round(w * <span class="tok-number">0.31</span>), SIDEBAR_MIN,
+        Math.min(SIDEBAR_MAX, Math.max(<span class="tok-number">0</span>, w - <span class="tok-number">80</span>)));
+    <span class="tok-keyword">const</span> listBottom = Math.max(LIST_TOP, h - FOOTER_HEIGHT);
+    <span class="tok-keyword">return</span> {
+        sidebar: side,
+        viewX: side + <span class="tok-number">1</span>,
+        viewWidth: Math.max(<span class="tok-number">0</span>, w - side - <span class="tok-number">1</span>),
+        listX: <span class="tok-number">8</span>,
+        listWidth: Math.max(<span class="tok-number">0</span>, side - <span class="tok-number">24</span>),
+        listTop: LIST_TOP,
+        listHeight: Math.max(<span class="tok-number">0</span>, listBottom - LIST_TOP),
+        trackX: Math.max(<span class="tok-number">0</span>, side - <span class="tok-number">11</span>),
+        trackWidth: <span class="tok-number">4</span>
+    };
+}
+
+<span class="tok-keyword">function</span> sidebarWideButton(r, y) {
+    <span class="tok-keyword">return</span> {x: <span class="tok-number">10</span>, y, w: Math.max(<span class="tok-number">0</span>, r.sidebar - <span class="tok-number">20</span>), h: <span class="tok-number">30</span>};
+}
+
+<span class="tok-keyword">function</span> autoSwitchButton(r) {
+    <span class="tok-keyword">return</span> sidebarWideButton(r, AUTO_SWITCH_BUTTON_Y);
+}
+
+<span class="tok-keyword">function</span> presetOrderButton(r) {
+    <span class="tok-keyword">return</span> sidebarWideButton(r, PRESET_ORDER_BUTTON_Y);
+}
+
+<span class="tok-keyword">function</span> autoHidePlaylistButton(r) {
+    <span class="tok-keyword">return</span> sidebarWideButton(r, AUTO_HIDE_PLAYLIST_BUTTON_Y);
+}
+
+<span class="tok-keyword">function</span> playlistOverlayLayout(x, y, w, h) {
+    <span class="tok-keyword">if</span> (w &lt; <span class="tok-number">120</span> || h &lt; <span class="tok-number">120</span>) <span class="tok-keyword">return</span> <span class="tok-literal">null</span>;
+    <span class="tok-keyword">const</span> margin = Math.max(<span class="tok-number">10</span>, Math.min(PLAYLIST_MARGIN,
+        Math.floor(w / <span class="tok-number">12</span>), Math.floor(h / <span class="tok-number">12</span>)));
+    <span class="tok-keyword">const</span> boxW = Math.max(<span class="tok-number">1</span>, w - margin * <span class="tok-number">2</span>);
+    <span class="tok-keyword">const</span> boxH = Math.max(<span class="tok-number">1</span>, h - margin * <span class="tok-number">2</span>);
+    <span class="tok-keyword">const</span> pad = <span class="tok-number">16</span>;
+    <span class="tok-keyword">const</span> titleHeight = <span class="tok-number">43</span>;
+    <span class="tok-keyword">const</span> headerHeight = <span class="tok-number">28</span>;
+    <span class="tok-keyword">const</span> bodyY = y + margin + titleHeight + headerHeight;
+    <span class="tok-keyword">const</span> bodyHeight = Math.max(<span class="tok-number">0</span>, boxH - titleHeight - headerHeight - <span class="tok-number">10</span>);
+    <span class="tok-keyword">const</span> visibleRows = Math.max(<span class="tok-number">0</span>, Math.floor(bodyHeight / PLAYLIST_ROW_HEIGHT));
+    <span class="tok-keyword">const</span> contentWidth = Math.max(<span class="tok-number">0</span>, boxW - pad * <span class="tok-number">2</span>);
+    <span class="tok-keyword">const</span> lengthWidth = Math.min(<span class="tok-number">72</span>, Math.max(<span class="tok-number">48</span>, Math.floor(contentWidth * <span class="tok-number">0.12</span>)));
+    <span class="tok-keyword">const</span> textWidth = Math.max(<span class="tok-number">0</span>, contentWidth - lengthWidth - <span class="tok-number">24</span>);
+    <span class="tok-keyword">const</span> artistWidth = Math.floor(textWidth * <span class="tok-number">0.36</span>);
+    <span class="tok-keyword">return</span> {
+        x: x + margin,
+        y: y + margin,
+        w: boxW,
+        h: boxH,
+        pad,
+        titleHeight,
+        headerHeight,
+        bodyY,
+        bodyHeight,
+        visibleRows,
+        artistX: x + margin + pad,
+        artistWidth,
+        titleX: x + margin + pad + artistWidth + <span class="tok-number">12</span>,
+        titleWidth: Math.max(<span class="tok-number">0</span>, textWidth - artistWidth - <span class="tok-number">12</span>),
+        lengthX: x + margin + boxW - pad - lengthWidth,
+        lengthWidth
+    };
+}
+
+<span class="tok-keyword">function</span> activePlaylistOverlayLayout() {
+    <span class="tok-keyword">const</span> r = layout();
+    <span class="tok-keyword">return</span> playlistOverlayLayout(r.viewX, <span class="tok-number">0</span>, r.viewWidth, window.Height);
+}
+
+<span class="tok-keyword">function</span> playlistMaxScroll(info = activePlaylistOverlayLayout()) {
+    <span class="tok-keyword">return</span> info ? Math.max(<span class="tok-number">0</span>, playlistRows.length - info.visibleRows) : <span class="tok-number">0</span>;
+}
+
+<span class="tok-keyword">function</span> playlistScrollbar(info = activePlaylistOverlayLayout()) {
+    <span class="tok-keyword">const</span> scrollRange = playlistMaxScroll(info);
+    <span class="tok-keyword">if</span> (!info || !info.visibleRows || scrollRange &lt;= <span class="tok-number">0</span>) <span class="tok-keyword">return</span> <span class="tok-literal">null</span>;
+    <span class="tok-keyword">const</span> trackHeight = info.visibleRows * PLAYLIST_ROW_HEIGHT;
+    <span class="tok-keyword">const</span> thumbHeight = Math.min(trackHeight, Math.max(<span class="tok-number">24</span>,
+        trackHeight * info.visibleRows / playlistRows.length));
+    <span class="tok-keyword">const</span> range = Math.max(<span class="tok-number">0</span>, trackHeight - thumbHeight);
+    <span class="tok-keyword">const</span> first = clamp(playlistScroll, <span class="tok-number">0</span>, scrollRange);
+    <span class="tok-keyword">return</span> {
+        x: info.x + info.w - PLAYLIST_SCROLLBAR_WIDTH - <span class="tok-number">5</span>,
+        y: info.bodyY,
+        w: PLAYLIST_SCROLLBAR_WIDTH,
+        h: trackHeight,
+        thumbY: info.bodyY + range * first / scrollRange,
+        thumbHeight,
+        range,
+        scrollRange
+    };
+}
+
+<span class="tok-keyword">function</span> normalizePlaylistScroll(info = activePlaylistOverlayLayout()) {
+    playlistScroll = clamp(Math.floor(playlistScroll), <span class="tok-number">0</span>, playlistMaxScroll(info));
+}
+
+<span class="tok-keyword">function</span> refreshActivePlaylist(resetScroll = <span class="tok-literal">false</span>) {
+    <span class="tok-keyword">const</span> nextIndex = Number(plman.ActivePlaylist);
+    playlistIndex = Number.isInteger(nextIndex) &amp;&amp; nextIndex &gt;= <span class="tok-number">0</span> &amp;&amp;
+        nextIndex &lt; plman.PlaylistCount ? nextIndex : -<span class="tok-number">1</span>;
+    playlistName = playlistIndex &gt;= <span class="tok-number">0</span> ? plman.GetPlaylistName(playlistIndex) : <span class="tok-string">&#39;&#39;</span>;
+    playlistRows = [];
+    playlistFocusIndex = playlistIndex &gt;= <span class="tok-number">0</span>
+        ? plman.GetPlaylistFocusItemIndex(playlistIndex)
+        : -<span class="tok-number">1</span>;
+
+    <span class="tok-keyword">if</span> (playlistIndex &gt;= <span class="tok-number">0</span>) {
+        <span class="tok-keyword">const</span> handles = plman.GetPlaylistItems(playlistIndex);
+        <span class="tok-keyword">const</span> artists = playlistArtistFormat.EvalWithMetadbs(handles);
+        <span class="tok-keyword">const</span> titles = playlistTitleFormat.EvalWithMetadbs(handles);
+        <span class="tok-keyword">const</span> lengths = playlistLengthFormat.EvalWithMetadbs(handles);
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; handles.Count; ++i) {
+            playlistRows.push({
+                index: i,
+                artist: artists[i] || <span class="tok-string">&#39;(unknown artist)&#39;</span>,
+                title: titles[i] || <span class="tok-string">&#39;(untitled)&#39;</span>,
+                length: lengths[i] || <span class="tok-string">&#39;—&#39;</span>
+            });
+        }
+    }
+
+    <span class="tok-keyword">if</span> (resetScroll) {
+        <span class="tok-keyword">const</span> info = activePlaylistOverlayLayout();
+        playlistScroll = playlistFocusIndex &gt;= <span class="tok-number">0</span> &amp;&amp; info
+            ? playlistFocusIndex - Math.floor(info.visibleRows / <span class="tok-number">2</span>)
+            : <span class="tok-number">0</span>;
+    }
+    normalizePlaylistScroll();
+    <span class="tok-keyword">if</span> (playlistVisible) window.Repaint();
+}
+
+<span class="tok-keyword">function</span> showActivePlaylist() {
+    refreshActivePlaylist(<span class="tok-literal">true</span>);
+    playlistVisible = <span class="tok-literal">true</span>;
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> playlistRowAt(x, y, info = activePlaylistOverlayLayout()) {
+    <span class="tok-keyword">if</span> (!playlistVisible || !info || x &lt; info.x || x &gt;= info.x + info.w ||
+        y &lt; info.bodyY || y &gt;= info.bodyY + info.visibleRows * PLAYLIST_ROW_HEIGHT)
+        <span class="tok-keyword">return</span> -<span class="tok-number">1</span>;
+    <span class="tok-keyword">const</span> visibleIndex = Math.floor((y - info.bodyY) / PLAYLIST_ROW_HEIGHT);
+    <span class="tok-keyword">const</span> index = playlistScroll + visibleIndex;
+    <span class="tok-keyword">return</span> index &gt;= <span class="tok-number">0</span> &amp;&amp; index &lt; playlistRows.length ? index : -<span class="tok-number">1</span>;
+}
+
+<span class="tok-keyword">function</span> revealPlaylistFocus(index) {
+    playlistFocusIndex = Number.isInteger(index) ? index : -<span class="tok-number">1</span>;
+    <span class="tok-keyword">const</span> info = activePlaylistOverlayLayout();
+    <span class="tok-keyword">if</span> (playlistFocusIndex &gt;= <span class="tok-number">0</span> &amp;&amp; info &amp;&amp; info.visibleRows &gt; <span class="tok-number">0</span>) {
+        <span class="tok-keyword">if</span> (playlistFocusIndex &lt; playlistScroll)
+            playlistScroll = playlistFocusIndex;
+        <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (playlistFocusIndex &gt;= playlistScroll + info.visibleRows)
+            playlistScroll = playlistFocusIndex - info.visibleRows + <span class="tok-number">1</span>;
+    }
+    normalizePlaylistScroll(info);
+    <span class="tok-keyword">if</span> (playlistVisible) window.Repaint();
+}
+
+<span class="tok-keyword">function</span> maxScroll(r) {
+    <span class="tok-keyword">return</span> Math.max(<span class="tok-number">0</span>, presets.length * ROW_HEIGHT - r.listHeight);
+}
+
+<span class="tok-keyword">function</span> setScroll(value, r = layout()) {
+    scrollY = clamp(value, <span class="tok-number">0</span>, maxScroll(r));
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> scrollToSelected(r = layout()) {
+    <span class="tok-keyword">const</span> top = currentIndex * ROW_HEIGHT;
+    <span class="tok-keyword">const</span> bottom = top + ROW_HEIGHT;
+    <span class="tok-keyword">if</span> (top &lt; scrollY) scrollY = top;
+    <span class="tok-keyword">if</span> (bottom &gt; scrollY + r.listHeight) scrollY = bottom - r.listHeight;
+    scrollY = clamp(scrollY, <span class="tok-number">0</span>, maxScroll(r));
+}
+
+<span class="tok-comment">// At script startup the panel can still have a zero-sized viewport.</span>
+<span class="tok-comment">// Do not scroll to the saved preset until the list has a real height.</span>
+<span class="tok-comment">// Later resizes only clamp the existing position, preserving manual scroll.</span>
+<span class="tok-keyword">function</span> normalizeScroll(r = layout()) {
+    <span class="tok-keyword">if</span> (window.Width &lt;= <span class="tok-number">0</span> || window.Height &lt;= <span class="tok-number">0</span> || r.listHeight &lt;= <span class="tok-number">0</span>) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">if</span> (initialScrollPending) {
+        scrollToSelected(r);
+        initialScrollPending = <span class="tok-literal">false</span>;
+    } <span class="tok-keyword">else</span> {
+        scrollY = clamp(scrollY, <span class="tok-number">0</span>, maxScroll(r));
+    }
+}
+
+<span class="tok-keyword">function</span> thumb(r) {
+    <span class="tok-keyword">const</span> content = presets.length * ROW_HEIGHT;
+    <span class="tok-keyword">const</span> max = maxScroll(r);
+    <span class="tok-keyword">if</span> (!r.listHeight || !max) <span class="tok-keyword">return</span> <span class="tok-literal">null</span>;
+    <span class="tok-keyword">const</span> height = Math.max(<span class="tok-number">22</span>, r.listHeight * r.listHeight / content);
+    <span class="tok-keyword">const</span> range = Math.max(<span class="tok-number">0</span>, r.listHeight - height);
+    <span class="tok-keyword">return</span> {
+        x: r.trackX,
+        y: r.listTop + range * (scrollY / max),
+        w: r.trackWidth,
+        h: Math.min(height, r.listHeight),
+        range
+    };
+}
+
+<span class="tok-keyword">function</span> compileMessage() {
+    <span class="tok-keyword">return</span> compilingLabel || <span class="tok-string">&#39;Compiling preset...&#39;</span>;
+}
+
+<span class="tok-keyword">function</span> drawCompileOverlay(gr, x, y, w, h, message = compileMessage()) {
+    <span class="tok-keyword">if</span> (w &lt;= <span class="tok-number">0</span> || h &lt;= <span class="tok-number">0</span>) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">const</span> boxW = Math.min(w - <span class="tok-number">36</span>, Math.max(<span class="tok-number">240</span>, Math.round(w * <span class="tok-number">0.48</span>)));
+    <span class="tok-keyword">const</span> boxH = <span class="tok-number">92</span>;
+    <span class="tok-keyword">const</span> boxX = x + Math.max(<span class="tok-number">18</span>, Math.floor((w - boxW) / <span class="tok-number">2</span>));
+    <span class="tok-keyword">const</span> boxY = y + Math.floor((h - boxH) / <span class="tok-number">2</span>);
+    gr.FillSolidRect(boxX, boxY, boxW, boxH, <span class="tok-number">0xC0101318</span>);
+    gr.DrawRect(boxX + <span class="tok-number">0.5</span>, boxY + <span class="tok-number">0.5</span>, boxW - <span class="tok-number">1</span>, boxH - <span class="tok-number">1</span>, <span class="tok-number">1</span>, <span class="tok-number">0xFF5B6877</span>);
+    <span class="tok-keyword">const</span> titleW = Math.min(boxW - <span class="tok-number">30</span>, gr.CalcTextWidth(message, fontCompile) + <span class="tok-number">6</span>);
+    <span class="tok-keyword">const</span> titleX = boxX + Math.floor((boxW - titleW) / <span class="tok-number">2</span>);
+    gr.DrawString(message, fontCompile, <span class="tok-number">0xFFF2F6FA</span>,
+        titleX, boxY + <span class="tok-number">15</span>, titleW, <span class="tok-number">34</span>);
+    <span class="tok-keyword">const</span> note = <span class="tok-string">&#39;First compile may take a moment&#39;</span>;
+    <span class="tok-keyword">const</span> noteW = Math.min(boxW - <span class="tok-number">30</span>, gr.CalcTextWidth(note, fontCompileSmall) + <span class="tok-number">6</span>);
+    <span class="tok-keyword">const</span> noteX = boxX + Math.floor((boxW - noteW) / <span class="tok-number">2</span>);
+    gr.DrawString(note, fontCompileSmall, <span class="tok-number">0xFFC2CCD5</span>,
+        noteX, boxY + <span class="tok-number">55</span>, noteW, <span class="tok-number">20</span>);
+}
+
+<span class="tok-keyword">function</span> fitText(gr, value, font, width) {
+    <span class="tok-keyword">const</span> text = String(value || <span class="tok-string">&#39;&#39;</span>);
+    <span class="tok-keyword">if</span> (width &lt;= <span class="tok-number">0</span>) <span class="tok-keyword">return</span> <span class="tok-string">&#39;&#39;</span>;
+    <span class="tok-keyword">if</span> (gr.CalcTextWidth(text, font) &lt;= width) <span class="tok-keyword">return</span> text;
+    <span class="tok-keyword">const</span> suffix = <span class="tok-string">&#39;…&#39;</span>;
+    <span class="tok-keyword">let</span> lo = <span class="tok-number">0</span>, hi = text.length;
+    <span class="tok-keyword">while</span> (lo &lt; hi) {
+        <span class="tok-keyword">const</span> mid = Math.ceil((lo + hi) / <span class="tok-number">2</span>);
+        <span class="tok-keyword">if</span> (gr.CalcTextWidth(text.slice(<span class="tok-number">0</span>, mid) + suffix, font) &lt;= width)
+            lo = mid;
+        <span class="tok-keyword">else</span>
+            hi = mid - <span class="tok-number">1</span>;
+    }
+    <span class="tok-keyword">return</span> text.slice(<span class="tok-number">0</span>, lo) + suffix;
+}
+
+<span class="tok-keyword">function</span> drawPlaylistOverlay(gr, x, y, w, h, hoveredIndex = -<span class="tok-number">1</span>) {
+    <span class="tok-keyword">const</span> info = playlistOverlayLayout(x, y, w, h);
+    <span class="tok-keyword">if</span> (!info) <span class="tok-keyword">return</span>;
+
+    gr.FillSolidRect(info.x, info.y, info.w, info.h, <span class="tok-number">0xC8121720</span>);
+    gr.DrawRect(info.x + <span class="tok-number">0.5</span>, info.y + <span class="tok-number">0.5</span>, info.w - <span class="tok-number">1</span>, info.h - <span class="tok-number">1</span>,
+        <span class="tok-number">1</span>, <span class="tok-number">0xD0758494</span>);
+    gr.FillSolidRect(info.x + <span class="tok-number">1</span>, info.y + <span class="tok-number">1</span>, info.w - <span class="tok-number">2</span>,
+        info.titleHeight - <span class="tok-number">1</span>, <span class="tok-number">0xD51A222C</span>);
+
+    <span class="tok-keyword">const</span> heading = playlistIndex &gt;= <span class="tok-number">0</span> &amp;&amp; playlistName
+        ? <span class="tok-string">&#39;Active playlist — &#39;</span> + playlistName
+        : <span class="tok-string">&#39;Active playlist&#39;</span>;
+    gr.DrawString(fitText(gr, heading, fontPlaylistTitle, info.w - <span class="tok-number">32</span>),
+        fontPlaylistTitle, C.text, info.x + <span class="tok-number">16</span>, info.y + <span class="tok-number">7</span>,
+        info.w - <span class="tok-number">32</span>, <span class="tok-number">28</span>);
+
+    <span class="tok-keyword">const</span> headerY = info.y + info.titleHeight;
+    gr.FillSolidRect(info.x + <span class="tok-number">1</span>, headerY, info.w - <span class="tok-number">2</span>,
+        info.headerHeight, <span class="tok-number">0xB8242D38</span>);
+    gr.DrawString(<span class="tok-string">&#39;artist&#39;</span>, fontPlaylistHeader, C.muted,
+        info.artistX, headerY + <span class="tok-number">3</span>, info.artistWidth, <span class="tok-number">21</span>);
+    gr.DrawString(<span class="tok-string">&#39;title&#39;</span>, fontPlaylistHeader, C.muted,
+        info.titleX, headerY + <span class="tok-number">3</span>, info.titleWidth, <span class="tok-number">21</span>);
+    gr.DrawString(<span class="tok-string">&#39;length&#39;</span>, fontPlaylistHeader, C.muted,
+        info.lengthX, headerY + <span class="tok-number">3</span>, info.lengthWidth, <span class="tok-number">21</span>);
+
+    <span class="tok-keyword">if</span> (playlistIndex &lt; <span class="tok-number">0</span> || !playlistRows.length || !info.visibleRows) {
+        <span class="tok-keyword">const</span> message = playlistIndex &lt; <span class="tok-number">0</span>
+            ? <span class="tok-string">&#39;No active playlist&#39;</span>
+            : <span class="tok-string">&#39;The active playlist is empty&#39;</span>;
+        gr.DrawString(message, fontMain, C.muted,
+            info.artistX, info.bodyY + <span class="tok-number">14</span>, info.w - info.pad * <span class="tok-number">2</span>, <span class="tok-number">30</span>);
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">const</span> first = clamp(playlistScroll, <span class="tok-number">0</span>,
+        Math.max(<span class="tok-number">0</span>, playlistRows.length - info.visibleRows));
+    gr.PushClip(info.x + <span class="tok-number">1</span>, info.bodyY,
+        info.w - <span class="tok-number">2</span>, info.visibleRows * PLAYLIST_ROW_HEIGHT);
+    <span class="tok-keyword">try</span> {
+        <span class="tok-keyword">const</span> end = Math.min(playlistRows.length, first + info.visibleRows);
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> index = first; index &lt; end; ++index) {
+            <span class="tok-keyword">const</span> row = playlistRows[index];
+            <span class="tok-keyword">const</span> rowY = info.bodyY + (index - first) * PLAYLIST_ROW_HEIGHT;
+            <span class="tok-keyword">if</span> (index === playlistFocusIndex) {
+                gr.FillSolidRect(info.x + <span class="tok-number">1</span>, rowY, info.w - <span class="tok-number">2</span>,
+                    PLAYLIST_ROW_HEIGHT, <span class="tok-number">0xA05E4A2C</span>);
+                gr.FillSolidRect(info.x + <span class="tok-number">1</span>, rowY, <span class="tok-number">4</span>,
+                    PLAYLIST_ROW_HEIGHT, C.accent);
+            } <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (index === hoveredIndex) {
+                gr.FillSolidRect(info.x + <span class="tok-number">1</span>, rowY, info.w - <span class="tok-number">2</span>,
+                    PLAYLIST_ROW_HEIGHT, <span class="tok-number">0x80708090</span>);
+            } <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> ((index - first) &amp; <span class="tok-number">1</span>) {
+                gr.FillSolidRect(info.x + <span class="tok-number">1</span>, rowY, info.w - <span class="tok-number">2</span>,
+                    PLAYLIST_ROW_HEIGHT, <span class="tok-number">0x241D2530</span>);
+            }
+            gr.DrawString(fitText(gr, row.artist, fontPlaylistRow, info.artistWidth),
+                fontPlaylistRow, C.text, info.artistX, rowY + <span class="tok-number">4</span>,
+                info.artistWidth, <span class="tok-number">24</span>);
+            gr.DrawString(fitText(gr, row.title, fontPlaylistRow, info.titleWidth),
+                fontPlaylistRow, C.text, info.titleX, rowY + <span class="tok-number">4</span>,
+                info.titleWidth, <span class="tok-number">24</span>);
+            gr.DrawString(fitText(gr, row.length, fontPlaylistRow, info.lengthWidth),
+                fontPlaylistRow, C.muted, info.lengthX, rowY + <span class="tok-number">4</span>,
+                info.lengthWidth, <span class="tok-number">24</span>);
+        }
+    } <span class="tok-keyword">finally</span> {
+        gr.PopClip();
+    }
+
+    <span class="tok-keyword">const</span> bar = playlistScrollbar(info);
+    <span class="tok-keyword">if</span> (bar) {
+        gr.FillSolidRect(bar.x, bar.y, bar.w, bar.h, <span class="tok-number">0x80323C48</span>);
+        gr.FillSolidRect(bar.x, bar.thumbY, bar.w, bar.thumbHeight,
+            draggingPlaylistThumb ? C.accent : <span class="tok-number">0xE0A3B2C0</span>);
+    }
+}
+
+<span class="tok-keyword">function</span> drawTrackNotice(gr, x, y, w, h) {
+    <span class="tok-keyword">if</span> (!trackNoticeVisible || w &lt; <span class="tok-number">100</span> || h &lt; <span class="tok-number">150</span>) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">const</span> maximumTextWidth = Math.max(<span class="tok-number">1</span>, w - <span class="tok-number">96</span>);
+    <span class="tok-keyword">const</span> artist = fitText(gr, trackNoticeArtist,
+        fontTrackArtist, maximumTextWidth);
+    <span class="tok-keyword">const</span> title = fitText(gr, trackNoticeTitle,
+        fontTrackTitle, maximumTextWidth);
+    <span class="tok-keyword">const</span> artistWidth = gr.CalcTextWidth(artist, fontTrackArtist);
+    <span class="tok-keyword">const</span> titleWidth = gr.CalcTextWidth(title, fontTrackTitle);
+    <span class="tok-keyword">const</span> boxWidth = Math.min(w - <span class="tok-number">48</span>,
+        Math.max(<span class="tok-number">320</span>, Math.max(artistWidth, titleWidth) + <span class="tok-number">64</span>));
+    <span class="tok-keyword">const</span> boxHeight = <span class="tok-number">126</span>;
+    <span class="tok-keyword">const</span> boxX = x + Math.floor((w - boxWidth) / <span class="tok-number">2</span>);
+    <span class="tok-keyword">const</span> boxY = y + Math.floor((h - boxHeight) / <span class="tok-number">2</span>);
+    gr.FillSolidRect(boxX, boxY, boxWidth, boxHeight, <span class="tok-number">0xA010151D</span>);
+    gr.DrawRect(boxX + <span class="tok-number">0.5</span>, boxY + <span class="tok-number">0.5</span>, boxWidth - <span class="tok-number">1</span>, boxHeight - <span class="tok-number">1</span>,
+        <span class="tok-number">1</span>, <span class="tok-number">0xB0808D9B</span>);
+    gr.DrawString(artist, fontTrackArtist, C.text,
+        boxX + (boxWidth - artistWidth) / <span class="tok-number">2</span>, boxY + <span class="tok-number">16</span>,
+        artistWidth + <span class="tok-number">2</span>, <span class="tok-number">45</span>);
+    gr.DrawString(title, fontTrackTitle, C.accent,
+        boxX + (boxWidth - titleWidth) / <span class="tok-number">2</span>, boxY + <span class="tok-number">69</span>,
+        titleWidth + <span class="tok-number">2</span>, <span class="tok-number">40</span>);
+}
+
+<span class="tok-keyword">function</span> validatePreset(data, id) {
+    <span class="tok-keyword">if</span> (!data || <span class="tok-keyword">typeof</span> data !== <span class="tok-string">&#39;object&#39;</span> || Array.isArray(data))
+        <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;Invalid preset object&#39;</span>);
+    <span class="tok-keyword">if</span> (data.name !== id) <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;Preset name must match &#39;</span> + id + <span class="tok-string">&#39;.js&#39;</span>);
+    <span class="tok-keyword">if</span> (data.sourceId !== <span class="tok-number">5</span>)
+        <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;This collection expects Vectorscope sourceId 5&#39;</span>);
+    <span class="tok-keyword">if</span> (!data.source || <span class="tok-keyword">typeof</span> data.source !== <span class="tok-string">&#39;object&#39;</span> || Array.isArray(data.source))
+        <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;Missing source settings&#39;</span>);
+    <span class="tok-keyword">if</span> (!Number.isInteger(data.updateIntervalMs) || data.updateIntervalMs &lt; <span class="tok-number">1</span>)
+        <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;Invalid updateIntervalMs&#39;</span>);
+    <span class="tok-keyword">const</span> variant = data.renderer;
+    <span class="tok-keyword">if</span> (!variant || <span class="tok-keyword">typeof</span> variant !== <span class="tok-string">&#39;object&#39;</span> || Array.isArray(variant))
+        <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;Missing renderer object&#39;</span>);
+    <span class="tok-keyword">if</span> (<span class="tok-keyword">typeof</span> variant.shader !== <span class="tok-string">&#39;string&#39;</span> || !variant.shader.trim())
+        <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;Missing shader HLSL&#39;</span>);
+    <span class="tok-keyword">const</span> isShaderCode = value =&gt;
+        (<span class="tok-keyword">typeof</span> value === <span class="tok-string">&#39;string&#39;</span> &amp;&amp; !!value.trim()) ||
+        (value <span class="tok-keyword">instanceof</span> Uint8Array &amp;&amp; value.byteLength &gt; <span class="tok-number">0</span>) ||
+        (value <span class="tok-keyword">instanceof</span> ArrayBuffer &amp;&amp; value.byteLength &gt; <span class="tok-number">0</span>);
+    <span class="tok-keyword">const</span> isImagePass = value =&gt; {
+        <span class="tok-keyword">if</span> (isShaderCode(value)) <span class="tok-keyword">return</span> <span class="tok-literal">true</span>;
+        <span class="tok-keyword">if</span> (!value || <span class="tok-keyword">typeof</span> value !== <span class="tok-string">&#39;object&#39;</span> || Array.isArray(value) ||
+            !isShaderCode(value.shader)) <span class="tok-keyword">return</span> <span class="tok-literal">false</span>;
+        <span class="tok-keyword">return</span> Array.isArray(value.textures) &amp;&amp; value.textures.length &gt;= <span class="tok-number">1</span> &amp;&amp;
+            value.textures.length &lt;= <span class="tok-number">3</span> &amp;&amp;
+            value.textures.every(path =&gt; <span class="tok-keyword">typeof</span> path === <span class="tok-string">&#39;string&#39;</span> &amp;&amp; !!path);
+    };
+    <span class="tok-keyword">if</span> (variant.feedback !== <span class="tok-literal">undefined</span> &amp;&amp; !isImagePass(variant.feedback))
+        <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;Invalid feedback shader pass&#39;</span>);
+    <span class="tok-keyword">if</span> (variant.post !== <span class="tok-literal">undefined</span> &amp;&amp; !isImagePass(variant.post) &amp;&amp;
+        !(Array.isArray(variant.post) &amp;&amp; variant.post.length &gt; <span class="tok-number">0</span> &amp;&amp;
+            variant.post.every(isImagePass)))
+        <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;Invalid post shader pass&#39;</span>);
+    <span class="tok-keyword">return</span> variant;
+}
+
+<span class="tok-comment">// Capture the complete presented image only for seeding a newly selected</span>
+<span class="tok-comment">// preset. Feeding this opaque image back into the same visualization would</span>
+<span class="tok-comment">// recursively process the post output and disturb the entire history.</span>
+<span class="tok-keyword">function</span> captureOutgoingFrame(message = <span class="tok-literal">null</span>) {
+    <span class="tok-keyword">const</span> r = layout();
+    <span class="tok-keyword">const</span> w = r.viewWidth, h = window.Height;
+    <span class="tok-keyword">if</span> (!visual || w &lt; <span class="tok-number">1</span> || h &lt; <span class="tok-number">1</span>) <span class="tok-keyword">return</span> <span class="tok-literal">null</span>;
+
+    <span class="tok-comment">// Fit within the GPU texture limit. In the usual case the capture is</span>
+    <span class="tok-comment">// full-resolution; on very large panels it is scaled down.</span>
+    <span class="tok-keyword">const</span> scale = Math.min(<span class="tok-number">1</span>, MAX_CAPTURE_SIDE / w, MAX_CAPTURE_SIDE / h,
+        Math.sqrt(MAX_CAPTURE_PIXELS / (w * h)));
+    <span class="tok-keyword">const</span> sw = Math.max(<span class="tok-number">1</span>, Math.floor(w * scale));
+    <span class="tok-keyword">const</span> sh = Math.max(<span class="tok-number">1</span>, Math.floor(h * scale));
+    <span class="tok-keyword">const</span> bitmap = d2d.CreateImage(sw, sh);
+    <span class="tok-keyword">const</span> bg = bitmap.GetGraphics();
+    <span class="tok-keyword">try</span> {
+        bg.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, sw, sh, C.background);
+        visual.Draw(bg, <span class="tok-number">0</span>, <span class="tok-number">0</span>, sw, sh);
+        <span class="tok-keyword">if</span> (message) drawCompileOverlay(bg, <span class="tok-number">0</span>, <span class="tok-number">0</span>, sw, sh, message);
+    } <span class="tok-keyword">finally</span> {
+        bitmap.ReleaseGraphics(bg);
+    }
+    <span class="tok-keyword">return</span> bitmap;
+}
+
+<span class="tok-comment">// Create a transparent bitmap containing only a UI overlay. InjectFeedback</span>
+<span class="tok-comment">// composites this bitmap once with SOURCE_OVER, so transparent pixels leave</span>
+<span class="tok-comment">// the existing history untouched.</span>
+<span class="tok-keyword">function</span> captureOverlayFrame(drawOverlay) {
+    <span class="tok-keyword">const</span> r = layout();
+    <span class="tok-keyword">const</span> w = r.viewWidth, h = window.Height;
+    <span class="tok-keyword">if</span> (!visual || w &lt; <span class="tok-number">1</span> || h &lt; <span class="tok-number">1</span>) <span class="tok-keyword">return</span> <span class="tok-literal">null</span>;
+
+    <span class="tok-keyword">const</span> scale = Math.min(<span class="tok-number">1</span>, MAX_CAPTURE_SIDE / w, MAX_CAPTURE_SIDE / h,
+        Math.sqrt(MAX_CAPTURE_PIXELS / (w * h)));
+    <span class="tok-keyword">const</span> sw = Math.max(<span class="tok-number">1</span>, Math.floor(w * scale));
+    <span class="tok-keyword">const</span> sh = Math.max(<span class="tok-number">1</span>, Math.floor(h * scale));
+    <span class="tok-keyword">const</span> bitmap = d2d.CreateImage(sw, sh); <span class="tok-comment">// New images are transparent.</span>
+    <span class="tok-keyword">const</span> bg = bitmap.GetGraphics();
+    <span class="tok-keyword">try</span> {
+        drawOverlay(bg, sw, sh);
+    } <span class="tok-keyword">finally</span> {
+        bitmap.ReleaseGraphics(bg);
+    }
+    <span class="tok-keyword">return</span> bitmap;
+}
+
+<span class="tok-keyword">function</span> capturePlaylistOverlay() {
+    <span class="tok-keyword">const</span> hoveredPlaylistRow = playlistRowAt(mouseX, mouseY);
+    <span class="tok-keyword">return</span> captureOverlayFrame((gr, w, h) =&gt;
+        drawPlaylistOverlay(gr, <span class="tok-number">0</span>, <span class="tok-number">0</span>, w, h, hoveredPlaylistRow));
+}
+
+<span class="tok-keyword">function</span> captureTrackNoticeOverlay() {
+    <span class="tok-keyword">return</span> captureOverlayFrame((gr, w, h) =&gt;
+        drawTrackNotice(gr, <span class="tok-number">0</span>, <span class="tok-number">0</span>, w, h));
+}
+
+<span class="tok-keyword">function</span> injectPlaylistOverlay() {
+    <span class="tok-keyword">if</span> (!playlistVisible) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">try</span> {
+        <span class="tok-keyword">if</span> (visual) {
+            <span class="tok-keyword">const</span> frame = capturePlaylistOverlay();
+            <span class="tok-keyword">if</span> (frame) visual.InjectFeedback(frame);
+        }
+    } <span class="tok-keyword">catch</span> (e) {
+        <span class="tok-comment">// A source-only renderer may reject feedback injection; hiding the</span>
+        <span class="tok-comment">// overlay and continuing playback/preset selection is still safe.</span>
+        console.log(<span class="tok-string">&#39;MilkDrop playlist feedback injection: &#39;</span> + String(e));
+    }
+    playlistVisible = <span class="tok-literal">false</span>;
+    hoverTarget = <span class="tok-string">&#39;&#39;</span>;
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> injectTrackNotice() {
+    <span class="tok-keyword">if</span> (!trackNoticeVisible) <span class="tok-keyword">return</span>;
+    trackNoticeTimer = <span class="tok-literal">null</span>;
+    <span class="tok-keyword">try</span> {
+        <span class="tok-keyword">if</span> (visual) {
+            <span class="tok-keyword">const</span> frame = captureTrackNoticeOverlay();
+            <span class="tok-keyword">if</span> (frame) visual.InjectFeedback(frame);
+        }
+    } <span class="tok-keyword">catch</span> (e) {
+        console.log(<span class="tok-string">&#39;MilkDrop track feedback injection: &#39;</span> + String(e));
+    }
+    trackNoticeVisible = <span class="tok-literal">false</span>;
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> showTrackNotice(metadb) {
+    <span class="tok-keyword">if</span> (!metadb) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">if</span> (trackNoticeTimer !== <span class="tok-literal">null</span>) clearTimeout(trackNoticeTimer);
+    trackNoticeArtist = String(trackArtistFormat.EvalWithMetadb(metadb) ||
+        <span class="tok-string">&#39;Unknown artist&#39;</span>);
+    trackNoticeTitle = String(trackTitleFormat.EvalWithMetadb(metadb) ||
+        <span class="tok-string">&#39;Untitled&#39;</span>);
+    trackNoticeVisible = <span class="tok-literal">true</span>;
+    trackNoticeTimer = setTimeout(injectTrackNotice,
+        TRACK_NOTICE_DURATION_MS);
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> activate() {
+    <span class="tok-keyword">const</span> request = ++requestId;
+    errorText = <span class="tok-string">&#39;&#39;</span>;
+    <span class="tok-keyword">if</span> (!presets.length) {
+        visual = <span class="tok-literal">null</span>;
+        visualPresetId = <span class="tok-literal">null</span>;
+        visualFeedbackCadence = <span class="tok-literal">null</span>;
+        compilingLabel = <span class="tok-string">&#39;&#39;</span>;
+        status = <span class="tok-string">&#39;empty&#39;</span>;
+        window.Repaint();
+        <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">const</span> selected = presets[currentIndex];
+    <span class="tok-keyword">const</span> creationFps = fps;
+    <span class="tok-keyword">let</span> data, renderer, feedbackCadence;
+    <span class="tok-keyword">try</span> {
+        <span class="tok-comment">// include() has a per-realm guard, while the factory itself can be</span>
+        <span class="tok-comment">// called again when selecting a preset without reloading its file.</span>
+        <span class="tok-keyword">if</span> (<span class="tok-keyword">typeof</span> MilkDropPresets[selected.id] !== <span class="tok-string">&#39;function&#39;</span>)
+            include(selected.path);
+        <span class="tok-keyword">const</span> factory = MilkDropPresets[selected.id];
+        <span class="tok-keyword">if</span> (<span class="tok-keyword">typeof</span> factory !== <span class="tok-string">&#39;function&#39;</span>)
+            <span class="tok-keyword">throw</span> <span class="tok-keyword">new</span> Error(<span class="tok-string">&#39;Preset did not register &#39;</span> + selected.id);
+        data = factory(fps);
+        renderer = validatePreset(data, selected.id);
+        feedbackCadence = renderer.feedbackIntervalMs &gt; <span class="tok-number">0</span>
+            ? targetFps =&gt; factory(targetFps).renderer.feedbackIntervalMs ?? <span class="tok-number">0</span>
+            : <span class="tok-literal">null</span>;
+        <span class="tok-comment">// Keep the outgoing preset&#39;s analysis cadence during compilation.</span>
+        <span class="tok-keyword">if</span> (!visual) vis.UpdateIntervalMs = data.updateIntervalMs;
+    } <span class="tok-keyword">catch</span> (e) {
+        status = <span class="tok-string">&#39;error&#39;</span>;
+        compilingLabel = <span class="tok-string">&#39;&#39;</span>;
+        errorText = String(e);
+        console.log(<span class="tok-string">&#39;MilkDrop &#39;</span> + selected.id + <span class="tok-string">&#39;: &#39;</span> + errorText);
+        window.Repaint();
+        <span class="tok-keyword">return</span>;
+    }
+
+    compilingLabel = <span class="tok-string">&#39;Compiling &#39;</span> + selected.id + <span class="tok-string">&#39;...&#39;</span>;
+    compileStartedAt = performance.now();
+    lastCompileMs = <span class="tok-literal">null</span>;
+    compileIndicatorShown = <span class="tok-literal">false</span>;
+    status = <span class="tok-string">&#39;loading&#39;</span>;
+    window.Repaint();
+    <span class="tok-keyword">try</span> {
+        vis.CreateAsync(data.sourceId, data.source, renderer)
+            .then(next =&gt; {
+                <span class="tok-keyword">if</span> (request !== requestId) <span class="tok-keyword">return</span>; <span class="tok-comment">// Stale async compile.</span>
+                <span class="tok-comment">// FPS may have changed while CreateAsync was pending. Apply</span>
+                <span class="tok-comment">// the latest cadence before the first Draw, without recompiling.</span>
+                <span class="tok-keyword">if</span> (feedbackCadence &amp;&amp; fps !== creationFps)
+                    next.FeedbackIntervalMs = feedbackCadence(fps);
+                <span class="tok-comment">// Wall time of CreateAsync: compilation, cache lookup, task</span>
+                <span class="tok-comment">// scheduling and Promise delivery; excludes feedback capture.</span>
+                lastCompileMs = performance.now() - compileStartedAt;
+
+                <span class="tok-keyword">let</span> frame = <span class="tok-literal">null</span>;
+                <span class="tok-comment">// Only a transition to a different preset may seed history</span>
+                <span class="tok-comment">// with the outgoing screen. FPS changes retain the existing</span>
+                <span class="tok-comment">// visualization; its post output must not re-enter its history.</span>
+                <span class="tok-keyword">if</span> (visual &amp;&amp; visualPresetId !== selected.id) {
+                    <span class="tok-keyword">try</span> {
+                        frame = captureOutgoingFrame(
+                            compileIndicatorShown ? compilingLabel : <span class="tok-literal">null</span>);
+                    } <span class="tok-keyword">catch</span> (e) {
+                        <span class="tok-comment">// A failed snapshot must not prevent changing presets.</span>
+                        console.log(<span class="tok-string">&#39;MilkDrop capture: &#39;</span> + String(e));
+                    }
+                }
+                <span class="tok-keyword">if</span> (frame) {
+                    <span class="tok-keyword">try</span> {
+                        next.InjectFeedback(frame);
+                    } <span class="tok-keyword">catch</span> (e) {
+                        <span class="tok-comment">// Some presets cannot accept feedback injection.</span>
+                        console.log(<span class="tok-string">&#39;MilkDrop feedback injection: &#39;</span> + String(e));
+                    }
+                }
+
+                vis.UpdateIntervalMs = data.updateIntervalMs;
+                visual = next;
+                visualPresetId = selected.id;
+                visualFeedbackCadence = feedbackCadence;
+                resetFrameMetrics();
+                status = <span class="tok-string">&#39;ready&#39;</span>;
+                compilingLabel = <span class="tok-string">&#39;&#39;</span>;
+                compileIndicatorShown = <span class="tok-literal">false</span>;
+                window.Repaint();
+            })
+            .<span class="tok-keyword">catch</span>(e =&gt; {
+                <span class="tok-keyword">if</span> (request !== requestId) <span class="tok-keyword">return</span>;
+                lastCompileMs = performance.now() - compileStartedAt;
+                status = <span class="tok-string">&#39;error&#39;</span>;
+                compilingLabel = <span class="tok-string">&#39;&#39;</span>;
+                errorText = String(e);
+                console.log(<span class="tok-string">&#39;MilkDrop &#39;</span> + selected.id + <span class="tok-string">&#39;: &#39;</span> + errorText);
+                window.Repaint();
+            });
+    } <span class="tok-keyword">catch</span> (e) {
+        <span class="tok-keyword">if</span> (request !== requestId) <span class="tok-keyword">return</span>;
+        lastCompileMs = performance.now() - compileStartedAt;
+        status = <span class="tok-string">&#39;error&#39;</span>;
+        compilingLabel = <span class="tok-string">&#39;&#39;</span>;
+        errorText = String(e);
+        console.log(<span class="tok-string">&#39;MilkDrop &#39;</span> + selected.id + <span class="tok-string">&#39;: &#39;</span> + errorText);
+        window.Repaint();
+    }
+}
+<span class="tok-keyword">function</span> startRepaintTimer() {
+    <span class="tok-keyword">if</span> (repaintTimer !== <span class="tok-literal">null</span>) clearInterval(repaintTimer);
+    repaintTimer = setInterval(() =&gt; window.Repaint(), <span class="tok-number">1000</span> / fps);
+}
+
+<span class="tok-keyword">function</span> nextAutomaticPresetIndex() {
+    <span class="tok-keyword">if</span> (presets.length &lt; <span class="tok-number">2</span>) <span class="tok-keyword">return</span> currentIndex;
+    <span class="tok-keyword">if</span> (!randomPresetOrder) <span class="tok-keyword">return</span> (currentIndex + <span class="tok-number">1</span>) % presets.length;
+    <span class="tok-comment">// Choose uniformly from every preset except the one already active.</span>
+    <span class="tok-keyword">let</span> index = Math.floor(Math.random() * (presets.length - <span class="tok-number">1</span>));
+    <span class="tok-keyword">if</span> (index &gt;= currentIndex) ++index;
+    <span class="tok-keyword">return</span> index;
+}
+
+<span class="tok-keyword">function</span> restartAutoSwitchTimer() {
+    <span class="tok-keyword">if</span> (autoSwitchTimer !== <span class="tok-literal">null</span>) {
+        clearInterval(autoSwitchTimer);
+        autoSwitchTimer = <span class="tok-literal">null</span>;
+    }
+    <span class="tok-keyword">if</span> (autoSwitchEnabled &amp;&amp; presets.length &gt; <span class="tok-number">1</span>) {
+        autoSwitchTimer = setInterval(() =&gt; {
+            selectPreset(nextAutomaticPresetIndex(), <span class="tok-literal">true</span>);
+        }, AUTO_SWITCH_INTERVAL_MS);
+    }
+}
+
+<span class="tok-keyword">function</span> toggleAutoSwitch() {
+    autoSwitchEnabled = !autoSwitchEnabled;
+    window.SetProperty(<span class="tok-string">&#39;MilkDrop.AutoSwitch&#39;</span>, autoSwitchEnabled);
+    restartAutoSwitchTimer();
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> togglePresetOrder() {
+    <span class="tok-keyword">if</span> (!autoSwitchEnabled) <span class="tok-keyword">return</span>;
+    randomPresetOrder = !randomPresetOrder;
+    window.SetProperty(<span class="tok-string">&#39;MilkDrop.RandomOrder&#39;</span>, randomPresetOrder);
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> toggleAutoHidePlaylist() {
+    autoHidePlaylist = !autoHidePlaylist;
+    window.SetProperty(<span class="tok-string">&#39;MilkDrop.AutoHidePlaylist&#39;</span>, autoHidePlaylist);
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> selectFps(next) {
+    <span class="tok-keyword">if</span> (!validFps(next)) <span class="tok-keyword">return</span>;
+    fpsText = String(next);
+    fpsCaret = fpsText.length;
+    fpsEditing = fpsSelectAll = fpsInputError = <span class="tok-literal">false</span>;
+    window.Repaint();
+    <span class="tok-keyword">if</span> (next === fps) <span class="tok-keyword">return</span>;
+    fps = next;
+    window.SetProperty(<span class="tok-string">&#39;MilkDrop.FPS&#39;</span>, fps);
+    <span class="tok-comment">// Per-Draw presets use measured frameStep. Opted-in presets instead keep</span>
+    <span class="tok-comment">// a fixed step at their requested cadence, changed on the existing object.</span>
+    <span class="tok-keyword">if</span> (visual &amp;&amp; visualFeedbackCadence) {
+        <span class="tok-keyword">try</span> {
+            visual.FeedbackIntervalMs = visualFeedbackCadence(fps);
+        } <span class="tok-keyword">catch</span> (e) {
+            status = <span class="tok-string">&#39;error&#39;</span>;
+            errorText = String(e);
+            console.log(<span class="tok-string">&#39;MilkDrop feedback cadence: &#39;</span> + errorText);
+        }
+    }
+    <span class="tok-comment">// Preserve history, phase state and time origin in both modes.</span>
+    startRepaintTimer();
+    resetFrameMetrics();
+}
+
+<span class="tok-keyword">function</span> selectPreset(index, automatic = <span class="tok-literal">false</span>) {
+    <span class="tok-keyword">if</span> (index &lt; <span class="tok-number">0</span> || index &gt;= presets.length || index === currentIndex) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">if</span> (playlistVisible &amp;&amp; autoHidePlaylist) injectPlaylistOverlay();
+    currentIndex = index;
+    window.SetProperty(<span class="tok-string">&#39;MilkDrop.Preset&#39;</span>, presets[index].id);
+    scrollToSelected();
+    activate();
+    <span class="tok-keyword">if</span> (!automatic &amp;&amp; autoSwitchEnabled) restartAutoSwitchTimer();
+}
+
+<span class="tok-comment">// An inline numeric field keeps fractional rates (for example 59.94).</span>
+<span class="tok-comment">// Enter or Apply commits; Escape restores the active rate. Preset selection</span>
+<span class="tok-comment">// and audio analysis retain their existing independent lifetimes/cadences.</span>
+<span class="tok-keyword">function</span> validFps(value) {
+    <span class="tok-keyword">return</span> Number.isFinite(value) &amp;&amp; value &gt;= MIN_FPS &amp;&amp; value &lt;= MAX_FPS;
+}
+
+<span class="tok-keyword">function</span> fpsField(r) {
+    <span class="tok-keyword">return</span> {x: <span class="tok-number">10</span>, y: CUSTOM_FPS_Y, w: Math.max(<span class="tok-number">20</span>, r.sidebar - <span class="tok-number">80</span>), h: <span class="tok-number">30</span>};
+}
+
+<span class="tok-keyword">function</span> fpsApplyButton(r) {
+    <span class="tok-keyword">return</span> {x: r.sidebar - <span class="tok-number">64</span>, y: CUSTOM_FPS_Y, w: <span class="tok-number">54</span>, h: <span class="tok-number">30</span>};
+}
+
+<span class="tok-keyword">function</span> contains(rc, x, y) {
+    <span class="tok-keyword">return</span> x &gt;= rc.x &amp;&amp; x &lt; rc.x + rc.w &amp;&amp; y &gt;= rc.y &amp;&amp; y &lt; rc.y + rc.h;
+}
+
+<span class="tok-keyword">function</span> commitFpsInput() {
+    <span class="tok-keyword">const</span> text = fpsText.trim().replace(<span class="tok-string">&#39;,&#39;</span>, <span class="tok-string">&#39;.&#39;</span>);
+    <span class="tok-keyword">const</span> next = /^\d+(?:\.\d*)?$/.test(text) ? Number(text) : <span class="tok-literal">NaN</span>;
+    fpsInputError = !validFps(next);
+    <span class="tok-keyword">if</span> (fpsInputError) {
+        fpsEditing = <span class="tok-literal">true</span>;
+        window.Repaint();
+        <span class="tok-keyword">return</span> <span class="tok-literal">false</span>;
+    }
+    selectFps(next);
+    <span class="tok-keyword">return</span> <span class="tok-literal">true</span>;
+}
+
+<span class="tok-keyword">function</span> insertFpsText(text) {
+    text = String(text).trim().replace(<span class="tok-string">&#39;,&#39;</span>, <span class="tok-string">&#39;.&#39;</span>);
+    <span class="tok-keyword">if</span> (!/^[<span class="tok-number">0</span>-<span class="tok-number">9</span>.]*$/.test(text)) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">const</span> next = fpsSelectAll ? text :
+        fpsText.slice(<span class="tok-number">0</span>, fpsCaret) + text + fpsText.slice(fpsCaret);
+    <span class="tok-keyword">if</span> (next.length &gt; <span class="tok-number">12</span> || (next.match(/\./g) || []).length &gt; <span class="tok-number">1</span>) <span class="tok-keyword">return</span>;
+    fpsCaret = fpsSelectAll ? text.length : fpsCaret + text.length;
+    fpsText = next;
+    fpsSelectAll = fpsInputError = <span class="tok-literal">false</span>;
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> drawFpsInput(gr, r) {
+    <span class="tok-keyword">const</span> rc = fpsField(r);
+    gr.FillSolidRect(rc.x, rc.y, rc.w, rc.h, C.background);
+    gr.DrawRect(rc.x + .<span class="tok-number">5</span>, rc.y + .<span class="tok-number">5</span>, rc.w - <span class="tok-number">1</span>, rc.h - <span class="tok-number">1</span>, <span class="tok-number">1</span>,
+        fpsInputError ? C.error : fpsEditing ? C.accent : C.border);
+    gr.PushClip(rc.x + <span class="tok-number">5</span>, rc.y + <span class="tok-number">2</span>, rc.w - <span class="tok-number">10</span>, rc.h - <span class="tok-number">4</span>);
+    <span class="tok-keyword">try</span> {
+        <span class="tok-keyword">const</span> width = gr.CalcTextWidth(fpsText, fontMain);
+        <span class="tok-keyword">if</span> (fpsEditing &amp;&amp; fpsSelectAll)
+            gr.FillSolidRect(rc.x + <span class="tok-number">6</span>, rc.y + <span class="tok-number">5</span>, Math.max(<span class="tok-number">2</span>, width), <span class="tok-number">20</span>, C.hover);
+        gr.DrawString(fpsText, fontMain, C.text, rc.x + <span class="tok-number">6</span>, rc.y + <span class="tok-number">5</span>, width + <span class="tok-number">5</span>, <span class="tok-number">21</span>);
+        <span class="tok-keyword">if</span> (fpsEditing &amp;&amp; !fpsSelectAll &amp;&amp; Math.floor(Date.now() / <span class="tok-number">500</span>) % <span class="tok-number">2</span> === <span class="tok-number">0</span>) {
+            <span class="tok-keyword">const</span> caretX = rc.x + <span class="tok-number">6</span> + gr.CalcTextWidth(fpsText.slice(<span class="tok-number">0</span>, fpsCaret), fontMain);
+            gr.FillSolidRect(caretX, rc.y + <span class="tok-number">6</span>, <span class="tok-number">1</span>, <span class="tok-number">18</span>, C.accent);
+        }
+    } <span class="tok-keyword">finally</span> { gr.PopClip(); }
+    drawSidebarWideButton(gr, fpsApplyButton(r), <span class="tok-string">&#39;Apply&#39;</span>, <span class="tok-literal">false</span>);
+    gr.DrawString(fpsInputError ? <span class="tok-string">&#39;Enter 30–1000 FPS&#39;</span> : <span class="tok-string">&#39;Custom FPS · 30–1000&#39;</span>,
+        fontSmall, fpsInputError ? C.error : C.muted, <span class="tok-number">12</span>, CUSTOM_FPS_Y + <span class="tok-number">32</span>, r.sidebar - <span class="tok-number">24</span>, <span class="tok-number">18</span>);
+}
+
+<span class="tok-keyword">function</span> on_key_down(key) {
+    <span class="tok-keyword">if</span> (!fpsEditing) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">const</span> ctrl = utils.IsKeyPressed(<span class="tok-number">0x11</span>);
+    <span class="tok-comment">// This field accepts only numbers. Handle both digit rows directly so it</span>
+    <span class="tok-comment">// also works when the host does not forward WM_CHAR to the panel. Do not</span>
+    <span class="tok-comment">// insert again in on_char: hosts that deliver both would duplicate digits.</span>
+    <span class="tok-keyword">if</span> (!ctrl &amp;&amp; !utils.IsKeyPressed(<span class="tok-number">0x12</span>) &amp;&amp; key &gt;= <span class="tok-number">0x30</span> &amp;&amp; key &lt;= <span class="tok-number">0x39</span>)
+        insertFpsText(String.fromCharCode(key));
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (!ctrl &amp;&amp; key &gt;= <span class="tok-number">0x60</span> &amp;&amp; key &lt;= <span class="tok-number">0x69</span>)
+        insertFpsText(String(key - <span class="tok-number">0x60</span>));
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (!ctrl &amp;&amp; (key === <span class="tok-number">0x6E</span> || key === <span class="tok-number">0xBE</span> || key === <span class="tok-number">0xBC</span>))
+        insertFpsText(<span class="tok-string">&#39;.&#39;</span>);
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (ctrl &amp;&amp; key === <span class="tok-number">0x41</span>) fpsSelectAll = <span class="tok-literal">true</span>;
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (ctrl &amp;&amp; key === <span class="tok-number">0x56</span>) insertFpsText(utils.GetClipboardText());
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (key === <span class="tok-number">0x0D</span> || key === <span class="tok-number">0x09</span>) { commitFpsInput(); <span class="tok-keyword">return</span>; }
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (key === <span class="tok-number">0x1B</span>) { selectFps(fps); <span class="tok-keyword">return</span>; }
+    <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (key === <span class="tok-number">0x08</span> || key === <span class="tok-number">0x2E</span>) {
+        <span class="tok-keyword">if</span> (fpsSelectAll) { fpsText = <span class="tok-string">&#39;&#39;</span>; fpsCaret = <span class="tok-number">0</span>; }
+        <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (key === <span class="tok-number">0x08</span> &amp;&amp; fpsCaret &gt; <span class="tok-number">0</span>) {
+            fpsText = fpsText.slice(<span class="tok-number">0</span>, fpsCaret - <span class="tok-number">1</span>) + fpsText.slice(fpsCaret);
+            --fpsCaret;
+        } <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (key === <span class="tok-number">0x2E</span>)
+            fpsText = fpsText.slice(<span class="tok-number">0</span>, fpsCaret) + fpsText.slice(fpsCaret + <span class="tok-number">1</span>);
+        fpsSelectAll = fpsInputError = <span class="tok-literal">false</span>;
+    } <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (key === <span class="tok-number">0x25</span> || key === <span class="tok-number">0x24</span>) {
+        fpsCaret = fpsSelectAll || key === <span class="tok-number">0x24</span> ? <span class="tok-number">0</span> : Math.max(<span class="tok-number">0</span>, fpsCaret - <span class="tok-number">1</span>);
+        fpsSelectAll = <span class="tok-literal">false</span>;
+    } <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (key === <span class="tok-number">0x27</span> || key === <span class="tok-number">0x23</span>) {
+        fpsCaret = fpsSelectAll || key === <span class="tok-number">0x23</span> ? fpsText.length : Math.min(fpsText.length, fpsCaret + <span class="tok-number">1</span>);
+        fpsSelectAll = <span class="tok-literal">false</span>;
+    }
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> on_focus(focused) {
+    <span class="tok-keyword">if</span> (!focused) { fpsEditing = fpsSelectAll = <span class="tok-literal">false</span>; window.Repaint(); }
+}
+
+<span class="tok-keyword">function</span> choiceButton(r, i, y) {
+    <span class="tok-keyword">const</span> margin = <span class="tok-number">10</span>, gap = <span class="tok-number">5</span>;
+    <span class="tok-keyword">const</span> buttonWidth = (r.sidebar - margin * <span class="tok-number">2</span> - gap * <span class="tok-number">2</span>) / <span class="tok-number">3</span>;
+    <span class="tok-keyword">return</span> {x: margin + (buttonWidth + gap) * i, y,
+        w: buttonWidth, h: <span class="tok-number">30</span>};
+}
+
+<span class="tok-keyword">function</span> drawChoiceButton(gr, r, i, y, label, selected) {
+    <span class="tok-keyword">const</span> rc = choiceButton(r, i, y);
+    <span class="tok-keyword">const</span> hover = mouseX &gt;= rc.x &amp;&amp; mouseX &lt; rc.x + rc.w &amp;&amp;
+                  mouseY &gt;= rc.y &amp;&amp; mouseY &lt; rc.y + rc.h;
+    gr.FillSolidRect(rc.x, rc.y, rc.w, rc.h,
+        selected ? C.accent : (hover ? C.hover : C.panel));
+    gr.DrawRect(rc.x + <span class="tok-number">0.5</span>, rc.y + <span class="tok-number">0.5</span>, rc.w - <span class="tok-number">1</span>, rc.h - <span class="tok-number">1</span>, <span class="tok-number">1</span>,
+        selected ? C.accent : C.border);
+    <span class="tok-keyword">const</span> textWidth = gr.CalcTextWidth(label, fontMain);
+    gr.DrawString(label, fontMain, selected ? C.accentText : C.text,
+        rc.x + (rc.w - textWidth) / <span class="tok-number">2</span>, rc.y + <span class="tok-number">5</span>, textWidth + <span class="tok-number">2</span>, <span class="tok-number">19</span>);
+}
+
+<span class="tok-keyword">function</span> drawSidebarWideButton(gr, rc, label, selected, enabled = <span class="tok-literal">true</span>) {
+    <span class="tok-keyword">const</span> hover = enabled &amp;&amp; mouseX &gt;= rc.x &amp;&amp; mouseX &lt; rc.x + rc.w &amp;&amp;
+        mouseY &gt;= rc.y &amp;&amp; mouseY &lt; rc.y + rc.h;
+    gr.FillSolidRect(rc.x, rc.y, rc.w, rc.h,
+        enabled &amp;&amp; selected ? C.accent : (hover ? C.hover : C.panel));
+    gr.DrawRect(rc.x + <span class="tok-number">0.5</span>, rc.y + <span class="tok-number">0.5</span>, rc.w - <span class="tok-number">1</span>, rc.h - <span class="tok-number">1</span>, <span class="tok-number">1</span>,
+        enabled &amp;&amp; selected ? C.accent : (enabled ? C.border : C.faint));
+    <span class="tok-keyword">const</span> textWidth = Math.min(rc.w - <span class="tok-number">10</span>, gr.CalcTextWidth(label, fontMain));
+    gr.DrawString(label, fontMain,
+        enabled &amp;&amp; selected ? C.accentText : (enabled ? C.text : C.faint),
+        rc.x + (rc.w - textWidth) / <span class="tok-number">2</span>, rc.y + <span class="tok-number">5</span>, textWidth + <span class="tok-number">2</span>, <span class="tok-number">19</span>);
+}
+
+<span class="tok-keyword">function</span> drawSidebar(gr, r) {
+    <span class="tok-keyword">const</span> h = window.Height;
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, r.sidebar, h, C.sidebar);
+    gr.FillSolidRect(r.sidebar, <span class="tok-number">0</span>, <span class="tok-number">1</span>, h, C.border);
+    gr.DrawString(<span class="tok-string">&#39;Milkdrop ports&#39;</span>, fontTitle, C.text, <span class="tok-number">12</span>, <span class="tok-number">12</span>, r.sidebar - <span class="tok-number">24</span>, <span class="tok-number">27</span>);
+    gr.DrawString(<span class="tok-string">&#39;FPS&#39;</span>, fontSmall, C.muted, <span class="tok-number">12</span>, <span class="tok-number">41</span>, <span class="tok-number">50</span>, <span class="tok-number">15</span>);
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; FPS_OPTIONS.length; ++i)
+        drawChoiceButton(gr, r, i, <span class="tok-number">58</span>, String(FPS_OPTIONS[i]), fps === FPS_OPTIONS[i]);
+    drawFpsInput(gr, r);
+    drawSidebarWideButton(gr, autoSwitchButton(r),
+        <span class="tok-string">&#39;Auto presets: &#39;</span> + (autoSwitchEnabled ? <span class="tok-string">&#39;On&#39;</span> : <span class="tok-string">&#39;Off&#39;</span>),
+        autoSwitchEnabled);
+    drawSidebarWideButton(gr, presetOrderButton(r),
+        <span class="tok-string">&#39;Order: &#39;</span> + (randomPresetOrder ? <span class="tok-string">&#39;Random&#39;</span> : <span class="tok-string">&#39;Sequential&#39;</span>),
+        randomPresetOrder, autoSwitchEnabled);
+    drawSidebarWideButton(gr, autoHidePlaylistButton(r),
+        <span class="tok-string">&#39;Auto-hide playlist: &#39;</span> + (autoHidePlaylist ? <span class="tok-string">&#39;On&#39;</span> : <span class="tok-string">&#39;Off&#39;</span>),
+        autoHidePlaylist);
+    gr.DrawString(<span class="tok-string">&#39;PRESETS  &#39;</span> + presets.length, fontSmall, C.muted,
+        <span class="tok-number">12</span>, PRESETS_LABEL_Y, r.sidebar - <span class="tok-number">24</span>, <span class="tok-number">18</span>);
+
+    gr.PushClip(<span class="tok-number">0</span>, r.listTop, r.sidebar, r.listHeight);
+    <span class="tok-keyword">try</span> {
+        <span class="tok-keyword">if</span> (!presets.length) {
+            gr.DrawString(<span class="tok-string">&#39;No .js presets&#39;</span>, fontSmall, C.faint,
+                <span class="tok-number">12</span>, r.listTop + <span class="tok-number">8</span>, r.sidebar - <span class="tok-number">24</span>, <span class="tok-number">35</span>);
+        }
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; presets.length; ++i) {
+            <span class="tok-keyword">const</span> y = r.listTop + i * ROW_HEIGHT - scrollY;
+            <span class="tok-keyword">if</span> (y + ROW_HEIGHT &lt;= r.listTop || y &gt;= r.listTop + r.listHeight)
+                <span class="tok-keyword">continue</span>;
+            <span class="tok-keyword">const</span> selected = i === currentIndex;
+            <span class="tok-keyword">const</span> hovered = mouseX &gt;= r.listX &amp;&amp;
+                mouseX &lt; r.listX + r.listWidth &amp;&amp;
+                mouseY &gt;= Math.max(r.listTop, y) &amp;&amp;
+                mouseY &lt; Math.min(r.listTop + r.listHeight, y + ROW_HEIGHT);
+            gr.FillSolidRect(r.listX, y, r.listWidth, ROW_HEIGHT - <span class="tok-number">2</span>,
+                selected ? C.panel : hovered ? C.hover : C.sidebar);
+            <span class="tok-keyword">if</span> (selected) gr.FillSolidRect(r.listX, y, <span class="tok-number">3</span>, ROW_HEIGHT - <span class="tok-number">2</span>, C.accent);
+            gr.DrawString(presets[i].id, fontRow, selected ? C.accent : C.text,
+                r.listX + <span class="tok-number">13</span>, y + <span class="tok-number">6</span>, r.listWidth - <span class="tok-number">24</span>, <span class="tok-number">24</span>);
+        }
+        <span class="tok-keyword">const</span> bar = thumb(r);
+        <span class="tok-keyword">if</span> (bar) {
+            gr.FillSolidRect(bar.x, r.listTop, bar.w, r.listHeight, C.panel);
+            gr.FillSolidRect(bar.x, bar.y, bar.w, bar.h, C.muted);
+        }
+    } <span class="tok-keyword">finally</span> {
+        gr.PopClip();
+    }
+
+    <span class="tok-keyword">if</span> (h &gt;= LIST_TOP + FOOTER_HEIGHT) {
+        <span class="tok-keyword">const</span> y = h - FOOTER_HEIGHT;
+        <span class="tok-keyword">const</span> stats = cacheStats();
+        gr.FillSolidRect(<span class="tok-number">0</span>, y, r.sidebar, <span class="tok-number">1</span>, C.border);
+        gr.DrawString(<span class="tok-string">&#39;PERFORMANCE&#39;</span>, fontSmall, C.accent,
+            <span class="tok-number">11</span>, y + <span class="tok-number">7</span>, r.sidebar - <span class="tok-number">20</span>, <span class="tok-number">16</span>);
+        <span class="tok-keyword">const</span> compiling = status === <span class="tok-string">&#39;loading&#39;</span>;
+        <span class="tok-keyword">const</span> elapsed = compiling ? performance.now() - compileStartedAt : lastCompileMs;
+        gr.DrawString(<span class="tok-string">&#39;Compile: &#39;</span> + (elapsed === <span class="tok-literal">null</span> ? <span class="tok-string">&#39;—&#39;</span> : formatTime(elapsed) + <span class="tok-string">&#39; ms&#39;</span>) +
+            (compiling ? <span class="tok-string">&#39;...&#39;</span> : <span class="tok-string">&#39;&#39;</span>),
+            fontSmall, C.text, <span class="tok-number">11</span>, y + <span class="tok-number">26</span>, r.sidebar - <span class="tok-number">20</span>, <span class="tok-number">17</span>);
+        gr.DrawString(<span class="tok-string">&#39;Draw CPU: &#39;</span> +
+            (drawCpuAvgMs === <span class="tok-literal">null</span> ? <span class="tok-string">&#39;—&#39;</span> : drawCpuAvgMs.toFixed(<span class="tok-number">2</span>) + <span class="tok-string">&#39; ms&#39;</span>),
+            fontSmall, C.text, <span class="tok-number">11</span>, y + <span class="tok-number">44</span>, r.sidebar - <span class="tok-number">20</span>, <span class="tok-number">17</span>);
+        gr.DrawString(<span class="tok-string">&#39;Paint: &#39;</span> +
+            (paintRate === <span class="tok-literal">null</span> ? <span class="tok-string">&#39;—&#39;</span> : paintRate.toFixed(<span class="tok-number">1</span>) + <span class="tok-string">&#39; FPS&#39;</span>),
+            fontSmall, C.muted, <span class="tok-number">11</span>, y + <span class="tok-number">62</span>, r.sidebar - <span class="tok-number">20</span>, <span class="tok-number">17</span>);
+
+        gr.FillSolidRect(<span class="tok-number">0</span>, y + <span class="tok-number">83</span>, r.sidebar, <span class="tok-number">1</span>, C.border);
+        gr.DrawString(<span class="tok-string">&#39;DXBC CACHE&#39;</span>, fontSmall, C.accent,
+            <span class="tok-number">11</span>, y + <span class="tok-number">90</span>, r.sidebar - <span class="tok-number">20</span>, <span class="tok-number">16</span>);
+        gr.DrawString(<span class="tok-string">&#39;Entries: &#39;</span> + stats.Entries + <span class="tok-string">&#39; / &#39;</span> + vis.ShaderCacheMaxEntries,
+            fontSmall, C.text, <span class="tok-number">11</span>, y + <span class="tok-number">109</span>, r.sidebar - <span class="tok-number">20</span>, <span class="tok-number">17</span>);
+        <span class="tok-keyword">const</span> mb = <span class="tok-number">1024</span> * <span class="tok-number">1024</span>;
+        gr.DrawString(<span class="tok-string">&#39;Size: &#39;</span> + (stats.Bytes / mb).toFixed(<span class="tok-number">2</span>) + <span class="tok-string">&#39; / &#39;</span> +
+            (vis.ShaderCacheMaxBytes / mb).toFixed(<span class="tok-number">1</span>) + <span class="tok-string">&#39; MiB&#39;</span>,
+            fontSmall, C.text, <span class="tok-number">11</span>, y + <span class="tok-number">126</span>, r.sidebar - <span class="tok-number">20</span>, <span class="tok-number">17</span>);
+        gr.DrawString(<span class="tok-string">&#39;Hits: &#39;</span> + stats.Hits + <span class="tok-string">&#39;  Misses: &#39;</span> + stats.Misses,
+            fontSmall, C.muted, <span class="tok-number">11</span>, y + <span class="tok-number">143</span>, r.sidebar - <span class="tok-number">20</span>, <span class="tok-number">17</span>);
+        gr.DrawString(<span class="tok-string">&#39;Evictions: &#39;</span> + stats.Evictions,
+            fontSmall, C.muted, <span class="tok-number">11</span>, y + <span class="tok-number">160</span>, r.sidebar - <span class="tok-number">20</span>, <span class="tok-number">17</span>);
+    }
+}
+
+<span class="tok-keyword">function</span> drawMessage(gr, r, message, color = C.muted) {
+    <span class="tok-keyword">if</span> (r.viewWidth &lt;= <span class="tok-number">0</span>) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">const</span> x = r.viewX + <span class="tok-number">22</span>;
+    gr.DrawString(message, fontMain, color, x,
+        Math.max(<span class="tok-number">12</span>, window.Height / <span class="tok-number">2</span> - <span class="tok-number">11</span>),
+        Math.max(<span class="tok-number">0</span>, r.viewWidth - <span class="tok-number">44</span>), <span class="tok-number">75</span>);
+}
+
+<span class="tok-keyword">function</span> on_size() {
+    normalizeScroll();
+    normalizePlaylistScroll();
+}
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    <span class="tok-keyword">const</span> w = window.Width, h = window.Height;
+    <span class="tok-keyword">if</span> (w &lt;= <span class="tok-number">0</span> || h &lt;= <span class="tok-number">0</span>) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">const</span> r = layout();
+    normalizeScroll(r);
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, w, h, C.background);
+    <span class="tok-keyword">if</span> (visual &amp;&amp; r.viewWidth &gt; <span class="tok-number">0</span>) {
+        <span class="tok-keyword">try</span> {
+            <span class="tok-keyword">const</span> drawStartedAt = performance.now();
+            visual.Draw(gr, r.viewX, <span class="tok-number">0</span>, r.viewWidth, h);
+            recordDrawCpuTime(performance.now() - drawStartedAt);
+        } <span class="tok-keyword">catch</span> (e) {
+            <span class="tok-comment">// Report a failing visualization once, not at every paint tick.</span>
+            visual = <span class="tok-literal">null</span>;
+            visualPresetId = <span class="tok-literal">null</span>;
+            status = <span class="tok-string">&#39;error&#39;</span>;
+            errorText = String(e);
+            console.log(<span class="tok-string">&#39;MilkDrop draw: &#39;</span> + errorText);
+        }
+    }
+    <span class="tok-keyword">if</span> (status === <span class="tok-string">&#39;loading&#39;</span> &amp;&amp; r.viewWidth &gt; <span class="tok-number">0</span> &amp;&amp;
+        performance.now() - compileStartedAt &gt;= COMPILE_INDICATOR_DELAY_MS) {
+        drawCompileOverlay(gr, r.viewX, <span class="tok-number">0</span>, r.viewWidth, h);
+        compileIndicatorShown = <span class="tok-literal">true</span>;
+    }
+    <span class="tok-keyword">if</span> (status === <span class="tok-string">&#39;empty&#39;</span>) drawMessage(gr, r, <span class="tok-string">&#39;Add a preset to the MilkDrop folder.&#39;</span>);
+    <span class="tok-keyword">if</span> (status === <span class="tok-string">&#39;error&#39;</span>) drawMessage(gr, r,
+        <span class="tok-string">&#39;Preset error: &#39;</span> + errorText, C.error);
+    <span class="tok-keyword">if</span> (playlistVisible &amp;&amp; r.viewWidth &gt; <span class="tok-number">0</span>)
+        drawPlaylistOverlay(gr, r.viewX, <span class="tok-number">0</span>, r.viewWidth, h,
+            playlistRowAt(mouseX, mouseY));
+    <span class="tok-keyword">if</span> (trackNoticeVisible &amp;&amp; r.viewWidth &gt; <span class="tok-number">0</span>)
+        drawTrackNotice(gr, r.viewX, <span class="tok-number">0</span>, r.viewWidth, h);
+    drawSidebar(gr, r);
+}
+
+<span class="tok-keyword">function</span> hoveredItem(x, y, r) {
+    <span class="tok-keyword">if</span> (x &lt; <span class="tok-number">0</span> || x &gt;= r.sidebar) <span class="tok-keyword">return</span> <span class="tok-string">&#39;&#39;</span>;
+    <span class="tok-keyword">if</span> (contains(fpsField(r), x, y)) <span class="tok-keyword">return</span> <span class="tok-string">&#39;fps-input&#39;</span>;
+    <span class="tok-keyword">if</span> (contains(fpsApplyButton(r), x, y)) <span class="tok-keyword">return</span> <span class="tok-string">&#39;fps-apply&#39;</span>;
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; FPS_OPTIONS.length; ++i) {
+        <span class="tok-keyword">const</span> rc = choiceButton(r, i, <span class="tok-number">58</span>);
+        <span class="tok-keyword">if</span> (x &gt;= rc.x &amp;&amp; x &lt; rc.x + rc.w &amp;&amp;
+            y &gt;= rc.y &amp;&amp; y &lt; rc.y + rc.h) <span class="tok-keyword">return</span> <span class="tok-string">&#39;fps:&#39;</span> + i;
+    }
+    <span class="tok-keyword">const</span> autoRc = autoSwitchButton(r);
+    <span class="tok-keyword">if</span> (x &gt;= autoRc.x &amp;&amp; x &lt; autoRc.x + autoRc.w &amp;&amp;
+        y &gt;= autoRc.y &amp;&amp; y &lt; autoRc.y + autoRc.h)
+        <span class="tok-keyword">return</span> <span class="tok-string">&#39;auto-switch&#39;</span>;
+    <span class="tok-keyword">const</span> orderRc = presetOrderButton(r);
+    <span class="tok-keyword">if</span> (autoSwitchEnabled &amp;&amp; x &gt;= orderRc.x &amp;&amp; x &lt; orderRc.x + orderRc.w &amp;&amp;
+        y &gt;= orderRc.y &amp;&amp; y &lt; orderRc.y + orderRc.h)
+        <span class="tok-keyword">return</span> <span class="tok-string">&#39;preset-order&#39;</span>;
+    <span class="tok-keyword">const</span> autoHideRc = autoHidePlaylistButton(r);
+    <span class="tok-keyword">if</span> (x &gt;= autoHideRc.x &amp;&amp; x &lt; autoHideRc.x + autoHideRc.w &amp;&amp;
+        y &gt;= autoHideRc.y &amp;&amp; y &lt; autoHideRc.y + autoHideRc.h)
+        <span class="tok-keyword">return</span> <span class="tok-string">&#39;auto-hide-playlist&#39;</span>;
+    <span class="tok-keyword">if</span> (x &gt;= r.listX &amp;&amp; x &lt; r.listX + r.listWidth &amp;&amp;
+        y &gt;= r.listTop &amp;&amp; y &lt; r.listTop + r.listHeight) {
+        <span class="tok-keyword">const</span> i = Math.floor((y - r.listTop + scrollY) / ROW_HEIGHT);
+        <span class="tok-keyword">if</span> (i &gt;= <span class="tok-number">0</span> &amp;&amp; i &lt; presets.length) <span class="tok-keyword">return</span> <span class="tok-string">&#39;preset:&#39;</span> + i;
+    }
+    <span class="tok-keyword">return</span> <span class="tok-string">&#39;&#39;</span>;
+}
+
+<span class="tok-keyword">function</span> on_mouse_move(x, y) {
+    <span class="tok-keyword">const</span> previousPlaylistRow = playlistRowAt(mouseX, mouseY);
+    mouseX = x;
+    mouseY = y;
+    <span class="tok-keyword">const</span> r = layout();
+    <span class="tok-keyword">if</span> (draggingPlaylistThumb) {
+        <span class="tok-keyword">const</span> bar = playlistScrollbar();
+        <span class="tok-keyword">if</span> (bar &amp;&amp; bar.range &gt; <span class="tok-number">0</span>) {
+            playlistScroll = clamp(Math.round(
+                (y - bar.y - playlistThumbGrab) * bar.scrollRange / bar.range),
+                <span class="tok-number">0</span>, bar.scrollRange);
+            window.Repaint();
+        }
+    } <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (draggingThumb) {
+        <span class="tok-keyword">const</span> bar = thumb(r);
+        <span class="tok-keyword">if</span> (bar &amp;&amp; bar.range &gt; <span class="tok-number">0</span>)
+            setScroll((y - r.listTop - thumbGrab) * maxScroll(r) / bar.range, r);
+    } <span class="tok-keyword">else</span> {
+        <span class="tok-keyword">const</span> next = hoveredItem(x, y, r);
+        <span class="tok-keyword">const</span> nextPlaylistRow = playlistRowAt(x, y);
+        <span class="tok-keyword">if</span> (next !== hoverTarget || nextPlaylistRow !== previousPlaylistRow) {
+            hoverTarget = next;
+            window.Repaint();
+        }
+    }
+}
+
+<span class="tok-keyword">function</span> on_mouse_leave() {
+    <span class="tok-keyword">const</span> hadPlaylistHover = playlistRowAt(mouseX, mouseY) &gt;= <span class="tok-number">0</span>;
+    mouseX = mouseY = -<span class="tok-number">1</span>;
+    <span class="tok-keyword">if</span> ((hoverTarget || hadPlaylistHover) &amp;&amp;
+        !draggingThumb &amp;&amp; !draggingPlaylistThumb) window.Repaint();
+    hoverTarget = <span class="tok-string">&#39;&#39;</span>;
+}
+
+<span class="tok-keyword">function</span> on_mouse_wheel(step) {
+    <span class="tok-keyword">const</span> r = layout();
+    <span class="tok-keyword">const</span> playlistInfo = activePlaylistOverlayLayout();
+    <span class="tok-keyword">if</span> (playlistVisible &amp;&amp; playlistInfo &amp;&amp;
+        mouseX &gt;= playlistInfo.x &amp;&amp; mouseX &lt; playlistInfo.x + playlistInfo.w &amp;&amp;
+        mouseY &gt;= playlistInfo.y &amp;&amp; mouseY &lt; playlistInfo.y + playlistInfo.h) {
+        playlistScroll = clamp(playlistScroll - step * <span class="tok-number">3</span>,
+            <span class="tok-number">0</span>, playlistMaxScroll(playlistInfo));
+        window.Repaint();
+        <span class="tok-keyword">return</span>;
+    }
+    <span class="tok-keyword">if</span> (mouseX === -<span class="tok-number">1</span> || mouseX &lt;= r.sidebar)
+        setScroll(scrollY - step * ROW_HEIGHT * <span class="tok-number">2</span>, r);
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_down(x, y) {
+    <span class="tok-keyword">if</span> (contains(fpsField(layout()), x, y)) {
+        fpsSelectAll = !fpsEditing;
+        fpsEditing = <span class="tok-literal">true</span>;
+        fpsCaret = fpsText.length;
+        window.Repaint();
+        <span class="tok-keyword">return</span>;
+    }
+    <span class="tok-keyword">if</span> (!contains(fpsApplyButton(layout()), x, y)) {
+        fpsEditing = fpsSelectAll = <span class="tok-literal">false</span>;
+        window.Repaint();
+    }
+    <span class="tok-keyword">const</span> playlistBar = playlistVisible ? playlistScrollbar() : <span class="tok-literal">null</span>;
+    <span class="tok-keyword">if</span> (playlistBar &amp;&amp; x &gt;= playlistBar.x - <span class="tok-number">3</span> &amp;&amp;
+        x &lt; playlistBar.x + playlistBar.w + <span class="tok-number">3</span> &amp;&amp;
+        y &gt;= playlistBar.y &amp;&amp; y &lt; playlistBar.y + playlistBar.h) {
+        draggingPlaylistThumb = <span class="tok-literal">true</span>;
+        playlistThumbGrab = y &gt;= playlistBar.thumbY &amp;&amp;
+            y &lt; playlistBar.thumbY + playlistBar.thumbHeight
+            ? y - playlistBar.thumbY
+            : playlistBar.thumbHeight / <span class="tok-number">2</span>;
+        <span class="tok-keyword">if</span> (y &lt; playlistBar.thumbY ||
+            y &gt;= playlistBar.thumbY + playlistBar.thumbHeight) {
+            playlistScroll = clamp(Math.round(
+                (y - playlistBar.y - playlistThumbGrab) *
+                playlistBar.scrollRange / playlistBar.range),
+                <span class="tok-number">0</span>, playlistBar.scrollRange);
+        }
+        window.Repaint();
+        <span class="tok-keyword">return</span>;
+    }
+    <span class="tok-keyword">const</span> r = layout();
+    <span class="tok-keyword">const</span> bar = thumb(r);
+    <span class="tok-keyword">if</span> (!bar || x &lt; r.trackX - <span class="tok-number">3</span> || x &gt; r.trackX + r.trackWidth + <span class="tok-number">3</span> ||
+        y &lt; r.listTop || y &gt;= r.listTop + r.listHeight) <span class="tok-keyword">return</span>;
+    draggingThumb = <span class="tok-literal">true</span>;
+    thumbGrab = y &gt;= bar.y &amp;&amp; y &lt; bar.y + bar.h ? y - bar.y : bar.h / <span class="tok-number">2</span>;
+    <span class="tok-keyword">if</span> (y &lt; bar.y || y &gt;= bar.y + bar.h)
+        setScroll((y - r.listTop - thumbGrab) * maxScroll(r) / bar.range, r);
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_up(x, y) {
+    <span class="tok-keyword">if</span> (contains(fpsField(layout()), x, y)) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">if</span> (contains(fpsApplyButton(layout()), x, y)) { commitFpsInput(); <span class="tok-keyword">return</span>; }
+    <span class="tok-keyword">if</span> (draggingPlaylistThumb) {
+        draggingPlaylistThumb = <span class="tok-literal">false</span>;
+        window.Repaint();
+        <span class="tok-keyword">return</span>;
+    }
+    <span class="tok-keyword">if</span> (draggingThumb) {
+        draggingThumb = <span class="tok-literal">false</span>;
+        <span class="tok-keyword">return</span>;
+    }
+    <span class="tok-keyword">const</span> r = layout();
+    <span class="tok-keyword">if</span> (x &gt;= r.viewX &amp;&amp; x &lt; r.viewX + r.viewWidth &amp;&amp;
+        y &gt;= <span class="tok-number">0</span> &amp;&amp; y &lt; window.Height) {
+        <span class="tok-keyword">if</span> (!playlistVisible &amp;&amp; Date.now() &gt;= suppressDrawingClickUntil)
+            showActivePlaylist();
+        <span class="tok-keyword">return</span>;
+    }
+    <span class="tok-keyword">if</span> (x &lt; <span class="tok-number">0</span> || x &gt;= r.sidebar) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; FPS_OPTIONS.length; ++i) {
+        <span class="tok-keyword">const</span> b = choiceButton(r, i, <span class="tok-number">58</span>);
+        <span class="tok-keyword">if</span> (x &gt;= b.x &amp;&amp; x &lt; b.x + b.w &amp;&amp; y &gt;= b.y &amp;&amp; y &lt; b.y + b.h) {
+            selectFps(FPS_OPTIONS[i]);
+            <span class="tok-keyword">return</span>;
+        }
+    }
+    <span class="tok-keyword">const</span> autoRc = autoSwitchButton(r);
+    <span class="tok-keyword">if</span> (x &gt;= autoRc.x &amp;&amp; x &lt; autoRc.x + autoRc.w &amp;&amp;
+        y &gt;= autoRc.y &amp;&amp; y &lt; autoRc.y + autoRc.h) {
+        toggleAutoSwitch();
+        <span class="tok-keyword">return</span>;
+    }
+    <span class="tok-keyword">const</span> orderRc = presetOrderButton(r);
+    <span class="tok-keyword">if</span> (autoSwitchEnabled &amp;&amp; x &gt;= orderRc.x &amp;&amp; x &lt; orderRc.x + orderRc.w &amp;&amp;
+        y &gt;= orderRc.y &amp;&amp; y &lt; orderRc.y + orderRc.h) {
+        togglePresetOrder();
+        <span class="tok-keyword">return</span>;
+    }
+    <span class="tok-keyword">const</span> autoHideRc = autoHidePlaylistButton(r);
+    <span class="tok-keyword">if</span> (x &gt;= autoHideRc.x &amp;&amp; x &lt; autoHideRc.x + autoHideRc.w &amp;&amp;
+        y &gt;= autoHideRc.y &amp;&amp; y &lt; autoHideRc.y + autoHideRc.h) {
+        toggleAutoHidePlaylist();
+        <span class="tok-keyword">return</span>;
+    }
+    <span class="tok-keyword">if</span> (y &gt;= r.listTop &amp;&amp; y &lt; r.listTop + r.listHeight &amp;&amp;
+        x &gt;= r.listX &amp;&amp; x &lt; r.listX + r.listWidth) {
+        selectPreset(Math.floor((y - r.listTop + scrollY) / ROW_HEIGHT));
+    }
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_dblclk(x, y) {
+    <span class="tok-keyword">const</span> rowIndex = playlistRowAt(x, y);
+    <span class="tok-keyword">if</span> (rowIndex &lt; <span class="tok-number">0</span> || playlistIndex &lt; <span class="tok-number">0</span>) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">const</span> activePlaylist = playlistIndex;
+    <span class="tok-keyword">const</span> itemIndex = playlistRows[rowIndex].index;
+    <span class="tok-keyword">if</span> (autoHidePlaylist) {
+        <span class="tok-comment">// Windows sends the final button-up after the double-click callback.</span>
+        <span class="tok-comment">// Prevent that event from immediately reopening the hidden overlay.</span>
+        suppressDrawingClickUntil = Date.now() + <span class="tok-number">250</span>;
+        injectPlaylistOverlay();
+    }
+    <span class="tok-keyword">if</span> (activePlaylist &gt;= <span class="tok-number">0</span> &amp;&amp; activePlaylist &lt; plman.PlaylistCount &amp;&amp;
+        itemIndex &gt;= <span class="tok-number">0</span> &amp;&amp; itemIndex &lt; plman.PlaylistItemCount(activePlaylist))
+        plman.ExecutePlaylistDefaultAction(activePlaylist, itemIndex);
+}
+
+<span class="tok-keyword">function</span> on_playlist_switch() {
+    <span class="tok-keyword">if</span> (playlistVisible) refreshActivePlaylist(<span class="tok-literal">true</span>);
+}
+
+<span class="tok-keyword">function</span> on_playlists_changed() {
+    <span class="tok-keyword">if</span> (playlistVisible) refreshActivePlaylist(<span class="tok-literal">true</span>);
+}
+
+<span class="tok-keyword">function</span> on_playlist_items_added(index) {
+    <span class="tok-keyword">if</span> (playlistVisible &amp;&amp; index === playlistIndex) refreshActivePlaylist();
+}
+
+<span class="tok-keyword">function</span> on_playlist_items_removed(index) {
+    <span class="tok-keyword">if</span> (playlistVisible &amp;&amp; index === playlistIndex) refreshActivePlaylist();
+}
+
+<span class="tok-keyword">function</span> on_playlist_items_reordered(index) {
+    <span class="tok-keyword">if</span> (playlistVisible &amp;&amp; index === playlistIndex) refreshActivePlaylist();
+}
+
+<span class="tok-keyword">function</span> on_item_focus_change(index, from, to) {
+    <span class="tok-keyword">if</span> (playlistVisible &amp;&amp; index === playlistIndex)
+        revealPlaylistFocus(to);
+}
+
+<span class="tok-keyword">function</span> on_playback_new_track(metadb) {
+    <span class="tok-keyword">if</span> (playlistVisible &amp;&amp; autoHidePlaylist) injectPlaylistOverlay();
+    showTrackNotice(metadb);
+}
+
+<span class="tok-comment">// Keep the sample on the production O3 setting without exposing compiler UI.</span>
+setDefaultOptimizationFlags();
+<span class="tok-comment">// Initial selection is scrolled into view after the panel receives its size.</span>
+startRepaintTimer();
+restartAutoSwitchTimer();
+activate();
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

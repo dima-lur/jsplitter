@@ -1,4 +1,4 @@
-window.DefineScript('LoadImageAsyncV2', { author: 'TheQwertiest' });
+﻿window.DefineScript('LoadImageAsyncV2', { author: 'TheQwertiest' });
 
 // Get a list of jpg files from a folder
 const g_image_list = utils.Glob(`${fb.ComponentPath}samples/basic/images/*.jpg`);

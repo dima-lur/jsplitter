@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 //29/10/24
 
 function _lastfm() {

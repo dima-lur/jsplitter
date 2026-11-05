@@ -1,4 +1,4 @@
-window.DefineScript('Custom context menu', { author: 'T.P Wang / marc2003' });
+﻿window.DefineScript('Custom context menu', { author: 'T.P Wang / marc2003' });
 include('docs/Flags.js');
 
 function on_mouse_lbtn_down(x, y) {

@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -246,11 +252,93 @@
         
         <section class="member-section">
             <h3>Properties</h3>
-            <div class="table-wrap"><table>
+            <div class="table-wrap"><table class="properties-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
                 <tbody><tr id="image"><td><code>image</code></td><td><code>?<a class="type-link" href="GdiBitmap.html#GdiBitmap">GdiBitmap</a></code></td><td><p>(or <a href="D2DBitmap.html#D2DBitmap">D2DBitmap</a> if <a href="window.html#DrawMode">window.DrawMode</a> == 1). Null on failure</p></td></tr><tr id="path"><td><code>path</code></td><td><code>string</code></td><td><p>path to image file (or track file if image is embedded)</p></td></tr></tbody>
             </table></div>
         </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="AudioChannelInfo" data-kind="typedef" data-name="audiochannelinfo">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
+                <h2><a class="anchor" href="#AudioChannelInfo">AudioChannelInfo</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:1</div>
+        </header>
+        
+        
+        <div class="description"><p>PCM channel entry contained in <a href="globals.html#AudioFormat">AudioFormat</a>.</p></div>
+        
+        
+        <section class="member-section">
+            <h3>Properties</h3>
+            <div class="table-wrap"><table class="properties-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr id="Index"><td><code>Index</code></td><td><code>number</code></td><td><p>Zero-based position of the channel in interleaved PCM samples. This value can be passed directly to visualization channel properties.</p></td></tr><tr id="Flag"><td><code>Flag</code></td><td><code>number</code></td><td><p>Speaker-position bit from <a href="globals.html#ChannelConfig">ChannelConfig</a>. Combining the flags of all channel entries produces the format's channel mask.</p></td></tr><tr id="Names"><td><code>Names</code></td><td><code>Array&lt;string&gt;</code></td><td><p>Known lower-case names for this speaker position. The first value is the canonical full name; subsequent values are short or familiar aliases. The array is empty for an unknown channel flag.</p>
+<table>
+   <thead><tr><th>Canonical name</th><th>Aliases</th></tr></thead>
+   <tbody>
+   <tr><td><b>front-left</b></td><td><b>fl</b>, <b>left</b></td></tr>
+   <tr><td><b>front-right</b></td><td><b>fr</b>, <b>right</b></td></tr>
+   <tr><td><b>front-center</b></td><td><b>fc</b>, <b>center</b></td></tr>
+   <tr><td><b>low-frequency-effects</b></td><td><b>lfe</b></td></tr>
+   <tr><td><b>back-left</b></td><td><b>bl</b>, <b>rear-left</b></td></tr>
+   <tr><td><b>back-right</b></td><td><b>br</b>, <b>rear-right</b></td></tr>
+   <tr><td><b>front-center-left</b></td><td><b>fcl</b></td></tr>
+   <tr><td><b>front-center-right</b></td><td><b>fcr</b></td></tr>
+   <tr><td><b>back-center</b></td><td><b>bc</b>, <b>rear-center</b></td></tr>
+   <tr><td><b>side-left</b></td><td><b>sl</b></td></tr>
+   <tr><td><b>side-right</b></td><td><b>sr</b></td></tr>
+   <tr><td><b>top-center</b></td><td><b>tc</b></td></tr>
+   <tr><td><b>top-front-left</b></td><td><b>tfl</b></td></tr>
+   <tr><td><b>top-front-center</b></td><td><b>tfc</b></td></tr>
+   <tr><td><b>top-front-right</b></td><td><b>tfr</b></td></tr>
+   <tr><td><b>top-back-left</b></td><td><b>tbl</b></td></tr>
+   <tr><td><b>top-back-center</b></td><td><b>tbc</b></td></tr>
+   <tr><td><b>top-back-right</b></td><td><b>tbr</b></td></tr>
+   </tbody>
+   </table></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="AudioFormat" data-kind="typedef" data-name="audioformat">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
+                <h2><a class="anchor" href="#AudioFormat">AudioFormat</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:36</div>
+        </header>
+        
+        
+        <div class="description"><p>Current visualization PCM-format snapshot returned by <a href="vis.html#AudioFormat">vis.AudioFormat</a>. It describes the post-processing stream received by visualizations and can therefore differ from the source file's format.</p></div>
+        
+        
+        <section class="member-section">
+            <h3>Properties</h3>
+            <div class="table-wrap"><table class="properties-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr id="SampleRate"><td><code>SampleRate</code></td><td><code>number</code></td><td><p>PCM sample rate in hertz.</p></td></tr><tr id="ChannelCount"><td><code>ChannelCount</code></td><td><code>number</code></td><td><p>Number of interleaved PCM channels.</p></td></tr><tr id="ChannelConfig"><td><code>ChannelConfig</code></td><td><code>number</code></td><td><p>foobar2000 channel-mask value describing the speaker positions in the stream.</p></td></tr><tr id="Channels"><td><code>Channels</code></td><td><code>Array&lt;<a class="type-link" href="globals.html#AudioChannelInfo">AudioChannelInfo</a>&gt;</code></td><td><p>Channel entries ordered by PCM index. The array contains <a href="globals.html#ChannelCount">ChannelCount</a> entries.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
         
         
         
@@ -274,11 +362,12 @@
         
         <section class="member-section">
             <h3>Properties</h3>
-            <div class="table-wrap"><table>
+            <div class="table-wrap"><table class="properties-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
                 <tbody><tr id="index"><td><code>index</code></td><td><code>number</code></td><td><p>Zero-based stream index used by <a href="fb.html#SetAudioStream">fb.SetAudioStream</a>.</p></td></tr><tr id="info"><td><code>info</code></td><td><code><a class="type-link" href="FbFileInfo.html#FbFileInfo">FbFileInfo</a></code></td><td><p>Full metadata and technical information reported by the input decoder for this stream.</p></td></tr><tr id="default"><td><code>default</code></td><td><code>boolean</code></td><td><p>True when this is the input decoder's default stream.</p></td></tr><tr id="selected"><td><code>selected</code></td><td><code>boolean</code></td><td><p>True when this is the effective selected stream. A saved user preference takes precedence over the decoder default.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -317,6 +406,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="clearInterval" data-kind="function" data-name="clearinterval">
@@ -338,6 +428,7 @@
                 <tbody><tr><td><code>timerID</code></td><td><code>number</code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -373,6 +464,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="D2DStrokeStyleOptions" data-kind="typedef" data-name="d2dstrokestyleoptions">
@@ -381,7 +473,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#D2DStrokeStyleOptions">D2DStrokeStyleOptions</a></h2>
             </div>
-            <div class="source-location">js/d2d.js:617</div>
+            <div class="source-location">js/d2d.js:615</div>
         </header>
         
         
@@ -390,11 +482,12 @@
         
         <section class="member-section">
             <h3>Properties</h3>
-            <div class="table-wrap"><table>
+            <div class="table-wrap"><table class="properties-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr id="startCap"><td><code>startCap = CapStyle.Flat</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#CapStyle">CapStyle</a></code></td><td><p>Cap at the start of an open stroke.</p></td></tr><tr id="endCap"><td><code>endCap = CapStyle.Flat</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#CapStyle">CapStyle</a></code></td><td><p>Cap at the end of an open stroke.</p></td></tr><tr id="dashCap"><td><code>dashCap</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#CapStyle">CapStyle</a></code></td><td><p>Cap applied to each dash segment. If omitted, JSplitter uses CapStyle.Round for DashStyle.Dot, DashStyle.DashDot and DashStyle.DashDotDot so their zero-length dot segments are visible; other dash styles use CapStyle.Flat. An explicitly supplied dashCap is always used as-is.</p></td></tr><tr id="lineJoin"><td><code>lineJoin = LineJoin.Miter</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#LineJoin">LineJoin</a></code></td><td><p>Join used where consecutive line segments meet.</p></td></tr><tr id="miterLimit"><td><code>miterLimit = 10</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Positive miter limit used by miter-based joins.</p></td></tr><tr id="dashStyle"><td><code>dashStyle = DashStyle.Solid</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#DashStyle">DashStyle</a></code></td><td><p>Dash pattern. DashStyle.Custom requires a non-empty dashes array.</p></td></tr><tr id="dashOffset"><td><code>dashOffset = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Offset into the dash sequence.</p></td></tr><tr id="dashes"><td><code>dashes</code><span class="mini-flag">optional</span></td><td><code>Array&lt;number&gt;</code></td><td><p>Custom dash lengths expressed as multiples of the stroke width. Supplying this array selects DashStyle.Custom automatically.</p></td></tr></tbody>
+                <tbody><tr id="startCap"><td><code>startCap = CapStyle.Flat</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#CapStyle">CapStyle</a></code></td><td><p>Cap at the start of an open stroke.</p></td></tr><tr id="endCap"><td><code>endCap = CapStyle.Flat</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#CapStyle">CapStyle</a></code></td><td><p>Cap at the end of an open stroke.</p></td></tr><tr id="dashCap"><td><code>dashCap</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#CapStyle">CapStyle</a></code></td><td><p>Cap applied to each dash segment. If omitted, JSplitter uses <a href="module-Flags.html#Round">CapStyle.Round</a> for <a href="module-Flags.html#Dot">DashStyle.Dot</a>, <a href="module-Flags.html#DashDot">DashStyle.DashDot</a> and <a href="module-Flags.html#DashDotDot">DashStyle.DashDotDot</a> so their zero-length dot segments are visible; other dash styles use <a href="module-Flags.html#Flat">CapStyle.Flat</a>. An explicitly supplied dashCap is always used as-is.</p></td></tr><tr id="lineJoin"><td><code>lineJoin = LineJoin.Miter</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#LineJoin">LineJoin</a></code></td><td><p>Join used where consecutive line segments meet.</p></td></tr><tr id="miterLimit"><td><code>miterLimit = 10</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Positive miter limit used by miter-based joins.</p></td></tr><tr id="dashStyle"><td><code>dashStyle = DashStyle.Solid</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="module-Flags.html#DashStyle">DashStyle</a></code></td><td><p>Dash pattern. <a href="module-Flags.html#Custom">DashStyle.Custom</a> requires a non-empty dashes array.</p></td></tr><tr id="dashOffset"><td><code>dashOffset = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Offset into the dash sequence.</p></td></tr><tr id="dashes"><td><code>dashes</code><span class="mini-flag">optional</span></td><td><code>Array&lt;number&gt;</code></td><td><p>Custom dash lengths expressed as multiples of the stroke width. Supplying this array selects <a href="module-Flags.html#Custom">DashStyle.Custom</a> automatically.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -409,7 +502,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#Error">Error</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:8065</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:8105</div>
         </header>
         
         
@@ -418,11 +511,12 @@
         
         <section class="member-section">
             <h3>Properties</h3>
-            <div class="table-wrap"><table>
+            <div class="table-wrap"><table class="properties-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
                 <tbody><tr id="name"><td><code>name</code></td><td><code>string</code></td><td><p>Error type name.</p></td></tr><tr id="message"><td><code>message</code></td><td><code>string</code></td><td><p>Human-readable error message.</p></td></tr><tr id="stack"><td><code>stack</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>JavaScript stack trace when available.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -450,6 +544,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="include" data-kind="function" data-name="include">
@@ -462,7 +557,7 @@
         </header>
         <pre class="signature"><code>include(path, options)</code></pre>
         
-        <div class="description"><p>Evaluates JavaScript from a file in the current panel or Worker realm.<br> Similar to <b>eval(<a href="utils.html#ReadTextFile">utils.ReadTextFile</a>(path))</b>, but provides more features:<br> - Has <b>include guards</b> - a file is evaluated only once per realm unless <b>always_evaluate</b> is used.<br> - Panel-side includes also use compiled-script caching; Worker includes keep their own per-Worker include guard.<br> - Has better error reporting.<br> <br> Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>. The currently executing script file is tried first when available.<br> For a file-backed Worker, this makes its own directory the natural root for nested relative <a href="globals.html#include">include</a> calls.<br> Configured panel/package script roots are then considered where applicable.<br> <b>${fb.ComponentPath}</b> is the final fallback.</p></div>
+        <div class="description"><p>Evaluates JavaScript from a file in the current panel or Worker realm.<br> Evaluates the text loaded by <a href="utils.html#ReadTextFile">utils.ReadTextFile</a> and provides additional features:<br> - Has <b>include guards</b> - a file is evaluated only once per realm unless <b>always_evaluate</b> is used.<br> - Panel-side includes also use compiled-script caching; Worker includes keep their own per-Worker include guard.<br> - Has better error reporting.<br> <br> Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>. The currently executing script file is tried first when available.<br> For a file-backed Worker, this makes its own directory the natural root for nested relative <a href="globals.html#include">include</a> calls.<br> Configured panel/package script roots are then considered where applicable.<br> <a href="fb.html#ComponentPath">fb.ComponentPath</a> is the final fallback.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -482,6 +577,7 @@
             <div class="example-caption">Include some JS file</div><pre class="example"><code>include(<span class="tok-string">&#39;samples/complete/properties.js&#39;</span>)</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="JsMemoryStats" data-kind="typedef" data-name="jsmemorystats">
@@ -490,20 +586,21 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#JsMemoryStats">JsMemoryStats</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4667</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4685</div>
         </header>
         
         
-        <div class="description"><p>Return value of <a href="window.html#JsMemoryStats">window.JsMemoryStats</a>.<br> <br> Panel scripts run on the main thread and share one SpiderMonkey heap. Per-panel heap usage is therefore not available. Native/external memory is tracked separately for the current panel. Each Worker has its own SpiderMonkey context and is reported separately in <a href="globals.html#JsMemoryStats-Workers"><b>JsMemoryStats.Workers</b></a>.<br> <br> Related GC settings are under <b>Advanced &gt; JSplitter &gt; Performance: restart is required &gt; GC</b>.</p></div>
+        <div class="description"><p>Return value of <a href="window.html#JsMemoryStats">window.JsMemoryStats</a>.<br> <br> Panel scripts run on the main thread and share one SpiderMonkey heap. Per-panel heap usage is therefore not available. Native/external memory is tracked separately for the current panel. Each Worker has its own SpiderMonkey context and is reported separately in <a href="globals.html#Workers">Workers</a>.<br> <br> Related GC settings are under <b>Advanced &gt; JSplitter &gt; Performance: restart is required &gt; GC</b>.</p></div>
         
         
         <section class="member-section">
             <h3>Properties</h3>
-            <div class="table-wrap"><table>
+            <div class="table-wrap"><table class="properties-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr id="MainThreadHeapUsage"><td><code>MainThreadHeapUsage</code></td><td><code>number</code></td><td><p>SpiderMonkey heap usage shared by all JSplitter panel scripts running on the main thread (in bytes). The maximum is configured by <b>Main thread maximum heap size (in MB)</b>; see <b>MainThreadHeapLimit</b>. Automatic GC based on heap growth is controlled by <b>Heap growth before GC (in MB)</b>.</p></td></tr><tr id="MainThreadHeapLimit"><td><code>MainThreadHeapLimit</code></td><td><code>number</code></td><td><p>Maximum SpiderMonkey heap size for main-thread panel scripts (in bytes). External memory does not count toward this limit. This value reflects <b>Main thread maximum heap size (in MB)</b>.</p></td></tr><tr id="WorkerHeapLimit"><td><code>WorkerHeapLimit</code></td><td><code>number</code></td><td><p><span id="JsMemoryStats-WorkerHeapLimit"></span>Maximum SpiderMonkey heap size for each Worker (in bytes). The limit is shared as one setting value by all Workers, but applies independently to each Worker. This value reflects <b>Worker maximum heap size (in MB, per Worker)</b>.</p></td></tr><tr id="CurrentPanelExternalUsage"><td><code>CurrentPanelExternalUsage</code></td><td><code>number</code></td><td><p>Tracked native/external memory retained by the current panel (in bytes). This is an accounting estimate, not process working set or physical RAM/VRAM residency. Automatic GC based on external-memory growth is controlled by <b>External memory growth before GC (in MB)</b>.</p></td></tr><tr id="Workers"><td><code>Workers</code></td><td><code><a class="type-link" href="globals.html#JsWorkerMemoryStats">JsWorkerMemoryStats</a>[]</code></td><td><p><span id="JsMemoryStats-Workers"></span>Memory snapshots for Workers created by the current panel. Worker snapshots are published by each Worker thread without blocking the panel and may lag while a Worker is executing a long-running task.</p></td></tr></tbody>
+                <tbody><tr id="MainThreadHeapUsage"><td><code>MainThreadHeapUsage</code></td><td><code>number</code></td><td><p>SpiderMonkey heap usage shared by all JSplitter panel scripts running on the main thread (in bytes). The maximum is configured by <b>Main thread maximum heap size (in MB)</b>; see <a href="globals.html#MainThreadHeapLimit">MainThreadHeapLimit</a>. Automatic GC based on heap growth is controlled by <b>Heap growth before GC (in MB)</b>.</p></td></tr><tr id="MainThreadHeapLimit"><td><code>MainThreadHeapLimit</code></td><td><code>number</code></td><td><p>Maximum SpiderMonkey heap size for main-thread panel scripts (in bytes). External memory does not count toward this limit. This value reflects <b>Main thread maximum heap size (in MB)</b>.</p></td></tr><tr id="WorkerHeapLimit"><td><code>WorkerHeapLimit</code></td><td><code>number</code></td><td><p><span id="JsMemoryStats-WorkerHeapLimit"></span>Maximum SpiderMonkey heap size for each Worker (in bytes). The limit is shared as one setting value by all Workers, but applies independently to each Worker. This value reflects <b>Worker maximum heap size (in MB, per Worker)</b>.</p></td></tr><tr id="CurrentPanelExternalUsage"><td><code>CurrentPanelExternalUsage</code></td><td><code>number</code></td><td><p>Tracked native/external memory retained by the current panel (in bytes). This is an accounting estimate, not process working set or physical RAM/VRAM residency. Automatic GC based on external-memory growth is controlled by <b>External memory growth before GC (in MB)</b>.</p></td></tr><tr id="Workers"><td><code>Workers</code></td><td><code><a class="type-link" href="globals.html#JsWorkerMemoryStats">JsWorkerMemoryStats</a>[]</code></td><td><p><span id="JsMemoryStats-Workers"></span>Memory snapshots for Workers created by the current panel. Worker snapshots are published by each Worker thread without blocking the panel and may lag while a Worker is executing a long-running task.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -527,11 +624,12 @@
         
         <section class="member-section">
             <h3>Properties</h3>
-            <div class="table-wrap"><table>
+            <div class="table-wrap"><table class="properties-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
                 <tbody><tr id="Root"><td><code>Root</code></td><td><code>string</code></td><td><p>Root directory of the package</p></td></tr><tr id="Assets"><td><code>Assets</code></td><td><code>string</code></td><td><p>Directory inside package folder that contains assets</p></td></tr><tr id="Scripts"><td><code>Scripts</code></td><td><code>string</code></td><td><p>Directory inside package folder that contains scripts</p></td></tr><tr id="Storage"><td><code>Storage</code></td><td><code>string</code></td><td><p>Persistent and unique directory inside foobar2000 profile folder that can be used to store runtime data (e.g. cache)</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -555,11 +653,12 @@
         
         <section class="member-section">
             <h3>Properties</h3>
-            <div class="table-wrap"><table>
+            <div class="table-wrap"><table class="properties-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
                 <tbody><tr id="Version"><td><code>Version</code></td><td><code>string</code></td><td><p>Package version</p></td></tr><tr id="Directories"><td><code>Directories</code></td><td><code><a class="type-link" href="globals.html#JsPackageDirs">JsPackageDirs</a></code></td><td><p>Package directories</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -574,7 +673,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#JsWorkerMemoryStats">JsWorkerMemoryStats</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4649</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4667</div>
         </header>
         
         
@@ -584,11 +683,12 @@
         
         <section class="member-section">
             <h3>Properties</h3>
-            <div class="table-wrap"><table>
+            <div class="table-wrap"><table class="properties-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr id="Name"><td><code>Name</code></td><td><code>string</code></td><td><p>The Worker's immutable constructor name, identical to Worker-global <b>self.name</b>. The value is an empty string if no name was supplied. The same identity is used by unhandled Worker exception diagnostics, where an empty name is displayed as <b>&lt;unnamed&gt;</b>.</p></td></tr><tr id="HeapUsage"><td><code>HeapUsage</code></td><td><code>number</code></td><td><p>SpiderMonkey heap usage of this Worker (in bytes). The per-Worker heap limit is configured by <b>Worker maximum heap size (in MB, per Worker)</b>; see <a href="globals.html#JsMemoryStats-WorkerHeapLimit"><b>JsMemoryStats.WorkerHeapLimit</b></a>. Automatic GC based on heap growth is controlled by <b>Heap growth before GC (in MB)</b>.</p></td></tr><tr id="ExternalUsage"><td><code>ExternalUsage</code></td><td><code>number</code></td><td><p>Tracked native/external memory retained by this Worker (in bytes). This is an accounting estimate, not process working set or physical RAM/VRAM residency. Automatic GC based on external-memory growth is controlled by <b>External memory growth before GC (in MB)</b>.</p></td></tr></tbody>
+                <tbody><tr id="Name"><td><code>Name</code></td><td><code>string</code></td><td><p>The Worker's immutable constructor name, identical to Worker-global <b>self.name</b>. The value is an empty string if no name was supplied. The same identity is used by unhandled Worker exception diagnostics, where an empty name is displayed as <b>&lt;unnamed&gt;</b>.</p></td></tr><tr id="HeapUsage"><td><code>HeapUsage</code></td><td><code>number</code></td><td><p>SpiderMonkey heap usage of this Worker (in bytes). The per-Worker heap limit is configured by <b>Worker maximum heap size (in MB, per Worker)</b>; see <a href="globals.html#WorkerHeapLimit">JsMemoryStats.WorkerHeapLimit</a>. Automatic GC based on heap growth is controlled by <b>Heap growth before GC (in MB)</b>.</p></td></tr><tr id="ExternalUsage"><td><code>ExternalUsage</code></td><td><code>number</code></td><td><p>Tracked native/external memory retained by this Worker (in bytes). This is an accounting estimate, not process working set or physical RAM/VRAM residency. Automatic GC based on external-memory growth is controlled by <b>External memory growth before GC (in MB)</b>.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -612,11 +712,12 @@
         
         <section class="member-section">
             <h3>Properties</h3>
-            <div class="table-wrap"><table>
+            <div class="table-wrap"><table class="properties-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr id="entryType"><td><code>entryType</code></td><td><code>string</code></td><td><p>Entry type. JSplitter currently supports "mark" and "measure".</p></td></tr><tr id="PerformanceEntry.name"><td><code>name</code></td><td><code>string</code></td><td><p>User-defined entry name.</p></td></tr><tr id="startTime"><td><code>startTime</code></td><td><code>number</code></td><td><p>Start timestamp in milliseconds relative to <a href="performance.html#timeOrigin">performance.timeOrigin</a>.</p></td></tr><tr id="duration"><td><code>duration</code></td><td><code>number</code></td><td><p>Entry duration in milliseconds. Always 0 for marks; for measures it is <b>endTime - startTime</b> and may be negative.</p></td></tr><tr id="detail"><td><code>detail</code></td><td><code>*</code></td><td><p>Optional metadata associated with the entry. Defaults to null.<br> <b>JSplitter note:</b> unlike the Web User Timing specification, <b>detail</b> is currently retained as the original JavaScript value and is not structured-cloned.</p></td></tr></tbody>
+                <tbody><tr id="entryType"><td><code>entryType</code></td><td><code>string</code></td><td><p>Entry type. JSplitter currently supports "mark" and "measure".</p></td></tr><tr id="PerformanceEntry.name"><td><code>name</code></td><td><code>string</code></td><td><p>User-defined entry name.</p></td></tr><tr id="startTime"><td><code>startTime</code></td><td><code>number</code></td><td><p>Start timestamp in milliseconds relative to <a href="performance.html#timeOrigin">performance.timeOrigin</a>.</p></td></tr><tr id="duration"><td><code>duration</code></td><td><code>number</code></td><td><p>Entry duration in milliseconds. Always 0 for marks; for measures it is <b>endTime - startTime</b> and may be negative.</p></td></tr><tr id="detail"><td><code>detail</code></td><td><code>*</code></td><td><p>Optional metadata associated with the entry. Defaults to null.<br> <b>JSplitter note:</b> unlike the Web User Timing specification, <a href="globals.html#detail">detail</a> is currently retained as the original JavaScript value and is not structured-cloned.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -640,11 +741,12 @@
         
         <section class="member-section">
             <h3>Properties</h3>
-            <div class="table-wrap"><table>
+            <div class="table-wrap"><table class="properties-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
                 <tbody><tr id="PerformanceMarkOptions.detail"><td><code>detail = null</code><span class="mini-flag">optional</span></td><td><code>*</code></td><td><p>Arbitrary metadata associated with the mark.<br> <b>JSplitter note:</b> the value is not structured-cloned.</p></td></tr><tr id="PerformanceMarkOptions.startTime"><td><code>startTime</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Finite non-negative timestamp in milliseconds relative to <a href="performance.html#timeOrigin">performance.timeOrigin</a>. Defaults to <a href="performance.html#now">performance.now</a>.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -668,11 +770,12 @@
         
         <section class="member-section">
             <h3>Properties</h3>
-            <div class="table-wrap"><table>
+            <div class="table-wrap"><table class="properties-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr id="PerformanceMeasureOptions.detail"><td><code>detail = null</code><span class="mini-flag">optional</span></td><td><code>*</code></td><td><p>Arbitrary metadata associated with the measure.<br> <b>JSplitter note:</b> the value is not structured-cloned.</p></td></tr><tr id="start"><td><code>start</code><span class="mini-flag">optional</span></td><td><code>(string|number)</code></td><td><p>Start mark name or finite non-negative timestamp in milliseconds.</p></td></tr><tr id="PerformanceMeasureOptions.duration"><td><code>duration</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Finite non-negative duration in milliseconds. May be used together with <b>start</b> or <b>end</b>, but not together with both.</p></td></tr><tr id="end"><td><code>end</code><span class="mini-flag">optional</span></td><td><code>(string|number)</code></td><td><p>End mark name or finite non-negative timestamp in milliseconds.</p></td></tr></tbody>
+                <tbody><tr id="PerformanceMeasureOptions.detail"><td><code>detail = null</code><span class="mini-flag">optional</span></td><td><code>*</code></td><td><p>Arbitrary metadata associated with the measure.<br> <b>JSplitter note:</b> the value is not structured-cloned.</p></td></tr><tr id="start"><td><code>start</code><span class="mini-flag">optional</span></td><td><code>(string|number)</code></td><td><p>Start mark name or finite non-negative timestamp in milliseconds.</p></td></tr><tr id="PerformanceMeasureOptions.duration"><td><code>duration</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Finite non-negative duration in milliseconds. May be used together with <a href="globals.html#start">start</a> or <a href="globals.html#end">end</a>, but not together with both.</p></td></tr><tr id="end"><td><code>end</code><span class="mini-flag">optional</span></td><td><code>(string|number)</code></td><td><p>End mark name or finite non-negative timestamp in milliseconds.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -711,6 +814,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="PerformanceObserverOptions" data-kind="typedef" data-name="performanceobserveroptions">
@@ -728,11 +832,12 @@
         
         <section class="member-section">
             <h3>Properties</h3>
-            <div class="table-wrap"><table>
+            <div class="table-wrap"><table class="properties-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr id="entryTypes"><td><code>entryTypes</code><span class="mini-flag">optional</span></td><td><code>Array&lt;string&gt;</code></td><td><p>Entry types to observe. Unsupported types are ignored. Use either <b>entryTypes</b> or <b>type</b> for an observer, not both.</p></td></tr><tr id="type"><td><code>type</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>A single entry type to observe. Unsupported types are ignored. Use either <b>type</b> or <b>entryTypes</b> for an observer, not both.</p></td></tr></tbody>
+                <tbody><tr id="entryTypes"><td><code>entryTypes</code><span class="mini-flag">optional</span></td><td><code>Array&lt;string&gt;</code></td><td><p>Entry types to observe. Unsupported types are ignored. Use either <a href="globals.html#entryTypes">entryTypes</a> or <a href="globals.html#type">type</a> for an observer, not both.</p></td></tr><tr id="type"><td><code>type</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td><p>A single entry type to observe. Unsupported types are ignored. Use either <a href="globals.html#type">type</a> or <a href="globals.html#entryTypes">entryTypes</a> for an observer, not both.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -747,21 +852,22 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#ScriptInfo">ScriptInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4748</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4774</div>
         </header>
         
         
-        <div class="description"><p>Return value of <a href="window.html#ScriptInfo">window.ScriptInfo</a>.<br> <b>PackageId</b> is only present when the panel script is an SMP package.</p>
-<p><b>Path</b> is always present. It contains the full native filesystem path of the panel's main script: the selected file for a File script, the sample file in the component folder for a Sample script, or the actual entry file for a package (main.js for an SMP package). For a script stored in panel memory, it is an empty string. This is a filesystem path, not a file URL. The value always identifies the main script, including when read from an included file or an imported module. Relative filesystem paths used by supported methods are resolved from the calling file as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>; they do not necessarily use the directory of <b>Path</b>.</p></div>
+        <div class="description"><p>Return value of <a href="window.html#ScriptInfo">window.ScriptInfo</a>.<br> <a href="globals.html#PackageId">PackageId</a> is only present when the panel script is an SMP package.</p>
+<p><a href="globals.html#Path">Path</a> is always present. It contains the full native filesystem path of the panel's main script: the selected file for a File script, the sample file in the component folder for a Sample script, or the actual entry file for a package (main.js for an SMP package). For a script stored in panel memory, it is an empty string. This is a filesystem path, not a file URL. The value always identifies the main script, including when read from an included file or an imported module. Relative filesystem paths used by supported methods are resolved from the calling file as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>; they do not necessarily use the directory of <a href="globals.html#Path">Path</a>.</p></div>
         
         
         <section class="member-section">
             <h3>Properties</h3>
-            <div class="table-wrap"><table>
+            <div class="table-wrap"><table class="properties-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
                 <tbody><tr id="ScriptInfo.Name"><td><code>Name</code></td><td><code>string</code></td><td></td></tr><tr id="Path"><td><code>Path</code></td><td><code>string</code></td><td><p>Full native filesystem path of the main script, or an empty string for an in-memory script.</p></td></tr><tr id="Author"><td><code>Author</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td></td></tr><tr id="ScriptInfo.Version"><td><code>Version</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td></td></tr><tr id="PackageId"><td><code>PackageId</code><span class="mini-flag">optional</span></td><td><code>string</code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -800,6 +906,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="setTimeout" data-kind="function" data-name="settimeout">
@@ -832,10 +939,40 @@
         
         
         
+        
         <section class="member-section">
             <h3>Example source</h3>
             <div class="source-links"><a class="source-link" href="source-samples-basic-Timer.js.html"><span>samples/basic/Timer.js</span><small>open source</small></a></div>
         </section>
+    </article>
+
+    <article class="api-item" id="ShaderCacheStats" data-kind="typedef" data-name="shadercachestats">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
+                <h2><a class="anchor" href="#ShaderCacheStats">ShaderCacheStats</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:51</div>
+        </header>
+        
+        
+        <div class="description"><p>Snapshot of the process-wide native HLSL-to-DXBC LRU cache returned by <a href="vis.html#ShaderCacheStats">vis.ShaderCacheStats</a>. Counts cover automatic HLSL compilation performed by <a href="vis.html#CreateAsync">vis.CreateAsync</a>; <a href="d2d.html#Compile">d2d.Compile</a>, <a href="d2d.html#CompileAsync">d2d.CompileAsync</a> and supplied DXBC are excluded. <a href="globals.html#Hits">Hits</a>, <a href="globals.html#Misses">Misses</a> and <a href="globals.html#Evictions">Evictions</a> accumulate during the process lifetime.</p></div>
+        
+        
+        <section class="member-section">
+            <h3>Properties</h3>
+            <div class="table-wrap"><table class="properties-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr id="Entries"><td><code>Entries</code></td><td><code>number</code></td><td><p>Number of cached compiled HLSL programs.</p></td></tr><tr id="Bytes"><td><code>Bytes</code></td><td><code>number</code></td><td><p>Approximate CPU bytes retained for source/profile strings and DXBC buffers; excludes GPU memory and container overhead.</p></td></tr><tr id="Hits"><td><code>Hits</code></td><td><code>number</code></td><td><p>Requests served by a cached HLSL compilation result.</p></td></tr><tr id="Misses"><td><code>Misses</code></td><td><code>number</code></td><td><p>Cache lookups that did not find the requested HLSL program; concurrent requests can both miss.</p></td></tr><tr id="Evictions"><td><code>Evictions</code></td><td><code>number</code></td><td><p>Entries removed when limits are exceeded or reduced.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
     </article>
 
     <article class="api-item" id="SystemInfo" data-kind="typedef" data-name="systeminfo">
@@ -853,11 +990,12 @@
         
         <section class="member-section">
             <h3>Properties</h3>
-            <div class="table-wrap"><table>
+            <div class="table-wrap"><table class="properties-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
                 <tbody><tr id="OS"><td><code>OS</code></td><td><code>string</code></td><td><p>Human-readable Windows product name including the edition when available, for example <b>Windows 11 Home</b> or <b>Windows 11 Pro</b>.</p></td></tr><tr id="Build"><td><code>Build</code></td><td><code>number</code></td><td><p>Windows NT build number.</p></td></tr><tr id="IsOS64Bit"><td><code>IsOS64Bit</code></td><td><code>boolean</code></td><td><p>True when the operating system architecture is 64-bit. This describes Windows itself, not the foobar2000 process architecture.</p></td></tr><tr id="RAM"><td><code>RAM</code></td><td><code><a class="type-link" href="globals.html#SystemMemoryInfo">SystemMemoryInfo</a></code></td><td><p>Physical-memory and foobar2000 private-working-set information.</p></td></tr><tr id="VRAM"><td><code>VRAM</code></td><td><code><a class="type-link" href="globals.html#SystemVideoMemoryInfo">SystemVideoMemoryInfo</a>|null</code></td><td><p>Dedicated/local video-memory information for the selected graphics adapter, or null when the required video-memory query interface is unavailable.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -881,11 +1019,12 @@
         
         <section class="member-section">
             <h3>Properties</h3>
-            <div class="table-wrap"><table>
+            <div class="table-wrap"><table class="properties-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
                 <tbody><tr id="Total"><td><code>Total</code></td><td><code>number</code></td><td><p>Total physical memory visible to Windows, in bytes. This can be lower than the installed RAM amount because hardware-reserved memory is not included.</p></td></tr><tr id="Available"><td><code>Available</code></td><td><code>number</code></td><td><p>Physical memory currently available to the system, in bytes. This is Windows' available-memory value and includes reclaimable standby/cache memory; it is more useful for capacity decisions than strictly free pages.</p></td></tr><tr id="Process"><td><code>Process</code></td><td><code>number</code></td><td><p>Private working set of the foobar2000 process, in bytes. This corresponds closely to the <b>Memory (active private working set)</b> value shown for foobar2000 in Windows Task Manager.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -910,11 +1049,12 @@
         
         <section class="member-section">
             <h3>Properties</h3>
-            <div class="table-wrap"><table>
+            <div class="table-wrap"><table class="properties-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
                 <tbody><tr id="Adapter"><td><code>Adapter</code></td><td><code>string</code></td><td><p>Display name of the selected graphics adapter.</p></td></tr><tr id="SystemVideoMemoryInfo.Total"><td><code>Total</code></td><td><code>number|null</code></td><td><p>Dedicated video-memory size of the selected adapter, in bytes. On 32-bit builds JSplitter avoids returning a truncated 32-bit value; if a safe 64-bit total cannot be obtained, this field is null.</p></td></tr><tr id="ProcessBudget"><td><code>ProcessBudget</code></td><td><code>number</code></td><td><p>Current local video-memory budget assigned to the foobar2000 process by Windows, in bytes. The budget is dynamic and is not a fixed hardware limit.</p></td></tr><tr id="SystemVideoMemoryInfo.Process"><td><code>Process</code></td><td><code>number</code></td><td><p>Current local video-memory usage attributed to the foobar2000 process, in bytes.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -942,6 +1082,87 @@
         
         
         
+        
+    </article>
+
+    <article class="api-item" id="VisualizationImagePass" data-kind="typedef" data-name="visualizationimagepass">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
+                <h2><a class="anchor" href="#VisualizationImagePass">VisualizationImagePass</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:77</div>
+        </header>
+        
+        
+        <div class="description"><p>Optional object form for a <b>feedback</b> or <b>post</b> image pass. A pass may also be supplied directly as <a href="globals.html#VisualizationShaderCode">VisualizationShaderCode</a> when no image files are needed. The main <a href="globals.html#VisualizationShaderRenderer.shader">shader</a> stage does not use this object form.</p></div>
+        
+        
+        <section class="member-section">
+            <h3>Properties</h3>
+            <div class="table-wrap"><table class="properties-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr id="shader"><td><code>shader</code></td><td><code><a class="type-link" href="globals.html#VisualizationShaderCode">VisualizationShaderCode</a></code></td><td><p>Program that processes the preceding RGBA image at <b>t0</b> with sampler <b>s0</b>.</p></td></tr><tr id="textures"><td><code>textures</code><span class="mini-flag">optional</span></td><td><code>Array&lt;string&gt;</code></td><td><p>One to three non-empty image-file paths, bound in order at <b>t1–t3</b> with samplers <b>s1–s3</b>. Omit this property, or pass null, when no files are needed; an empty array is not accepted. Paths use the usual script image-path resolution. Files are loaded during asynchronous creation and retained as decoded image data. After a graphics-device reset, GPU textures are recreated from that data; files are not read again. To load changed file contents, create a new visualization. Each pass sees only its own images.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="VisualizationShaderCode" data-kind="typedef" data-name="visualizationshadercode">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
+                <h2><a class="anchor" href="#VisualizationShaderCode">VisualizationShaderCode</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:67</div>
+        </header>
+        
+        
+        <div class="description"><p>Shader program accepted by <a href="vis.html#CreateAsync">vis.CreateAsync</a> in any renderer stage. A string must contain non-empty HLSL with entry point <b>main</b>. Bytecode must be valid DXBC for <b>ps_4_0</b>, <b>ps_4_1</b> or <b>ps_5_0</b>, in a non-empty, non-shared buffer that has not been detached. The GPU must support the chosen shader profile. Every program must follow the source or image-pass input layout described in <a href="module-Visualizations.html#Visualizations">Visualization API</a>.</p></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="VisualizationShaderRenderer" data-kind="typedef" data-name="visualizationshaderrenderer">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
+                <h2><a class="anchor" href="#VisualizationShaderRenderer">VisualizationShaderRenderer</a></h2>
+            </div>
+            <div class="source-location">js/vis.js:90</div>
+        </header>
+        
+        
+        <div class="description"><p>Renderer configuration for <a href="vis.html#CreateAsync">vis.CreateAsync</a>. Source analysis settings belong in the second argument. Shader output uses premultiplied RGBA.</p></div>
+        
+        
+        <section class="member-section">
+            <h3>Properties</h3>
+            <div class="table-wrap"><table class="properties-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr id="VisualizationShaderRenderer.shader"><td><code>shader</code></td><td><code><a class="type-link" href="globals.html#VisualizationShaderCode">VisualizationShaderCode</a></code></td><td><p>Required program that draws from the selected native audio source.</p></td></tr><tr id="feedback"><td><code>feedback</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="globals.html#VisualizationShaderCode">VisualizationShaderCode</a>|<a class="type-link" href="globals.html#VisualizationImagePass">VisualizationImagePass</a></code></td><td><p>One image pass transforming previous history before the current source is composited over it. Omit or pass null to disable feedback.</p></td></tr><tr id="post"><td><code>post</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="globals.html#VisualizationShaderCode">VisualizationShaderCode</a>|<a class="type-link" href="globals.html#VisualizationImagePass">VisualizationImagePass</a>|Array&lt;<a class="type-link" href="globals.html#VisualizationShaderCode">VisualizationShaderCode</a>|<a class="type-link" href="globals.html#VisualizationImagePass">VisualizationImagePass</a>&gt;</code></td><td><p>One image pass or an array of 1–4 passes, executed in order after the current image is complete. Each reads the preceding image. Omit or pass null to disable post-processing.</p></td></tr><tr id="feedbackIntervalMs"><td><code>feedbackIntervalMs = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Feedback-history interval: 0 for every <a href="Visualization.html#Draw">Draw</a>, or a finite number from 1 to 1000 milliseconds. A positive value requires <a href="globals.html#feedback">feedback</a>. Change it later through <a href="Visualization.html#FeedbackIntervalMs">FeedbackIntervalMs</a>. This setting does not create a timer; missed intervals are skipped and post passes still run on each draw.</p></td></tr><tr id="feedbackTransparent"><td><code>feedbackTransparent = false</code><span class="mini-flag">optional</span></td><td><code>boolean</code></td><td><p>Start and composite history over transparent black instead of opaque black, retaining shader alpha. A true value requires <a href="globals.html#feedback">feedback</a>.</p></td></tr><tr id="stopOnPause"><td><code>stopOnPause = false</code><span class="mini-flag">optional</span></td><td><code>boolean</code></td><td><p>Freeze the last completed image, including post effects, while playback is paused. A frozen image is scaled on resize without reprocessing. When false, shaders continue to run using retained audio data. This setting does not stop native audio analysis or schedule panel repaints.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
     </article>
 
     <article class="api-item" id="WorkerErrorCallback" data-kind="callback" data-name="workererrorcallback">
@@ -950,7 +1171,7 @@
                 <div class="eyebrow"><span class="kind kind-callback">callback</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#WorkerErrorCallback">WorkerErrorCallback</a></h2>
             </div>
-            <div class="source-location">js/worker.js:1127</div>
+            <div class="source-location">js/worker.js:1124</div>
         </header>
         <pre class="signature"><code>WorkerErrorCallback(event)</code></pre>
         
@@ -974,6 +1195,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="WorkerMessageCallback" data-kind="callback" data-name="workermessagecallback">
@@ -982,7 +1204,7 @@
                 <div class="eyebrow"><span class="kind kind-callback">callback</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#WorkerMessageCallback">WorkerMessageCallback</a></h2>
             </div>
-            <div class="source-location">js/worker.js:1118</div>
+            <div class="source-location">js/worker.js:1115</div>
         </header>
         <pre class="signature"><code>WorkerMessageCallback(event)</code></pre>
         
@@ -1006,6 +1228,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="WorkerPromiseRejectionCallback" data-kind="callback" data-name="workerpromiserejectioncallback">
@@ -1014,7 +1237,7 @@
                 <div class="eyebrow"><span class="kind kind-callback">callback</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#WorkerPromiseRejectionCallback">WorkerPromiseRejectionCallback</a></h2>
             </div>
-            <div class="source-location">js/worker.js:1136</div>
+            <div class="source-location">js/worker.js:1133</div>
         </header>
         <pre class="signature"><code>WorkerPromiseRejectionCallback(event)</code></pre>
         
@@ -1034,6 +1257,7 @@
             <h3>Returns</h3>
             <div><code>void</code></div>
         </section>
+        
         
         
         

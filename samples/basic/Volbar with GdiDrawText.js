@@ -1,4 +1,4 @@
-window.DefineScript('Volbar with GdiDrawText', {author: 'T.P Wang'});
+﻿window.DefineScript('Volbar with GdiDrawText', {author: 'T.P Wang'});
 include('docs/Flags.js');
 include('docs/Helpers.js');
 

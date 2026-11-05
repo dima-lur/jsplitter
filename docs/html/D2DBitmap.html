@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -251,6 +257,7 @@
         
         
         
+        
     </article>
         
     <article class="api-item" id="Height" data-kind="property" data-name="height">
@@ -272,6 +279,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="Width" data-kind="property" data-name="width">
@@ -285,6 +293,7 @@
         <pre class="signature"><code>Width: number</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -325,6 +334,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="ApplyAlphaIndirect" data-kind="method" data-name="applyalphaindirect">
@@ -337,7 +347,7 @@
         </header>
         <pre class="signature"><code>ApplyAlphaIndirect(alpha)</code></pre>
         
-        <div class="description"><p>Apllies alpha for entire image. Unlike <a href="D2DBitmap.html#ApplyAlpha">D2DBitmap#ApplyAlpha</a> changes the current object</p></div>
+        <div class="description"><p>Applies alpha to the entire image. Unlike <a href="D2DBitmap.html#ApplyAlpha">ApplyAlpha</a>, it modifies the current object.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -346,6 +356,7 @@
                 <tbody><tr><td><code>alpha</code></td><td><code>number</code></td><td><p>Valid values 0-255.</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -374,6 +385,7 @@
                 <tbody><tr><td><code>img</code></td><td><code><a class="type-link" href="D2DBitmap.html#D2DBitmap">D2DBitmap</a></code></td><td></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -417,6 +429,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="Clone" data-kind="method" data-name="clone">
@@ -429,7 +442,7 @@
         </header>
         <pre class="signature"><code>Clone(x, y, w, h)</code></pre>
         
-        <div class="description"><p>Create partial copy of image represented by D2DBitmap object</p></div>
+        <div class="description"><p>Create partial copy of image represented by <a href="D2DBitmap.html#D2DBitmap">D2DBitmap</a> object</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -449,6 +462,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="CreateRawBitmap" data-kind="method" data-name="createrawbitmap">
@@ -461,7 +475,7 @@
         </header>
         <pre class="signature"><code>CreateRawBitmap()</code></pre>
         
-        <div class="description"><p>Create clone bitmap from D2DBitmap object</p></div>
+        <div class="description"><p>Create clone bitmap from <a href="D2DBitmap.html#D2DBitmap">D2DBitmap</a> object</p></div>
         
         
         
@@ -470,6 +484,7 @@
             <h3>Returns</h3>
             <div><code><a class="type-link" href="D2DBitmap.html#D2DBitmap">D2DBitmap</a></code></div>
         </section>
+        
         
         
         
@@ -502,6 +517,7 @@
             <h3>Returns</h3>
             <div><code>Array&lt;number&gt;</code></div>
         </section>
+        
         
         
         
@@ -547,6 +563,7 @@ console.log(colours[<span class="tok-number">0</span>].freq); <span class="tok-c
 console.log(toRGB(colours[<span class="tok-number">0</span>].col)); <span class="tok-comment">// [192, 0, 0]</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="GetColourSchemeJSONV2" data-kind="method" data-name="getcolourschemejsonv2">
@@ -588,6 +605,7 @@ console.log(colours[<span class="tok-number">0</span>].freq); <span class="tok-c
 console.log(toRGB(colours[<span class="tok-number">0</span>].col)); <span class="tok-comment">// [192, 0, 0]</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="GetGraphics" data-kind="method" data-name="getgraphics">
@@ -600,7 +618,7 @@ console.log(toRGB(colours[<span class="tok-number">0</span>].col)); <span class=
         </header>
         <pre class="signature"><code>GetGraphics()</code></pre>
         
-        <div class="description"><p><b>IMPORTANT</b>: You MUST call <a href="D2DBitmap.html#ReleaseGraphics">ReleaseGraphics</a> after work on D2DGraphics is done!<br> It is illegal to call any methods of D2DBitmap object while working with the obtained D2DGraphics object until <a href="D2DBitmap.html#ReleaseGraphics">ReleaseGraphics</a> is called.</p></div>
+        <div class="description"><p><b>IMPORTANT</b>: You MUST call <a href="D2DBitmap.html#ReleaseGraphics">ReleaseGraphics</a> after work on <a href="D2DGraphics.html#D2DGraphics">D2DGraphics</a> is done!<br> It is illegal to call any methods of <a href="D2DBitmap.html#D2DBitmap">D2DBitmap</a> object while working with the obtained <a href="D2DGraphics.html#D2DGraphics">D2DGraphics</a> object until <a href="D2DBitmap.html#ReleaseGraphics">ReleaseGraphics</a> is called.</p></div>
         
         
         
@@ -609,6 +627,7 @@ console.log(toRGB(colours[<span class="tok-number">0</span>].col)); <span class=
             <h3>Returns</h3>
             <div><code><a class="type-link" href="D2DGraphics.html#D2DGraphics">D2DGraphics</a></code></div>
         </section>
+        
         
         
         
@@ -645,6 +664,7 @@ console.log(toRGB(colours[<span class="tok-number">0</span>].col)); <span class=
         
         
         
+        
         <section class="member-section">
             <h3>Example source</h3>
             <div class="source-links"><a class="source-link" href="source-samples-basic-CreateImageFromPixelData.js.html"><span>samples/basic/CreateImageFromPixelData.js</span><small>open source</small></a></div>
@@ -661,7 +681,7 @@ console.log(toRGB(colours[<span class="tok-number">0</span>].col)); <span class=
         </header>
         <pre class="signature"><code>GetThemeColourSchemeJSON(paletteSize)</code></pre>
         
-        <div class="description"><p>Builds an image-derived UI colour scheme for styling interface surfaces, text and interaction states from the bitmap.<br> <br> The image is analysed in <b>OKLab</b> using the same weighted <b>K-means++</b> palette extraction as <a href="D2DBitmap.html#GetColourSchemeJSONV2">GetColourSchemeJSONV2</a></b>.<br> The palette stage uses <b>paletteSize</b> centroids after which colours are assigned to five semantic UI roles:<br> <b>Background</b>, <b>Text</b>, <b>Playing background</b>, <b>Focus frame</b> and <b>Selection background</b>.<br> <br> The returned colours are unsigned 32-bit <b>ARGB</b> values.<br> <b>Background</b> and <b>Text</b> are opaque.<br> State colours may contain alpha and are intended to be composited over <b>Background</b>.<br> <b>playingBackgroundColor</b> contains the Playing accent RGB together with the recommended alpha for a background highlight.<br> The same RGB channels can also be used at full opacity for a solid Playing indicator.<br> <br> The algorithm favours a representative image colour family for <b>Background</b>, prefers light body text unless the selected surface requires dark text, and uses independent image colour families for interaction/state accents when suitable candidates are available.<br> <br> Returns an empty object <b>{}</b> if a colour scheme cannot be generated.<br></p></div>
+        <div class="description"><p>Builds an image-derived UI colour scheme for styling interface surfaces, text and interaction states from the bitmap.<br> <br> The image is analysed in <b>OKLab</b> using the same weighted <b>K-means++</b> palette extraction as <a href="D2DBitmap.html#GetColourSchemeJSONV2">GetColourSchemeJSONV2</a>.<br> The palette stage uses <b>paletteSize</b> centroids after which colours are assigned to five semantic UI roles:<br> <b>Background</b>, <b>Text</b>, <b>Playing background</b>, <b>Focus frame</b> and <b>Selection background</b>.<br> <br> The returned colours are unsigned 32-bit <b>ARGB</b> values.<br> <b>Background</b> and <b>Text</b> are opaque.<br> State colours may contain alpha and are intended to be composited over <b>Background</b>.<br> <b>playingBackgroundColor</b> contains the Playing accent RGB together with the recommended alpha for a background highlight.<br> The same RGB channels can also be used at full opacity for a solid Playing indicator.<br> <br> The algorithm favours a representative image colour family for <b>Background</b>, prefers light body text unless the selected surface requires dark text, and uses independent image colour families for interaction/state accents when suitable candidates are available.<br> <br> Returns an empty object <b>{}</b> if a colour scheme cannot be generated.<br></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -697,6 +717,7 @@ console.log(toRGB(colours[<span class="tok-number">0</span>].col)); <span class=
 }</code></pre>
         </section>
         
+        
         <section class="member-section">
             <h3>Example source</h3>
             <div class="source-links"><a class="source-link" href="source-samples-complete-theme-colour-scheme.js.html"><span>samples/complete/theme colour scheme.js</span><small>open source</small></a></div>
@@ -722,6 +743,7 @@ console.log(toRGB(colours[<span class="tok-number">0</span>].col)); <span class=
             <h3>Returns</h3>
             <div><code><a class="type-link" href="D2DBitmap.html#D2DBitmap">D2DBitmap</a></code></div>
         </section>
+        
         
         
         
@@ -758,6 +780,7 @@ console.log(toRGB(colours[<span class="tok-number">0</span>].col)); <span class=
         
         
         
+        
     </article>
 
     <article class="api-item" id="Resize" data-kind="method" data-name="resize">
@@ -776,7 +799,7 @@ console.log(toRGB(colours[<span class="tok-number">0</span>].col)); <span class=
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>w</code></td><td><code>number</code></td><td></td></tr><tr><td><code>h</code></td><td><code>number</code></td><td></td></tr><tr><td><code>mode = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>See <a href="module-Flags.html#AlbumArtId">InterpolationMode</a></p></td></tr></tbody>
+                <tbody><tr><td><code>w</code></td><td><code>number</code></td><td></td></tr><tr><td><code>h</code></td><td><code>number</code></td><td></td></tr><tr><td><code>mode = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>See <a href="module-Flags.html#InterpolationMode">InterpolationMode</a></p></td></tr></tbody>
             </table></div>
         </section>
         
@@ -786,6 +809,7 @@ console.log(toRGB(colours[<span class="tok-number">0</span>].col)); <span class=
             <h3>Returns</h3>
             <div><code><a class="type-link" href="D2DBitmap.html#D2DBitmap">D2DBitmap</a></code></div>
         </section>
+        
         
         
         
@@ -802,15 +826,16 @@ console.log(toRGB(colours[<span class="tok-number">0</span>].col)); <span class=
         </header>
         <pre class="signature"><code>ResizeIndirect(w, h, mode)</code></pre>
         
-        <div class="description"><p>Resizes image. Unlike <a href="D2DBitmap.html#Resize">D2DBitmap#Resize</a> changes the current object</p></div>
+        <div class="description"><p>Resizes image. Unlike <a href="D2DBitmap.html#Resize">Resize</a> changes the current object</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>w</code></td><td><code>number</code></td><td></td></tr><tr><td><code>h</code></td><td><code>number</code></td><td></td></tr><tr><td><code>mode = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>See <a href="module-Flags.html#AlbumArtId">InterpolationMode</a></p></td></tr><tr><td><code>sharpness = 0.0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td></td></tr><tr><td><code>border_hard = false</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td></td></tr><tr><td><code>cx = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Scale center point x</p></td></tr><tr><td><code>cy = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Scale center point y</p></td></tr></tbody>
+                <tbody><tr><td><code>w</code></td><td><code>number</code></td><td></td></tr><tr><td><code>h</code></td><td><code>number</code></td><td></td></tr><tr><td><code>mode = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>See <a href="module-Flags.html#InterpolationMode">InterpolationMode</a></p></td></tr><tr><td><code>sharpness = 0.0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td></td></tr><tr><td><code>border_hard = false</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td></td></tr><tr><td><code>cx = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Scale center point x</p></td></tr><tr><td><code>cy = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Scale center point y</p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -836,9 +861,10 @@ console.log(toRGB(colours[<span class="tok-number">0</span>].col)); <span class=
             <h3>Parameters</h3>
             <div class="table-wrap"><table class="params-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr><td><code>mode</code></td><td><code>number</code></td><td><p>See <a href="module-Flags.html#AlbumArtId">RotateFlipType</a></p></td></tr></tbody>
+                <tbody><tr><td><code>mode</code></td><td><code>number</code></td><td><p>See <a href="module-Flags.html#RotateFlipType">RotateFlipType</a></p></td></tr></tbody>
             </table></div>
         </section>
+        
         
         
         
@@ -886,6 +912,7 @@ console.log(toRGB(colours[<span class="tok-number">0</span>].col)); <span class=
 }</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="StackBlur" data-kind="method" data-name="stackblur">
@@ -915,10 +942,9 @@ console.log(toRGB(colours[<span class="tok-number">0</span>].col)); <span class=
         
         <section class="member-section">
             <h3>Examples</h3>
-            <pre class="example"><code>&lt;caption&gt;Blur image&lt;caption&gt;
-<span class="tok-comment">// `samples/basic/StackBlur (image).js`</span></code></pre><pre class="example"><code>&lt;caption&gt;Blur text&lt;caption&gt;
-<span class="tok-comment">// `samples/basic/StackBlur (text).js`</span></code></pre>
+            <div class="example-caption">Blur image</div><pre class="example"><code><span class="tok-comment">// `samples/basic/StackBlur (image).js`</span></code></pre><div class="example-caption">Blur text</div><pre class="example"><code><span class="tok-comment">// `samples/basic/StackBlur (text).js`</span></code></pre>
         </section>
+        
         
     </article></main>
     <script src="assets/search-data.js"></script><script src="assets/app.js"></script>

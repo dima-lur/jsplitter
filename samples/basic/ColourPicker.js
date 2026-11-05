@@ -1,4 +1,4 @@
-window.DefineScript('ColourPicker', { author: 'marc2003' });
+﻿window.DefineScript('ColourPicker', { author: 'marc2003' });
 include('docs/Flags.js');
 include('docs/Helpers.js');
 

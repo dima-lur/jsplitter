@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -231,11 +237,12 @@
                 <div class="eyebrow"><span class="kind kind-class">class</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#HtmlNode">HtmlNode</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7787</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:7827</div>
         </header>
         
         
-        <div class="description"><p>Lightweight DOM-like HTML node.<br> <br> HtmlNode can represent an element node, text node, comment node, or another parsed DOM node type. Some operations, such as attributes and class checks, only make sense for element nodes.<br> <b>NOTE</b>: HtmlNode objects keep the underlying native document alive while they exist.</p></div>
+        <div class="description"><p>Lightweight DOM-like HTML node.<br> <br> <a href="HtmlNode.html#HtmlNode">HtmlNode</a> can represent an element node, text node, comment node, or another parsed DOM node type. Some operations, such as attributes and class checks, only make sense for element nodes.<br> <b>NOTE</b>: <a href="HtmlNode.html#HtmlNode">HtmlNode</a> objects keep the underlying native document alive while they exist.</p></div>
+        
         
         
         
@@ -252,7 +259,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#childNodes">childNodes</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7925</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:7965</div>
         </header>
         <pre class="signature"><code>childNodes: Array&lt;<a class="type-link" href="HtmlNode.html#HtmlNode">HtmlNode</a>&gt;</code></pre>
         
@@ -271,6 +278,7 @@
 console.log(p.childNodes.length); <span class="tok-comment">// 2</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="children" data-kind="property" data-name="children">
@@ -279,7 +287,7 @@ console.log(p.childNodes.length); <span class="tok-comment">// 2</span></code></
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#children">children</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7939</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:7979</div>
         </header>
         <pre class="signature"><code>children: Array&lt;<a class="type-link" href="HtmlNode.html#HtmlNode">HtmlNode</a>&gt;</code></pre>
         
@@ -299,6 +307,7 @@ console.log(p.children.length); <span class="tok-comment">// 1</span>
 console.log(p.children[<span class="tok-number">0</span>].tagName); <span class="tok-comment">// &quot;b&quot;</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="className" data-kind="property" data-name="classname">
@@ -307,7 +316,7 @@ console.log(p.children[<span class="tok-number">0</span>].tagName); <span class=
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#className">className</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7830</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:7870</div>
         </header>
         <pre class="signature"><code>className: string</code></pre>
         
@@ -328,6 +337,7 @@ console.log(p.children[<span class="tok-number">0</span>].tagName); <span class=
 }</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="firstChild" data-kind="property" data-name="firstchild">
@@ -336,7 +346,7 @@ console.log(p.children[<span class="tok-number">0</span>].tagName); <span class=
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#firstChild">firstChild</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7902</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:7942</div>
         </header>
         <pre class="signature"><code>firstChild: ?<a class="type-link" href="HtmlNode.html#HtmlNode">HtmlNode</a></code></pre>
         
@@ -360,6 +370,7 @@ console.log(JSON.stringify(li.firstChild.textContent)); <span class="tok-comment
 console.log(a.getAttribute(<span class="tok-string">&quot;href&quot;</span>)); <span class="tok-comment">// &quot;https://example.com&quot;</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="innerHTML" data-kind="property" data-name="innerhtml">
@@ -368,7 +379,7 @@ console.log(a.getAttribute(<span class="tok-string">&quot;href&quot;</span>)); <
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#innerHTML">innerHTML</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7874</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:7914</div>
         </header>
         <pre class="signature"><code>innerHTML: string</code></pre>
         
@@ -387,6 +398,7 @@ console.log(a.getAttribute(<span class="tok-string">&quot;href&quot;</span>)); <
 console.log(p.innerHTML); <span class="tok-comment">// &quot;Hello &lt;b&gt;world&lt;/b&gt;&quot;</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="innerText" data-kind="property" data-name="innertext">
@@ -395,11 +407,12 @@ console.log(p.innerHTML); <span class="tok-comment">// &quot;Hello &lt;b&gt;worl
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#innerText">innerText</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7864</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:7904</div>
         </header>
         <pre class="signature"><code>innerText: string</code></pre>
         
-        <div class="description"><p>Alias of <a href="HtmlNode.html#textContent">textContent</a>.<br> Since this parser has no browser layout engine, <b>innerText</b> does not emulate CSS visibility, rendered line wrapping, or layout-dependent text extraction.</p></div>
+        <div class="description"><p>Alias of <a href="HtmlNode.html#textContent">textContent</a>.<br> Since this parser has no browser layout engine, <a href="HtmlNode.html#innerText">innerText</a> does not emulate CSS visibility, rendered line wrapping, or layout-dependent text extraction.</p></div>
+        
         
         
         
@@ -416,7 +429,7 @@ console.log(p.innerHTML); <span class="tok-comment">// &quot;Hello &lt;b&gt;worl
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#isElement">isElement</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7797</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:7837</div>
         </header>
         <pre class="signature"><code>isElement: boolean</code></pre>
         
@@ -438,6 +451,7 @@ console.log(p.innerHTML); <span class="tok-comment">// &quot;Hello &lt;b&gt;worl
 }</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="outerHTML" data-kind="property" data-name="outerhtml">
@@ -446,7 +460,7 @@ console.log(p.innerHTML); <span class="tok-comment">// &quot;Hello &lt;b&gt;worl
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#outerHTML">outerHTML</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7888</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:7928</div>
         </header>
         <pre class="signature"><code>outerHTML: string</code></pre>
         
@@ -465,6 +479,7 @@ console.log(p.innerHTML); <span class="tok-comment">// &quot;Hello &lt;b&gt;worl
 console.log(p.outerHTML); <span class="tok-comment">// &quot;&lt;p&gt;Hello &lt;b&gt;world&lt;/b&gt;&lt;/p&gt;&quot;</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="tagName" data-kind="property" data-name="tagname">
@@ -473,7 +488,7 @@ console.log(p.outerHTML); <span class="tok-comment">// &quot;&lt;p&gt;Hello &lt;
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#tagName">tagName</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7816</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:7856</div>
         </header>
         <pre class="signature"><code>tagName: string</code></pre>
         
@@ -491,6 +506,7 @@ console.log(p.outerHTML); <span class="tok-comment">// &quot;&lt;p&gt;Hello &lt;
 <span class="tok-keyword">if</span> (doc) console.log(doc.body.tagName); <span class="tok-comment">// &quot;body&quot;</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="textContent" data-kind="property" data-name="textcontent">
@@ -499,7 +515,7 @@ console.log(p.outerHTML); <span class="tok-comment">// &quot;&lt;p&gt;Hello &lt;
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#textContent">textContent</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7847</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:7887</div>
         </header>
         <pre class="signature"><code>textContent: string</code></pre>
         
@@ -520,6 +536,7 @@ console.log(p.outerHTML); <span class="tok-comment">// &quot;&lt;p&gt;Hello &lt;
 }</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="getAttribute" data-kind="method" data-name="getattribute">
@@ -528,7 +545,7 @@ console.log(p.outerHTML); <span class="tok-comment">// &quot;&lt;p&gt;Hello &lt;
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#getAttribute">getAttribute</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7955</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:7995</div>
         </header>
         <pre class="signature"><code>getAttribute(name)</code></pre>
         
@@ -558,6 +575,7 @@ console.log(p.outerHTML); <span class="tok-comment">// &quot;&lt;p&gt;Hello &lt;
 console.log(a.getAttribute(<span class="tok-string">&quot;href&quot;</span>)); <span class="tok-comment">// &quot;https://example.com&quot;</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="getElementsByTagName" data-kind="method" data-name="getelementsbytagname">
@@ -566,7 +584,7 @@ console.log(a.getAttribute(<span class="tok-string">&quot;href&quot;</span>)); <
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#getElementsByTagName">getElementsByTagName</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:8046</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:8086</div>
         </header>
         <pre class="signature"><code>getElementsByTagName(tagName)</code></pre>
         
@@ -598,6 +616,7 @@ console.log(a.getAttribute(<span class="tok-string">&quot;href&quot;</span>)); <
 console.log(links.length); <span class="tok-comment">// 2</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="hasAttribute" data-kind="method" data-name="hasattribute">
@@ -606,7 +625,7 @@ console.log(links.length); <span class="tok-comment">// 2</span></code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#hasAttribute">hasAttribute</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7971</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:8011</div>
         </header>
         <pre class="signature"><code>hasAttribute(name)</code></pre>
         
@@ -637,6 +656,7 @@ console.log(a.hasAttribute(<span class="tok-string">&quot;href&quot;</span>)); <
 console.log(a.hasAttribute(<span class="tok-string">&quot;title&quot;</span>)); <span class="tok-comment">// false</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="hasClass" data-kind="method" data-name="hasclass">
@@ -645,11 +665,11 @@ console.log(a.hasAttribute(<span class="tok-string">&quot;title&quot;</span>)); 
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#hasClass">hasClass</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:7988</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:8028</div>
         </header>
         <pre class="signature"><code>hasClass(className)</code></pre>
         
-        <div class="description"><p>Checks whether the element has a CSS class token.<br> This checks class tokens, not arbitrary substrings.<br> For example, <b>hasClass("album")</b> matches <b>class="album featured"</b>, but not <b>class="album-list"</b>.<br> For non-element nodes, returns false.<br></p></div>
+        <div class="description"><p>Checks whether the element has a CSS class token.<br> This checks class tokens, not arbitrary substrings.<br> For example, passing <b>"album"</b> to <a href="HtmlNode.html#hasClass">hasClass</a> matches <b>class="album featured"</b>, but not <b>class="album-list"</b>.<br> For non-element nodes, returns false.<br></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -678,6 +698,7 @@ console.log(li.hasClass(<span class="tok-string">&quot;featured&quot;</span>)); 
 console.log(li.hasClass(<span class="tok-string">&quot;album-list&quot;</span>)); <span class="tok-comment">// false</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="querySelector" data-kind="method" data-name="queryselector">
@@ -686,7 +707,7 @@ console.log(li.hasClass(<span class="tok-string">&quot;album-list&quot;</span>))
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#querySelector">querySelector</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:8009</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:8049</div>
         </header>
         <pre class="signature"><code>querySelector(selector)</code></pre>
         
@@ -720,6 +741,7 @@ console.log(li.hasClass(<span class="tok-string">&quot;album-list&quot;</span>))
 }</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="querySelectorAll" data-kind="method" data-name="queryselectorall">
@@ -728,7 +750,7 @@ console.log(li.hasClass(<span class="tok-string">&quot;album-list&quot;</span>))
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#querySelectorAll">querySelectorAll</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:8028</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:8068</div>
         </header>
         <pre class="signature"><code>querySelectorAll(selector)</code></pre>
         
@@ -759,6 +781,7 @@ console.log(li.hasClass(<span class="tok-string">&quot;album-list&quot;</span>))
 
 console.log(albums.length); <span class="tok-comment">// 2</span></code></pre>
         </section>
+        
         
     </article></main>
     <script src="assets/search-data.js"></script><script src="assets/app.js"></script>

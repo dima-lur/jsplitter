@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 function _rating(x, y, size, colour) {
 	this.paint = (gr) => {

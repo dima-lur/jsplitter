@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -231,11 +237,12 @@
                 <div class="eyebrow"><span class="kind kind-class">class</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#BinaryWriter">BinaryWriter</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4038</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4056</div>
         </header>
         
         
         <div class="description"><p>Streaming binary writer returned by <a href="utils.html#OpenBinaryWriter">utils.OpenBinaryWriter</a>.</p></div>
+        
         
         
         
@@ -252,11 +259,12 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#Closed">Closed</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4087</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4105</div>
         </header>
         <pre class="signature"><code>Closed: boolean = false</code></pre>
         
         <div class="description"><p>Indicates whether the writer has been closed.</p></div>
+        
         
         
         
@@ -273,11 +281,12 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#Position">Position</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4078</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4096</div>
         </header>
         <pre class="signature"><code>Position: number = 0</code></pre>
         
         <div class="description"><p>Number of bytes successfully written to the file.</p></div>
+        
         
         
         
@@ -294,7 +303,7 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Close">Close</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4070</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4088</div>
         </header>
         <pre class="signature"><code>Close()</code></pre>
         
@@ -311,6 +320,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="Flush" data-kind="method" data-name="flush">
@@ -319,7 +329,7 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Flush">Flush</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4061</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4079</div>
         </header>
         <pre class="signature"><code>Flush()</code></pre>
         
@@ -340,6 +350,7 @@
         
         
         
+        
     </article>
 
     <article class="api-item" id="Write" data-kind="method" data-name="write">
@@ -348,7 +359,7 @@
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag capability worker" title="Available inside a Worker.">WORKER</span></div>
                 <h2><a class="anchor" href="#Write">Write</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4047</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4065</div>
         </header>
         <pre class="signature"><code>Write(buffer, offset, count)</code></pre>
         
@@ -373,6 +384,7 @@
             <h3>Throws</h3>
             <div><code><a class="type-link" href="globals.html#Error">Error</a></code> — <p>If the writer is closed.</p></div>
         </section>
+        
         
         
         

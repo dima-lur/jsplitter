@@ -39,6 +39,9 @@
     </div><div class="nav-page-tree" data-nav-root="utils">
         <a class="nav-link nav-page-link" href="utils.html">utils</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="window">
         <a class="nav-link nav-page-link active" href="window.html">window</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -195,6 +198,9 @@
     </div><div class="nav-page-tree" data-nav-root="ThemeManager">
         <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
         <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
     </div><div class="nav-page-tree" data-nav-root="Worker">
         <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
         <div class="nav-page-members" data-nav-members hidden></div>
@@ -219,7 +225,7 @@
     </div><div class="nav-page-tree" data-nav-root="module:Matrix">
         <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
         <div class="nav-page-members" data-nav-members hidden></div>
-    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
             <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
         </nav></aside>
     <main class="content">
@@ -231,11 +237,12 @@
                 <div class="eyebrow"><span class="kind kind-namespace">namespace</span></div>
                 <h2><a class="anchor" href="#window">window</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4508</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4526</div>
         </header>
         
         
         <div class="description"><p>Functions for working with the current JSplitter panel and accessing it's properties.</p></div>
+        
         
         
         
@@ -252,7 +259,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#DlgCode">DlgCode</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4514</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4532</div>
         </header>
         <pre class="signature"><code>DlgCode</code></pre>
         
@@ -273,6 +280,7 @@
             <pre class="example"><code>window.DlgCode = DLGC_WANTALLKEYS;</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="DPI" data-kind="property" data-name="dpi">
@@ -281,11 +289,12 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#DPI">DPI</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4525</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4543</div>
         </header>
         <pre class="signature"><code>DPI: number</code></pre>
         
         <div class="description"><p>Window DPI. This value never changes while foobar2000 is running. If you change DPI settings, you must restart the application.</p></div>
+        
         
         
         
@@ -302,11 +311,12 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#DrawMode">DrawMode</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4581</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4599</div>
         </header>
         <pre class="signature"><code>DrawMode: number = 0</code></pre>
         
-        <div class="description"><p>Current graphics rendering mode.<br> 0 (default) - GDI+<br> 1 - Direct2D<br> <b>IMPORTANT</b>: After switching the rendering mode, all drawing objects created for the other mode will be unavailable for use in the current mode.<br> Therefore, the developer should create all drawing objects only after changing the mode.<br> Ideally, the mode change should be made in the VERY first line of the main script to avoid accidentally creating objects of the wrong type.<br> Also, calling any of d2d.* methods for creating objects like fonts, bitmaps or effects, will cause a script crash until the DrawMode is set to 1 at least once (in this case, the resources required for D2D operation are initialized). D2D rendering may differ from GDI and methods for both backends can not be expected to be 100% pixel equivalent.</p></div>
+        <div class="description"><p>Current graphics rendering mode.<br> 0 (default) - GDI+<br> 1 - Direct2D<br> <b>IMPORTANT</b>: After switching the rendering mode, all drawing objects created for the other mode will be unavailable for use in the current mode.<br> Therefore, the developer should create all drawing objects only after changing the mode.<br> Ideally, the mode change should be made in the VERY first line of the main script to avoid accidentally creating objects of the wrong type.<br> Also, calling any of d2d.* methods for creating objects like fonts, bitmaps or effects, will cause a script crash until the <a href="window.html#DrawMode">DrawMode</a> is set to 1 at least once (in this case, the resources required for D2D operation are initialized). D2D rendering may differ from GDI and methods for both backends can not be expected to be 100% pixel equivalent.</p></div>
+        
         
         
         
@@ -323,7 +333,7 @@
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#EraseOnRepaint">EraseOnRepaint</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4533</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4551</div>
         </header>
         <pre class="signature"><code>EraseOnRepaint: boolean = true</code></pre>
         
@@ -379,6 +389,7 @@ window.EraseOnRepaint = <span class="tok-literal">false</span>;
 window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</span>);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="FoobarWindowHeight" data-kind="property" data-name="foobarwindowheight">
@@ -387,11 +398,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag deprecated">deprecated</span></div>
                 <h2><a class="anchor" href="#FoobarWindowHeight">FoobarWindowHeight</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5248</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5288</div>
         </header>
         <pre class="signature"><code>FoobarWindowHeight: number = 0</code></pre>
         <div class="notice notice-deprecated"><b>Deprecated.</b></div>
         <div class="description"><p>Deprecated compatibility API. It will be removed in a future release. Use <a href="FbWindow.html#Height">fb.Window.Height</a> for new code.</p></div>
+        
         
         
         
@@ -408,11 +420,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag deprecated">deprecated</span></div>
                 <h2><a class="anchor" href="#FoobarWindowWidth">FoobarWindowWidth</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5240</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5280</div>
         </header>
         <pre class="signature"><code>FoobarWindowWidth: number = 0</code></pre>
         <div class="notice notice-deprecated"><b>Deprecated.</b></div>
         <div class="description"><p>Deprecated compatibility API. It will be removed in a future release. Use <a href="FbWindow.html#Width">fb.Window.Width</a> for new code.</p></div>
+        
         
         
         
@@ -429,11 +442,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag deprecated">deprecated</span></div>
                 <h2><a class="anchor" href="#FoobarWindowX">FoobarWindowX</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5224</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5264</div>
         </header>
         <pre class="signature"><code>FoobarWindowX: number = 0</code></pre>
         <div class="notice notice-deprecated"><b>Deprecated.</b></div>
         <div class="description"><p>Deprecated compatibility API. It will be removed in a future release. Use <a href="FbWindow.html#X">fb.Window.X</a> for new code.</p></div>
+        
         
         
         
@@ -450,11 +464,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag deprecated">deprecated</span></div>
                 <h2><a class="anchor" href="#FoobarWindowY">FoobarWindowY</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5232</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5272</div>
         </header>
         <pre class="signature"><code>FoobarWindowY: number = 0</code></pre>
         <div class="notice notice-deprecated"><b>Deprecated.</b></div>
         <div class="description"><p>Deprecated compatibility API. It will be removed in a future release. Use <a href="FbWindow.html#Y">fb.Window.Y</a> for new code.</p></div>
+        
         
         
         
@@ -471,11 +486,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#HandOnButtons">HandOnButtons</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5196</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5236</div>
         </header>
         <pre class="signature"><code>HandOnButtons: boolean = false</code></pre>
         
         <div class="description"><p>Switches the mouse cursor for all buttons either to the hand or to the arrow. This property also affects all subsequently created buttons. This property can be changed individually for each button (see <a href="ButtonObject.html#ButtonObject">ButtonObject</a> class).</p></div>
+        
         
         
         
@@ -492,11 +508,34 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#Height">Height</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4705</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4723</div>
         </header>
         <pre class="signature"><code>Height: number</code></pre>
         
         <div class="description"></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </article>
+
+    <article class="api-item" id="HostWindowTitle" data-kind="property" data-name="hostwindowtitle">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
+                <h2><a class="anchor" href="#HostWindowTitle">HostWindowTitle</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4729</div>
+        </header>
+        <pre class="signature"><code>HostWindowTitle: string</code></pre>
+        
+        <div class="description"><p>Returns the title of the nearest named container hosting the panel.</p></div>
+        
         
         
         
@@ -513,11 +552,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#ID">ID</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4594</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4612</div>
         </header>
         <pre class="signature"><code>ID: number</code></pre>
         
         <div class="description"><p>Window handle</p></div>
+        
         
         
         
@@ -534,11 +574,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#InstanceType">InstanceType</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4602</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4620</div>
         </header>
         <pre class="signature"><code>InstanceType: number</code></pre>
         
         <div class="description"><p>You need this to determine which GetFontXXX and GetColourXXX methods to use, assuming you want to support both interfaces.<br> See <a href="module-Flags.html#UIInstanceType">UIInstanceType</a><br> 0 - if using Columns UI<br> 1 - if using default UI.</p></div>
+        
         
         
         
@@ -555,11 +596,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#IsFocused">IsFocused</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4624</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4642</div>
         </header>
         <pre class="signature"><code>IsFocused: boolean</code></pre>
         
         <div class="description"><p>Indicates whether this JSplitter panel currently has keyboard focus. This reflects the same focus state reported by <a href="module-Callbacks.html#on_focus">on_focus</a>: it is true only while the panel window itself owns keyboard focus.</p></div>
+        
         
         
         
@@ -576,12 +618,13 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#IsToolbar">IsToolbar</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4613</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4631</div>
         </header>
         <pre class="signature"><code>IsToolbar: boolean</code></pre>
         
         <div class="description"><p>Indicates whether this JSplitter panel is hosted as a toolbar item in Columns UI.<br> This property is only meaningful when using Columns UI: it is true for a toolbar panel and false for a regular panel.</p>
 <p>It is always false in Default User Interface.</p></div>
+        
         
         
         
@@ -598,11 +641,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#IsTransparent">IsTransparent</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4633</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4651</div>
         </header>
         <pre class="signature"><code>IsTransparent: boolean</code></pre>
         
         <div class="description"><p>Only useful within Panel Stack Splitter (Columns UI component)<br> Depends on setting inside Spider Monkey Panel Configuration window. You generally use it to determine whether or not to draw a background.</p></div>
+        
         
         
         
@@ -619,11 +663,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#IsVisible">IsVisible</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4643</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4661</div>
         </header>
         <pre class="signature"><code>IsVisible: boolean</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -640,11 +685,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#JsMemoryStats">JsMemoryStats</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4696</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4714</div>
         </header>
         <pre class="signature"><code>JsMemoryStats: <a class="type-link" href="globals.html#JsMemoryStats">JsMemoryStats</a></code></pre>
         
         <div class="description"><p>SpiderMonkey heap and native/external memory statistics. See <a href="globals.html#JsMemoryStats">JsMemoryStats</a> for the returned object properties.</p></div>
+        
         
         
         
@@ -661,11 +707,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#MaxHeight">MaxHeight</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4711</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4737</div>
         </header>
         <pre class="signature"><code>MaxHeight: number</code></pre>
         
-        <div class="description"><p><a href="window.html#MaxHeight">window.MaxHeight</a>, <a href="window.html#MaxWidth">window.MaxWidth</a>, <a href="window.html#MinHeight">window.MinHeight</a> and <a href="window.html#MinWidth">window.MinWidth</a> can be used to lock the panel size.<br> Do not use if panels are contained within Panel Stack Splitter (Columns UI component) or JSplitter itself</p></div>
+        <div class="description"><p><a href="window.html#MaxHeight">MaxHeight</a>, <a href="window.html#MaxWidth">MaxWidth</a>, <a href="window.html#MinHeight">MinHeight</a> and <a href="window.html#MinWidth">MinWidth</a> can be used to lock the panel size.<br> Do not use if panels are contained within Panel Stack Splitter (Columns UI component) or JSplitter itself</p></div>
+        
         
         
         
@@ -682,11 +729,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#MaxWidth">MaxWidth</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4719</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4745</div>
         </header>
         <pre class="signature"><code>MaxWidth: number</code></pre>
         
-        <div class="description"><p>See <a href="window.html#MaxHeight">window.MaxHeight</a>.</p></div>
+        <div class="description"><p>See <a href="window.html#MaxHeight">MaxHeight</a>.</p></div>
+        
         
         
         
@@ -703,11 +751,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#MinHeight">MinHeight</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4726</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4752</div>
         </header>
         <pre class="signature"><code>MinHeight: number</code></pre>
         
-        <div class="description"><p>See <a href="window.html#MaxHeight">window.MaxHeight</a>.</p></div>
+        <div class="description"><p>See <a href="window.html#MaxHeight">MaxHeight</a>.</p></div>
+        
         
         
         
@@ -724,11 +773,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#MinWidth">MinWidth</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4733</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4759</div>
         </header>
         <pre class="signature"><code>MinWidth: number</code></pre>
         
-        <div class="description"><p>See <a href="window.html#MaxHeight">window.MaxHeight</a>.</p></div>
+        <div class="description"><p>See <a href="window.html#MaxHeight">MaxHeight</a>.</p></div>
+        
         
         
         
@@ -745,11 +795,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#Name">Name</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4740</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4766</div>
         </header>
         <pre class="signature"><code>Name: string</code></pre>
         
-        <div class="description"><p>Returns the panel name set in <a href="window.html#ShowConfigureV2">window.ShowConfigureV2</a>.</p></div>
+        <div class="description"><p>Returns the panel name set in <a href="window.html#ShowConfigureV2">ShowConfigureV2</a>.</p></div>
+        
         
         
         
@@ -766,11 +817,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#ScriptInfo">ScriptInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4763</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4789</div>
         </header>
         <pre class="signature"><code>ScriptInfo: <a class="type-link" href="globals.html#ScriptInfo">ScriptInfo</a></code></pre>
         
-        <div class="description"><p>Information about the panel's main script. The <b>Path</b> property contains its full native filesystem path, or an empty string for an in-memory script. See <a href="globals.html#ScriptInfo">ScriptInfo</a> for all properties and source types.</p></div>
+        <div class="description"><p>Information about the panel's main script. The <a href="globals.html#Path">Path</a> property contains its full native filesystem path, or an empty string for an in-memory script. See <a href="globals.html#ScriptInfo">ScriptInfo</a> for all properties and source types.</p></div>
+        
         
         
         
@@ -787,11 +839,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#Tooltip">Tooltip</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4771</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4797</div>
         </header>
         <pre class="signature"><code>Tooltip: <a class="type-link" href="FbTooltip.html#FbTooltip">FbTooltip</a></code></pre>
         
         <div class="description"><p>Get associated tooltip object.</p></div>
+        
         
         
         
@@ -808,11 +861,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#TrackMouseEnterLeaveOnPanels">TrackMouseEnterLeaveOnPanels</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5205</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5245</div>
         </header>
         <pre class="signature"><code>TrackMouseEnterLeaveOnPanels: boolean = false</code></pre>
         
         <div class="description"><p>Enables tracking of the mouse cursor entering/exiting the panel area. By default = false.<br> The following functions are used to handle events:<br> <a href="module-Callbacks.html#on_panel_mouse_enter">on_panel_mouse_enter</a>(name) - cursor entering the panel area, name is the panel name<br> <a href="module-Callbacks.html#on_panel_mouse_leave">on_panel_mouse_leave</a>(name) - cursor leaving the panel area, name is the panel name</p></div>
+        
         
         
         
@@ -829,11 +883,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span></div>
                 <h2><a class="anchor" href="#TrackMouseMoveOnPanels">TrackMouseMoveOnPanels</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5215</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5255</div>
         </header>
         <pre class="signature"><code>TrackMouseMoveOnPanels: boolean = false</code></pre>
         
         <div class="description"><p>Enables tracking of the mouse cursor position within the panel area.<br> By default = false . The following function is used to handle the event:<br> <a href="module-Callbacks.html#on_panel_mouse_move">on_panel_mouse_move</a>(name, x, y, mask): the event of moving the cursor within the panel area, name is the name of the panel, x, y are the coordinates of the point on the panel.</p></div>
+        
         
         
         
@@ -850,11 +905,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-property">property</span><span class="flag">readonly</span></div>
                 <h2><a class="anchor" href="#Width">Width</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4779</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4805</div>
         </header>
         <pre class="signature"><code>Width: number</code></pre>
         
         <div class="description"></div>
+        
         
         
         
@@ -871,7 +927,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#ClearInterval">ClearInterval</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4799</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4825</div>
         </header>
         <pre class="signature"><code>ClearInterval(timerID)</code></pre>
         
@@ -891,6 +947,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
         
         
         
+        
     </article>
 
     <article class="api-item" id="ClearProperties" data-kind="method" data-name="clearproperties">
@@ -899,11 +956,11 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#ClearProperties">ClearProperties</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4785</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4811</div>
         </header>
         <pre class="signature"><code>ClearProperties(reload_panel)</code></pre>
         
-        <div class="description"><p>Clears all current panel properties set by <a href="window.html#SetProperty">window.SetProperty</a>, <a href="window.html#SetProperties">window.SetProperties</a> or <a href="window.html#ImportProperties">window.ImportProperties</a></p></div>
+        <div class="description"><p>Clears all current panel properties set by <a href="window.html#SetProperty">SetProperty</a>, <a href="window.html#SetProperties">SetProperties</a> or <a href="window.html#ImportProperties">ImportProperties</a></p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -919,6 +976,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
         
         
         
+        
     </article>
 
     <article class="api-item" id="ClearTimeout" data-kind="method" data-name="cleartimeout">
@@ -927,7 +985,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#ClearTimeout">ClearTimeout</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4792</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4818</div>
         </header>
         <pre class="signature"><code>ClearTimeout(timerID)</code></pre>
         
@@ -947,6 +1005,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
         
         
         
+        
     </article>
 
     <article class="api-item" id="CreateButton" data-kind="method" data-name="createbutton">
@@ -955,7 +1014,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#CreateButton">CreateButton</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5131</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5171</div>
         </header>
         <pre class="signature"><code>CreateButton(x, y, images, hover_images)</code></pre>
         
@@ -993,6 +1052,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
 <span class="tok-keyword">var</span> c = window.CreateButton(<span class="tok-number">0</span>, <span class="tok-number">0</span>, [path1, path2, path3], [path1_on, path2_on, path3_on]);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="CreatePopupMenu" data-kind="method" data-name="createpopupmenu">
@@ -1001,7 +1061,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#CreatePopupMenu">CreatePopupMenu</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4857</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4883</div>
         </header>
         <pre class="signature"><code>CreatePopupMenu()</code></pre>
         
@@ -1018,6 +1078,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
         
         
         
+        
         <section class="member-section">
             <h3>Example source</h3>
             <div class="source-links"><a class="source-link" href="source-samples-basic-MainMenuManager-All-In-One.js.html"><span>samples/basic/MainMenuManager All-In-One.js</span><small>open source</small></a></div>
@@ -1030,7 +1091,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#CreateThemeManager">CreateThemeManager</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4864</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4890</div>
         </header>
         <pre class="signature"><code>CreateThemeManager(class_id)</code></pre>
         
@@ -1054,6 +1115,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
         
         
         
+        
         <section class="member-section">
             <h3>Example source</h3>
             <div class="source-links"><a class="source-link" href="source-samples-basic-SimpleThemedButton.js.html"><span>samples/basic/SimpleThemedButton.js</span><small>open source</small></a></div>
@@ -1066,11 +1128,11 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag deprecated">deprecated</span></div>
                 <h2><a class="anchor" href="#CreateTooltip">CreateTooltip</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4872</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4898</div>
         </header>
         <pre class="signature"><code>CreateTooltip(font_name, font_size_px, font_style)</code></pre>
         <div class="notice notice-deprecated"><b>Deprecated.</b></div>
-        <div class="description"><p>Note: a single panel can have only a single tooltip object. Creating a new tooltip will replace the previous one.<br> <br> Deprecated: use <a href="window.html#Tooltip">window.Tooltip</a> and <a href="FbTooltip.html#SetFont">SetFont</a> instead.</p></div>
+        <div class="description"><p>Note: a single panel can have only a single tooltip object. Creating a new tooltip will replace the previous one.<br> <br> Deprecated: use <a href="window.html#Tooltip">Tooltip</a> and <a href="FbTooltip.html#SetFont">SetFont</a> instead.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1090,6 +1152,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
         
         
         
+        
     </article>
 
     <article class="api-item" id="DefinePanel" data-kind="method" data-name="definepanel">
@@ -1098,11 +1161,11 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag deprecated">deprecated</span></div>
                 <h2><a class="anchor" href="#DefinePanel">DefinePanel</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4806</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4832</div>
         </header>
         <pre class="signature"><code>DefinePanel(name, options)</code></pre>
         <div class="notice notice-deprecated"><b>Deprecated.</b></div>
-        <div class="description"><p>Setups panel and script information and available features.<br> Can be called only once, so it's better to define it directly in the panel Configure menu.<br> <br> Deprecated: use <a href="window.html#DefineScript">window.DefineScript</a> instead. Panel name can be changed via <a href="window.html#ShowConfigureV2">window.ShowConfigureV2</a>.</p></div>
+        <div class="description"><p>Setups panel and script information and available features.<br> Can be called only once, so it's better to define it directly in the panel Configure menu.<br> <br> Deprecated: use <a href="window.html#DefineScript">DefineScript</a> instead. Panel name can be changed via <a href="window.html#ShowConfigureV2">ShowConfigureV2</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1122,6 +1185,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
         
         
         
+        
     </article>
 
     <article class="api-item" id="DefineScript" data-kind="method" data-name="definescript">
@@ -1130,7 +1194,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#DefineScript">DefineScript</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4826</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4852</div>
         </header>
         <pre class="signature"><code>DefineScript(name, options)</code></pre>
         
@@ -1154,6 +1218,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
         
         
         
+        
     </article>
 
     <article class="api-item" id="EditScript" data-kind="method" data-name="editscript">
@@ -1162,11 +1227,12 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#EditScript">EditScript</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4841</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4867</div>
         </header>
         <pre class="signature"><code>EditScript()</code></pre>
         
-        <div class="description"><p>Open the current panel script in the default text editor.<br> Default text editor can be changed via <b>Edit</b> button on the main tab of <a href="window.html#ShowConfigureV2">window.ShowConfigureV2</a>.</p></div>
+        <div class="description"><p>Open the current panel script in the default text editor.<br> Default text editor can be changed via <b>Edit</b> button on the main tab of <a href="window.html#ShowConfigureV2">ShowConfigureV2</a>.</p></div>
+        
         
         
         
@@ -1183,11 +1249,11 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#ExportProperties">ExportProperties</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4847</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4873</div>
         </header>
         <pre class="signature"><code>ExportProperties(fileName)</code></pre>
         
-        <div class="description"><p>Exports all current panel properties set by <a href="window.html#SetProperty">window.SetProperty</a> to file</p>
+        <div class="description"><p>Exports all current panel properties set by <a href="window.html#SetProperty">SetProperty</a> to file</p>
 <p>Relative filesystem paths are resolved as described in <a href="utils.html#ReadTextFile">utils.ReadTextFile</a>.</p></div>
         
         <section class="member-section">
@@ -1208,6 +1274,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
         
         
         
+        
     </article>
 
     <article class="api-item" id="GetButton" data-kind="method" data-name="getbutton">
@@ -1216,7 +1283,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#GetButton">GetButton</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5158</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5198</div>
         </header>
         <pre class="signature"><code>GetButton(id)</code></pre>
         
@@ -1240,6 +1307,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
         
         
         
+        
     </article>
 
     <article class="api-item" id="GetColourCUI" data-kind="method" data-name="getcolourcui">
@@ -1248,7 +1316,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#GetColourCUI">GetColourCUI</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4887</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4913</div>
         </header>
         <pre class="signature"><code>GetColourCUI(type, client_guid)</code></pre>
         
@@ -1276,6 +1344,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
         
         
         
+        
     </article>
 
     <article class="api-item" id="GetColourDUI" data-kind="method" data-name="getcolourdui">
@@ -1284,7 +1353,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#GetColourDUI">GetColourDUI</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4895</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4921</div>
         </header>
         <pre class="signature"><code>GetColourDUI(type)</code></pre>
         
@@ -1312,6 +1381,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
         
         
         
+        
     </article>
 
     <article class="api-item" id="GetFontCUI" data-kind="method" data-name="getfontcui">
@@ -1320,11 +1390,11 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#GetFontCUI">GetFontCUI</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4902</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4928</div>
         </header>
         <pre class="signature"><code>GetFontCUI(type, client_guid)</code></pre>
         
-        <div class="description"><p>Note: see the example in <a href="window.html#GetFontDUI">window.GetFontDUI</a>.</p></div>
+        <div class="description"><p>Note: see the example in <a href="window.html#GetFontDUI">GetFontDUI</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1348,6 +1418,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
         
         
         
+        
     </article>
 
     <article class="api-item" id="GetFontDUI" data-kind="method" data-name="getfontdui">
@@ -1356,7 +1427,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#GetFontDUI">GetFontDUI</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4912</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4938</div>
         </header>
         <pre class="signature"><code>GetFontDUI(type)</code></pre>
         
@@ -1394,6 +1465,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
 }</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="GetPanel" data-kind="method" data-name="getpanel">
@@ -1402,7 +1474,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#GetPanel">GetPanel</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5109</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5149</div>
         </header>
         <pre class="signature"><code>GetPanel(caption)</code></pre>
         
@@ -1430,6 +1502,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
         
         
         
+        
     </article>
 
     <article class="api-item" id="GetPanelByIndex" data-kind="method" data-name="getpanelbyindex">
@@ -1438,7 +1511,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#GetPanelByIndex">GetPanelByIndex</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5123</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5163</div>
         </header>
         <pre class="signature"><code>GetPanelByIndex(index)</code></pre>
         
@@ -1466,6 +1539,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
         
         
         
+        
     </article>
 
     <article class="api-item" id="GetPanelCount" data-kind="method" data-name="getpanelcount">
@@ -1474,7 +1548,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#GetPanelCount">GetPanelCount</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5117</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5157</div>
         </header>
         <pre class="signature"><code>GetPanelCount()</code></pre>
         
@@ -1491,6 +1565,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
         
         
         
+        
     </article>
 
     <article class="api-item" id="GetProperties" data-kind="method" data-name="getproperties">
@@ -1499,11 +1574,11 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#GetProperties">GetProperties</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4928</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4954</div>
         </header>
         <pre class="signature"><code>GetProperties()</code></pre>
         
-        <div class="description"><p>Get all current panel properties set by <a href="window.html#SetProperty">window.SetProperty</a>, <a href="window.html#SetProperties">window.SetProperties</a> or <a href="window.html#ImportProperties">window.ImportProperties</a></p></div>
+        <div class="description"><p>Get all current panel properties set by <a href="window.html#SetProperty">SetProperty</a>, <a href="window.html#SetProperties">SetProperties</a> or <a href="window.html#ImportProperties">ImportProperties</a></p></div>
         
         
         
@@ -1521,6 +1596,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
 <span class="tok-keyword">for</span>(<span class="tok-keyword">const</span> [key, value] <span class="tok-keyword">of</span> props) console.log(<span class="tok-string">`Key = ${key}, Value = ${value}`</span>);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="GetProperty" data-kind="method" data-name="getproperty">
@@ -1529,7 +1605,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#GetProperty">GetProperty</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4938</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4964</div>
         </header>
         <pre class="signature"><code>GetProperty(name, default_val)</code></pre>
         
@@ -1553,6 +1629,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
         
         
         
+        
     </article>
 
     <article class="api-item" id="ImportProperties" data-kind="method" data-name="importproperties">
@@ -1561,7 +1638,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#ImportProperties">ImportProperties</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4951</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4977</div>
         </header>
         <pre class="signature"><code>ImportProperties(fileName, reload_panel)</code></pre>
         
@@ -1586,6 +1663,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
         
         
         
+        
     </article>
 
     <article class="api-item" id="MoveFoobarWindow" data-kind="method" data-name="movefoobarwindow">
@@ -1594,7 +1672,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag deprecated">deprecated</span></div>
                 <h2><a class="anchor" href="#MoveFoobarWindow">MoveFoobarWindow</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5185</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5225</div>
         </header>
         <pre class="signature"><code>MoveFoobarWindow(x, y, width, height)</code></pre>
         <div class="notice notice-deprecated"><b>Deprecated.</b></div>
@@ -1614,6 +1692,7 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
         
         
         
+        
     </article>
 
     <article class="api-item" id="NotifyOthers" data-kind="method" data-name="notifyothers">
@@ -1622,13 +1701,13 @@ window.SetInterval(() =&gt; { window.Repaint(); }, <span class="tok-number">50</
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#NotifyOthers">NotifyOthers</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4963</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4989</div>
         </header>
         <pre class="signature"><code>NotifyOthers(name, info)</code></pre>
         
         <div class="description"><p>This will <b>synchronously</b> trigger <a href="module-Callbacks.html#on_notify_data">on_notify_data</a>(name, info) in other panels.<br> <b>!!! Beware !!!</b>: data passed via <b>info</b> argument must NOT be used or modified in the source panel after invoking this method.</p>
 <div class="doc-note warning">
-<b>Legacy compatibility API</b><br>Existing scripts can keep using NotifyOthers unchanged. For new asynchronous structured-clone messaging between panels and Workers, prefer <a href="BroadcastChannel.html#BroadcastChannel">BroadcastChannel</a>.<br></div></div>
+<b>Legacy compatibility API</b><br>Existing scripts can keep using <a href="window.html#NotifyOthers">NotifyOthers</a> unchanged. For new asynchronous structured-clone messaging between panels and Workers, prefer <a href="BroadcastChannel.html#BroadcastChannel">BroadcastChannel</a>.<br></div></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1654,6 +1733,7 @@ data = <span class="tok-literal">null</span>; <span class="tok-comment">// stop 
 <span class="tok-comment">// AddSomeAdditionalValues(data); // don&#39;t try to modify it, since it will affect the object in the other panel as well</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="RadioButtons" data-kind="method" data-name="radiobuttons">
@@ -1662,7 +1742,7 @@ data = <span class="tok-literal">null</span>; <span class="tok-comment">// stop 
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#RadioButtons">RadioButtons</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5165</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5205</div>
         </header>
         <pre class="signature"><code>RadioButtons(buttons)</code></pre>
         
@@ -1694,6 +1774,7 @@ window.RadioButtons([a, b, c]);
 <span class="tok-comment">// Now when you click on one button (state 1), the other will be switch to state 0 and vice versa.</span></code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="Reload" data-kind="method" data-name="reload">
@@ -1702,7 +1783,7 @@ window.RadioButtons([a, b, c]);
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#Reload">Reload</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4983</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5009</div>
         </header>
         <pre class="signature"><code>Reload(clear_properties)</code></pre>
         
@@ -1722,6 +1803,7 @@ window.RadioButtons([a, b, c]);
         
         
         
+        
     </article>
 
     <article class="api-item" id="RemoveButton" data-kind="method" data-name="removebutton">
@@ -1730,7 +1812,7 @@ window.RadioButtons([a, b, c]);
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#RemoveButton">RemoveButton</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5179</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5219</div>
         </header>
         <pre class="signature"><code>RemoveButton(button)</code></pre>
         
@@ -1750,6 +1832,7 @@ window.RadioButtons([a, b, c]);
         
         
         
+        
     </article>
 
     <article class="api-item" id="Repaint" data-kind="method" data-name="repaint">
@@ -1758,7 +1841,7 @@ window.RadioButtons([a, b, c]);
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#Repaint">Repaint</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4989</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5015</div>
         </header>
         <pre class="signature"><code>Repaint(force)</code></pre>
         
@@ -1778,6 +1861,7 @@ window.RadioButtons([a, b, c]);
         
         
         
+        
     </article>
 
     <article class="api-item" id="RepaintRect" data-kind="method" data-name="repaintrect">
@@ -1786,11 +1870,11 @@ window.RadioButtons([a, b, c]);
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#RepaintRect">RepaintRect</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4998</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5024</div>
         </header>
         <pre class="signature"><code>RepaintRect(x, y, w, h, force)</code></pre>
         
-        <div class="description"><p>Repaints a part of the screen.<br> Use this instead of <a href="window.html#Repaint">window.Repaint</a> on frequently updated areas such as time, bitrate, seekbar, etc.<br> <br> Performance note: see Performance note in <a href="window.html#Repaint">window.Repaint</a>.</p></div>
+        <div class="description"><p>Repaints a part of the screen.<br> Use this instead of <a href="window.html#Repaint">Repaint</a> on frequently updated areas such as time, bitrate, seekbar, etc.<br> <br> Performance note: see Performance note in <a href="window.html#Repaint">Repaint</a>.</p></div>
         
         <section class="member-section">
             <h3>Parameters</h3>
@@ -1806,6 +1890,7 @@ window.RadioButtons([a, b, c]);
         
         
         
+        
     </article>
 
     <article class="api-item" id="SetCursor" data-kind="method" data-name="setcursor">
@@ -1814,7 +1899,7 @@ window.RadioButtons([a, b, c]);
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#SetCursor">SetCursor</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5013</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5039</div>
         </header>
         <pre class="signature"><code>SetCursor(id)</code></pre>
         
@@ -1834,6 +1919,40 @@ window.RadioButtons([a, b, c]);
         
         
         
+        
+    </article>
+
+    <article class="api-item" id="SetImePosition" data-kind="method" data-name="setimeposition">
+        <header class="api-item-header">
+            <div>
+                <div class="eyebrow"><span class="kind kind-method">method</span></div>
+                <h2><a class="anchor" href="#SetImePosition">SetImePosition</a></h2>
+            </div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5047</div>
+        </header>
+        <pre class="signature"><code>SetImePosition(x, y)</code></pre>
+        
+        <div class="description"><p>Sets the text insertion point used to position system IME UI for a custom-drawn text field. Coordinates are in panel client pixels. The component does not track or move the insertion point automatically; call this again whenever your script moves its caret.<br> <br> This method does not create or draw a system caret. It only supplies the current insertion position to the IME so handwriting/candidate UI can be placed near the field.</p></div>
+        
+        <section class="member-section">
+            <h3>Parameters</h3>
+            <div class="table-wrap"><table class="params-table">
+                <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody><tr><td><code>x</code></td><td><code>number</code></td><td><p>Insertion-point x-coordinate.</p></td></tr><tr><td><code>y</code></td><td><code>number</code></td><td><p>Insertion-point y-coordinate.</p></td></tr></tbody>
+            </table></div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+        
+        <section class="member-section">
+            <h3>Example source</h3>
+            <div class="source-links"><a class="source-link" href="source-samples-basic-IME-Input.js.html"><span>samples/basic/IME Input.js</span><small>open source</small></a></div>
+        </section>
     </article>
 
     <article class="api-item" id="SetInterval" data-kind="method" data-name="setinterval">
@@ -1842,7 +1961,7 @@ window.RadioButtons([a, b, c]);
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#SetInterval">SetInterval</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5021</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5061</div>
         </header>
         <pre class="signature"><code>SetInterval(func, delay)</code></pre>
         
@@ -1870,6 +1989,7 @@ window.RadioButtons([a, b, c]);
         
         
         
+        
     </article>
 
     <article class="api-item" id="SetProperties" data-kind="method" data-name="setproperties">
@@ -1878,7 +1998,7 @@ window.RadioButtons([a, b, c]);
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#SetProperties">SetProperties</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5032</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5072</div>
         </header>
         <pre class="signature"><code>SetProperties(values, reload_panel)</code></pre>
         
@@ -1903,6 +2023,7 @@ window.RadioButtons([a, b, c]);
 window.SetProperties(values);</code></pre>
         </section>
         
+        
     </article>
 
     <article class="api-item" id="SetProperty" data-kind="method" data-name="setproperty">
@@ -1911,7 +2032,7 @@ window.SetProperties(values);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#SetProperty">SetProperty</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5045</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5085</div>
         </header>
         <pre class="signature"><code>SetProperty(name, val)</code></pre>
         
@@ -1931,6 +2052,7 @@ window.SetProperties(values);</code></pre>
         
         
         
+        
     </article>
 
     <article class="api-item" id="SetShortcutFilter" data-kind="method" data-name="setshortcutfilter">
@@ -1939,7 +2061,7 @@ window.SetProperties(values);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#SetShortcutFilter">SetShortcutFilter</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5058</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5098</div>
         </header>
         <pre class="signature"><code>SetShortcutFilter(enabled, type_only, suppress_children)</code></pre>
         
@@ -1959,6 +2081,7 @@ window.SetProperties(values);</code></pre>
         
         
         
+        
     </article>
 
     <article class="api-item" id="SetTimeout" data-kind="method" data-name="settimeout">
@@ -1967,7 +2090,7 @@ window.SetProperties(values);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#SetTimeout">SetTimeout</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5067</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5107</div>
         </header>
         <pre class="signature"><code>SetTimeout(func, delay)</code></pre>
         
@@ -1995,6 +2118,7 @@ window.SetProperties(values);</code></pre>
         
         
         
+        
     </article>
 
     <article class="api-item" id="ShowConfigure" data-kind="method" data-name="showconfigure">
@@ -2003,11 +2127,12 @@ window.SetProperties(values);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span><span class="flag deprecated">deprecated</span></div>
                 <h2><a class="anchor" href="#ShowConfigure">ShowConfigure</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5078</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5118</div>
         </header>
         <pre class="signature"><code>ShowConfigure()</code></pre>
         <div class="notice notice-deprecated"><b>Deprecated.</b></div>
-        <div class="description"><p>Show configuration window of current panel. <br> Deprecated: use <a href="window.html#ShowConfigureV2">window.ShowConfigureV2</a> to configure panel and <a href="window.html#EditScript">window.EditScript</a> to edit script.</p></div>
+        <div class="description"><p>Show configuration window of current panel. <br> Deprecated: use <a href="window.html#ShowConfigureV2">ShowConfigureV2</a> to configure panel and <a href="window.html#EditScript">EditScript</a> to edit script.</p></div>
+        
         
         
         
@@ -2024,11 +2149,12 @@ window.SetProperties(values);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#ShowConfigureV2">ShowConfigureV2</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5089</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5129</div>
         </header>
         <pre class="signature"><code>ShowConfigureV2()</code></pre>
         
         <div class="description"><p>Show configuration window of current panel</p></div>
+        
         
         
         
@@ -2045,11 +2171,12 @@ window.SetProperties(values);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#ShowPanelList">ShowPanelList</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5095</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5135</div>
         </header>
         <pre class="signature"><code>ShowPanelList()</code></pre>
         
         <div class="description"><p>Show chidren panel list dialog for current panel</p></div>
+        
         
         
         
@@ -2066,11 +2193,12 @@ window.SetProperties(values);</code></pre>
                 <div class="eyebrow"><span class="kind kind-method">method</span></div>
                 <h2><a class="anchor" href="#ShowProperties">ShowProperties</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:5101</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:5141</div>
         </header>
         <pre class="signature"><code>ShowProperties()</code></pre>
         
         <div class="description"><p>Show properties window of current panel</p></div>
+        
         
         
         

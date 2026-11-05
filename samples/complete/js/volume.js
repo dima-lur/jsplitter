@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 function _volume(x, y, w, h) {
 	this.volume_change = () => {

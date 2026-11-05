@@ -17,11 +17,8 @@
 let engineMode = 'worker';
 let drawMode = 1;
 let fftSize = 4096;
-let rateMode = '120';
+let rateMode = '60';
 window.DrawMode = drawMode;
-
-const TARGET_FPS = 120;
-const FRAME_TIME = 1000 / TARGET_FPS;
 const BAR_WIDTH = 5;
 const BAR_GAP = 2;
 const BAR_COLOUR = 0xFF42A5F5;
@@ -325,8 +322,8 @@ function createSpectrumEngine(currentFftSize, minFrequencyLimit, maxFrequencyLim
                 : null;
         },
 
-        renderFrame: function (interval) {
-            const dt = Math.max(0.001, Math.min(0.2, (interval > 0 ? interval : FRAME_TIME) / 1000));
+        renderFrame: function (interval, frameTime) {
+            const dt = Math.max(0.001, Math.min(0.2, (interval > 0 ? interval : frameTime) / 1000));
             const audioStart = performance.now();
             let data = null;
             let sampleCount = 0;
@@ -379,13 +376,13 @@ function createSpectrumEngine(currentFftSize, minFrequencyLimit, maxFrequencyLim
     };
 }
 
-function makeWorkerSource(currentFftSize, uncapped) {
+function makeWorkerSource(currentFftSize, currentRate) {
     return String.raw`
 'use strict';
 
-const TARGET_FPS = ${TARGET_FPS};
+const TARGET_FPS = ${currentRate === '60' ? 60 : 120};
 const FRAME_TIME = 1000 / TARGET_FPS;
-const UNCAPPED = ${uncapped};
+const UNCAPPED = ${currentRate === 'max'};
 const createSpectrumEngine = ${createSpectrumEngine.toString()};
 const engine = createSpectrumEngine(${currentFftSize}, ${MIN_FREQUENCY}, ${MAX_FREQUENCY});
 
@@ -414,7 +411,7 @@ function produceFrame() {
     const interval = lastFrameStart ? frameStart - lastFrameStart : 0;
     lastFrameStart = frameStart;
 
-    const result = engine.renderFrame(interval);
+    const result = engine.renderFrame(interval, FRAME_TIME);
     const frame = result.frame;
 
     // Ownership of this ArrayBuffer moves to the panel. The Worker does not retain another
@@ -509,10 +506,14 @@ function stopEngine() {
     mainWaitingForPaint = false;
 }
 
+function getFrameTime() {
+    return 1000 / (rateMode === '60' ? 60 : 120);
+}
+
 function scheduleMain() {
     if (engineMode !== 'main' || !mainEngine || mainTimerId || mainWaitingForPaint) return;
     const elapsed = performance.now() - mainLastFrameStart;
-    const delay = rateMode === 'max' ? 0 : Math.max(0, FRAME_TIME - elapsed);
+    const delay = rateMode === 'max' ? 0 : Math.max(0, getFrameTime() - elapsed);
 
     mainTimerId = setTimeout(function () {
         mainTimerId = 0;
@@ -527,7 +528,7 @@ function renderMainFrame() {
     const interval = mainLastFrameStart ? frameStart - mainLastFrameStart : 0;
     mainLastFrameStart = frameStart;
 
-    const result = mainEngine.renderFrame(interval);
+    const result = mainEngine.renderFrame(interval, getFrameTime());
     mainWaitingForPaint = true;
     recordFrame(result.frame, ++mainSequence, result.timing);
 }
@@ -545,7 +546,7 @@ function startEngine() {
     }
 
     if (engineMode === 'worker') {
-        const currentWorker = new Worker(makeWorkerSource(fftSize, rateMode === 'max'), 'spectrum-analyzer');
+        const currentWorker = new Worker(makeWorkerSource(fftSize, rateMode), 'spectrum-analyzer');
         worker = currentWorker;
 
         currentWorker.onmessage = function (event) {
@@ -591,8 +592,9 @@ const RENDERER_D2D = { x: 322, y: SETTINGS_Y, w: 52, h: SETTINGS_H };
 const FFT_1024 = { x: 426, y: SETTINGS_Y, w: 52, h: SETTINGS_H };
 const FFT_2048 = { x: 482, y: SETTINGS_Y, w: 52, h: SETTINGS_H };
 const FFT_4096 = { x: 538, y: SETTINGS_Y, w: 52, h: SETTINGS_H };
-const RATE_120 = { x: 644, y: SETTINGS_Y, w: 46, h: SETTINGS_H };
-const RATE_MAX = { x: 694, y: SETTINGS_Y, w: 46, h: SETTINGS_H };
+const RATE_60 = { x: 644, y: SETTINGS_Y, w: 40, h: SETTINGS_H };
+const RATE_120 = { x: 688, y: SETTINGS_Y, w: 46, h: SETTINGS_H };
+const RATE_MAX = { x: 738, y: SETTINGS_Y, w: 46, h: SETTINGS_H };
 
 function contains(rect, x, y) {
     return x >= rect.x && x < rect.x + rect.w && y >= rect.y && y < rect.y + rect.h;
@@ -617,6 +619,7 @@ function on_mouse_lbtn_up(x, y) {
     else if (contains(FFT_1024, x, y)) nextFft = 1024;
     else if (contains(FFT_2048, x, y)) nextFft = 2048;
     else if (contains(FFT_4096, x, y)) nextFft = 4096;
+    else if (contains(RATE_60, x, y)) nextRate = '60';
     else if (contains(RATE_120, x, y)) nextRate = '120';
     else if (contains(RATE_MAX, x, y)) nextRate = 'max';
     else return;
@@ -728,6 +731,7 @@ function on_paint(gr) {
 
     gr.DrawText('Rate:', INFO_FONT, 0xFFB7C1CB, 604, SETTINGS_Y, 36, SETTINGS_H,
         DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
+    drawChoice(gr, RATE_60, '60', rateMode === '60');
     drawChoice(gr, RATE_120, '120', rateMode === '120');
     drawChoice(gr, RATE_MAX, 'Max', rateMode === 'max');
 

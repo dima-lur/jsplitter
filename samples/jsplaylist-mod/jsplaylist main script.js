@@ -1,4 +1,4 @@
-window.DefinePanel('JSPlaylist', {author: 'Br3tt', version: 'SMP-Mod', features: {drag_n_drop: true}});
+﻿window.DefinePanel('JSPlaylist', {author: 'Br3tt', version: 'SMP-Mod', features: {drag_n_drop: true}});
 
 ['WSHcommon.js',
 'WSHinputbox.js',

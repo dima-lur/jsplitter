@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Matrix helpers<br>
  * @module Matrix
 */

@@ -1,4 +1,4 @@
-window.DefineScript('TrackInfo follows cursor');
+﻿window.DefineScript('TrackInfo follows cursor');
 include('docs/Flags.js');
 include('docs/Helpers.js');
 
