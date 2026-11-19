@@ -8,10 +8,13 @@
 
 vis.UpdateIntervalMs = 16; // Default: 16 ms; allowed: unsigned integer 1..4294967295 ms.
 
-const textColor = window.InstanceType === 1
-    ? window.GetColourDUI(0) : window.GetColourCUI(0);
-const background = window.InstanceType === 1
-    ? window.GetColourDUI(1) : window.GetColourCUI(1);
+// Default colors are resolved from the current DUI/CUI text color.
+const textColor = window.InstanceType === UIInstanceType.DefaultUI ?
+    window.GetColourDUI(ColourTypeDUI.text) : window.GetColourCUI(ColourTypeCUI.text);
+
+// Match the background as well, so theme-colored content remains visible.
+const backgroundColor = window.InstanceType === UIInstanceType.DefaultUI ?
+    window.GetColourDUI(ColourTypeDUI.background) : window.GetColourCUI(ColourTypeCUI.background);
 
 // The meter source uses the mean-rectified detector with VU ballistics.
 // A peak -18 dBFS reference sine corresponds to 0 VU after settling.
@@ -38,7 +41,7 @@ const meter = vis.Create(VisSourceType.VUMeter, {
 
 function on_paint(gr) {
     const w = window.Width, h = window.Height;
-    gr.FillSolidRect(0, 0, w, h, background);
+    gr.FillSolidRect(0, 0, w, h, backgroundColor);
     if (w > 0 && h > 0) meter.Draw(gr, 0, 0, w, h);
 }
 

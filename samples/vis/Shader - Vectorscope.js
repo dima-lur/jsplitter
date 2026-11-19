@@ -24,10 +24,14 @@ vis.UpdateIntervalMs = 16; // Default: 16 ms; allowed: unsigned integer 1..42949
 // Built-in defaults for the visible shape: pointSize=1, scale=1,
 // aspectScale=true, glowStrength=0.4, glowRadius=4, persistenceMs=300.
 // These are constants inside the HLSL demonstration, not new API options.
-const textColor = window.InstanceType === 1
-    ? window.GetColourDUI(0) : window.GetColourCUI(0);
-const backgroundColor = window.InstanceType === 1
-    ? window.GetColourDUI(1) : window.GetColourCUI(1);
+
+// Default colors are resolved from the current DUI/CUI text color.
+const textColor = window.InstanceType === UIInstanceType.DefaultUI ?
+    window.GetColourDUI(ColourTypeDUI.text) : window.GetColourCUI(ColourTypeCUI.text);
+
+// Match the background as well, so theme-colored content remains visible.
+const backgroundColor = window.InstanceType === UIInstanceType.DefaultUI ?
+    window.GetColourDUI(ColourTypeDUI.background) : window.GetColourCUI(ColourTypeCUI.background);
 
 // Convert the theme's ARGB value into compile-time HLSL literals.
 const colorComponent = shift => (((textColor >>> shift) & 255) / 255).toFixed(6);

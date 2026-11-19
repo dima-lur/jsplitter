@@ -107,7 +107,7 @@ function refilter() {
     window.Repaint();
 }
 
-worker = new Worker({file: 'WebAssembly Image Filters.worker.js'}, 'WASM Image Filters');
+worker = new Worker({file: 'worker/WebAssembly Image Filters.worker.js'}, 'WASM Image Filters');
 worker.onmessage = function (e) {
     const m = e.data;
     if (m.type === 'ready') {

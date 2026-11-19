@@ -14,13 +14,12 @@
 vis.UpdateIntervalMs = 16; // Default: 16 ms; allowed: unsigned integer 1..4294967295 ms.
 
 // Default colors are resolved from the current DUI/CUI text color.
-// InstanceType: 1 = DUI, 0 = CUI; color identifier 0 = text in both.
-const textColor = window.InstanceType === 1
-    ? window.GetColourDUI(0) : window.GetColourCUI(0);
+const textColor = window.InstanceType === UIInstanceType.DefaultUI ?
+    window.GetColourDUI(ColourTypeDUI.text) : window.GetColourCUI(ColourTypeCUI.text);
 
 // Match the background as well, so theme-colored content remains visible.
-const backgroundColor = window.InstanceType === 1
-    ? window.GetColourDUI(1) : window.GetColourCUI(1);
+const backgroundColor = window.InstanceType === UIInstanceType.DefaultUI ?
+    window.GetColourDUI(ColourTypeDUI.background) : window.GetColourCUI(ColourTypeCUI.background);
 
 const spectrum = vis.Create(VisSourceType.Spectrum, {
         
