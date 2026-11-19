@@ -344,7 +344,7 @@ window.DrawMode = <span class="tok-number">0</span>;
     window.Repaint();
 }
 
-worker = <span class="tok-keyword">new</span> Worker({file: <span class="tok-string">&#39;WebAssembly Image Filters.worker.js&#39;</span>}, <span class="tok-string">&#39;WASM Image Filters&#39;</span>);
+worker = <span class="tok-keyword">new</span> Worker({file: <span class="tok-string">&#39;worker/WebAssembly Image Filters.worker.js&#39;</span>}, <span class="tok-string">&#39;WASM Image Filters&#39;</span>);
 worker.onmessage = <span class="tok-keyword">function</span> (e) {
     <span class="tok-keyword">const</span> m = e.data;
     <span class="tok-keyword">if</span> (m.type === <span class="tok-string">&#39;ready&#39;</span>) {

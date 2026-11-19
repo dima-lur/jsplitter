@@ -102,5 +102,5 @@
  *
  * @module WebAssembly
  * @sourceFile ../../component/samples/wasm/WebAssembly Image Filters.js
- * @sourceFile ../../component/samples/wasm/WebAssembly Image Filters.worker.js
+ * @sourceFile ../../component/samples/wasm/worker/WebAssembly Image Filters.worker.js
  */

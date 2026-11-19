@@ -52,6 +52,11 @@
  * waveform.Style = "line";
  * ```
  * <p>Creation settings use lower camel case, such as <b>fftSize</b>; the corresponding runtime properties use JSplitter property naming, such as <b>FftSize</b>. Changing a runtime property updates the running visualization.</p>
+ * <p id="built-in-opacity">All six built-in renderers support <b>opacity</b> at creation time and the live <b>Opacity</b> property (0–1; default 1). It controls transparency of the completed visualization, including its effects and markers. JavaScript callback and shader renderers do not expose this property.</p>
+ * ```js
+ * const waveform = vis.Create(VisSourceType.Waveform, null, { opacity: 0.5 });
+ * waveform.Opacity = 0.8; // Change output transparency without recreating it.
+ * ```
  * <p>On the returned visualization object, {@link Visualization#SourceType SourceType}, {@link Visualization#RendererType RendererType}, and {@link Visualization#DebugInfo DebugInfo} are read-only.</p>
  * <h3>Selecting source channels</h3>
  * <p>Waveform, Spectrum, Peak Meter, VU Meter, and Spectrogram use <b>channel</b> to select the audio input. Vectorscope uses <b>leftChannel</b> and <b>rightChannel</b> instead.</p>
@@ -207,6 +212,13 @@
  * <td>0</td>
  * <td>Finite number: 0–32 px</td>
  * <td>Radius of the optional glow, in pixels.</td>
+ * </tr>
+ * <tr>
+ * <td><b>opacity</b></td>
+ * <td><b>Opacity</b></td>
+ * <td>1</td>
+ * <td>Finite number: 0–1</td>
+ * <td>Transparency of the completed visualization, including its effects and markers.</td>
  * </tr>
  * </tbody>
  * </table>
@@ -403,6 +415,13 @@
  * <td>1</td>
  * <td>Integer 1–64 px</td>
  * <td>Thickness of the held peak marker in gradient mode. In discrete mode, the peak aligns to a full segment.</td>
+ * </tr>
+ * <tr>
+ * <td><b>opacity</b></td>
+ * <td><b>Opacity</b></td>
+ * <td>1</td>
+ * <td>Finite number: 0–1</td>
+ * <td>Transparency of the completed visualization, including its effects and markers.</td>
  * </tr>
  * </tbody>
  * </table>
@@ -681,6 +700,13 @@
  * <td>Peak Meter only; 32-bit ARGB integer (0x00000000–0xFFFFFFFF)</td>
  * <td>ARGB color of the clipping indicator.</td>
  * </tr>
+ * <tr>
+ * <td><b>opacity</b></td>
+ * <td><b>Opacity</b></td>
+ * <td>1</td>
+ * <td>Finite number: 0–1</td>
+ * <td>Transparency of the completed visualization, including its effects and markers.</td>
+ * </tr>
  * </tbody>
  * </table>
  * <p>The same <b>ranges</b> syntax used by Spectrum applies here, but the thresholds use the selected meter's units. For example, create a VU meter with green through its 0 VU reference and red above it:</p>
@@ -825,10 +851,18 @@
  * <td><b>BackgroundColor</b></td>
  * <td>0xff202020</td>
  * <td>32-bit ARGB integer (0x00000000–0xFFFFFFFF)</td>
- * <td>Background color used by the grayscale palette, in ARGB format; ignored by the inferno palette.</td>
+ * <td>Low-intensity color of the grayscale palette, in ARGB format; ignored by the inferno palette. It does not fill areas without recorded history.</td>
+ * </tr>
+ * <tr>
+ * <td><b>opacity</b></td>
+ * <td><b>Opacity</b></td>
+ * <td>1</td>
+ * <td>Finite number: 0–1</td>
+ * <td>Transparency of the completed visualization, including its effects and markers.</td>
  * </tr>
  * </tbody>
  * </table>
+ * <p>Areas not yet filled with recorded history are transparent in both scrolling and stationary modes. Columns with valid measurements below <b>minDb</b> still use the lowest color of the selected palette: <b>backgroundColor</b> for grayscale, or the darkest inferno color. This distinguishes missing history from low signal levels.</p>
  * <p>In stationary mode, each wrap retains only the current and immediately previous sweep; older data is discarded. Resizing preserves retained history, so narrowing can hide columns that reappear when widened, but discarded sweeps cannot be restored. Scrolling mode likewise keeps its retained columns across viewport size changes.</p>
  * <p><b>Sample:</b> <a href="source-samples-vis-Builtin---Spectrogram.js.html">Builtin - Spectrogram.js</a>.</p>
  * <h3>Vectorscope</h3>
@@ -969,6 +1003,13 @@
  * <td>300</td>
  * <td>Integer 1–2000 ms</td>
  * <td>Approximate time in milliseconds over which older strokes fade.</td>
+ * </tr>
+ * <tr>
+ * <td><b>opacity</b></td>
+ * <td><b>Opacity</b></td>
+ * <td>1</td>
+ * <td>Finite number: 0–1</td>
+ * <td>Transparency of the completed visualization, including its effects and markers.</td>
  * </tr>
  * </tbody>
  * </table>
@@ -1168,7 +1209,7 @@
  * <h2>Custom HLSL renderers</h2>
  * <p>Use a custom HLSL renderer when you want to implement the visualization as a pixel shader. The native source still captures and analyzes the audio; your shader receives prepared source data and produces the pixels drawn by {@link Visualization#Draw Draw}.</p>
  * <p>Create it with {@link vis.CreateAsync vis.CreateAsync}. The third argument is a renderer object containing <b>shader</b>, in place of built-in renderer settings. Shader visualizations require {@link window.DrawMode} set to 1 (Direct2D). The returned object is a normal {@link Visualization}: source runtime properties remain available, while the shader defines the appearance.</p>
- * <p>The examples below build a Peak Meter shader from one analyzed audio value, then extend it with image passes.</p>
+ * <p>The examples below build a Peak Meter shader from one analyzed audio value.</p>
  * <h3>1. Create a visualization that fills its rectangle</h3>
  * <p>Start with a shader that ignores the audio and returns the same color for every pixel. The Peak Meter source is already selected here; its level will be used in step 3.</p>
  * ```js
@@ -1233,183 +1274,7 @@
  * <p>The Peak Meter source publishes its normalized level from 0 to 1 through a texture bound at <b>t0</b>. <b>Texture2D&lt;float&gt;</b> declares a texture containing floating-point values, and <b>Load(int3(0, 0, 0))</b> reads its first value. The source already performs level detection and smoothing; the shader only turns that value into a bar width.</p>
  * <p>During playback, the green bar follows the current level. Pixels outside it return transparent black, revealing the background drawn by {@link module:Callbacks.on_paint on_paint}. Shader output uses <b>premultiplied RGBA</b>: multiply RGB by alpha whenever the output is transparent or partially transparent.</p>
  * <p>The three input mechanisms now have distinct roles: <b>b0</b> provides values shared by the draw, <b>SCENE_POS</b> identifies the current pixel, and <b>t0</b> supplies analyzed audio. Their HLSL names can change, but their bindings and layouts must match the selected source.</p>
- * <p>Other sources use the same creation and drawing setup with different texture layouts; see <b>Source shader input reference</b>. The following sections add image passes to this Peak Meter.</p>
- * <h2>Shader pipeline</h2>
- * <p>A single source shader is enough for many effects. To process its finished image, add <b>post</b>; to carry part of an image into later frames, add <b>feedback</b>. Each additional shader execution is called a <b>pass</b>. Both options work with all six sources, and you can use either one or both.</p>
- * <p>JSplitter connects the passes, creates the intermediate images, composites the source and maintains feedback history. You supply the shaders and their configuration; there is no need to copy the screen into a bitmap on every paint or maintain a pair of history images in JavaScript.</p>
- * <figure class="vis-figure vis-diagram"><img src="assets/vis/pipeline.svg" alt="Rendering flow: audio source to main shader; previous saved history through feedback; compositing; history saved for the next frame; post passes to the screen"><figcaption>The saved history feeds the next feedback step. Post-processing changes only the displayed image.</figcaption></figure>
- * <h3>Adding a post pass</h3>
- * <p>A <b>post</b> shader reads the completed image at <b>t0</b>. Its input is RGBA pixels, rather than the audio values used by the main shader. Declare <b>Texture2D</b> for that image and a <b>SamplerState</b> at <b>s0</b> for filtered reads. The additional <b>TEXEL_POS</b> input provides coordinates for sampling the image. The following example swaps red and blue while keeping transparency unchanged.</p>
- * <p>Keep the Peak Meter <b>shader</b> from step 3 and replace its creation call with:</p>
- * ```js
- * const colorPost = `
- * Texture2D InputImage : register(t0);
- * SamplerState InputSampler : register(s0);
- * struct PSInput {
- *     float4 clipSpacePos : SV_POSITION;
- *     float4 sceneSpacePos : SCENE_POS;
- *     float4 texelSpacePos : TEXEL_POS;
- * };
- * float4 main(PSInput p) : SV_Target {
- *     float4 color = InputImage.SampleLevel(InputSampler, p.texelSpacePos.xy, 0);
- *     return float4(color.b, color.g, color.r, color.a);
- * }`;
- *
- * vis.CreateAsync(VisSourceType.PeakMeter, null, {
- *     shader,
- *     post: colorPost
- * })
- *     .then(v => { visual = v; window.Repaint(); })
- *     .catch(e => console.log("Visualization creation failed: " + e));
- * ```
- * <p><b>SampleLevel()</b> samples the image through <b>s0</b>; <b>texelSpacePos.xy</b> provides the corresponding input texture coordinates. Unlike an audio-texture <b>Load()</b>, this can interpolate between neighboring pixels. Returning the sampled color unchanged makes an image pass do nothing; here, only the output color channels change.</p>
- * <p><b>post</b> accepts one pass or an array of one to four passes. They run in array order, and each reads the preceding pass's output. A post pass cannot read the original source or an earlier pass separately unless that information is carried through its input image.</p>
- * <p><b>Sample:</b> <a href="source-samples-vis-Shader---Image-Post.js.html">Shader - Image Post.js</a> demonstrates a complete visualization with an independent post effect.</p>
- * <h3>Adding feedback</h3>
- * <p><b>feedback</b> reads the previously saved history at <b>t0</b>. It can fade, move or distort that image. JSplitter then draws the current source image over the result and saves the combined image as the next history. Post-processing, if present, runs after that save and never returns to the loop.</p>
- * <p>For simple fading trails, sample history and reduce its brightness. This pass also reads <b>frameStep</b> from <b>b0</b>: one history step in 60-Hz units, approximately 1 at 60 updates per second and 2 at 30. Using it in the exponent makes the fade account for elapsed time. The preceding <b>viewportSize</b> and <b>time</b> fields keep <b>frameStep</b> at the required fourth-float position, even though this shader does not use them.</p>
- * ```js
- * const fadeFeedback = `
- * Texture2D InputImage : register(t0);
- * SamplerState InputSampler : register(s0);
- * cbuffer ImageConstants : register(b0) {
- *     float2 viewportSize;
- *     float time;
- *     float frameStep;
- * };
- * struct PSInput {
- *     float4 clipSpacePos : SV_POSITION;
- *     float4 sceneSpacePos : SCENE_POS;
- *     float4 texelSpacePos : TEXEL_POS;
- * };
- * float4 main(PSInput p) : SV_Target {
- *     float4 history = InputImage.SampleLevel(InputSampler, p.texelSpacePos.xy, 0);
- *     history.rgb *= pow(0.96, frameStep);
- *     return history;
- * }`;
- * ```
- * <p>Use <b>fadeFeedback</b> as <b>feedback</b> in the creation call. This keeps 96% of the history color per 60 Hz time unit, gradually darkening older traces. The current meter bar is added by the engine after the fade; you do not draw it again in the feedback shader.</p>
- * ```js
- * // Use this renderer object in the preceding creation call:
- * const renderer = {
- *     shader,
- *     feedback: fadeFeedback,
- *     post: colorPost
- * };
- * ```
- * <p><b>Source transparency matters:</b> an opaque source covers the transformed history. The meter shader from step 3 returns transparent pixels outside the bar, so older, fading levels remain visible when the current level falls. The source is composited over history using its alpha; it is not automatically added to the previous RGB values.</p>
- * <p>Each visualization owns its own history, initially black. By default that background is opaque. Set <b>feedbackTransparent: true</b> to start with transparent black and retain meaningful alpha in the accumulated image, for example when the visualization should reveal the panel beneath it. In every pass, return <b>premultiplied RGBA</b>: when you change alpha, keep RGB multiplied by that alpha too.</p>
- * <p><b>Sample:</b> <a href="source-samples-vis-Shader---Feedback-and-Two-Posts.js.html">Shader - Feedback and Two Posts.js</a> combines a history effect with two ordered post passes.</p>
- * <h3>Feedback update rate</h3>
- * <p>By default, every {@link Visualization#Draw Draw} call advances feedback history once. Set <b>feedbackIntervalMs</b> to request a different history cadence. The source and feedback then advance together only when a history step is due; between steps, the last completed history is shown through the post passes.</p>
- * ```js
- * // Add this property to a renderer that already has a feedback pass:
- * const renderer = {
- *     shader,
- *     feedback: fadeFeedback,
- *     post: colorPost,
- *     feedbackIntervalMs: 1000 / 30 // Request about 30 history steps per second.
- * };
- * ```
- * <p>This setting does not create a timer. A history step can run only when the script calls {@link Visualization#Draw Draw}; repaint often enough to support the requested cadence. Missed steps are skipped rather than replayed with old audio. Post shaders can still animate on every repaint even when history is unchanged.</p>
- * <p><b>time</b> describes the animation clock, while <b>frameStep</b> describes one rendering step. For per-draw feedback and all post passes, <b>frameStep</b> is the elapsed draw interval multiplied by 60, clamped to 0.001–6. With a positive <b>feedbackIntervalMs</b>, feedback and the non-spectrogram source shader instead receive the configured interval multiplied by 0.06, clamped to 0.001–60. Spectrogram's main shader has its own constant layout and no <b>frameStep</b> field.</p>
- * <p>To turn a rate expressed per second into a per-step change, multiply it by <b>frameStep / 60</b>. For a time-scaled formula designed around 30 FPS, use <b>frameStep / 2</b> as the step multiplier. The fading example uses an exponential factor so the intended fade rate follows step time.</p>
- * <p>This does not make every effect independent of FPS: repeated resampling, source opacity, and nonlinear operations can still change the accumulated image. Increasing only the repaint rate does not increase a separately limited history rate.</p>
- * <p>Change {@link Visualization#FeedbackIntervalMs FeedbackIntervalMs} on an existing shader visualization to adjust this cadence without recompiling or clearing history. The next eligible {@link Visualization#Draw Draw} starts the new schedule. It accepts 0 or a finite number from 1 to 1000 milliseconds, including fractional values; a positive value requires a feedback pass. Assigning the same value keeps the schedule intact; assigning 0 returns to one history step per draw. Audio analysis and the animation clock are preserved. The setter neither requests a repaint nor bypasses pause or resize freezes.</p>
- * ```js
- * visual.FeedbackIntervalMs = 1000 / 120; // Fixed history step at 120 FPS.
- * const interval = visual.FeedbackIntervalMs; // Read the current setting.
- * visual.FeedbackIntervalMs = 0;              // Return to per-Draw history.
- * // The repaint timer is separate; keep it fast enough for the desired cadence.
- * ```
- * <h3>The image-pass interface</h3>
- * <p>Feedback and post shaders use the same image interface, shown in full in <b>fadeFeedback</b>. Declare the inputs needed by your shader; <b>colorPost</b> does not need the constant buffer. Their bindings have different meanings from the main source shader's bindings:</p>
- * <table class="vis-settings"><thead><tr><th>Input</th><th>Contents</th></tr></thead><tbody>
- * <tr><td><b>t0 / s0</b></td><td>The image being processed and its sampler. Feedback receives previous history; the first post receives the completed current image; later posts receive the preceding post output.</td></tr>
- * <tr><td><b>b0: float2 viewportSize</b></td><td>Current output width and height in pixels.</td></tr>
- * <tr><td><b>b0: float time</b></td><td>Animation time in seconds since the first usable draw; it restarts when the underlying Direct2D device changes.</td></tr>
- * <tr><td><b>b0: float frameStep</b></td><td>Time step in 60 Hz frame units. Here it is the fourth float, in place of the source shader's element count.</td></tr>
- * <tr><td><b>sceneSpacePos.xy</b></td><td>Local output pixel position; divide by <b>viewportSize</b> for a logical position in the drawing rectangle.</td></tr>
- * <tr><td><b>texelSpacePos.xy</b></td><td>Coordinates for sampling the preceding image. Use these for a direct image read.</td></tr>
- * <tr><td><b>t1–t3 / s1–s3</b></td><td>Optional image files attached to this pass, described below. These are not the main shader's audio textures.</td></tr>
- * </tbody></table>
- * <p>Image passes do not receive the source's audio textures or arbitrary JavaScript uniforms. Keep audio-driven drawing in the main shader, or encode information needed by later passes in the image it produces.</p>
- * <div class="doc-note"><b>When changing sample coordinates:</b> logical output coordinates and input texture coordinates need not cover the same 0–1 range. In a chain, an input image may occupy only part of its backing texture. Use <b>texelSpacePos</b> for input sampling and map any logical offsets into that coordinate space; do not assume that replacing it with <b>sceneSpacePos / viewportSize</b> always reads the same pixel.</div>
- * <h3>Adding image files to a pass</h3>
- * <p>To use a noise texture, mask or other image alongside history, replace that pass's HLSL string with an object containing <b>shader</b> and <b>textures</b>. The preceding image remains at <b>t0</b>; one to three files bind in array order at <b>t1</b> through <b>t3</b>, with matching samplers at <b>s1</b> through <b>s3</b>.</p>
- * <p>This example applies a grayscale opacity mask after the earlier color post effect. Supply an existing mask file and adjust the path: white keeps the image, black makes it transparent. The shader stretches the mask over the drawing rectangle using local output coordinates, while reading the preceding image with its own texture coordinates. Multiplying all four color components preserves premultiplied alpha.</p>
- * ```js
- * const texturedPost = `
- * Texture2D InputImage : register(t0);
- * SamplerState InputSampler : register(s0);
- * Texture2D Mask : register(t1);
- * SamplerState MaskSampler : register(s1);
- * cbuffer ImageConstants : register(b0) {
- *     float2 viewportSize;
- * };
- * struct PSInput {
- *     float4 clipSpacePos : SV_POSITION;
- *     float4 sceneSpacePos : SCENE_POS;
- *     float4 texelSpacePos : TEXEL_POS;
- * };
- * float4 main(PSInput p) : SV_Target {
- *     float4 color = InputImage.SampleLevel(InputSampler, p.texelSpacePos.xy, 0);
- *     float2 maskUV = p.sceneSpacePos.xy / max(viewportSize, 1.0);
- *     float opacity = Mask.SampleLevel(MaskSampler, saturate(maskUV), 0).r;
- *     return color * opacity;
- * }`;
- * // Use this renderer object in the earlier CreateAsync call.
- * const renderer = {
- *     shader,
- *     feedback: fadeFeedback,
- *     post: [colorPost, {
- *         shader: texturedPost,
- *         textures: ["images/mask.png"] // Supply an existing image file.
- *     }]
- * };
- * ```
- * <p>The object form is available for <b>feedback</b> and for each <b>post</b> pass. Attach an image to the pass that samples it: textures are not shared automatically between passes, and the main <b>shader</b> uses its source-defined audio bindings.</p>
- * <p>Paths follow the usual script image-path rules. JSplitter reads and decodes the files during asynchronous creation and retains those pixels. If the graphics device is recreated, its textures are uploaded again from the retained data without rereading the files. Create a new visualization to load changed image files. During rendering they are fixed inputs, not additional history images. Define wrapping explicitly in HLSL, for example by applying <b>frac()</b> to the coordinates used for an auxiliary texture.</p>
- * <h3>Shader renderer settings</h3>
- * <p>The third argument to {@link vis.CreateAsync CreateAsync} accepts the following shader renderer settings. See {@link VisualizationShaderRenderer} for the complete reference.</p>
- * <table class="vis-settings"><thead><tr><th>Setting</th><th>Runtime</th><th>Default</th><th>Description</th></tr></thead><tbody>
- * <tr><td><b>shader</b></td><td>—</td><td>Required</td><td>Non-empty HLSL text or compiled DXBC. Generates the source image.</td></tr>
- * <tr><td><b>feedback</b></td><td>—</td><td>Omitted</td><td>One image pass, or null to omit it. Transforms saved history before the source is composited.</td></tr>
- * <tr><td><b>post</b></td><td>—</td><td>Omitted</td><td>One image pass, an array of 1–4 passes, or null. Processes only the displayed result.</td></tr>
- * <tr><td><b>feedbackIntervalMs</b></td><td>{@link Visualization#FeedbackIntervalMs FeedbackIntervalMs}</td><td>0</td><td>0 for every draw, or a finite number from 1 to 1000 ms, including fractional values. A positive value requires feedback.</td></tr>
- * <tr><td><b>feedbackTransparent</b></td><td>—</td><td>false</td><td>Use transparent history instead of an opaque black background; true requires feedback.</td></tr>
- * <tr><td><b>stopOnPause</b></td><td>—</td><td>false</td><td>Freeze the completed image, including post effects, when playback is paused.</td></tr>
- * </tbody></table>
- * <p>An image pass may be a direct HLSL/DXBC value or a {@link VisualizationImagePass} object with <b>shader</b> and optional <b>textures</b>. HLSL and DXBC can be mixed within a pipeline; compilation options are covered at the end of this article.</p>
- * <h3>Pause, resizing and history lifetime</h3>
- * <p>With the default <b>stopOnPause: false</b>, shaders continue to run on pause using the source's retained audio data; feedback can keep evolving. Set it to true to display the last completed image until playback resumes. This freezes rendering, not native audio analysis. In either case, the script remains responsible for requesting repaints.</p>
- * <p>For a visualization with feedback, while the drawing size is changing JSplitter temporarily scales a snapshot of the last completed image. Once the size settles, it resizes the saved history once and resumes the pipeline. Without feedback, an active source/post pipeline renders directly at the new size. A paused, frozen image is simply scaled without reprocessing it.</p>
- * <p>Feedback supports drawing areas up to <b>4096 pixels per side</b> and <b>4,194,304 pixels in total</b>. History belongs to the visualization instance; creating another instance starts a new history, and a graphics-device change resets it. Switching between panel and bitmap graphics on the same Direct2D device preserves history.</p>
- * <p>If a Waveform or Vectorscope source temporarily has no PCM, its source image is not added to feedback. Existing history can still advance through feedback and post, which lets trails continue between tracks. This is separate from the paused-playback behavior above.</p>
- * <h3>Injecting a bitmap into feedback history</h3>
- * <p>Use {@link Visualization#InjectFeedback InjectFeedback} when an image should become part of recursive feedback rather than a normal overlay. The visualization must have a <b>feedback</b> pass.</p>
- * ```js
- * // 'visual' was created with vis.CreateAsync() and feedback enabled.
- * const w = 640, h = 128;
- * const bitmap = d2d.CreateImage(w, h);
- * const bg = bitmap.GetGraphics();
- * try {
- *     bg.DrawString('Now playing', d2d.Font('Segoe UI', 30),
- *         0xffffffff, 20, 20, w - 40, 64);
- * } finally {
- *     bitmap.ReleaseGraphics(bg);
- * }
- * visual.InjectFeedback(bitmap);
- * ```
- * <p>{@link Visualization#InjectFeedback InjectFeedback} copies the bitmap to the GPU and queues it for the next feedback-history update. At that update, JSplitter processes the previous history through the feedback pass, composites the current source image, then alpha-composites the injected bitmap and saves the result. Any post pass runs afterwards for presentation.</p>
- * <p>If <b>feedbackIntervalMs</b> postpones the next history update, the bitmap remains pending until that update occurs. Calling {@link Visualization#InjectFeedback InjectFeedback} again before then replaces the pending bitmap. The method does not request a repaint or force an early history update.</p>
- * <p>The argument must be a {@link D2DBitmap} on the <b>same D2D device</b> as the visualization; GDI bitmaps are not accepted. The dimensions must not exceed <b>4096 pixels</b> per side or <b>4,194,304 pixels</b> in total. Injected images are scaled to the feedback surface, so use a suitable aspect ratio. To draw graphics that must stay outside feedback history, draw them after {@link Visualization#Draw visual.Draw} in {@link module:Callbacks.on_paint on_paint}.</p>
- * <p><b>Preset hand-off:</b> <a href="source-samples-vis-Shader---MilkDrop-ALL.js.html">Shader - MilkDrop ALL.js</a> captures the outgoing preset into an offscreen D2D bitmap and injects it once into the incoming preset. The incoming feedback shader then controls how that image is distorted and faded; no second visualization is kept running for a screen-space crossfade.</p>
- * <h3>Complete MilkDrop example and preset browser</h3>
- * <p><b>Standalone sample:</b> <a href="source-samples-vis-Shader---MilkDrop-0101.js.html">Shader - MilkDrop 0101.js</a> contains a complete, runnable port in a single file. It defines the Vectorscope source settings and all three HLSL stages (<b>shader</b>, <b>feedback</b> and <b>post</b>) before passing them directly to {@link vis.CreateAsync CreateAsync}. It is a good starting point for studying or modifying the full pipeline without loading separate preset files.</p>
- * <p><b>Preset browser:</b> <a href="source-samples-vis-Shader---MilkDrop-ALL.js.html">Shader - MilkDrop ALL.js</a> discovers readable JavaScript preset files in <b>samples/vis/MilkDrop</b>, including 0101. Each numbered file contains commented HLSL strings and a factory that returns its source settings and renderer object for the selected FPS. The browser offers 30, 60 and 120 FPS buttons and accepts integer targets from 30 to 1000; these are repaint requests, not a guaranteed rendering rate. Add another four-digit <b>.js</b> file and reload the panel to make it available.</p>
- * <p>The browser loads trusted preset files through {@link include include}, compiles their shaders with {@link vis.CreateAsync CreateAsync}, hands the outgoing frame to the incoming feedback via {@link Visualization#InjectFeedback InjectFeedback}, and displays live native cache statistics.</p>
- * <p>Changing FPS preserves the active visualization and its history. Most presets advance history on every draw; a preset that opts into fixed cadence through <b>feedbackIntervalMs</b>, such as 0176, has its factory interval re-evaluated and applied through {@link Visualization#FeedbackIntervalMs FeedbackIntervalMs}. Audio analysis cadence and the PCM window remain separate from display FPS. Both samples use the public visualization API and need no MilkDrop-specific native API.</p>
+ * <p>Other sources use the same creation and drawing setup, with different texture layouts detailed in the reference below.</p>
  * <h2>Source shader input reference</h2>
  * <p>The main <b>shader</b> receives the selected source's analysis data through textures <b>t0</b>..<b>t2</b> and its drawing constants through <b>b0</b>. The snippets below show the smallest useful reads for each source; the linked samples contain complete shaders.</p>
  * <p>For non-spectrogram sources, <b>b0</b> starts with this layout:</p>
@@ -1546,7 +1411,7 @@
  * <tr><td><b>t2</b></td><td>9 × 1 R32F when enabled</td><td>Relative and absolute bass/mid/treble analysis; see below.</td></tr>
  * <tr><td><b>b0 count</b></td><td>pointCount</td><td>Number of synchronized stereo sample pairs.</td></tr>
  * </tbody></table>
- * <p>With <b>relativeBandAnalysis: true</b>, <b>t2</b> is also bound:</p>
+ * <p>With <b>relativeBandAnalysis: true</b> in the Vectorscope source settings, <b>t2</b> is also bound:</p>
  * ```hlsl
  * Texture2D<float> Bands : register(t2);
  * float bass = Bands.Load(int3(0, 0, 0)).r;
@@ -1554,9 +1419,185 @@
  * float treb = Bands.Load(int3(2, 0, 0)).r;
  * float bassAtt = Bands.Load(int3(3, 0, 0)).r;
  * ```
- * <p>Indices 0–2 are the immediate <b>bass</b>, <b>mid</b> and <b>treb</b> levels relative to their long-term averages; 3–5 are the attack/release-smoothed versions. A value of 1 matches the adaptive long-term reference level, and the relative values are not clamped to 0–1. Indices 6–8 contain the corresponding immediate absolute magnitude sums. This option belongs to the Vectorscope source settings, not the shader renderer.</p>
+ * <p>Indices 0–2 are the immediate <b>bass</b>, <b>mid</b> and <b>treb</b> levels relative to their long-term averages; 3–5 are the attack/release-smoothed versions. A value of 1 matches the adaptive long-term reference level, and the relative values are not clamped to 0–1. Indices 6–8 contain the corresponding immediate absolute magnitude sums.</p>
  * <p>A pixel shader that plots many PCM points may be considerably more expensive than the built-in Vectorscope renderer because each output pixel can examine multiple source samples.</p>
  * <p><b>Sample:</b> <a href="source-samples-vis-Shader---Vectorscope.js.html">Shader - Vectorscope.js</a>.</p>
+ * <h2>Shader pipeline</h2>
+ * <p>A single source shader is enough for many effects. To process its finished image, add <b>post</b>; to carry part of an image into later frames, add <b>feedback</b>. Each additional shader execution is called a <b>pass</b>. Both options work with all six sources, and you can use either one or both.</p>
+ * <p>JSplitter connects the passes, creates the intermediate images, composites the source and maintains feedback history. You supply the shaders and their configuration; there is no need to copy the screen into a bitmap on every paint or maintain a pair of history images in JavaScript.</p>
+ * <figure class="vis-figure vis-diagram"><img src="assets/vis/pipeline.svg" alt="Rendering flow: audio source to main shader; previous saved history through feedback; compositing; history saved for the next frame; post passes to the screen"><figcaption>The saved history feeds the next feedback step. Post-processing changes only the displayed image.</figcaption></figure>
+ * <h3>Adding a post pass</h3>
+ * <p>A <b>post</b> shader reads the completed image at <b>t0</b>. Its input is RGBA pixels, rather than the audio values used by the main shader. Declare <b>Texture2D</b> for that image and a <b>SamplerState</b> at <b>s0</b> for filtered reads. The additional <b>TEXEL_POS</b> input provides coordinates for sampling the image. The following example swaps red and blue while keeping transparency unchanged.</p>
+ * <p>Keep the Peak Meter <b>shader</b> from step 3 and replace its creation call with:</p>
+ * ```js
+ * const colorPost = `
+ * Texture2D InputImage : register(t0);
+ * SamplerState InputSampler : register(s0);
+ * struct PSInput {
+ *     float4 clipSpacePos : SV_POSITION;
+ *     float4 sceneSpacePos : SCENE_POS;
+ *     float4 texelSpacePos : TEXEL_POS;
+ * };
+ * float4 main(PSInput p) : SV_Target {
+ *     float4 color = InputImage.SampleLevel(InputSampler, p.texelSpacePos.xy, 0);
+ *     return float4(color.b, color.g, color.r, color.a);
+ * }`;
+ *
+ * vis.CreateAsync(VisSourceType.PeakMeter, null, {
+ *     shader,
+ *     post: colorPost
+ * })
+ *     .then(v => { visual = v; window.Repaint(); })
+ *     .catch(e => console.log("Visualization creation failed: " + e));
+ * ```
+ * <p><b>SampleLevel()</b> samples the image through <b>s0</b>; <b>texelSpacePos.xy</b> provides the corresponding input texture coordinates. Unlike an audio-texture <b>Load()</b>, this can interpolate between neighboring pixels. Returning the sampled color unchanged makes an image pass do nothing; here, only the output color channels change.</p>
+ * <p><b>post</b> accepts one pass or an array of one to four passes. They run in array order, and each reads the preceding pass's output. A post pass cannot read the original source or an earlier pass separately unless that information is carried through its input image.</p>
+ * <p><b>Sample:</b> <a href="source-samples-vis-Shader---Image-Post.js.html">Shader - Image Post.js</a> demonstrates a complete visualization with an independent post effect.</p>
+ * <h3>Adding feedback</h3>
+ * <p><b>feedback</b> reads the previously saved history at <b>t0</b>. It can fade, move or distort that image. JSplitter then draws the current source image over the result and saves the combined image as the next history. Post-processing, if present, runs after that save and never returns to the loop.</p>
+ * <p>For simple fading trails, sample history and reduce its brightness. This pass also reads <b>frameStep</b> from <b>b0</b>: one history step in 60-Hz units, approximately 1 at 60 updates per second and 2 at 30. Using it in the exponent makes the fade account for elapsed time. The preceding <b>viewportSize</b> and <b>time</b> fields keep <b>frameStep</b> at the required fourth-float position, even though this shader does not use them.</p>
+ * ```js
+ * const fadeFeedback = `
+ * Texture2D InputImage : register(t0);
+ * SamplerState InputSampler : register(s0);
+ * cbuffer ImageConstants : register(b0) {
+ *     float2 viewportSize;
+ *     float time;
+ *     float frameStep;
+ * };
+ * struct PSInput {
+ *     float4 clipSpacePos : SV_POSITION;
+ *     float4 sceneSpacePos : SCENE_POS;
+ *     float4 texelSpacePos : TEXEL_POS;
+ * };
+ * float4 main(PSInput p) : SV_Target {
+ *     float4 history = InputImage.SampleLevel(InputSampler, p.texelSpacePos.xy, 0);
+ *     history.rgb *= pow(0.96, frameStep);
+ *     return history;
+ * }`;
+ * ```
+ * <p>Use <b>fadeFeedback</b> as <b>feedback</b> in the creation call. This keeps 96% of the history color per 60 Hz time unit, gradually darkening older traces. The current meter bar is added by the engine after the fade; you do not draw it again in the feedback shader.</p>
+ * ```js
+ * // Use this renderer object in the preceding creation call:
+ * const renderer = {
+ *     shader,
+ *     feedback: fadeFeedback,
+ *     post: colorPost
+ * };
+ * ```
+ * <p><b>Source transparency matters:</b> an opaque source covers the transformed history. The meter shader from step 3 returns transparent pixels outside the bar, so older, fading levels remain visible when the current level falls. The source is composited over history using its alpha; it is not automatically added to the previous RGB values.</p>
+ * <p>Each visualization owns its own history, initially black. By default that background is opaque. Set <b>feedbackTransparent: true</b> to start with transparent black and retain meaningful alpha in the accumulated image, for example when the visualization should reveal the panel beneath it. In every pass, return <b>premultiplied RGBA</b>: when you change alpha, keep RGB multiplied by that alpha too.</p>
+ * <p><b>Sample:</b> <a href="source-samples-vis-Shader---Feedback-and-Two-Posts.js.html">Shader - Feedback and Two Posts.js</a> combines a history effect with two ordered post passes.</p>
+ * <h3 id="feedback-interval-ms">Feedback update rate</h3>
+ * <p>By default, every {@link Visualization#Draw Draw} call advances feedback history once. Set <b>feedbackIntervalMs</b> to request a different history cadence. The source and feedback then advance together only when a history step is due; between steps, the last completed history is shown through the post passes.</p>
+ * ```js
+ * // Add this property to a renderer that already has a feedback pass:
+ * const renderer = {
+ *     shader,
+ *     feedback: fadeFeedback,
+ *     post: colorPost,
+ *     feedbackIntervalMs: 1000 / 30 // Request about 30 history steps per second.
+ * };
+ * ```
+ * <p>This setting does not create a timer. A history step can run only when the script calls {@link Visualization#Draw Draw}; repaint often enough to support the requested cadence. Missed steps are skipped rather than replayed with old audio. Post shaders can still animate on every repaint even when history is unchanged.</p>
+ * <p><b>time</b> describes the animation clock, while <b>frameStep</b> describes one rendering step. For per-draw feedback and all post passes, <b>frameStep</b> is the elapsed draw interval multiplied by 60, clamped to 0.001–6. With a positive <b>feedbackIntervalMs</b>, feedback and the non-spectrogram source shader instead receive the configured interval multiplied by 0.06, clamped to 0.001–60. Spectrogram's main shader has its own constant layout and no <b>frameStep</b> field.</p>
+ * <p>To turn a rate expressed per second into a per-step change, multiply it by <b>frameStep / 60</b>. For a time-scaled formula designed around 30 FPS, use <b>frameStep / 2</b> as the step multiplier. The fading example uses an exponential factor so the intended fade rate follows step time.</p>
+ * <p>This does not make every effect independent of FPS: repeated resampling, source opacity, and nonlinear operations can still change the accumulated image. Increasing only the repaint rate does not increase a separately limited history rate.</p>
+ * <p>The read/write <b>FeedbackIntervalMs</b> property changes this cadence on an existing shader visualization without recompilation or loss of history. It accepts 0 or a finite number from 1 to 1000 milliseconds, including fractional values. A positive value requires a feedback pass; without feedback, the property reads 0 and accepts only 0. Invalid values throw an error. The next eligible {@link Visualization#Draw Draw} uses the new schedule; assigning the same value leaves it intact. Changing the property does not request a repaint.</p>
+ * ```js
+ * visual.FeedbackIntervalMs = 1000 / 120; // Fixed history step at 120 FPS.
+ * const interval = visual.FeedbackIntervalMs; // Read the current setting.
+ * visual.FeedbackIntervalMs = 0;              // Return to per-Draw history.
+ * // The repaint timer is separate; keep it fast enough for the desired cadence.
+ * ```
+ * <h3>The image-pass interface</h3>
+ * <p>Feedback and post shaders use the same image interface, shown in full in <b>fadeFeedback</b>. Declare the inputs needed by your shader; <b>colorPost</b> does not need the constant buffer. Their bindings have different meanings from the main source shader's bindings:</p>
+ * <table class="vis-settings"><thead><tr><th>Input</th><th>Contents</th></tr></thead><tbody>
+ * <tr><td><b>t0 / s0</b></td><td>The image being processed and its sampler. Feedback receives previous history; the first post receives the completed current image; later posts receive the preceding post output.</td></tr>
+ * <tr><td><b>b0: float2 viewportSize</b></td><td>Current output width and height in pixels.</td></tr>
+ * <tr><td><b>b0: float time</b></td><td>Animation time in seconds since the first usable draw; it restarts when the underlying Direct2D device changes.</td></tr>
+ * <tr><td><b>b0: float frameStep</b></td><td>Time step in 60 Hz frame units. Here it is the fourth float, in place of the source shader's element count.</td></tr>
+ * <tr><td><b>sceneSpacePos.xy</b></td><td>Local output pixel position; divide by <b>viewportSize</b> for a logical position in the drawing rectangle.</td></tr>
+ * <tr><td><b>texelSpacePos.xy</b></td><td>Coordinates for sampling the preceding image. Use these for a direct image read.</td></tr>
+ * <tr><td><b>t1–t3 / s1–s3</b></td><td>Optional image files attached to this pass, described below. These are not the main shader's audio textures.</td></tr>
+ * </tbody></table>
+ * <p>Image passes do not receive the source's audio textures or arbitrary JavaScript uniforms. Keep audio-driven drawing in the main shader, or encode information needed by later passes in the image it produces.</p>
+ * <div class="doc-note"><b>When changing sample coordinates:</b> logical output coordinates and input texture coordinates need not cover the same 0–1 range. In a chain, an input image may occupy only part of its backing texture. Use <b>texelSpacePos</b> for input sampling and map any logical offsets into that coordinate space; do not assume that replacing it with <b>sceneSpacePos / viewportSize</b> always reads the same pixel.</div>
+ * <h3>Adding image files to a pass</h3>
+ * <p>To use a noise texture, mask or other image alongside history, replace that pass's HLSL string with an object containing <b>shader</b> and <b>textures</b>. The preceding image remains at <b>t0</b>; one to three files bind in array order at <b>t1</b> through <b>t3</b>, with matching samplers at <b>s1</b> through <b>s3</b>.</p>
+ * <p>This example applies a grayscale opacity mask after the earlier color post effect. Supply an existing mask file and adjust the path: white keeps the image, black makes it transparent. The shader stretches the mask over the drawing rectangle using local output coordinates, while reading the preceding image with its own texture coordinates. Multiplying all four color components preserves premultiplied alpha.</p>
+ * ```js
+ * const texturedPost = `
+ * Texture2D InputImage : register(t0);
+ * SamplerState InputSampler : register(s0);
+ * Texture2D Mask : register(t1);
+ * SamplerState MaskSampler : register(s1);
+ * cbuffer ImageConstants : register(b0) {
+ *     float2 viewportSize;
+ * };
+ * struct PSInput {
+ *     float4 clipSpacePos : SV_POSITION;
+ *     float4 sceneSpacePos : SCENE_POS;
+ *     float4 texelSpacePos : TEXEL_POS;
+ * };
+ * float4 main(PSInput p) : SV_Target {
+ *     float4 color = InputImage.SampleLevel(InputSampler, p.texelSpacePos.xy, 0);
+ *     float2 maskUV = p.sceneSpacePos.xy / max(viewportSize, 1.0);
+ *     float opacity = Mask.SampleLevel(MaskSampler, saturate(maskUV), 0).r;
+ *     return color * opacity;
+ * }`;
+ * // Use this renderer object in the earlier CreateAsync call.
+ * const renderer = {
+ *     shader,
+ *     feedback: fadeFeedback,
+ *     post: [colorPost, {
+ *         shader: texturedPost,
+ *         textures: ["images/mask.png"] // Supply an existing image file.
+ *     }]
+ * };
+ * ```
+ * <p>The object form is available for <b>feedback</b> and for each <b>post</b> pass. Attach an image to the pass that samples it: textures are not shared automatically between passes, and the main <b>shader</b> uses its source-defined audio bindings.</p>
+ * <p>Paths follow the usual script image-path rules. JSplitter reads and decodes the files during asynchronous creation and retains those pixels. If the graphics device is recreated, its textures are uploaded again from the retained data without rereading the files. Create a new visualization to load changed image files. During rendering they are fixed inputs, not additional history images. Define wrapping explicitly in HLSL, for example by applying <b>frac()</b> to the coordinates used for an auxiliary texture.</p>
+ * <h3>Shader renderer settings</h3>
+ * <p>The third argument to {@link vis.CreateAsync CreateAsync} accepts the following shader renderer settings. See {@link VisualizationShaderRenderer} for the complete reference.</p>
+ * <table class="vis-settings"><thead><tr><th>Setting</th><th>Runtime</th><th>Default</th><th>Description</th></tr></thead><tbody>
+ * <tr><td><b>shader</b></td><td>—</td><td>Required</td><td>Non-empty HLSL text or compiled DXBC. Generates the source image.</td></tr>
+ * <tr><td><b>feedback</b></td><td>—</td><td>Omitted</td><td>One image pass, or null to omit it. Transforms saved history before the source is composited.</td></tr>
+ * <tr><td><b>post</b></td><td>—</td><td>Omitted</td><td>One image pass, an array of 1–4 passes, or null. Processes only the displayed result.</td></tr>
+ * <tr><td><b>feedbackIntervalMs</b></td><td><a href="#feedback-interval-ms">FeedbackIntervalMs</a></td><td>0</td><td>0 for every draw, or a finite number from 1 to 1000 ms, including fractional values. A positive value requires feedback.</td></tr>
+ * <tr><td><b>feedbackTransparent</b></td><td>—</td><td>false</td><td>Use transparent history instead of an opaque black background; true requires feedback.</td></tr>
+ * <tr><td><b>stopOnPause</b></td><td>—</td><td>false</td><td>Freeze the completed image, including post effects, when playback is paused.</td></tr>
+ * </tbody></table>
+ * <p>An image pass may be a direct HLSL/DXBC value or a {@link VisualizationImagePass} object with <b>shader</b> and optional <b>textures</b>. HLSL and DXBC can be mixed within a pipeline; compilation options are covered at the end of this article.</p>
+ * <h3>Pause, resizing and history lifetime</h3>
+ * <p>With the default <b>stopOnPause: false</b>, shaders continue to run on pause using the source's retained audio data; feedback can keep evolving. Set it to true to display the last completed image until playback resumes. This freezes rendering, not native audio analysis. In either case, the script remains responsible for requesting repaints.</p>
+ * <p>For a visualization with feedback, while the drawing size is changing JSplitter temporarily scales a snapshot of the last completed image. Once the size settles, it resizes the saved history once and resumes the pipeline. Without feedback, an active source/post pipeline renders directly at the new size. A paused, frozen image is simply scaled without reprocessing it.</p>
+ * <p>Feedback supports drawing areas up to <b>4096 pixels per side</b> and <b>4,194,304 pixels in total</b>. History belongs to the visualization instance; creating another instance starts a new history, and a graphics-device change resets it. Switching between panel and bitmap graphics on the same Direct2D device preserves history.</p>
+ * <p>If a Waveform or Vectorscope source temporarily has no PCM, its source image is not added to feedback. Existing history can still advance through feedback and post, which lets trails continue between tracks. This is separate from the paused-playback behavior above.</p>
+ * <h3 id="inject-feedback">Injecting a bitmap into feedback history</h3>
+ * <p>Use <b>visual.InjectFeedback(bitmap)</b> when an image should become part of recursive feedback rather than a normal overlay. This method is available only on shader visualizations with a <b>feedback</b> pass.</p>
+ * ```js
+ * // 'visual' was created with vis.CreateAsync() and feedback enabled.
+ * const w = 640, h = 128;
+ * const bitmap = d2d.CreateImage(w, h);
+ * const bg = bitmap.GetGraphics();
+ * try {
+ *     bg.DrawString('Now playing', d2d.Font('Segoe UI', 30),
+ *         0xffffffff, 20, 20, w - 40, 64);
+ * } finally {
+ *     bitmap.ReleaseGraphics(bg);
+ * }
+ * visual.InjectFeedback(bitmap);
+ * ```
+ * <p><b>InjectFeedback</b> copies the bitmap to the GPU and queues it for the next feedback-history update. At that update, JSplitter processes the previous history through the feedback pass, composites the current source image, then alpha-composites the injected bitmap and saves the result. Any post pass runs afterwards for presentation.</p>
+ * <p>If <b>feedbackIntervalMs</b> postpones the next history update, the bitmap remains pending until that update occurs. Calling <b>InjectFeedback</b> again before then replaces the pending bitmap. The method returns no value and does not request a repaint or force an early history update.</p>
+ * <p><b>bitmap</b> must be a {@link D2DBitmap} from the <b>same D2D device</b> as the visualization; GDI bitmaps are not accepted. Its dimensions must not exceed <b>4096 pixels</b> per side or <b>4,194,304 pixels</b> in total. Invalid input or missing feedback throws an error. The bitmap is copied when the method is called, so it may then be changed or released. A graphics-device reset may discard a pending injection. Injected images are scaled to the feedback surface, so use a suitable aspect ratio. To draw graphics outside feedback history, draw them after {@link Visualization#Draw visual.Draw} in {@link module:Callbacks.on_paint on_paint}.</p>
+ * <p><b>Preset hand-off:</b> <a href="source-samples-vis-Shader---MilkDrop-ALL.js.html">Shader - MilkDrop ALL.js</a> captures the outgoing preset into an offscreen D2D bitmap and injects it once into the incoming preset. The incoming feedback shader then controls how that image is distorted and faded; no second visualization is kept running for a screen-space crossfade.</p>
+ * <h3>Complete MilkDrop example and preset browser</h3>
+ * <p><b>Standalone sample:</b> <a href="source-samples-vis-Shader---MilkDrop-0101.js.html">Shader - MilkDrop 0101.js</a> contains a complete, runnable port in a single file. It defines the Vectorscope source settings and all three HLSL stages (<b>shader</b>, <b>feedback</b> and <b>post</b>) before passing them directly to {@link vis.CreateAsync CreateAsync}. It is a good starting point for studying or modifying the full pipeline without loading separate preset files.</p>
+ * <p><b>Preset browser:</b> <a href="source-samples-vis-Shader---MilkDrop-ALL.js.html">Shader - MilkDrop ALL.js</a> discovers readable JavaScript preset files in <b>samples/vis/MilkDrop</b>, including 0101. Each numbered file contains commented HLSL strings and a factory that returns its source settings and renderer object for the selected FPS. The browser offers 30, 60 and 120 FPS buttons and accepts integer targets from 30 to 1000; these are repaint requests, not a guaranteed rendering rate. Add another four-digit <b>.js</b> file and reload the panel to make it available.</p>
+ * <p>The browser loads trusted preset files through {@link include include}, compiles their shaders with {@link vis.CreateAsync CreateAsync}, hands the outgoing frame to the incoming feedback via <a href="#inject-feedback">InjectFeedback</a>, and displays live native cache statistics.</p>
+ * <p>Changing FPS preserves the active visualization and its history. Most presets advance history on every draw; a preset that opts into fixed cadence through <b>feedbackIntervalMs</b>, such as 0176, has its factory interval re-evaluated and applied through <a href="#feedback-interval-ms">FeedbackIntervalMs</a>. Audio analysis cadence and the PCM window remain separate from display FPS. Both samples use the public visualization API and need no MilkDrop-specific native API.</p>
  * <h2>Compilation and shader reuse</h2>
  * <p>For normal use, pass HLSL directly to {@link vis.CreateAsync CreateAsync}. JSplitter compiles each HLSL stage asynchronously and caches the resulting DXBC; no explicit compilation is required.</p>
  * <h3>Automatic compilation and shader cache</h3>

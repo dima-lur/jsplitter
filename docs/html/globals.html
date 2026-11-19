@@ -243,7 +243,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#ArtPromiseResult">ArtPromiseResult</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:2880</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:2889</div>
         </header>
         
         
@@ -502,7 +502,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#Error">Error</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:8105</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:8130</div>
         </header>
         
         
@@ -586,7 +586,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#JsMemoryStats">JsMemoryStats</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4685</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4710</div>
         </header>
         
         
@@ -615,7 +615,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#JsPackageDirs">JsPackageDirs</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3049</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3058</div>
         </header>
         
         
@@ -644,7 +644,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#JsPackageInfo">JsPackageInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:3059</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:3068</div>
         </header>
         
         
@@ -673,7 +673,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#JsWorkerMemoryStats">JsWorkerMemoryStats</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4667</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4692</div>
         </header>
         
         
@@ -852,7 +852,7 @@
                 <div class="eyebrow"><span class="kind kind-typedef">typedef</span></div>
                 <h2><a class="anchor" href="#ScriptInfo">ScriptInfo</a></h2>
             </div>
-            <div class="source-location">js/foo_uie_jsplitter.js:4774</div>
+            <div class="source-location">js/foo_uie_jsplitter.js:4799</div>
         </header>
         
         
@@ -1153,7 +1153,7 @@
             <h3>Properties</h3>
             <div class="table-wrap"><table class="properties-table">
                 <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                <tbody><tr id="VisualizationShaderRenderer.shader"><td><code>shader</code></td><td><code><a class="type-link" href="globals.html#VisualizationShaderCode">VisualizationShaderCode</a></code></td><td><p>Required program that draws from the selected native audio source.</p></td></tr><tr id="feedback"><td><code>feedback</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="globals.html#VisualizationShaderCode">VisualizationShaderCode</a>|<a class="type-link" href="globals.html#VisualizationImagePass">VisualizationImagePass</a></code></td><td><p>One image pass transforming previous history before the current source is composited over it. Omit or pass null to disable feedback.</p></td></tr><tr id="post"><td><code>post</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="globals.html#VisualizationShaderCode">VisualizationShaderCode</a>|<a class="type-link" href="globals.html#VisualizationImagePass">VisualizationImagePass</a>|Array&lt;<a class="type-link" href="globals.html#VisualizationShaderCode">VisualizationShaderCode</a>|<a class="type-link" href="globals.html#VisualizationImagePass">VisualizationImagePass</a>&gt;</code></td><td><p>One image pass or an array of 1–4 passes, executed in order after the current image is complete. Each reads the preceding image. Omit or pass null to disable post-processing.</p></td></tr><tr id="feedbackIntervalMs"><td><code>feedbackIntervalMs = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Feedback-history interval: 0 for every <a href="Visualization.html#Draw">Draw</a>, or a finite number from 1 to 1000 milliseconds. A positive value requires <a href="globals.html#feedback">feedback</a>. Change it later through <a href="Visualization.html#FeedbackIntervalMs">FeedbackIntervalMs</a>. This setting does not create a timer; missed intervals are skipped and post passes still run on each draw.</p></td></tr><tr id="feedbackTransparent"><td><code>feedbackTransparent = false</code><span class="mini-flag">optional</span></td><td><code>boolean</code></td><td><p>Start and composite history over transparent black instead of opaque black, retaining shader alpha. A true value requires <a href="globals.html#feedback">feedback</a>.</p></td></tr><tr id="stopOnPause"><td><code>stopOnPause = false</code><span class="mini-flag">optional</span></td><td><code>boolean</code></td><td><p>Freeze the last completed image, including post effects, while playback is paused. A frozen image is scaled on resize without reprocessing. When false, shaders continue to run using retained audio data. This setting does not stop native audio analysis or schedule panel repaints.</p></td></tr></tbody>
+                <tbody><tr id="VisualizationShaderRenderer.shader"><td><code>shader</code></td><td><code><a class="type-link" href="globals.html#VisualizationShaderCode">VisualizationShaderCode</a></code></td><td><p>Required program that draws from the selected native audio source.</p></td></tr><tr id="feedback"><td><code>feedback</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="globals.html#VisualizationShaderCode">VisualizationShaderCode</a>|<a class="type-link" href="globals.html#VisualizationImagePass">VisualizationImagePass</a></code></td><td><p>One image pass transforming previous history before the current source is composited over it. Omit or pass null to disable feedback.</p></td></tr><tr id="post"><td><code>post</code><span class="mini-flag">optional</span></td><td><code><a class="type-link" href="globals.html#VisualizationShaderCode">VisualizationShaderCode</a>|<a class="type-link" href="globals.html#VisualizationImagePass">VisualizationImagePass</a>|Array&lt;<a class="type-link" href="globals.html#VisualizationShaderCode">VisualizationShaderCode</a>|<a class="type-link" href="globals.html#VisualizationImagePass">VisualizationImagePass</a>&gt;</code></td><td><p>One image pass or an array of 1–4 passes, executed in order after the current image is complete. Each reads the preceding image. Omit or pass null to disable post-processing.</p></td></tr><tr id="feedbackIntervalMs"><td><code>feedbackIntervalMs = 0</code><span class="mini-flag">optional</span></td><td><code>number</code></td><td><p>Feedback-history interval: 0 for every <a href="Visualization.html#Draw">Draw</a>, or a finite number from 1 to 1000 milliseconds. A positive value requires <a href="globals.html#feedback">feedback</a>. Change it later through <a href="module-Visualizations.html#feedback-interval-ms">FeedbackIntervalMs</a>. This setting does not create a timer; missed intervals are skipped and post passes still run on each draw.</p></td></tr><tr id="feedbackTransparent"><td><code>feedbackTransparent = false</code><span class="mini-flag">optional</span></td><td><code>boolean</code></td><td><p>Start and composite history over transparent black instead of opaque black, retaining shader alpha. A true value requires <a href="globals.html#feedback">feedback</a>.</p></td></tr><tr id="stopOnPause"><td><code>stopOnPause = false</code><span class="mini-flag">optional</span></td><td><code>boolean</code></td><td><p>Freeze the last completed image, including post effects, while playback is paused. A frozen image is scaled on resize without reprocessing. When false, shaders continue to run using retained audio data. This setting does not stop native audio analysis or schedule panel repaints.</p></td></tr></tbody>
             </table></div>
         </section>
         

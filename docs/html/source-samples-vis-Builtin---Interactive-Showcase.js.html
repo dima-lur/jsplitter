@@ -248,6 +248,16 @@
     {value:<span class="tok-number">0</span>, text:<span class="tok-string">&#39;GDI&#39;</span>},
     {value:<span class="tok-number">1</span>, text:<span class="tok-string">&#39;D2D&#39;</span>}
 ];
+<span class="tok-keyword">const</span> OPACITY_LEVELS = [
+    {value:<span class="tok-number">1</span>, text:<span class="tok-string">&#39;100%&#39;</span>},
+    {value:<span class="tok-number">0.75</span>, text:<span class="tok-string">&#39;75%&#39;</span>},
+    {value:<span class="tok-number">0.5</span>, text:<span class="tok-string">&#39;50%&#39;</span>},
+    {value:<span class="tok-number">0.25</span>, text:<span class="tok-string">&#39;25%&#39;</span>}
+];
+<span class="tok-keyword">const</span> BACKDROP_MODES = [
+    {value:<span class="tok-literal">false</span>, text:<span class="tok-string">&#39;Off&#39;</span>},
+    {value:<span class="tok-literal">true</span>, text:<span class="tok-string">&#39;On&#39;</span>}
+];
 <span class="tok-keyword">const</span> INITIAL_ENGINE_INTERVAL = vis.UpdateIntervalMs;
 
 <span class="tok-keyword">const</span> COLOR = {
@@ -269,7 +279,10 @@
     orange:     <span class="tok-number">0xffff9f43</span>,
     red:        <span class="tok-number">0xffff5d73</span>,
     purple:     <span class="tok-number">0xffc792ea</span>,
-    black:      <span class="tok-number">0xff000000</span>
+    black:      <span class="tok-number">0xff000000</span>,
+
+    backdropBase:  <span class="tok-number">0xff141c25</span>,
+    backdropCheck: <span class="tok-number">0xff2a3541</span>
 };
 
 <span class="tok-keyword">let</span> TITLE_FONT = <span class="tok-literal">null</span>;
@@ -277,7 +290,25 @@
 <span class="tok-keyword">let</span> LABEL_FONT = <span class="tok-literal">null</span>;
 <span class="tok-keyword">let</span> META_FONT = <span class="tok-literal">null</span>;
 
-<span class="tok-keyword">const</span> HEADER_H = <span class="tok-number">64</span>;
+<span class="tok-keyword">const</span> CONTROL_BUTTON_Y = <span class="tok-number">33</span>;
+<span class="tok-keyword">const</span> CONTROL_BUTTON_H = <span class="tok-number">23</span>;
+<span class="tok-keyword">const</span> CONTROL_GAP = <span class="tok-number">4</span>;
+<span class="tok-keyword">const</span> CONTROL_GROUP_GAP = <span class="tok-number">22</span>;
+<span class="tok-keyword">const</span> CONTROL_ROW_STEP = <span class="tok-number">30</span>;
+
+<span class="tok-comment">// Each label and its buttons are one layout unit, including on narrow panels.</span>
+<span class="tok-keyword">const</span> CONTROL_GROUPS = [
+    {group:<span class="tok-string">&#39;engine&#39;</span>, label:<span class="tok-string">&#39;Engine ms&#39;</span>, labelW:<span class="tok-number">60</span>, buttonW:<span class="tok-number">42</span>,
+        options:ENGINE_INTERVALS.map(value =&gt; ({value, text:String(value)}))},
+    {group:<span class="tok-string">&#39;paint&#39;</span>, label:<span class="tok-string">&#39;Paint fps&#39;</span>, labelW:<span class="tok-number">56</span>, buttonW:<span class="tok-number">42</span>,
+        options:PAINT_RATES.map(value =&gt; ({value, text:String(value)}))},
+    {group:<span class="tok-string">&#39;backend&#39;</span>, label:<span class="tok-string">&#39;Backend&#39;</span>, labelW:<span class="tok-number">52</span>, buttonW:<span class="tok-number">52</span>,
+        options:DRAW_MODES},
+    {group:<span class="tok-string">&#39;opacity&#39;</span>, label:<span class="tok-string">&#39;Opacity&#39;</span>, labelW:<span class="tok-number">48</span>, buttonW:<span class="tok-number">46</span>,
+        options:OPACITY_LEVELS},
+    {group:<span class="tok-string">&#39;backdrop&#39;</span>, label:<span class="tok-string">&#39;Backdrop&#39;</span>, labelW:<span class="tok-number">59</span>, buttonW:<span class="tok-number">46</span>,
+        options:BACKDROP_MODES}
+];
 <span class="tok-keyword">const</span> GRID_MARGIN = <span class="tok-number">8</span>;
 <span class="tok-keyword">const</span> GRID_GAP = <span class="tok-number">7</span>;
 <span class="tok-keyword">const</span> TILE_LABEL_H = <span class="tok-number">22</span>;
@@ -509,11 +540,15 @@
 <span class="tok-keyword">let</span> engineInterval = <span class="tok-number">16</span>;
 <span class="tok-keyword">let</span> paintRate = <span class="tok-number">30</span>;
 <span class="tok-keyword">let</span> drawMode = window.DrawMode === <span class="tok-number">1</span> ? <span class="tok-number">1</span> : <span class="tok-number">0</span>;
+<span class="tok-keyword">let</span> currentOpacity = <span class="tok-number">1</span>;
+<span class="tok-keyword">let</span> backdropEnabled = <span class="tok-literal">true</span>;
 <span class="tok-keyword">let</span> paintTimer = <span class="tok-literal">null</span>;
 <span class="tok-keyword">let</span> switchingBackend = <span class="tok-literal">false</span>;
 <span class="tok-keyword">let</span> hoveredControl = -<span class="tok-number">1</span>;
 <span class="tok-keyword">let</span> hoveredTile = -<span class="tok-number">1</span>;
 <span class="tok-keyword">let</span> controlRects = [];
+<span class="tok-keyword">let</span> controlLabels = [];
+<span class="tok-keyword">let</span> headerHeight = <span class="tok-number">64</span>;
 <span class="tok-keyword">let</span> tileRects = [];
 
 <span class="tok-keyword">function</span> releaseDrawingResources() {
@@ -553,6 +588,14 @@
     <span class="tok-keyword">return</span> tile.type === <span class="tok-string">&#39;peak&#39;</span> || tile.type === <span class="tok-string">&#39;vu&#39;</span>;
 }
 
+<span class="tok-keyword">function</span> applyTileOpacity(tile) {
+    <span class="tok-keyword">if</span> (isStereoMeter(tile) &amp;&amp; tile.visuals) {
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> visual <span class="tok-keyword">of</span> tile.visuals) visual.Opacity = currentOpacity;
+    } <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (tile.visual) {
+        tile.visual.Opacity = currentOpacity;
+    }
+}
+
 <span class="tok-keyword">function</span> createOrUpdateTile(tile, recreate) {
     <span class="tok-keyword">const</span> selected = currentPreset(tile);
     <span class="tok-keyword">if</span> (isStereoMeter(tile)) {
@@ -565,12 +608,14 @@
         <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> channel = <span class="tok-number">0</span>; channel &lt; tile.visuals.length; ++channel) {
             applyProperties(tile.visuals[channel], selected.values);
             tile.visuals[channel].Channel = channel;
+            tile.visuals[channel].Opacity = currentOpacity;
         }
         <span class="tok-keyword">return</span>;
     }
 
     <span class="tok-keyword">if</span> (!tile.visual || recreate) tile.visual = vis.Create(tile.source, {}, {});
     applyProperties(tile.visual, selected.values);
+    tile.visual.Opacity = currentOpacity;
 }
 
 <span class="tok-keyword">function</span> cycleTile(index) {
@@ -588,6 +633,15 @@
     paintRate = value;
     <span class="tok-keyword">if</span> (paintTimer) clearInterval(paintTimer);
     paintTimer = setInterval(() =&gt; window.Repaint(), <span class="tok-number">1000</span> / value);
+}
+
+<span class="tok-keyword">function</span> setOpacity(value) {
+    currentOpacity = Math.max(<span class="tok-number">0</span>, Math.min(<span class="tok-number">1</span>, Number(value)));
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> tile <span class="tok-keyword">of</span> tiles) applyTileOpacity(tile);
+}
+
+<span class="tok-keyword">function</span> setBackdropEnabled(value) {
+    backdropEnabled = !!value;
 }
 
 <span class="tok-keyword">function</span> setDrawMode(value) {
@@ -615,40 +669,47 @@
 
 <span class="tok-keyword">function</span> updateLayout() {
     controlRects = [];
-    <span class="tok-keyword">const</span> buttonY = <span class="tok-number">33</span>;
-    <span class="tok-keyword">const</span> buttonH = <span class="tok-number">23</span>;
-    <span class="tok-keyword">const</span> buttonW = <span class="tok-number">42</span>;
-    <span class="tok-keyword">const</span> buttonGap = <span class="tok-number">4</span>;
+    controlLabels = [];
+    <span class="tok-keyword">let</span> x = <span class="tok-number">10</span>;
+    <span class="tok-keyword">let</span> row = <span class="tok-number">0</span>;
+    <span class="tok-keyword">const</span> maxRight = Math.max(<span class="tok-number">0</span>, window.Width - <span class="tok-number">8</span>);
 
-    <span class="tok-keyword">let</span> x = <span class="tok-number">82</span>;
-    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> value <span class="tok-keyword">of</span> ENGINE_INTERVALS) {
-        addControl(<span class="tok-string">&#39;engine&#39;</span>, value, String(value), x, buttonY, buttonW, buttonH);
-        x += buttonW + buttonGap;
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> group <span class="tok-keyword">of</span> CONTROL_GROUPS) {
+        <span class="tok-keyword">const</span> groupW = group.labelW + <span class="tok-number">4</span> +
+            group.options.length * (group.buttonW + CONTROL_GAP) - CONTROL_GAP;
+        <span class="tok-keyword">if</span> (x &gt; <span class="tok-number">10</span> &amp;&amp; x + groupW &gt; maxRight) {
+            x = <span class="tok-number">10</span>;
+            ++row;
+        }
+        <span class="tok-keyword">const</span> buttonY = CONTROL_BUTTON_Y + row * CONTROL_ROW_STEP;
+        controlLabels.push({text:group.label, x, y:buttonY + <span class="tok-number">4</span>, w:group.labelW});
+        <span class="tok-keyword">let</span> buttonX = x + group.labelW + <span class="tok-number">4</span>;
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> option <span class="tok-keyword">of</span> group.options) {
+            addControl(group.group, option.value, option.text,
+                buttonX, buttonY, group.buttonW, CONTROL_BUTTON_H);
+            buttonX += group.buttonW + CONTROL_GAP;
+        }
+        x += groupW + CONTROL_GROUP_GAP;
     }
-    x += <span class="tok-number">84</span>;
-    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> value <span class="tok-keyword">of</span> PAINT_RATES) {
-        addControl(<span class="tok-string">&#39;paint&#39;</span>, value, String(value), x, buttonY, buttonW, buttonH);
-        x += buttonW + buttonGap;
-    }
-    x += <span class="tok-number">70</span>;
-    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> mode <span class="tok-keyword">of</span> DRAW_MODES) {
-        addControl(<span class="tok-string">&#39;backend&#39;</span>, mode.value, mode.text, x, buttonY, <span class="tok-number">52</span>, buttonH);
-        x += <span class="tok-number">52</span> + buttonGap;
-    }
+    headerHeight = CONTROL_BUTTON_Y + row * CONTROL_ROW_STEP + CONTROL_BUTTON_H + <span class="tok-number">8</span>;
 
+    <span class="tok-comment">// Snap the complete 3x3 grid to device pixels. Fractional tile sizes</span>
+    <span class="tok-comment">// would otherwise produce uneven columns and thin seams on resize.</span>
     tileRects = [];
-    <span class="tok-keyword">const</span> availableW = Math.max(<span class="tok-number">0</span>, window.Width - GRID_MARGIN * <span class="tok-number">2</span> - GRID_GAP * <span class="tok-number">2</span>);
-    <span class="tok-keyword">const</span> availableH = Math.max(<span class="tok-number">0</span>, window.Height - HEADER_H - GRID_MARGIN - GRID_GAP * <span class="tok-number">2</span>);
-    <span class="tok-keyword">const</span> cellW = availableW / <span class="tok-number">3</span>;
-    <span class="tok-keyword">const</span> cellH = availableH / <span class="tok-number">3</span>;
+    <span class="tok-keyword">const</span> gridW = Math.max(<span class="tok-number">0</span>, Math.floor(window.Width) - GRID_MARGIN * <span class="tok-number">2</span>);
+    <span class="tok-keyword">const</span> gridH = Math.max(<span class="tok-number">0</span>, Math.floor(window.Height) - headerHeight - GRID_MARGIN);
+    <span class="tok-keyword">const</span> contentW = Math.max(<span class="tok-number">0</span>, gridW - GRID_GAP * <span class="tok-number">2</span>);
+    <span class="tok-keyword">const</span> contentH = Math.max(<span class="tok-number">0</span>, gridH - GRID_GAP * <span class="tok-number">2</span>);
+    <span class="tok-keyword">const</span> colEdges = [<span class="tok-number">0</span>, Math.floor(contentW / <span class="tok-number">3</span>), Math.floor(contentW * <span class="tok-number">2</span> / <span class="tok-number">3</span>), contentW];
+    <span class="tok-keyword">const</span> rowEdges = [<span class="tok-number">0</span>, Math.floor(contentH / <span class="tok-number">3</span>), Math.floor(contentH * <span class="tok-number">2</span> / <span class="tok-number">3</span>), contentH];
     <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; tiles.length; ++i) {
         <span class="tok-keyword">const</span> col = i % <span class="tok-number">3</span>;
         <span class="tok-keyword">const</span> row = Math.floor(i / <span class="tok-number">3</span>);
         tileRects.push({
-            x:GRID_MARGIN + col * (cellW + GRID_GAP),
-            y:HEADER_H + row * (cellH + GRID_GAP),
-            w:cellW,
-            h:cellH
+            x:GRID_MARGIN + colEdges[col] + col * GRID_GAP,
+            y:headerHeight + rowEdges[row] + row * GRID_GAP,
+            w:colEdges[col + <span class="tok-number">1</span>] - colEdges[col],
+            h:rowEdges[row + <span class="tok-number">1</span>] - rowEdges[row]
         });
     }
 }
@@ -708,9 +769,14 @@
 }
 
 <span class="tok-keyword">function</span> drawButton(gr, rect, index) {
-    <span class="tok-keyword">const</span> active = rect.group === <span class="tok-string">&#39;engine&#39;</span> ? rect.value === engineInterval
-        : rect.group === <span class="tok-string">&#39;paint&#39;</span> ? rect.value === paintRate
-        : rect.value === drawMode;
+    <span class="tok-keyword">let</span> active = <span class="tok-literal">false</span>;
+    <span class="tok-keyword">switch</span> (rect.group) {
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;engine&#39;</span>: active = rect.value === engineInterval; <span class="tok-keyword">break</span>;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;paint&#39;</span>: active = rect.value === paintRate; <span class="tok-keyword">break</span>;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;backend&#39;</span>: active = rect.value === drawMode; <span class="tok-keyword">break</span>;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;opacity&#39;</span>: active = rect.value === currentOpacity; <span class="tok-keyword">break</span>;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;backdrop&#39;</span>: active = rect.value === backdropEnabled; <span class="tok-keyword">break</span>;
+    }
     <span class="tok-keyword">const</span> hovered = index === hoveredControl;
     <span class="tok-keyword">const</span> fill = active ? COLOR.accent : hovered ? COLOR.buttonHover : COLOR.button;
     <span class="tok-keyword">const</span> textColor = active ? COLOR.black : COLOR.text;
@@ -723,13 +789,22 @@
 }
 
 <span class="tok-keyword">function</span> drawHeader(gr) {
-    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, window.Width, HEADER_H, COLOR.header);
-    gr.FillSolidRect(<span class="tok-number">0</span>, HEADER_H - <span class="tok-number">1</span>, window.Width, <span class="tok-number">1</span>, COLOR.border);
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, window.Width, headerHeight, COLOR.header);
+    gr.FillSolidRect(<span class="tok-number">0</span>, headerHeight - <span class="tok-number">1</span>, window.Width, <span class="tok-number">1</span>, COLOR.border);
     gr.DrawString(<span class="tok-string">&#39;Visualization demo&#39;</span>, TITLE_FONT, COLOR.text,
         <span class="tok-number">10</span>, <span class="tok-number">6</span>, Math.max(<span class="tok-number">0</span>, window.Width - <span class="tok-number">20</span>), <span class="tok-number">22</span>);
-    gr.DrawString(<span class="tok-string">&#39;Engine ms&#39;</span>, CONTROL_FONT, COLOR.muted, <span class="tok-number">10</span>, <span class="tok-number">37</span>, <span class="tok-number">70</span>, <span class="tok-number">18</span>);
-    gr.DrawString(<span class="tok-string">&#39;Paint fps&#39;</span>, CONTROL_FONT, COLOR.muted, <span class="tok-number">236</span>, <span class="tok-number">37</span>, <span class="tok-number">70</span>, <span class="tok-number">18</span>);
-    gr.DrawString(<span class="tok-string">&#39;Backend&#39;</span>, CONTROL_FONT, COLOR.muted, <span class="tok-number">448</span>, <span class="tok-number">37</span>, <span class="tok-number">60</span>, <span class="tok-number">18</span>);
+    <span class="tok-keyword">if</span> (window.Width &gt;= <span class="tok-number">560</span>) {
+        gr.DrawString(<span class="tok-string">&#39;Click any tile to switch its preset&#39;</span>, CONTROL_FONT, COLOR.muted,
+            <span class="tok-number">290</span>, <span class="tok-number">8</span>, window.Width - <span class="tok-number">300</span>, <span class="tok-number">18</span>);
+    }
+    <span class="tok-comment">// Right-align each group label immediately beside its first button.</span>
+    <span class="tok-comment">// This keeps the label/button gap small and separates adjacent groups.</span>
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> label <span class="tok-keyword">of</span> controlLabels) {
+        <span class="tok-keyword">const</span> textW = Math.min(label.w,
+            Math.ceil(gr.CalcTextWidth(label.text, CONTROL_FONT)) + <span class="tok-number">2</span>);
+        gr.DrawString(label.text, CONTROL_FONT, COLOR.muted,
+            label.x + label.w - textW, label.y, textW, <span class="tok-number">18</span>);
+    }
     gr.SetSmoothingMode(SmoothingMode.HighQuality);
     <span class="tok-keyword">try</span> {
         <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> i = <span class="tok-number">0</span>; i &lt; controlRects.length; ++i) drawButton(gr, controlRects[i], i);
@@ -737,11 +812,26 @@
     <span class="tok-keyword">finally</span> {
         gr.SetSmoothingMode(SmoothingMode.Default);
     }
+}
 
-    <span class="tok-keyword">const</span> hintX = <span class="tok-number">640</span>;
-    <span class="tok-keyword">if</span> (window.Width &gt; hintX + <span class="tok-number">120</span>) {
-        gr.DrawString(<span class="tok-string">&#39;Click any tile to switch its preset&#39;</span>, CONTROL_FONT, COLOR.muted,
-            hintX, <span class="tok-number">38</span>, window.Width - hintX - <span class="tok-number">10</span>, <span class="tok-number">18</span>);
+<span class="tok-keyword">function</span> drawBackdrop(gr, x, y, w, h) {
+    <span class="tok-keyword">if</span> (!backdropEnabled || w &lt;= <span class="tok-number">0</span> || h &lt;= <span class="tok-number">0</span>) <span class="tok-keyword">return</span>;
+
+    <span class="tok-comment">// A quiet, pixel-aligned checker is enough to reveal composited opacity.</span>
+    x = Math.round(x);
+    y = Math.round(y);
+    w = Math.max(<span class="tok-number">0</span>, Math.floor(w));
+    h = Math.max(<span class="tok-number">0</span>, Math.floor(h));
+    <span class="tok-keyword">if</span> (!w || !h) <span class="tok-keyword">return</span>;
+    gr.FillSolidRect(x, y, w, h, COLOR.backdropBase);
+
+    <span class="tok-keyword">const</span> cell = <span class="tok-number">24</span>;
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> yy = <span class="tok-number">0</span>, row = <span class="tok-number">0</span>; yy &lt; h; yy += cell, ++row) {
+        <span class="tok-keyword">const</span> cellH = Math.min(cell, h - yy);
+        <span class="tok-keyword">for</span> (<span class="tok-keyword">let</span> xx = (row &amp; <span class="tok-number">1</span>) ? cell : <span class="tok-number">0</span>; xx &lt; w; xx += cell * <span class="tok-number">2</span>) {
+            gr.FillSolidRect(x + xx, y + yy,
+                Math.min(cell, w - xx), cellH, COLOR.backdropCheck);
+        }
     }
 }
 
@@ -755,6 +845,8 @@
     <span class="tok-keyword">const</span> drawY = rect.y + TILE_LABEL_H;
     <span class="tok-keyword">const</span> drawW = Math.max(<span class="tok-number">0</span>, rect.w - <span class="tok-number">8</span>);
     <span class="tok-keyword">const</span> drawH = Math.max(<span class="tok-number">0</span>, rect.h - TILE_LABEL_H - <span class="tok-number">4</span>);
+    <span class="tok-keyword">if</span> (drawW &gt; <span class="tok-number">0</span> &amp;&amp; drawH &gt; <span class="tok-number">0</span>) drawBackdrop(gr, drawX, drawY, drawW, drawH);
+
     <span class="tok-keyword">if</span> (isStereoMeter(tile) &amp;&amp; tile.visuals &amp;&amp; drawW &gt; <span class="tok-number">0</span> &amp;&amp; drawH &gt; <span class="tok-number">0</span>) {
         <span class="tok-keyword">const</span> channelGap = <span class="tok-number">4</span>;
         <span class="tok-keyword">const</span> firstH = Math.max(<span class="tok-number">0</span>, Math.floor((drawH - channelGap) * <span class="tok-number">0.5</span>));
@@ -823,7 +915,9 @@
         <span class="tok-keyword">const</span> selected = controlRects[control];
         <span class="tok-keyword">if</span> (selected.group === <span class="tok-string">&#39;engine&#39;</span>) setEngineInterval(selected.value);
         <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (selected.group === <span class="tok-string">&#39;paint&#39;</span>) setPaintRate(selected.value);
-        <span class="tok-keyword">else</span> setDrawMode(selected.value);
+        <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (selected.group === <span class="tok-string">&#39;backend&#39;</span>) setDrawMode(selected.value);
+        <span class="tok-keyword">else</span> <span class="tok-keyword">if</span> (selected.group === <span class="tok-string">&#39;opacity&#39;</span>) setOpacity(selected.value);
+        <span class="tok-keyword">else</span> setBackdropEnabled(selected.value);
         window.Repaint();
         <span class="tok-keyword">return</span>;
     }
@@ -843,6 +937,7 @@
 setEngineInterval(engineInterval);
 createDrawingResources();
 <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> tile <span class="tok-keyword">of</span> tiles) createOrUpdateTile(tile, <span class="tok-literal">true</span>);
+setOpacity(currentOpacity);
 setPaintRate(paintRate);
 </code></pre></main>
     <script src="assets/search-data.js"></script><script src="assets/app.js"></script>

@@ -97,7 +97,7 @@
  *    One image pass or an array of 1–4 passes, executed in order after the current image is complete.
  *    Each reads the preceding image. Omit or pass null to disable post-processing.
  * @property {number} [feedbackIntervalMs=0] Feedback-history interval: 0 for every {@link Visualization#Draw Draw}, or a finite number from 1 to 1000 milliseconds.
- *    A positive value requires {@link VisualizationShaderRenderer.feedback feedback}. Change it later through {@link Visualization#FeedbackIntervalMs FeedbackIntervalMs}.
+ *    A positive value requires {@link VisualizationShaderRenderer.feedback feedback}. Change it later through <a href="module-Visualizations.html#feedback-interval-ms">FeedbackIntervalMs</a>.
  *    This setting does not create a timer; missed intervals are skipped and post passes still run on each draw.
  * @property {boolean} [feedbackTransparent=false] Start and composite history over transparent black instead of opaque black, retaining shader alpha. A true value requires {@link VisualizationShaderRenderer.feedback feedback}.
  * @property {boolean} [stopOnPause=false] Freeze the last completed image, including post effects, while playback is paused.
@@ -262,7 +262,7 @@ let vis = {
      * <p>Draw only after the Promise resolves, with {@link window.DrawMode} set to 1
      * (Direct2D). Creation does not schedule repaints. Source runtime properties remain
      * available; shader programs and pipeline structure are fixed at creation time, while
-     * {@link Visualization#FeedbackIntervalMs FeedbackIntervalMs} remains adjustable.</p>
+     * <a href="module-Visualizations.html#feedback-interval-ms">FeedbackIntervalMs</a> remains adjustable.</p>
      * <p><b>Example:</b></p>
      * ```js
      * include('docs/Flags.js');
@@ -296,9 +296,7 @@ let vis = {
  * This is a documentation-only instance description, not a constructor exposed by
  * the {@link vis} namespace. A visualization retains its native audio subscription while alive.<br>
  * Source runtime properties are exposed directly on this object; built-in renderers
- * add their renderer properties to the same object. Shader visualizations expose
- * {@link Visualization#FeedbackIntervalMs FeedbackIntervalMs} and
- * {@link Visualization#InjectFeedback InjectFeedback}. See
+ * add their renderer properties to the same object. See
  * {@link module:Visualizations Visualization API} for the complete property tables.
  * @hideconstructor
  */
@@ -317,62 +315,6 @@ class Visualization {
      * @param {number} height Destination height in pixels.
      */
     Draw(gr, x, y, width, height) { }
-
-    /**
-     * Queues a {@link D2DBitmap} for the next actual feedback-history update of
-     * a shader visualization. The image is alpha-composited after the feedback and
-     * source passes and before history is saved; post passes run afterwards. The
-     * injection is one-shot and does not force a repaint or an early history update.
-     *
-     * The bitmap is copied on the GPU when this method is called and may then be
-     * modified or released. If several injections are queued before the next history
-     * update, only the latest is retained. The bitmap must use the same Direct2D device
-     * as the visualization and is scaled to the history area. Maximum size: <b>4096 px</b>
-     * per side and <b>4194304 pixels</b> total. A graphics-device reset can discard a
-     * pending injection. Available only when the shader visualization has a
-     * <b>feedback</b> pass.
-     * <p><b>Example:</b></p>
-     * ```js
-     * // 'visual' is a shader visualization created with a feedback pass.
-     * const image = d2d.CreateImage(512, 128);
-     * const g = image.GetGraphics();
-     * try {
-     *     g.DrawString('Next track', d2d.Font('Segoe UI', 28),
-     *         0xffffffff, 10, 20, 492, 70);
-     * } finally {
-     *     image.ReleaseGraphics(g);
-     * }
-     * visual.InjectFeedback(image); // One next history step, not every Draw().
-     * ```
-     * @param {D2DBitmap} bitmap Direct2D bitmap with the image to add to history, normally on a transparent background.
-     * @returns {void}
-     * @throws {Error} If feedback is absent, the bitmap is invalid, exceeds the feedback limits or uses an incompatible Direct2D device.
-     * @sourceFile ../../component/samples/vis/Shader - MilkDrop ALL.js
-     */
-    InjectFeedback(bitmap) { }
-
-    /**
-     * Shader feedback interval in milliseconds. Use 0 to advance history on every
-     * {@link Visualization#Draw Draw}, or a finite number from 1 to 1000 for a fixed
-     * cadence; fractional values are supported. Positive values require a feedback
-     * pass. Without feedback, the property reads 0 and accepts only 0.
-     *
-     * Changing the value preserves history and other visualization state. The next
-     * eligible {@link Visualization#Draw Draw} uses the new cadence; assigning the same
-     * value leaves the current schedule intact. This property does not create a timer
-     * or request a repaint, and missed history steps are skipped. See
-     * {@link module:Visualizations Visualization API} for shader timing details.
-     * ```js
-     * // visual already has a feedback pass; keep requesting panel repaints.
-     * visual.FeedbackIntervalMs = 1000 / 120; // Fixed 120-Hz history step.
-     * const interval = visual.FeedbackIntervalMs;
-     * visual.FeedbackIntervalMs = 0;          // History advances on each Draw.
-     * ```
-     * @type {number}
-     * @throws {Error} If the value is not a finite number equal to 0 or within
-     * 1..1000, or a positive value is assigned without a feedback pass.
-     */
-    FeedbackIntervalMs = 0;
 
     /**
      * Numeric native source type used to create this visualization. See {@link module:Flags.VisSourceType VisSourceType}

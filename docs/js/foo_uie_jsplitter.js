@@ -2529,7 +2529,7 @@ let utils = {
     /**
      * Allowing scripts to detect whether the high-resolution timer backend is actually active and adapt scheduling/yield strategies accordingly.
      * 
-     * The value is derived from the <b>Advanced Preferences → Performance → Use high-resolution timers</b> setting, but reports the effective runtime state, not merely the checkbox: it returns true only when the option is enabled and the current Windows version actually supports high-resolution waitable timers; otherwise it returns false.
+     * The value is derived from the <b>Advanced Preferences в†’ Performance в†’ Use high-resolution timers</b> setting, but reports the effective runtime state, not merely the checkbox: it returns true only when the option is enabled and the current Windows version actually supports high-resolution waitable timers; otherwise it returns false.
      *
      * @type {boolean}
      * @worker
@@ -2589,15 +2589,24 @@ let utils = {
     CheckComponent: function (name, is_dll) { }, //(boolean)
 
     /**
-     * Checks whether a font family is available to the current foobar2000 process.
-     * This includes system-installed fonts and fonts loaded with {@link utils.LoadFont LoadFont}.<br>
+     * Checks whether a font name exists in the selected graphics backend, including fonts
+     * loaded with {@link utils.LoadFont LoadFont}. Uses exact, case-insensitive matching;
+     * a substituted font or partial name does not count as a match.<br>
+     * In Direct2D mode, also recognizes localized names, Win32 and typographic family
+     * names, and full font names. These aliases need not appear in {@link utils.ListFonts ListFonts}.
      *
-     * @param {string} name Font family name. Can be either in English or the localised name in your OS.
-     * @return {boolean}
-     * @throws {Error} If Windows font enumeration returns inconsistent data.
+     * @param {string} name Font family or supported font name.
+     * @param {number} [mode=0] 0 - Auto (current panel backend), 1 - GDI, 2 - Direct2D.
+     * @return {boolean} True if the requested name is found, false otherwise.
+     * @throws {Error} If font enumeration fails or Direct2D font resources are unavailable.
      * @worker
+     *
+     * @example
+     * utils.CheckFont('Arial');    // Current backend.
+     * utils.CheckFont('Arial', 1); // GDI.
+     * utils.CheckFont('Arial', 2); // Direct2D.
      */
-    CheckFont: function (name) { }, // (boolean)
+    CheckFont: function (name, mode) { }, // (boolean)
 
     /**
      * Opens system colour picker dialog window (with some additional controls).
@@ -3292,40 +3301,56 @@ let utils = {
     IsKeyPressed: function (vkey) { }, // (boolean)
 
     /**
-     * Loads a font file for private use by the current foobar2000 process.
+     * Loads a font file for private use by the current foobar2000 process and returns its font family names.
      * The font is not installed in Windows and is not made available to other processes.
-     * 
-     * After a successful call the font becomes available to the foobar2000 process. It can be used by {@link gdi.Font} and {@link d2d.Font} and is visible to other JSplitter panels and Workers.
-     * The font is registered privately for the foobar2000 process rather than for JSplitter alone. As a result, it may also become available to native foobar2000 UI and other components that use the Windows font APIs, depending on when they enumerate or create their fonts.
+     *
+     * After a successful call the font becomes available to the foobar2000 process. It can be used by {@link gdi.Font}
+     * and {@link d2d.Font} and is visible to other JSplitter panels and Workers. Registration is process-wide,
+     * so native foobar2000 UI and other components using Windows font APIs may also see the font, depending
+     * on when they enumerate or create fonts.
      *
      * Relative filesystem paths are resolved as described in {@link utils.ReadTextFile ReadTextFile}.
+     * Each file is registered once by its normalised absolute path. Loading the same file again returns its
+     * saved family names without registering it again. Fonts remain available until foobar2000 exits;
+     * there is no corresponding unload operation.
      *
-     * The file is registered (cached) once by its normalised absolute path. Calling {@link utils.LoadFont LoadFont} again with the
-     * same file returns <b>true</b> without registering it again. Loaded fonts remain available for the
-     * lifetime of the foobar2000 process; there is no corresponding unload operation.
+     * Returns a non-empty array containing at least one font family name from the file, or — 
+     * in the case of a TTC/OTC collection — all font family names present in that collection.
+     * Styles and localized names are not listed separately. The returned names depend on the panel's
+     * drawing mode: GDI may shorten long family names (cause of 31 character Windows font name limit), 
+     * while Direct2D can return their full names.
+     * Use {@link utils.CheckFont CheckFont} with the corresponding mode to check a returned name.
      *
-     * A font may expose different legacy/GDI and typographic/DirectWrite family names. 
-     * {@link utils.CheckFont CheckFont} can be used to verify a family name after loading, while {@link utils.ListFonts ListFonts} shows the names reported by the GDI and DirectWrite backends.
+     * <div class="doc-note">
+     * In GDI mode, fonts with family names longer than 31 characters can be rendered with
+     * {@link GdiGraphics#DrawString DrawString}, but not with {@link GdiGraphics#GdiDrawText GdiDrawText}.
+     * Direct2D does not have this limitation.
+     * </div>
      *
-     * @param {string} path Path to a font file, typically a <b>.ttf</b> or <b>.otf</b> file.
-     * @return {boolean} <b>true</b> if the font is already loaded or was loaded successfully; <b>false</b> if the
-     * file does not exist, cannot be read as a font, contains no usable family, or cannot be registered.
+     * @param {string} path Path to a font file, such as <b>.ttf</b>, <b>.otf</b>, <b>.ttc</b> or <b>.otc</b>.
+     * @return {Array<string>|null} A non-empty array of font family names on success, or <b>null</b> if the
+     * file is missing, invalid, contains no usable families or cannot be registered.
      * @worker
      *
      * @example
-     * if (utils.LoadFont('fonts/Rain Tungsten Medium.ttf')) {
-     *     const gdiFont = gdi.Font('Rain Tungsten Medium', 16);
-     *     ...
+     * const families = utils.LoadFont('fonts/Rain Tungsten Medium.ttf');
+     * if (families) {
+     *     const name = families[0];
+     *     const font = gdi.Font(name, 16);
+     *     console.log(name);
      * }
      */
     LoadFont: function (path) { },
 
     /**
-     * Gets an array of available font family names. Fonts loaded with {@link utils.LoadFont LoadFont} are included.
-     * GDI and DirectWrite can expose different family names for the same font file.
-     * @param {number} [mode=0] 0 - Auto, 1 - GDI fonts, 2 - DirectWrite fonts
-     * @return {Array<string>} array of font family names
-     * @throws {Error} If Direct2D font enumeration is requested before Direct2D resources are initialized.
+     * Lists font family names available to the selected graphics backend, including fonts
+     * loaded with {@link utils.LoadFont LoadFont}. GDI and Direct2D organize families differently,
+     * so their lists and returned names may differ. Direct2D includes localized family names;
+     * duplicate names are removed, preserving their first occurrence.<br>
+     * Every returned name can be checked with {@link utils.CheckFont CheckFont} in the same mode.
+     * @param {number} [mode=0] 0 - Auto (current panel backend), 1 - GDI, 2 - Direct2D.
+     * @return {Array<string>} Available font family names.
+     * @throws {Error} If Direct2D font resources are unavailable.
      * @worker
      */
     ListFonts: function (mode) { },
@@ -4560,7 +4585,7 @@ let window = {
      * let ww = 0;
      * let wh = 0;
      * 
-     * const alphabet = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*';
+     * const alphabet = 'г‚ўг‚Ўг‚«г‚µг‚їгѓЉгѓЏгѓћгѓ¤гѓЈгѓ©гѓЇг‚¬г‚¶гѓЂгѓђгѓ‘г‚¤г‚Јг‚­г‚·гѓЃгѓ‹гѓ’гѓџгѓЄгѓ°г‚®г‚ёгѓ‚гѓ“гѓ”г‚¦г‚Ґг‚Їг‚№гѓ„гѓЊгѓ•гѓ гѓ¦гѓҐгѓ«г‚°г‚єгѓ–гѓ…гѓ—г‚Ёг‚§г‚±г‚»гѓ†гѓЌгѓ�гѓЎгѓ¬гѓ±г‚Іг‚јгѓ‡гѓ™гѓљг‚Єг‚©г‚іг‚Ѕгѓ€гѓЋгѓ›гѓўгѓЁгѓ§гѓ­гѓІг‚ґг‚ѕгѓ‰гѓњгѓќгѓґгѓѓгѓіABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*';
      * const fontSize = 16;
      * const font = gdi.Font("Consolas", fontSize, 1);
      * const drops = [];

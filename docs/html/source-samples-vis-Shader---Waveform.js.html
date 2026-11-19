@@ -246,10 +246,13 @@ window.DrawMode = <span class="tok-number">1</span>;
 
 vis.UpdateIntervalMs = <span class="tok-number">16</span>; <span class="tok-comment">// Default: 16 ms; allowed: unsigned integer 1..4294967295 ms.</span>
 
-<span class="tok-keyword">const</span> textColor = window.InstanceType === <span class="tok-number">1</span>
-    ? window.GetColourDUI(<span class="tok-number">0</span>) : window.GetColourCUI(<span class="tok-number">0</span>);
-<span class="tok-keyword">const</span> backgroundColor = window.InstanceType === <span class="tok-number">1</span>
-    ? window.GetColourDUI(<span class="tok-number">1</span>) : window.GetColourCUI(<span class="tok-number">1</span>);
+<span class="tok-comment">// Default colors are resolved from the current DUI/CUI text color.</span>
+<span class="tok-keyword">const</span> textColor = window.InstanceType === UIInstanceType.DefaultUI ?
+    window.GetColourDUI(ColourTypeDUI.text) : window.GetColourCUI(ColourTypeCUI.text);
+
+<span class="tok-comment">// Match the background as well, so theme-colored content remains visible.</span>
+<span class="tok-keyword">const</span> backgroundColor = window.InstanceType === UIInstanceType.DefaultUI ?
+    window.GetColourDUI(ColourTypeDUI.background) : window.GetColourCUI(ColourTypeCUI.background);
 
 <span class="tok-keyword">function</span> hlslColor(argb) {
     argb &gt;&gt;&gt;= <span class="tok-number">0</span>;
