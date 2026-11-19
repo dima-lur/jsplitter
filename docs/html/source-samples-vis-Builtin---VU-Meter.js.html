@@ -245,10 +245,13 @@
 
 vis.UpdateIntervalMs = <span class="tok-number">16</span>; <span class="tok-comment">// Default: 16 ms; allowed: unsigned integer 1..4294967295 ms.</span>
 
-<span class="tok-keyword">const</span> textColor = window.InstanceType === <span class="tok-number">1</span>
-    ? window.GetColourDUI(<span class="tok-number">0</span>) : window.GetColourCUI(<span class="tok-number">0</span>);
-<span class="tok-keyword">const</span> background = window.InstanceType === <span class="tok-number">1</span>
-    ? window.GetColourDUI(<span class="tok-number">1</span>) : window.GetColourCUI(<span class="tok-number">1</span>);
+<span class="tok-comment">// Default colors are resolved from the current DUI/CUI text color.</span>
+<span class="tok-keyword">const</span> textColor = window.InstanceType === UIInstanceType.DefaultUI ?
+    window.GetColourDUI(ColourTypeDUI.text) : window.GetColourCUI(ColourTypeCUI.text);
+
+<span class="tok-comment">// Match the background as well, so theme-colored content remains visible.</span>
+<span class="tok-keyword">const</span> backgroundColor = window.InstanceType === UIInstanceType.DefaultUI ?
+    window.GetColourDUI(ColourTypeDUI.background) : window.GetColourCUI(ColourTypeCUI.background);
 
 <span class="tok-comment">// The meter source uses the mean-rectified detector with VU ballistics.</span>
 <span class="tok-comment">// A peak -18 dBFS reference sine corresponds to 0 VU after settling.</span>
@@ -275,7 +278,7 @@ vis.UpdateIntervalMs = <span class="tok-number">16</span>; <span class="tok-comm
 
 <span class="tok-keyword">function</span> on_paint(gr) {
     <span class="tok-keyword">const</span> w = window.Width, h = window.Height;
-    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, w, h, background);
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, w, h, backgroundColor);
     <span class="tok-keyword">if</span> (w &gt; <span class="tok-number">0</span> &amp;&amp; h &gt; <span class="tok-number">0</span>) meter.Draw(gr, <span class="tok-number">0</span>, <span class="tok-number">0</span>, w, h);
 }
 
