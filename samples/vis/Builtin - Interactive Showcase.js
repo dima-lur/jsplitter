@@ -11,6 +11,16 @@ const DRAW_MODES = [
     {value:0, text:'GDI'},
     {value:1, text:'D2D'}
 ];
+const OPACITY_LEVELS = [
+    {value:1, text:'100%'},
+    {value:0.75, text:'75%'},
+    {value:0.5, text:'50%'},
+    {value:0.25, text:'25%'}
+];
+const BACKDROP_MODES = [
+    {value:false, text:'Off'},
+    {value:true, text:'On'}
+];
 const INITIAL_ENGINE_INTERVAL = vis.UpdateIntervalMs;
 
 const COLOR = {
@@ -32,7 +42,10 @@ const COLOR = {
     orange:     0xffff9f43,
     red:        0xffff5d73,
     purple:     0xffc792ea,
-    black:      0xff000000
+    black:      0xff000000,
+
+    backdropBase:  0xff141c25,
+    backdropCheck: 0xff2a3541
 };
 
 let TITLE_FONT = null;
@@ -40,7 +53,25 @@ let CONTROL_FONT = null;
 let LABEL_FONT = null;
 let META_FONT = null;
 
-const HEADER_H = 64;
+const CONTROL_BUTTON_Y = 33;
+const CONTROL_BUTTON_H = 23;
+const CONTROL_GAP = 4;
+const CONTROL_GROUP_GAP = 22;
+const CONTROL_ROW_STEP = 30;
+
+// Each label and its buttons are one layout unit, including on narrow panels.
+const CONTROL_GROUPS = [
+    {group:'engine', label:'Engine ms', labelW:60, buttonW:42,
+        options:ENGINE_INTERVALS.map(value => ({value, text:String(value)}))},
+    {group:'paint', label:'Paint fps', labelW:56, buttonW:42,
+        options:PAINT_RATES.map(value => ({value, text:String(value)}))},
+    {group:'backend', label:'Backend', labelW:52, buttonW:52,
+        options:DRAW_MODES},
+    {group:'opacity', label:'Opacity', labelW:48, buttonW:46,
+        options:OPACITY_LEVELS},
+    {group:'backdrop', label:'Backdrop', labelW:59, buttonW:46,
+        options:BACKDROP_MODES}
+];
 const GRID_MARGIN = 8;
 const GRID_GAP = 7;
 const TILE_LABEL_H = 22;
@@ -272,11 +303,15 @@ const tiles = [
 let engineInterval = 16;
 let paintRate = 30;
 let drawMode = window.DrawMode === 1 ? 1 : 0;
+let currentOpacity = 1;
+let backdropEnabled = true;
 let paintTimer = null;
 let switchingBackend = false;
 let hoveredControl = -1;
 let hoveredTile = -1;
 let controlRects = [];
+let controlLabels = [];
+let headerHeight = 64;
 let tileRects = [];
 
 function releaseDrawingResources() {
@@ -316,6 +351,14 @@ function isStereoMeter(tile) {
     return tile.type === 'peak' || tile.type === 'vu';
 }
 
+function applyTileOpacity(tile) {
+    if (isStereoMeter(tile) && tile.visuals) {
+        for (const visual of tile.visuals) visual.Opacity = currentOpacity;
+    } else if (tile.visual) {
+        tile.visual.Opacity = currentOpacity;
+    }
+}
+
 function createOrUpdateTile(tile, recreate) {
     const selected = currentPreset(tile);
     if (isStereoMeter(tile)) {
@@ -328,12 +371,14 @@ function createOrUpdateTile(tile, recreate) {
         for (let channel = 0; channel < tile.visuals.length; ++channel) {
             applyProperties(tile.visuals[channel], selected.values);
             tile.visuals[channel].Channel = channel;
+            tile.visuals[channel].Opacity = currentOpacity;
         }
         return;
     }
 
     if (!tile.visual || recreate) tile.visual = vis.Create(tile.source, {}, {});
     applyProperties(tile.visual, selected.values);
+    tile.visual.Opacity = currentOpacity;
 }
 
 function cycleTile(index) {
@@ -351,6 +396,15 @@ function setPaintRate(value) {
     paintRate = value;
     if (paintTimer) clearInterval(paintTimer);
     paintTimer = setInterval(() => window.Repaint(), 1000 / value);
+}
+
+function setOpacity(value) {
+    currentOpacity = Math.max(0, Math.min(1, Number(value)));
+    for (const tile of tiles) applyTileOpacity(tile);
+}
+
+function setBackdropEnabled(value) {
+    backdropEnabled = !!value;
 }
 
 function setDrawMode(value) {
@@ -378,40 +432,47 @@ function addControl(group, value, text, x, y, w, h) {
 
 function updateLayout() {
     controlRects = [];
-    const buttonY = 33;
-    const buttonH = 23;
-    const buttonW = 42;
-    const buttonGap = 4;
+    controlLabels = [];
+    let x = 10;
+    let row = 0;
+    const maxRight = Math.max(0, window.Width - 8);
 
-    let x = 82;
-    for (const value of ENGINE_INTERVALS) {
-        addControl('engine', value, String(value), x, buttonY, buttonW, buttonH);
-        x += buttonW + buttonGap;
+    for (const group of CONTROL_GROUPS) {
+        const groupW = group.labelW + 4 +
+            group.options.length * (group.buttonW + CONTROL_GAP) - CONTROL_GAP;
+        if (x > 10 && x + groupW > maxRight) {
+            x = 10;
+            ++row;
+        }
+        const buttonY = CONTROL_BUTTON_Y + row * CONTROL_ROW_STEP;
+        controlLabels.push({text:group.label, x, y:buttonY + 4, w:group.labelW});
+        let buttonX = x + group.labelW + 4;
+        for (const option of group.options) {
+            addControl(group.group, option.value, option.text,
+                buttonX, buttonY, group.buttonW, CONTROL_BUTTON_H);
+            buttonX += group.buttonW + CONTROL_GAP;
+        }
+        x += groupW + CONTROL_GROUP_GAP;
     }
-    x += 84;
-    for (const value of PAINT_RATES) {
-        addControl('paint', value, String(value), x, buttonY, buttonW, buttonH);
-        x += buttonW + buttonGap;
-    }
-    x += 70;
-    for (const mode of DRAW_MODES) {
-        addControl('backend', mode.value, mode.text, x, buttonY, 52, buttonH);
-        x += 52 + buttonGap;
-    }
+    headerHeight = CONTROL_BUTTON_Y + row * CONTROL_ROW_STEP + CONTROL_BUTTON_H + 8;
 
+    // Snap the complete 3x3 grid to device pixels. Fractional tile sizes
+    // would otherwise produce uneven columns and thin seams on resize.
     tileRects = [];
-    const availableW = Math.max(0, window.Width - GRID_MARGIN * 2 - GRID_GAP * 2);
-    const availableH = Math.max(0, window.Height - HEADER_H - GRID_MARGIN - GRID_GAP * 2);
-    const cellW = availableW / 3;
-    const cellH = availableH / 3;
+    const gridW = Math.max(0, Math.floor(window.Width) - GRID_MARGIN * 2);
+    const gridH = Math.max(0, Math.floor(window.Height) - headerHeight - GRID_MARGIN);
+    const contentW = Math.max(0, gridW - GRID_GAP * 2);
+    const contentH = Math.max(0, gridH - GRID_GAP * 2);
+    const colEdges = [0, Math.floor(contentW / 3), Math.floor(contentW * 2 / 3), contentW];
+    const rowEdges = [0, Math.floor(contentH / 3), Math.floor(contentH * 2 / 3), contentH];
     for (let i = 0; i < tiles.length; ++i) {
         const col = i % 3;
         const row = Math.floor(i / 3);
         tileRects.push({
-            x:GRID_MARGIN + col * (cellW + GRID_GAP),
-            y:HEADER_H + row * (cellH + GRID_GAP),
-            w:cellW,
-            h:cellH
+            x:GRID_MARGIN + colEdges[col] + col * GRID_GAP,
+            y:headerHeight + rowEdges[row] + row * GRID_GAP,
+            w:colEdges[col + 1] - colEdges[col],
+            h:rowEdges[row + 1] - rowEdges[row]
         });
     }
 }
@@ -471,9 +532,14 @@ function describeTile(tile) {
 }
 
 function drawButton(gr, rect, index) {
-    const active = rect.group === 'engine' ? rect.value === engineInterval
-        : rect.group === 'paint' ? rect.value === paintRate
-        : rect.value === drawMode;
+    let active = false;
+    switch (rect.group) {
+        case 'engine': active = rect.value === engineInterval; break;
+        case 'paint': active = rect.value === paintRate; break;
+        case 'backend': active = rect.value === drawMode; break;
+        case 'opacity': active = rect.value === currentOpacity; break;
+        case 'backdrop': active = rect.value === backdropEnabled; break;
+    }
     const hovered = index === hoveredControl;
     const fill = active ? COLOR.accent : hovered ? COLOR.buttonHover : COLOR.button;
     const textColor = active ? COLOR.black : COLOR.text;
@@ -486,13 +552,22 @@ function drawButton(gr, rect, index) {
 }
 
 function drawHeader(gr) {
-    gr.FillSolidRect(0, 0, window.Width, HEADER_H, COLOR.header);
-    gr.FillSolidRect(0, HEADER_H - 1, window.Width, 1, COLOR.border);
+    gr.FillSolidRect(0, 0, window.Width, headerHeight, COLOR.header);
+    gr.FillSolidRect(0, headerHeight - 1, window.Width, 1, COLOR.border);
     gr.DrawString('Visualization demo', TITLE_FONT, COLOR.text,
         10, 6, Math.max(0, window.Width - 20), 22);
-    gr.DrawString('Engine ms', CONTROL_FONT, COLOR.muted, 10, 37, 70, 18);
-    gr.DrawString('Paint fps', CONTROL_FONT, COLOR.muted, 236, 37, 70, 18);
-    gr.DrawString('Backend', CONTROL_FONT, COLOR.muted, 448, 37, 60, 18);
+    if (window.Width >= 560) {
+        gr.DrawString('Click any tile to switch its preset', CONTROL_FONT, COLOR.muted,
+            290, 8, window.Width - 300, 18);
+    }
+    // Right-align each group label immediately beside its first button.
+    // This keeps the label/button gap small and separates adjacent groups.
+    for (const label of controlLabels) {
+        const textW = Math.min(label.w,
+            Math.ceil(gr.CalcTextWidth(label.text, CONTROL_FONT)) + 2);
+        gr.DrawString(label.text, CONTROL_FONT, COLOR.muted,
+            label.x + label.w - textW, label.y, textW, 18);
+    }
     gr.SetSmoothingMode(SmoothingMode.HighQuality);
     try {
         for (let i = 0; i < controlRects.length; ++i) drawButton(gr, controlRects[i], i);
@@ -500,11 +575,26 @@ function drawHeader(gr) {
     finally {
         gr.SetSmoothingMode(SmoothingMode.Default);
     }
+}
 
-    const hintX = 640;
-    if (window.Width > hintX + 120) {
-        gr.DrawString('Click any tile to switch its preset', CONTROL_FONT, COLOR.muted,
-            hintX, 38, window.Width - hintX - 10, 18);
+function drawBackdrop(gr, x, y, w, h) {
+    if (!backdropEnabled || w <= 0 || h <= 0) return;
+
+    // A quiet, pixel-aligned checker is enough to reveal composited opacity.
+    x = Math.round(x);
+    y = Math.round(y);
+    w = Math.max(0, Math.floor(w));
+    h = Math.max(0, Math.floor(h));
+    if (!w || !h) return;
+    gr.FillSolidRect(x, y, w, h, COLOR.backdropBase);
+
+    const cell = 24;
+    for (let yy = 0, row = 0; yy < h; yy += cell, ++row) {
+        const cellH = Math.min(cell, h - yy);
+        for (let xx = (row & 1) ? cell : 0; xx < w; xx += cell * 2) {
+            gr.FillSolidRect(x + xx, y + yy,
+                Math.min(cell, w - xx), cellH, COLOR.backdropCheck);
+        }
     }
 }
 
@@ -518,6 +608,8 @@ function drawTile(gr, tile, rect, index) {
     const drawY = rect.y + TILE_LABEL_H;
     const drawW = Math.max(0, rect.w - 8);
     const drawH = Math.max(0, rect.h - TILE_LABEL_H - 4);
+    if (drawW > 0 && drawH > 0) drawBackdrop(gr, drawX, drawY, drawW, drawH);
+
     if (isStereoMeter(tile) && tile.visuals && drawW > 0 && drawH > 0) {
         const channelGap = 4;
         const firstH = Math.max(0, Math.floor((drawH - channelGap) * 0.5));
@@ -586,7 +678,9 @@ function on_mouse_lbtn_up(x, y) {
         const selected = controlRects[control];
         if (selected.group === 'engine') setEngineInterval(selected.value);
         else if (selected.group === 'paint') setPaintRate(selected.value);
-        else setDrawMode(selected.value);
+        else if (selected.group === 'backend') setDrawMode(selected.value);
+        else if (selected.group === 'opacity') setOpacity(selected.value);
+        else setBackdropEnabled(selected.value);
         window.Repaint();
         return;
     }
@@ -606,4 +700,5 @@ function on_script_unload() {
 setEngineInterval(engineInterval);
 createDrawingResources();
 for (const tile of tiles) createOrUpdateTile(tile, true);
+setOpacity(currentOpacity);
 setPaintRate(paintRate);

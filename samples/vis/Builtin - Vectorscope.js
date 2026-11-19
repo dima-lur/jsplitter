@@ -8,12 +8,13 @@
 
 vis.UpdateIntervalMs = 16; // Default: 16 ms; allowed: unsigned integer 1..4294967295 ms.
 
-// Use the current DUI/CUI theme colors for the trace and background.
-// InstanceType: 1 = DUI, 0 = CUI; color 0 = text, 1 = background.
-const textColor = window.InstanceType === 1
-    ? window.GetColourDUI(0) : window.GetColourCUI(0);
-const backgroundColor = window.InstanceType === 1
-    ? window.GetColourDUI(1) : window.GetColourCUI(1);
+// Default colors are resolved from the current DUI/CUI text color.
+const textColor = window.InstanceType === UIInstanceType.DefaultUI ?
+    window.GetColourDUI(ColourTypeDUI.text) : window.GetColourCUI(ColourTypeCUI.text);
+
+// Match the background as well, so theme-colored content remains visible.
+const backgroundColor = window.InstanceType === UIInstanceType.DefaultUI ?
+    window.GetColourDUI(ColourTypeDUI.background) : window.GetColourCUI(ColourTypeCUI.background);
 
 const vectorscope = vis.Create(VisSourceType.Vectorscope, {
         // PCM indices or channel names used as left and right inputs.

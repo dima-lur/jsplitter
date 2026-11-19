@@ -7,10 +7,13 @@
 // integer-pixel bar widths, 1 px gaps, UI text color and 1 px peak markers.
 vis.UpdateIntervalMs = 16; // Default: 16 ms; allowed: unsigned integer 1..4294967295 ms.
 
-const textColor = window.InstanceType === 1
-    ? window.GetColourDUI(0) : window.GetColourCUI(0);
-const backgroundColor = window.InstanceType === 1
-    ? window.GetColourDUI(1) : window.GetColourCUI(1);
+// Default colors are resolved from the current DUI/CUI text color.
+const textColor = window.InstanceType === UIInstanceType.DefaultUI ?
+    window.GetColourDUI(ColourTypeDUI.text) : window.GetColourCUI(ColourTypeCUI.text);
+
+// Match the background as well, so theme-colored content remains visible.
+const backgroundColor = window.InstanceType === UIInstanceType.DefaultUI ?
+    window.GetColourDUI(ColourTypeDUI.background) : window.GetColourCUI(ColourTypeCUI.background);
 
 // Callback data (one value per frequency band):
 //   data.levels: Float32Array(Bands) - current band levels, normalized to 0..1.
