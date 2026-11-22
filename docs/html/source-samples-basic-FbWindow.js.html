@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>FbWindow.js — JSplitter source example</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="index.html">JSplitter API</a>
+        <div class="search-box">
+            <input id="doc-search" type="search" placeholder="Search API" autocomplete="off">
+            <div id="search-results" class="search-results" hidden></div>
+        </div>
+        <nav class="nav-groups">
+            <div class="nav-page-tree" data-nav-root="__globals__">
+        <a class="nav-link nav-page-link" href="globals.html">Globals</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div>
+            <div class="nav-group"><div class="nav-title">Namespaces</div><div class="nav-page-tree" data-nav-root="console">
+        <a class="nav-link nav-page-link" href="console.html">console</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="d2d">
+        <a class="nav-link nav-page-link" href="d2d.html">d2d</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="fb">
+        <a class="nav-link nav-page-link" href="fb.html">fb</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="gdi">
+        <a class="nav-link nav-page-link" href="gdi.html">gdi</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="performance">
+        <a class="nav-link nav-page-link" href="performance.html">performance</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="plman">
+        <a class="nav-link nav-page-link" href="plman.html">plman</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="utils">
+        <a class="nav-link nav-page-link" href="utils.html">utils</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="vis">
+        <a class="nav-link nav-page-link" href="vis.html">vis</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="window">
+        <a class="nav-link nav-page-link" href="window.html">window</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Classes</div><div class="nav-page-tree" data-nav-root="ActiveXObject">
+        <a class="nav-link nav-page-link" href="ActiveXObject.html">ActiveXObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryReader">
+        <a class="nav-link nav-page-link" href="BinaryReader.html">BinaryReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BinaryWriter">
+        <a class="nav-link nav-page-link" href="BinaryWriter.html">BinaryWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="BroadcastChannel">
+        <a class="nav-link nav-page-link" href="BroadcastChannel.html">BroadcastChannel</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ButtonObject">
+        <a class="nav-link nav-page-link" href="ButtonObject.html">ButtonObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ContextMenuManager">
+        <a class="nav-link nav-page-link" href="ContextMenuManager.html">ContextMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBitmap">
+        <a class="nav-link nav-page-link" href="D2DBitmap.html">D2DBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DBrush">
+        <a class="nav-link nav-page-link" href="D2DBrush.html">D2DBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DCompileInfo">
+        <a class="nav-link nav-page-link" href="D2DCompileInfo.html">D2DCompileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DEffect">
+        <a class="nav-link nav-page-link" href="D2DEffect.html">D2DEffect</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DFont">
+        <a class="nav-link nav-page-link" href="D2DFont.html">D2DFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DGraphics">
+        <a class="nav-link nav-page-link" href="D2DGraphics.html">D2DGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="D2DStrokeStyle">
+        <a class="nav-link nav-page-link" href="D2DStrokeStyle.html">D2DStrokeStyle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DriveInfo">
+        <a class="nav-link nav-page-link" href="DriveInfo.html">DriveInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="DropTargetAction">
+        <a class="nav-link nav-page-link" href="DropTargetAction.html">DropTargetAction</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Enumerator">
+        <a class="nav-link nav-page-link" href="Enumerator.html">Enumerator</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ErrorEvent">
+        <a class="nav-link nav-page-link" href="ErrorEvent.html">ErrorEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Event">
+        <a class="nav-link nav-page-link" href="Event.html">Event</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="EventTarget">
+        <a class="nav-link nav-page-link" href="EventTarget.html">EventTarget</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbAudioChunk">
+        <a class="nav-link nav-page-link" href="FbAudioChunk.html">FbAudioChunk</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbFileInfo">
+        <a class="nav-link nav-page-link" href="FbFileInfo.html">FbFileInfo</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandle">
+        <a class="nav-link nav-page-link" href="FbMetadbHandle.html">FbMetadbHandle</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbMetadbHandleList">
+        <a class="nav-link nav-page-link" href="FbMetadbHandleList.html">FbMetadbHandleList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaybackQueueItem">
+        <a class="nav-link nav-page-link" href="FbPlaybackQueueItem.html">FbPlaybackQueueItem</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlayingItemLocation">
+        <a class="nav-link nav-page-link" href="FbPlayingItemLocation.html">FbPlayingItemLocation</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbPlaylistRecycler">
+        <a class="nav-link nav-page-link" href="FbPlaylistRecycler.html">FbPlaylistRecycler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbProfiler">
+        <a class="nav-link nav-page-link" href="FbProfiler.html">FbProfiler</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTitleFormat">
+        <a class="nav-link nav-page-link" href="FbTitleFormat.html">FbTitleFormat</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbTooltip">
+        <a class="nav-link nav-page-link" href="FbTooltip.html">FbTooltip</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbUiSelectionHolder">
+        <a class="nav-link nav-page-link" href="FbUiSelectionHolder.html">FbUiSelectionHolder</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="FbWindow">
+        <a class="nav-link nav-page-link" href="FbWindow.html">FbWindow</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBitmap">
+        <a class="nav-link nav-page-link" href="GdiBitmap.html">GdiBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiBrush">
+        <a class="nav-link nav-page-link" href="GdiBrush.html">GdiBrush</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiFont">
+        <a class="nav-link nav-page-link" href="GdiFont.html">GdiFont</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiGraphics">
+        <a class="nav-link nav-page-link" href="GdiGraphics.html">GdiGraphics</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="GdiRawBitmap">
+        <a class="nav-link nav-page-link" href="GdiRawBitmap.html">GdiRawBitmap</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlDocument">
+        <a class="nav-link nav-page-link" href="HtmlDocument.html">HtmlDocument</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="HtmlNode">
+        <a class="nav-link nav-page-link" href="HtmlNode.html">HtmlNode</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MainMenuManager">
+        <a class="nav-link nav-page-link" href="MainMenuManager.html">MainMenuManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MenuObject">
+        <a class="nav-link nav-page-link" href="MenuObject.html">MenuObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="MessageEvent">
+        <a class="nav-link nav-page-link" href="MessageEvent.html">MessageEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PanelObject">
+        <a class="nav-link nav-page-link" href="PanelObject.html">PanelObject</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserver">
+        <a class="nav-link nav-page-link" href="PerformanceObserver.html">PerformanceObserver</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PerformanceObserverEntryList">
+        <a class="nav-link nav-page-link" href="PerformanceObserverEntryList.html">PerformanceObserverEntryList</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="PromiseRejectionEvent">
+        <a class="nav-link nav-page-link" href="PromiseRejectionEvent.html">PromiseRejectionEvent</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="RunResult">
+        <a class="nav-link nav-page-link" href="RunResult.html">RunResult</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteDatabase">
+        <a class="nav-link nav-page-link" href="SQLiteDatabase.html">SQLiteDatabase</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="SQLiteStatement">
+        <a class="nav-link nav-page-link" href="SQLiteStatement.html">SQLiteStatement</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextReader">
+        <a class="nav-link nav-page-link" href="TextReader.html">TextReader</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="TextWriter">
+        <a class="nav-link nav-page-link" href="TextWriter.html">TextWriter</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="ThemeManager">
+        <a class="nav-link nav-page-link" href="ThemeManager.html">ThemeManager</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Visualization">
+        <a class="nav-link nav-page-link" href="Visualization.html">Visualization</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="Worker">
+        <a class="nav-link nav-page-link" href="Worker.html">Worker</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="WorkerGlobalScope">
+        <a class="nav-link nav-page-link" href="WorkerGlobalScope.html">WorkerGlobalScope</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div></div><div class="nav-group"><div class="nav-title">Modules</div><div class="nav-page-tree" data-nav-root="module:Callbacks">
+        <a class="nav-link nav-page-link" href="module-Callbacks.html">Callbacks</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Codepages">
+        <a class="nav-link nav-page-link" href="module-Codepages.html">Codepages</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Effects">
+        <a class="nav-link nav-page-link" href="module-Effects.html">Effects</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><a class="nav-link" href="module-ESModules.html">ESModules</a><div class="nav-page-tree" data-nav-root="module:Flags">
+        <a class="nav-link nav-page-link" href="module-Flags.html">Flags</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Helpers">
+        <a class="nav-link nav-page-link" href="module-Helpers.html">Helpers</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><div class="nav-page-tree" data-nav-root="module:Matrix">
+        <a class="nav-link nav-page-link" href="module-Matrix.html">Matrix</a>
+        <div class="nav-page-members" data-nav-members hidden></div>
+    </div><a class="nav-link" href="module-TitleFormatting.html">TitleFormatting</a><a class="nav-link" href="module-Visualizations.html">Visualizations</a><a class="nav-link" href="module-WebAssembly.html">WebAssembly</a></div>
+            <div class="nav-group"><div class="nav-title">Tools</div><a class="nav-link " href="audit.html">Documentation audit</a></div>
+        </nav></aside>
+    <main class="content">
+        <div class="page-top"><a href="index.html">Documentation</a><span>/</span><b>Source example</b></div>
+        <header class="source-header">
+            <div class="eyebrow">Example source</div>
+            <h1>samples/basic/FbWindow.js</h1>
+            <div class="source-references"><b>Referenced by:</b><a href="fb.html#Window">fb.Window</a><a href="FbWindow.html#FbWindow">FbWindow</a><a href="FbWindow.html#X">FbWindow#X</a><a href="FbWindow.html#Y">FbWindow#Y</a><a href="FbWindow.html#Width">FbWindow#Width</a><a href="FbWindow.html#Height">FbWindow#Height</a><a href="FbWindow.html#FrameStyle">FbWindow#FrameStyle</a><a href="FbWindow.html#Fullscreen">FbWindow#Fullscreen</a><a href="FbWindow.html#MainMenuHidden">FbWindow#MainMenuHidden</a><a href="FbWindow.html#StatusBarHidden">FbWindow#StatusBarHidden</a><a href="FbWindow.html#MinSize">FbWindow#MinSize</a><a href="FbWindow.html#MinWidth">FbWindow#MinWidth</a><a href="FbWindow.html#MinHeight">FbWindow#MinHeight</a><a href="FbWindow.html#MaxSize">FbWindow#MaxSize</a><a href="FbWindow.html#MaxWidth">FbWindow#MaxWidth</a><a href="FbWindow.html#MaxHeight">FbWindow#MaxHeight</a><a href="FbWindow.html#Move">FbWindow#Move</a><a href="FbWindow.html#IsMinimized">FbWindow#IsMinimized</a><a href="FbWindow.html#IsMaximized">FbWindow#IsMaximized</a><a href="FbWindow.html#Minimize">FbWindow#Minimize</a><a href="FbWindow.html#Maximize">FbWindow#Maximize</a><a href="FbWindow.html#Restore">FbWindow#Restore</a><a href="FbWindow.html#Close">FbWindow#Close</a><a href="FbWindow.html#MoveStart">FbWindow#MoveStart</a><a href="FbWindow.html#SetPseudoCaption">FbWindow#SetPseudoCaption</a><a href="FbWindow.html#ClearPseudoCaption">FbWindow#ClearPseudoCaption</a><a href="FbWindow.html#SetMaximizeButtonArea">FbWindow#SetMaximizeButtonArea</a><a href="FbWindow.html#ClearMaximizeButtonArea">FbWindow#ClearMaximizeButtonArea</a></div>
+        </header>
+        <pre class="source-code"><code>window.DefineScript(<span class="tok-string">&#39;fb.Window - Interactive Sample&#39;</span>, { author: <span class="tok-string">&#39;JSplitter&#39;</span> });
+include(<span class="tok-string">&#39;docs/Flags.js&#39;</span>);
+
+<span class="tok-comment">// Interactive sample of the main-window API. Nothing changes the frame or hides UI</span>
+<span class="tok-comment">// until the corresponding button is pressed. The painted header is draggable</span>
+<span class="tok-comment">// through MoveStart, regardless of where this JSplitter panel is placed.</span>
+<span class="tok-comment">// SetPseudoCaption is a separate optional example: its coordinates belong to</span>
+<span class="tok-comment">// the MAIN foobar2000 window, not to this panel.</span>
+
+<span class="tok-keyword">const</span> host = fb.Window;
+<span class="tok-keyword">const</span> DT_BUTTON = DT_CENTER | DT_VCENTER | DT_SINGLELINE;
+<span class="tok-keyword">const</span> DT_LINE = DT_VCENTER | DT_SINGLELINE;
+<span class="tok-keyword">const</span> HEADER_HEIGHT = <span class="tok-number">64</span>;
+<span class="tok-keyword">const</span> COLORS = {
+    bg: <span class="tok-number">0xff1d232b</span>, header: <span class="tok-number">0xff283341</span>, border: <span class="tok-number">0xff374353</span>,
+    text: <span class="tok-number">0xffedf3fa</span>, subtle: <span class="tok-number">0xffb1becc</span>, accent: <span class="tok-number">0xff9fd5e4</span>,
+    button: <span class="tok-number">0xff364557</span>, active: <span class="tok-number">0xff287f90</span>, disabled: <span class="tok-number">0xff2b323c</span>,
+    max: <span class="tok-number">0xff2f779d</span>, close: <span class="tok-number">0xff9e4747</span>
+};
+<span class="tok-keyword">const</span> titleFont = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">15</span>, <span class="tok-number">1</span>);
+<span class="tok-keyword">const</span> sectionFont = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">11</span>, <span class="tok-number">1</span>);
+<span class="tok-keyword">const</span> textFont = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">11</span>, <span class="tok-number">0</span>);
+<span class="tok-keyword">const</span> buttonFont = gdi.Font(<span class="tok-string">&#39;Segoe UI&#39;</span>, <span class="tok-number">11</span>, <span class="tok-number">0</span>);
+
+<span class="tok-keyword">const</span> frameNames = [<span class="tok-string">&#39;Default&#39;</span>, <span class="tok-string">&#39;NoCaption&#39;</span>, <span class="tok-string">&#39;NoBorder&#39;</span>];
+<span class="tok-keyword">const</span> buttons = [];
+<span class="tok-keyword">const</span> groups = [];
+<span class="tok-keyword">let</span> snapEnabled = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> pseudoEnabled = <span class="tok-literal">false</span>;
+<span class="tok-keyword">let</span> pressed = <span class="tok-string">&#39;&#39;</span>;
+<span class="tok-keyword">let</span> message = <span class="tok-string">&#39;Select NoCaption or NoBorder to try Snap Layouts (Windows 11).&#39;</span>;
+<span class="tok-keyword">let</span> contentBottom = <span class="tok-number">0</span>;
+
+<span class="tok-keyword">function</span> isDUI() {
+    <span class="tok-comment">// MainMenuHidden/StatusBarHidden are not available in Columns UI.</span>
+    <span class="tok-keyword">try</span> {
+        <span class="tok-keyword">void</span> host.MainMenuHidden;
+        <span class="tok-keyword">return</span> <span class="tok-literal">true</span>;
+    } <span class="tok-keyword">catch</span> (_) {
+        <span class="tok-keyword">return</span> <span class="tok-literal">false</span>;
+    }
+}
+
+<span class="tok-keyword">function</span> addButton(id, text, x, y, w, h = <span class="tok-number">36</span>) {
+    buttons.push({ id, text, x, y, w, h });
+}
+
+<span class="tok-keyword">function</span> buttonById(id) {
+    <span class="tok-keyword">return</span> buttons.find(b =&gt; b.id === id);
+}
+
+<span class="tok-keyword">function</span> inside(b, x, y) {
+    <span class="tok-keyword">return</span> x &gt;= b.x &amp;&amp; x &lt; b.x + b.w &amp;&amp; y &gt;= b.y &amp;&amp; y &lt; b.y + b.h;
+}
+
+<span class="tok-keyword">function</span> hitButton(x, y) {
+    <span class="tok-keyword">return</span> buttons.find(b =&gt; inside(b, x, y)) || <span class="tok-literal">null</span>;
+}
+
+<span class="tok-keyword">function</span> buttonEnabled(id) {
+    <span class="tok-keyword">if</span> (id === <span class="tok-string">&#39;menu&#39;</span> || id === <span class="tok-string">&#39;status&#39;</span>) <span class="tok-keyword">return</span> isDUI();
+    <span class="tok-keyword">if</span> (id === <span class="tok-string">&#39;moveLeft&#39;</span> || id === <span class="tok-string">&#39;moveRight&#39;</span>)
+        <span class="tok-keyword">return</span> !host.Fullscreen &amp;&amp; !host.IsMaximized &amp;&amp; !host.IsMinimized;
+    <span class="tok-keyword">if</span> (id === <span class="tok-string">&#39;pseudo&#39;</span> || id === <span class="tok-string">&#39;snap&#39;</span>)
+        <span class="tok-keyword">return</span> !host.Fullscreen &amp;&amp; host.FrameStyle !== FrameStyle.Default;
+    <span class="tok-keyword">return</span> <span class="tok-literal">true</span>;
+}
+
+<span class="tok-keyword">function</span> buttonSelected(id) {
+    <span class="tok-keyword">switch</span> (id) {
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;default&#39;</span>: <span class="tok-keyword">return</span> host.FrameStyle === FrameStyle.Default;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;caption&#39;</span>: <span class="tok-keyword">return</span> host.FrameStyle === FrameStyle.NoCaption;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;border&#39;</span>: <span class="tok-keyword">return</span> host.FrameStyle === FrameStyle.NoBorder;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;full&#39;</span>: <span class="tok-keyword">return</span> host.Fullscreen;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;pseudo&#39;</span>: <span class="tok-keyword">return</span> pseudoEnabled;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;snap&#39;</span>: <span class="tok-keyword">return</span> snapEnabled;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;menu&#39;</span>: <span class="tok-keyword">return</span> isDUI() &amp;&amp; host.MainMenuHidden;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;status&#39;</span>: <span class="tok-keyword">return</span> isDUI() &amp;&amp; host.StatusBarHidden;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;minSize&#39;</span>: <span class="tok-keyword">return</span> host.MinSize;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;maxSize&#39;</span>: <span class="tok-keyword">return</span> host.MaxSize;
+    }
+    <span class="tok-keyword">return</span> <span class="tok-literal">false</span>;
+}
+
+<span class="tok-keyword">function</span> buttonText(b) {
+    <span class="tok-keyword">switch</span> (b.id) {
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;max&#39;</span>: <span class="tok-keyword">return</span> host.IsMaximized ? <span class="tok-string">&#39;Restore&#39;</span> : <span class="tok-string">&#39;Max&#39;</span>;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;full&#39;</span>: <span class="tok-keyword">return</span> host.Fullscreen ? <span class="tok-string">&#39;Exit fullscreen&#39;</span> : <span class="tok-string">&#39;Fullscreen&#39;</span>;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;menu&#39;</span>: <span class="tok-keyword">return</span> !isDUI() ? <span class="tok-string">&#39;Menu (DUI only)&#39;</span> :
+            (host.MainMenuHidden ? <span class="tok-string">&#39;Show menu&#39;</span> : <span class="tok-string">&#39;Hide menu&#39;</span>);
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;status&#39;</span>: <span class="tok-keyword">return</span> !isDUI() ? <span class="tok-string">&#39;Status (DUI only)&#39;</span> :
+            (host.StatusBarHidden ? <span class="tok-string">&#39;Show status bar&#39;</span> : <span class="tok-string">&#39;Hide status bar&#39;</span>);
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;pseudo&#39;</span>: <span class="tok-keyword">return</span> pseudoEnabled ? <span class="tok-string">&#39;Window drag zone: ON&#39;</span> : <span class="tok-string">&#39;Window drag zone: OFF&#39;</span>;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;snap&#39;</span>: <span class="tok-keyword">return</span> snapEnabled ? <span class="tok-string">&#39;Snap area: ON&#39;</span> : <span class="tok-string">&#39;Snap area: OFF&#39;</span>;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;minSize&#39;</span>: <span class="tok-keyword">return</span> host.MinSize ? <span class="tok-string">&#39;Min 550x360: ON&#39;</span> : <span class="tok-string">&#39;Min 550x360&#39;</span>;
+        <span class="tok-keyword">case</span> <span class="tok-string">&#39;maxSize&#39;</span>: <span class="tok-keyword">return</span> host.MaxSize ? <span class="tok-string">&#39;Max 1400x800: ON&#39;</span> : <span class="tok-string">&#39;Max 1400x800&#39;</span>;
+        <span class="tok-keyword">default</span>: <span class="tok-keyword">return</span> b.text;
+    }
+}
+
+<span class="tok-keyword">function</span> layoutGroup(title, hint, items, y) {
+    groups.push({ title, hint, y });
+    y += <span class="tok-number">43</span>;
+    <span class="tok-keyword">let</span> x = <span class="tok-number">18</span>;
+    <span class="tok-keyword">const</span> right = Math.max(<span class="tok-number">110</span>, window.Width - <span class="tok-number">18</span>);
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> item <span class="tok-keyword">of</span> items) {
+        <span class="tok-keyword">const</span> w = Math.min(item.w, Math.max(<span class="tok-number">92</span>, window.Width - <span class="tok-number">36</span>));
+        <span class="tok-keyword">if</span> (x &gt; <span class="tok-number">18</span> &amp;&amp; x + w &gt; right) {
+            x = <span class="tok-number">18</span>;
+            y += <span class="tok-number">46</span>;
+        }
+        addButton(item.id, item.text, x, y, w);
+        x += w + <span class="tok-number">9</span>;
+    }
+    <span class="tok-keyword">return</span> y + <span class="tok-number">51</span>;
+}
+
+<span class="tok-keyword">function</span> layout() {
+    buttons.length = <span class="tok-number">0</span>;
+    groups.length = <span class="tok-number">0</span>;
+    <span class="tok-keyword">const</span> titleX = Math.max(<span class="tok-number">8</span>, window.Width - <span class="tok-number">3</span> * <span class="tok-number">65</span> - <span class="tok-number">10</span>);
+    addButton(<span class="tok-string">&#39;min&#39;</span>, <span class="tok-string">&#39;Min&#39;</span>, titleX, <span class="tok-number">14</span>, <span class="tok-number">60</span>, <span class="tok-number">36</span>);
+    addButton(<span class="tok-string">&#39;max&#39;</span>, <span class="tok-string">&#39;Max&#39;</span>, titleX + <span class="tok-number">65</span>, <span class="tok-number">14</span>, <span class="tok-number">60</span>, <span class="tok-number">36</span>);
+    addButton(<span class="tok-string">&#39;close&#39;</span>, <span class="tok-string">&#39;Close&#39;</span>, titleX + <span class="tok-number">130</span>, <span class="tok-number">14</span>, <span class="tok-number">60</span>, <span class="tok-number">36</span>);
+
+    <span class="tok-keyword">let</span> y = <span class="tok-number">76</span>;
+    y = layoutGroup(<span class="tok-string">&#39;FRAME STYLE&#39;</span>, <span class="tok-string">&#39;Choose how Windows draws the main window.&#39;</span>, [
+        { id: <span class="tok-string">&#39;default&#39;</span>, text: <span class="tok-string">&#39;Default&#39;</span>, w: <span class="tok-number">115</span> },
+        { id: <span class="tok-string">&#39;caption&#39;</span>, text: <span class="tok-string">&#39;NoCaption&#39;</span>, w: <span class="tok-number">115</span> },
+        { id: <span class="tok-string">&#39;border&#39;</span>, text: <span class="tok-string">&#39;NoBorder&#39;</span>, w: <span class="tok-number">115</span> },
+        { id: <span class="tok-string">&#39;full&#39;</span>, text: <span class="tok-string">&#39;Fullscreen&#39;</span>, w: <span class="tok-number">135</span> }
+    ], y);
+    y = layoutGroup(<span class="tok-string">&#39;MENU AND STATUS BAR&#39;</span>, <span class="tok-string">&#39;These switches are available in Default UI (DUI) only.&#39;</span>, [
+        { id: <span class="tok-string">&#39;menu&#39;</span>, text: <span class="tok-string">&#39;Hide menu&#39;</span>, w: <span class="tok-number">155</span> },
+        { id: <span class="tok-string">&#39;status&#39;</span>, text: <span class="tok-string">&#39;Hide status bar&#39;</span>, w: <span class="tok-number">155</span> }
+    ], y);
+    y = layoutGroup(<span class="tok-string">&#39;DRAGGING AND SNAP&#39;</span>,
+        <span class="tok-string">&#39;Select NoCaption or NoBorder to enable the window drag zone and Snap area.&#39;</span>, [
+        { id: <span class="tok-string">&#39;pseudo&#39;</span>, text: <span class="tok-string">&#39;Window drag zone: OFF&#39;</span>, w: <span class="tok-number">190</span> },
+        { id: <span class="tok-string">&#39;snap&#39;</span>, text: <span class="tok-string">&#39;Snap area: OFF&#39;</span>, w: <span class="tok-number">150</span> }
+    ], y);
+    y = layoutGroup(<span class="tok-string">&#39;SIZE AND POSITION&#39;</span>, <span class="tok-string">&#39;Set fixed limits or move the main window 40 pixels left/right.&#39;</span>, [
+        { id: <span class="tok-string">&#39;minSize&#39;</span>, text: <span class="tok-string">&#39;Min 550x360&#39;</span>, w: <span class="tok-number">144</span> },
+        { id: <span class="tok-string">&#39;maxSize&#39;</span>, text: <span class="tok-string">&#39;Max 1400x800&#39;</span>, w: <span class="tok-number">158</span> },
+        { id: <span class="tok-string">&#39;resetLimits&#39;</span>, text: <span class="tok-string">&#39;Clear limits&#39;</span>, w: <span class="tok-number">120</span> },
+        { id: <span class="tok-string">&#39;moveLeft&#39;</span>, text: <span class="tok-string">&#39;Move -40&#39;</span>, w: <span class="tok-number">110</span> },
+        { id: <span class="tok-string">&#39;moveRight&#39;</span>, text: <span class="tok-string">&#39;Move +40&#39;</span>, w: <span class="tok-number">110</span> }
+    ], y);
+    contentBottom = y;
+}
+
+<span class="tok-keyword">function</span> updateSnapArea() {
+    <span class="tok-comment">// Panel-local coordinates; JSplitter tracks panel movement internally.</span>
+    <span class="tok-keyword">const</span> b = buttonById(<span class="tok-string">&#39;max&#39;</span>);
+    <span class="tok-keyword">if</span> (b &amp;&amp; snapEnabled &amp;&amp; buttonEnabled(<span class="tok-string">&#39;snap&#39;</span>))
+        host.SetMaximizeButtonArea(b.x, b.y, b.w, b.h);
+}
+
+<span class="tok-keyword">function</span> updatePseudoCaption() {
+    <span class="tok-keyword">if</span> (!pseudoEnabled) <span class="tok-keyword">return</span>;
+    <span class="tok-comment">// Unlike SetMaximizeButtonArea, coordinates are relative to the MAIN window.</span>
+    host.SetPseudoCaption(<span class="tok-number">0</span>, <span class="tok-number">0</span>, window.Width, <span class="tok-number">25</span>, <span class="tok-literal">true</span>);
+}
+
+<span class="tok-keyword">function</span> setMessage(value) {
+    message = value;
+    console.log(<span class="tok-string">&#39;[fb.Window sample] &#39;</span> + value);
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> toggleMinSize() {
+    <span class="tok-keyword">if</span> (host.MinSize) host.MinSize = <span class="tok-literal">false</span>;
+    <span class="tok-keyword">else</span> {
+        host.MinWidth = <span class="tok-number">550</span>;
+        host.MinHeight = <span class="tok-number">360</span>;
+        host.MinSize = <span class="tok-literal">true</span>;
+    }
+}
+
+<span class="tok-keyword">function</span> toggleMaxSize() {
+    <span class="tok-keyword">if</span> (host.MaxSize) host.MaxSize = <span class="tok-literal">false</span>;
+    <span class="tok-keyword">else</span> {
+        host.MaxWidth = <span class="tok-number">1400</span>;
+        host.MaxHeight = <span class="tok-number">800</span>;
+        host.MaxSize = <span class="tok-literal">true</span>;
+    }
+}
+
+<span class="tok-keyword">function</span> togglePseudoCaption() {
+    pseudoEnabled = !pseudoEnabled;
+    <span class="tok-keyword">if</span> (pseudoEnabled) updatePseudoCaption();
+    <span class="tok-keyword">else</span> host.ClearPseudoCaption();
+}
+
+<span class="tok-keyword">function</span> activate(id) {
+    <span class="tok-keyword">if</span> (!buttonEnabled(id)) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">try</span> {
+        <span class="tok-keyword">switch</span> (id) {
+            <span class="tok-keyword">case</span> <span class="tok-string">&#39;min&#39;</span>: host.Minimize(); <span class="tok-keyword">return</span>;
+            <span class="tok-keyword">case</span> <span class="tok-string">&#39;max&#39;</span>:
+                <span class="tok-keyword">if</span> (host.IsMaximized) host.Restore();
+                <span class="tok-keyword">else</span> host.Maximize();
+                <span class="tok-keyword">break</span>;
+            <span class="tok-keyword">case</span> <span class="tok-string">&#39;close&#39;</span>: host.Close(); <span class="tok-keyword">return</span>;
+            <span class="tok-keyword">case</span> <span class="tok-string">&#39;default&#39;</span>:
+            <span class="tok-keyword">case</span> <span class="tok-string">&#39;caption&#39;</span>:
+            <span class="tok-keyword">case</span> <span class="tok-string">&#39;border&#39;</span>: {
+                <span class="tok-keyword">const</span> style = id === <span class="tok-string">&#39;default&#39;</span> ? FrameStyle.Default :
+                    id === <span class="tok-string">&#39;caption&#39;</span> ? FrameStyle.NoCaption : FrameStyle.NoBorder;
+                <span class="tok-keyword">if</span> (style === FrameStyle.Default) {
+                    <span class="tok-keyword">if</span> (pseudoEnabled) {
+                        host.ClearPseudoCaption();
+                        pseudoEnabled = <span class="tok-literal">false</span>;
+                    }
+                    <span class="tok-keyword">if</span> (snapEnabled) {
+                        host.ClearMaximizeButtonArea();
+                        snapEnabled = <span class="tok-literal">false</span>;
+                    }
+                }
+                host.FrameStyle = style;
+                <span class="tok-keyword">break</span>;
+            }
+            <span class="tok-keyword">case</span> <span class="tok-string">&#39;full&#39;</span>: host.Fullscreen = !host.Fullscreen; <span class="tok-keyword">break</span>;
+            <span class="tok-keyword">case</span> <span class="tok-string">&#39;menu&#39;</span>: host.MainMenuHidden = !host.MainMenuHidden; <span class="tok-keyword">break</span>;
+            <span class="tok-keyword">case</span> <span class="tok-string">&#39;status&#39;</span>: host.StatusBarHidden = !host.StatusBarHidden; <span class="tok-keyword">break</span>;
+            <span class="tok-keyword">case</span> <span class="tok-string">&#39;pseudo&#39;</span>: togglePseudoCaption(); <span class="tok-keyword">break</span>;
+            <span class="tok-keyword">case</span> <span class="tok-string">&#39;snap&#39;</span>:
+                snapEnabled = !snapEnabled;
+                <span class="tok-keyword">if</span> (snapEnabled) updateSnapArea();
+                <span class="tok-keyword">else</span> host.ClearMaximizeButtonArea();
+                <span class="tok-keyword">break</span>;
+            <span class="tok-keyword">case</span> <span class="tok-string">&#39;minSize&#39;</span>: toggleMinSize(); <span class="tok-keyword">break</span>;
+            <span class="tok-keyword">case</span> <span class="tok-string">&#39;maxSize&#39;</span>: toggleMaxSize(); <span class="tok-keyword">break</span>;
+            <span class="tok-keyword">case</span> <span class="tok-string">&#39;resetLimits&#39;</span>:
+                host.MinSize = <span class="tok-literal">false</span>;
+                host.MaxSize = <span class="tok-literal">false</span>;
+                host.MinWidth = host.MinHeight = <span class="tok-number">0</span>;
+                host.MaxWidth = host.MaxHeight = <span class="tok-number">0</span>;
+                <span class="tok-keyword">break</span>;
+            <span class="tok-keyword">case</span> <span class="tok-string">&#39;moveLeft&#39;</span>: host.Move(host.X - <span class="tok-number">40</span>, host.Y, host.Width, host.Height); <span class="tok-keyword">break</span>;
+            <span class="tok-keyword">case</span> <span class="tok-string">&#39;moveRight&#39;</span>: host.Move(host.X + <span class="tok-number">40</span>, host.Y, host.Width, host.Height); <span class="tok-keyword">break</span>;
+        }
+        setMessage(buttonText(buttonById(id)) + <span class="tok-string">&#39; — applied&#39;</span>);
+    } <span class="tok-keyword">catch</span> (error) {
+        setMessage(<span class="tok-string">&#39;Error: &#39;</span> + error.message);
+    }
+}
+
+<span class="tok-keyword">function</span> drawButton(gr, b) {
+    <span class="tok-keyword">const</span> enabled = buttonEnabled(b.id);
+    <span class="tok-keyword">const</span> selected = buttonSelected(b.id);
+    <span class="tok-keyword">let</span> fill = !enabled ? COLORS.disabled : selected ? COLORS.active : COLORS.button;
+    <span class="tok-keyword">if</span> (enabled &amp;&amp; b.id === <span class="tok-string">&#39;max&#39;</span>) fill = COLORS.max;
+    <span class="tok-keyword">if</span> (enabled &amp;&amp; b.id === <span class="tok-string">&#39;close&#39;</span>) fill = COLORS.close;
+    gr.FillSolidRect(b.x, b.y, b.w, b.h, fill);
+    gr.GdiDrawText(buttonText(b), buttonFont, enabled ? COLORS.text : COLORS.subtle,
+        b.x, b.y, b.w, b.h, DT_BUTTON);
+}
+
+<span class="tok-keyword">function</span> on_size() {
+    layout();
+    updateSnapArea();
+    updatePseudoCaption();
+    window.Repaint();
+}
+
+<span class="tok-keyword">function</span> on_paint(gr) {
+    <span class="tok-keyword">const</span> w = window.Width;
+    <span class="tok-keyword">const</span> h = window.Height;
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, w, h, COLORS.bg);
+    gr.FillSolidRect(<span class="tok-number">0</span>, <span class="tok-number">0</span>, w, HEADER_HEIGHT, COLORS.header);
+    <span class="tok-keyword">const</span> minButton = buttonById(<span class="tok-string">&#39;min&#39;</span>);
+    <span class="tok-keyword">const</span> leftWidth = minButton ? Math.max(<span class="tok-number">8</span>, minButton.x - <span class="tok-number">30</span>) : w - <span class="tok-number">36</span>;
+    gr.GdiDrawText(<span class="tok-string">&#39;fb.Window&#39;</span>, titleFont, COLORS.text,
+        <span class="tok-number">18</span>, <span class="tok-number">5</span>, leftWidth, <span class="tok-number">32</span>, DT_LINE);
+    gr.GdiDrawText(<span class="tok-string">&#39;Drag this header to move the window (MoveStart)&#39;</span>, textFont,
+        COLORS.accent, <span class="tok-number">18</span>, <span class="tok-number">34</span>, leftWidth, <span class="tok-number">22</span>, DT_LINE);
+
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> group <span class="tok-keyword">of</span> groups) {
+        gr.FillSolidRect(<span class="tok-number">18</span>, group.y - <span class="tok-number">6</span>, Math.max(<span class="tok-number">1</span>, w - <span class="tok-number">36</span>), <span class="tok-number">1</span>, COLORS.border);
+        gr.GdiDrawText(group.title, sectionFont, COLORS.accent,
+            <span class="tok-number">18</span>, group.y, Math.max(<span class="tok-number">20</span>, w - <span class="tok-number">36</span>), <span class="tok-number">22</span>, DT_LINE);
+        gr.GdiDrawText(group.hint, textFont, COLORS.subtle,
+            <span class="tok-number">18</span>, group.y + <span class="tok-number">20</span>, Math.max(<span class="tok-number">20</span>, w - <span class="tok-number">36</span>), <span class="tok-number">22</span>, DT_LINE);
+    }
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> b <span class="tok-keyword">of</span> buttons) drawButton(gr, b);
+
+    <span class="tok-keyword">if</span> (contentBottom + <span class="tok-number">18</span> &lt; h) {
+        <span class="tok-keyword">const</span> mode = frameNames[host.FrameStyle] || String(host.FrameStyle);
+        <span class="tok-keyword">const</span> state = host.Fullscreen ? <span class="tok-string">&#39;Fullscreen&#39;</span> : host.IsMaximized ? <span class="tok-string">&#39;Maximized&#39;</span> :
+            host.IsMinimized ? <span class="tok-string">&#39;Minimized&#39;</span> : <span class="tok-string">&#39;Normal&#39;</span>;
+        gr.FillSolidRect(<span class="tok-number">0</span>, contentBottom + <span class="tok-number">5</span>, w, <span class="tok-number">1</span>, COLORS.border);
+        gr.GdiDrawText(<span class="tok-string">`Main window  ${host.Width}x${host.Height}  at (${host.X}, ${host.Y})  |  ${mode} / ${state}`</span>,
+            textFont, COLORS.text, <span class="tok-number">18</span>, contentBottom + <span class="tok-number">11</span>, Math.max(<span class="tok-number">10</span>, w - <span class="tok-number">36</span>), <span class="tok-number">25</span>, DT_LINE);
+        <span class="tok-keyword">if</span> (contentBottom + <span class="tok-number">55</span> &lt; h) {
+            gr.GdiDrawText(message, textFont, COLORS.subtle,
+                <span class="tok-number">18</span>, contentBottom + <span class="tok-number">36</span>, Math.max(<span class="tok-number">10</span>, w - <span class="tok-number">36</span>), <span class="tok-number">25</span>, DT_LINE);
+        }
+    }
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_down(x, y) {
+    <span class="tok-keyword">const</span> b = hitButton(x, y);
+    pressed = b &amp;&amp; buttonEnabled(b.id) ? b.id : <span class="tok-string">&#39;&#39;</span>;
+    <span class="tok-keyword">if</span> (!b &amp;&amp; y &gt;= <span class="tok-number">0</span> &amp;&amp; y &lt; HEADER_HEIGHT &amp;&amp; !host.Fullscreen) {
+        <span class="tok-comment">// Mouse-down on the visibly painted header starts a native move loop.</span>
+        <span class="tok-keyword">try</span> { host.MoveStart(); }
+        <span class="tok-keyword">catch</span> (error) { setMessage(<span class="tok-string">&#39;MoveStart: &#39;</span> + error.message); }
+    }
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_up(x, y) {
+    <span class="tok-keyword">const</span> b = hitButton(x, y);
+    <span class="tok-keyword">const</span> id = b &amp;&amp; buttonEnabled(b.id) ? b.id : <span class="tok-string">&#39;&#39;</span>;
+    <span class="tok-comment">// Snap Layouts may relay the Max button release without a script-visible down.</span>
+    <span class="tok-keyword">const</span> clicked = id &amp;&amp; (id === <span class="tok-string">&#39;max&#39;</span> || id === pressed);
+    pressed = <span class="tok-string">&#39;&#39;</span>;
+    <span class="tok-keyword">if</span> (clicked) activate(id);
+}
+
+<span class="tok-keyword">function</span> on_mouse_lbtn_dblclk(x, y) {
+    <span class="tok-keyword">if</span> (y &lt; <span class="tok-number">0</span> || y &gt;= HEADER_HEIGHT || hitButton(x, y) || host.Fullscreen) <span class="tok-keyword">return</span>;
+    <span class="tok-keyword">try</span> {
+        <span class="tok-keyword">if</span> (host.IsMaximized) host.Restore();
+        <span class="tok-keyword">else</span> host.Maximize();
+    } <span class="tok-keyword">catch</span> (error) {
+        setMessage(<span class="tok-string">&#39;Maximize/Restore: &#39;</span> + error.message);
+    }
+}
+
+<span class="tok-keyword">function</span> on_mouse_leave() {
+    pressed = <span class="tok-string">&#39;&#39;</span>;
+}
+
+<span class="tok-comment">// Also refresh if the main-window state changes outside this panel.</span>
+<span class="tok-keyword">const</span> refreshTimer = window.SetInterval(() =&gt; window.Repaint(), <span class="tok-number">1000</span>);
+<span class="tok-keyword">function</span> on_script_unload() {
+    window.ClearInterval(refreshTimer);
+    <span class="tok-comment">// Per-panel registrations are released automatically. Numeric size bounds</span>
+    <span class="tok-comment">// persist until reset with Clear limits.</span>
+}
+
+on_size();
+</code></pre></main>
+    <script src="assets/search-data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>
