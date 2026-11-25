@@ -402,7 +402,7 @@ function FbWindow() {
      *
      * This method only registers the area: it does <b>not</b> draw the button or maximize/restore the window. Draw the button in the script and handle its click with {@link module:Callbacks.on_mouse_lbtn_up on_mouse_lbtn_up}, calling {@link FbWindow#Maximize Maximize} or {@link FbWindow#Restore Restore} as appropriate. Mouse callbacks continue to work over the registered area.
      *
-     * In {@link module:Flags.FrameStyle FrameStyle.Default}, the normal Windows caption buttons are preserved; the script-drawn button can still handle clicks, but does not provide Snap Layouts. On Windows 10 and earlier, the method can be called, but no Snap Layouts overlay is created. The overlay is also inactive while the main window is fullscreen.
+     * In {@link module:Flags.FrameStyle FrameStyle.Default}, the normal Windows caption buttons are preserved; the script-drawn button can still handle clicks, but does not provide Snap Layouts. On Windows 10 and earlier, the method can be called, but no Snap Layouts overlay is created. The overlay is also inactive while the main window is {@link FbWindow#Fullscreen Fullscreen}.
      *
      * The rectangle and enabled state belong to the current panel. Calling this method again updates its rectangle and makes its request the most recent. The most recent explicit request from any live panel controls the shared main window. {@link FbWindow#ClearMaximizeButtonArea ClearMaximizeButtonArea} is also an explicit request and disables the effective area even when another panel previously registered one. When a panel reloads or unloads, its request is removed and the previous live panel's request, if any, becomes effective again.
      * 

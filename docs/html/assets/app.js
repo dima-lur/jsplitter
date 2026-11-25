@@ -76,7 +76,14 @@
         }
     });
     document.addEventListener('click', e => {
-        if (!results.contains(e.target) && e.target !== input) hide();
+        if (results.contains(e.target)) {
+            if (e.target.closest('a.search-result') && e.button === 0 &&
+                !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) {
+                // Let the clicked anchor finish its default navigation first.
+                requestAnimationFrame(hide);
+            }
+        }
+        else if (e.target !== input) hide();
     });
 })();
 
@@ -333,6 +340,20 @@
             ? link.closest('.nav-page-tree')
             : null;
         const samePage = navigationTarget(url) === currentTarget();
+
+        if (link.classList.contains('search-result')) {
+            // Search results are not tree links. Do not preserve the old tree
+            // scroll position when navigating to another page from search.
+            if (samePage && url.hash === window.location.hash) {
+                // Selecting the current result does not fire hashchange.
+                const member = ensureActiveMemberBranch();
+                requestAnimationFrame(() => {
+                    if (member) ensureVisible(member);
+                    else scrollActiveRootNearTop();
+                });
+            }
+            return;
+        }
 
         if (tree && samePage && !url.hash) {
             // The active root is already the current page. Clicking its label is a
