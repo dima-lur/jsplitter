@@ -68,9 +68,3 @@ The only difference between the **4.x** and **3.x** branches is the JavaScript e
 |---|---|
 | `4.x` | Uses the latest ESR version |
 | `3.x` | Always uses SpiderMonkey `102.15.1esr` |
-
-## Important note
-
-The **3.x** branch is currently the most stable version of JSplitter, as its interaction with the engine version has been extensively tested by numerous users.
-
-The **4.x** branch is a fresh Java Script engine rolling release. Updates are released fairly regularly based on bugs found by me or users, although these same changes are also included in the **3.x** branch.
